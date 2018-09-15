@@ -1,3 +1,300 @@
-html{
-  background-color: red;
+
+*{
+  font-family: 微軟正黑體;
+}
+
+/*----------header---------*/
+
+#header{
+  position: relative;
+
+  .header_top_area{
+    display: flex;
+    height: 90%;
+    .header_left{
+      width: 30%;
+      .logo_area{
+        position: relative;
+        height: 70%;
+        &::before{
+          content: '';
+          background-color: $color-mask-logo;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          opacity: 0.4;
+          z-index: 1;
+        }
+        .logo{
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          background-image: url('/img/logo_backimg.jpg');
+          background-size: cover;
+          background-position: center bottom;
+          .mark{
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-30%);
+            background-color: transparent;
+            z-index: 2;
+            text-align: center;
+            .mark_text{
+              color: $color-white;
+              font-weight: 700;
+            }
+            .mark_top{
+              margin-bottom: -60px;
+              font-size: 10em;
+              font-family: 'Nanum Brush Script', cursive;
+            }
+            .mark_middle{
+              font-size: 20px;
+            }
+            .mark_bottom{
+              font-size: 12px;
+            }
+            img{
+              width: 20%;
+              margin-bottom: -110px;
+              margin-left: -80px;
+            }
+          }
+          .time{
+            position: absolute;
+            right: -50px;
+            bottom: 10px;
+            z-index: 2;
+            img{
+              width: 90%;
+            }
+          }
+        }
+      }
+      .header_contact{
+        font-size: $header-contact-font-size;
+        display: flex;
+        height: 30%;
+        .header_addr{
+          position: relative;
+          width: 50%;
+          border-right: solid 1px $color-grey-font-color;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .shop_list{
+            height: 100%;
+            .shop{
+              height: calc(100% / 3);
+              .shop_contact,img{
+                display: inline-block;
+                vertical-align: middle;
+              }
+              img{
+                width: 30px;
+                height: 30px;
+              }
+              .shop_contact{
+                line-height: 5px;
+                p{
+                  margin: 12px 0px;
+                }
+              }   
+            }
+          }    
+        }
+        .community{
+          width: 50%;
+          .link{
+            text-align: center;
+          }
+          .facebook,.instagram{
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .facebook{
+            border-bottom: solid 1px $color-grey-font-color;
+            img{
+              width: 30px;
+              height: 30px;
+            }
+          }
+          .instagram{
+            img{
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+    
+    .header_right{
+      width: 70%;
+      .banner{
+        position: relative;
+        height: 100%;
+        background-image: url('/img/airport.jpg');
+        background-size: cover;
+        background-position: center;
+        &::before{
+          content: '';
+          background-color: $color-mask-banner;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          opacity: 0.4;
+        }
+        .banner_word{
+          position: absolute;
+          top: 50%;
+          left: 25%;
+          transform: translateY(-50%) translateX(-25%);
+          color: $color-white;
+          h1{
+            font-size: 60px;
+            text-shadow: 5px 5px 6px  $color-grey;
+          }
+          p{
+            font-size: 24px;
+          }
+          .eng{
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+  
+  .navbar{
+    width: 100%;
+    height: 10%;
+    background-color: $color-grey;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ul{
+      margin: 0;
+      padding: 0;
+      li{
+        font-size: 15px;
+        display: inline-block;
+        list-style: none;
+        &::after{
+          content:"|";
+          display: inline-block;
+          color: $color-white;
+        }
+        a{
+          text-decoration: none;
+          color: $color-white;
+          margin: 0px 30px;
+          padding-bottom: 28px;
+          border-bottom: solid 3px transparent;
+          transition: 0.5s ease;
+          &:hover{
+            border-bottom: solid 3px $color-white;
+          } 
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+/*----------footer---------*/
+
+
+#footer{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  .footer_logo{
+    background-image: url('/img/footer_left.jpg');
+    background-position: center;
+    background-size: cover;
+    width: 37.5%;
+    padding: 30px 0;
+  }
+  .footer_contact{
+    font-size: $header-contact-font-size;
+    width: 25%;
+    display: flex;
+    .footer_addr{
+      position: relative;
+      width: 70%;
+      border-right: solid 1px $color-grey-font-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0; 
+      .shop_list{
+        height: 100%;
+        .shop{
+          height: calc(100% / 3);
+          .shop_contact,img{
+            display: inline-block;
+            vertical-align: middle;
+          }
+          img{
+            width: 30px;
+            height: 30px;
+          }
+          .shop_contact{
+            line-height: 5px;
+            p{
+              margin: 12px 0px;
+            }
+          }   
+        }
+      } 
+    }
+    .community{
+      width: 30%;
+      padding: 30px 0;
+      .link{
+        text-align: center;
+      }
+      .facebook,.instagram{
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .facebook{
+        border-bottom: solid 1px $color-grey-font-color;
+        img{
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .instagram{
+        img{
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+  .footer_copy{
+    background-image: url('/img/footer_right.jpg');
+    background-position: center;
+    background-size: cover;
+    width: 37.5%;
+    padding: 30px 0;
+  }
 }
