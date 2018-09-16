@@ -1,5 +1,13 @@
 @extends('main')
 
+@section('custom-script')
+    <script>
+
+        
+    </script>
+@endsection
+
+
 @section('content')
 
     <!------------------------banner------------------------>

@@ -26,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/js/plugins/AOS/aos.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+    <link rel="stylesheet" href="\js\plugins\swipe\swiper.min.css">
     <!-- Styles -->
     <style>
         .paytest {
@@ -64,10 +65,7 @@
             <div class="logo_area">
                 <div class="logo">
                     <a href="/" class="mark">
-                        <img src="/img/king.svg" alt="">
-                        <p class="mark_text mark_top">
-                            KLS
-                        </p>
+                        <img src="/img/fuckaguabyhr-01.svg" alt="">
                         <p class="mark_text mark_middle">
                             凱麗絲旅行箱專賣店
                         </p>
@@ -130,25 +128,48 @@
             </div>
         </div>
         <div class="header_right">
-            <div class="banner">
-                <div class="banner_word">
-                    <h1>
-                        我在LA機場的人來人往...
-                    </h1>
-                    <p>
-                        #長途旅行專用行李箱
-                    </p>
-                    <p>
-                        #30吋/29吋熱賣中
-                    </p>
-                    <p>
-                        PC硬殼箱
-                    </p>
-                    <p class="eng">
-                        10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
-                    </p>
+            <div class="sw_mask"></div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide banner ban_page1">
+                    <div class="banner_word">
+                        <h1>
+                            我在LA機場的人來人往...
+                        </h1>
+                        <p>
+                            #長途旅行專用行李箱
+                        </p>
+                        <p>
+                            #30吋/29吋熱賣中
+                        </p>
+                        <p>
+                            PC硬殼箱
+                        </p>
+                        <p class="eng">
+                            10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide banner ban_page2">
+                    <div class="banner_word">
+                        <h1>
+                            我在LA機場的人來人往...
+                        </h1>
+                        <p>
+                            #長途旅行專用行李箱
+                        </p>
+                        <p>
+                            #30吋/29吋熱賣中
+                        </p>
+                        <p>
+                            PC硬殼箱
+                        </p>
+                        <p class="eng">
+                            10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
+                        </p>
+                    </div>
                 </div>
             </div>
+            <div class="swiper-pagination"></div> 
         </div>
     </div>
     
@@ -179,7 +200,7 @@
                     線上拍賣
                 </a>
             </li>
-            <li>
+            <li class="nav_final">
                 <a href="{{route('contact')}}">
                    聯絡我們
                 </a>
@@ -262,6 +283,8 @@
 
 <script src="{{ asset('js/plugins/AOS/aos.js') }}" charset="utf-8"></script>
 
+<script src="\js\plugins\swipe\swiper.min.js"></script>
+
 <script type="text/javascript">
     AOS.init();
 </script>
@@ -277,6 +300,31 @@
 
     // heights
     $(document).ready(() => {
+
+        var swiper = new Swiper ('.header_right',{
+            direction: 'horizontal',
+            loop: true,
+            centeredSlides: true,
+            speed: 800,
+            autoplay: {
+                delay: 10000,
+                disableOnInteraction: false,
+            },
+            pagination : {
+			    el:'.swiper-pagination'
+		    },
+            on:{
+                transitionStart: function(){
+                    $('.banner_word').css({
+                        'opacity' : 0,
+
+                    })
+                },
+                transitionEnd: function(){
+                    $('.banner_word').css('opacity',1)
+                },
+            }
+        });
 
         function get_H(){
 
