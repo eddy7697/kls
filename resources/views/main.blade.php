@@ -129,6 +129,12 @@
         </div>
         <div class="header_right">
             <div class="sw_mask"></div>
+            <div class="arrow arrow_left">
+                
+            </div>
+            <div class="arrow arrow_right">
+                
+            </div>
             <div class="swiper-wrapper">
                 <div class="swiper-slide banner ban_page1">
                     <div class="banner_word">
@@ -305,7 +311,7 @@
             direction: 'horizontal',
             loop: true,
             centeredSlides: true,
-            speed: 800,
+            speed: 1000,
             autoplay: {
                 delay: 10000,
                 disableOnInteraction: false,
@@ -313,15 +319,20 @@
             pagination : {
 			    el:'.swiper-pagination'
 		    },
+            navigation: {
+                nextEl: '.arrow_right',
+                prevEl: '.arrow_left'
+            },
             on:{
                 transitionStart: function(){
                     $('.banner_word').css({
                         'opacity' : 0,
-
                     })
                 },
                 transitionEnd: function(){
-                    $('.banner_word').css('opacity',1)
+                    $('.banner_word').css({
+                        'opacity' : 1,
+                    })
                 },
             }
         });
