@@ -63,7 +63,7 @@
         <div class="header_left">
             <div class="logo_area">
                 <div class="logo">
-                    <div class="mark">
+                    <a href="/" class="mark">
                         <img src="/img/king.svg" alt="">
                         <p class="mark_text mark_top">
                             KLS
@@ -74,7 +74,7 @@
                         <p class="mark_text mark_bottom">
                             KLS Baggage Department Store.
                         </p>
-                    </div>
+                    </a>
                     <div class="time">
                         <img src="/img/time.svg" alt="">
                     </div>
@@ -110,22 +110,22 @@
                     </div>
                 </div>
                 <div class="community">
-                    <div class="facebook">
+                    <a target="_blank" href="https://www.facebook.com/baggageworld/" class="facebook">
                         <div class="link">
                             <img src="\img\facebook.svg" alt="">
                             <p>
                                 facebook
                             </p>
                         </div>
-                    </div>
-                    <div class="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/kls520/" class="instagram">
                         <div class="link">
                             <img src="\img\instagram.svg" alt="">
                             <p>
                                 instagram
                             </p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -155,12 +155,12 @@
     <div class="navbar">
         <ul>
             <li>
-                <a href="">
+                <a href="{{route('about')}}">
                     關於凱麗絲
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{url('/product-all')}}">
                     品牌行李箱                   
                 </a>
             </li>
@@ -170,17 +170,17 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{url('/blog')}}">
                     部落格
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('contact')}}">
                     線上拍賣
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('contact')}}">
                    聯絡我們
                 </a>
             </li>
@@ -228,22 +228,22 @@
             </div>
         </div>
         <div class="community">
-            <div class="facebook">
+            <a target="_blank" href="https://www.facebook.com/baggageworld/" class="facebook">
                 <div class="link">
                     <img src="\img\facebook.svg" alt="">
                     <p>
                         facebook
                     </p>
                 </div>
-            </div>
-            <div class="instagram">
+            </a>
+            <a target="_blank" href="https://www.instagram.com/kls520/" class="instagram">
                 <div class="link">
                     <img src="\img\instagram.svg" alt="">
                     <p>
                         instagram
                     </p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
     <div class="footer_copy">
