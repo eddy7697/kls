@@ -154,33 +154,32 @@
       transition-delay: 0.3s;
       .sw_mask{
         position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
+        width: 70px;
         height: 100%;
-        border-right: dashed 2px $color-white;
-        border-left: dashed 2px $color-white;
         z-index: 9;
       }
-      .arrow{
+      .mask_left{
+        border-right: dashed 2px $color-white;
+        left: 0;
+      }
+      .mask_right{
+        border-left: dashed 2px $color-white;
+        right: 0;
+      }
+      .banner_arrow{
         position: absolute;
-        width: 35px;
-        height: 35px;
-        background-image: url('/img/arrow.svg');
-        background-position: center;
-        background-size: cover;
-        z-index: 99;
+        width: 70px;
+        height: 50px;
+        z-index: 99999;
       }
-      .arrow_left{
-        left: 5px;
+      .top{
+        top: 25%;
+        right: 0;
+      }
+      .bottom{
         top: 50%;
-        transform: translateY(-50%) rotate(-90deg);
-      }
-      .arrow_right{
-        right: 5px;
-        bottom: 50%;
-        transform: translateY(50%) rotate(90deg);
+        right: 0;
+        transform: rotate(180deg)
       }
       .ban_page1{
         background-image: url('/img/airport.jpg');
@@ -210,11 +209,14 @@
           left: 25%;
           transform: translateY(-50%) translateX(-25%);
           color: $color-white;
+          transition-delay: 0.3s;
           h1{
+            transition: 0.5s;
             font-size: 60px;
             text-shadow: 5px 5px 6px  $color-grey;
           }
           p{
+            transition: 0.5s;
             font-size: 24px;
           }
           .eng{

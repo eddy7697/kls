@@ -128,52 +128,37 @@
             </div>
         </div>
         <div class="header_right">
-            <div class="sw_mask"></div>
-            <div class="arrow arrow_left">
-                
+
+            <div class="sw_mask mask_left"></div>
+            <div class="sw_mask mask_right">
+                <img class="banner_arrow top" src="\img\big-arrow-01.svg" alt="">
+                <img class="banner_arrow bottom" src="\img\big-arrow-01.svg" alt="">
             </div>
-            <div class="arrow arrow_right">
-                
-            </div>
+            
             <div class="swiper-wrapper">
-                <div class="swiper-slide banner ban_page1">
-                    <div class="banner_word">
-                        <h1>
-                            我在LA機場的人來人往...
-                        </h1>
-                        <p>
-                            #長途旅行專用行李箱
-                        </p>
-                        <p>
-                            #30吋/29吋熱賣中
-                        </p>
-                        <p>
-                            PC硬殼箱
-                        </p>
-                        <p class="eng">
-                            10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
-                        </p>
+
+                @for ($i = 0; $i < 5; $i++)
+                    <div class="swiper-slide banner ban_page1">
+                        <div class="banner_word">
+                            <h1>
+                                我在LA機場的人來人往...
+                            </h1>
+                            <p>
+                                #長途旅行專用行李箱
+                            </p>
+                            <p>
+                                #30吋/29吋熱賣中
+                            </p>
+                            <p>
+                                PC硬殼箱
+                            </p>
+                            <p class="eng">
+                                10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide banner ban_page2">
-                    <div class="banner_word">
-                        <h1>
-                            我在LA機場的人來人往...
-                        </h1>
-                        <p>
-                            #長途旅行專用行李箱
-                        </p>
-                        <p>
-                            #30吋/29吋熱賣中
-                        </p>
-                        <p>
-                            PC硬殼箱
-                        </p>
-                        <p class="eng">
-                            10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
-                        </p>
-                    </div>
-                </div>
+                @endfor
+
             </div>
             <div class="swiper-pagination"></div> 
         </div>
@@ -307,36 +292,6 @@
     // heights
     $(document).ready(() => {
 
-        var swiper = new Swiper ('.header_right',{
-            direction: 'horizontal',
-            loop: true,
-            centeredSlides: true,
-            speed: 1000,
-            autoplay: {
-                delay: 10000,
-                disableOnInteraction: false,
-            },
-            pagination : {
-			    el:'.swiper-pagination'
-		    },
-            navigation: {
-                nextEl: '.arrow_right',
-                prevEl: '.arrow_left'
-            },
-            on:{
-                transitionStart: function(){
-                    $('.banner_word').css({
-                        'opacity' : 0,
-                    })
-                },
-                transitionEnd: function(){
-                    $('.banner_word').css({
-                        'opacity' : 1,
-                    })
-                },
-            }
-        });
-
         function get_H(){
 
             let h = $(window).height()
@@ -351,6 +306,68 @@
         $(window).resize(() => {
             get_H()
         });
+
+        var swiper = new Swiper ('.header_right',{
+            direction: 'vertical',
+            loop: true,
+            speed: 1000,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            autoplay: {
+                delay: 10000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                 nextEl: '.top',
+                 prevEl: '.bottom',
+            },
+            on:{
+                transitionStart: function(){
+                    $('.banner_word').css({
+                        'opacity' : 0,
+                        'transform' : 'translateX(-100%) translateY(-50%)'
+                    })
+                },
+                transitionEnd: function(){
+                    $('.banner_word').css({
+                        'opacity' : 1,
+                        'transform' : 'translateX(-25%) translateY(-50%)'
+                    })
+                },
+            }
+        })
+        // var swiper = new Swiper ('.header_right',{
+        //     direction: 'horizontal',
+        //     loop: true,
+        //     centeredSlides: true,
+        //     speed: 1000,
+        //     autoplay: {
+        //         delay: 10000,
+        //         disableOnInteraction: false,
+        //     },
+        //     pagination : {
+		// 	    el:'.swiper-pagination'
+		//     },
+        //     navigation: {
+        //         nextEl: '.arrow_right',
+        //         prevEl: '.arrow_left'
+        //     },
+        //     on:{
+        //         transitionStart: function(){
+        //             $('.banner_word').css({
+        //                 'opacity' : 0,
+                    
+        //             })
+        //         },
+        //         transitionEnd: function(){
+        //             $('.banner_word').css({
+        //                 'opacity' : 1,
+        //             })
+        //         },
+        //     }
+        // });
     });
 
     $(function() {
