@@ -1,38 +1,38 @@
 //-------------------------------------------------bootstrap-------------------------------------------------
 // Body
-$body-bg: #fff;
+$body-bg                 : #fff;
 
 // Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
+$laravel-border-color    : darken($body-bg, 10%);
+$list-group-border       : $laravel-border-color;
+$navbar-default-border   : $laravel-border-color;
+$panel-default-border    : $laravel-border-color;
+$panel-inner-border      : $laravel-border-color;
 
 // Brands
-$brand-primary: #66220f;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
+$brand-primary           : #66220f;
+$brand-info              : #8eb4cb;
+$brand-success           : #2ab27b;
+$brand-warning           : #cbb956;
+$brand-danger            : #bf5329;
 
 // Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-// $font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: #636b6f;
+$icon-font-path          : "~bootstrap-sass/assets/fonts/bootstrap/";
+// $font-family-sans-serif : "Raleway", sans-serif;
+$font-size-base          : 14px;
+$line-height-base        : 1.6;
+$text-color              : #636b6f;
 
 // Navbar
-$navbar-default-bg: #fff;
+$navbar-default-bg       : #fff;
 
 // Buttons
-$btn-default-color: $text-color;
+$btn-default-color       : $text-color;
 
 // Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
+$input-border            : lighten($text-color, 40%);
+$input-border-focus      : lighten($brand-primary, 25%);
+$input-color-placeholder : lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
@@ -40,27 +40,26 @@ $panel-default-heading-bg: #fff;
 //-------------------------------------------------bootstrap-------------------------------------------------
 
 //colors
-$color-banner-start: #F0E0FF;
-$color-banner-end: #A78FFF;
-$color-grey: #3E3A39;
-$color-text-grey: #898989;
+$color-banner-start   : #F0E0FF;
+$color-banner-end     : #A78FFF;
+$color-grey           : #3E3A39;
+$color-text-grey      : #898989;
 $color-grey-font-color: #EDEDED;
-$color-white: #FFFFFF;
-$color-mask-banner: #C07E17;
-$color-mask-logo: #7A7A7A;
+$color-white          : #FFFFFF;
+$color-mask-banner    : #C07E17;
+$color-mask-logo      : #7A7A7A;
+$color-coffee         : #7A6A56;
+$font-color-focus     : #F2953C;
+
 //-------------------------------------------------Font-size-------------------------------------------------
 
-//img url
-
-
 //header
-$header-contact-font-size: 12px;
-$title-bottom-font-size: 16px;
+$header-contact-font-size    : 12px;
+$title-bottom-font-size      : 16px;
 $title-bottom-input-font-size: 12px;
 
 //count
 
-$font-size-number: 55px;
-$font-size-span: 18px;
-$font-size-footer-title: 28px;
-$font-color-focus: #F2953C;
+$font-size-number            : 55px;
+$font-size-span              : 18px;
+$font-size-footer-title      : 28px;

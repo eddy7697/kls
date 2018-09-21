@@ -290,90 +290,28 @@
 <script>
 
     // heights
-    $(document).ready(() => {
+$(document).ready(() => {
 
-        function get_H(){
+    function get_H(){
 
-            let h = $(window).height()
-            let logo_h = $('.logo').height()
-            let nav_h = $('.navbar').height()
+        let h      = $(window).height()
+        let logo_h = $('.logo').height()
+        let nav_h  = $('.navbar').height()
 
-            $('#header').css('height',h)
+        $('#header').css('height',h)
             
-        };
+    };
+    get_H()
+
+    $(window).resize(() => {
         get_H()
-
-        $(window).resize(() => {
-            get_H()
-        });
-
-        var swiper = new Swiper ('.header_right',{
-            direction: 'vertical',
-            loop: true,
-            speed: 1000,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            autoplay: {
-                delay: 10000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                 nextEl: '.top',
-                 prevEl: '.bottom',
-            },
-            on:{
-                transitionStart: function(){
-                    $('.banner_word').css({
-                        'opacity' : 0,
-                        'transform' : 'translateX(-100%) translateY(-50%)'
-                    })
-                },
-                transitionEnd: function(){
-                    $('.banner_word').css({
-                        'opacity' : 1,
-                        'transform' : 'translateX(-25%) translateY(-50%)'
-                    })
-                },
-            }
-        })
-        // var swiper = new Swiper ('.header_right',{
-        //     direction: 'horizontal',
-        //     loop: true,
-        //     centeredSlides: true,
-        //     speed: 1000,
-        //     autoplay: {
-        //         delay: 10000,
-        //         disableOnInteraction: false,
-        //     },
-        //     pagination : {
-		// 	    el:'.swiper-pagination'
-		//     },
-        //     navigation: {
-        //         nextEl: '.arrow_right',
-        //         prevEl: '.arrow_left'
-        //     },
-        //     on:{
-        //         transitionStart: function(){
-        //             $('.banner_word').css({
-        //                 'opacity' : 0,
-                    
-        //             })
-        //         },
-        //         transitionEnd: function(){
-        //             $('.banner_word').css({
-        //                 'opacity' : 1,
-        //             })
-        //         },
-        //     }
-        // });
     });
+
 
     $(function() {
         try {
-            var fix = $('.navbar');                      //title
-            var fixTop = fix.offset().top,              //title 與頂部的距離
+            var fix       = $('.navbar');                      //title
+            var fixTop    = fix.offset().top,              //title 與頂部的距離
                 fixHeight = fix.height();               //title 高度
            
     
@@ -382,8 +320,8 @@
                 var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);  
                 if (fixTop < docTop) {
                     fix.css("position","fixed");
-                    fix.css("top",0);
-                    fix.css("width","100%");
+                    fix.css("top"     ,0);
+                    fix.css("width"   ,"100%");
                 } else {
                     fix.css("position","relative");
                     }
@@ -394,6 +332,41 @@
         
     });
 
+
+    var swiper = new Swiper ('.header_right',{
+        direction : 'vertical',
+        loop      : true,
+        speed     : 1000,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        autoplay  : {
+            delay: 10000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.top',
+            prevEl: '.bottom',
+        },
+        on:{
+            transitionStart: function(){
+                $('.banner_word').css({
+                    'opacity'   : 0,
+                    'transform' : 'translateX(-100%) translateY(-50%)'
+                })
+            },
+            transitionEnd: function(){
+                $('.banner_word').css({
+                    'opacity'   : 1,
+                    'transform' : 'translateX(-25%) translateY(-50%)'
+                })
+            },
+        }
+    })
+});
+
+   
 
                   
         

@@ -10,44 +10,44 @@
 
   .header_top_area{
     display: flex;
-    height: 90%;
+    height : 90%;
     .header_left{
       width: 30%;
       .logo_area{
         position: relative;
-        height: 70%;
+        height  : 70%;
         &::before{
-          content: '';
+          content         : '';
+          position        : absolute;
+          top             : 0;
+          right           : 0;
+          bottom          : 0;
+          left            : 0;
+          opacity         : 0.4;
+          z-index         : 1;
           background-color: $color-mask-logo;
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          opacity: 0.4;
-          z-index: 1;
         }
         .logo{
-          position: absolute;
-          top: 0;
-          right: 0;
-          left: 0;
-          bottom: 0;
-          background-image: url('/img/logo_backimg.jpg');
-          background-size: cover;
+          position           : absolute;
+          top                : 0;
+          right              : 0;
+          left               : 0;
+          bottom             : 0;
+          background-image   : url('/img/logo_backimg.jpg');
+          background-size    : cover;
           background-position: center bottom;
           .mark{
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-30%);
+            position        : absolute;
+            top             : 30%;
+            left            : 50%;
+            transform       : translateX(-50%) translateY(-30%);
             background-color: transparent;
-            z-index: 2;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
+            z-index         : 2;
+            text-align      : center;
+            text-decoration : none;
+            cursor          : pointer;
             .mark_text{
-              color: $color-white;
+              color      : $color-white;
               font-weight: 700;
             }
             .mark_middle{
@@ -62,9 +62,9 @@
           }
           .time{
             position: absolute;
-            right: -50px;
-            bottom: 10px;
-            z-index: 2;
+            right   : -50px;
+            bottom  : 10px;
+            z-index : 2;
             img{
               width: 90%;
             }
@@ -73,25 +73,25 @@
       }
       .header_contact{
         font-size: $header-contact-font-size;
-        display: flex;
-        height: 30%;
+        display  : flex;
+        height   : 30%;
         .header_addr{
-          position: relative;
-          width: 50%;
-          border-right: solid 1px $color-grey-font-color;
-          display: flex;
+          position       : relative;
+          width          : 50%;
+          border-right   : solid 1px $color-grey-font-color;
+          display        : flex;
           justify-content: center;
-          align-items: center;
+          align-items    : center;
           .shop_list{
             height: 100%;
             .shop{
               height: calc(100% / 3);
               .shop_contact,img{
-                display: inline-block;
+                display       : inline-block;
                 vertical-align: middle;
               }
               img{
-                width: 30px;
+                width : 30px;
                 height: 30px;
               }
               .shop_contact{
@@ -113,16 +113,16 @@
             }
           }
           .facebook,.instagram{
-            height: 50%;
-            display: flex;
+            height         : 50%;
+            display        : flex;
             justify-content: center;
-            align-items: center;
+            align-items    : center;
             text-decoration: none;
-            color: $color-text-grey;
-            cursor: pointer;
+            color          : $color-text-grey;
+            cursor         : pointer;
             img{
-              width: 30px;
-              height: 30px;
+              width     : 30px;
+              height    : 30px;
               transition: 0.5s ease;
             }
             p{
@@ -148,37 +148,37 @@
     }
     
     .header_right{
-      position: relative;
-      overflow: hidden;
-      width: 70%;
+      position        : relative;
+      overflow        : hidden;
+      width           : 70%;
       transition-delay: 0.3s;
       .sw_mask{
         position: absolute;
-        width: 70px;
-        height: 100%;
-        z-index: 9;
+        width   : 70px;
+        height  : 100%;
+        z-index : 9;
       }
       .mask_left{
+        left        : 0;
         border-right: dashed 2px $color-white;
-        left: 0;
       }
       .mask_right{
+        right      : 0;
         border-left: dashed 2px $color-white;
-        right: 0;
       }
       .banner_arrow{
         position: absolute;
-        width: 70px;
-        height: 50px;
-        z-index: 99999;
+        width   : 70px;
+        height  : 50px;
+        z-index : 99999;
       }
       .top{
-        top: 25%;
+        top  : 25%;
         right: 0;
       }
       .bottom{
-        top: 50%;
-        right: 0;
+        top      : 50%;
+        right    : 0;
         transform: rotate(180deg)
       }
       .ban_page1{
@@ -188,36 +188,36 @@
         background-image: url('/img/footer_left.jpg');
       }
       .banner{
-        position: relative;
-        height: 100%;
-        background-size: cover;
+        position           : relative;
+        height             : 100%;
+        background-size    : cover;
         background-position: center;
         &::before{
-          content: '';
+          content         : '';
           background-color: $color-mask-banner;
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          opacity: 0.4;
+          position        : absolute;
+          top             : 0;
+          right           : 0;
+          bottom          : 0;
+          left            : 0;
+          opacity         : 0.4;
         }
         .banner_word{
-          transition: 0.5s;
-          position: absolute;
-          top: 50%;
-          left: 25%;
-          transform: translateY(-50%) translateX(-25%);
-          color: $color-white;
+          transition      : 0.5s;
+          position        : absolute;
+          top             : 50%;
+          left            : 25%;
+          transform       : translateY(-50%) translateX(-25%);
+          color           : $color-white;
           transition-delay: 0.3s;
           h1{
-            transition: 0.5s;
-            font-size: 60px;
+            transition : 0.5s;
+            font-size  : 60px;
             text-shadow: 5px 5px 6px  $color-grey;
           }
           p{
             transition: 0.5s;
-            font-size: 24px;
+            font-size : 24px;
           }
           .eng{
             font-size: 18px;
@@ -228,37 +228,37 @@
   }
   
   .navbar{
-    width: 100%;
-    height: 10%;
-    z-index: 2;
+    width           : 100%;
+    height          : 10%;
+    z-index         : 2;
     background-color: $color-grey;
-    font-weight: 700;
-    margin-bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-weight     : 700;
+    margin-bottom   : 0;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
     ul{
-      margin: 0;
+      margin : 0;
       padding: 0;
       li{
-        font-size: 15px;
-        display: inline-block;
+        font-size : 15px;
+        display   : inline-block;
         list-style: none;
         &::after{
-          content:"";
-          vertical-align: middle;
-          width: 1px;
-          height: 20px;
-          display: inline-block;
+          content         :"";
+          vertical-align  : middle;
+          width           : 1px;
+          height          : 20px;
+          display         : inline-block;
           background-color: $color-white;
         }
         a{
           text-decoration: none;
-          color: $color-white;
-          margin: 0px 30px;
-          padding-bottom: 20px;
-          border-bottom: solid 3px transparent;
-          transition: 0.5s ease;
+          color          : $color-white;
+          margin         : 0px 30px;
+          padding-bottom : 20px;
+          border-bottom  : solid 3px transparent;
+          transition     : 0.5s ease;
           &:hover{
             border-bottom: solid 3px $color-white;
           } 
@@ -266,7 +266,7 @@
       }
       li.nav_final{
         &::after{
-          content:"";
+          content         :"";
           background-color: transparent;
         }
       }
@@ -283,38 +283,38 @@
 
 
 #footer{
-  display: flex;
+  display        : flex;
   justify-content: center;
-  align-items: stretch;
+  align-items    : stretch;
   .footer_logo{
-    background-image: url('/img/footer_left.jpg');
+    background-image   : url('/img/footer_left.jpg');
     background-position: center;
-    background-size: cover;
-    width: 37.5%;
-    padding: 30px 0;
+    background-size    : cover;
+    width              : 37.5%;
+    padding            : 30px 0;
   }
   .footer_contact{
     font-size: $header-contact-font-size;
-    width: 25%;
-    display: flex;
+    width    : 25%;
+    display  : flex;
     .footer_addr{
-      position: relative;
-      width: 70%;
-      border-right: solid 1px $color-grey-font-color;
-      display: flex;
+      position       : relative;
+      width          : 70%;
+      border-right   : solid 1px $color-grey-font-color;
+      display        : flex;
       justify-content: center;
-      align-items: center;
-      padding: 30px 0; 
+      align-items    : center;
+      padding        : 30px 0; 
       .shop_list{
         height: 100%;
         .shop{
           height: calc(100% / 3);
           .shop_contact,img{
-            display: inline-block;
+            display       : inline-block;
             vertical-align: middle;
           }
           img{
-            width: 30px;
+            width : 30px;
             height: 30px;
           }
           .shop_contact{
@@ -332,16 +332,16 @@
         text-align: center;
       }
       .facebook,.instagram{
-        height: 50%;
-        display: flex;
+        height         : 50%;
+        display        : flex;
         justify-content: center;
-        align-items: center;
+        align-items    : center;
         text-decoration: none;
-        color: $color-text-grey;
-        cursor: pointer;
+        color          : $color-text-grey;
+        cursor         : pointer;
         img{
-          width: 30px;
-          height: 30px;
+          width     : 30px;
+          height    : 30px;
           transition: 0.5s ease;
           }
         p{
@@ -359,24 +359,24 @@
       .facebook{
         border-bottom: solid 1px $color-grey-font-color;
         img{
-          width: 30px;
+          width : 30px;
           height: 30px;
         }
       }
       .instagram{
         img{
-          width: 30px;
+          width : 30px;
           height: 30px;
         }
       }
     }
   }
   .footer_copy{
-    background-image: url('/img/footer_right.jpg');
+    background-image   : url('/img/footer_right.jpg');
     background-position: center;
-    background-size: cover;
-    width: 37.5%;
-    padding: 30px 0;
+    background-size    : cover;
+    width              : 37.5%;
+    padding            : 30px 0;
   }
 }
 
@@ -384,13 +384,15 @@
 /*----------choose---------*/
 
 #choose{
+  margin-bottom: 80px;
   .container{
     .choose_title{
-      margin: 80px 0;
+      margin-top   : 80px;
+      margin-bottom: 50px;
       p{
-        text-align: center;
-        font-size: 38px;
-        color: $color-grey;
+        text-align : center;
+        font-size  : 38px;
+        color      : $color-grey;
         font-weight: 700;
       }
     } 
@@ -398,28 +400,49 @@
       .co_post{
         .choose_post{
           .img_div{
-            position: relative;
+            position      : relative;
             padding-bottom: 100%;
             img{
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translateX(-50%) translateY(-50%);
-              max-width: 100%;
-              max-height: 100%;
+              position     : absolute;
+              top          : 50%;
+              left         : 50%;
+              transform    : translateX(-50%) translateY(-50%);
+              max-width    : 110%;
+              max-height   : 100%;
               border-radius: 12px;
             }
           }
           .post_text{
-            h2{
-              color: $color-grey;
+            padding: 0 10px;
+            h3{
+              color      : $color-grey;
               font-weight: 700;
             }
             p{
 
             }
-            .goBuy{
-
+            .choose_btn{
+              display        : flex;
+              justify-content: center;
+              align-items    : center;
+              .goBuy{
+                margin-top      : 20px;
+                border          : none;
+                outline         : none;
+                padding         : 3px 30px;
+                border-radius   : 8px;
+                margin-bottom   : 20px;
+                transition      : 0.5s;
+                background-color: $color-coffee;
+                &:hover{
+                  opacity: 0.7;
+                }
+                a{
+                  color          : $color-white;
+                  text-decoration: none;
+                  font-weight    : 500;
+                }
+              }
             }
           }
         }

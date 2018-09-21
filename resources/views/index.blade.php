@@ -28,9 +28,9 @@
                             <img src="/img/choose01.jpg" alt="">
                         </div>
                         <div class="post_text">
-                            <h2>
+                            <h3>
                                 拉鍊式硬殼箱
-                            </h2>
+                            </h3>
                             <p>
                                 鋁合金特性是耐用、耐磨、耐衝擊、箱
                                 殼本身的使用年限大多可以保持在五年
@@ -45,8 +45,14 @@
                                 行李箱的比較來說，重量重一點價格比
                                 一般的還要貴很多。
                             </p>
+                            <div class="choose_btn">
+                                <button class ="goBuy">
+                                    <a href="">
+                                        點我選購去
+                                    </a>                    
+                                </button>
+                            </div>
                         </div>
-                        <button class ="goBuy">點我選購去</button>
                     </div>
                 </div>
                 <div class="col-md-3 co_post">
@@ -55,9 +61,9 @@
                             <img src="/img/choose02.jpg" alt="">
                         </div>
                         <div class="post_text">
-                            <h2>
+                            <h3>
                                 鋁框式硬殼箱
-                            </h2>
+                            </h3>
                             <p>
                                 鋁合金特性是耐用、耐磨、耐衝擊、箱
                                 殼本身的使用年限大多可以保持在五年
@@ -72,8 +78,14 @@
                                 行李箱的比較來說，重量重一點價格比
                                 一般的還要貴很多。
                             </p>
+                            <div class="choose_btn">
+                                <button class ="goBuy">
+                                    <a href="">
+                                        點我選購去
+                                    </a>                    
+                                </button>
+                            </div>
                         </div>
-                        <button class ="goBuy">點我選購去</button>
                     </div>
                 </div>
                 <div class="col-md-3 co_post">
@@ -82,9 +94,9 @@
                             <img src="/img/choose03.jpg" alt="">
                         </div>
                         <div class="post_text">
-                            <h2>
+                            <h3>
                                 軟殼布面箱
-                            </h2>
+                            </h3>
                             <p>
                                 鋁合金特性是耐用、耐磨、耐衝擊、箱
                                 殼本身的使用年限大多可以保持在五年
@@ -99,8 +111,14 @@
                                 行李箱的比較來說，重量重一點價格比
                                 一般的還要貴很多。
                             </p>
+                            <div class="choose_btn">
+                                <button class ="goBuy">
+                                    <a href="">
+                                        點我選購去
+                                    </a>                    
+                                </button>
+                            </div>
                         </div>
-                        <button class ="goBuy">點我選購去</button>
                     </div>
                 </div>
                 <div class="col-md-3 co_post">
@@ -109,9 +127,9 @@
                             <img src="/img/choose04.jpg" alt="">
                         </div>
                         <div class="post_text">
-                            <h2>
+                            <h3>
                                 品牌特殊箱
-                            </h2>
+                            </h3>
                             <p>
                                 鋁合金特性是耐用、耐磨、耐衝擊、箱
                                 殼本身的使用年限大多可以保持在五年
@@ -126,8 +144,14 @@
                                 行李箱的比較來說，重量重一點價格比
                                 一般的還要貴很多。
                             </p>
+                            <div class="choose_btn">
+                                <button class ="goBuy">
+                                    <a href="">
+                                        點我選購去
+                                    </a>                    
+                                </button>
+                            </div>
                         </div>
-                        <button class ="goBuy">點我選購去</button>
                     </div>
                 </div>
             </div>
