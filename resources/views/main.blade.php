@@ -132,6 +132,7 @@
             <div class="sw_mask mask_left"></div>
             <div class="sw_mask mask_right">
                 <img class="banner_arrow top" src="\img\big-arrow-01.svg" alt="">
+                <p id="banner_count">05/01</p>
                 <img class="banner_arrow bottom" src="\img\big-arrow-01.svg" alt="">
             </div>
             
@@ -353,13 +354,15 @@ $(document).ready(() => {
             transitionStart: function(){
                 $('.banner_word').css({
                     'opacity'   : 0,
-                    'transform' : 'translateX(-100%) translateY(-50%)'
+                    'transform' : 'translateY(100%) translateX(-25%)',
+                    'transition': '0.5s'
                 })
             },
             transitionEnd: function(){
                 $('.banner_word').css({
                     'opacity'   : 1,
-                    'transform' : 'translateX(-25%) translateY(-50%)'
+                    'transform' : 'translateY(0%) translateX(-25%)',
+                    'transition': '1.5s'
                 })
             },
         }
