@@ -16,22 +16,56 @@
                 prevEl: '.left',
             }
         })
+
+        function color_function(x,y){
+            let z = 
+                $('.porduct_colors')
+                .find(x)
+                .css({
+                    'background-color' : y
+                })
+            return z    
+        }
         
-        // let product_li_class = $('.porduct_colors li').each(function(){
-        //     $(this).attr('class')
-        // })
-        // console.log(product_li_class)
-        // switch(n)
-        // {
-        // case 1:
-        // 执行代码块 1
-        // break;
-        // case 2:
-        // 执行代码块 2
-        // break;
-        // default:
-        // n 与 case 1 和 case 2 不同时执行的代码
-        // }
+        let product_li_class = $('.porduct_colors li').each(function(a,b){
+            let color_className = b.className
+
+            switch(color_className)
+            {
+            case 'grey':
+                color_function('.grey','#838584')
+            break;
+            case 'sky_blue':
+                color_function('.sky_blue','#2EA7E0')
+            break;
+            case 'black':
+                color_function('.black','#3E3A39')
+            break;
+            case 'yellow':
+                color_function('.yellow','#C9BC9C')
+            break;
+            case 'blue':
+                color_function('.blue','#036EB8')
+            break;
+            case 'green':
+                color_function('.green','#00A29A')
+            break;
+            case 'dark_blue':
+                color_function('.dark_blue','#171C61')   
+            break;
+            case 'white':
+                color_function('.white','#FFFFFF')
+            break;
+            case 'pink':
+                color_function('.pink','#A40B5D')
+            break;
+            case 'red':
+                color_function('.red','#C30D23')
+            break;
+            }
+        })
+        
+        
         
     </script>
 @endsection
@@ -262,12 +296,18 @@
                                     <div class="swiper-slide">    
                                         <div class="col-md-3">
                                             <div class="product_img">
-                                                <img src="/img/product_img.jpg" alt="">
+                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
+                                                <div class="product_quick_view">
+                                                    <p class="product_quick_text">
+                                                        快速檢視    
+                                                    </p>
+                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
+                                                </div>
                                             </div>
-                                            <h3>
+                                            <h3 class="product_series">
                                                 DEPARTURE/HD-202系列
                                             </h3>
-                                            <h3>
+                                            <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
                                             <ul class="porduct_colors">
@@ -277,7 +317,7 @@
                                                 <li class="yellow"></li>
                                                 <li class="blue"></li>
                                             </ul>
-                                            <h2>
+                                            <h2 class="product_price">
                                                 NTD 3,680
                                             </h2>
                                             <button class="buy_click">
@@ -287,12 +327,18 @@
 
                                         <div class="col-md-3">
                                             <div class="product_img">
-                                                <img src="/img/product_img.jpg" alt="">
+                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
+                                                <div class="product_quick_view">
+                                                    <p class="product_quick_text">
+                                                        快速檢視    
+                                                    </p>
+                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
+                                                </div>
                                             </div>
-                                            <h3>
+                                            <h3 class="product_series">
                                                 DEPARTURE/HD-202系列
                                             </h3>
-                                            <h3>
+                                            <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
                                             <ul class="porduct_colors">
@@ -300,56 +346,68 @@
                                                 <li class="dark_blue"></li>
                                                 <li class="white"></li>
                                             </ul>
-                                            <h2>
+                                            <h2 class="product_price">
                                                 NTD 3,680
                                             </h2>
-                                            <button class="buy_click">
+                                            <button class="buy_click" class="buy_click">
                                                 點我購買
                                             </button>
                                         </div>
 
                                         <div class="col-md-3">
                                             <div class="product_img">
-                                                <img src="/img/product_img.jpg" alt="">
+                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
+                                                <div class="product_quick_view">
+                                                    <p class="product_quick_text">
+                                                        快速檢視    
+                                                    </p>
+                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
+                                                </div>
                                             </div>
-                                            <h3>
+                                            <h3 class="product_series">
                                                 DEPARTURE/HD-202系列
                                             </h3>
-                                            <h3>
+                                            <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
                                             <ul class="porduct_colors">
                                                 <li class="pink"></li>
                                                 <li class="grey"></li>
                                             </ul>
-                                            <h2>
+                                            <h2 class="product_price">
                                                 NTD 3,680
                                             </h2>
-                                            <button class="buy_click">
+                                            <button class="buy_click" class="buy_click">
                                                 點我購買
                                             </button>
                                         </div>
                                     
                                         <div class="col-md-3">
                                             <div class="product_img">
-                                                <img src="/img/product_img.jpg" alt="">
+                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
+                                                <div class="product_quick_view">
+                                                    <p class="product_quick_text">
+                                                        快速檢視    
+                                                    </p>
+                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
+                                                </div>
                                             </div>
-                                            <h3>
+                                            <h3 class="product_series">
                                                 DEPARTURE/HD-202系列
                                             </h3>
-                                            <h3>
+                                            <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
                                             <ul class="porduct_colors">
                                                 <li class="white"></li>
                                                 <li class="blue"></li>
                                                 <li class="black"></li>
-                                                <li class="red"></li>
+                                                <li class=""></li>
                                             </ul>
-                                            <h2>
+                                            <h2 class="product_price">
                                                 NTD 3,680
                                             </h2>
-                                            <button class="buy_click">
+                                            <button class="buy_click" class="buy_click">
                                                 點我購買
                                             </button>
                                         </div>

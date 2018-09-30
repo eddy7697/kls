@@ -469,7 +469,7 @@
 
 #products{
   background-image   : url('/img/products_background.jpg');
-  background-position: right center;
+  background-position: top center;
   background-size    : cover;
   position           : relative;
   margin-bottom      : 80px;
@@ -532,9 +532,9 @@
           background-color: transparent;
           z-index : 2;
           .nav-tabs{
-            border          : none;
+            border: none;
             li{
-              z-index : 2;
+              z-index: 2;
               a{
                 border-radius   : 8px;
                 border          : solid 2px $color-mask-logo;
@@ -557,11 +557,32 @@
       .product_nav_index{
         .tab-content{
           .tab-pane{
+            margin: 50px 0;
             .product_img{
               z-index       : 2;
               padding-bottom: 100%;
               position      : relative;
-              img{
+              &::after{
+                content         : '';
+                position        : absolute;
+                top             : 0;
+                right           : 0;
+                bottom          : 0;
+                left            : 0;
+                z-index         : 3;
+                transition      : 0.5s;
+                cursor          : pointer;
+                background-color: transparent;
+              }
+              &:hover{
+                &::after{
+                  background-color: $color-black-mask;
+                }
+                .product_quick_view{
+                  opacity: 1;
+                }
+              }
+              .product_img_inside{
                 max-width : 100%;
                 max-height: 100%;
                 position  : absolute;
@@ -569,14 +590,47 @@
                 left      : 50%;
                 transform : translateX(-50%) translateY(-50%);
               }
+              .product_quick_view{
+                position       : absolute;
+                opacity        : 0;
+                width          : 100%;
+                top            : 50%;
+                transform      : translateY(-50%);
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+                transition     : 0.5s;
+                z-index        : 4;
+                .product_quick_text{
+                  color       : $color-white;
+                  font-size   : 20px;
+                  font-weight : 500;
+                  margin      : 0;
+                  margin-right: 5px;
+                }
+                .product_quick_icon{
+                  width : 15px;
+                  height: 15px;
+                }
+              }
             }
             .porduct_colors{
+              margin : 0;
+              padding: 0;
               li{
                 display   : inline-block;
                 list-style: none;
-                width     : 50px;
-                height    : 50px;
+                width     : 18px;
+                height    : 18px;
               }
+            }
+            .product_price,
+            .product_name{
+              margin: 11px 0;
+            }
+            .product_price,
+            .buy_click{
+              display: inline-block;
             }
           }
         }
