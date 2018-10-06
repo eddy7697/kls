@@ -73,7 +73,7 @@
                             KLS Baggage Department Store.
                         </p>
                     </a>
-                    <div class="time">
+                    <div class="mark_time">
                         <img src="/img/time.svg" alt="">
                     </div>
                 </div>
