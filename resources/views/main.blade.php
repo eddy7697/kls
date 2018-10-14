@@ -84,25 +84,19 @@
                         <div class="shop zhubei">
                             <img src="\img\thumbtack.svg" alt="">
                             <div class="shop_contact">
-                                <p>竹北店 (09:00 - 20:00)</p>
-                                <p>03-6565528</p>
-                                <p>新竹縣竹北市光明六路15號</p>
+                                <p>竹北店 (09:00 - 20:00)<br>03-6565528<br>新竹縣竹北市光明六路15號</p>
                             </div>
                         </div>
                         <div class="shop bigcity">
                             <img src="\img\thumbtack.svg" alt="">
                             <div class="shop_contact">
-                                <p>巨城店 (09:00 - 20:00)</p>
-                                <p>03-5326191</p>
-                                <p>新竹市民權路173號</p>
+                                <p>巨城店 (09:00 - 20:00)<br>03-5326191<br>新竹市民權路173號</p>
                             </div>             
                         </div>
                         <div class="shop guanxin">
                             <img src="\img\thumbtack.svg" alt="">
                             <div class="shop_contact">
-                                <p>關新店 (09:00 - 22:00)</p>
-                                <p>03-5638999</p>
-                                <p>新竹市關新路201號</p>
+                                <p>關新店 (09:00 - 22:00)<br>03-5638999<br>新竹市關新路201號</p>
                             </div>
                         </div>
                     </div>
@@ -320,9 +314,12 @@ $(document).ready(() => {
                 // 頁面與頂部高度
                 var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);  
                 if (fixTop < docTop) {
-                    fix.css("position","fixed");
-                    fix.css("top"     ,0);
-                    fix.css("width"   ,"100%");
+                    fix.css({
+                        'position': 'fixed',
+                        'top'     : 0,
+                        'width'   : '100%',
+                        'z-index' : '99999'
+                        })
                 } else {
                     fix.css("position","relative");
                     }
