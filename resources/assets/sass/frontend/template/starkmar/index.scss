@@ -76,9 +76,9 @@
           background-position: center bottom;
           .mark{
             position        : absolute;
-            top             : 30%;
+            top             : 50%;
             left            : 50%;
-            transform       : translateX(-50%) translateY(-30%);
+            transform       : translateX(-50%) translateY(-50%);
             background-color: transparent;
             z-index         : 2;
             text-align      : center;
@@ -800,6 +800,7 @@
                     right        : 10px;
                     bottom       : 0;
                     border-bottom: solid 3px $font-color-focus;
+                    margin       : 0;
                     font-weight  : 700;
                     font-size    : 25px;
                   }

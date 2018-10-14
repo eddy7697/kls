@@ -12,7 +12,7 @@
             },
             navigation: {
                 nextEl: '.right',
-                prevEl: '.left',
+                prevEl: '.left'
             }
         });
 
@@ -22,7 +22,7 @@
             speed     : 1000,
             navigation: {
                 nextEl: '.right',
-                prevEl: '.left',
+                prevEl: '.left'
             }
         });
 
@@ -30,9 +30,7 @@
             let z = 
                 $('.porduct_colors')
                 .find(className)
-                .css({
-                    'background-color' : color
-                })
+                .css('background-color' , color)
             return z    
         };
         
@@ -407,7 +405,7 @@
                                 Menu 1
                             </h3>
                             <p>
-                                Some content in menu 1.
+                                Waittong for Data...
                             </p>
                         </div>
                         <div id="menu2" class="tab-pane fade">
@@ -415,7 +413,7 @@
                                 Menu 2
                             </h3>
                             <p>
-                                Some content in menu 2.
+                                Waittong for Data...
                             </p>
                         </div>
                         <div id="menu3" class="tab-pane fade">
@@ -423,7 +421,7 @@
                                 Menu 3
                             </h3>
                             <p>
-                                Some content in menu 3.
+                                Waittong for Data...
                             </p>
                         </div>
                         <div id="menu4" class="tab-pane fade">
@@ -431,7 +429,7 @@
                                 Menu 4
                             </h3>
                             <p>
-                                Some content in menu 4.
+                                Waittong for Data...
                             </p>
                         </div>
                         <div id="menu5" class="tab-pane fade">
@@ -439,7 +437,7 @@
                                 Menu 5
                             </h3>
                             <p>
-                                Some content in menu 5.
+                                Waittong for Data...
                             </p>
                         </div>
                         <div id="menu6" class="tab-pane fade">
@@ -447,7 +445,7 @@
                                 Menu 6
                             </h3>
                             <p>
-                                Some content in menu 6.
+                                Waittong for Data...
                             </p>
                         </div>
                         <div id="menu7" class="tab-pane fade">
@@ -455,7 +453,7 @@
                                 Menu 7
                             </h3>
                             <p>
-                                Some content in menu 7.
+                                Waittong for Data...
                             </p>
                         </div>
                     </div>
