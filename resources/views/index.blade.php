@@ -6,10 +6,10 @@
             direction : 'horizontal',
             loop      : true,
             speed     : 1000,
-            autoplay  : {
-                delay: 10000,
-                disableOnInteraction: false,
-            },
+            // autoplay  : {
+            //     delay: 10000,
+            //     disableOnInteraction: false,
+            // },
             navigation: {
                 nextEl: '.right',
                 prevEl: '.left'
@@ -294,19 +294,23 @@
                                             <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
-                                            <ul class="porduct_colors">
-                                                <li class="grey"></li>
-                                                <li class="sky_blue"></li>
-                                                <li class="black"></li>
-                                                <li class="yellow"></li>
-                                                <li class="blue"></li>
-                                            </ul>
-                                            <h2 class="product_price">
-                                                NTD 3,680
-                                            </h2>
-                                            <button class="buy_click">
-                                                點我購買
-                                            </button>
+                                            <div class="product_category">
+                                                <div class="product_category_detail">
+                                                    <ul class="porduct_colors">
+                                                        <li class="grey"></li>
+                                                        <li class="sky_blue"></li>
+                                                        <li class="black"></li>
+                                                        <li class="yellow"></li>
+                                                        <li class="blue"></li>
+                                                    </ul>
+                                                    <h2 class="product_price">
+                                                        NTD 3,680
+                                                    </h2>
+                                                </div>
+                                                <button class="buy_click">
+                                                    點我<br>購買
+                                                </button>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-3">
@@ -325,17 +329,21 @@
                                             <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
-                                            <ul class="porduct_colors">
-                                                <li class="green"></li>
-                                                <li class="dark_blue"></li>
-                                                <li class="white"></li>
-                                            </ul>
-                                            <h2 class="product_price">
-                                                NTD 3,680
-                                            </h2>
-                                            <button class="buy_click" class="buy_click">
-                                                點我購買
-                                            </button>
+                                            <div class="product_category">
+                                                <div class="product_category_detail">
+                                                    <ul class="porduct_colors">
+                                                        <li class="green"></li>
+                                                        <li class="dark_blue"></li>
+                                                        <li class="white"></li>
+                                                    </ul>
+                                                    <h2 class="product_price">
+                                                        NTD 3,680
+                                                    </h2>
+                                                </div>
+                                                <button class="buy_click" class="buy_click">
+                                                    點我<br>購買
+                                                </button>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-3">
@@ -354,16 +362,20 @@
                                             <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
-                                            <ul class="porduct_colors">
-                                                <li class="pink"></li>
-                                                <li class="grey"></li>
-                                            </ul>
-                                            <h2 class="product_price">
-                                                NTD 3,680
-                                            </h2>
-                                            <button class="buy_click" class="buy_click">
-                                                點我購買
-                                            </button>
+                                            <div class="product_category">
+                                                <div class="product_category_detail">
+                                                    <ul class="porduct_colors">
+                                                        <li class="pink"></li>
+                                                        <li class="grey"></li>
+                                                    </ul>
+                                                    <h2 class="product_price">
+                                                        NTD 3,680
+                                                    </h2>
+                                                </div>
+                                                <button class="buy_click" class="buy_click">
+                                                    點我<br>購買
+                                                </button>
+                                            </div>
                                         </div>
                                     
                                         <div class="col-md-3">
@@ -382,18 +394,22 @@
                                             <h3 class="product_name">
                                                 22吋登機箱
                                             </h3>
-                                            <ul class="porduct_colors">
-                                                <li class="white"></li>
-                                                <li class="blue"></li>
-                                                <li class="black"></li>
-                                                <li class=""></li>
-                                            </ul>
-                                            <h2 class="product_price">
-                                                NTD 3,680
-                                            </h2>
-                                            <button class="buy_click" class="buy_click">
-                                                點我購買
-                                            </button>
+                                            <div class="product_category">
+                                                <div class="product_category_detail">
+                                                    <ul class="porduct_colors">
+                                                        <li class="white"></li>
+                                                        <li class="blue"></li>
+                                                        <li class="black"></li>
+                                                        <li class="red"></li>
+                                                    </ul>
+                                                    <h2 class="product_price">
+                                                        NTD 3,680
+                                                    </h2>
+                                                </div>
+                                                <button class="buy_click" class="buy_click">
+                                                    點我<br>購買
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 @endfor    

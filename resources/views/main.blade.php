@@ -59,7 +59,11 @@
 <!------------------------header------------------------>
 
 <section id="header">
-
+    <div class="forwardNews">
+        <a href="">
+            2018/07/19 7月份月度直播拍賣會時間：7/21（六）晚上10:00，想看看闆娘仔細介紹的朋友，請點我參加喔！(Live 點我加入直播)
+        </a>
+    </div>
     <div class="header_top_area">
         <div class="header_left">
             <div class="logo_area">
@@ -126,7 +130,8 @@
             <div class="sw_mask mask_left"></div>
             <div class="sw_mask mask_right">
                 <img class="banner_arrow top" src="\img\big-arrow-01.svg" alt="">
-                <p id="banner_count">05/01</p>
+                {{-- {{count(SiteMetaView::album())}} --}}
+                <p id="banner_count">0<span id="swipe-index">1</span>/0</p>
                 <img class="banner_arrow bottom" src="\img\big-arrow-01.svg" alt="">
             </div>
             
@@ -145,8 +150,9 @@
                                 #30吋/29吋熱賣中
                             </p>
                             <p>
-                                PC硬殼箱
+                                #PC硬殼箱
                             </p>
+                            <img class="banner_Thumbtack" src="/img/thumbtack-white-01.svg" alt="">
                             <p class="eng">
                                 10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
                             </p>
@@ -351,15 +357,15 @@ $(document).ready(() => {
             transitionStart: function(){
                 $('.banner_word').css({
                     'opacity'   : 0,
-                    'transform' : 'translateY(100%) translateX(-25%)',
-                    'transition': '0.5s'
+                    'transform' : 'translateY(100%) translateX(-20%)',
+                    'transition': '0.3s'
                 })
             },
             transitionEnd: function(){
                 $('.banner_word').css({
                     'opacity'   : 1,
-                    'transform' : 'translateY(0%) translateX(-25%)',
-                    'transition': '1.5s'
+                    'transform' : 'translateY(-60%) translateX(-20%)',
+                    'transition': '0.8s'
                 })
             },
         }
