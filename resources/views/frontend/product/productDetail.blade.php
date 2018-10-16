@@ -1,27 +1,6 @@
 @extends('main')
 
 @section('custom-meta')
-    {{-- <!-- Place this data between the <head> tags of your website -->
-    <meta name="description" content="Page description. No longer than 155 characters." />
-
-    <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="{{$product->title}}">
-    <meta itemprop="description" content="{{$product->seoDescription}}">
-    <meta itemprop="image" content="{{$product->featureImage}}">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="{{$product->featureImage}}">
-    <meta name="twitter:title" content="{{$product->seoTitle}}">
-    <meta name="twitter:description" content="{{$product->seoDescription}}">
-    <!-- Twitter summary card with large image must be at least 280x150px -->
-    <meta name="twitter:image:src" content="{{$product->featureImage}}">
-
-    <!-- Open Graph data -->
-    <meta property="og:title" content="{{$product->seoTitle}}" />
-    <meta property="og:image" content="{{$product->featureImage}}" />
-    <meta property="og:description" content="{{$product->seoDescription}}" />
-    <meta property="og:site_name" content="{{$product->seoTitle}}" /> --}}
-
     <meta property="og:url" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"}}"></meta>
     <meta property="og:title" content="{{$product->seoTitle}}" />
     <meta property="og:description" content="{{$product->seoDescription}}" />
@@ -87,6 +66,22 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
+    <div class="container mg-site-thumbnail">
+        <div class="col-md-12">
+            <a href="/">首頁</a>
+            &nbsp;&nbsp;>&nbsp;&nbsp;
+            <a href="/product-all">線上商城</a>
+            @if ($product->category)
+                &nbsp;&nbsp;>&nbsp;&nbsp;
+                <a href="/product-category/{{$product->category}}">{{CategoryView::get($product->category)->categoryTitle}}</a>                
+            @else
+                {{-- &nbsp;&nbsp;>&nbsp;&nbsp;
+                <a href="/product-all">所有商品</a>                 --}}
+            @endif
+            &nbsp;&nbsp;>&nbsp;&nbsp;{{$product->productTitle}}
+        </div>
+    </div>
+
     <div class="container mg-product">
         <div class="row">
             <div class="col-md-9">
@@ -115,7 +110,7 @@
 
                     {{--商品資訊以及功能--}}
                     <div class="col-md-7 product-info">
-                        <h3>{{$product->title}}</h3>
+                        <h3>{{$product->productTitle}}</h3>
                         @unless (count($comentList) == 0)
                             <div class="rate-box">
                                 <select class="rate-star-comment">
@@ -140,31 +135,32 @@
                         <hr>
 
                         {{-- 售價 --}}
-                        @if ($product->discountedPrice != null)
-                            <s><strong>建議售價：<span style="color: red">{{$product->price}}元</span></strong></s>
+                        {{-- @if ($product->discountedPrice != null)
+                            <s><strong>建議售價：<span style="color: red">{{number_format($product->price)}}元</span></strong></s>
                         @else
-                            <strong>建議售價：<span style="color: red">{{$product->price}}元</span></strong>
+                            <strong>建議售價：<span style="color: red">{{number_format($product->price)}}元</span></strong>
                         @endif
-                        <br>
+                        <br> --}}
 
                         {{-- 特價 --}}
-                        @if ($product->discountedPrice != null)
-                            <strong style="font-size: 20px;">特價：<span style="color: red">{{$product->discountedPrice}}元</span></strong>
-                        @endif
+                        {{-- @if ($product->discountedPrice != null)
+                            <strong style="font-size: 20px;">特價：<span style="color: red">{{number_format($product->discountedPrice)}}元</span></strong>
+                        @endif --}}
 
 
                         {{--選擇數量以及加入購物車--}}
-                        <div class="product-function">
-                            <select class="product-quantity" name="quantity">
+                        <div class="product-function" id="product-methods">
+                            <product-methods guid='{{$product->productGuid}}'></product-methods>
+                            {{-- <select class="product-quantity" name="quantity">
                                 @for ($i=1; $i <= $product->quantity; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                             </select>
-                            <button class="add-to-cart" onclick="addToCart('{{$guid}}')">
+                            <button class="add-to-cart" onclick="addToCart('{{$product->productGuid}}')">
                                 加入購物車
-                            </button>
+                            </button> --}}
                         </div>
-
+                        
                         <hr>
                         需要協助嗎? <a href="#" data-toggle="modal" data-target="#myModal-01">聯絡我們</a>
                     </div>
@@ -177,11 +173,12 @@
                             </span>
                         </div>
                         <div class="description-detail">
-                            {!!$product->description!!}
+                            {!!$product->productDescription!!}
                         </div>
                     </div>
 
                     {{-- 評論列表 --}}
+                    @if (false)
                     <div class="col-md-12">
                         <hr>
                         <h3>評論列表</h3>
@@ -274,6 +271,7 @@
                         </form>
 
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-3">
@@ -284,20 +282,9 @@
                 </div>
                 <ul class="product-link-list">
                     @foreach ($productList as $item)
-                        <li><a href="/product-deatil/{{$item->guid}}">{{$item->title}}</a></li>
+                        <li><a href="/product-deatil/{{$item->guid}}">{{$item->productTitle}}</a></li>
                     @endforeach
                 </ul>
-                {{-- <div class="center-hr">
-                    <span>
-                        相關連結
-                    </span>
-                </div>
-                <ul class="product-link-list">
-                    <li><a href="#">蟲蛹草膠囊</a></li>
-                    <li><a href="#">蟲蛹草養生茶</a></li>
-                    <li><a href="#">蟲蛹草多醣飲</a></li>
-                    <li><a href="#">蟲蛹草子實體調理罐</a></li>
-                </ul> --}}
             </div>
         </div>
     </div>
@@ -306,21 +293,17 @@
     <div class="modal fade" id="myModal-01" tabindex="-1" role="dialog" aria-labelledby="myModal-01Label">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                {{-- <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModal-01Label">客服資訊</h4>
-                </div> --}}
                 <div class="modal-body">
                     <h3 style="text-align:center; margin: 10px;">客服資訊</h3>
 
                     <hr />
                     <h4>Email查詢</h4>
 
-                    <p>將您的問題以電子郵件寄送至&nbsp;hi＠meansgood.com.tw，我們將有客服為您解答。</p>
+                    <p>將您的問題以電子郵件寄送至&nbsp;044555@gmail.com，我們將有客服為您解答。</p>
                     <br>
                     <h4>電話查詢</h4>
 
-                    <p>在工作日的9:00-16:30，歡迎撥打03-567-9463與我們聯絡查詢。</p>
+                    <p>在工作日的9:00-16:30，歡迎撥打03-9590903與我們聯絡查詢。</p>
 
                 </div>
                 <div class="modal-footer">

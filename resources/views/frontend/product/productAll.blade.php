@@ -1,12 +1,34 @@
 @extends('main')
 
 @section('custom-style')
-    <link rel="stylesheet" href="{{ asset('js/plugins/jquery.fancytree/dist/skin-xp/ui.fancytree.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/plugins/jquery.fancytree/dist/skin-themeroller/ui.fancytree.min.css') }}">
     <style>
         ul.fancytree-container {
             border: none;
             outline: 0;
         }
+
+        span.fancytree-has-children span.fancytree-title {
+            font-size: 120% !important;
+            margin-top: -5px;
+        }
+
+        ul.ui-fancytree li ul {
+            margin-bottom: 10px;
+        }
+        .ui-fancytree .fancytree-ico-e .fancytree-title{
+            cursor: default;
+        }
+        .ui-fancytree .fancytree-ico-e .fancytree-title:hover{
+            opacity: 1 !important;
+        }
+        .ui-fancytree .fancytree-node .fancytree-title{
+            transition: 0.3s;
+        }
+        .ui-fancytree .fancytree-node .fancytree-title:hover{
+            opacity: 0.7;
+        }
+        
     </style>
 @endsection
 
@@ -19,34 +41,43 @@
         }
 
         $(function () {
-            @foreach (CategoryView::product() as $item)
-                $('#link-{{$item->id}}').on('click', function () {
-                    $('html,body').animate({scrollTop:$('#section-{{$item->id}}').offset().top}, 800);
-                });
-            @endforeach
             $("#tree").fancytree({
+                icon: false,
                 click: function (event, data) {
                 },
                 activate: function (event, data) {
-                    console.log(data)
+                    //console.log(data.node.key)
+                    if (data.node.getLevel() < 2) {
+                        return
+                    }
+                    window.location.href = '/product-category/' + data.node.key
                 }
             });
+            $('.title_product-all').css('border-bottom','solid 3px #616161')
         });
     </script>
 @endsection
 
 @section('content')
+    <div class="container mg-site-thumbnail">
+        <div class="col-md-12">
+            <a href="/">首頁</a>
+            &nbsp;&nbsp;>&nbsp;&nbsp;
+            <a href="/product-all">線上商城</a>
+            &nbsp;&nbsp;>&nbsp;&nbsp;所有商品
+        </div>
+    </div>
     <div class="container mg-product list">
         <div class="row">
             <div class="col-md-3" id="tree">   
                 <ul id="treeData" style="display: none;">
                     @foreach (CategoryView::productRoot() as $index => $item)
-                        <li id="{{$item->guid}}" class="expanded"><a href="#">{{$item->title}}</a>
-                            @if (CategoryView::getProductByParent($item->guid))
+                        <li id="{{$item->categoryGuid}}" class="expanded"><a href="#">{{$item->categoryTitle}}</a>
+                            @if (CategoryView::getProductByParent($item->categoryGuid))
                                 <ul>
-                                    @foreach (CategoryView::getProductByParent($item->guid) as $key => $value)
-                                        <li id="{{$value->guid}}">
-                                            <a href="#">{{$value->title}}</a>
+                                    @foreach (CategoryView::getProductByParent($item->categoryGuid) as $key => $value)
+                                        <li id="{{$value->categoryGuid}}">
+                                            <a href="#">{{$value->categoryTitle}}</a>
                                         </li>
                                     @endforeach                                    
                                 </ul>
@@ -55,43 +86,41 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="col-md-9">   
-                @foreach (CategoryView::product() as $item)
-                    @if (count(ProductView::getByCategory($item->guid)) !== 0)
-                        <div class="row product-single-category" id="section-{{$item->id}}">
-                            <div class="col-sm-12">
-                                <div class="center-hr xxl">
-                                    <span>
-                                        {{ $item->title }}
-                                    </span>
-                                </div>
+            <div class="col-md-9 product-single-category">  
+                @foreach (ProductView::all() as $item)
+                    <div class="col-sm-4 product-box" title="{{$item->productTitle}}">
+                        <div class="product-image">
+                            <a href="/product-deatil/{{$item->customPath}}">
+                                <img src="{{Helper::thumb($item->featureImage)}}" alt="">
+                            </a>
+                            <div class="add-to-cart">
+                                @if ($item->productType == 'simple')
+                                    <a class="add-btn" onclick="addSigleProduct('{{$item->productGuid}}')"><span>加入購物車</span></a>
+                                @else
+                                    <a class="add-btn" href="/product-deatil/{{$item->customPath}}"><span>檢視商品</span></a>
+                                @endif                                
                             </div>
-                            @foreach (ProductView::getByCategory($item->guid) as $item)
-                                <div class="col-sm-4 product-box">
-                                    <div class="product-image">
-                                        <a href="/product-deatil/{{$item->customPath}}">
-                                            <img src="{{Helper::thumb($item->featureImage)}}" alt="">
-                                        </a>
-                                        <div class="add-to-cart">
-                                            <a class="add-btn" onclick="addSingleProduct('{{$item->guid}}')"><span>加入購物車</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-title">
-                                        <a href="/product-deatil/{{$item->customPath}}">{{$item->title}}</a>
-                                    </div>
-                                    <div class="product-price">
-                                        @if ($item->discountedPrice)
-                                            <span style="text-decoration:line-through">NT$ {{number_format($item->price)}}</span>
-                                            <span style="color: red; font-size: 150%">NT$ {{number_format($item->discountedPrice)}}</span>
-                                        @else
-                                            <span>NT$ {{number_format($item->price)}}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            @endforeach
                         </div>
-                    @endif
-                @endforeach
+                        <div class="product-title">
+                            <a href="/product-deatil/{{$item->customPath}}" title="{{$item->productTitle}}">{{$item->productTitle}}</a>
+                            <span>貨號：{{$item->serialNumber}}</span>
+                        </div>
+                        <div class="product-price">
+                            @if ($item->discountedPrice)
+                                <span style="text-decoration:line-through; font-size: 120%">NT$ {{number_format($item->price)}}</span>
+                                &nbsp;
+                                <span style="color: red; font-size: 120%">NT$ {{number_format($item->discountedPrice)}}</span>
+                            @else
+                                <span style="font-size: 120%">NT$ {{number_format($item->price)}}</span>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach 
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ProductView::all()}}
+                    </div>
+                </div>
             </div>
         </div>
         
