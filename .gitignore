@@ -9,7 +9,7 @@
 /public/apple-touch-icon.png
 /public/js/product-methods.js
 /storage/*.key
-/vendor
+vendor
 /.idea
 /.vagrant
 Homestead.json
