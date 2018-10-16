@@ -56,20 +56,66 @@
     @endif
 @endunless
 
-<!------------------------header------------------------>
-
-<section id="header">
-    <div class="forwardNews">
-        <a href="">
-            2018/07/19 7月份月度直播拍賣會時間：7/21（六）晚上10:00，想看看闆娘仔細介紹的朋友，請點我參加喔！(Live 點我加入直播)
-        </a>
+<div class="forwardNews">
+    <a href="">
+        2018/07/19 7月份月度直播拍賣會時間：7/21（六）晚上10:00，想看看闆娘仔細介紹的朋友，請點我參加喔！(Live 點我加入直播)
+    </a>
+</div>
+<button class="klsBurger-switch">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+<div class="klsBurger-menu">
+    <div class="klsBurger-menu-inner">
+        <div class="klsBurger-menu-logo">
+            <img src="/img/KLSLogo.svg" alt="">
+        </div>
+        <ul>
+            <li>
+                <a href="{{route('about')}}">
+                    關於凱麗絲
+                </a>
+            </li>
+            <li>
+                <a href="{{url('/product-all')}}">
+                    品牌行李箱                   
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    行李箱配件
+                </a>
+            </li>
+            <li>
+                <a href="{{url('/blog')}}">
+                    部落格
+                </a>
+            </li>
+            <li>
+                <a href="{{route('contact')}}">
+                    線上拍賣
+                </a>
+            </li>
+            <li>
+                <a href="{{route('contact')}}">
+                    聯絡我們
+                </a>
+            </li>
+        </ul>
+        
     </div>
+</div>
+
+<!------------------------header------------------------>
+<section id="header">
     <div class="header_top_area">
         <div class="header_left">
             <div class="logo_area">
                 <div class="logo">
                     <a href="/" class="mark">
-                        <img src="/img/fuckaguabyhr-01.svg" alt="">
+                        <img src="/img/KLSLogo.svg" alt="">
                         <p class="mark_text mark_middle">
                             凱麗絲旅行箱專賣店
                         </p>
@@ -369,8 +415,9 @@ $(document).ready(() => {
                 })
             },
         }
-    })
+    });
 });
+
 
    
 
