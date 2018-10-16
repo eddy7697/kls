@@ -23,6 +23,7 @@ class User extends Authenticatable
         'socialUser',
         'status',
         'point',
+        'remark',
         'guid',
         'subscriptable',
     ];

@@ -2,6 +2,75 @@ body {
     font-family: Microsoft JhengHei;
 }
 
+.btn {
+    margin-bottom: 0 !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.alert {
+    margin-top: 10px;
+}
+
+.fa-toggle-on {
+    font-size: 20px !important;
+    color: $brand-success;
+}
+
+.fa-toggle-off {
+    font-size: 20px !important;
+    color: #999;
+}
+
+#menu_toggle {
+    display: none;
+}
+
+#center-btn {
+    position: absolute;
+    top: 50%;
+    background: #2A3F54;
+    border: none;
+    transform: translateY(-50%);
+    height: 50px;
+    right: -20px;
+    color: #ccc;
+
+    i.fa-angle-left {
+        transition: all .2s ease;
+    }
+}
+
+.pagination {
+
+    li {
+
+        a {
+            color: #999;
+        }
+        &.active {
+
+            a {
+                color: #FFF;
+            }
+        }
+    }
+}
+
 table.field-table {
     width: 100%;
     margin-bottom: 5px;
@@ -83,6 +152,10 @@ table.product-detail-table {
     }
 }
 
+.col-md-12 {
+    width: 100% !important;
+}
+
 .ch-tab {
     li {
         a {
@@ -130,4 +203,63 @@ table.product-detail-table {
             }
         }
     }
+}
+
+.cms-tree {
+    padding: 20px;
+
+    ul.ui-fancytree {
+        border: none;
+        background-color: none;
+
+        li {
+
+            span.fancytree-node {
+                padding: 8px 5px;
+
+                &.fancytree-active {
+                    background-color: $brand-primary;
+
+                    span.fancytree-title {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    ul.fancytree-connectors.fancytree-container li {
+        background-position: 6px 0;
+    }
+}
+
+.nav-md .container.body .col-md-3.left_col {
+    .site_title {
+        img.mini {
+            display: none;
+        }
+    }
+}
+
+.nav-sm .container.body .col-md-3.left_col {
+    #center-btn {    
+        i.fa-angle-left {
+            transform: rotate(180deg);
+        }
+    }
+    .site_title {
+        img.default {
+            display: none;
+        }
+        img.mini {
+            width: 80%
+        }
+    }
+}
+
+.nav-md ul.nav.child_menu li.current-page:before {
+    background-color: #CCC;
+}
+
+.arc text {
+    font: 10px Microsoft JhengHei;
 }

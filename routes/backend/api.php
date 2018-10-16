@@ -31,6 +31,8 @@ Route::get('/order/get/{status}', 'Backend\OrderController@getOrders');
 Route::post('/cvs-generate-sheet', 'Backend\CheckoutController@generateSheet');
 Route::post('/re-generate-vAccount/{guid}', 'Backend\CheckoutController@reGenerateVAccount');
 Route::post('/order/updateStatus', 'Backend\OrderController@updateOrderStatus');
+Route::post('/order/updateRemark', 'Backend\OrderController@updateOrderRemark');
+
 
 Route::group(['middleware' => 'auth'], function ()
 {
@@ -49,6 +51,13 @@ Route::post('/admin/shipping/deleteShippingMethod/{id}', 'Backend\OrderControlle
 Route::get('/admin/shipping/getShippingMethods', 'Backend\OrderController@getShippingMethods');
 
 /**
+ * New Order
+ */
+
+Route::get('/admin/getNewOrder', 'Backend\OrderController@getNewOrder');
+
+
+/**
  * Social Login Provider
  */
 Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
@@ -60,15 +69,22 @@ Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCa
  */
 Route::post('/admin/admin/add', 'Backend\AdminController@store');
 Route::get('/admin/admin/list', 'Backend\AdminController@getAdminList');
+Route::post('/admin/admin/update/{guid}', 'Backend\AdminController@updateAdmin');
 Route::post('/admin/admin/reset', 'Backend\AdminController@resetPassword');
+Route::post('/admin/admin/reset/default', 'Backend\AdminController@resetDefaultPassword');
 Route::post('/admin/admin/delete', 'Backend\AdminController@deleteAdmin');
 
 
 /**
  * User
  */
-Route::get('/admin/normal/list', 'Backend\AdminController@getNormalList');
+Route::post('/admin/normal/list', 'Backend\AdminController@getNormalList');
 Route::get('/admin/normal/add', 'Backend\AdminController@createNormalUser');
+Route::post('/admin/normal/search/{keyword}', 'Backend\AdminController@searchUsers');
+Route::get('/admin/normal/get/{guid}', 'Backend\AdminController@getNormalUser');
+Route::post('/admin/normal/update/{guid}', 'Backend\AdminController@updateNormalUser');
+Route::post('/admin/address/create', 'Backend\AdminController@createAddress');
+Route::post('/admin/address/update/{guid}', 'Backend\AdminController@updateAddress');
 
 
 /**
@@ -76,10 +92,11 @@ Route::get('/admin/normal/add', 'Backend\AdminController@createNormalUser');
  */
 Route::get('/admin/post/get', 'Backend\PostController@index');
 Route::get('/admin/post/get/{guid}', 'Backend\PostController@getPost');
-Route::get('/admin/post/category', 'Backend\PostController@getCategory');
+Route::get('/admin/post/get/category/{category}', 'Backend\PostController@getCategory');
 Route::post('/admin/post/add', 'Backend\PostController@store');
 Route::post('/admin/post/edit/{guid}', 'Backend\PostController@update');
 Route::post('/admin/post/delete', 'Backend\PostController@deletePosts');
+Route::post('/admin/post/update/{guid}', 'Backend\PostController@updatePublishStatus');
 Route::get('/admin/post/checkPathExist/{customPath}', 'Backend\PostController@checkPathExist');
 
 
@@ -90,11 +107,33 @@ Route::post('/admin/product/add', 'Backend\ProductController@store');
 Route::get('/admin/product/get', 'Backend\ProductController@index');
 Route::get('/admin/product/get/{guid}', 'Backend\ProductController@getProduct');
 Route::post('/admin/product/edit/{guid}', 'Backend\ProductController@update');
-Route::get('/admin/product/get/category', 'Backend\ProductController@getCategory');
+Route::get('/admin/product/get/category/{category}', 'Backend\ProductController@getCategory');
 Route::post('/admin/product/delete', 'Backend\ProductController@deleteProducts');
+Route::post('/admin/product/publish', 'Backend\ProductController@publishProducts');
 Route::post('/admin/product/update/{guid}', 'Backend\ProductController@updatePublishStatus');
 Route::get('/admin/product/checkPathExist/{customPath}', 'Backend\ProductController@checkPathExist');
+Route::get('/admin/product/search/{keyword}', 'Backend\ProductController@searchProducts');
+Route::get('/admin/product/getFeature', 'Backend\ProductController@getFeatureProducts');
+Route::get('/admin/product/sub/get/{guid}', 'Backend\ProductController@getSubProduct');
+Route::post('/admin/product/sub/update/{guid}', 'Backend\ProductController@updateSubProduct');
+Route::post('/admin/product/sub/delete/{guid}', 'Backend\ProductController@deleteSubProduct');
+Route::post('/admin/product/sub/add', 'Backend\ProductController@createSubProduct');
+Route::post('/admin/feature/create', 'Backend\ProductController@createFeature');
+Route::post('/admin/feature/update', 'Backend\ProductController@updateFeature');
 
+/**
+ * Page
+ */
+Route::post('/admin/page/add', 'Backend\PageController@createPage');
+Route::get('/admin/page/get', 'Backend\PageController@getPages');
+Route::get('/admin/page/get/{guid}', 'Backend\PageController@getPage');
+Route::post('/admin/page/update/{guid}', 'Backend\PageController@updatePage');
+
+/**
+ * Category
+ */
+Route::post('/admin/category/move', 'Backend\CategoryController@move');
+Route::post('/admin/category/order', 'Backend\CategoryController@order');
 
 /**
  * Business
@@ -131,3 +170,16 @@ Route::post('/admin/category/update', 'Backend\CategoryController@updateCategory
  */
 Route::get('/admin/analytics/get/pageViews/{days}', 'Backend\AnalyticsController@getPageViews');
 Route::get('/admin/analytics/get/getUserType/{days}', 'Backend\AnalyticsController@getUserType');
+
+/**
+ * Meta
+ */
+Route::get('/admin/notice/get', 'Backend\MetaController@getNotice');
+Route::post('/admin/notice/create', 'Backend\MetaController@createNotice');
+Route::post('/admin/notice/update', 'Backend\MetaController@updateNotice');
+Route::get('/admin/privacy/get', 'Backend\MetaController@getPrivacy');
+Route::post('/admin/privacy/create', 'Backend\MetaController@createPrivacy');
+Route::post('/admin/privacy/update', 'Backend\MetaController@updatePrivacy');
+Route::get('/admin/remind/get', 'Backend\MetaController@getRemind');
+Route::post('/admin/remind/create', 'Backend\MetaController@createRemind');
+Route::post('/admin/remind/update', 'Backend\MetaController@updateRemind');

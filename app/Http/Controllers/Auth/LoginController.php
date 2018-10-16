@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -28,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cyberholic-system/page/managment';
+    protected $redirectTo = '/cyberholic-system/admin';
 
     /**
      * Create a new controller instance.
@@ -54,6 +55,44 @@ class LoginController extends Controller
             'g-recaptcha-response' => 'required|captcha'
             // new rules here
         ]);
+    }
+
+    /**
+     * normal user login
+     */
+    public function userLogin(Request $request)
+    {
+        $data = $request->all();
+        $user = User::where('email', $data['email'])->first();
+        $userValidate = [
+            'email' => $user['role']
+        ];
+
+        $validator = Validator::make($data, [
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6',
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+        $userValidator = Validator::make($userValidate, [
+            'email' => "in:NORMAL"
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/login')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        if ($userValidator->fails()) {
+            return redirect('/login')
+                        ->withErrors($userValidator)
+                        ->withInput();
+        }
+
+
+        auth()->login($user);
+        return redirect('/');
     }
 
     /**

@@ -14,12 +14,12 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'guid',
-        'title',
+        'categoryGuid',
+        'categoryTitle',
         'parentId',
         'type',
         'featureImage',
-        'description',
+        'categoryDescription',
         'sortKey'
     ];
 

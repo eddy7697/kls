@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Faker\Generator as Faker;
 use App\User;
 use App\Post;
+use App\Address;
 use Auth;
 use Hash;
 
@@ -37,14 +39,28 @@ class AdminController extends Controller
     }
 
     // 取得一般使用者列表
-    public function getNormalList()
+    public function getNormalList(Request $request)
     {
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
+        // $data = Product::paginate(15);
+        // $productData = array();
+
         if (Auth::user()->role == 'ADMIN') {
-            return $users = DB::table('users')
-                    ->where('role', 'NORMAL')->paginate(15);
+
+            $users = DB::table('users')
+                          ->where('role', 'NORMAL')
+                          ->orderBy($flag, $order)
+                          ->paginate(15);
+
+            $status = 200;
+            $message = 'Get user information success.';
         } else {
-            return response()->json([ 'status' => 401, 'message' => 'Permission denied, you are not the administrator.' ], 401);
+            $status = 425;
+            $message = 'Permission denied.';
+            $data = null;
         }
+        return $users;
     }
 
     // 建立後台使用者帳號
@@ -97,6 +113,31 @@ class AdminController extends Controller
         }
     }
 
+    /** 
+     * 編輯管理者
+     */
+    public function updateAdmin(Request $request, $guid)
+    {
+        $body = $request->all();
+
+        try {
+            $data = User::where('guid', $guid)->update($body);
+
+            $status = 200;
+            $message = 'Update admin success.';
+        } catch (\Exception $e) {
+            $data = null;
+            $status = 500;
+            $message = $e->getMessage();
+        }
+
+        return response()->json([ 
+            'status' => $status, 
+            'data' => $data,
+            'message' => $message 
+        ], $status);
+    }
+
     // 重設管理者密碼
     public function resetPassword(Request $request)
     {
@@ -135,6 +176,71 @@ class AdminController extends Controller
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
 
+    /**
+     * 重設管理者密碼至預設值
+     */
+    public function resetDefaultPassword(Request $request)
+    {
+        $newPassword = array('new' => str_random(6));
+
+        try {
+            User::where('guid', $request->guid)->update([
+                'password' => bcrypt($newPassword['new'])
+            ]);
+            $data = $newPassword['new'];
+            $status = 200;
+            $message = 'Password has been reset to '.$newPassword['new'];
+        } catch(\Exception $e) {
+            $data = null;
+            $status = 200;
+            $message = $e->getMessage();
+        }
+
+        return response()->json([ 
+            'data' => $data,
+            'status' => $status, 
+            'message' => $message 
+        ], $status);
+    }
+
+    /**
+     * 搜尋一般使用者
+     */
+    public function searchUsers(Request $request, $keyword)
+    {
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
+
+        if (Auth::user()->role == 'ADMIN') {
+
+            $users = DB::table('users')
+                          ->where('role', 'NORMAL')
+                          ->where('name', 'like', '%'.$keyword.'%')
+                          ->orWhere('email', 'like', '%'.$keyword.'%')
+                          ->orderBy($flag, $order)
+                          ->paginate(15);
+
+            $status = 200;
+            $message = 'Get product information success.';
+        } else {
+            $status = 425;
+            $message = 'Permission denied.';
+            $data = null;
+        }
+        return $users;
+    }
+
+    /**
+     * 取得一般使用者
+     */
+    public function getNormalUser($guid)
+    {   
+        $user = User::where('guid', $guid)->first();
+        $user['address'] = Address::where('owner', $guid)->first();
+
+        return $user;
+    }
+
     // 刪除管理者
     public function deleteAdmin(Request $request)
     {
@@ -155,12 +261,12 @@ class AdminController extends Controller
     }
 
     // 產生測試資料 - 一般使用者
-    public function generateDumyNormalUser()
+    public function generateDumyNormalUser(Faker $faker)
     {
-        for ( $i=0 ; $i<100 ; $i++ ) {
+        for ( $i=0 ; $i<150 ; $i++ ) {
             User::create([
-                'name' => 'dummyUser'.$i,
-                'email' => 'dummyUser'.$i.'@gmail.com',
+                'name' => $faker->name,
+                'email' => $faker->email,
                 'role' => 'NORMAL',
                 'level' => 'NORMAL',
                 'password' => bcrypt('111111'),
@@ -192,8 +298,8 @@ class AdminController extends Controller
                 ->get();
     }
 
-    // 產生測試資料 - 文章
-    public function generateDumyPost()
+    // 產生測試資料 - 最新消息
+    public function generateDumyPost(Faker $faker)
     {
         $author = Auth::user()->guid;
         $authorName = Auth::user()->name;
@@ -202,14 +308,46 @@ class AdminController extends Controller
             Post::create([
                 'author' => $author,
                 'authorName' => $authorName,
-                'guid' => str_random(42),
-                'title' => 'this is dumy post'.$i,
-                'content' => 'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'
+                'postGuid' => $faker->uuid(),
+                'customPath' => str_random(6),
+                'postTitle' => $faker->sentence(5),
+                'featureImage' => 'https://picsum.photos/800/600/?image='.$faker->numberBetween(1, 500),
+                'content' => $faker->randomHtml(2,3)
             ]);
         }
 
         return $users = DB::table('posts')
                 ->where('author', $author)
                 ->get();
+    }
+
+    // 更新一般使用者
+    public function updateNormalUser(Request $request, $guid)
+    {
+        $data = $request->all();
+        
+        $user = User::where('guid', $guid)
+                ->update([
+                    'name' => $data['name'],
+                    'remark' => $data['remark']
+                ]);
+    }
+
+    // 建立使用者資訊
+    public function createAddress(Request $request)
+    {
+        $data = $request->all();
+        $data['guid'] = str_random(6);
+        $address = Address::create($data);
+        return $request->all();
+    }
+
+    // 更新使用者資訊
+    public function updateAddress(Request $request, $owner)
+    {
+        $data = $request->all();
+
+        $address = Address::where('owner', $owner)->update($data);
+        return $address;
     }
 }

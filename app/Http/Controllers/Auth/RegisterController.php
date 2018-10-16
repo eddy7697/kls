@@ -139,7 +139,7 @@ class RegisterController extends Controller
                     'email' => $socialUser->getEmail(),
                     'name' => $socialUser->getName(),
                     'socialUser' => true,
-                    'point' => $this->defaultPoint,
+                    'point' => 0,
                     'role' => 'NORMAL',
                     'level' => 'NORMAL'
                 ]);

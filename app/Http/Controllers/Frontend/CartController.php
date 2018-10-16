@@ -15,7 +15,7 @@ class CartController extends Controller
     public function addSingleProduct($guid)
     {
         try {
-            $product = Product::where('guid', $guid)->first();
+            $product = Product::where('productGuid', $guid)->first();
 
             if (intval($product->discountedPrice) > 0) {
                 $price = $product->discountedPrice;
@@ -24,8 +24,9 @@ class CartController extends Controller
             }
 
             $productMeta = array(
-                'title' => $product->title,
-                'guid' => $product->guid,
+                'title' => $product->productTitle,
+                'guid' => $product->productGuid,
+                'type' => $product->productType,
                 'featureImage' => $product->featureImage,
                 'Temperature' => $product->Temperature,
             );
@@ -37,7 +38,7 @@ class CartController extends Controller
         } catch (\Exception $e) {
             $cart = array();
             $status = 500;
-            $message = 'Add product to cart fail.';
+            $message = $e->getMessage();
         }
 
         return response()->json([ 'status' => $status, 'message' => $message, 'data' => $cart], $status);
@@ -51,7 +52,7 @@ class CartController extends Controller
         $data = $request->all();
 
         try {
-            $product = Product::where('guid', $guid)->first();
+            $product = Product::where('productGuid', $guid)->first();
 
             if (intval($product->discountedPrice) > 0) {
                 $price = $product->discountedPrice;
@@ -60,8 +61,9 @@ class CartController extends Controller
             }
 
             $productMeta = array(
-                'title' => $product->title,
-                'guid' => $product->guid,
+                'title' => $product->productTitle,
+                'guid' => $product->productGuid,
+                'type' => $product->productType,
                 'featureImage' => $product->featureImage,
                 'Temperature' => $product->Temperature,
             );
@@ -76,7 +78,53 @@ class CartController extends Controller
             $message = 'Add product to cart fail.';
         }
 
-        return response()->json([ 'status' => $status, 'message' => $message, 'data' => $cart], $status);
+        return response()->json([ 
+            'status' => $status, 
+            'message' => $message, 
+            'data' => $cart
+        ], $status);
+    }
+
+    /**
+     * Add SubProduct to cart
+     */
+    public function addSubProduct(Request $request, $guid)
+    {
+        $data = $request->all();
+
+        try {
+            $product = Product::where('productGuid', $guid)->first();
+
+            if ((int)$data['subDiscountPrice'] > 0) {
+                $price = (int)$data['subDiscountPrice'];
+            } else {
+                $price = (int)$data['subPrice'];
+            }
+
+            $productMeta = array(
+                'title' => $product->productTitle.' - '.$data['title'],
+                'guid' => $product->productGuid,
+                'type' => $product->productType,
+                'featureImage' => $product->featureImage,
+                'Temperature' => $product->Temperature,
+                'subProductId' => $data['id'],
+            );
+
+            $cart = Cart::add(json_encode($productMeta), json_encode($productMeta), $data['qty'], $price);
+
+            $status = 200;
+            $message = 'Add product to cart success.';
+        } catch (\Exception $e) {
+            $cart = $e->getMessage();
+            $status = 500;
+            $message = 'Add product to cart fail.';
+        }
+
+        return response()->json([ 
+            'status' => $status, 
+            'message' => $message, 
+            'data' => $cart
+        ], $status);
     }
 
     /**

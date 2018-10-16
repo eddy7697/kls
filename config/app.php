@@ -133,6 +133,30 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | J個是維護模式的開關
+    |--------------------------------------------------------------------------
+    |
+    | 不是後端開發人員就不要給我亂動
+    | 懂？
+    |
+    */
+
+    'maintenance' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | J個是強制導向至www
+    |--------------------------------------------------------------------------
+    |
+    | 不是後端開發人員就不要給我亂動
+    | 懂？
+    |
+    */
+
+    'force2www' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -196,6 +220,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        Ixudra\Curl\CurlServiceProvider::class,
 
 
     ],
@@ -261,8 +286,12 @@ return [
         'UserView' => App\Services\UserView::class,
         'PostView' => App\Services\PostView::class,
         'Cashflow' => App\Services\Cashflow::class,
+        'Hppe' => App\Services\Hppe::class,
+        'Esun' => App\Services\Esun::class,
         'Ecpay' => Eddy7697\Ecpay2in1\Facades\Ecpay::class,
-
+        'PageView' => App\Services\PageView::class,
+        'FeatureView' => App\Services\FeatureView::class,
+        'Curl' => Ixudra\Curl\Facades\Curl::class,
     ],
 
 ];

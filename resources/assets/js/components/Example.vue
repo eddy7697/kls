@@ -7,9 +7,11 @@
 </template>
 
 <script>
-    $('.loading-bar').fadeOut('100');
     export default {
-        data() {
+        mounted () {
+            console.log('Component mounted.')
+        },
+        data () {
             return {
             }
         },

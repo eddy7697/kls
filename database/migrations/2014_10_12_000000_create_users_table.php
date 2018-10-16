@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->boolean('subscriptable')->default(false);
             $table->string('role')->nullable();
             $table->string('level')->nullable();
+            $table->string('remark')->nullable();
             $table->string('status')->default('ACTIVE');
             $table->integer('point')->default(25);
             $table->rememberToken();

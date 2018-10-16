@@ -8,7 +8,10 @@
 require('./bootstrap');
 require('jquery-lazyload');
 require('jquery-bar-rating');
+require('chart.js');
 require('slick-carousel');
+require('gentelella');
+var _ = require('lodash');
 window.Vue = require('vue');
 
 /**

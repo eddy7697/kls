@@ -17,11 +17,11 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'guid',
+        'postGuid',
         'author',
         'authorName',
-        'title',
-        'category',
+        'postTitle',
+        'postCategory',
         'content',
         'customPath',
         'featureImage',

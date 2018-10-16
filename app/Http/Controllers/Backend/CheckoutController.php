@@ -10,6 +10,7 @@ use App\Services\PublicServiceProvider;
 use App\Bonus;
 use App\Order;
 use App\Product;
+use App\SubProduct;
 use App\User;
 use App\Address;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +19,8 @@ use Hash;
 use Auth;
 use Mail;
 use Ecpay;
+use Hppe;
+use Esun;
 
 class CheckoutController extends Controller
 {
@@ -122,8 +125,8 @@ class CheckoutController extends Controller
                     'point' => $bonus['defaultPoint'],
                     'percentage' => $bonus['percentage']
                 ], function($message) use ($shippingTarget) {
-                    $message->to([ $shippingTarget['ReceiverEmail'], ])->subject('明谷生機線上購物加入會員通知');
-                    $message->from(env('MAIL_USERNAME'), $name = "明谷生機 MeansGood");
+                    $message->to([ $shippingTarget['ReceiverEmail'], ])->subject(env('APP_NAME').'線上購物加入會員通知');
+                    $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
                 });
             }
 
@@ -152,7 +155,7 @@ class CheckoutController extends Controller
         $totalAmount = (int)$data['TotalAmount'] + (int)$data['shippingCosts'] - (int)$data['pointUsage'];
 
         $merchantIdCache = array(
-            'MerchantTradeNo' => "MG".time(),
+            'MerchantTradeNo' => time()
         );
 
         if ($data['addNewMember'] == 'true') {
@@ -163,13 +166,15 @@ class CheckoutController extends Controller
 
         // return $data;
 
+        // return Hppe::send();
+
         //基本參數(可依系統規劃自行調整)
         Ecpay::instance()->Send['ReturnURL']             = $actual_link."/ecpay-return" ;        //交易結果回報的網址
         Ecpay::instance()->Send['ClientBackURL']         = $actual_link."/order-success" ;       //交易結束，讓user導回的網址
         Ecpay::instance()->Send['MerchantTradeNo']       = $merchantIdCache['MerchantTradeNo'] ; //訂單編號
         Ecpay::instance()->Send['MerchantTradeDate']     = date('Y/m/d H:i:s');                  //交易時間
         Ecpay::instance()->Send['TotalAmount']           = $totalAmount;                         //交易金額
-        Ecpay::instance()->Send['TradeDesc']             = "明谷生機 - 商品交易" ;                //交易描述
+        Ecpay::instance()->Send['TradeDesc']             = env('APP_NAME')." - 商品交易" ;        //交易描述
         Ecpay::instance()->Send['EncryptType']           = '1' ;
         Ecpay::instance()->Send['ChoosePayment']         = $data['ChoosePayment'] ;              //付款方式
         Ecpay::instance()->Send['PaymentType']           = 'aio' ;
@@ -208,13 +213,15 @@ class CheckoutController extends Controller
 
                 // Log::info($owner);
                 $data['owner'] = $owner;
-                if ($this->checkAddress($owner, 'shipping')) {
-                    $this->editAddress('shipping', $data, 'edit');
-                    // return 1;
-                } else {
-                    $this->editAddress('shipping', $data, 'add');
-                    // return 0;
+
+                if ($data['useUserInfo'] == 'true') {
+                    if ($this->checkAddress($owner, 'shipping')) {
+                        $this->editAddress('shipping', $data, 'edit');
+                    } else {
+                        $this->editAddress('shipping', $data, 'add');
+                    }
                 }
+                
 
                 if ($pointUsage > Auth::user()->point) {
                     DB::rollback();
@@ -233,43 +240,66 @@ class CheckoutController extends Controller
             }
 
             foreach ($cartInfo as $item) {
-                $reserveStatus = Product::where('guid', $item->id->guid)->first()['reserveStatus'];
-                $checkDataStockAndQty = (Product::where('guid', $item->id->guid)->first()['status'] == 'outofstock') ||
-                                    ((int)Product::where('guid', $item->id->guid)->first()['quantity'] == 0);
-                $checkOrderStockAndQty = (int)$item->qty > (int)Product::where('guid', $item->id->guid)->first()['quantity'];
+                $productType = Product::where('productGuid', $item->id->guid)->first()['productType'];
 
-                if ($reserveStatus) {
+                if ($productType == 'variable') {
+                    $subQuantity = SubProduct::where('id', $item->id->subProductId)->first()['subQuantity'];
+                    $checkOrderStockAndQty = (int)$item->qty > (int)$subQuantity;
 
-                    if ($checkDataStockAndQty) {
+                    if ($checkOrderStockAndQty) {
                         DB::rollback();
-                        return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。</h1>";
+                        return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。1</h1>";
                     } else {
-                        if ($checkOrderStockAndQty) {
-                            return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。</h1>";
+                        try {
+                            SubProduct::where('id', $item->id->subProductId)->update([
+                                'subQuantity' => (int)$subQuantity - (int)$item->qty
+                            ]);
+                        } catch(\Exception $e) {
+                            Log::error($e);
                             DB::rollback();
-                        } else {
-                            try {
-                                Product::where('guid', $item->id->guid)->update([
-                                    'quantity' => (int)Product::where('guid', $item->id->guid)->first()['quantity'] - (int)$item->qty,
-                                ]);
-                            } catch (\Exception $e) {
-                                Log::error($e);
-                                DB::rollback();
-                                return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。</h1>";
-                            }
+                            return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。2</h1>";
                         }
                     }
                 } else {
-                    try {
-                        Product::where('guid', $item->id->guid)->update([
-                            'quantity' => (int)Product::where('guid', $item->id->guid)->first()['quantity'] - (int)$item->qty,
-                        ]);
-                    } catch (\Exception $e) {
-                        Log::error($e);
-                        DB::rollback();
-                        return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。</h1>";
+                    $reserveStatus = Product::where('productGuid', $item->id->guid)->first()['reserveStatus'];
+                    $checkDataStockAndQty = (Product::where('productGuid', $item->id->guid)->first()['status'] == 'outofstock') ||
+                                        ((int)Product::where('productGuid', $item->id->guid)->first()['quantity'] == 0);
+                    $checkOrderStockAndQty = (int)$item->qty > (int)Product::where('productGuid', $item->id->guid)->first()['quantity'];
+
+                    if ($reserveStatus) {
+
+                        if ($checkDataStockAndQty) {
+                            DB::rollback();
+                            return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。3</h1>";
+                        } else {
+                            if ($checkOrderStockAndQty) {
+                                return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。4</h1>";
+                                DB::rollback();
+                            } else {
+                                try {
+                                    Product::where('productGuid', $item->id->guid)->update([
+                                        'quantity' => (int)Product::where('productGuid', $item->id->guid)->first()['quantity'] - (int)$item->qty,
+                                    ]);
+                                } catch (\Exception $e) {
+                                    Log::error($e);
+                                    DB::rollback();
+                                    return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。5</h1>";
+                                }
+                            }
+                        }
+                    } else {
+                        try {
+                            Product::where('productGuid', $item->id->guid)->update([
+                                'quantity' => (int)Product::where('productGuid', $item->id->guid)->first()['quantity'] - (int)$item->qty,
+                            ]);
+                        } catch (\Exception $e) {
+                            Log::error($e);
+                            DB::rollback();
+                            return "<h1 style='text-align: center; margin-top: 100px;'>商品數量有誤，請重新建立訂單。6</h1>";
+                        }
                     }
-                }
+                }               
+                
             }
 
             // 清除購物車
@@ -304,36 +334,51 @@ class CheckoutController extends Controller
             }
 
             //Go to EcPay
-            echo "<h1 style='text-align: center; margin-top: 100px;'>交易資訊傳輸中，請勿重新整理或者關閉視窗，以免重複下訂。</h1>";
+            // echo "<h1 style='text-align: center; margin-top: 100px;'>交易資訊傳輸中，請勿重新整理或者關閉視窗，以免重複下訂。</h1>";
 
-            if (env('APP_ENV') === 'prod') {
-                Mail::send('mail.orderNotice', [
-                    'data' => $data,
-                    'cartInfo' => $cartInfo,
-                    'shippingTarget' => $shippingTarget,
-                    'merchantIdCache' => $merchantIdCache
-                ], function($message) use ($sender, $shippingTarget) {
-                    $message->to([
-                        'hi@meansgood.com.tw',
-                    ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
-                    $message->from($sender, $name = "明谷生機 MeansGood");
-                });
+            // if (env('APP_ENV') === 'prod') {
+            //     Mail::send('mail.orderNotice', [
+            //         'data' => $data,
+            //         'cartInfo' => $cartInfo,
+            //         'shippingTarget' => $shippingTarget,
+            //         'merchantIdCache' => $merchantIdCache
+            //     ], function($message) use ($sender, $shippingTarget) {
+            //         $message->to([
+            //             'hi@meansgood.com.tw',
+            //         ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
+            //         $message->from($sender, $name = "明谷生機 MeansGood");
+            //     });
 
-                Mail::send('mail.notice', [
-                    'data' => $data,
-                    'cartInfo' => $cartInfo,
-                    'shippingTarget' => $shippingTarget,
-                    'merchantIdCache' => $merchantIdCache
-                ], function($message) use ($sender, $shippingTarget) {
-                    $message->to([
-                        $shippingTarget['ReceiverEmail'],
-                        $sender,
-                    ])->subject('訂單成立通知信');
-                    $message->from($sender, $name = "明谷生機 MeansGood");
-                });
+            //     Mail::send('mail.notice', [
+            //         'data' => $data,
+            //         'cartInfo' => $cartInfo,
+            //         'shippingTarget' => $shippingTarget,
+            //         'merchantIdCache' => $merchantIdCache
+            //     ], function($message) use ($sender, $shippingTarget) {
+            //         $message->to([
+            //             $shippingTarget['ReceiverEmail'],
+            //             $sender,
+            //         ])->subject('訂單成立通知信');
+            //         $message->from($sender, $name = "明谷生機 MeansGood");
+            //     });
+            // }
+
+            // echo Ecpay::instance()->CheckOutString();
+
+            if ($data['ChoosePayment'] == 'Remit') {
+                return redirect('/remittance-information');
+            } else {
+                // return Hppe::send([
+                //     'order' => str_random(6),
+                //     'amount' => $totalAmount,
+                //     'orderNumber' => $merchantIdCache['MerchantTradeNo']
+                // ]);
+    
+                return Esun::send([
+                    'amount' => $totalAmount,
+                    'orderNumber' => $merchantIdCache['MerchantTradeNo'].'.'.strtoupper(str_random(6))
+                ]);
             }
-
-            echo Ecpay::instance()->CheckOutString();
         });
     }
 
@@ -406,10 +451,10 @@ class CheckoutController extends Controller
             }
 
             foreach ($cartInfo as $item) {
-                $reserveStatus = Product::where('guid', $item->id->guid)->first()['reserveStatus'];
-                $checkDataStockAndQty = (Product::where('guid', $item->id->guid)->first()['status'] == 'outofstock') ||
-                                    ((int)Product::where('guid', $item->id->guid)->first()['quantity'] == 0);
-                $checkOrderStockAndQty = (int)$item->qty > (int)Product::where('guid', $item->id->guid)->first()['quantity'];
+                $reserveStatus = Product::where('productGuid', $item->id->productGuid)->first()['reserveStatus'];
+                $checkDataStockAndQty = (Product::where('productGuid', $item->id->productGuid)->first()['status'] == 'outofstock') ||
+                                    ((int)Product::where('productGuid', $item->id->productGuid)->first()['quantity'] == 0);
+                $checkOrderStockAndQty = (int)$item->qty > (int)Product::where('productGuid', $item->id->productGuid)->first()['quantity'];
 
                 if ($reserveStatus) {
 
@@ -422,8 +467,8 @@ class CheckoutController extends Controller
                             DB::rollback();
                         } else {
                             try {
-                                Product::where('guid', $item->id->guid)->update([
-                                    'quantity' => (int)Product::where('guid', $item->id->guid)->first()['quantity'] - (int)$item->qty,
+                                Product::where('productGuid', $item->id->productGuid)->update([
+                                    'quantity' => (int)Product::where('productGuid', $item->id->productGuid)->first()['quantity'] - (int)$item->qty,
                                 ]);
                             } catch (\Exception $e) {
                                 Log::error($e);
@@ -434,8 +479,8 @@ class CheckoutController extends Controller
                     }
                 } else {
                     try {
-                        Product::where('guid', $item->id->guid)->update([
-                            'quantity' => (int)Product::where('guid', $item->id->guid)->first()['quantity'] - (int)$item->qty,
+                        Product::where('productGuid', $item->id->productGuid)->update([
+                            'quantity' => (int)Product::where('productGuid', $item->id->productGuid)->first()['quantity'] - (int)$item->qty,
                         ]);
                     } catch (\Exception $e) {
                         Log::error($e);
@@ -459,8 +504,8 @@ class CheckoutController extends Controller
                     'GoodsAmount'           => $totalAmount,
                     'CollectionAmount'      => $totalAmount,
                     'IsCollection'          => $data['IsCollection'],    //是否代收貨款
-                    'GoodsName'             => '明谷生機 - 商品訂單',
-                    'SenderName'            => '明谷生機',
+                    'GoodsName'             => env('APP_NAME').' - 商品訂單',
+                    'SenderName'            => env('APP_NAME'),
                     'SenderPhone'           => '035679463',
                     'SenderCellPhone'       => '0976059292',
                     'ReceiverName'          => $data['ReceiverName'],
@@ -500,9 +545,9 @@ class CheckoutController extends Controller
                         'merchantIdCache'   => $merchantIdCache
                     ], function($message) use ($sender, $shippingTarget) {
                         $message->to([
-                            'hi@meansgood.com.tw',
+                            env('MAIL_USERNAME'),
                         ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
-                        $message->from($sender, $name = "明谷生機 MeansGood");
+                        $message->from($sender, $name = env('APP_NAME'));
                     });
 
                     Mail::send('mail.notice', [
@@ -515,7 +560,7 @@ class CheckoutController extends Controller
                             $shippingTarget['ReceiverEmail'],
                             $sender,
                         ])->subject('訂單成立通知信');
-                        $message->from($sender, $name = "明谷生機 MeansGood");
+                        $message->from($sender, $name = env('APP_NAME'));
                     });
                 }
 
@@ -586,35 +631,45 @@ class CheckoutController extends Controller
 
         Log::info((int)$orderParametor['amount'] - (int)$orderParametor['pointUsage']);
 
+        // return Hppe::send([
+        //     'order' => str_random(6),
+        //     'amount' => $order['amount'],
+        //     'orderNumber' => $order['merchantID']
+        // ]);
 
-        $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        return Esun::send([
+            'amount' => $order['amount'],
+            'orderNumber' => $order['merchantID'].'.'.strtoupper(str_random(6))
+        ]);
 
-        Ecpay::instance()->Send['ReturnURL']         = $actual_link."/ecpay-return";
-        Ecpay::instance()->Send['ClientBackURL']     = $actual_link."/user";
-        Ecpay::instance()->Send['MerchantTradeNo']   = "MG".time();
-        Ecpay::instance()->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');
-        Ecpay::instance()->Send['TotalAmount']       = (int)$orderParametor['amount'];
-        Ecpay::instance()->Send['TradeDesc']         = "明谷生機 - 商品交易";
-        Ecpay::instance()->Send['EncryptType']       = '1';
-        Ecpay::instance()->Send['ChoosePayment']     = $orderParametor['paymentMethod'] ;
-        Ecpay::instance()->Send['PaymentType']       = 'aio';
-        Ecpay::instance()->Send['CustomField1']      = $orderParametor['merchantID'];
+        // $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
-        //訂單的商品資料
-        foreach ($orderParametor['cartInfo'] as $item) {
-            array_push(Ecpay::instance()->Send['Items'],
-                    array(
-                        'Name' => $item->Name,
-                        'Price' => (int)($item->price),
-                        'Currency' => "元",
-                        'Quantity' => (int) ($item->qty),
-                        'URL' => "http://www.yourwebsites.com.tw/Product",
-                    ));
-        }
+        // Ecpay::instance()->Send['ReturnURL']         = $actual_link."/ecpay-return";
+        // Ecpay::instance()->Send['ClientBackURL']     = $actual_link."/user";
+        // Ecpay::instance()->Send['MerchantTradeNo']   = "MG".time();
+        // Ecpay::instance()->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');
+        // Ecpay::instance()->Send['TotalAmount']       = (int)$orderParametor['amount'];
+        // Ecpay::instance()->Send['TradeDesc']         = "明谷生機 - 商品交易";
+        // Ecpay::instance()->Send['EncryptType']       = '1';
+        // Ecpay::instance()->Send['ChoosePayment']     = $orderParametor['paymentMethod'] ;
+        // Ecpay::instance()->Send['PaymentType']       = 'aio';
+        // Ecpay::instance()->Send['CustomField1']      = $orderParametor['merchantID'];
 
-        //Go to EcPay
-        echo "<h1 style='text-align: center; margin-top: 100px;'>交易資訊傳輸中...</h1>";
-        echo Ecpay::instance()->CheckOut();
+        // //訂單的商品資料
+        // foreach ($orderParametor['cartInfo'] as $item) {
+        //     array_push(Ecpay::instance()->Send['Items'],
+        //             array(
+        //                 'Name' => $item->Name,
+        //                 'Price' => (int)($item->price),
+        //                 'Currency' => "元",
+        //                 'Quantity' => (int) ($item->qty),
+        //                 'URL' => "http://www.yourwebsites.com.tw/Product",
+        //             ));
+        // }
+
+        // //Go to EcPay
+        // echo "<h1 style='text-align: center; margin-top: 100px;'>交易資訊傳輸中...</h1>";
+        // echo Ecpay::instance()->CheckOut();
     }
 
     /**
@@ -636,7 +691,7 @@ class CheckoutController extends Controller
         Ecpay::instance()->Send['MerchantTradeNo']       = "MG".time();
         Ecpay::instance()->Send['MerchantTradeDate']     = date('Y/m/d H:i:s');
         Ecpay::instance()->Send['TotalAmount']           = (int)$order[0]['amount'] - (int)$order[0]['pointUsage'];
-        Ecpay::instance()->Send['TradeDesc']             = "明谷生機 - 商品交易";
+        Ecpay::instance()->Send['TradeDesc']             = env('APP_NAME')." - 商品交易";
         Ecpay::instance()->Send['EncryptType']           = '1';
         Ecpay::instance()->Send['ChoosePayment']         = $order[0]['paymentMethod'] ;
         Ecpay::instance()->Send['PaymentType']           = 'aio';
@@ -695,8 +750,8 @@ class CheckoutController extends Controller
                 'GoodsAmount'           => (int)$data['TotalAmount'],
                 'CollectionAmount'      => (int)$data['TotalAmount'],
                 'IsCollection'          => 'N',
-                'GoodsName'             => '明谷生機 - 商品訂單',
-                'SenderName'            => '明谷生機',
+                'GoodsName'             => env('APP_NAME').' - 商品訂單',
+                'SenderName'            => env('APP_NAME'),
                 'SenderPhone'           => '035679463',
                 'SenderCellPhone'       => '0976059292',
                 'ReceiverName'          => $data['ReceiverName'],

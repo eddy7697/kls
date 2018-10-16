@@ -46,7 +46,7 @@ class MailController extends Controller
 
         Mail::raw('測試使用 Laravel 5 的寄信服務', function($message)
         {
-            $message->from(env('MAIL_USERNAME'), $name = "明谷生機 MeansGood");
+            $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
             $message->to('vincent7697@gmail.com');
         });
     }

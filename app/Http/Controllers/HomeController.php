@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Product;
 use App\User;
 use App\Bonus;
+use App\Admin;
 use App\Address;
 use App\SocialProvider;
 use App\Services\PublicServiceProvider;
@@ -52,8 +53,9 @@ class HomeController extends Controller
         } else {
             return User::create([
                 'guid' => PublicServiceProvider::generateGuid(),
-                'name' => 'Admin',
+                'name' => '最高管理者',
                 'email' => 'admin@admin.com',
+                // 'jobTitle' => 'SuperUser',
                 'password' => bcrypt('admin123'),
                 'point' => 9999,
                 'role' => 'ADMIN',
@@ -138,5 +140,10 @@ class HomeController extends Controller
         // );
 
         return $analyticsData;
+    }
+
+    public function esunec(Request $request)
+    {
+        return $request->all();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\SiteMeta;
+use App\CustomField;
 
 class SiteMetaView
 {
@@ -47,7 +48,7 @@ class SiteMetaView
         try {
             return json_decode(SiteMeta::all()->first()['index_album']);
         } catch (\Exception $e) {
-            return json_decode(array());
+            return array();
         }
     }
 
@@ -75,6 +76,33 @@ class SiteMetaView
             return SiteMeta::all()->first()['pageTopContent'];
         } catch (\Exception $e) {
             return json_decode(array());
+        }
+    }
+
+    public static function ecNotice()
+    {
+        try {
+            return CustomField::where('type', 'ECNOTICE')->first()['content'];
+        } catch (\Exception $e) {
+            return '';
+        }
+    }
+
+    public static function ecPrivacy()
+    {
+        try {
+            return CustomField::where('type', 'PRIVACY')->first()['content'];
+        } catch (\Exception $e) {
+            return '';
+        }
+    }
+
+    public static function ecRemind()
+    {
+        try {
+            return CustomField::where('type', 'REMIND')->first()['content'];
+        } catch (\Exception $e) {
+            return '';
         }
     }
 }

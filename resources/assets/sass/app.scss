@@ -7,6 +7,8 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~gentelella/src/scss/custom.scss";
+@import "~gentelella/src/scss/daterangepicker.scss";
 
 // 管理者全域樣式
 @import "backend/style";

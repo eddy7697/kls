@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Ixudra\Curl\Facades\Curl;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Shipping;
@@ -12,6 +13,7 @@ use App\Bonus;
 Use App\User;
 use Hash;
 use Mail;
+use PublicServiceProvider;
 
 class OrderController extends Controller
 {
@@ -93,9 +95,9 @@ class OrderController extends Controller
                     ], function($message) {
                         $message->to([
                             'vincent7697@gmail.com',
-                            'hi@meansgood.com.tw'
+                            env('MAIL_USERNAME')
                         ])->subject('付款成功');
-                        $message->from(env('MAIL_USERNAME'), $name = "明谷生機 MeansGood");
+                        $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
                     });
 
                     return "1|OK";
@@ -184,9 +186,9 @@ class OrderController extends Controller
                     ], function($message) {
                         $message->to([
                             'vincent7697@gmail.com',
-                            'hi@meansgood.com.tw'
+                            env('MAIL_USERNAME')
                         ])->subject('取貨成功');
-                        $message->from(env('MAIL_USERNAME'), $name = "明谷生機 MeansGood");
+                        $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
                     });
 
                     return "1|OK";
@@ -242,9 +244,13 @@ class OrderController extends Controller
     {
         if ($status == 'all') {
             return Order::orderBy('created_at', 'DESC')
+                        ->leftJoin('users', 'orders.owner', '=', 'users.guid')
+                        ->select('orders.*', 'users.email')
                         ->paginate(15);
         } else {
             return Order::where('paymentStatus', $status)
+                        ->leftJoin('users', 'orders.owner', '=', 'users.guid')
+                        ->select('orders.*', 'users.email')
                         ->orderBy('created_at', 'DESC')
                         ->paginate(15);
         }
@@ -267,6 +273,29 @@ class OrderController extends Controller
             'isThumbShow' => false,
             'thumb' => ''
         ]);
+    }
+
+    /**
+     * 更改訂單備註
+     */
+    public function updateOrderRemark(Request $request)
+    {
+        $data = $request->all();
+        
+        try {
+            $order = Order::where('guid', $data['guid'])->update([
+                'remarks' => $data['remarks'],
+            ]);
+            $status = 200;
+            $message = 'Modify order remarks success.';
+        } catch (\Exception $e) {
+            $order = $e->getMessage();
+            $status = 500;
+            $message = 'Internal server error.';
+        }
+
+
+        return response()->json([ 'status' => $status, 'message' => $message, 'data' => $order ], $status);
     }
 
     /**
@@ -297,6 +326,7 @@ class OrderController extends Controller
             try {
                 $order = Order::where('guid', $data['guid'])->update([
                     'orderStatus' => $data['orderStatus'],
+                    'paymentStatus' => $data['paymentStatus'],
                 ]);
                 $status = 200;
                 $message = 'Modify order status success.';
@@ -374,6 +404,52 @@ class OrderController extends Controller
 
     }
 
+    /** 
+     * 
+     */
+    public function hppeOrder(Request $request)
+    {
+        $data = $request->all();
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $originIP = $_SERVER['HTTP_CLIENT_IP'];
+        } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $originIP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $originIP= $_SERVER['REMOTE_ADDR'];
+        }
+
+        Log::info('Connection from : '.$originIP);
+
+        $order = Order::where('merchantID', $data['orderNumber'])->first();
+
+        if ($data['ResponseCode'] == '00' ||
+            $data['ResponseCode'] == '08' ||
+            $data['ResponseCode'] == '11') {
+            
+            if ($order->paymentStatus === 'paid') {
+                Log::info('Payment multi callback!!');
+                return;
+            }
+
+            try {
+                DB::table('orders')
+                  ->where('merchantID', $data['orderNumber'])
+                  ->update([
+                        'paymentStatus' => 'paid'
+                    ]);
+
+                return PublicServiceProvider::exception('付款成功，感謝您的選購。');
+            } catch (\Exception $e) {
+                return PublicServiceProvider::exception('付款失敗。');
+            }
+            
+        } else {
+            Log::info($data);
+            return PublicServiceProvider::exception('付款失敗，拒絕交易。');
+        }
+    }
+
     /**
      * Get all shipping methods
      */
@@ -392,4 +468,92 @@ class OrderController extends Controller
 
         return response()->json([ 'status' => $status, 'message' => $message, 'data' => $shipping ], $status);
     }
+
+    /**
+     * 玉山金流確認訂單
+     */
+    public function esunCheckOrder(Request $request)
+    {
+        // Parse order message
+        $returnStr = $request->DATA;
+        $firstParse = str_replace(",", '","', $returnStr);
+        $secondParse = str_replace("=", '":"', $firstParse);
+        $thirdParse = '{"'.$secondParse.'"}';
+        $finalParse = json_decode($thirdParse);
+
+        // return $finalParse->ONO[0];
+        // return $finalParse->RC;
+        if ($finalParse->RC == '00') {
+            try {
+                $targetOrder = Order::where('merchantID', explode('.' ,$finalParse->ONO)[0]);
+
+                if ($targetOrder->first()['paymentStatus'] == 'paid') {
+                    return redirect('/');
+                } else {
+                    $targetOrder->update([
+                                    'paymentStatus' => 'paid'
+                                ]);
+                }
+
+                return PublicServiceProvider::exception('付款成功，感謝您的購買。');     
+            } catch (\Exception $e) {
+                return PublicServiceProvider::exception('系統無此訂單，查詢失敗。');
+            }
+        } else {
+            return PublicServiceProvider::exception('付款失敗，拒絕交易。<br/>錯誤代碼：'.$finalParse->RC);
+        }
+        
+
+        return explode('.' ,$finalParse->ONO)[0];
+
+        // build the request data & sent request
+        $orderObj = '{"MID":"'.$finalParse->MID.'","ONO":"'.$finalParse->ONO.'"}';
+        $mac = hash('sha256', $orderObj.'B88BM8GZW8HZ5PW21OJVFICNDXMSI3QR');
+        $requestData = array(
+            'data' => $orderObj,
+            'mac' => $mac,
+            'ksn' => '1'
+        );
+
+        $orderQuery = Curl::to('https://acqtest.esunbank.com.tw/ACQQuery/esuncard/txnf0180')
+                            ->withData( $requestData )
+                            ->withResponseHeaders()
+                            ->returnResponseObject()
+                            ->post(); 
+
+        $orderResult = json_decode(str_replace("DATA=", "", $orderQuery->content));
+        $orderStatus = $orderResult->txnData->RC;
+
+        if ($orderStatus == '00') {
+            try {
+                $targetOrder = Order::where('merchantID', $finalParse->ONO);
+
+                if ($targetOrder->first()['paymentStatus'] == 'paid') {
+                    return redirect('/');
+                } else {
+                    $targetOrder->update([
+                                    'paymentStatus' => 'paid'
+                                ]);
+                }
+
+                return PublicServiceProvider::exception('付款成功，感謝您的購買。');     
+            } catch (\Exception $e) {
+                return PublicServiceProvider::exception('系統無此訂單，查詢失敗。');
+            }
+        } else {
+            return PublicServiceProvider::exception('付款失敗，拒絕交易。<br/>錯誤代碼：'.$orderStatus);
+        }
+        
+    }
+
+    /**
+     * 取得目前最新的訂單
+     */
+    public function getNewOrder()
+    {
+        return Order::where('orderStatus', 'undisposed')
+                    ->orderBy('id', 'desc')
+                    ->take(10)->get();
+    }
+    
 }

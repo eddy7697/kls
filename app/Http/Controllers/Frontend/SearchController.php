@@ -27,8 +27,8 @@ class SearchController extends Controller
         try {
             // $product = Product::search($data['key-word'])->get();
             // $post = Post::search($data['key-word'])->get();
-            $product = Product::where('title', 'like', '%'.$data['key-word'].'%')->get();
-            $post = Post::where('title', 'like', '%'.$data['key-word'].'%')->get();
+            $product = Product::where('productTitle', 'like', '%'.$data['key-word'].'%')->get();
+            $post = Post::where('PostTitle', 'like', '%'.$data['key-word'].'%')->get();
         } catch (\Exception $e) {
             Log::error($e);
             return $e;

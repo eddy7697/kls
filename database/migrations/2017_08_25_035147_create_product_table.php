@@ -15,23 +15,24 @@ class CreateProductTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('guid');
-            $table->string('title');
+            $table->string('productGuid');
+            $table->string('productTitle');
             $table->string('serialNumber')->nullable();
             $table->string('customPath');
             $table->string('author');
             $table->string('authorName');
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->string('Temperature');
             $table->integer('discountedPrice')->nullable();
-            $table->string('category')->nullable();
+            $table->string('productCategory')->nullable();
             $table->string('featureImage')->nullable();
             $table->longtext('album')->nullable();
-            $table->longtext('description')->nullable();
+            $table->longtext('productDescription')->nullable();
             $table->longtext('shortDescription')->nullable();
-            $table->string('status')->default('SALE');
+            $table->string('productStatus')->default('SALE');
             $table->boolean('reserveStatus')->default(false);
             $table->boolean('isPublish')->default(false);
+            $table->string('productType')->default('simple');
             $table->integer('quantity')->nullable();
             $table->string('rule')->nullable();
             $table->string('rate')->nullable();

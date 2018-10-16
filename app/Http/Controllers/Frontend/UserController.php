@@ -21,11 +21,11 @@ class UserController extends Controller
         $data = $request->all();
         $bonus = Bonus::all()->first();
 
-        try {
-            $defaultPoint = Bonus::all()->first()['defaultPoint'];
-        } catch (\Exception $e) {
-            $defaultPoint = 25;
-        }
+        // try {
+        //     $defaultPoint = Bonus::all()->first()['defaultPoint'];
+        // } catch (\Exception $e) {
+        //     $defaultPoint = 25;
+        // }
 
         try {
             $subscriptable = $data['subscriptable'];
@@ -47,7 +47,7 @@ class UserController extends Controller
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'role' => 'NORMAL',
-                'point' => $defaultPoint,
+                'point' => 50,
                 'password' => bcrypt($data['password']),
                 'subscriptable' => $subscriptable,
             ])));
@@ -102,7 +102,7 @@ class UserController extends Controller
                         'token' => $resetValidate['token'],
                     ], function($message) use ($data) {
                         $message->to([ $data['email'], ])->subject('密碼重置信件');
-                        $message->from(env('MAIL_USERNAME'), $name = "明谷生機 MeansGood");
+                        $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
                     });
 
                     return PublicServiceProvider::exception('密碼重置信件已寄送，請至您的註冊信箱查看。');
@@ -121,7 +121,7 @@ class UserController extends Controller
                         'token' => $resetValidate['token'],
                     ], function($message) use ($data) {
                         $message->to([ $data['email'], ])->subject('密碼重置信件');
-                        $message->from(env('MAIL_USERNAME'), $name = "明谷生機 MeansGood");
+                        $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
                     });
 
                     return PublicServiceProvider::exception('密碼重置信件已寄送，請至您的註冊信箱查看。');

@@ -38,7 +38,7 @@ Route::get('/admin/reset', function () {
 *****************/
 Route::get('/account/list', function () {
     return view('backend.account.accountList', [
-        'panelTitle' => '會員列表'
+        'panelTitle' => '會員資料列表'
     ]);
 });
 
@@ -48,14 +48,14 @@ Route::get('/account/list', function () {
 *****************/
 Route::get('/post/add', function () {
     return view('backend.post.addPost', [
-        'panelTitle' => '新增文章',
+        'panelTitle' => '新增最新消息',
         'mode' => 'add'
     ]);
 });
 
 Route::get('/post/edit/{guid}', function ($guid) {
     return view('backend.post.addPost', [
-        'panelTitle' => '編輯文章',
+        'panelTitle' => '編輯最新消息',
         'mode' => 'edit',
         'guid' => $guid
     ]);
@@ -63,25 +63,25 @@ Route::get('/post/edit/{guid}', function ($guid) {
 
 Route::get('/post/list', function () {
     return view('backend.post.postList', [
-        'panelTitle' => '文章列表'
+        'panelTitle' => '最新消息列表'
     ]);
 });
 
 Route::get('/post/postOrder', function () {
     return view('backend.post.postOrder', [
-        'panelTitle' => '文章排序設定'
+        'panelTitle' => '最新消息排序設定'
     ]);
 });
 
 Route::get('/post/category', function () {
     return view('backend.post.category', [
-        'panelTitle' => '文章類別管理'
+        'panelTitle' => '最新消息類別管理'
     ]);
 });
 
 Route::get('/post/categoryOrder', function () {
     return view('backend.post.categoryOrder', [
-        'panelTitle' => '文章類別排序'
+        'panelTitle' => '最新消息類別排序'
     ]);
 });
 
@@ -160,8 +160,47 @@ Route::get('/business/giftOrder', function () {
 Route::get('/page/managment', function()
 {
     return view('backend.page.pageManagment', [
-        'panelTitle' => '頁面管理'
+        'panelTitle' => '網站資訊'
     ]);
+});
+Route::get('/page/banner', function()
+{
+    return view('backend.page.bannerManagment', [
+        'panelTitle' => '首頁輪播'
+    ]);
+});
+Route::get('/page/add', function ()
+{
+    return view('backend.page.add', [
+        'panelTitle' => '頁面列表',
+        'mode' => 'add',
+    ]);
+});
+Route::get('/page/list', function ()
+{
+    return view('backend.page.list', [
+        'panelTitle' => '頁面列表',
+        'type' => 'page'
+    ]);
+});
+Route::get('/page/block', function ()
+{
+    return view('backend.page.list', [
+        'panelTitle' => '區塊列表',
+        'type' => 'block'
+    ]);
+});
+Route::get('/page/edit/{guid}', function($guid)
+{
+    return view('backend.page.add', [
+        'panelTitle' => '編輯頁面',
+        'mode' => 'edit',
+        'guid' => $guid
+    ]);
+});
+Route::get('/page/builder', function ()
+{
+    return view('backend.page.pageBuilder');
 });
 
 /**
@@ -182,11 +221,33 @@ Route::get('/order/shipping-method', function()
 });
 
 
-/*****************
-    MEDIA
-*****************/
+/**
+ * MEDIA
+ */
 Route::get('/media/manager', function () {
     return view('backend.media.manager', [
         'panelTitle' => '媒體與檔案'
+    ]);
+});
+
+/**
+ * Other
+ */
+Route::get('/meta/notice', function ()
+{
+    return view('backend.meta.notice', [
+        'panelTitle' => '購物須知'
+    ]);
+});
+Route::get('/meta/privacy', function ()
+{
+    return view('backend.meta.privacy', [
+        'panelTitle' => '隱私權政策'
+    ]);
+});
+Route::get('/meta/remind', function ()
+{
+    return view('backend.meta.remind', [
+        'panelTitle' => '安心購物宣言'
     ]);
 });

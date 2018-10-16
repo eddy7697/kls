@@ -7,6 +7,7 @@
 /public/images
 /public/styles
 /public/apple-touch-icon.png
+/public/js/product-methods.js
 /storage/*.key
 /vendor
 /.idea
@@ -16,4 +17,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
-public/mix-manifest.json
+/public/mix-manifest.json

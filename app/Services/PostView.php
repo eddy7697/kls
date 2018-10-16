@@ -48,6 +48,6 @@ class PostView
             $int = 15;
         }
 
-        return Product::where('category', $category)->paginate($int);
+        return Post::where('postCategory', $category)->paginate($int);
     }
 }

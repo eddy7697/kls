@@ -26,32 +26,38 @@ class PostController extends Controller
     public function index()
     {
         if (Auth::user()->role == 'ADMIN') {
-            return $posts = DB::table('posts')->paginate(15);
+            // return $posts = DB::table('posts')->paginate(15);
+            return DB::table('posts')
+                     ->leftJoin('categories', 'posts.postCategory', '=', 'categories.categoryGuid')
+                     ->select('posts.*', 'categories.categoryTitle')
+                     ->paginate(15);
         }
     }
 
-    Public function getCategory()
+    Public function getCategory(Request $request, $category)
     {
-        $data = Post::all();
-        $categoryData = array();
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
+        $data = Post::paginate(15);
+        // $postData = array();
 
-        for ($i=0; $i < count($data); $i++) {
-            if ($data[$i]['category'] == null) {
-                $category = null;
-                $categoryGuid = null;
-            } else {
-                $category = Category::where('guid', $data[$i]['category'])->get()[0]->title;
-                $categoryGuid = Category::where('guid', $data[$i]['category'])->get()[0]->guid;
-            }
+        if (Auth::user()->role == 'ADMIN') {
 
-            array_push($categoryData, [
-                'productGuid' => $data[$i]['guid'],
-                'categoryGuid' => $categoryGuid,
-                'title' => $category
-            ]);
+            $posts = DB::table('posts')
+                          ->where('postCategory', $category)
+                          ->orderBy($flag, $order)
+                          ->leftJoin('categories', 'posts.postCategory', '=', 'categories.categoryGuid')
+                          ->select('posts.*', 'categories.categoryTitle')
+                          ->paginate(15);
+
+            $status = 200;
+            $message = 'Get post information success.';
+        } else {
+            $status = 425;
+            $message = 'Permission denied.';
+            $data = null;
         }
-
-        return $categoryData;
+        return $posts;
     }
 
     /**
@@ -69,10 +75,10 @@ class PostController extends Controller
         // return $data;
         if (Auth::user()->role == 'ADMIN') {
 
-            if ($data['category'] == 'null') {
+            if ($data['postCategory'] == 'null') {
                 $category = null;
             } else {
-                $category = $data['category'];
+                $category = $data['postCategory'];
             }
 
             if ($data['schedulePost'] == null) {
@@ -97,15 +103,15 @@ class PostController extends Controller
             }
 
             $createPost = Post::create([
-                'guid' => str_random(42),
+                'postGuid' => str_random(42),
                 'author' => $creatorGuid,
                 'authorName' => $creator,
-                'title' => $data['title'],
-                'category' => $category,
+                'postTitle' => $data['postTitle'],
+                'postCategory' => $category,
                 'content' => $data['content'],
                 'featureImage' => $data['featureImage'],
                 'seoTitle' => $data['seoTitle'],
-                'customPath' => $data['customPath'],
+                'customPath' => str_random(6),
                 'seoKeyword' => $data['seoKeyword'],
                 'socialImage' => $data['socialImage'],
                 'seoDescription' => $data['seoDescription'],
@@ -144,7 +150,7 @@ class PostController extends Controller
 
     public function getPost($guid)
     {
-        return Post::where('guid', $guid)->first();
+        return Post::where('postGuid', $guid)->first();
     }
 
     /**
@@ -157,27 +163,15 @@ class PostController extends Controller
     public function update(Request $request, $guid)
     {
         $data = $request->all();
-        $postRow = Post::where('guid', $guid);
+        $postRow = Post::where('postGuid', $guid);
 
         // return $data;
         if (Auth::user()->role == 'ADMIN') {
 
-            if ($data['category'] == 'null') {
+            if ($data['postCategory'] == 'null') {
                 $category = null;
             } else {
-                $category = $data['category'];
-            }
-
-            if ($data['schedulePost'] == null) {
-                $schedulePost = '1900-01-01 00:00:01';
-            } else {
-                $schedulePost = $data['schedulePost'];
-            }
-
-            if ($data['scheduleDelete'] == null) {
-                $scheduleDelete = '3000-12-31 23:59:59';
-            } else {
-                $scheduleDelete = $data['scheduleDelete'];
+                $category = $data['postCategory'];
             }
 
             switch ($data['isPublish']) {
@@ -190,8 +184,8 @@ class PostController extends Controller
             }
 
             $updatePost = $postRow->update([
-                'title' => $data['title'],
-                'category' => $category,
+                'postTitle' => $data['postTitle'],
+                'postCategory' => $category,
                 'content' => $data['content'],
                 'featureImage' => $data['featureImage'],
                 'seoTitle' => $data['seoTitle'],
@@ -200,8 +194,8 @@ class PostController extends Controller
                 'socialImage' => $data['socialImage'],
                 'seoDescription' => $data['seoDescription'],
                 'isPublish' => $isPublish,
-                'schedulePost'=> $schedulePost,
-                'scheduleDelete' => $scheduleDelete
+                'schedulePost'=> $data['schedulePost'],
+                'scheduleDelete' => $data['scheduleDelete']
             ]);
 
             if ($updatePost) {
@@ -244,12 +238,35 @@ class PostController extends Controller
         $data = $request->all()['data'];
 
         for ($i=0; $i < count($data); $i++) {
-            Post::where('guid', $data[$i])->delete();
+            Post::where('postGuid', $data[$i])->delete();
         }
 
         // Post::all()->searchable();
 
-        return response()->json([ 'status' => 200, 'message' => '文章刪除成功' ], 200);
+        return response()->json([ 'status' => 200, 'message' => '最新消息刪除成功' ], 200);
+    }
+
+    /**
+     * 更新發布狀態
+     */
+    public function updatePublishStatus($guid, Request $request)
+    {
+        $data = $request->all();
+
+        try {
+            return Post::where('postGuid', $guid)->update([
+                'isPublish' => $data['isPublish'],
+            ]);
+
+            $status = 200;
+            $message = 'Update status success.';
+        } catch (\Exception $e) {
+            $status = 500;
+            $message = $e->getMessage();
+
+        }
+
+        return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
 
     /**

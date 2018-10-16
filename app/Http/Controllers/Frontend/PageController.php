@@ -101,6 +101,22 @@ class PageController extends Controller
         ]);
     }
 
+    public function privacy()
+    {
+        return view('frontend.privacy.privacy', [
+            'isThumbShow' => true,
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;隱私權政策'
+        ]);
+    }
+
+    public function remind()
+    {
+        return view('frontend.privacy.remind', [
+            'isThumbShow' => true,
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;安心購物宣言'
+        ]);
+    }
+
     public function notice()
     {
         return view('frontend.privacy.notice', [

@@ -32,22 +32,23 @@ class CategoryController extends Controller
     {
         $data = $request->all();
 
-        return Category::where('type', $data['type'])->get();
+        return Category::where('type', $data['type'])
+                       ->orderBy('sortKey', 'asc')
+                       ->get();
     }
 
     // 新增類別
     public function store(Request $request)
     {
         $data = [
-            'title' => $request->all()['categoryName'],
-            'parentId' => $request->all()['categoryParent'],
+            'categoryTitle' => $request->all()['name'],
+            'parentId' => $request->all()['parentId'],
             'type' => $request->all()['type'],
-            'description' => $request->all()['description'],
-            'featureImage' => $request->all()['featureImage'],
+            'categoryDescription' => $request->all()['description'],
         ];
 
         $validator = Validator::make($data, [
-            'title' => 'required|string|max:255',
+            'categoryTitle' => 'required|string|max:255',
         ])->validate();
 
         if ($data['parentId'] == 'null') {
@@ -56,18 +57,18 @@ class CategoryController extends Controller
 
         try {
             $category = Category::create([
-                'guid' => str_random(42),
-                'title' => $data['title'],
+                'categoryGuid' => str_random(42),
+                'categoryTitle' => $data['categoryTitle'],
                 'parentId' => $data['parentId'],
                 'type' => $data['type'],
-                'description' => $data['description'],
-                'featureImage' => $data['featureImage'],
+                'categoryDescription' => $data['categoryDescription'],
             ]);
 
             $status = 200;
             $message = 'Create category success.';
             $data = $category;
         } catch (\Exception $e) {
+            return $e;
             $status = 400;
             $message = 'Create category fail.';
             $data = null;
@@ -83,10 +84,9 @@ class CategoryController extends Controller
     // 刪除類別
     public function deleteCategory(Request $request)
     {
-        $guid = $request->all()['category'];
+        $categoryGuid = $request->all()['category'];
 
-        // Category::where('guid', $guid)->get();
-        $deleteRow = Category::where('guid', $guid)->delete();
+        $deleteRow = Category::where('categoryGuid', $categoryGuid)->delete();
 
         if ($deleteRow) {
             $status = 200;
@@ -104,7 +104,81 @@ class CategoryController extends Controller
     {
         $data = $request->all();
 
-        return Category::where('guid', $data['category'])
-                ->update(['title' => $data['name']]);
+        return Category::where('categoryGuid', $data['category'])
+                ->update(['categoryTitle' => $data['name']]);
+    }
+
+    /**
+     * 移動類別
+     */
+    public function move(Request $request)
+    {
+        $param = $request->all();
+        // return $param;
+
+        if ($param['parent'] == 'ALL') {
+            $parent = null;
+        } else {
+            $parent = $param['parent'];
+        }
+
+        try {
+            $data = Category::where('categoryGuid', $param['category'])
+                        ->update([
+                            'parentId' => $parent
+                        ]);
+                        
+            foreach($param['nodeMap'] as $key => $value) {
+                Category::where('categoryGuid', $value['guid'])
+                        ->update([
+                            'sortKey' => $value['index']
+                        ]);
+            }
+
+            $status = 200;
+            $message = 'Move category success.';
+        } catch (\Exception $e) {
+            $data = null;
+            $status = 500;
+            $message = 'Move category failed';
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+            'data' => $data
+        ], $status);
+    }
+
+    /**
+     * 排序類別
+     */
+    public function order(Request $request)
+    {
+        $vo = $request->all()['order'];
+        return;
+
+        try {
+            foreach($vo as $key => $value) {
+                Category::where('categoryGuid', $value['guid'])
+                        ->update([
+                            'sortKey' => $value['index']
+                        ]);
+            }
+
+            $status = 200;
+            $data = null;
+            $message = 'Reorder category success';
+        } catch (\Exception $e) {
+            $status = 500;
+            $data = null;
+            $message = 'Reorder category failed';
+        }        
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+            'data' => $data
+        ], $status);
     }
 }

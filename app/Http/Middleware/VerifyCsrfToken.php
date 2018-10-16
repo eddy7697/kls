@@ -17,5 +17,6 @@ class VerifyCsrfToken extends BaseVerifier
         '/logistics-return',
         '/payment_info',
         '/mailtest',
+        '/hppe-callback'
     ];
 }

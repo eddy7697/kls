@@ -15,12 +15,12 @@ class CreatePostTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('guid');
+            $table->string('postGuid');
             $table->string('author');
             $table->string('authorName');
             $table->string('customPath');
-            $table->string('title');
-            $table->string('category')->nullable();
+            $table->string('postTitle');
+            $table->string('postCategory')->nullable();
             $table->longText('content');
             $table->string('featureImage')->nullable();
             $table->string('seoTitle')->nullable();

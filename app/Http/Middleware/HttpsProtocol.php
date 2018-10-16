@@ -20,21 +20,30 @@ class HttpsProtocol
         if (env('APP_ENV') === 'local') {
             return $next($request);
         } else {
-            if (!$request->secure() && env('APP_ENV') === 'prod') {
-                if(preg_match('/www/', $_SERVER['HTTP_HOST']))
-                {
-                    return redirect()->secure($request->getRequestUri());
+            if (config('app.force2www')) {
+                if (!$request->secure() && env('APP_ENV') === 'prod') {
+                    if(preg_match('/www/', $_SERVER['HTTP_HOST']))
+                    {
+                        return redirect()->secure($request->getRequestUri());
+                    } else {
+                        return Redirect::to('https://www.'.$_SERVER['HTTP_HOST'].$request->getRequestUri());
+                    }
                 } else {
-                    return Redirect::to('https://www.'.$_SERVER['HTTP_HOST'].$request->getRequestUri());
+                    if(preg_match('/www/', $_SERVER['HTTP_HOST']))
+                    {
+                        return $next($request);
+                    } else {
+                        return Redirect::to('https://www.'.$_SERVER['HTTP_HOST'].$request->getRequestUri());
+                    }
                 }
             } else {
-                if(preg_match('/www/', $_SERVER['HTTP_HOST']))
-                {
-                    return $next($request);
+                if (!$request->secure()) {
+                    return redirect()->secure($request->getRequestUri());
                 } else {
-                    return Redirect::to('https://www.'.$_SERVER['HTTP_HOST'].$request->getRequestUri());
+                    return $next($request);
                 }
-            }
+            }           
+            
         }
     }
 }
