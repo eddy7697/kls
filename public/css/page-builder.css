@@ -390,8 +390,8 @@ body.devpreview {
   padding: 0px;
   background: none;
   border: none;
-  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
-  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+  -webkit-box-shadow: inset 0 0px 0px transparent;
+  box-shadow: inset 0 0px 0px transparent;
 }
 
 .devpreview .demo .box,
