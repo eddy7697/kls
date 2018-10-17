@@ -42,7 +42,7 @@
 } 
 
 .klsBurger-switch{
-  //display : none;
+  display : none;
   position: fixed;
   background-color: transparent;
   top     : 10px;
@@ -59,6 +59,7 @@
     width           : 100%;
     height          : 4px;
     left            : 0;
+    transition      : 0.3s; 
   }
   span:nth-child(1){
     top: 0px;
@@ -73,6 +74,23 @@
     top: 16px;
   }
 }
+.openNow{
+  span{
+    background-color: $color-white;
+  }
+  span:nth-child(1){
+    opacity: 0;
+  }
+  span:nth-child(2){
+    transform: rotate(45deg);
+  }
+  span:nth-child(3){
+    transform: rotate(-45deg);
+  }
+  span:nth-child(4){
+    opacity: 0;
+  }
+}
 .klsBurger-menu{
   display         : flex;
   justify-content : center;
@@ -80,12 +98,13 @@
   position        : fixed;
   top             : 0;
   left            : -100%;
-  width           : 30%;
+  width           : 40%;
   height          : 100%;
   background-color: rgba(62, 58, 57, 0.8);
   color           : $color-white;
   z-index         : 1000001;
   word-wrap       : normal;
+  transition      : 0.8s; 
   .klsBurger-menu-inner{
     .klsBurger-menu-close{
       position: absolute;
@@ -98,10 +117,17 @@
       padding-left: 0;
       li{
         list-style   : none;
-        margin-top: 25px;
+        margin-top   : 25px;
+        &:hover{
+          a{
+            border-bottom: solid 2px $color-white;
+          }
+        }
         a{
           color          : $color-white;
           text-decoration: none;
+          transition     : 0.5s;
+          padding-bottom : 5px;
         }
       }
     }
@@ -132,6 +158,18 @@
     a{
       color : #C9CACA;
     }
+  }
+}
+
+@keyframes aniBackground{
+  0%{
+    background-position: center 100%;
+  }
+  50%{
+    background-position: center 0%;
+  }
+  100%{
+    background-position: center 100%;
   }
 }
 /*----------header---------*/
@@ -168,6 +206,8 @@
           background-image   : url('/img/logo_backimg.jpg');
           background-size    : cover;
           background-position: center bottom;
+          animation: aniBackground 30s infinite;
+          animation-timing-function: ease-in-out;
           .mark{
             position        : absolute;
             top             : 50%;
@@ -221,9 +261,18 @@
               display        : flex;
               justify-content: flex-start;
               align-items    : center;
+              &:hover{
+                img{
+                  transform: scale(1.5) translateX(-10px);
+                }
+                .shop_contact{
+                  transform: scale(1.3) translateX(10px);
+                }
+              }
               .shop_contact,img{
                 display       : inline-block;
                 vertical-align: middle;
+                transition    : 0.5s;
               }
               img{
                 width : 30px;
@@ -913,8 +962,6 @@
                 }
                 .feedback-Inner{
                   padding : 30px 15px;
-                  height  : 200px;
-                  overflow: hidden;
                   p{
                     font-size: 15px;
                   }
@@ -945,16 +992,22 @@
 
 /*---------RWD---------*/
 @media screen and (max-width: 1024px){
+  .klsBurger-switch{
+    display: block
+  }
   #header{
     .forwardNews{
       a{
       }
     }
     .header_top_area{
+      height: 100%;
+      border-bottom: solid 1px #EDEDED;
       .header_left{
         width: 100%;
         .logo_area{
           .logo{
+            background-position: center center;
             .mark{
               .mark_text{
               }
@@ -1045,49 +1098,7 @@
     }
     
     .navbar{
-      width           : 100%;
-      height          : 10%;
-      z-index         : 2;
-      background-color: $color-grey;
-      font-weight     : 700;
-      margin-bottom   : 0;
-      display         : flex;
-      justify-content : center;
-      align-items     : center;
-      ul{
-        margin : 0;
-        padding: 0;
-        li{
-          font-size : 15px;
-          display   : inline-block;
-          list-style: none;
-          &::after{
-            content         :"";
-            vertical-align  : middle;
-            width           : 1px;
-            height          : 20px;
-            display         : inline-block;
-            background-color: $color-white;
-          }
-          a{
-            text-decoration: none;
-            color          : $color-white;
-            margin         : 0px 30px;
-            padding-bottom : 20px;
-            border-bottom  : solid 3px transparent;
-            transition     : 0.5s ease;
-            &:hover{
-              border-bottom: solid 3px $color-white;
-            } 
-          }
-        }
-        li.nav_final{
-          &::after{
-            content         :"";
-            background-color: transparent;
-          }
-        }
-      }
+      display: none;
     }
   }
 

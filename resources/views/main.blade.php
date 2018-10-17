@@ -70,7 +70,9 @@
 <div class="klsBurger-menu">
     <div class="klsBurger-menu-inner">
         <div class="klsBurger-menu-logo">
-            <img src="/img/KLSLogo.svg" alt="">
+            <a href="/">
+                <img src="/img/KLSLogo.svg" alt="">
+            </a>
         </div>
         <ul>
             <li>
@@ -337,6 +339,7 @@
 <script>
 
     // heights
+      
 $(document).ready(() => {
 
     function get_H(){
@@ -354,6 +357,15 @@ $(document).ready(() => {
         get_H()
     });
 
+    $('.klsBurger-switch').on('click',function(){
+        $(this).toggleClass('openNow');
+        if($('.openNow').length===0){
+            $('.klsBurger-menu').css('left','-100%');
+        }else{
+            $('.klsBurger-menu').css('left',0);
+        };
+    });
+    
 
     $(function() {
         try {
@@ -416,8 +428,10 @@ $(document).ready(() => {
             },
         }
     });
-});
 
+    
+
+});
 
    
 

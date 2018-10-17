@@ -51,6 +51,31 @@
             }
         });
 
+        $('.post_text p').each(function() {
+            console.log($(this).text())
+           var maxwidth = 300;
+           if ($(this).text().length > maxwidth) {
+               $(this).text($(this).text().substring(0, maxwidth));
+               $(this).html($(this).html() + '...');
+           }
+        });
+        $('.newPostTextP').each(function() {
+            console.log($(this).text())
+           var maxwidth = 100;
+           if ($(this).text().length > maxwidth) {
+               $(this).text($(this).text().substring(0, maxwidth));
+               $(this).html($(this).html() + '...');
+           }
+        });
+        $('.feedback-Inner p').each(function() {
+            console.log($(this).text())
+           var maxwidth = 150;
+           if ($(this).text().length > maxwidth) {
+               $(this).text($(this).text().substring(0, maxwidth));
+               $(this).html($(this).html() + '...');
+           }
+        });
+
     </script>
 @endsection
 
@@ -507,10 +532,7 @@
                         <div class="newsText">
                             <p class="newsTextTitle">硬殼旅行箱材質到底該怎麼分呢?</p>
                             <p>2018/07/14</p>
-                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，<br>其實這一點是有一些誤解的！ <br>挑行李箱跟挑水果不一樣啦！ <br>快來聽聽月月怎麼說吧！<br></p>
-                            <a href="">#趕快分享給親朋好友</a>
-                            <br>
-                            <a href="">#凱麗斯KLS旅行箱包專賣店</a>
+                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，<br>其實這一點是有一些誤解的！ <br>挑行李箱跟挑水果不一樣啦！ <br>快來聽聽月月怎麼說吧！<br>#趕快分享給親朋好友<br>#凱麗斯KLS旅行箱包專賣店</p>
                         </div>
                     </div>
                 </div>
@@ -554,10 +576,7 @@
                         <div class="newsText">
                             <p class="newsTextTitle">請大家注意冒用凱麗斯貼文的詐騙</p>
                             <p>2018/07/14</p>
-                            <p class="newPostTextP">請大家注意「非我們官方粉絲團的帳號貼文都不是凱麗斯喔」今天有人冒用我們的名義在公開社團貼文宣稱抽獎活動不是真的喔！！！可能是要騙取個資，請大家要小心喲！</p>
-                            <a href="">#謝謝熱心提醒我們的朋友們</a>
-                            <br>
-                            <a href="">#真是什麼奇怪的壞人都有</a>
+                            <p class="newPostTextP">請大家注意 <br>「非我們官方粉絲團的帳號貼文都不是凱麗斯喔」<br>今天有人冒用我們的名義在公開社團貼文宣稱抽獎活動不是真的喔！！！可能是要騙取個資，請大家要小心喲！<br>#謝謝熱心提醒我們的朋友們<br>#真是什麼奇怪的壞人都有</p>
                         </div>
                     </div>
                 </div>
@@ -578,10 +597,7 @@
                         <div class="newsText">
                             <p class="newsTextTitle">端午連結營業時間公告</p>
                             <p>2018/07/14</p>
-                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，<br>其實這一點是有一些誤解的！ <br>挑行李箱跟挑水果不一樣啦！ <br>快來聽聽月月怎麼說吧！<br></p>
-                            <a href="">#趕快分享給親朋好友</a>
-                            <br>
-                            <a href="">#凱麗斯KLS旅行箱包專賣店</a>
+                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，<br>其實這一點是有一些誤解的！ <br>挑行李箱跟挑水果不一樣啦！ <br>快來聽聽月月怎麼說吧！<br>#趕快分享給親朋好友<br>#凱麗斯KLS旅行箱包專賣店</p>
                         </div>
                     </div>
                 </div>
