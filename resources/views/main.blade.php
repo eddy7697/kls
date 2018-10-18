@@ -257,7 +257,20 @@
 
 <section id="footer">
     <div class="footer_logo">
-
+        <div class="logo_area">
+            <div class="logo">
+                <a href="/" class="mark">
+                    <img src="/img/KLSLogo.svg" alt="">
+                    <p class="mark_text mark_middle">
+                        凱麗絲旅行箱專賣店
+                    </p>
+                    <p class="mark_text mark_bottom">
+                        KLS Baggage Department Store.
+                    </p>
+                </a>
+            </div>
+            <p class="footerCopyRight">Copyright  ©  2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
+        </div>
     </div>
     <div class="footer_contact">
         <div class="footer_addr">
@@ -308,7 +321,11 @@
         </div>
     </div>
     <div class="footer_copy">
-
+        <div class="footer_copy_textArea">
+            <p>陪伴，你每一場華麗的冒險。</p>
+            <p>Every gorgeous adventure, with you.</p>
+        </div>
+        <p class="footerCopyRight">Copyright  ©  2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
     </div>
 </section>
 
