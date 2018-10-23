@@ -2,79 +2,78 @@
 
 @section('custom-script')
     <script>
-        var swiper = new Swiper ('.product_nav_index .tab-pane',{
-            direction : 'horizontal',
-            loop      : true,
-            speed     : 1000,
-            // autoplay  : {
-            //     delay: 10000,
-            //     disableOnInteraction: false,
-            // },
-            navigation: {
-                nextEl: '.right',
-                prevEl: '.left'
-            }
-        });
+        $(document).ready(()=>{
+            var swiper = new Swiper ('.product_nav_index .tab-pane',{
+                direction : 'horizontal',
+                loop      : true,
+                speed     : 1000,
+                navigation: {
+                    nextEl: '.right',
+                    prevEl: '.left'
+                }
+            });
 
-        var swiper = new Swiper ('.feedback-Index',{
-            direction : 'horizontal',
-            loop      : true,
-            speed     : 1000,
-            navigation: {
-                nextEl: '.right',
-                prevEl: '.left'
-            }
-        });
+            var swiper = new Swiper ('.feedback-Index',{
+                direction : 'horizontal',
+                loop      : true,
+                speed     : 1000,
+                navigation: {
+                    nextEl: '.right',
+                    prevEl: '.left'
+                }
+            });
 
-        function color_function(className,color){
-            let z = 
-                $('.porduct_colors')
-                .find(className)
-                .css('background-color' , color)
-            return z    
-        };
+            function color_function(className,color){
+                let z = 
+                    $('.porduct_colors')
+                    .find(className)
+                    .css('background-color' , color)
+                return z    
+            };
+            
+            let product_li_class = $('.porduct_colors li').each(function(a,b){
+                let color_className = b.className
+                switch(color_className)
+                {
+                case 'red': color_function('.red','#C30D23'); break;
+                case 'pink': color_function('.pink','#A40B5D'); break;
+                case 'grey': color_function('.grey','#838584'); break;
+                case 'blue': color_function('.blue','#036EB8'); break;
+                case 'black': color_function('.black','#3E3A39'); break;
+                case 'white': color_function('.white','#FFFFFF'); break;
+                case 'green': color_function('.green','#00A29A'); break;
+                case 'yellow': color_function('.yellow','#C9BC9C'); break;
+                case 'sky_blue': color_function('.sky_blue','#2EA7E0'); break;
+                case 'dark_blue': color_function('.dark_blue','#171C61'); break;
+                }
+            });
+            
+            function newPostTextRWD (x,y){
+                x.each(function() {
+                    var maxwidth = y;
+                       if ($(this).text().length > maxwidth) {
+                           $(this).text($(this).text().substring(0, maxwidth));
+                           $(this).html($(this).html() + '...');
+                       }
+                 });
+            };
+            let newsPostOldText = $('.newPostTextP').text();
+            newPostTextRWD($('.newPostTextP'),100);
+            newPostTextRWD($('.post_text p'),300);
+            newPostTextRWD($('.feedback-Inner p'),150);
+            
+            // $('#product_list li').find('a').on('click', e => {
+            //     $('#product_list li')
+            //         .find('a')
+            //         .removeClass('product_hover')
+            //         .end();
+            //     $(e.target)
+            //         .addClass('product_hover');
+            // }).end();
+         
+        })
         
-        let product_li_class = $('.porduct_colors li').each(function(a,b){
-            let color_className = b.className
-            switch(color_className)
-            {
-            case 'red': color_function('.red','#C30D23'); break;
-            case 'pink': color_function('.pink','#A40B5D'); break;
-            case 'grey': color_function('.grey','#838584'); break;
-            case 'blue': color_function('.blue','#036EB8'); break;
-            case 'black': color_function('.black','#3E3A39'); break;
-            case 'white': color_function('.white','#FFFFFF'); break;
-            case 'green': color_function('.green','#00A29A'); break;
-            case 'yellow': color_function('.yellow','#C9BC9C'); break;
-            case 'sky_blue': color_function('.sky_blue','#2EA7E0'); break;
-            case 'dark_blue': color_function('.dark_blue','#171C61'); break;
-            }
-        });
-
-        $('.post_text p').each(function() {
-            console.log($(this).text())
-           var maxwidth = 300;
-           if ($(this).text().length > maxwidth) {
-               $(this).text($(this).text().substring(0, maxwidth));
-               $(this).html($(this).html() + '...');
-           }
-        });
-        $('.newPostTextP').each(function() {
-            console.log($(this).text())
-           var maxwidth = 100;
-           if ($(this).text().length > maxwidth) {
-               $(this).text($(this).text().substring(0, maxwidth));
-               $(this).html($(this).html() + '...');
-           }
-        });
-        $('.feedback-Inner p').each(function() {
-            console.log($(this).text())
-           var maxwidth = 150;
-           if ($(this).text().length > maxwidth) {
-               $(this).text($(this).text().substring(0, maxwidth));
-               $(this).html($(this).html() + '...');
-           }
-        });
+       
 
     </script>
 @endsection
@@ -250,7 +249,7 @@
             <div class="row">
                 <div class="col-md-12 product_nav">
                     <nav class="nav navbar-default">
-                        <ul class="nav nav-tabs">
+                        <ul id="product_list" class="nav nav-tabs">
                             <li>
                                 <a data-toggle="tab" href="#home"> 
                                     全部商品
@@ -532,7 +531,7 @@
                         <div class="newsText">
                             <p class="newsTextTitle">硬殼旅行箱材質到底該怎麼分呢?</p>
                             <p>2018/07/14</p>
-                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，<br>其實這一點是有一些誤解的！ <br>挑行李箱跟挑水果不一樣啦！ <br>快來聽聽月月怎麼說吧！<br>#趕快分享給親朋好友<br>#凱麗斯KLS旅行箱包專賣店</p>
+                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，其實這一點是有一些誤解的！ 挑行李箱跟挑水果不一樣啦！ 快來聽聽月月怎麼說吧！#趕快分享給親朋好友#凱麗斯KLS旅行箱包專賣店</p>
                         </div>
                     </div>
                 </div>
@@ -553,7 +552,7 @@
                         <div class="newsText">
                             <p class="newsTextTitle">一月一度的直播拍賣會來嚕</p>
                             <p>2018/07/14</p>
-                            <p class="newPostTextP">一樣有超便宜的箱子給大家競標撿便宜<br>另外這次還會介紹這個月剛到的新款！！ <br>就是［DEPARTURE］的煞車箱HD-502S與 細鋁框異形箱HD-515，很多朋友們都在期待<br>想看看闆娘仔細介紹的朋友<br>一定要記得鎖定觀看唷！！！</p>
+                            <p class="newPostTextP">一樣有超便宜的箱子給大家競標撿便宜，另外這次還會介紹這個月剛到的新款！！ ，就是［DEPARTURE］的煞車箱HD-502S與 細鋁框異形箱HD-515，很多朋友們都在期待，想看看闆娘仔細介紹的朋友，一定要記得鎖定觀看唷！！！</p>
                         </div>
                     </div>
                 </div>
@@ -576,7 +575,7 @@
                         <div class="newsText">
                             <p class="newsTextTitle">請大家注意冒用凱麗斯貼文的詐騙</p>
                             <p>2018/07/14</p>
-                            <p class="newPostTextP">請大家注意 <br>「非我們官方粉絲團的帳號貼文都不是凱麗斯喔」<br>今天有人冒用我們的名義在公開社團貼文宣稱抽獎活動不是真的喔！！！可能是要騙取個資，請大家要小心喲！<br>#謝謝熱心提醒我們的朋友們<br>#真是什麼奇怪的壞人都有</p>
+                            <p class="newPostTextP">請大家注意 「非我們官方粉絲團的帳號貼文都不是凱麗斯喔」今天有人冒用我們的名義在公開社團貼文宣稱抽獎活動不是真的喔！！！可能是要騙取個資，請大家要小心喲！#謝謝熱心提醒我們的朋友們#真是什麼奇怪的壞人都有</p>
                         </div>
                     </div>
                 </div>
@@ -597,7 +596,7 @@
                         <div class="newsText">
                             <p class="newsTextTitle">端午連結營業時間公告</p>
                             <p>2018/07/14</p>
-                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，<br>其實這一點是有一些誤解的！ <br>挑行李箱跟挑水果不一樣啦！ <br>快來聽聽月月怎麼說吧！<br>#趕快分享給親朋好友<br>#凱麗斯KLS旅行箱包專賣店</p>
+                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，其實這一點是有一些誤解的！ 挑行李箱跟挑水果不一樣啦！快來聽聽月月怎麼說吧！#趕快分享給親朋好友#凱麗斯KLS旅行箱包專賣店</p>
                         </div>
                     </div>
                 </div>

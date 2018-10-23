@@ -737,6 +737,13 @@
           z-index : 2;
           .nav-tabs{
             border: none;
+            .active{
+              a{
+                background-color: $color-coffee;
+                border          : solid 2px $color-coffee;
+                color           : $color-white;   
+              }
+            }
             li{
               z-index: 2;
               a{
@@ -951,13 +958,18 @@
           padding  : 10px;
 
           .newsTextTitle{
-            color      : $color-black;
-            font-size  : 25px;
-            font-weight: 700;
+            color        : $color-black;
+            font-size    : 25px;
+            font-weight  : 700;
+            white-space  : nowrap;
+            text-overflow: ellipsis;
+            overflow     : hidden;
           }
           .newPostTextP{
             color      : $color-grey;
             line-height: 35px;
+            text-overflow: ellipsis;
+            overflow     : hidden;
           }
           a{
             color          : $color-grey;
@@ -1281,6 +1293,9 @@
 }
 
 @media screen and (max-width: 991px){
+  #products{
+    display: none;
+  }
   #footer{
     .footer_contact{
       display : block;
@@ -1291,7 +1306,7 @@
         margin-bottom: 6px;
         .shop_list{
           .shop{
-            font-size    : 12px;
+            font-size: 12px;
             img{
               width : 30px;
               height: 30px;
