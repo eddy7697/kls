@@ -62,15 +62,30 @@
             newPostTextRWD($('.post_text p'),300);
             newPostTextRWD($('.feedback-Inner p'),150);
             
-            // $('#product_list li').find('a').on('click', e => {
-            //     $('#product_list li')
-            //         .find('a')
-            //         .removeClass('product_hover')
-            //         .end();
-            //     $(e.target)
-            //         .addClass('product_hover');
-            // }).end();
-         
+            $('.newsPost').each(function(){
+                let postText = $(this).find('.newPostTextP');
+                let newsPostOldText = $(this).find('.newPostTextP').text();
+                $(window).resize(function(){
+                    let _width = $(this).width();
+                    if (_width < 1300){
+                        $(postText).text(newsPostOldText);
+                        newPostTextRWD($('.newPostTextP'),70);
+                    }else{
+                        $(postText).text(newsPostOldText);
+                        newPostTextRWD($('.newPostTextP'),100);
+                    };
+                    if (_width < 1200){
+                        newPostTextRWD($('.newPostTextP'),50);
+                    }else{
+                        $(postText).text(newsPostOldText);
+                        newPostTextRWD($('.newPostTextP'),100);
+                    };
+                    if (_width < 991){
+                        $(postText).text(newsPostOldText);
+                    }
+
+                })
+            })
         })
         
        
