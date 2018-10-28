@@ -2,7 +2,19 @@
 *{
   font-family: 微軟正黑體;
 }
-
+.sub-page-header .sub-col-out .sub-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sub-container ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sub-container ul li{
+  list-style: none;
+}
 .section_title{
   margin-top   : 80px;
   margin-bottom: 50px;
