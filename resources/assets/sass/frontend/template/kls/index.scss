@@ -2,19 +2,7 @@
 *{
   font-family: 微軟正黑體;
 }
-.sub-page-header .sub-col-out .sub-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.sub-container ul{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.sub-container ul li{
-  list-style: none;
-}
+
 .section_title{
   margin-top   : 80px;
   margin-bottom: 50px;
@@ -59,10 +47,10 @@
   background-color: rgba(255,255,255,0.8);
   top     : 65px;
   left    : 15px;
-  width   : 32px;
+  width   : 35px;
   z-index : 9999999;
   border  : solid 1px $color-grey;
-  height  : 32px;
+  height  : 29px;
   cursor  : pointer;
   outline : none; 
   span{
@@ -75,7 +63,7 @@
     transition      : 0.3s; 
   }
   span:nth-child(1){
-    top: 6px;
+    top: 7px;
   }
   span:nth-child(2){
     top    : 50%;
@@ -85,7 +73,7 @@
     top: 50%;
   }
   span:nth-child(4){
-    bottom: 6px;
+    bottom: 5px;
   }
 }
 .openNow{
@@ -177,7 +165,9 @@
     }
   }
 }
-
+.closeFilter{
+  transform: rotate(180deg)
+}
 @keyframes aniBackground{
   0%{
     background-position: center 100%;
@@ -278,14 +268,6 @@
               display        : flex;
               justify-content: flex-start;
               align-items    : center;
-              &:hover{
-                img{
-                  transform: scale(1.5) translateX(-10px);
-                }
-                .shop_contact{
-                  transform: scale(1.3) translateX(10px);
-                }
-              }
               .shop_contact,img{
                 display       : inline-block;
                 vertical-align: middle;
@@ -496,8 +478,9 @@
   display        : flex;
   justify-content: center;
   align-items    : stretch;
+  border-top     : solid 1px $color-grey-font-color;
   .footer_logo{
-    background-image   : url('/img/footer_left.jpg');
+    background-image   : url('/img/footer-1.jpg');
     background-position: center;
     background-size    : cover;
     width              : 37.5%;
@@ -569,8 +552,8 @@
             vertical-align: middle;
           }
           img{
-            width : 30px;
-            height: 30px;
+            width : 25px;
+            height: 25px;
           }
           .shop_contact{
             line-height: 5px;
@@ -627,7 +610,7 @@
     }
   }
   .footer_copy{
-    background-image   : url('/img/footer_right.jpg');
+    background-image   : url('/img/footer-2.jpg');
     background-position: center;
     background-size    : cover;
     width              : 37.5%;
@@ -895,7 +878,7 @@
       .newsPost{
         display         : flex;
         justify-content : space-between;
-        align-items     : flex-start;
+        align-items     : stretch;
         background-color: $color-grey-light;
         margin          : 10px;
         padding         : 5px;
@@ -948,24 +931,15 @@
           }
         } 
         .newsImgBox{
-          position      : relative;
-          padding-bottom: 55%;
-          width         : 45%;
+          padding-bottom: 45%;
+          width         : 40%;
           overflow      : hidden;
           border-radius : 20px;
-          
-          .newImg{
-           max-width     : 100%;
-           max-height    : 100%;
-           position      : absolute;
-           top           : 50%;
-           left          : 50%;
-           transform     : translateX(-50%) translateY(-50%);
-           border-radius : 20px; 
-          }
+          background-size: cover;
+          background-position: center;
         }
         .newsText{
-          width    : 55%;
+          width    : 58%;
           font-size: 15px;
           padding  : 10px;
 
@@ -979,7 +953,7 @@
           }
           .newPostTextP{
             color      : $color-grey;
-            line-height: 35px;
+            line-height: 40px;
             text-overflow: ellipsis;
             overflow     : hidden;
           }
@@ -1238,10 +1212,6 @@
               display       : inline-block;
               vertical-align: middle;
             }
-            img{
-              width : 30px;
-              height: 30px;
-            }
             .shop_contact{
               line-height: 5px;
               p{
@@ -1300,8 +1270,6 @@
       display: none;
     }
   }
-
-
 }
 
 @media screen and (max-width: 991px){
@@ -1319,10 +1287,6 @@
         .shop_list{
           .shop{
             font-size: 12px;
-            img{
-              width : 30px;
-              height: 30px;
-            }
           }
         } 
       }
@@ -1437,6 +1401,57 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 600px){
+  #footer{
+    .footer_logo{
+      width: 60%;
+      .logo_area{
+        .logo{
+          a{
+            img{
+              
+            }
+            .mark_text{
+              display: none;
+            }
+          }
+        }
+        .footerCopyRight{
+
+        }
+      }
+    }
+    .footer_contact{
+      width: 40%;
+    }
+  }
+}
+@media screen and (max-width: 460px){
+  #footer{
+    .footer_logo{
+      width: 50%;
+      .logo_area{
+        .logo{
+          a{
+            img{
+              
+            }
+            .mark_text{
+              display: none;
+            }
+          }
+        }
+        .footerCopyRight{
+
+        }
+      }
+    }
+    .footer_contact{
+      width: 50%;
     }
   }
 }

@@ -3,27 +3,55 @@
 @section('custom-script')
     <script src="/js/plugins/lightbox2/dist/js/lightbox.min.js" charset="utf-8"></script>
     <script type="text/javascript">
+        let innerHtml =　`  <div class="product-label"><img src="/img/product-logo.jpg" alt=""></div>
+                            <div class="product-title"><p>細鋁框板異型箱 - 銀</p></div>
+                            <div class="product-style">
+                                <p class="product-model">型號 : <span>HD-515</span></p>
+                                <p class="product-size">尺寸 : <span>27 吋</span> 實際大小 : <span>W40xD34xH69</span>容量 : <span>76.6L</span></p>
+                            <div class="product-text">
+                                <ul>
+                                    <li>&nbsp;&nbsp;外殼100%採用德國拜耳(Bayer)PC製成，耐衝擊性佳。</li>
+                                    <li>&nbsp;&nbsp;美國海關認證TSA密碼鎖。</li>
+                                    <li>&nbsp;&nbsp;360度高彈性PU灌注，寂靜無聲頂級萬向輪組。</li>
+                                    <li>&nbsp;&nbsp;輪子採用最大65ｍｍ設計，輪徑更大、抓地力更穩。</li>
+                                    <li>&nbsp;&nbsp;三段式符合人體工學的頂級鋁合金滑順拉桿。</li>
+                                    <li>&nbsp;&nbsp;提把採用杜邦海翠爾，韌性更好、耐久度更佳。</li>
+                                    <li>&nbsp;&nbsp;對開拉鍊箱體、完美內裝。</li>
+                                </ul>
+                            </div>
+                            <p class="product-price">$ 12,000</p>
+                        </div>
+                        <div class="productHeart"><img src="/img/productHeart.svg" alt=""></div>`;
+        $('.product-innertext').append(innerHtml);
+        $('.collapseBtn').on('click',function(){
+            $('.filter-title,.filter').fadeToggle();
+            $(this).find('img').toggleClass('closeFilter');
+        });
+        $('.filter-remakeBtn').on('click',e => {
+            for (let index = 0; index < $('.filters-selects').find('input').length; index++) {
+                $('.filters-selects').find('input')[index].checked = false;
+            };
+        });              
     </script>
 @endsection
 
 @section('custom-style')
     <link rel="stylesheet" href="/js/plugins/lightbox2/dist/css/lightbox.min.css">
     <style media="screen">
-        .sub-page-header .sub-page-header-top{
-            padding-bottom: 50px;
-        }
         .sub-page-header .sub-page-header-inner{
             background-color: #3E3A39;
             display: flex;
             justify-content: space-around;
             align-items: center;
+            width: 100%;
+            margin: 0;
+            padding: 15px 0px;
         }
         .sub-page-header .sub-page-header-inner .sub-logo{
             display: flex;
             justify-content: center;
             align-items: flex-end;
             position: relative;
-            bottom: 10px;
         }
         .sub-page-header .sub-page-header-inner .sub-logo p{
             color: #fff;
@@ -58,7 +86,19 @@
             font-size: 18px;
             white-space: nowrap;
             text-decoration: none;
+        }
+        .filter-area{
         }   
+        .filter-area .breadCrumbs{
+            margin: 30px 0;
+        }
+        .filter-area .breadCrumbs a{
+            text-decoration: none;
+            color: #636b6f;
+        }
+        .filter-area .breadCrumbs .breadCrumbs-current{
+            color: #FBB03B;
+        }
         .filter-area .filter-title{
             text-align: center;
         }
@@ -75,52 +115,67 @@
         .filter-area .filter-filtering .filter-filters .filters-title{
 
         }
-        .filter-area .filter-filtering .filter-filters .filters-selects{
-
+        .filter-area .filter-filtering .filter-filters .filters-selects label{
+            margin-left: 1px;
+            margin-right: 5px;
         }
-        .filter-area .filter-filtering .filter-filters .filters-selects .select{
-
+        
+        .filter-product{
+            color: #E6E6E6;
         }
-        .filter-area .filter-filtering .filter-filters .filters-selects .check-circle{
-            border: solid 1px grey;
-            border-radius: 100%;
-            width: 12px;
-            height: 12px;
-            margin-bottom: 0;
+        .filter-product .filter-product-row{
+            padding: 50px 0;
+        }
+        .filter-product .col-md-6{
+            padding: 15px;
+        }
+        .filter-product .col-md-6 .product-inner{
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            background-color: #fff;
+            margin: 20px 0;
             position: relative;
         }
-        .filter-area .filter-filtering .filter-filters .filters-selects .check-circle .check-circle-inner{
-            border-radius: 100%;
-            background-color: grey;
-            width: 7px;
-            height: 7px;
+        .filter-product .product-inner .productHeart{
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-            opacity: 0;
-            transition: 0.3s
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #E6E6E6;
+            padding: 4px 7px 7px 7px;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .filter-area .filter-filtering .filter-filters .filters-selects input[type='checkbox'] {
-            display: none;
+        .filter-product .product-inner .productHeart:hover{
+            background-color: #636b6f;
         }
-        .filter-area .filter-filtering .filter-filters .filters-selects input[type='checkbox']:checked + .check-circle .check-circle-inner{
-            opacity: 1;
+        .filter-product .product-inner .productHeart:active{
+            background-color: #E6E6E6;
         }
-        .filter-product{
-            
+        .filter-product .product-inner .product-img{
+            width: 35%;
+            background-size: cover;
+            background-position: center;
         }
-        .filter-product .product-img{
-
+        .filter-product .product-inner .product-innertext{
+            width: 65%;
+            margin-left: 20px;
+            padding: 15px 5px;
         }
         .filter-product .product-innertext .product-label{
 
         }
-        .filter-product .product-innertext .product-title{
-            
+        .filter-product .product-innertext .product-title p{
+            font-size: 25px;
+            font-weight: 700;
+            color: black;
         }
         .filter-product .product-innertext .product-style{
-
+            font-size: 12px;
+            line-height: 15px;
         }
         
         .filter-product .product-innertext .product-style .product-model{
@@ -129,18 +184,133 @@
         .filter-product .product-innertext .product-style .product-size{
 
         }
+        .filter-product .product-innertext .product-style .product-size span{
+            margin-right: 20px;
+        }
         .filter-product .product-innertext .product-style .product-text{
 
         }
         .filter-product .product-innertext .product-style .product-price{
-
+            font-size: 20px;
+            font-weight: 700;
+            color: #636b6f;
+        }
+        .filter-remakeBtn{
+            background-color: #333333;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            color: #fff;
+            position: absolute;
+            right: 5px;
+            bottom: -15px;
+            padding: 3px 10px;
+            transition: 0.3s;
+        }
+        .filter-remakeBtn:hover{
+            background-color: #636b6f;
+        }
+        .filter-remakeBtn:hover .filter-remakeBtnImg{
+            transform: rotate(180deg);
+        }   
+        .filter-remakeBtn:active{
+            background-color: #333333;
+        }
+        .filter-remakeBtn .filter-remakeBtnImg{
+            width: 25px;
+            height: 20px;
+            transition: 0.5s;
+        }
+        .productCount{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: solid 1px #eeeeee;
+            margin-bottom: 20px;
+            font-weight: 100;
+        }
+        .productCount .productCount-left{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .productCount .productCount-icon{
+            margin-right: 15px;
+        }
+        .productCount .productCount-icon img{
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .productCount .productCount-icon img:nth-child(2){
+            width: 18px;
+            height: 18px;
+        }
+        .productCount .productCount-sort{
+            cursor: pointer;
+        }
+        .productCount .productCount-number{
+            font-size: 18px;
+        }
+        .productCount .productCount-number span:nth-child(3){
+            font-size: 25px;
+        }
+        .collapseBtn{
+            color: #fff;
+            background-color: #333333;
+            border: none;
+            outline: none;
+            padding: 5px 25px;
+            position: absolute;
+            bottom: -32px;
+            right: 10px;
+            transition: 0.3s;
+        }
+        .collapseBtn:hover{
+            background-color: #636b6f;
+        }
+        .collapseBtn:active{
+            background-color: #333333;
+        }
+        .collapseBtn img{
+            width: 18px;
+            height: 18px;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .product-label img{
+            width: 55px;
+        }
+        @media screen and (max-width: 1200px) {
+            .filter-product .col-md-6 .product-inner{
+                display: block;
+            }
+            .filter-product .product-inner .product-img {
+                width: 100%;
+                padding-bottom: 90%;
+            }
+            .filter-product .product-inner .product-innertext{
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+        @media screen and (max-width: 1024px){
+            .sub-page-header{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 768px){
+            .productCount{
+                display: block;
+                text-align: center;
+            }
         }
     </style>
 @endsection
 
 @section('content')
     <div class="container-fulid sub-page-header">
-        <div class="row sub-page-header-top"></div>
         <div class="row sub-page-header-inner">
             <div class="sub-logo">
                 <a href="/">
@@ -190,15 +360,17 @@
             </div>
         </div>
     </div> 
- 
     <div class="container filter-area">
-        <div class="row">
+        <div class="col-md-12 breadCrumbs">
+            <p><a href="/">首頁 > </a><span class="breadCrumbs-current">&nbsp;&nbsp;品牌行李箱</span></p>
+        </div>
+        <div class="row filter">
             <div class="col-md-12 filter-title">
                <h1>品牌行李箱</h1>
                <p>這裡總有一款屬於你的冒險</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;">
             <div class="col-md-12 filter-filtering">
                 <div class="col-md-4">
                     <div class="filter-filters">
@@ -206,59 +378,18 @@
                             <p>品牌 Brand</p>
                         </div>
                         <hr>
-                        <div class="filters-selects">
-                            <div class="select selectBrand">
-                                <input id="departure" type="checkbox">
-                                <label class="check-circle" for="departure"><div class="check-circle-inner"></div></label>
-                                <label for="departure">Departure</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="crown" type="checkbox">
-                                <label class="check-circle" for="crown"><div class="check-circle-inner"></div></label>
-                                <label for="crown">CROWN 皇冠</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="samsonite" type="checkbox">
-                                <label class="check-circle" for="samsonite"><div class="check-circle-inner"></div></label>
-                                <label for="samsonite">SAMSONITE 新秀麗</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="novita" type="checkbox">
-                                <label class="check-circle" for="novita"><div class="check-circle-inner"></div></label>
-                                <label for="novita">NOVITA</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="yue" type="checkbox">
-                                <label class="check-circle" for="yue"><div class="check-circle-inner"></div></label>
-                                <label for="yue">YUE</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="allBrand" type="checkbox">
-                                <label class="check-circle" for="allBrand"><div class="check-circle-inner"></div></label>
-                                <label for="allBrand">全部品牌</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="oossack" type="checkbox">
-                                <label class="check-circle" for="oossack"><div class="check-circle-inner"></div></label>
-                                <label for="oossack">OOSSACK</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="ad" type="checkbox">
-                                <label class="check-circle" for="ad"><div class="check-circle-inner"></div></label>
-                                <label for="ad">AD 亞蘭德倫</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="mom" type="checkbox">
-                                <label class="check-circle" for="mom"><div class="check-circle-inner"></div></label>
-                                <label for="mom">MOM</label>
-                            </div>
-                            <div class="select selectBrand">
-                                <input id="at" type="checkbox">
-                                <label class="check-circle" for="at"><div class="check-circle-inner"></div></label>
-                                <label for="at">AT 美國旅行者</label>
-                            </div>
-                            
-                        </div>
+                        <form class="filters-selects">
+                            <input name="brand" id="departure" type="radio"><label for="departure">Departure</label>
+                            <input name="brand" id="crown" type="radio"><label for="crown">CROWN 皇冠</label>
+                            <input name="brand" id="samsonite" type="radio"><label for="samsonite">SAMSONITE 新秀麗</label>
+                            <input name="brand" id="novita" type="radio"><label for="novita">NOVITA</label>
+                            <input name="brand" id="yue" type="radio"><label for="yue">YUE</label>
+                            <input name="brand" id="allBrand" type="radio"><label for="allBrand">全部品牌</label>
+                            <input name="brand" id="oossack" type="radio"><label for="oossack">OOSSACK</label>
+                            <input name="brand" id="ad" type="radio"><label for="ad">AD 亞蘭德倫</label>
+                            <input name="brand" id="mom" type="radio"><label for="mom">MOM</label>
+                            <input name="brand" id="at" type="radio"><label for="at">AT 美國旅行者</label>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-4">  
@@ -267,38 +398,14 @@
                         <p>尺寸 Size</p>
                         </div>
                         <hr>
-                        <div class="filters-selects">
-                            <div class="select selectSize">
-                                <input id="20" type="checkbox">
-                                <label class="check-circle" for="pc"><div class="check-circle-inner"></div></label>
-                                <label for="20">20吋以下</label>
-                            </div>
-                            <div class="select selectSize">
-                                <input id="23" type="checkbox">
-                                <label class="check-circle" for="pc"><div class="check-circle-inner"></div></label>
-                                <label for="23">20 - 23吋</label>
-                            </div>    
-                            <div class="select selectSize">
-                                <input id="25" type="checkbox">
-                                <label class="check-circle" for="pc"><div class="check-circle-inner"></div></label>
-                                <label for="25">23 - 25吋</label>
-                            </div>    
-                            <div class="select selectSize">
-                                <input id="29" type="checkbox">
-                                <label class="check-circle" for="pc"><div class="check-circle-inner"></div></label>
-                                <label for="29">27 - 29吋</label>
-                            </div>    
-                            <div class="select selectSize">
-                                <input id="30" type="checkbox">
-                                <label class="check-circle" for="pc"><div class="check-circle-inner"></div></label>
-                                <label for="30">30吋以上</label>
-                            </div>    
-                            <div class="select selectSize">
-                                <input id="allSize" type="checkbox">
-                                <label class="check-circle" for="pc"><div class="check-circle-inner"></div></label>
-                                <label for="allSize">全部尺寸</label>
-                            </div>    
-                        </div>
+                        <form class="filters-selects">
+                            <input name="size" id="20" type="radio"><label for="20">20吋以下</label>
+                            <input name="size" id="23" type="radio"><label for="23">20 - 23吋</label>
+                            <input name="size" id="25" type="radio"><label for="25">23 - 25吋</label>
+                            <input name="size" id="29" type="radio"><label for="29">27 - 29吋</label>
+                            <input name="size" id="30" type="radio"><label for="30">30吋以上</label>
+                            <input name="size" id="allSize" type="radio"><label for="allSize">全部尺寸</label>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -307,28 +414,12 @@
                             <p>旅程 Trip</p>
                         </div>
                         <hr>
-                        <div class="filters-selects">
-                            <div class="select selectTrip">
-                                <input id="aDay" type="checkbox">   
-                                <label class="check-circle" for="aDay"><div class="check-circle-inner"></div></label>
-                                <label for="aDay">當日來回</label>
-                            </div>
-                            <div class="select selectTrip">
-                                <input id="aWeek" type="checkbox">
-                                <label class="check-circle" for="aWeek"><div class="check-circle-inner"></div></label>
-                                <label for="aWeek">3 - 7天</label>
-                            </div>
-                            <div class="select selectTrip">
-                                <input id="twoWeeks" type="checkbox">
-                                <label class="check-circle" for="twoWeeks"><div class="check-circle-inner"></div></label>
-                                <label for="twoWeeks">7 - 14天</label>
-                            </div>
-                            <div class="select selectTrip">
-                                <input id="long" type="checkbox">
-                                <label class="check-circle" for="long"><div class="check-circle-inner"></div></label>
-                                <label for="long">Long Stay</label>
-                            </div>
-                        </div>
+                        <form class="filters-selects">
+                            <input name="trip" id="aDay" type="radio"><label for="aDay">當日來回</label>
+                            <input name="trip" id="aWeek" type="radio"><label for="aWeek">3 - 7天</label>
+                            <input name="trip" id="twoWeeks" type="radio"><label for="twoWeeks">7 - 14天</label>
+                            <input name="trip" id="long" type="radio"><label for="long">Long Stay</label>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -339,34 +430,13 @@
                             <p>價格 Price</p>
                         </div>
                         <hr>
-                        <div class="filters-selects">
-                            <div class="select selectPrice">
-                                <input id="5000" type="checkbox">
-                                <label class="check-circle" for="5000"><div class="check-circle-inner"></div></label>
-                                <label for="5000">0 - 5000</label>
-                            </div>
-                            <div class="select selectPrice">
-                                <input id="10000" type="checkbox">
-                                <label class="check-circle" for="10000"><div class="check-circle-inner"></div></label>
-                                <label for="10000">5000 - 10000</label>
-                            </div>
-                            <div class="select selectPrice">
-                                <input id="15000" type="checkbox">
-                                <label class="check-circle" for="15000"><div class="check-circle-inner"></div></label>
-                                <label for="15000">10000 - 15000</label>
-                            </div>
-                            <div class="select selectPrice">
-                                <input id="20000" type="checkbox">
-                                <label class="check-circle" for="20000"><div class="check-circle-inner"></div></label>
-                                <label for="20000">15000 - 20000</label>
-                            </div>
-                                
-                            <div class="select selectPrice">
-                                <input id="20000Up" type="checkbox">
-                                <label class="check-circle" for="20000Up"><div class="check-circle-inner"></div></label>
-                                <label for="20000Up">20000 以上</label>
-                            </div>
-                        </div>
+                        <form class="filters-selects">
+                            <input name="price" id="5000" type="radio"><label for="5000">0 - 5000</label>
+                            <input name="price" id="10000" type="radio"><label for="10000">5000 - 10000</label>
+                            <input name="price" id="15000" type="radio"><label for="15000">10000 - 15000</label>
+                            <input name="price" id="20000" type="radio"><label for="20000">15000 - 20000</label>
+                            <input name="price" id="20000Up" type="radio"><label for="20000Up">20000 以上</label>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -375,89 +445,100 @@
                             <p>材質 Material</p>
                         </div>
                         <hr>
-                        <div class="filters-selects">
-                            <div class="select selectMaterial">
-                                <input id="aluminum" type="checkbox">
-                                <label class="check-circle" for="aluminum"><div class="check-circle-inner"></div></label>
-                                <label for="aluminum">鋁框</label>
-                            </div>
-                            <div class="select selectMaterial">
-                                <input id="pc" type="checkbox">
-                                <label class="check-circle" for="pc"><div class="check-circle-inner"></div></label>
-                                <label for="pc">PC</label>
-                            </div>    
-                            <div class="select selectMaterial">
-                                <input id="abs" type="checkbox">
-                                <label class="check-circle" for="abs"><div class="check-circle-inner"></div></label>
-                                <label for="abs">ABS</label>
-                            </div> 
-                            <div class="select selectMaterial">
-                                <input id="nylon" type="checkbox">
-                                <label class="check-circle" for="nylon"><div class="check-circle-inner"></div></label>
-                                <label for="nylon">防水尼龍</label>
-                            </div>
-                            <div class="select selectMaterial">
-                                <input id="pet" type="checkbox">
-                                <label class="check-circle" for="pet"><div class="check-circle-inner"></div></label>
-                                <label for="pet">PET</label> 
-                            </div>
-                            <div class="select selectMaterial">
-                                <input id="carbon" type="checkbox">
-                                <label class="check-circle" for="carbon"><div class="check-circle-inner"></div></label>
-                                <label for="carbon">碳纖維</label>
-                            </div>
-                            <div class="select selectMaterial">
-                                <input id="allMaterial" type="checkbox">
-                                <label class="check-circle" for="allMaterial"><div class="check-circle-inner"></div></label>
-                                <label for="allMaterial">全部材質</label>
-                            </div>
-                        </div>
+                        <form class="filters-selects">
+                            <input name="material" id="aluminum" type="radio"><label for="aluminum">鋁框</label>
+                            <input name="material" id="pc" type="radio"><label for="pc">PC</label>
+                            <input name="material" id="abs" type="radio"><label for="abs">ABS</label>
+                            <input name="material" id="nylon" type="radio"><label for="nylon">防水尼龍</label>
+                            <input name="material" id="pet" type="radio"><label for="pet">PET</label> 
+                            <input name="material" id="carbon" type="radio"><label for="carbon">碳纖維</label>
+                            <input name="material" id="allMaterial" type="radio"><label for="allMaterial">全部材質</label>
+                        </form>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <button>重製選取條件</button>
+                <button class="filter-remakeBtn">
+                    <img class="filter-remakeBtnImg" src="/img/remakeIcon.svg" alt="">
+                    重製選取條件
+                </button>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="position: relative;">
+        <div class="row">
+            <div class="col-md-12 productCount">
+                <div class="productCount-left">
+                    <div class="productCount-icon">
+                        <img class="cube01" src="/img/selectCube-01.svg" alt="">
+                        <img class="cube02" src="/img/selectCube-02.svg" alt="">
+                    </div>
+                    <div class="productCount-sort">
+                        <span>價格由高到低排列 ↓</span>
+                        <span>價格由低到高排列 ↑</span>
+                    </div>
+                </div>
+                <div class="productCount-number">
+                    <span>顯示總數</span>
+                    <span>08/</span>
+                    <span>127</span>
                 </div>
             </div>
         </div>
+        <button class="collapseBtn">
+            收合
+            <img src="/img/collapseIcon.png" alt="">
+        </button>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fulid filter-product">
-        <div class="row">
+    <div class="container filter-product">
+        <div class="row filter-product-row">
             <div class="col-md-6">
-                <div class="product-img">
-                    <img src="/img/product01.jpg" alt="">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
+                    <div class="product-innertext"></div>
                 </div>
-                <div class="product-innertext">
-                    <div class="product-label">
-                        <img src="" alt="">
-                    </div>
-                    <div class="product-title">
-                        <p>細鋁框板異型箱 - 銀</p>
-                    </div>
-                    <div class="product-style">
-                        <p class="product-model">
-                            型號 : <span>&nbsp;&nbsp;</span>
-                        </p>
-                        <p class="product-size">
-                            尺寸 : <span>&nbsp;&nbsp;</span> 
-                            實際大小 : <span>&nbsp;&nbsp;</span>
-                            容量 : <span>&nbsp;&nbsp;</span>
-                        </p>
-                        <p class="product-text">
-
-                        </p>
-                        <p class="product-price">
-
-                        </p>
-                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
+                    <div class="product-innertext"></div>
                 </div>
             </div>
         </div>
