@@ -3,7 +3,7 @@
 @section('custom-script')
     <script src="/js/plugins/lightbox2/dist/js/lightbox.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-        let innerHtml =　`  <div class="product-label"><img src="" alt=""></div>
+        let innerHtml =　`  <div class="product-label"><img src="/img/product-logo.jpg" alt=""></div>
                             <div class="product-title"><p>細鋁框板異型箱 - 銀</p></div>
                             <div class="product-style">
                                 <p class="product-model">型號 : <span>HD-515</span></p>
@@ -19,19 +19,25 @@
                                     <li>&nbsp;&nbsp;對開拉鍊箱體、完美內裝。</li>
                                 </ul>
                             </div>
-                            <p class="product-price">
-                                $ 12,000
-                            </p>
+                            <p class="product-price">$ 12,000</p>
                         </div>
                         <div class="productHeart"><img src="/img/productHeart.svg" alt=""></div>`;
-        $('.product-innertext').append(innerHtml);                
+        $('.product-innertext').append(innerHtml);
+        $('.collapseBtn').on('click',function(){
+            $('.filter-title,.filter').fadeToggle();
+            $(this).find('img').toggleClass('closeFilter');
+        });
+        $('.filter-remakeBtn').on('click',e => {
+            for (let index = 0; index < $('.filters-selects').find('input').length; index++) {
+                $('.filters-selects').find('input')[index].checked = false;
+            };
+        });              
     </script>
 @endsection
 
 @section('custom-style')
     <link rel="stylesheet" href="/js/plugins/lightbox2/dist/css/lightbox.min.css">
     <style media="screen">
-        
         .sub-page-header .sub-page-header-inner{
             background-color: #3E3A39;
             display: flex;
@@ -84,7 +90,11 @@
         .filter-area{
         }   
         .filter-area .breadCrumbs{
-            margin-top: 20px;
+            margin: 30px 0;
+        }
+        .filter-area .breadCrumbs a{
+            text-decoration: none;
+            color: #636b6f;
         }
         .filter-area .breadCrumbs .breadCrumbs-current{
             color: #FBB03B;
@@ -111,11 +121,9 @@
         }
         
         .filter-product{
-            background-color: #E6E6E6;
             color: #E6E6E6;
         }
         .filter-product .filter-product-row{
-            margin: 0 20px;
             padding: 50px 0;
         }
         .filter-product .col-md-6{
@@ -126,7 +134,7 @@
             justify-content: center;
             align-items: stretch;
             background-color: #fff;
-            margin: 20px 30px;
+            margin: 20px 0;
             position: relative;
         }
         .filter-product .product-inner .productHeart{
@@ -155,6 +163,7 @@
         .filter-product .product-inner .product-innertext{
             width: 65%;
             margin-left: 20px;
+            padding: 15px 5px;
         }
         .filter-product .product-innertext .product-label{
 
@@ -166,6 +175,7 @@
         }
         .filter-product .product-innertext .product-style{
             font-size: 12px;
+            line-height: 15px;
         }
         
         .filter-product .product-innertext .product-style .product-model{
@@ -195,10 +205,21 @@
             right: 5px;
             bottom: -15px;
             padding: 3px 10px;
+            transition: 0.3s;
         }
-        .filter-remakeBtn img{
+        .filter-remakeBtn:hover{
+            background-color: #636b6f;
+        }
+        .filter-remakeBtn:hover .filter-remakeBtnImg{
+            transform: rotate(180deg);
+        }   
+        .filter-remakeBtn:active{
+            background-color: #333333;
+        }
+        .filter-remakeBtn .filter-remakeBtnImg{
             width: 25px;
             height: 20px;
+            transition: 0.5s;
         }
         .productCount{
             display: flex;
@@ -206,7 +227,7 @@
             align-items: center;
             border-bottom: solid 1px #eeeeee;
             margin-bottom: 20px;
-            
+            font-weight: 100;
         }
         .productCount .productCount-left{
             display: flex;
@@ -220,16 +241,20 @@
             width: 15px;
             height: 15px;
             margin-right: 5px;
+            cursor: pointer;
         }
         .productCount .productCount-icon img:nth-child(2){
             width: 18px;
             height: 18px;
         }
         .productCount .productCount-sort{
-
+            cursor: pointer;
         }
-        .productCount .productCount-number span:nth-child(2){
-
+        .productCount .productCount-number{
+            font-size: 18px;
+        }
+        .productCount .productCount-number span:nth-child(3){
+            font-size: 25px;
         }
         .collapseBtn{
             color: #fff;
@@ -240,11 +265,46 @@
             position: absolute;
             bottom: -32px;
             right: 10px;
+            transition: 0.3s;
+        }
+        .collapseBtn:hover{
+            background-color: #636b6f;
+        }
+        .collapseBtn:active{
+            background-color: #333333;
         }
         .collapseBtn img{
             width: 18px;
             height: 18px;
             margin-left: 5px;
+            transition: 0.3s;
+        }
+        .product-label img{
+            width: 55px;
+        }
+        @media screen and (max-width: 1200px) {
+            .filter-product .col-md-6 .product-inner{
+                display: block;
+            }
+            .filter-product .product-inner .product-img {
+                width: 100%;
+                padding-bottom: 90%;
+            }
+            .filter-product .product-inner .product-innertext{
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+        @media screen and (max-width: 1024px){
+            .sub-page-header{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 768px){
+            .productCount{
+                display: block;
+                text-align: center;
+            }
         }
     </style>
 @endsection
@@ -397,7 +457,7 @@
                     </div>
                 </div>
                 <button class="filter-remakeBtn">
-                    <img src="/img/remakeIcon.svg" alt="">
+                    <img class="filter-remakeBtnImg" src="/img/remakeIcon.svg" alt="">
                     重製選取條件
                 </button>
                 <div class="col-md-4"></div>
@@ -431,7 +491,7 @@
         </button>
     </div>
 
-    <div class="container-fulid filter-product">
+    <div class="container filter-product">
         <div class="row filter-product-row">
             <div class="col-md-6">
                 <div class="product-inner">
