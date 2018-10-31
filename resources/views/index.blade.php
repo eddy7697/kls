@@ -540,9 +540,7 @@
                                 </p>
                             </a>
                         </div>
-                        <div class= "newsImgBox">
-                            <img class="newImg" src="/img/newsImage01.jpg" alt="">
-                        </div>
+                        <div class= "newsImgBox" style="background-image: url(/img/newsImage01.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">硬殼旅行箱材質到底該怎麼分呢?</p>
                             <p>2018/07/14</p>
@@ -561,9 +559,7 @@
                                 </p>
                             </a>
                         </div>
-                        <div class= "newsImgBox">
-                            <img class="newImg" src="/img/newsImage02.jpg" alt="">
-                        </div>
+                        <div class= "newsImgBox" style="background-image: url(/img/newsImage02.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">一月一度的直播拍賣會來嚕</p>
                             <p>2018/07/14</p>
@@ -584,9 +580,7 @@
                                 </p>
                             </a>
                         </div>
-                        <div class= "newsImgBox">
-                            <img class="newImg" src="/img/newsImage03.jpg" alt="">
-                        </div>
+                        <div class= "newsImgBox" style="background-image: url(/img/newsImage03.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">請大家注意冒用凱麗斯貼文的詐騙</p>
                             <p>2018/07/14</p>
@@ -605,9 +599,7 @@
                                 </p>
                             </a>
                         </div>
-                        <div class= "newsImgBox">
-                            <img class="newImg" src="/img/newsImage04.jpg" alt="">
-                        </div>
+                        <div class= "newsImgBox" style="background-image: url(/img/newsImage04.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">端午連結營業時間公告</p>
                             <p>2018/07/14</p>

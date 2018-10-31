@@ -250,49 +250,7 @@
     </div>
     
 </section>
-{{-- @else --}}
-{{-- <div class="container-fulid sub-page-header">
-    <div class="col-md-12 sub-col-out">
-        <div class="container  sub-container">
-            <img src="/img/KLSLogo.svg" alt="">
-            <p>凱麗斯旅行箱專賣店</p>
-            <p>KLS Baggage Department Store.</p>
-            <ul>
-                <li>
-                    <a href="{{route('about')}}">
-                        關於凱麗絲
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('/product-all')}}">
-                        品牌行李箱                   
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        行李箱配件
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('/blog')}}">
-                        部落格
-                    </a>
-                </li>
-                    <li>
-                    <a href="{{route('contact')}}">
-                        線上拍賣
-                    </a>
-                </li>
-                <li class="nav_final">
-                    <a href="{{route('contact')}}">
-                    聯絡我們
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-@endif --}}
+
 @yield('content')
 
 <!------------------------footer------------------------>
