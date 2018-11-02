@@ -1360,6 +1360,12 @@
 }
 
 @media screen and (max-width: 768px){
+  .klsBurger-switch{
+    top: 15px;
+  }
+  .forwardNews{
+    display: none;
+  }
   #header{
     .header_top_area{
       .header_left{
@@ -1421,7 +1427,7 @@
           }
         }
         .footerCopyRight{
-
+          display: none;
         }
       }
     }
