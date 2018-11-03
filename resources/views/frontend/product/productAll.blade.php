@@ -3,43 +3,37 @@
 @section('custom-style')
     <link rel="stylesheet" href="{{ asset('js/plugins/jquery.fancytree/dist/skin-themeroller/ui.fancytree.min.css') }}">
     <style>
+        .filter-area,.container-productCount{
+            width: 1200px;
+        }
+        .filter-product,.sub-page-header-inner{
+            width: 1400px;
+        }
         .forwardNews{
             display: none;
         }
-        .breadCrumbs{
-            margin: 50px 0;
-        }
-        .breadCrumbs a{
-            text-decoration: none;
-            color: #636b6f;
-        }
-        .breadCrumbs-current{
-            color: #FBB03B;
+        .sub-page-header{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 99999;
+            background-color: #fff;
         }
         .sub-page-header .sub-page-header-inner{
-            background-color: #3E3A39;
             display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-            margin: 0;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: 0 auto;
             padding: 15px 0px;
         }
         .sub-page-header .sub-page-header-inner .sub-logo{
             display: flex;
             justify-content: center;
-            align-items: flex-end;
+            align-items: center;
             position: relative;
         }
-        .sub-page-header .sub-page-header-inner .sub-logo p{
-            color: #fff;
-            line-height: 16px;
-            font-size: 12px;
-            margin-bottom: 10px;
-            white-space: nowrap;
-        }
         .sub-page-header .sub-page-header-inner .sub-logo img{
-            width: 150px;
+            width: 230px;
         }
         .sub-page-header .sub-page-header-inner .sub-nav-menu{
             padding: 15px 0px;
@@ -54,25 +48,42 @@
             list-style: none;
             margin: 0 15px;
         }
+        .sub-page-header .sub-page-header-inner .sub-nav-menu ul li:hover a{
+            border-bottom: solid 1px #FBB03B;
+        }
         .sub-page-header .sub-page-header-inner .sub-nav-menu ul .sub-icon img{
             width: 20px;
             cursor: pointer;
         }
         .sub-page-header .sub-page-header-inner .sub-nav-menu ul li a{
-            color: #fff;
-            font-weight: 700;
-            font-size: 18px;
+            color: #3E3A39;
+            font-size: 15px;
             white-space: nowrap;
             text-decoration: none;
+            transition: 0.3s;
+            padding: 8px 11px;
+            border-bottom: solid 1px transparent;
         }
+
         .filter-area{
+            margin-top: 180px;
         }   
         .filter-area .filter-title{
             text-align: center;
+            position: relative;
         }
         .filter-area .filter-title h1{
             font-weight: 700;
             color: black;
+            margin-bottom: 20px;
+        }
+        .filter-area .filter-title .filter-title-hr{
+            width: 6em;
+            height: 3px;
+            background-color: #FBB03B;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .filter-area .filter-filtering{
             margin-bottom: 50px;
@@ -88,15 +99,44 @@
             display: inline-block;
         }
         .filter-area .filter-filtering .filter-filters .filters-selects label{
-            margin-left: 1px;
-            margin-right: 20px;
+            margin-left: 5px;
+            margin-right: 16px;
         }
-        
+        .filter-product-out{
+            background-color: #E6E6E6;
+            display: flex;
+            justify-content: center;
+        }
         .filter-product{
             color: #E6E6E6;
         }
+        .filter-product .filter-product-readMore{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+        .filter-product .filter-product-readMore #readMore-btn{
+            border: solid 1px #3E3A39;
+            padding: 14px 120px;
+            color: #3E3A39;
+            font-size: 20px;
+            font-weight: 600;
+            outline: none;
+            background-color: #fff;
+            transition: 0.3s;
+            border-radius: 8px;
+        }
+        .filter-product .filter-product-readMore #readMore-btn:hover{
+            background-color: #3E3A39;
+            color: #fff;
+        }
         .filter-product .filter-product-row{
             padding: 50px 0;
+        }
+        .filter-product .filter-product-row.product-more{
+            padding-top: 0;
+            display: none;
         }
         .filter-product .col-md-6{
             padding: 15px;
@@ -137,32 +177,32 @@
             margin-left: 20px;
             padding: 15px 5px;
         }
-        .filter-product .product-innertext .product-label{
+        .filter-product .product-inner .product-innertext .product-label{
 
         }
-        .filter-product .product-innertext .product-title p{
+        .filter-product .product-inner .product-innertext .product-title p{
             font-size: 25px;
             font-weight: 700;
             color: black;
         }
-        .filter-product .product-innertext .product-style{
+        .filter-product .product-inner .product-innertext .product-style{
             font-size: 12px;
             line-height: 15px;
         }
         
-        .filter-product .product-innertext .product-style .product-model{
-
+        .filter-product .product-inner .product-innertext .product-style .product-model{
+            color: #b3b3b3;
         }
-        .filter-product .product-innertext .product-style .product-size{
-
+        .filter-product .product-inner .product-innertext .product-style .product-size{
+            color: #b3b3b3;
         }
-        .filter-product .product-innertext .product-style .product-size span{
+        .filter-product .product-inner .product-innertext .product-style .product-size span{
             margin-right: 20px;
         }
-        .filter-product .product-innertext .product-style .product-text{
-
+        .filter-product .product-inner .product-innertext .product-style .product-text{
+            color: #b3b3b3;
         }
-        .filter-product .product-innertext .product-style .product-price{
+        .filter-product .product-inner .product-innertext .product-style .product-price{
             font-size: 20px;
             font-weight: 700;
             color: #636b6f;
@@ -205,7 +245,7 @@
             background-color: grey;
             color: #fff;
             padding: 1px 10px;
-            border-radius: 8px;
+            border-radius: 8spx;
         }
         .productCount .productCount-left{
             display: flex;
@@ -260,7 +300,21 @@
         .product-label img{
             width: 55px;
         }
+        @media screen and (max-width: 1400px){
+            .filter-area,.container-productCount{
+                width: 1020px;
+            }
+            .filter-product,.sub-page-header-inner{
+                width: 1170px;
+            }
+        }
         @media screen and (max-width: 1200px) {
+            .filter-area,.container-productCount{
+                width: 800px;
+            }
+            .filter-product,.sub-page-header-inner{
+                width: 950px;
+            }
             .filter-product .col-md-6 .product-inner{
                 display: block;
             }
@@ -271,6 +325,14 @@
             .filter-product .product-inner .product-innertext{
                 width: 100%;
                 margin-left: 0;
+            }
+        }
+        @media screen and (max-width: 991px){
+            .filter-area,.container-productCount{
+                width: 600px;
+            }
+            .filter-product,.sub-page-header-inner{
+                width: 750px;
             }
         }
         @media screen and (max-width: 1024px){
@@ -323,6 +385,11 @@
         $('.productHeart').on('click',function(){
             $(this).toggleClass('productHeart-active'); 
         });
+        $('#readMore-btn').on('click',()=>{
+            $('.product-more').fadeIn();
+        });
+        
+        
     </script>
 @endsection
 
@@ -331,9 +398,8 @@
     <div class="row sub-page-header-inner">
         <div class="sub-logo">
             <a href="/">
-                <img src="/img/KLSLogo.svg" alt="">
+                <img src="/img/KLSLogoBlack.svg" alt="">
             </a>
-            <p>凱麗斯旅行箱專賣店  <br>KLS Baggage Department Store.</p>
         </div>
         <div class="sub-nav-menu">
             <ul>
@@ -357,38 +423,27 @@
                         部落格
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('contact')}}">
-                        線上拍賣
-                    </a>
-                </li>
                 <li class="nav_final">
                     <a href="{{route('contact')}}">
                         聯絡我們
                     </a>
                 </li>
                 <li class="sub-icon">
-                    <img src="\img\likeIcon.svg" alt="">
+                    <img src="\img\likeIcon.png" alt="">
                 </li>
                 <li class="sub-icon">
-                    <img src="\img\cartIcon.svg" alt="">
+                    <img src="\img\cartIcon.png" alt="">
                 </li>
             </ul> 
         </div>
     </div>
 </div> 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 breadCrumbs">
-            <p><a href="/">首頁 > </a><span class="breadCrumbs-current">&nbsp;&nbsp;品牌行李箱</span></p>
-        </div>
-    </div>
-</div>
 <div class="container filter-area">
     <div class="row filter">
         <div class="col-md-12 filter-title">
            <h1>品牌行李箱</h1>
-           <p>這裡總有一款屬於你的冒險</p>
+           <div class="filter-title-hr"></div>
+           <p style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
         </div>
     </div>
     <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;">
@@ -510,7 +565,7 @@
     </div>
 </div>
 
-<div class="container" style="position: relative;">
+<div class="container container-productCount" style="position: relative;">
     <div class="row">
         <div class="col-md-12 productCount">
             <div class="productCount-left">
@@ -536,54 +591,111 @@
     </button>
 </div>
 
-<div class="container filter-product">
-    <div class="row filter-product-row">
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
-                <div class="product-innertext"></div>
+<div class="container-fulid filter-product-out">
+    <div class="filter-product">
+        <div class="row filter-product-row">
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
-                <div class="product-innertext"></div>
+        <div class="row filter-product-row product-more">
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-inner">
+                    <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
+                    <div class="product-innertext"></div>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
-                <div class="product-innertext"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
-                <div class="product-innertext"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
-                <div class="product-innertext"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
-                <div class="product-innertext"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
-                <div class="product-innertext"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="product-inner">
-                <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
-                <div class="product-innertext"></div>
+        <div class="row">
+            <div class="col-md-12 filter-product-readMore">
+                <button id="readMore-btn">查看更多</button>
             </div>
         </div>
     </div>

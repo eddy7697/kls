@@ -97,11 +97,6 @@
             </li>
             <li>
                 <a href="{{route('contact')}}">
-                    線上拍賣
-                </a>
-            </li>
-            <li>
-                <a href="{{route('contact')}}">
                     聯絡我們
                 </a>
             </li>
@@ -233,11 +228,6 @@
             <li>
                 <a href="{{url('/blog')}}">
                     部落格
-                </a>
-            </li>
-            <li>
-                <a href="{{route('contact')}}">
-                    線上拍賣
                 </a>
             </li>
             <li class="nav_final">
@@ -386,8 +376,7 @@ $(document).ready(() => {
     $(function() {
         try {
             var fix       = $('.navbar');                      //title
-            var fixTop    = fix.offset().top,              //title 與頂部的距離
-                fixHeight = fix.height();               //title 高度
+            var fixTop    = fix.offset().top              //title 與頂部的距離
            
     
             $(window).scroll(() => {
