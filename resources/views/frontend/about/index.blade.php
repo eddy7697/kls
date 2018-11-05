@@ -123,9 +123,14 @@
                             部落格
                         </a>
                     </li>
+                    <li>
+                        <a href="">
+                            店鋪資訊
+                        </a>
+                    </li>
                     <li class="nav_final">
                         <a href="{{route('contact')}}">
-                            聯絡我們
+                            諮詢專區
                         </a>
                     </li>
                     <li class="sub-icon">

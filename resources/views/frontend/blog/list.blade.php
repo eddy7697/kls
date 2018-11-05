@@ -2,12 +2,22 @@
 
 @section('custom-script')
     <script type="text/javascript">
-
+    
+        $('#readMore-btn').on('click',() => {
+            $('.blog-post-open').fadeIn();
+        });
+        $('.blog-filter-inner button').on('click',function(){
+            $('.blog-filter-inner button').removeAttr('class')
+            $(this).addClass('filterBtn-active')
+        });
     </script>
 @endsection
 
 @section('custom-style')
     <style media="screen">
+        .blog-post-open{
+            display: none;
+        }
         .filter-area,.container-productCount{
             width: 1200px;
         }
@@ -73,15 +83,25 @@
             .sub-page-header-inner{
                 width: 1170px;
             }
+            .blog-post .blog-post-group .blog-post-inner{
+                padding: 30px !important;
+            }
         }
         @media screen and (max-width: 1200px) {
             .sub-page-header-inner{
                 width: 950px;
+                justify-content: center !important;
+            }
+            .blog-post .blog-post-group .blog-post-inner{
+                padding: 15px !important;
             }
         }
         @media screen and (max-width: 991px){
             .sub-page-header-inner{
                 width: 750px;
+            }
+            .blog-banner{
+                padding-bottom: 50% !important;
             }
         }
         @media screen and (max-width: 1024px){
@@ -89,26 +109,107 @@
                 display: none;
             }
         }
-        .blog-banner{}
-        .blog-filter{}
-        .blog-filter .blog-filter-inner{}
-        .blog-post{}
+        @media screen and (max-width: 768px){
+            .blog-filter .blog-filter-inner button{
+                margin: 0 10px;
+            }
+            .blog-banner{
+                padding-bottom: 55% !important;
+            }
+        }
+        .blog-banner{
+            background-image: url('/img/bg-blog.jpg');
+            background-position: center;
+            background-size: cover;
+            padding-bottom: 38%;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+        .blog-filter{
+            margin-bottom: 50px;
+        }
+        .blog-filter .blog-filter-inner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .blog-filter .blog-filter-inner button{
+            border: solid 1px #636b6f;
+            border-radius: 12px;
+            color: #636b6f;
+            background-color: #fff;
+            outline: none;
+            transition: 0.3s;
+            font-size: 16px;
+            padding: 5px 35px;
+            margin: 5px 20px;
+        }
+        .blog-filter .blog-filter-inner button:hover{
+            color: #fff;
+            background-color: #636b6f;
+        }
+        .blog-filter .blog-filter-inner button:active{
+            color: #fff;
+            background-color: #3E3A39;
+        }
+        .filterBtn-active{
+            color: #fff !important;
+            background-color: #636b6f !important;
+        }
+        .blog-post{
+            margin: 0px 30px;
+        }
+        .blog-readMore{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+        .blog-readMore #readMore-btn{
+            border: solid 1px #3E3A39;
+            padding: 14px 120px;
+            color: #3E3A39;
+            font-size: 20px;
+            font-weight: 600;
+            outline: none;
+            background-color: #fff;
+            transition: 0.3s;
+            border-radius: 8px;
+        }
+        .blog-readMore #readMore-btn:hover{
+            background-color: #3E3A39;
+            color: #fff;
+        }
         .blog-post .blog-post-group{}
-        .blog-post .blog-post-group .blog-post-inner{}
+        .blog-post .blog-post-group .blog-post-inner{
+            padding: 40px;
+        }
         .blog-post .blog-post-group .blog-post-inner .blog-post-inner-img{
-            padding-bottom: 50%;
-            position: relative;
-            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+            padding-bottom: 80%;
         }
-        .blog-post .blog-post-group .blog-post-inner .blog-post-inner-img img{
-            max-width: 100%;
-            max-height: 100%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
+        .blog-post .blog-post-group .blog-post-inner .blog-post-inner-text{
+            margin-top: 35px;
         }
-        .blog-post .blog-post-group .blog-post-inner .blog-post-inner-text{}
+        .blog-post .blog-post-group .blog-post-inner .blog-post-inner-text p:nth-child(1){
+            font-size: 16px;
+            font-weight: 100;
+        }
+        .blog-post .blog-post-group .blog-post-inner .blog-post-inner-text p:nth-child(1) span{
+
+        }
+        .blog-post .blog-post-group .blog-post-inner .blog-post-inner-text p:nth-child(2){
+            font-size: 24px;
+            font-weight: 700;
+            color: #3E3A39;
+        }
+        .blog-post .blog-post-group .blog-post-inner .blog-post-inner-text p:nth-child(3){
+            font-size: 16px;
+            font-weight: 100;
+            line-height: 45px;
+        }
     </style>
 @endsection
 
@@ -142,9 +243,14 @@
                             部落格
                         </a>
                     </li>
+                    <li>
+                        <a href="">
+                            店鋪資訊
+                        </a>
+                    </li>
                     <li class="nav_final">
                         <a href="{{route('contact')}}">
-                            聯絡我們
+                            諮詢專區
                         </a>
                     </li>
                     <li class="sub-icon">
@@ -161,9 +267,9 @@
     <div class="container blog-filter">
         <div class="row">
             <div class="col-md-12 blog-filter-inner">
-                <button>全部文章</button>
+                <button class="filterBtn-active">全部文章</button>
                 <button>職人開箱</button>
-                <button>挑箱教學</button>
+                <button>箱款新知</button>
                 <button>挑箱教學</button>
             </div>
         </div>
@@ -172,9 +278,7 @@
         <div class="row">
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img01.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img01.jpg')"></div>
                     <div class="blog-post-inner-text vol03">
                         <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
                         <p>庫存補完通知計畫</p>
@@ -184,9 +288,7 @@
             </div>
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img02.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img02.jpg')"></div>
                     <div class="blog-post-inner-text vol02">
                         <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
                         <p>庫存補完通知計畫</p>
@@ -196,9 +298,7 @@
             </div>
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img03.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img03.jpg')"></div>
                     <div class="blog-post-inner-text vol01">
                         <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
                         <p>庫存補完通知計畫</p>
@@ -210,9 +310,7 @@
         <div class="row">
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img04.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img04.jpg')"></div>
                     <div class="blog-post-inner-text vol03">
                         <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
                         <p>庫存補完通知計畫</p>
@@ -222,9 +320,7 @@
             </div>
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img05.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img05.jpg')"></div>
                     <div class="blog-post-inner-text vol02">
                         <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
                         <p>庫存補完通知計畫</p>
@@ -234,9 +330,7 @@
             </div>
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img06.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img06.jpg')"></div>
                     <div class="blog-post-inner-text vol01">
                         <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
                         <p>庫存補完通知計畫</p>
@@ -248,9 +342,7 @@
         <div class="row">
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img07.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img07.jpg')"></div>
                     <div class="blog-post-inner-text vol03">
                         <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
                         <p>庫存補完通知計畫</p>
@@ -260,9 +352,7 @@
             </div>
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img08.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img08.jpg')"></div>
                     <div class="blog-post-inner-text vol02">
                         <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
                         <p>庫存補完通知計畫</p>
@@ -272,9 +362,7 @@
             </div>
             <div class="col-md-4 blog-post-group">
                 <div class="blog-post-inner">
-                    <div class="blog-post-inner-img">
-                        <img src="\img\blog-img09.jpg" alt="">
-                    </div>
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img09.jpg')"></div>
                     <div class="blog-post-inner-text vol01">
                         <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
                         <p>庫存補完通知計畫</p>
@@ -282,6 +370,109 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </div>
+    <div class="container-fulid blog-post blog-post-open">
+        <div class="row">
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img01.jpg')"></div>
+                    <div class="blog-post-inner-text vol03">
+                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img02.jpg')"></div>
+                    <div class="blog-post-inner-text vol02">
+                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img03.jpg')"></div>
+                    <div class="blog-post-inner-text vol01">
+                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img04.jpg')"></div>
+                    <div class="blog-post-inner-text vol03">
+                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img05.jpg')"></div>
+                    <div class="blog-post-inner-text vol02">
+                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img06.jpg')"></div>
+                    <div class="blog-post-inner-text vol01">
+                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img07.jpg')"></div>
+                    <div class="blog-post-inner-text vol03">
+                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img08.jpg')"></div>
+                    <div class="blog-post-inner-text vol02">
+                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-post-group">
+                <div class="blog-post-inner">
+                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img09.jpg')"></div>
+                    <div class="blog-post-inner-text vol01">
+                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                        <p>庫存補完通知計畫</p>
+                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-md-12 blog-readMore">
+            <button id="readMore-btn">查看更多</button>
+        </div>
+    </div> 
 @endsection

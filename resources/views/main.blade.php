@@ -71,7 +71,7 @@
     <div class="klsBurger-menu-inner">
         <div class="klsBurger-menu-logo">
             <a href="/">
-                <img src="/img/KLSLogo.svg" alt="">
+                <img src="/img/KLSLogoWhite.svg" alt="">
             </a>
         </div>
         <ul>
@@ -96,8 +96,13 @@
                 </a>
             </li>
             <li>
+                <a href="">
+                    店鋪資訊
+                </a>
+            </li>
+            <li class="nav_final">
                 <a href="{{route('contact')}}">
-                    聯絡我們
+                    諮詢專區
                 </a>
             </li>
         </ul>
@@ -112,7 +117,7 @@
             <div class="logo_area">
                 <div class="logo">
                     <a href="/" class="mark">
-                        <img src="/img/KLSLogo.svg" alt="">
+                        <img src="/img/KLSLogoWhite.svg" alt="">
                         <p class="mark_text mark_middle">
                             凱麗絲旅行箱專賣店
                         </p>
@@ -230,9 +235,14 @@
                     部落格
                 </a>
             </li>
+            <li>
+                <a href="">
+                    店鋪資訊
+                </a>
+            </li>
             <li class="nav_final">
                 <a href="{{route('contact')}}">
-                   聯絡我們
+                    諮詢專區
                 </a>
             </li>
         </ul>
@@ -249,7 +259,7 @@
         <div class="logo_area">
             <div class="logo">
                 <a href="/" class="mark">
-                    <img src="/img/KLSLogo.svg" alt="">
+                    <img src="/img/KLSLogoWhite.svg" alt="">
                     <p class="mark_text mark_middle">
                         凱麗絲旅行箱專賣店
                     </p>

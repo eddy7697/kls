@@ -347,6 +347,15 @@
             }
         }
         
+        .sub-page-footer{}
+        .sub-page-footer .sub-page-header-inner{}
+        .sub-page-footer .sub-page-header-inner .sub-logo{}
+        .sub-page-footer .sub-page-header-inner .sub-logo a{}
+        .sub-page-footer .sub-page-header-inner .sub-logo a img{}
+        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu{}
+        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu ul{}
+        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu ul li{}
+        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu ul li a{}
     </style>
 @endsection
 
@@ -423,9 +432,14 @@
                         部落格
                     </a>
                 </li>
+                <li>
+                    <a href="">
+                        店鋪資訊
+                    </a>
+                </li>
                 <li class="nav_final">
                     <a href="{{route('contact')}}">
-                        聯絡我們
+                        諮詢專區
                     </a>
                 </li>
                 <li class="sub-icon">
@@ -696,6 +710,57 @@
         <div class="row">
             <div class="col-md-12 filter-product-readMore">
                 <button id="readMore-btn">查看更多</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fulid sub-page-footer">
+    <div class="row sub-page-footer-inner">
+        <div class="sub-logo">
+            <a href="/">
+                <img src="/img/KLS_logo_white.svg" alt="">
+            </a>
+        </div>
+        <div class="sub-nav-menu">
+            <ul>
+                <li>
+                    <a href="{{route('about')}}">
+                        關於凱麗絲
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('/product-all')}}">
+                        品牌行李箱                   
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        行李箱配件
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('/blog')}}">
+                        部落格
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        店鋪資訊
+                    </a>
+                </li>
+                <li class="nav_final">
+                    <a href="{{route('contact')}}">
+                        諮詢專區
+                    </a>
+                </li>
+            </ul> 
+        </div>
+        <div class="sub-contact-icon">
+            <div class="sub-icons">
+                <img src="\img\facebook.svg" alt="">
+                <img src="\img\instagram.svg" alt="">
+                <img src="\img\line_icon.svg" alt="">
             </div>
         </div>
     </div>
