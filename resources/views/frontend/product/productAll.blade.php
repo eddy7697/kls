@@ -3,13 +3,10 @@
 @section('custom-style')
     <link rel="stylesheet" href="{{ asset('js/plugins/jquery.fancytree/dist/skin-themeroller/ui.fancytree.min.css') }}">
     <style>
-        .filter-area,.container-productCount{
-            width: 1200px;
-        }
-        .filter-product,.sub-page-header-inner{
-            width: 1400px;
-        }
         .forwardNews{
+            display: none;
+        }
+        #header,#footer{
             display: none;
         }
         .sub-page-header{
@@ -60,11 +57,174 @@
             font-size: 15px;
             white-space: nowrap;
             text-decoration: none;
-            transition: 0.3s;
-            padding: 8px 11px;
             border-bottom: solid 1px transparent;
         }
-
+        .filter-area,.container-productCount{
+            width: 1200px;
+        }
+        .filter-product,.sub-page-header-inner{
+            width: 1400px;
+        }
+        
+        @media screen and (max-width: 1400px){
+            .sub-page-footer .sub-page-footer-copyright-inner{
+                width: 1200px  !important;
+            }
+            .sub-page-header-inner{
+                width: 1170px;
+            }
+            .filter-area,.container-productCount{
+                width: 1020px;
+            }
+            .filter-product,.sub-page-header-inner{
+                width: 1170px;
+            }
+        }
+        @media screen and (max-width: 1200px) {
+            .sub-page-footer .sub-page-footer-copyright-inner{
+                width: 991px  !important;
+            }
+            .sub-page-header-inner{
+                width: 950px;
+                justify-content: center !important;
+            }
+            
+            .filter-area,.container-productCount{
+                width: 800px;
+            }
+            .filter-product,.sub-page-header-inner{
+                width: 950px;
+            }
+            .filter-product .col-md-6 .product-inner{
+                display: block !important;
+            }
+            .filter-product .product-inner .product-img {
+                width: 100% !important;
+                padding-bottom: 90%;
+            }
+            .filter-product .product-inner .product-innertext{
+                width: 100% !important;
+                margin-left: 0 !important;
+            }
+        }
+        @media screen and (max-width: 991px){
+            .sub-page-header-inner,.sub-page-footer .sub-page-footer-copyright-inner{
+                width: 750px !important;
+            }
+            .filter-area,.container-productCount{
+                width: 600px;
+            }
+            .filter-product{
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 1024px){
+            .sub-page-header,.sub-nav-menu{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 768px){
+            .sub-page-footer .sub-page-footer-copyright-inner{
+                display: block !important;
+                width: 100%  !important;
+                text-align: center  !important;
+            }
+            .sub-page-footer-copyright .sub-page-footer-copyright-inner .needKnow{
+                text-align: center !important;
+            }
+            .productCount{
+                display: block;
+                text-align: center;
+            }
+            .filter-area,.container-productCount{
+                width: 100%;
+            }
+            .productCount{
+                display: block !important;
+            }
+        }
+        .sub-page-footer{
+            background-color: #3E3A39;
+        }
+        .sub-page-footer .sub-page-footer-inner{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: 0 auto;
+            padding: 50px 0px;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-logo a{
+            text-decoration: none;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-logo a img{
+            width: 230px;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-nav-menu{
+            padding: 15px 0px;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-nav-menu ul{
+            display: flex;
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-left: 0;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-nav-menu ul li{
+            list-style: none;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-nav-menu ul li:hover{
+            opacity: 0.7;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-nav-menu ul li a{
+            color: #fff;
+            font-size: 15px;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-contact-icon{
+            padding: 15px 0px;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-contact-icon .sub-icons img{
+            width: 30px;
+            height: 30px;
+            transition: 0.3s;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .sub-page-footer .sub-page-footer-inner .sub-contact-icon .sub-icons img:hover{
+            opacity: 0.5;
+        }
+        .sub-page-footer-copyright{
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            padding: 10px 0;
+            width: 100%;
+        }
+        .sub-page-footer-copyright .sub-page-footer-copyright-inner{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            width: 83%;
+            padding: 0 20px;
+        }
+        .sub-page-footer-copyright .sub-page-footer-copyright-inner .needKnow{
+            text-align: right;
+        }
+        .sub-page-footer-copyright .sub-page-footer-copyright-inner .needKnow span{
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .sub-page-footer-copyright .sub-page-footer-copyright-inner .needKnow span:hover{
+            color: rgba(255,255,255,1);
+        }
         .filter-area{
             margin-top: 180px;
         }   
@@ -88,12 +248,6 @@
         .filter-area .filter-filtering{
             margin-bottom: 50px;
             padding: 0;
-        }
-        .filter-area .filter-filtering .filter-filters{
-
-        }
-        .filter-area .filter-filtering .filter-filters .filters-title{
-
         }
         .filter-area .filter-filtering .filter-filters .filters-selects .filters-selects-div{
             display: inline-block;
@@ -176,9 +330,6 @@
             width: 65%;
             margin-left: 20px;
             padding: 15px 5px;
-        }
-        .filter-product .product-inner .product-innertext .product-label{
-
         }
         .filter-product .product-inner .product-innertext .product-title p{
             font-size: 25px;
@@ -300,62 +451,8 @@
         .product-label img{
             width: 55px;
         }
-        @media screen and (max-width: 1400px){
-            .filter-area,.container-productCount{
-                width: 1020px;
-            }
-            .filter-product,.sub-page-header-inner{
-                width: 1170px;
-            }
-        }
-        @media screen and (max-width: 1200px) {
-            .filter-area,.container-productCount{
-                width: 800px;
-            }
-            .filter-product,.sub-page-header-inner{
-                width: 950px;
-            }
-            .filter-product .col-md-6 .product-inner{
-                display: block;
-            }
-            .filter-product .product-inner .product-img {
-                width: 100%;
-                padding-bottom: 90%;
-            }
-            .filter-product .product-inner .product-innertext{
-                width: 100%;
-                margin-left: 0;
-            }
-        }
-        @media screen and (max-width: 991px){
-            .filter-area,.container-productCount{
-                width: 600px;
-            }
-            .filter-product,.sub-page-header-inner{
-                width: 750px;
-            }
-        }
-        @media screen and (max-width: 1024px){
-            .sub-page-header{
-                display: none;
-            }
-        }
-        @media screen and (max-width: 768px){
-            .productCount{
-                display: block;
-                text-align: center;
-            }
-        }
+     
         
-        .sub-page-footer{}
-        .sub-page-footer .sub-page-header-inner{}
-        .sub-page-footer .sub-page-header-inner .sub-logo{}
-        .sub-page-footer .sub-page-header-inner .sub-logo a{}
-        .sub-page-footer .sub-page-header-inner .sub-logo a img{}
-        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu{}
-        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu ul{}
-        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu ul li{}
-        .sub-page-footer .sub-page-header-inner .sub-logo .sub-nav-menu ul li a{}
     </style>
 @endsection
 
@@ -403,366 +500,376 @@
 @endsection
 
 @section('content')
-<div class="container-fulid sub-page-header">
-    <div class="row sub-page-header-inner">
-        <div class="sub-logo">
-            <a href="/">
-                <img src="/img/KLSLogoBlack.svg" alt="">
-            </a>
+    <div class="container-fulid sub-page-header">
+        <div class="row sub-page-header-inner">
+            <div class="sub-logo">
+                <a href="/">
+                    <img src="/img/KLSLogoBlack.svg" alt="">
+                </a>
+            </div>
+            <div class="sub-nav-menu">
+                <ul>
+                    <li>
+                        <a href="{{route('about')}}">
+                            關於凱麗絲
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/product-all')}}">
+                            品牌行李箱                   
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            行李箱配件
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/blog')}}">
+                            部落格
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            店鋪資訊
+                        </a>
+                    </li>
+                    <li class="nav_final">
+                        <a href="{{route('contact')}}">
+                            諮詢專區
+                        </a>
+                    </li>
+                    <li class="sub-icon">
+                        <img src="\img\likeIcon.png" alt="">
+                    </li>
+                    <li class="sub-icon">
+                        <img src="\img\cartIcon.png" alt="">
+                    </li>
+                </ul> 
+            </div>
         </div>
-        <div class="sub-nav-menu">
-            <ul>
-                <li>
-                    <a href="{{route('about')}}">
-                        關於凱麗絲
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('/product-all')}}">
-                        品牌行李箱                   
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        行李箱配件
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('/blog')}}">
-                        部落格
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        店鋪資訊
-                    </a>
-                </li>
-                <li class="nav_final">
-                    <a href="{{route('contact')}}">
-                        諮詢專區
-                    </a>
-                </li>
-                <li class="sub-icon">
-                    <img src="\img\likeIcon.png" alt="">
-                </li>
-                <li class="sub-icon">
-                    <img src="\img\cartIcon.png" alt="">
-                </li>
-            </ul> 
+    </div> 
+    <div class="container filter-area">
+        <div class="row filter">
+            <div class="col-md-12 filter-title">
+            <h1>品牌行李箱</h1>
+            <div class="filter-title-hr"></div>
+            <p style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
+            </div>
+        </div>
+        <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;">
+            <div class="col-md-12 filter-filtering">
+                <div class="col-md-4">
+                    <div class="filter-filters">
+                        <div class="filters-title">
+                            <p>品牌 Brand</p>
+                        </div>
+                        <hr>
+                        <form class="filters-selects">
+                            <div class="filters-selects-div">
+                                <input name="brand" id="departure" type="radio"><label for="departure">Departure</label>
+                                <input name="brand" id="crown" type="radio"><label for="crown">CROWN 皇冠</label>
+                                <input name="brand" id="novita" type="radio"><label for="novita">NOVITA</label>
+                            </div>
+                            <div class="filters-selects-div">
+                                <input name="brand" id="yue" type="radio"><label for="yue">YUE</label>
+                                <input name="brand" id="allBrand" type="radio"><label for="allBrand">全部品牌</label>
+                                <input name="brand" id="oossack" type="radio"><label for="oossack">OOSSACK</label>
+                            </div>
+                            <div class="filters-selects-div">
+                                <input name="brand" id="ad" type="radio"><label for="ad">AD 亞蘭德倫</label>
+                                <input name="brand" id="mom" type="radio"><label for="mom">MOM</label>
+                                <input name="brand" id="at" type="radio"><label for="at">AT 美國旅行者</label>
+                            </div>
+                            <div class="filters-selects-div">
+                                <input name="brand" id="samsonite" type="radio"><label for="samsonite">SAMSONITE 新秀麗</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">  
+                    <div class="filter-filters">
+                        <div class="filters-title">
+                        <p>尺寸 Size</p>
+                        </div>
+                        <hr>
+                        <form class="filters-selects">
+                            <div class="filters-selects-div">
+                                <input name="size" id="20" type="radio"><label for="20">20吋以下</label>
+                                <input name="size" id="23" type="radio"><label for="23">20 - 23吋</label>
+                                <input name="size" id="25" type="radio"><label for="25">23 - 25吋</label>
+                            </div>
+                            <div class="filters-selects-div">
+                                <input name="size" id="29" type="radio"><label for="29">27 - 29吋</label>
+                                <input name="size" id="30" type="radio"><label for="30">30吋以上</label>
+                                <input name="size" id="allSize" type="radio"><label for="allSize">全部尺寸</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="filter-filters">
+                        <div class="filters-title">
+                            <p>旅程 Trip</p>
+                        </div>
+                        <hr>
+                        <form class="filters-selects">
+                            <div class="filters-selects-div">
+                                <input name="trip" id="aDay" type="radio"><label for="aDay">當日來回</label>
+                                <input name="trip" id="aWeek" type="radio"><label for="aWeek">3 - 7天</label>
+                                <input name="trip" id="twoWeeks" type="radio"><label for="twoWeeks">7 - 14天</label>
+                            </div>
+                            <div class="filters-selects-div">
+                                <input name="trip" id="long" type="radio"><label for="long">Long Stay</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 filter-filtering">
+                <div class="col-md-4">
+                    <div class="filter-filters">
+                        <div class="filters-title">
+                            <p>價格 Price</p>
+                        </div>
+                        <hr>
+                        <form class="filters-selects">
+                            <div class="filters-selects-div">
+                                <input name="price" id="5000" type="radio"><label for="5000">0 - 5000</label>
+                                <input name="price" id="10000" type="radio"><label for="10000">5000 - 10000</label>
+                                <input name="price" id="15000" type="radio"><label for="15000">10000 - 15000</label>
+                            </div>
+                            <div class="filters-selects-div">
+                                <input name="price" id="20000" type="radio"><label for="20000">15000 - 20000</label>
+                                <input name="price" id="20000Up" type="radio"><label for="20000Up">20000 以上</label>
+                            </div>                        
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="filter-filters">
+                        <div class="filters-title">
+                            <p>材質 Material</p>
+                        </div>
+                        <hr>
+                        <form class="filters-selects">
+                            <div class="filters-selects-div">
+                                <input name="material" id="aluminum" type="radio"><label for="aluminum">鋁框</label>
+                                <input name="material" id="pc" type="radio"><label for="pc">PC</label>
+                                <input name="material" id="abs" type="radio"><label for="abs">ABS</label>
+                                <input name="material" id="nylon" type="radio"><label for="nylon">防水尼龍</label>
+                                <input name="material" id="pet" type="radio"><label for="pet">PET</label> 
+                            </div>
+                            <div class="filters-selects-div">
+                                <input name="material" id="carbon" type="radio"><label for="carbon">碳纖維</label>
+                                <input name="material" id="allMaterial" type="radio"><label for="allMaterial">全部材質</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <button class="filter-remakeBtn">
+                    <img class="filter-remakeBtnImg" src="/img/remakeIcon.svg" alt="">
+                    重製選取條件
+                </button>
+                <div class="col-md-4"></div>
+            </div>
         </div>
     </div>
-</div> 
-<div class="container filter-area">
-    <div class="row filter">
-        <div class="col-md-12 filter-title">
-           <h1>品牌行李箱</h1>
-           <div class="filter-title-hr"></div>
-           <p style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
-        </div>
-    </div>
-    <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;">
-        <div class="col-md-12 filter-filtering">
-            <div class="col-md-4">
-                <div class="filter-filters">
-                    <div class="filters-title">
-                        <p>品牌 Brand</p>
-                    </div>
-                    <hr>
-                    <form class="filters-selects">
-                        <div class="filters-selects-div">
-                            <input name="brand" id="departure" type="radio"><label for="departure">Departure</label>
-                            <input name="brand" id="crown" type="radio"><label for="crown">CROWN 皇冠</label>
-                            <input name="brand" id="novita" type="radio"><label for="novita">NOVITA</label>
-                        </div>
-                        <div class="filters-selects-div">
-                            <input name="brand" id="yue" type="radio"><label for="yue">YUE</label>
-                            <input name="brand" id="allBrand" type="radio"><label for="allBrand">全部品牌</label>
-                            <input name="brand" id="oossack" type="radio"><label for="oossack">OOSSACK</label>
-                        </div>
-                        <div class="filters-selects-div">
-                            <input name="brand" id="ad" type="radio"><label for="ad">AD 亞蘭德倫</label>
-                            <input name="brand" id="mom" type="radio"><label for="mom">MOM</label>
-                            <input name="brand" id="at" type="radio"><label for="at">AT 美國旅行者</label>
-                        </div>
-                        <div class="filters-selects-div">
-                            <input name="brand" id="samsonite" type="radio"><label for="samsonite">SAMSONITE 新秀麗</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-4">  
-                <div class="filter-filters">
-                    <div class="filters-title">
-                    <p>尺寸 Size</p>
-                    </div>
-                    <hr>
-                    <form class="filters-selects">
-                        <div class="filters-selects-div">
-                            <input name="size" id="20" type="radio"><label for="20">20吋以下</label>
-                            <input name="size" id="23" type="radio"><label for="23">20 - 23吋</label>
-                            <input name="size" id="25" type="radio"><label for="25">23 - 25吋</label>
-                        </div>
-                        <div class="filters-selects-div">
-                            <input name="size" id="29" type="radio"><label for="29">27 - 29吋</label>
-                            <input name="size" id="30" type="radio"><label for="30">30吋以上</label>
-                            <input name="size" id="allSize" type="radio"><label for="allSize">全部尺寸</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="filter-filters">
-                    <div class="filters-title">
-                        <p>旅程 Trip</p>
-                    </div>
-                    <hr>
-                    <form class="filters-selects">
-                        <div class="filters-selects-div">
-                            <input name="trip" id="aDay" type="radio"><label for="aDay">當日來回</label>
-                            <input name="trip" id="aWeek" type="radio"><label for="aWeek">3 - 7天</label>
-                            <input name="trip" id="twoWeeks" type="radio"><label for="twoWeeks">7 - 14天</label>
-                        </div>
-                        <div class="filters-selects-div">
-                            <input name="trip" id="long" type="radio"><label for="long">Long Stay</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 filter-filtering">
-            <div class="col-md-4">
-                <div class="filter-filters">
-                    <div class="filters-title">
-                        <p>價格 Price</p>
-                    </div>
-                    <hr>
-                    <form class="filters-selects">
-                        <div class="filters-selects-div">
-                            <input name="price" id="5000" type="radio"><label for="5000">0 - 5000</label>
-                            <input name="price" id="10000" type="radio"><label for="10000">5000 - 10000</label>
-                            <input name="price" id="15000" type="radio"><label for="15000">10000 - 15000</label>
-                        </div>
-                        <div class="filters-selects-div">
-                            <input name="price" id="20000" type="radio"><label for="20000">15000 - 20000</label>
-                            <input name="price" id="20000Up" type="radio"><label for="20000Up">20000 以上</label>
-                        </div>                        
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="filter-filters">
-                    <div class="filters-title">
-                        <p>材質 Material</p>
-                    </div>
-                    <hr>
-                    <form class="filters-selects">
-                        <div class="filters-selects-div">
-                            <input name="material" id="aluminum" type="radio"><label for="aluminum">鋁框</label>
-                            <input name="material" id="pc" type="radio"><label for="pc">PC</label>
-                            <input name="material" id="abs" type="radio"><label for="abs">ABS</label>
-                            <input name="material" id="nylon" type="radio"><label for="nylon">防水尼龍</label>
-                            <input name="material" id="pet" type="radio"><label for="pet">PET</label> 
-                        </div>
-                        <div class="filters-selects-div">
-                            <input name="material" id="carbon" type="radio"><label for="carbon">碳纖維</label>
-                            <input name="material" id="allMaterial" type="radio"><label for="allMaterial">全部材質</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <button class="filter-remakeBtn">
-                <img class="filter-remakeBtnImg" src="/img/remakeIcon.svg" alt="">
-                重製選取條件
-            </button>
-            <div class="col-md-4"></div>
-        </div>
-    </div>
-</div>
 
-<div class="container container-productCount" style="position: relative;">
-    <div class="row">
-        <div class="col-md-12 productCount">
-            <div class="productCount-left">
-                <div class="productCount-icon">
-                    <img class="cube01" src="/img/selectCube-01.svg" alt="">
-                    <img class="cube02" src="/img/selectCube-02.svg" alt="">
-                </div>
-                <div class="productCount-sort">
-                    <span>價格由高到低排列 ↓</span>
-                    <span>價格由低到高排列 ↑</span>
-                </div>
-            </div>
-            <div class="productCount-number">
-                <span>顯示總數</span>
-                <span>08/</span>
-                <span>127</span>
-            </div>
-        </div>
-    </div>
-    <button class="collapseBtn">
-        收合
-        <img src="/img/collapseIcon.png" alt="">
-    </button>
-</div>
-
-<div class="container-fulid filter-product-out">
-    <div class="filter-product">
-        <div class="row filter-product-row">
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row filter-product-row product-more">
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-inner">
-                    <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
-                    <div class="product-innertext"></div>
-                </div>
-            </div>
-        </div>
+    <div class="container container-productCount" style="position: relative;">
         <div class="row">
+            <div class="col-md-12 productCount">
+                <div class="productCount-left">
+                    <div class="productCount-icon">
+                        <img class="cube01" src="/img/selectCube-01.svg" alt="">
+                        <img class="cube02" src="/img/selectCube-02.svg" alt="">
+                    </div>
+                    <div class="productCount-sort">
+                        <span>價格由高到低排列 ↓</span>
+                        <span>價格由低到高排列 ↑</span>
+                    </div>
+                </div>
+                <div class="productCount-number">
+                    <span>顯示總數</span>
+                    <span>08/</span>
+                    <span>127</span>
+                </div>
+            </div>
+        </div>
+        <button class="collapseBtn">
+            收合
+            <img src="/img/collapseIcon.png" alt="">
+        </button>
+    </div>
+
+    <div class="container-fulid filter-product-out">
+        <div class="row filter-product">
+            <div class="filter-product-row">
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row filter-product-row product-more">
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-inner">
+                        <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
+                        <div class="product-innertext"></div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12 filter-product-readMore">
                 <button id="readMore-btn">查看更多</button>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container-fulid sub-page-footer">
-    <div class="row sub-page-footer-inner">
-        <div class="sub-logo">
-            <a href="/">
-                <img src="/img/KLS_logo_white.svg" alt="">
-            </a>
-        </div>
-        <div class="sub-nav-menu">
-            <ul>
-                <li>
-                    <a href="{{route('about')}}">
-                        關於凱麗絲
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('/product-all')}}">
-                        品牌行李箱                   
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        行李箱配件
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('/blog')}}">
-                        部落格
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        店鋪資訊
-                    </a>
-                </li>
-                <li class="nav_final">
-                    <a href="{{route('contact')}}">
-                        諮詢專區
-                    </a>
-                </li>
-            </ul> 
-        </div>
-        <div class="sub-contact-icon">
-            <div class="sub-icons">
-                <img src="\img\facebook.svg" alt="">
-                <img src="\img\instagram.svg" alt="">
-                <img src="\img\line_icon.svg" alt="">
+    <div class="container-fulid sub-page-footer">
+        <div class="row sub-page-footer-inner">
+            <div class="sub-logo">
+                <a href="/">
+                    <img src="/img/KLS_logo_white.svg" alt="">
+                </a>
+            </div>
+            <div class="sub-nav-menu">
+                <ul>
+                    <li>
+                        <a href="{{route('about')}}">
+                            關於凱麗絲
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/product-all')}}">
+                            品牌行李箱                   
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            行李箱配件
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/blog')}}">
+                            部落格
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            店鋪資訊
+                        </a>
+                    </li>
+                    <li class="nav_final">
+                        <a href="{{route('contact')}}">
+                            諮詢專區
+                        </a>
+                    </li>
+                </ul> 
+            </div>
+            <div class="sub-contact-icon">
+                <div class="sub-icons">
+                    <img src="\img\facebook-white.svg" alt="">
+                    <img src="\img\instagram-white.svg" alt="">
+                    <img src="\img\line_icon.svg" alt="">
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        <div class="row sub-page-footer-copyright">
+            <div class="col-md-12">
+                <div class="sub-page-footer-copyright-inner">
+                    <div class="copyRight">
+                        <p>Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
+                    </div>
+                    <div class="needKnow">
+                        <p><span>隱私權條款</span> | <span>購物須知</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
 @endsection
