@@ -45,12 +45,12 @@
 .klsBurger-switch{
   display : none;
   position: fixed;
-  background-color: rgba(255,255,255,0.8);
+  background-color: transparent;
   top     : 15px;
   left    : 15px;
   width   : 35px;
   z-index : 9999999;
-  border  : solid 1px $color-grey;
+  border  : none;
   height  : 29px;
   cursor  : pointer;
   outline : none; 
@@ -58,7 +58,7 @@
     background-color: $color-grey;
     position        : absolute;
     width           : 25px;
-    height          : 1px;
+    height          : 2px;
     left            : 50%;
     transform       : translateX(-50%); 
     transition      : 0.3s; 
@@ -78,13 +78,14 @@
   }
 }
 .openNow{
-  background-color: rgba(50,50,50,0.5);
-  border          : solid 1px $color-white;
+  background-color: transparent;
+  border          : none;
   span{
     background-color: $color-white;
   }
   span:nth-child(1){
     opacity: 0;
+    transform: translateX(20px);
   }
   span:nth-child(2){
     opacity  : 1;
@@ -95,7 +96,20 @@
   }
   span:nth-child(4){
     opacity: 0;
+    transform: translateX(-20px);
   }
+}
+.openNow-menu{
+  opacity         : 1 !important;
+  transition      : 0.5s;
+  z-index         : 1000001 !important;
+  .klsBurger-menu-inner{
+    transform : scale(1) !important;
+  }
+}
+.openNow-filter{
+  filter    : blur(8px);
+  transition: 0.5s;
 }
 .klsBurger-menu{
   display         : flex;
@@ -103,15 +117,20 @@
   align-items     : center;
   position        : fixed;
   top             : 0;
-  left            : -100%;
-  width           : 330px;
+  left            : 0;
+  opacity         : 0;
+  width           : 100%;
   height          : 100%;
-  background-color: rgba(62, 58, 57, 0.8);
+  background-color: rgba(50,50,50,0.4);
+  box-shadow      : 0px 0px 65px #000 inset;
   color           : $color-white;
-  z-index         : 1000001;
-  word-wrap       : normal;
-  transition      : 0.8s; 
+  transition      : 0.5s;
+  user-select     : none;
+  z-index: -1;
   .klsBurger-menu-inner{
+    transform : scale(0.85);
+    transition: 0.5s;
+    font-size : 18px;
     .klsBurger-menu-close{
       position: absolute;
       top     : 10px;
@@ -121,18 +140,17 @@
       width       : 100%;
       text-align  : center;
       padding-left: 0;
+      margin-top  : 60px;
       li{
         list-style   : none;
         margin-top   : 25px;
+        transition: 0.5s;
         &:hover{
-          a{
-            border-bottom: solid 2px $color-white;
-          }
+          transform: scale(0.8);
         }
         a{
           color          : $color-white;
           text-decoration: none;
-          transition     : 0.5s;
           padding-bottom : 5px;
         }
       }
@@ -140,7 +158,7 @@
     .klsBurger-menu-logo{
       text-align: center;
       img{
-        width: 250px;
+        width: 285px;
       }
     }
   }

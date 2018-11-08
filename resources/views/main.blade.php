@@ -375,11 +375,8 @@ $(document).ready(() => {
 
     $('.klsBurger-switch').on('click',function(){
         $(this).toggleClass('openNow');
-        if($('.openNow').length===0){
-            $('.klsBurger-menu').css('left','-100%');
-        }else{
-            $('.klsBurger-menu').css('left',0);
-        };
+        $('.klsBurger-menu').toggleClass('openNow-menu');
+        $('section').toggleClass('openNow-filter');
     });
     
 

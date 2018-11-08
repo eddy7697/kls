@@ -312,325 +312,328 @@
 @endsection
 
 @section('content')
-    <div class="container-fulid sub-page-header">
-        <div class="row sub-page-header-inner">
-            <div class="sub-logo">
-                <a href="/">
-                    <img src="/img/KLSLogoBlack.svg" alt="">
-                </a>
-            </div>
-            <div class="sub-nav-menu">
-                <ul>
-                    <li>
-                        <a href="{{route('about')}}">
-                            關於凱麗絲
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('/product-all')}}">
-                            品牌行李箱                   
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            行李箱配件
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('/blog')}}">
-                            部落格
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            店鋪資訊
-                        </a>
-                    </li>
-                    <li class="nav_final">
-                        <a href="{{route('contact')}}">
-                            諮詢專區
-                        </a>
-                    </li>
-                    <li class="sub-icon">
-                        <img src="\img\likeIcon.png" alt="">
-                    </li>
-                    <li class="sub-icon">
-                        <img src="\img\cartIcon.png" alt="">
-                    </li>
-                </ul> 
-            </div>
-        </div>
-    </div> 
-    <div class="container-fulid blog-banner"></div>
-    <div class="container blog-filter">
-        <div class="row">
-            <div class="col-md-12 blog-filter-inner">
-                <button class="filterBtn-active">全部文章</button>
-                <button>職人開箱</button>
-                <button>箱款新知</button>
-                <button>挑箱教學</button>
-            </div>
-        </div>
-    </div>
-    <div class="container-fulid blog-post">
-        <div class="row">
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img01.jpg')"></div>
-                    <div class="blog-post-inner-text vol03">
-                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
+    <section id="subPage-blog">
+        <div class="container-fulid sub-page-header">
+            <div class="row sub-page-header-inner">
+                <div class="sub-logo">
+                    <a href="/">
+                        <img src="/img/KLSLogoBlack.svg" alt="">
+                    </a>
+                </div>
+                <div class="sub-nav-menu">
+                    <ul>
+                        <li>
+                            <a href="{{route('about')}}">
+                                關於凱麗絲
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/product-all')}}">
+                                品牌行李箱                   
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                行李箱配件
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/blog')}}">
+                                部落格
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                店鋪資訊
+                            </a>
+                        </li>
+                        <li class="nav_final">
+                            <a href="{{route('contact')}}">
+                                諮詢專區
+                            </a>
+                        </li>
+                        <li class="sub-icon">
+                            <img src="\img\likeIcon.png" alt="">
+                        </li>
+                        <li class="sub-icon">
+                            <img src="\img\cartIcon.png" alt="">
+                        </li>
+                    </ul> 
                 </div>
             </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img02.jpg')"></div>
-                    <div class="blog-post-inner-text vol02">
-                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img03.jpg')"></div>
-                    <div class="blog-post-inner-text vol01">
-                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
+        </div> 
+        <div class="container-fulid blog-banner"></div>
+        <div class="container blog-filter">
+            <div class="row">
+                <div class="col-md-12 blog-filter-inner">
+                    <button class="filterBtn-active">全部文章</button>
+                    <button>職人開箱</button>
+                    <button>箱款新知</button>
+                    <button>挑箱教學</button>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img04.jpg')"></div>
-                    <div class="blog-post-inner-text vol03">
-                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+        <div class="container-fulid blog-post">
+            <div class="row">
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img01.jpg')"></div>
+                        <div class="blog-post-inner-text vol03">
+                            <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img02.jpg')"></div>
+                        <div class="blog-post-inner-text vol02">
+                            <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img03.jpg')"></div>
+                        <div class="blog-post-inner-text vol01">
+                            <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img05.jpg')"></div>
-                    <div class="blog-post-inner-text vol02">
-                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+            <div class="row">
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img04.jpg')"></div>
+                        <div class="blog-post-inner-text vol03">
+                            <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img05.jpg')"></div>
+                        <div class="blog-post-inner-text vol02">
+                            <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img06.jpg')"></div>
+                        <div class="blog-post-inner-text vol01">
+                            <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img06.jpg')"></div>
-                    <div class="blog-post-inner-text vol01">
-                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+            <div class="row">
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img07.jpg')"></div>
+                        <div class="blog-post-inner-text vol03">
+                            <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img07.jpg')"></div>
-                    <div class="blog-post-inner-text vol03">
-                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img08.jpg')"></div>
+                        <div class="blog-post-inner-text vol02">
+                            <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img08.jpg')"></div>
-                    <div class="blog-post-inner-text vol02">
-                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img09.jpg')"></div>
-                    <div class="blog-post-inner-text vol01">
-                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fulid blog-post blog-post-open">
-        <div class="row">
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img01.jpg')"></div>
-                    <div class="blog-post-inner-text vol03">
-                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img02.jpg')"></div>
-                    <div class="blog-post-inner-text vol02">
-                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img03.jpg')"></div>
-                    <div class="blog-post-inner-text vol01">
-                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img09.jpg')"></div>
+                        <div class="blog-post-inner-text vol01">
+                            <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img04.jpg')"></div>
-                    <div class="blog-post-inner-text vol03">
-                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+        <div class="container-fulid blog-post blog-post-open">
+            <div class="row">
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img01.jpg')"></div>
+                        <div class="blog-post-inner-text vol03">
+                            <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img02.jpg')"></div>
+                        <div class="blog-post-inner-text vol02">
+                            <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img03.jpg')"></div>
+                        <div class="blog-post-inner-text vol01">
+                            <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img05.jpg')"></div>
-                    <div class="blog-post-inner-text vol02">
-                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+            <div class="row">
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img04.jpg')"></div>
+                        <div class="blog-post-inner-text vol03">
+                            <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img05.jpg')"></div>
+                        <div class="blog-post-inner-text vol02">
+                            <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img06.jpg')"></div>
+                        <div class="blog-post-inner-text vol01">
+                            <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img06.jpg')"></div>
-                    <div class="blog-post-inner-text vol01">
-                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+            <div class="row">
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img07.jpg')"></div>
+                        <div class="blog-post-inner-text vol03">
+                            <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img08.jpg')"></div>
+                        <div class="blog-post-inner-text vol02">
+                            <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 blog-post-group">
+                    <div class="blog-post-inner">
+                        <div class="blog-post-inner-img" style="background-image: url('/img/blog-img09.jpg')"></div>
+                        <div class="blog-post-inner-text vol01">
+                            <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
+                            <p>庫存補完通知計畫</p>
+                            <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </div>
-        <div class="row">
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img07.jpg')"></div>
-                    <div class="blog-post-inner-text vol03">
-                        <p>2018.Oct.Vol 3 | <span class="inner-text">箱款新知</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img08.jpg')"></div>
-                    <div class="blog-post-inner-text vol02">
-                        <p>2018.Oct.Vol 2 | <span class="inner-text">職人開箱</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 blog-post-group">
-                <div class="blog-post-inner">
-                    <div class="blog-post-inner-img" style="background-image: url('/img/blog-img09.jpg')"></div>
-                    <div class="blog-post-inner-text vol01">
-                        <p>2018.Oct.Vol 1 | <span class="inner-text">挑箱教學</span></p>
-                        <p>庫存補完通知計畫</p>
-                        <p>大貨到拉!倉庫又大爆滿了哈哈!這一次到了2款新款!請期待我們的開箱囉~預購的朋友們會陸續通知喲!</p>
-                    </div>
-                </div>
-            </div>
-        </div>  
-    </div>
-    <div class="blog-readMore">
-        <button id="readMore-btn">查看更多</button>
-    </div>
-    <div class="container-fulid sub-page-footer">
-        <div class="row sub-page-footer-inner">
-            <div class="sub-logo">
-                <a href="/">
-                    <img src="/img/KLS_logo_white.svg" alt="">
-                </a>
-            </div>
-            <div class="sub-nav-menu">
-                <ul>
-                    <li>
-                        <a href="{{route('about')}}">
-                            關於凱麗絲
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('/product-all')}}">
-                            品牌行李箱                   
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            行李箱配件
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('/blog')}}">
-                            部落格
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            店鋪資訊
-                        </a>
-                    </li>
-                    <li class="nav_final">
-                        <a href="{{route('contact')}}">
-                            諮詢專區
-                        </a>
-                    </li>
-                </ul> 
-            </div>
-            <div class="sub-contact-icon">
-                <div class="sub-icons">
-                    <img src="\img\facebook-white.svg" alt="">
-                    <img src="\img\instagram-white.svg" alt="">
-                    <img src="\img\line_icon.svg" alt="">
-                </div>
-            </div>
+        <div class="blog-readMore">
+            <button id="readMore-btn">查看更多</button>
         </div>
-        <div class="row sub-page-footer-copyright">
-            <div class="col-md-12">
-                <div class="sub-page-footer-copyright-inner">
-                    <div class="copyRight">
-                        <p>Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
-                    </div>
-                    <div class="needKnow">
-                        <p><span>隱私權條款</span> | <span>購物須知</span></p>
+        <div class="container-fulid sub-page-footer">
+            <div class="row sub-page-footer-inner">
+                <div class="sub-logo">
+                    <a href="/">
+                        <img src="/img/KLS_logo_white.svg" alt="">
+                    </a>
+                </div>
+                <div class="sub-nav-menu">
+                    <ul>
+                        <li>
+                            <a href="{{route('about')}}">
+                                關於凱麗絲
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/product-all')}}">
+                                品牌行李箱                   
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                行李箱配件
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/blog')}}">
+                                部落格
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                店鋪資訊
+                            </a>
+                        </li>
+                        <li class="nav_final">
+                            <a href="{{route('contact')}}">
+                                諮詢專區
+                            </a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class="sub-contact-icon">
+                    <div class="sub-icons">
+                        <img src="\img\facebook-white.svg" alt="">
+                        <img src="\img\instagram-white.svg" alt="">
+                        <img src="\img\line_icon.svg" alt="">
                     </div>
                 </div>
             </div>
-        </div>
-    </div> 
+            <div class="row sub-page-footer-copyright">
+                <div class="col-md-12">
+                    <div class="sub-page-footer-copyright-inner">
+                        <div class="copyRight">
+                            <p>Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
+                        </div>
+                        <div class="needKnow">
+                            <p><span>隱私權條款</span> | <span>購物須知</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+    
 @endsection
