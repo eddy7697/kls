@@ -213,7 +213,7 @@
         </div>
     </div>
     
-    <div class="navbar">
+    <div class="navbar" data-hover= "hide">
         <ul>
             <li>
                 <a href="{{route('about')}}">
@@ -241,9 +241,32 @@
                 </a>
             </li>
             <li class="nav_final">
-                <a href="{{route('contact')}}">
+                <a>
                     諮詢專區
+                    <span class="caret"></span>
                 </a>
+                <ul id="contact-menu">
+                    <li>
+                        <a href="#">
+                            安全購物宣言
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021">
+                            隱私權條款
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('contact')}}">
+                            聯絡我們
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('contact')}}">
+                            第四選項
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
@@ -382,8 +405,8 @@ $(document).ready(() => {
 
     $(function() {
         try {
-            var fix       = $('.navbar');                      //title
-            var fixTop    = fix.offset().top              //title 與頂部的距離
+            var fix   = $('.navbar');                      //title
+            var fixTop= fix.offset().top              //title 與頂部的距離
            
     
             $(window).scroll(() => {
@@ -440,9 +463,18 @@ $(document).ready(() => {
             },
         }
     });
-
+    //data-hover= "hide"
+    $('.navbar').hover(()=>{
+        $(this).attr('data-hover','show');
+    },()=>{
+        $(this).attr('data-hover','hide');
+    });
     
-
+    $('li.nav_final').hover(()=>{
+        $('#contact-menu').addClass('contact-menu-open');
+    },()=>{
+        $('#contact-menu').removeClass('contact-menu-open');
+    })
 });
 
    

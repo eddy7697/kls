@@ -301,6 +301,7 @@
             align-items: stretch;
             background-color: #fff;
             margin: 20px 0;
+            cursor: pointer;
             position: relative;
         }
         .filter-product .product-inner .productHeart{
@@ -321,10 +322,61 @@
         .productHeart-active{
             background-color: #636b6f !important;
         }
+        .filter-product .product-inner .buyIt{
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: #3E3A39;
+            border: none;
+            outline: none;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px 13px;
+            transition: 0.5s;
+        }
+        .filter-product .product-inner .buyIt:hover{
+            opacity: 0.7;
+        }
+        .filter-product .product-inner .product-innertext .buyIt img{
+            width: 15px;
+            height: 15px;
+        }
+        .filter-product .product-inner .buyIt p{
+            margin: 0;
+            margin-left: 5px;
+            font-size: 12px;
+        }
         .filter-product .product-inner .product-img{
             width: 35%;
             background-size: cover;
             background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-product .product-inner .product-img .product-img-mask{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border: solid 0px rgba(0,0,0,0.4);
+            transition: 0.5s;
+        }
+        .filter-product .product-inner:hover .product-img-mask{
+            border: solid 200px rgba(0,0,0,0.4);
+        }
+        .filter-product .product-inner .product-img p{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .filter-product .product-inner:hover .product-img p{
+            opacity: 1;
         }
         .filter-product .product-inner .product-innertext{
             width: 65%;
@@ -366,7 +418,7 @@
             color: #fff;
             position: absolute;
             right: 5px;
-            bottom: -15px;
+            bottom: -30px;
             padding: 3px 10px;
             transition: 0.3s;
         }
@@ -451,7 +503,7 @@
         .product-label img{
             width: 55px;
         }
-     
+        
         
     </style>
 @endsection
@@ -477,7 +529,8 @@
                             </div>
                             <p class="product-price">$ 12,000</p>
                         </div>
-                        <div class="productHeart"><img src="/img/productHeart.svg" alt=""></div>`;
+                        <div class="productHeart"><img src="/img/productHeart.svg" alt=""></div>
+                        <button class="buyIt"><img src="/img/cartIconWhite.svg" alt=""><p>加入購物車</p></button>`;
         $('.product-innertext').append(innerHtml);
         $('.collapseBtn').on('click',function(){
             $('.filter-title,.filter').fadeToggle();
@@ -500,6 +553,7 @@
 @endsection
 
 @section('content')
+
     <section id="subPage-productAll">
         <div class="container-fulid sub-page-header">
             <div class="row sub-page-header-inner">
@@ -708,49 +762,73 @@
                 <div class="filter-product-row">
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product01.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product_img.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product02.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/newsImage02.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/choose01.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product03.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
@@ -758,49 +836,73 @@
                 <div class="row filter-product-row product-more">
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product01.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product01.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product_img.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product_img.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/newsImage04.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product02.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product02.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/newsImage02.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/newsImage02.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/choose01.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/choose01.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-inner">
-                            <div class="product-img" style="background-image: url(/img/product03.jpg);"></div>
+                            <div class="product-img" style="background-image: url(/img/product03.jpg);">
+                                <div class="product-img-mask"></div>
+                                <p>查看商品</p>
+                            </div>
                             <div class="product-innertext"></div>
                         </div>
                     </div>

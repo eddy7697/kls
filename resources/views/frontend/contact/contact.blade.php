@@ -86,6 +86,24 @@
             .sub-page-header-inner,.sub-page-footer .sub-page-footer-copyright-inner{
                 width: 750px !important;
             }
+            .contact-container{
+                padding: 0;
+            }
+            .contact-container .information-content{
+                padding: 0;
+            }
+            .contact-container .information-content .center-content .contact-table{
+                margin: 0;
+            }
+            .contact-container .information-content .center-content .contact-table .form-group{
+                margin: 0 5px;
+            }
+            .contact-container .information-content .center-content .contact-table .form-group-text-must{
+                width: 10%;
+            }
+            .contact-container .information-content .center-content .contact-table .form-group-text-input{
+                width: 60%;
+            }
         }
         @media screen and (max-width: 1024px){
             .sub-page-header,.sub-nav-menu{
@@ -101,6 +119,7 @@
             .sub-page-footer-copyright .sub-page-footer-copyright-inner .needKnow{
                 text-align: center !important;
             }
+            
         }
         .sub-page-footer{
             background-color: #3E3A39;
@@ -189,6 +208,8 @@
             background-position: center;
             background-size: cover;
             padding-bottom: 60%;
+            position: relative;
+            min-height: 500px;
         }
         .contact-banner .contact-banner-inner-text{
             position: absolute;
@@ -239,10 +260,11 @@
             text-align: center;
             font-size: 16px;
         }
-        .contact-table .form-group-text-input .form-group-input {
-            
+        .contact-table .form-group-text-input .form-group-input label{
+            margin-right: 30px;
+            margin-left: 10px;
+            font-size: 16px;
         }
-        
         .privacyText a{
             color: #FBB03B;
             text-decoration: none;
@@ -272,7 +294,7 @@
             width: 20%;
         }
         .contact-table .form-group-text-td p{
-            font-size: 18px;
+            font-size: 16px;
         }
         .contact-table .form-group-text-must{
             width: 6%;
@@ -281,7 +303,7 @@
             width: 70%;
         }
         .form-control{
-            height: 30px;
+            height: 33px;
             border-radius: 8px;
             outline: none;
         }
@@ -353,7 +375,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container contact-container">
             <div class="row information-content">
                 <div class="col-md-10 center-content col-tel">
                     <form action="" method="post">
@@ -444,7 +466,10 @@
                                     <td class="form-group form-group-text-must"></td>
                                     <td class="form-group form-group-text-input">
                                         <div class="form-group-input">
-                                            <select class="form-control" name="search" id="search"></select>
+                                            <select class="form-control" name="search" id="search">
+                                                <option value="option1">選項一</option>
+                                                <option value="option2">選項二</option>
+                                            </select>
                                         </div>
                                     </td>
                                 </tr>
