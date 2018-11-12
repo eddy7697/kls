@@ -29,6 +29,7 @@ class CartController extends Controller
                 'type' => $product->productType,
                 'featureImage' => $product->featureImage,
                 'Temperature' => $product->Temperature,
+                'serialNumber' => $product->serialNumber,
             );
 
             $cart = Cart::add(json_encode($productMeta), json_encode($productMeta), 1, $price);
@@ -66,6 +67,7 @@ class CartController extends Controller
                 'type' => $product->productType,
                 'featureImage' => $product->featureImage,
                 'Temperature' => $product->Temperature,
+                'serialNumber' => $product->serialNumber,
             );
 
             $cart = Cart::add(json_encode($productMeta), json_encode($productMeta), $data['quantity'], $price);
@@ -108,6 +110,7 @@ class CartController extends Controller
                 'featureImage' => $product->featureImage,
                 'Temperature' => $product->Temperature,
                 'subProductId' => $data['id'],
+                'serialNumber' => $data['subSerialNumber'],
             );
 
             $cart = Cart::add(json_encode($productMeta), json_encode($productMeta), $data['qty'], $price);

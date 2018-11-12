@@ -92,6 +92,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>商品</th>
+                                                    <th>貨號</th>
                                                     <th>數量</th>
                                                     <th>單價</th>
                                                 </tr>
@@ -99,6 +100,7 @@
                                             <tbody>
                                                 <tr v-for="(item, index) in itemShowed.content" v-bind:key="index">
                                                     <td>{{item.Name}}</td>
+                                                    <td>{{item.id.serialNumber}}</td>
                                                     <td>{{item.qty}}</td>
                                                     <td>{{item.price}}</td>
                                                 </tr>
@@ -261,6 +263,10 @@
                                                 <td>電子郵件</td>
                                                 <td>{{itemShowed.shippingTarget.ReceiverEmail}}</td>
                                             </tr>
+                                            <tr v-if="itemShowed.paymentMethod == 'Remit'">
+                                                <td>帳號末五碼</td>
+                                                <td>{{itemShowed.shippingTarget.LastFiveChar}}</td>
+                                            </tr>
                                             <tr v-if="itemShowed.receipt">
                                                 <td>發票抬頭</td>
                                                 <td>{{itemShowed.receipt}}</td>
@@ -289,24 +295,26 @@
                                             {{itemShowed.shippingTarget.ReceiverPort + itemShowed.shippingTarget.ReceiverCity + itemShowed.shippingTarget.ReceiverAddress}}
                                         </span> -->                                        
                                         <div v-if="itemShowed.shippingMethod === 'delivery'" id="ready-to-print" style="border: 1px #ccc dashed; padding: 10px; width: max-content ">
-                                            <span style="font-size: 12px;">269宜蘭縣冬山鄉香城路15巷6號 (易耕事業有限公司 03-9590903)</span>
-                                            <br>
+                                            <!-- <span style="font-size: 12px;">269宜蘭縣冬山鄉香城路15巷6號 (易耕事業有限公司 03-9590903)</span>
+                                            <br> -->
                                             <span style="font-size: 16px;">
-                                                TO : {{itemShowed.shippingTarget.ReceiverPort + itemShowed.shippingTarget.ReceiverCity + itemShowed.shippingTarget.ReceiverAddress}}
+                                                {{`${itemShowed.shippingTarget.ReceiverPort}  ${itemShowed.shippingTarget.ReceiverAddress}`}}
                                             </span>
                                             <br>
                                             <span style="font-size: 16px;">
                                                 {{itemShowed.shippingTarget.ReceiverName}} 收 ({{itemShowed.shippingTarget.ReceiverCellPhone}})
                                             </span>                                      
                                         </div>
-                                        <button v-if="itemShowed.shippingMethod === 'delivery'" class="btn btn-primary btn-sm" style="margin-top: 10px;" @click="printAddress()">列印</button>
+                                        <!-- <button v-if="itemShowed.shippingMethod === 'delivery'" class="btn btn-primary btn-sm" style="margin-top: 10px;" @click="printAddress()">列印</button> -->
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>備註</td>
                                     <td>
                                         <div v-if="!itemShowed.remarkModify">
-                                            {{itemShowed.remarks}}&nbsp;&nbsp;
+                                            <div class="remark-info" v-if="itemShowed.remarks">
+                                                {{itemShowed.remarks}}
+                                            </div>                                            
                                             <button type="button" class="btn btn-primary btn-sm" @click="toggleRemarkModify()">更改備註</button>
                                         </div>
                                         <div v-else>
@@ -455,7 +463,6 @@
 
             },
             openModal: function (item) {
-                // console.log(item);
                 this.itemShowed = {};
                 this.itemShowed = JSON.parse(JSON.stringify(item));
 
@@ -645,3 +652,12 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+.remark-info {
+    width: 480px;
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+</style>

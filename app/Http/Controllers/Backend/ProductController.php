@@ -28,16 +28,21 @@ class ProductController extends Controller
     {
         $flag = $request->all()['flag'];
         $order = $request->all()['order'];
-        $data = Product::paginate(15);
-        // $productData = array();
+        $qty = $request->qty;
 
         if (Auth::user()->role == 'ADMIN') {
 
             $products = DB::table('products')
-                          ->orderBy($flag, $order)
-                          ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
-                          ->select('products.*', 'categories.categoryTitle')
-                          ->paginate(15);
+                            ->orderBy($flag, $order)
+                            ->where(function ($query) use ($qty)
+                            {
+                                if ($qty == 'ot') {
+                                    $query->where('quantity', '<', 1);
+                                }
+                            })
+                            ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
+                            ->select('products.*', 'categories.categoryTitle')
+                            ->paginate(15);
 
             $status = 200;
             $message = 'Get product information success.';
@@ -49,21 +54,29 @@ class ProductController extends Controller
         return $products;
     }
 
+    /**
+     * 搜尋產品
+     */
     public function searchProducts(Request $request, $keyword)
     {
         $flag = $request->all()['flag'];
         $order = $request->all()['order'];
-        $data = Product::paginate(15);
-        // $productData = array();
+        $qty = $request->qty;
 
         if (Auth::user()->role == 'ADMIN') {
 
             $products = DB::table('products')
-                          ->where('productTitle', 'like', '%'.$keyword.'%')
-                          ->orderBy($flag, $order)
-                          ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
-                          ->select('products.*', 'categories.categoryTitle')
-                          ->paginate(15);
+                            ->where('productTitle', 'like', '%'.$keyword.'%')
+                            ->where(function ($query) use ($qty)
+                            {
+                                if ($qty == 'ot') {
+                                    $query->where('quantity', '<', 1);
+                                }
+                            })
+                            ->orderBy($flag, $order)
+                            ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
+                            ->select('products.*', 'categories.categoryTitle')
+                            ->paginate(15);
 
             $status = 200;
             $message = 'Get product information success.';
@@ -75,21 +88,29 @@ class ProductController extends Controller
         return $products;
     }
 
+    /**
+     * 取得指定類別的產品列表
+     */
     Public function getCategory(Request $request, $category)
     {
         $flag = $request->all()['flag'];
         $order = $request->all()['order'];
-        $data = Product::paginate(15);
-        // $productData = array();
+        $qty = $request->qty;
 
         if (Auth::user()->role == 'ADMIN') {
 
             $products = DB::table('products')
-                          ->where('productCategory', $category)
-                          ->orderBy($flag, $order)
-                          ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
-                          ->select('products.*', 'categories.categoryTitle')
-                          ->paginate(15);
+                            ->where('productCategory', $category)
+                            ->where(function ($query) use ($qty)
+                            {
+                                if ($qty == 'ot') {
+                                    $query->where('quantity', '<', 1);
+                                }
+                            })
+                            ->orderBy($flag, $order)
+                            ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
+                            ->select('products.*', 'categories.categoryTitle')
+                            ->paginate(15);
 
             $status = 200;
             $message = 'Get product information success.';
@@ -374,8 +395,6 @@ class ProductController extends Controller
     {
         $data = $request->all()['data'];
 
-        return $request->all();
-
         try {
             for ($i=0; $i < count($data); $i++) {
                 Product::where('productGuid', $data[$i])->delete();
@@ -387,7 +406,6 @@ class ProductController extends Controller
             $status = 500;
             $message = $e->getMessage();
         }
-
 
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }

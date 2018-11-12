@@ -18,7 +18,7 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
-                        ->orderBy('created_at', 'desc')->paginate(12);
+                        ->orderBy('schedulePost', 'desc')->paginate(12);
     }
 
     public static function getPopularProducts()
@@ -48,7 +48,7 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
-                        ->orderBy('created_at', 'desc')->inRandomOrder()->take($int)->get();
+                        ->orderBy('schedulePost', 'desc')->inRandomOrder()->take($int)->get();
     }
 
     public static function getByCategory($category)
@@ -63,7 +63,7 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
-                        ->orderBy('created_at', 'desc')->where('productCategory', $category)->paginate(12);
+                        ->orderBy('schedulePost', 'desc')->where('productCategory', $category)->paginate(12);
     }
 
     public static function takeByCategory($category)
@@ -78,6 +78,6 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
-                        ->orderBy('created_at', 'desc')->where('productCategory', $category)->take(10)->get();
+                        ->orderBy('schedulePost', 'desc')->where('productCategory', $category)->take(10)->get();
     }
 }

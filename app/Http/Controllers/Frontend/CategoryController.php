@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function getProductCategory()
     {
-        $category = Category::where('type', 'product')->get();
+        $category = Category::where('type', 'product')->orderBy('sortKey', 'asc')->get();
 
         $status = 200;
         $message = 'Get product category success.';
@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
     public function getPostCategory()
     {
-        $category = Category::where('type', 'post')->get();
+        $category = Category::where('type', 'post')->orderBy('sortKey', 'asc')->get();
 
         $status = 200;
         $message = 'Get post category success.';

@@ -141,18 +141,18 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <div class="form-group">
                                             <label for="">郵遞區號</label>
                                             <input class="form-control" type="text" name="port" v-model="accountContent.address.postcode">
                                         </div>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <div class="form-group">
                                             <label for="">居住城市</label>
                                             <input class="form-control" type="text" name="city" v-model="accountContent.address.city">
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 <tr>
                                     <td colspan="2">
@@ -162,14 +162,14 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td colspan="2">
                                         <div class="form-group">
                                             <label for="">會員溢付款</label>
                                             <input class="form-control" type="number" name="address" v-model="accountContent.remark">
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </table>
                         </div>
                         <div class="modal-footer">
@@ -215,7 +215,7 @@
                     guid: null,
                     name: null,
                     email: null,
-                    remark: null,
+                    remark: 'null',
                     address: {
                         address: null,
                         postcode: null,

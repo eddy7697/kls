@@ -15,6 +15,12 @@
                 :selectedCategoryKey="selectedCategoryKey"
                 @changeCategory="changeCategory($event)"/>
         </div>
+        <div class="col-md-12">
+            <ul class="order-cate-list">
+                <li v-bind:class="{ active: (productQtyStatus == 'all') }" @click="productQtyStatus = 'all'">全部</li>
+                <li v-bind:class="{ active: (productQtyStatus == 'ot') }" @click="productQtyStatus = 'ot'">無庫存</li>
+            </ul>
+        </div>
         <!-- <div class="col-md-2">
             <select class="form-control" v-model="locale">
                 <option value="zh-TW">繁體中文</option>
@@ -142,13 +148,14 @@
                 listFunction: 'default',
                 token: $('meta[name="csrf-token"]').attr('content'),
                 listFunction: 'default',
-                flag: 'id',
+                flag: 'schedulePost',
                 locale: 'zh-TW',
                 selectedCategoryName: '全部類別',
                 selectedCategoryKey: 'ALL',
                 categories: [],
                 listLoading: true,
                 multipleSelection: [],
+                productQtyStatus: 'all',
                 urlPath: '/admin/product/get',
                 listConfig: {
                     checkBox: true,
@@ -174,11 +181,17 @@
         },
         created: function () {
             var self = this;
+
+            if (localStorage.getItem('productQtyStatus')) {
+                this.productQtyStatus = localStorage.getItem('productQtyStatus')
+            }
+
             if (localStorage.getItem('pageCache')) {
                 this.getProductData(localStorage.getItem('pageCache'));
             } else {
                 this.getProductData('/admin/product/get');
             }
+            
             this.keyword = localStorage.getItem('keywordCache')
             // this.getProductData('/admin/product/get');
             this.getCategories();
@@ -194,6 +207,12 @@
             locale: {
                 handler(locale, oldVal) {
                     this.getProductData(this.urlPath);
+                }
+            },
+            productQtyStatus: {
+                handler(productQtyStatus, oldVal) {
+                    this.getProductData(this.urlPath);
+                    localStorage.setItem('productQtyStatus', productQtyStatus)
                 }
             },
             urlPath: {
@@ -453,7 +472,8 @@
                     params: {
                         flag: self.flag,
                         order: self.defaultOrder,
-                        locale: self.locale
+                        locale: self.locale,
+                        qty: self.productQtyStatus
                     }
                 }).then(result => {
                     var productData = result.data;
