@@ -67,6 +67,7 @@
 												<li><a href="/cyberholic-system/meta/notice">購物須知管理</a></li>
 												<li><a href="/cyberholic-system/meta/privacy">隱私權政策管理</a></li>
 												<li><a href="/cyberholic-system/meta/remind">安心購物宣言管理</a></li>
+												<li><a href="/cyberholic-system/meta/other">其他資訊管理</a></li>
 											</ul>
 										</li>
 										<li class=""><a><i class="fa fa-users"></i> 會員管理系統 <span class="fa fa-chevron-down"></span></a>

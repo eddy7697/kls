@@ -15,6 +15,7 @@
                 :selectedCategoryKey="selectedCategoryKey"
                 @changeCategory="changeCategory($event)"/>
         </div>
+<<<<<<< HEAD
         <div class="col-md-12" style="margin-bottom: 5px;">
             <el-radio-group v-model="productType" size="small">
                 <el-radio-button label="all">所有類型</el-radio-button>
@@ -26,6 +27,13 @@
                 <el-radio-button label="lowq">低庫存</el-radio-button>
                 <el-radio-button label="ot">無庫存</el-radio-button>
             </el-radio-group>
+=======
+        <div class="col-md-12">
+            <ul class="order-cate-list">
+                <li v-bind:class="{ active: (productQtyStatus == 'all') }" @click="productQtyStatus = 'all'">全部</li>
+                <li v-bind:class="{ active: (productQtyStatus == 'ot') }" @click="productQtyStatus = 'ot'">無庫存</li>
+            </ul>
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
         </div>
         <!-- <div class="col-md-2">
             <select class="form-control" v-model="locale">
@@ -201,7 +209,10 @@
                 categories: [],
                 listLoading: true,
                 multipleSelection: [],
+<<<<<<< HEAD
                 productType: 'all',
+=======
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
                 productQtyStatus: 'all',
                 urlPath: '/admin/product/get',
                 subDialogVisible: false,
@@ -264,12 +275,15 @@
                     localStorage.setItem('productQtyStatus', productQtyStatus)
                 }
             },
+<<<<<<< HEAD
             productType: {
                 handler(productType, oldVal) {
                     this.getProductData(this.urlPath);
                     localStorage.setItem('productType', productType)
                 }
             },
+=======
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
             urlPath: {
                 handler(urlPath, oldVal) {
                     this.getProductData(urlPath);
@@ -528,7 +542,10 @@
                         flag: self.flag,
                         order: self.defaultOrder,
                         locale: self.locale,
+<<<<<<< HEAD
                         productType: self.productType,
+=======
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
                         qty: self.productQtyStatus
                     }
                 }).then(result => {

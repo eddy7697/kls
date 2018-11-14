@@ -18,8 +18,11 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
+<<<<<<< HEAD
                         ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
                         ->select('products.*', 'categories.categoryTitle')
+=======
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
                         ->orderBy('schedulePost', 'desc')->paginate(12);
     }
 
@@ -52,8 +55,11 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
+<<<<<<< HEAD
                         ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
                         ->select('products.*', 'categories.categoryTitle')
+=======
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
                         ->orderBy('schedulePost', 'desc')->inRandomOrder()->take($int)->get();
     }
 
@@ -68,11 +74,16 @@ class ProductView
                         ->where(function ($query) {
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
+<<<<<<< HEAD
                         })                        
                         ->where('productCategory', $category)
                         ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
                         ->select('products.*', 'categories.categoryTitle')
                         ->orderBy('schedulePost', 'desc')->paginate(12);
+=======
+                        })
+                        ->orderBy('schedulePost', 'desc')->where('productCategory', $category)->paginate(12);
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
     }
 
     public static function takeByCategory($category)
@@ -87,9 +98,13 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
+<<<<<<< HEAD
                         ->where('productCategory', $category)
                         ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
                         ->select('products.*', 'categories.categoryTitle')
                         ->orderBy('schedulePost', 'desc')->take(10)->get();
+=======
+                        ->orderBy('schedulePost', 'desc')->where('productCategory', $category)->take(10)->get();
+>>>>>>> e77f566b13c4bc72020d9639993656ccc135d958
     }
 }
