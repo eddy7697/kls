@@ -29,7 +29,7 @@
             @foreach ($product as $item)
                 <div class="col-sm-3 product-box">
                     <div class="product-image">
-                        <a href="/product-deatil/{{$item->guid}}">
+                        <a href="//product/detail/{{$item->guid}}">
                             <img src="{{Helper::thumb($item->featureImage)}}" alt="">
                         </a>
                         <div class="add-to-cart">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="product-title">
-                        <a href="/product-deatil/{{$item->guid}}">{{$item->title}}</a>
+                        <a href="//product/detail/{{$item->guid}}">{{$item->title}}</a>
                     </div>
                     <div class="product-price">
                         <span>NT$ {{number_format($item->price)}}</span>
@@ -66,7 +66,7 @@
                 @foreach ($product as $item)
                     <div class="col-sm-3 product-box">
                         <div class="product-image">
-                            <a href="/product-deatil/{{$item->guid}}">
+                            <a href="//product/detail/{{$item->guid}}">
                                 <img src="{{Helper::thumb($item->featureImage)}}" alt="">
                             </a>
                             <div class="add-to-cart">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="product-title">
-                            <a href="/product-deatil/{{$item->guid}}">{{$item->title}}</a>
+                            <a href="//product/detail/{{$item->guid}}">{{$item->title}}</a>
                         </div>
                         <div class="product-price">
                             <span>NT$ {{number_format($item->price)}}</span>

@@ -418,7 +418,7 @@
                 }
             },
             productLink: function (guid) {
-                return "/product-deatil/" + guid;
+                return "//product/detail/" + guid;
             },
             showMessage: function (type, string) {
                 toastr[type](string);

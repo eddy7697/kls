@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 585);
+/******/ 	return __webpack_require__(__webpack_require__.s = 590);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 4:
+/***/ 2:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -175,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 585:
+/***/ 590:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(586);
+module.exports = __webpack_require__(591);
 
 
 /***/ }),
 
-/***/ 586:
+/***/ 591:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('product-filter', __webpack_require__(587));
+Vue.component('product-filter', __webpack_require__(592));
 
 var app = new Vue({
     el: '#product-filter'
@@ -194,15 +194,15 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 587:
+/***/ 592:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(588)
+var __vue_script__ = __webpack_require__(593)
 /* template */
-var __vue_template__ = __webpack_require__(589)
+var __vue_template__ = __webpack_require__(594)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -242,120 +242,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 588:
+/***/ 593:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -686,7 +577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 589:
+/***/ 594:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -701,76 +592,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("section", [
-      _c("div", { staticClass: "container-fulid sub-page-header" }, [
-        _c("div", { staticClass: "row sub-page-header-inner" }, [
-          _c("div", { staticClass: "sub-logo" }, [
-            _c("a", { attrs: { href: "/" } }, [
-              _c("img", { attrs: { src: "/img/KLSLogoBlack.svg", alt: "" } })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sub-nav-menu" }, [
-            _c("ul", [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            關於凱麗絲\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            品牌行李箱                   \n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "" } }, [
-                  _vm._v(
-                    "\n                            行李箱配件\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            部落格\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "" } }, [
-                  _vm._v(
-                    "\n                            店鋪資訊\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav_final" }, [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            諮詢專區\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "sub-icon" }, [
-                _c("img", { attrs: { src: "\\img\\likeIcon.png", alt: "" } })
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "sub-icon" }, [
-                _c("img", { attrs: { src: "\\img\\cartIcon.png", alt: "" } })
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
       _c("div", { staticClass: "container filter-area" }, [
         _c("div", { staticClass: "row filter" }, [
           _c("div", { staticClass: "col-md-12 filter-title" }, [
@@ -1505,104 +1326,6 @@ var staticRenderFns = [
           _c("div", { staticClass: "col-md-12 filter-product-readMore" }, [
             _c("button", { attrs: { id: "readMore-btn" } }, [
               _vm._v("查看更多")
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fulid sub-page-footer" }, [
-        _c("div", { staticClass: "row sub-page-footer-inner" }, [
-          _c("div", { staticClass: "sub-logo" }, [
-            _c("a", { attrs: { href: "/" } }, [
-              _c("img", { attrs: { src: "/img/KLS_logo_white.svg", alt: "" } })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sub-nav-menu" }, [
-            _c("ul", [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            關於凱麗絲\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            品牌行李箱                   \n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "" } }, [
-                  _vm._v(
-                    "\n                            行李箱配件\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            部落格\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "" } }, [
-                  _vm._v(
-                    "\n                            店鋪資訊\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav_final" }, [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                            諮詢專區\n                        "
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sub-contact-icon" }, [
-            _c("div", { staticClass: "sub-icons" }, [
-              _c("img", {
-                attrs: { src: "\\img\\facebook-white.svg", alt: "" }
-              }),
-              _vm._v(" "),
-              _c("img", {
-                attrs: { src: "\\img\\instagram-white.svg", alt: "" }
-              }),
-              _vm._v(" "),
-              _c("img", { attrs: { src: "\\img\\line_icon.svg", alt: "" } })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row sub-page-footer-copyright" }, [
-          _c("div", { staticClass: "col-md-12" }, [
-            _c("div", { staticClass: "sub-page-footer-copyright-inner" }, [
-              _c("div", { staticClass: "copyRight" }, [
-                _c("p", [
-                  _vm._v(
-                    "Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved."
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "needKnow" }, [
-                _c("p", [
-                  _c("span", [_vm._v("隱私權條款")]),
-                  _vm._v(" | "),
-                  _c("span", [_vm._v("購物須知")])
-                ])
-              ])
             ])
           ])
         ])

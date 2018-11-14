@@ -70,13 +70,13 @@
         <div class="col-md-12">
             <a href="/">首頁</a>
             &nbsp;&nbsp;>&nbsp;&nbsp;
-            <a href="/product-all">線上商城</a>
+            <a href="/product/all">線上商城</a>
             @if ($product->category)
                 &nbsp;&nbsp;>&nbsp;&nbsp;
-                <a href="/product-category/{{$product->category}}">{{CategoryView::get($product->category)->categoryTitle}}</a>                
+                <a href="/product/category/{{$product->category}}">{{CategoryView::get($product->category)->categoryTitle}}</a>                
             @else
                 {{-- &nbsp;&nbsp;>&nbsp;&nbsp;
-                <a href="/product-all">所有商品</a>                 --}}
+                <a href="/product/all">所有商品</a>                 --}}
             @endif
             &nbsp;&nbsp;>&nbsp;&nbsp;{{$product->productTitle}}
         </div>
@@ -282,7 +282,7 @@
                 </div>
                 <ul class="product-link-list">
                     @foreach ($productList as $item)
-                        <li><a href="/product-deatil/{{$item->guid}}">{{$item->productTitle}}</a></li>
+                        <li><a href="//product/detail/{{$item->guid}}">{{$item->productTitle}}</a></li>
                     @endforeach
                 </ul>
             </div>

@@ -1,54 +1,6 @@
 <template>
     <section>
-        <div class="container-fulid sub-page-header">
-            <div class="row sub-page-header-inner">
-                <div class="sub-logo">
-                    <a href="/">
-                        <img src="/img/KLSLogoBlack.svg" alt="">
-                    </a>
-                </div>
-                <div class="sub-nav-menu">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                關於凱麗絲
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                品牌行李箱                   
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                行李箱配件
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                部落格
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                店鋪資訊
-                            </a>
-                        </li>
-                        <li class="nav_final">
-                            <a href="#">
-                                諮詢專區
-                            </a>
-                        </li>
-                        <li class="sub-icon">
-                            <img src="\img\likeIcon.png" alt="">
-                        </li>
-                        <li class="sub-icon">
-                            <img src="\img\cartIcon.png" alt="">
-                        </li>
-                    </ul> 
-                </div>
-            </div>
-        </div> 
+        
         <div class="container filter-area">
             <div class="row filter">
                 <div class="col-md-12 filter-title">
@@ -358,68 +310,7 @@
             </div>
         </div>
 
-        <div class="container-fulid sub-page-footer">
-            <div class="row sub-page-footer-inner">
-                <div class="sub-logo">
-                    <a href="/">
-                        <img src="/img/KLS_logo_white.svg" alt="">
-                    </a>
-                </div>
-                <div class="sub-nav-menu">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                關於凱麗絲
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                品牌行李箱                   
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                行李箱配件
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                部落格
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                店鋪資訊
-                            </a>
-                        </li>
-                        <li class="nav_final">
-                            <a href="#">
-                                諮詢專區
-                            </a>
-                        </li>
-                    </ul> 
-                </div>
-                <div class="sub-contact-icon">
-                    <div class="sub-icons">
-                        <img src="\img\facebook-white.svg" alt="">
-                        <img src="\img\instagram-white.svg" alt="">
-                        <img src="\img\line_icon.svg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row sub-page-footer-copyright">
-                <div class="col-md-12">
-                    <div class="sub-page-footer-copyright-inner">
-                        <div class="copyRight">
-                            <p>Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
-                        </div>
-                        <div class="needKnow">
-                            <p><span>隱私權條款</span> | <span>購物須知</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
+        
     </section>
 </template>
 

@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         $product = Product::where('guid', $guid)->first();
 
-        return redirect('product-deatil/'.$product->id.'/show?name='.$product->title);
+        return redirect('/product/detail/'.$product->id.'/show?name='.$product->title);
     }
 
     public function productDetailFromId($id)
@@ -64,7 +64,7 @@ class ProductController extends Controller
             'productList' => $productList,
             'comentList' => $comentList,
             'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/product-all">系列商品</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;'.$product->title
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/product/all">系列商品</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;'.$product->title
         ]);
     }
 
@@ -94,7 +94,7 @@ class ProductController extends Controller
             'productList' => $productList,
             'comentList' => $comentList,
             'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/product-all">系列商品</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;'.$product->title
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/product/all">系列商品</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;'.$product->title
         ]);
     }
 

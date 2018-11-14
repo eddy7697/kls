@@ -2,10 +2,13 @@
 
 
 /**
- * INDEX
+ * index
  */
-Route::get('/', 'Frontend\PageController@index');
+Route::get('/', 'Frontend\PageController@index')->name('index');
 
+/**
+ * maintenance
+ */
 Route::get('/maintenance', function ()
 {
     return view('maintenance');
@@ -14,26 +17,25 @@ Route::get('/maintenance', function ()
 /**
  * about
  */
- Route::group(['prefix' => 'about'], function()
- {
+Route::group(['prefix' => 'about'], function()
+{
     Route::get('/', 'Frontend\PageController@about')->name('about');
-    Route::get('/mercurius', 'Frontend\PageController@mercurius')->name('mercurius');
-    Route::get('/stockmar', 'Frontend\PageController@stockmar')->name('stockmar');
-    Route::get('/lyra', 'Frontend\PageController@lyra')->name('lyra');
-    Route::get('/choroi', 'Frontend\PageController@chorol')->name('chorol');
+    Route::get('/location', 'Frontend\PageController@location')->name('location');
     Route::get('/privacy', 'Frontend\PageController@privacy')->name('privacy');
     Route::get('/remind', 'Frontend\PageController@remind')->name('remind');
     Route::get('/notice', 'Frontend\PageController@notice')->name('notice');
- });
+});
 
 /**
  * PRODUCT
  */
-// Route::get('/product-deatil/{guid}', 'Frontend\ProductController@productDetail');
-// Route::get('/product-deatil/{id}/show', 'Frontend\ProductController@productDetailFromId');
-Route::get('/product-deatil/{path}', 'Frontend\ProductController@productDetailFromPath')->name('productDetail');
-Route::get('/product-all', 'Frontend\PageController@productAll');
-Route::get('/product-category/{guid}', 'Frontend\ProductController@productCategory');
+Route::group(['prifix' => 'product'], function ()
+{
+    Route::get('/all', 'Frontend\PageController@productAll')->name('productAll');
+    Route::get('/fitting', 'Frontend\PageController@productFitting')->name('productFitting');
+    Route::get('/detail/{path}', 'Frontend\ProductController@productDetailFromPath')->name('productDetail');    
+    Route::get('/category/{guid}', 'Frontend\ProductController@productCategory');
+});
 
 /**
  * Post

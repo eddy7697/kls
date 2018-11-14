@@ -30,7 +30,7 @@ class PageController extends Controller
     {
         return view('frontend.product.productDetail', [
             'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/product-all">系列商品</a>'
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/product/all">系列商品</a>'
         ]);
     }
 
@@ -42,6 +42,17 @@ class PageController extends Controller
             'productAll' => $productAll,
             'isThumbShow' => true,
             'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;系列商品'
+        ]);
+    }
+
+    public function productFitting()
+    {
+        $productAll = Product::paginate(15);
+
+        return view('frontend.product.productFitting', [
+            'productAll' => $productAll,
+            'isThumbShow' => true,
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;行李箱配件'
         ]);
     }
 
@@ -69,35 +80,11 @@ class PageController extends Controller
         ]);
     }
 
-    public function mercurius()
+    public function location()
     {
-        return view('frontend.about.mercurius', [
+        return view('frontend.about.location', [
             'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;Mercurius'
-        ]);
-    }
-
-    public function stockmar()
-    {
-        return view('frontend.about.stockmar', [
-            'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;STOCKMAR'
-        ]);
-    }
-
-    public function lyra()
-    {
-        return view('frontend.about.lyra', [
-            'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;LYRA'
-        ]);
-    }
-
-    public function chorol()
-    {
-        return view('frontend.about.chorol', [
-            'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;CHOROL'
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;品牌故事'
         ]);
     }
 

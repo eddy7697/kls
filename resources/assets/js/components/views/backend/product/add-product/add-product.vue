@@ -4,7 +4,7 @@
             <div class="col-md-9">
                 <input type="text" class="form-control ch-product-title" name="title" value="" placeholder="商品名稱" v-model="productContent.productTitle" required>
                 <!-- <div class="form-group">
-                    <label for="">{{currentPath}}/product-deatil/</label>
+                    <label for="">{{currentPath}}//product/detail/</label>
                     <input type="text" class="form-control" placeholder="" v-model="productContent.customPath" style="width: fit-content; display:inline-block">
                 </div> -->
                 <ckeditor
@@ -45,9 +45,9 @@
                             </ul>
                             <div class="tab-content ch-tab-content">
                                 <div class="tab-pane active" id="panel-817886">
-                                    <div  v-if="productContent.productType == 'variable'">
+                                    <div v-if="productContent.productType == 'variable'">
                                         <el-collapse accordion v-if="productContent.subProduct.length > 0">
-                                            <el-collapse-item v-for="(item, index) in productContent.subProduct" :key="index" :title="item.subTitle" :name="index">
+                                            <el-collapse-item v-for="(item, index) in productContent.subProduct" :key="index" :title="`${item.subTitle}`" :name="index">
                                                 <el-form :model="item" :ref="`subProduct-${item.subProductGuid}`">
                                                     <el-form-item label="規格名稱" :label-width="'120px'">
                                                         <el-input v-model="item.subTitle" autocomplete="on"></el-input>
@@ -63,6 +63,15 @@
                                                     </el-form-item>
                                                     <el-form-item label="促銷價" :label-width="'120px'">
                                                         <el-input v-model="item.subDiscountPrice" autocomplete="off"></el-input>
+                                                    </el-form-item>
+                                                    <el-form-item label="選擇顏色" :label-width="'120px'">
+                                                        <el-input style="display: none" v-model="item.cf_1" autocomplete="off"></el-input>
+                                                        <el-color-picker v-model="item.cf_1"></el-color-picker>
+                                                    </el-form-item>
+                                                    <el-form-item label="子商品圖片" :label-width="'120px'">
+                                                        <el-button v-if="!item.subFeatureImage" icon="el-icon-picture-outline" type="primary" plain circle @click="editSubProductImage(item)"></el-button>
+                                                        <img v-else :src="item.subFeatureImage" width="50%" @click="editSubProductImage(item)">
+                                                        <el-input style="display: none" v-model="item.subFeatureImage" autocomplete="off"></el-input>
                                                     </el-form-item>
                                                     <el-form-item align="right">                                                        
                                                         <el-button type="danger" @click="deleteSubProduct(item.subProductGuid)">刪除</el-button>
@@ -88,6 +97,15 @@
                                                 </el-form-item>
                                                 <el-form-item label="促銷價" :label-width="'120px'">
                                                     <el-input v-model="subProductForm.subDiscountPrice" autocomplete="off"></el-input>
+                                                </el-form-item>
+                                                <el-form-item label="選擇顏色" :label-width="'120px'">
+                                                    <el-input style="display:none" v-model="subProductForm.cf_1" autocomplete="off"></el-input>
+                                                    <el-color-picker v-model="subProductForm.cf_1"></el-color-picker>
+                                                </el-form-item>
+                                                <el-form-item label="子商品圖片" :label-width="'120px'">
+                                                    <img v-if="subProductForm.subFeatureImage" :src="subProductForm.subFeatureImage" width="50%" alt="" @click="addSubProductImage()">
+                                                    <el-button v-else icon="el-icon-picture-outline" type="primary" plain circle @click="addSubProductImage()"></el-button>
+                                                    <el-input style="display: none" v-model="subProductForm.subFeatureImage" autocomplete="off"></el-input>
                                                 </el-form-item>
                                             </el-form>
                                             <div slot="footer" class="dialog-footer">
@@ -448,7 +466,9 @@
                     subSerialNumber: null,
                     subQuantity: null,
                     subPrice: null,
-                    subDiscountPrice: null
+                    subDiscountPrice: null,
+                    subFeatureImage: null,
+                    cf_1: null
                 },
                 isSubmit: false,
                 noShow: false,
@@ -602,6 +622,22 @@
                     self.productContent.socialImage = file_path;
                 };
             },
+            addSubProductImage() {
+                var self = this;
+
+                window.open('/laravel-filemanager' + '?type=Images', 'FileManager', 'width=900,height=600');
+                window.SetUrl = function (url, file_path) {
+                    self.subProductForm.subFeatureImage = file_path;
+                };
+            },
+            editSubProductImage(item) {
+                var self = this;
+
+                window.open('/laravel-filemanager' + '?type=Images', 'FileManager', 'width=900,height=600');
+                window.SetUrl = function (url, file_path) {
+                    item.subFeatureImage = file_path;
+                };
+            },
             saveProduct() {
                 var self = this;
                 var token = this.token;
@@ -749,7 +785,9 @@
                     subSerialNumber: null,
                     subQuantity: null,
                     subPrice: null,
-                    subDiscountPrice: null
+                    subDiscountPrice: null,
+                    subFeatureImage: null,
+                    cf_1: null
                 }
             },
             saveSubProduct(form) {

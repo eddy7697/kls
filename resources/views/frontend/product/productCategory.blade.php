@@ -49,7 +49,7 @@
                     if (data.node.getLevel() < 2) {
                         return
                     }
-                    window.location.href = '/product-category/' + data.node.key
+                    window.location.href = '/product/category/' + data.node.key
                 }
             });
         });
@@ -61,7 +61,7 @@
         <div class="col-md-12">
             <a href="/">首頁</a>
             &nbsp;&nbsp;>&nbsp;&nbsp;
-            <a href="/product-all">線上商城</a>
+            <a href="/product/category">線上商城</a>
             &nbsp;&nbsp;>&nbsp;&nbsp;{{CategoryView::get($guid)->categoryTitle}}
         </div>
     </div>
@@ -88,7 +88,7 @@
                 @foreach ($product as $item)
                     <div class="col-sm-4 product-box" title="{{$item->productTitle}}">
                         <div class="product-image">
-                            <a href="/product-deatil/{{$item->customPath}}">
+                            <a href="/product/detail/{{$item->customPath}}">
                                 <img src="{{Helper::thumb($item->featureImage)}}" alt="">
                             </a>
                             <div class="add-to-cart">
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="product-title">
-                            <a href="/product-deatil/{{$item->customPath}}" title="{{$item->productTitle}}">{{$item->productTitle}}</a>
+                            <a href="/product/detail/{{$item->customPath}}" title="{{$item->productTitle}}">{{$item->productTitle}}</a>
                             <span>貨號：{{$item->serialNumber}}</span>
                         </div>
                         <div class="product-price">

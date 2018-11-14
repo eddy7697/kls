@@ -12,10 +12,16 @@ class SubProduct extends Model
         'productParent',
         'subSerialNumber',
         'subProductGuid',
+        'subFeatureImage',
         'subTitle',
         'subQuantity',
         'subPrice',
         'subDiscountPrice',
-        'subDescription'
+        'subDescription',
+        'cf_1',
+        'cf_2',
+        'cf_3',
+        'cf_4',
+        'cf_5',
     ];
 }
