@@ -207,4 +207,54 @@ class MetaController extends Controller
 
         return response()->json([ 'status' => $status, 'message' => $message, 'data' => $notice ], $status);
     }
+
+    /**
+     * 取得購物須知參數
+     */
+    public function getOther()
+    {
+        $notice = CustomField::where('type', 'OTHER')->first();
+
+        return $notice;
+    }
+
+    /**
+     * 建立購物須知
+     */
+    public function createOther(Request $request)
+    {
+        $data = $request->all();
+
+        try {
+            $notice = CustomField::create($data);
+            $status = 200;
+            $message = 'create notice success.';
+        } catch (\Exception $e) {
+            $notice = null;
+            $status = 500;
+            $message = $e->getMessage();
+        }
+
+        return response()->json([ 'status' => $status, 'message' => $message, 'data' => $notice ], $status);
+    }
+
+    /**
+     * 修改購物須知
+     */
+    public function updateOther(Request $request)
+    {
+        $data = $request->all();
+
+        try {
+            $notice = CustomField::where('type', 'OTHER')->update($data);
+            $status = 200;
+            $message = 'update notice success.';
+        } catch (\Exception $e) {
+            $notice = null;
+            $status = 500;
+            $message = $e->getMessage();
+        }
+
+        return response()->json([ 'status' => $status, 'message' => $message, 'data' => $notice ], $status);
+    }
 }

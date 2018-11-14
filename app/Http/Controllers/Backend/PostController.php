@@ -23,11 +23,15 @@ class PostController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
+
         if (Auth::user()->role == 'ADMIN') {
             // return $posts = DB::table('posts')->paginate(15);
             return DB::table('posts')
+                     ->orderBy($flag, $order)
                      ->leftJoin('categories', 'posts.postCategory', '=', 'categories.categoryGuid')
                      ->select('posts.*', 'categories.categoryTitle')
                      ->paginate(15);

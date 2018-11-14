@@ -121,7 +121,7 @@
                                                 </select>
                                             </td> -->
                                         </tr>
-                                        <tr v-if="(productContent.productStatus === 'instock') && (productContent.reserveStatus)">
+                                        <tr v-if="productContent.reserveStatus">
                                             <td><label>商品數量</label></td>
                                             <td><input type="number" class="form-control" v-model="productContent.quantity" required></td>
                                         </tr>
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             商品簡述
@@ -224,7 +224,7 @@
                             v-model="productContent.shortDescription">
                         </ckeditor>
                     </div>
-                </div> -->
+                </div>
             </div>
 
             <div class="col-md-3">

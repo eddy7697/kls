@@ -80,7 +80,8 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
  // meta
  mix.js('resources/assets/js/components/views/backend/meta/notice/notice.js', 'public/js/backend')
     .js('resources/assets/js/components/views/backend/meta/privacy/privacy.js', 'public/js/backend')
-    .js('resources/assets/js/components/views/backend/meta/remind/remind.js', 'public/js/backend');
+    .js('resources/assets/js/components/views/backend/meta/remind/remind.js', 'public/js/backend')
+    .js('resources/assets/js/components/views/backend/meta/other/other.js', 'public/js/backend');
 
 
  // frontend

@@ -28,16 +28,42 @@ class ProductController extends Controller
     {
         $flag = $request->all()['flag'];
         $order = $request->all()['order'];
-        $data = Product::paginate(15);
-        // $productData = array();
+        $qty = $request->qty;
+        $type = $request->productType;
 
         if (Auth::user()->role == 'ADMIN') {
 
             $products = DB::table('products')
-                          ->orderBy($flag, $order)
-                          ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
-                          ->select('products.*', 'categories.categoryTitle')
-                          ->paginate(15);
+                            ->where(function ($query) use ($qty, $type)
+                            {
+                                if ($type == 'simple') {
+                                    $query->where('productType', 'simple');
+
+                                    if ($qty == 'ot') {
+                                        $query->where('quantity', '<', 1);
+                                    } elseif ($qty == 'lowq') {
+                                        $query->where('quantity', '<', 10);
+                                    }
+                                } elseif ($type == 'all') {
+                                    if ($qty == 'ot') {
+                                        $query->where('quantity', '<', 1);
+                                    } elseif ($qty == 'lowq') {
+                                        $query->where('quantity', '<', 10);
+                                    }
+                                } elseif ($type == 'variable') {
+                                    $query->where('productType', 'variable');
+                                }
+                            })
+                            ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
+                            ->select('products.*', 'categories.categoryTitle')
+                            ->orderBy($flag, $order)
+                            ->paginate(15);
+
+            foreach ($products as $key => $value) {
+                if ($value->productType == 'variable') {
+                    $value->subProduct = SubProduct::where('productParent', $value->productGuid)->get();
+                }
+            }
 
             $status = 200;
             $message = 'Get product information success.';
@@ -49,21 +75,50 @@ class ProductController extends Controller
         return $products;
     }
 
+    /**
+     * 搜尋產品
+     */
     public function searchProducts(Request $request, $keyword)
     {
         $flag = $request->all()['flag'];
         $order = $request->all()['order'];
-        $data = Product::paginate(15);
-        // $productData = array();
+        $qty = $request->qty;
+        $type = $request->productType;
 
         if (Auth::user()->role == 'ADMIN') {
 
             $products = DB::table('products')
-                          ->where('productTitle', 'like', '%'.$keyword.'%')
-                          ->orderBy($flag, $order)
-                          ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
-                          ->select('products.*', 'categories.categoryTitle')
-                          ->paginate(15);
+                            ->where('productTitle', 'like', '%'.$keyword.'%')
+                            ->where(function ($query) use ($qty, $type)
+                            {
+                                if ($type == 'simple') {
+                                    $query->where('productType', 'simple');
+
+                                    if ($qty == 'ot') {
+                                        $query->where('quantity', '<', 1);
+                                    } elseif ($qty == 'lowq') {
+                                        $query->where('quantity', '<', 10);
+                                    }
+                                } elseif ($type == 'all') {
+                                    if ($qty == 'ot') {
+                                        $query->where('quantity', '<', 1);
+                                    } elseif ($qty == 'lowq') {
+                                        $query->where('quantity', '<', 10);
+                                    }
+                                } elseif ($type == 'variable') {
+                                    $query->where('productType', 'variable');
+                                }
+                            })
+                            ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
+                            ->select('products.*', 'categories.categoryTitle')
+                            ->orderBy($flag, $order)
+                            ->paginate(15);
+
+            foreach ($products as $key => $value) {
+                if ($value->productType == 'variable') {
+                    $value->subProduct = SubProduct::where('productParent', $value->productGuid)->get();
+                }
+            }
 
             $status = 200;
             $message = 'Get product information success.';
@@ -75,21 +130,50 @@ class ProductController extends Controller
         return $products;
     }
 
+    /**
+     * 取得指定類別的產品列表
+     */
     Public function getCategory(Request $request, $category)
     {
         $flag = $request->all()['flag'];
         $order = $request->all()['order'];
-        $data = Product::paginate(15);
-        // $productData = array();
+        $qty = $request->qty;
+        $type = $request->productType;
 
         if (Auth::user()->role == 'ADMIN') {
 
             $products = DB::table('products')
-                          ->where('productCategory', $category)
-                          ->orderBy($flag, $order)
-                          ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
-                          ->select('products.*', 'categories.categoryTitle')
-                          ->paginate(15);
+                            ->where('productCategory', $category)
+                            ->where(function ($query) use ($qty, $type)
+                            {
+                                if ($type == 'simple') {
+                                    $query->where('productType', 'simple');
+
+                                    if ($qty == 'ot') {
+                                        $query->where('quantity', '<', 1);
+                                    } elseif ($qty == 'lowq') {
+                                        $query->where('quantity', '<', 10);
+                                    }
+                                } elseif ($type == 'all') {
+                                    if ($qty == 'ot') {
+                                        $query->where('quantity', '<', 1);
+                                    } elseif ($qty == 'lowq') {
+                                        $query->where('quantity', '<', 10);
+                                    }
+                                } elseif ($type == 'variable') {
+                                    $query->where('productType', 'variable');
+                                }
+                            })                            
+                            ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
+                            ->select('products.*', 'categories.categoryTitle')
+                            ->orderBy($flag, $order)
+                            ->paginate(15);
+
+            foreach ($products as $key => $value) {
+                if ($value->productType == 'variable') {
+                    $value->subProduct = SubProduct::where('productParent', $value->productGuid)->get();
+                }
+            }
 
             $status = 200;
             $message = 'Get product information success.';
@@ -374,8 +458,6 @@ class ProductController extends Controller
     {
         $data = $request->all()['data'];
 
-        return $request->all();
-
         try {
             for ($i=0; $i < count($data); $i++) {
                 Product::where('productGuid', $data[$i])->delete();
@@ -387,7 +469,6 @@ class ProductController extends Controller
             $status = 500;
             $message = $e->getMessage();
         }
-
 
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
@@ -522,5 +603,24 @@ class ProductController extends Controller
             'locale' => 'zh-tw',
             'customField1' => $data['guid']
         ]);
+    }
+
+    /**
+     * 取得一般商品低庫存警示
+     */
+    public function getSimpleLowQty()
+    {
+        return Product::where('quantity', '<', 3)->get();
+    }
+
+    /**
+     * 取得子商品低庫存警示
+     */
+    public function getSubLowQty()
+    {
+        return SubProduct::where('subQuantity', '<', 3)
+                            ->leftJoin('products', 'sub_products.productParent', '=', 'products.productGuid')
+                            ->select('sub_products.*', 'products.productTitle')
+                            ->get();
     }
 }

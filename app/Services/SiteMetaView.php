@@ -105,4 +105,44 @@ class SiteMetaView
             return '';
         }
     }
+
+    public static function noticeService()
+    {
+        try {
+            $content = json_decode(CustomField::where('type', 'OTHER')->first()['content']);
+            return $content->service;
+        } catch (\Exception $e) {
+            return '';
+        }
+    }
+
+    public static function noticeShipping()
+    {
+        try {
+            $content = json_decode(CustomField::where('type', 'OTHER')->first()['content']);
+            return $content->shipping;
+        } catch (\Exception $e) {
+            return '';
+        }
+    }
+
+    public static function noticeReturn()
+    {
+        try {
+            $content = json_decode(CustomField::where('type', 'OTHER')->first()['content']);
+            return $content->return;
+        } catch (\Exception $e) {
+            return '';
+        }
+    }
+
+    public static function noticeAntiFraud()
+    {
+        try {
+            $content = json_decode(CustomField::where('type', 'OTHER')->first()['content']);
+            return $content->antiFraud;
+        } catch (\Exception $e) {
+            return '';
+        }
+    }
 }

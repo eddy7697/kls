@@ -52,15 +52,15 @@ class UserController extends Controller
                 'subscriptable' => $subscriptable,
             ])));
 
-            // Mail::send('mail.welcomeMail', [
-            //     'name' => $data['name'],
-            //     'account' => $data['email'],
-            //     'point' => $bonus['defaultPoint'],
-            //     'percentage' => $bonus['percentage']
-            // ], function($message) use ($data) {
-            //     $message->to([ $data['email'], ])->subject('明谷生機線上購物加入會員通知');
-            //     $message->from(env('MAIL_USERNAME'), $name = "明谷生機 MeansGood");
-            // });
+            Mail::send('mail.welcomeMail', [
+                'name' => $data['name'],
+                'account' => $data['email'],
+                'point' => $bonus['defaultPoint'],
+                'percentage' => $bonus['percentage']
+            ], function($message) use ($data) {
+                $message->to([ $data['email'], ])->subject(env('APP_NAME').'線上購物加入會員通知');
+                $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
+            });
 
             $this->guard()->login($user);
 

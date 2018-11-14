@@ -120,6 +120,8 @@ Route::post('/admin/product/sub/delete/{guid}', 'Backend\ProductController@delet
 Route::post('/admin/product/sub/add', 'Backend\ProductController@createSubProduct');
 Route::post('/admin/feature/create', 'Backend\ProductController@createFeature');
 Route::post('/admin/feature/update', 'Backend\ProductController@updateFeature');
+Route::get('/admin/product/low_qty', 'Backend\ProductController@getSimpleLowQty');
+Route::get('/admin/product/sub/low_qty', 'Backend\ProductController@getSubLowQty');
 
 /**
  * Page
@@ -183,3 +185,6 @@ Route::post('/admin/privacy/update', 'Backend\MetaController@updatePrivacy');
 Route::get('/admin/remind/get', 'Backend\MetaController@getRemind');
 Route::post('/admin/remind/create', 'Backend\MetaController@createRemind');
 Route::post('/admin/remind/update', 'Backend\MetaController@updateRemind');
+Route::get('/admin/other/get', 'Backend\MetaController@getOther');
+Route::post('/admin/other/create', 'Backend\MetaController@createOther');
+Route::post('/admin/other/update', 'Backend\MetaController@updateOther');

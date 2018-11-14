@@ -3,28 +3,64 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="x_panel tile fixed_height_600">
                 <div class="x_title">
-                    <h2>流量統計</h2>
+                    <h2>庫存警示 (一般商品，庫存低於３) </h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <h4>頁面瀏覽排名</h4>
-                    <div class="widget_summary" v-for="(item, index) in analyticsData.slice(0, 10)" v-bind:key="index">
-                        <div class="w_left w_25">
-                            <span>{{item.url}}</span>
-                        </div>
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar" style="background: #0C6BB0" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" v-bind:style="valuePercentage(item.pageViews)">
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>{{item.pageViews}}</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
+                    <table class="table field-table">
+                        <thead>
+                            <tr>
+                                <th>貨號</th>
+                                <th>產品名稱</th>                                
+                                <th style="text-align: right">產品金額</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in simpleProduct" v-bind:key="index">
+                                <td>{{item.serialNumber}}</td>
+                                <td>
+                                    <a :href="`/cyberholic-system/product/edit/${item.productGuid}`">
+                                        {{item.productTitle}}
+                                    </a>
+                                </td> 
+                                <td align="right">{{item.price}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel tile fixed_height_600">
+                <div class="x_title">
+                    <h2>庫存警示 (子商品，庫存低於３)</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table field-table">
+                        <thead>
+                            <tr>
+                                <th>貨號</th>
+                                <th>產品名稱</th>               
+                                <th>上層商品</th>                 
+                                <th style="text-align: right">產品金額</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in subProducts" v-bind:key="index">
+                                <td>{{item.subSerialNumber}}</td>
+                                <td>{{item.subTitle}}</td> 
+                                <td>
+                                    <a :href="`/cyberholic-system/product/edit/${item.productParent}`">
+                                        {{item.productTitle}}
+                                    </a>
+                                </td>
+                                <td align="right">
+                                    {{item.subPrice}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -59,6 +95,7 @@
                                 </td>                               
                                 <td align="right">
                                     <span style="color: brown; font-weight: bold" v-if="item.orderStatus == 'undisposed'">未處理</span>
+                                    <span style="color: brown; font-weight: bold" v-if="item.orderStatus == 'disposing'">處理中</span>
                                     <span style="color: green; font-weight: bold" v-if="item.orderStatus == 'contacted'">已聯絡</span>
                                     <span style="color: green; font-weight: bold" v-if="item.orderStatus == 'disposed'">已出貨</span>
                                     <span style="color: red; font-weight: bold" v-if="item.orderStatus == 'canceled'">已取消</span>
@@ -70,6 +107,34 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel tile fixed_height_600">
+                <div class="x_title">
+                    <h2>流量統計</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <h4>頁面瀏覽排名</h4>
+                    <div class="widget_summary" v-for="(item, index) in analyticsData.slice(0, 10)" v-bind:key="index">
+                        <div class="w_left w_25">
+                            <span>{{item.url}}</span>
+                        </div>
+                        <div class="w_center w_55">
+                            <div class="progress">
+                                <div class="progress-bar" style="background: #0C6BB0" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" v-bind:style="valuePercentage(item.pageViews)">
+                                    <span class="sr-only">60% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w_right w_20">
+                            <span>{{item.pageViews}}</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -112,7 +177,8 @@
                 datasets: [{
                     data: [10, 20, 30]
                 }],
-
+                simpleProduct: [],
+                subProducts: [],
                 // These labels appear in the legend and in the tooltips when hovering different arcs
                 labels: [
                     'Red',
@@ -121,11 +187,13 @@
                 ]
             }
         },
-        created: function () {
-            $('.loading-bar').fadeOut('100');
-            this.generateChart();
-            this.generatePieChart();
-            this.getNewestOrder();
+        created() {
+            $('.loading-bar').fadeOut('100')
+            this.generateChart()
+            this.generatePieChart()
+            this.getNewestOrder()
+            this.getSimpleLowQty()
+            this.getSubLowQty()
             // var ctx = document.getElementById("my-pie");
             // var myChart = new Chart(ctx, {
             //     type: 'pie',
@@ -138,7 +206,7 @@
                 var percentage = (val * 100 / this.analyticsData[0].pageViews)  + '%';
                 return `width: ${percentage}`;
             },
-            generateChart: function () {
+            generateChart() {
                 var self = this;
 
                 this.getPageViews().then(function (value) {
@@ -164,7 +232,7 @@
                       });
                 });
             },
-            generatePieChart: function () {
+            generatePieChart() {
                 var serlf = this;
 
                 this.getUserType().then(function (value) {
@@ -222,7 +290,7 @@
                         });
                 });
             },
-            getPageViews: function () {
+            getPageViews() {
                 var self = this;
 
                 return new Promise(function (resolve, reject) {
@@ -274,7 +342,7 @@
 
                     })
             },
-            getUserType: function () {
+            getUserType() {
                 var self = this;
 
                 return new Promise(function (resolve, reject) {
@@ -291,6 +359,22 @@
                         reject("error");
                     });
                 });
+            },
+            getSimpleLowQty() {
+                let self = this
+
+                axios.get('/admin/product/low_qty')
+                    .then(res => {
+                        self.simpleProduct = res.data
+                    })
+            },
+            getSubLowQty() {
+                let self = this
+
+                axios.get('/admin/product/sub/low_qty')
+                    .then(res => {
+                        self.subProducts = res.data
+                    })
             }
         }
     }

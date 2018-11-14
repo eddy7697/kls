@@ -5,6 +5,7 @@ Route::group(['prefix' => 'cyberholic-system'], function()
 {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login/user', 'Auth\LoginController@userLogin')->name('userLogin');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 

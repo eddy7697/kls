@@ -29,10 +29,10 @@ class MailController extends Controller
             'phone' => $data['phone'],
             'content' => $data['content']
         ], function($message) use ($data) {
-            $message->to([ $data['email'], env('MAIL_USERNAME') ])->subject('信件確認');
+            $message->to([ $data['email'], env('MAIL_USERNAME'), '044555@gmail.com' ])->subject('信件確認');
             $message->from(env('MAIL_USERNAME'), $name = env('APP_NAME'));
         });
 
-        return view('success');
+        return redirect('/');
     }
 }

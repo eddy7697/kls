@@ -15,6 +15,18 @@
                 :selectedCategoryKey="selectedCategoryKey"
                 @changeCategory="changeCategory($event)"/>
         </div>
+        <div class="col-md-12" style="margin-bottom: 5px;">
+            <el-radio-group v-model="productType" size="small">
+                <el-radio-button label="all">所有類型</el-radio-button>
+                <el-radio-button label="simple">一般商品</el-radio-button>
+                <el-radio-button label="variable">變化商品</el-radio-button>
+            </el-radio-group>
+            <el-radio-group v-model="productQtyStatus" size="small" v-if="productType != 'variable'">
+                <el-radio-button label="all">全部</el-radio-button>
+                <el-radio-button label="lowq">低庫存</el-radio-button>
+                <el-radio-button label="ot">無庫存</el-radio-button>
+            </el-radio-group>
+        </div>
         <!-- <div class="col-md-2">
             <select class="form-control" v-model="locale">
                 <option value="zh-TW">繁體中文</option>
@@ -53,9 +65,13 @@
                     width="120"
                     label="價格">
                     <template slot-scope="scope">
-                        <span v-if="scope.row.quantity < 1" style="color: red">缺貨中</span>
-                        <span v-else>{{scope.row.price}}</span>
-                        
+                        <div v-if="scope.row.productType == 'simple'">
+                            <span v-if="scope.row.quantity < 1" style="color: red">缺貨中</span>
+                            <span v-else>{{scope.row.price}}</span>
+                        </div>
+                        <div v-else>
+                            <el-button size="mini" @click="showSubProduct(scope.row.subProduct)">查看子商品</el-button>
+                        </div>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -105,7 +121,43 @@
                     :total="total">
                 </el-pagination>
             </div>
-    
+            <el-dialog
+            title="子商品庫存檢視"
+            :visible.sync="subDialogVisible"
+            width="300"
+            center
+            :before-close="handleClose">
+            <el-table
+                :data="subProductCache"
+                style="width: 100%">
+                <el-table-column
+                    prop="subTitle"
+                    label="名稱"
+                    width="180">
+                </el-table-column>
+                <el-table-column
+                    prop="name"
+                    label="金額"
+                    width="180">
+                    <template slot-scope="scope">
+                        <span v-if="scope.row.subDiscountPrice">特價：{{scope.row.subDiscountPrice}}</span>
+                        <span v-else>{{scope.row.subPrice}}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                    prop="subQuantity"
+                    label="庫存">
+                    <template slot-scope="scope">
+                        <span v-if="parseInt(scope.row.subQuantity) > 4">{{scope.row.subQuantity}}</span>
+                        <span v-else style="color: red">{{scope.row.subQuantity}}</span>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="subDialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="subDialogVisible = false">確 定</el-button>
+            </span>
+            </el-dialog>
         </div>
     </div>
 </template>
@@ -142,14 +194,18 @@
                 listFunction: 'default',
                 token: $('meta[name="csrf-token"]').attr('content'),
                 listFunction: 'default',
-                flag: 'id',
+                flag: 'schedulePost',
                 locale: 'zh-TW',
                 selectedCategoryName: '全部類別',
                 selectedCategoryKey: 'ALL',
                 categories: [],
                 listLoading: true,
                 multipleSelection: [],
+                productType: 'all',
+                productQtyStatus: 'all',
                 urlPath: '/admin/product/get',
+                subDialogVisible: false,
+                subProductCache: [],
                 listConfig: {
                     checkBox: true,
                     listFunction: [
@@ -174,11 +230,17 @@
         },
         created: function () {
             var self = this;
+
+            if (localStorage.getItem('productQtyStatus')) {
+                this.productQtyStatus = localStorage.getItem('productQtyStatus')
+            }
+
             if (localStorage.getItem('pageCache')) {
                 this.getProductData(localStorage.getItem('pageCache'));
             } else {
                 this.getProductData('/admin/product/get');
             }
+            
             this.keyword = localStorage.getItem('keywordCache')
             // this.getProductData('/admin/product/get');
             this.getCategories();
@@ -194,6 +256,18 @@
             locale: {
                 handler(locale, oldVal) {
                     this.getProductData(this.urlPath);
+                }
+            },
+            productQtyStatus: {
+                handler(productQtyStatus, oldVal) {
+                    this.getProductData(this.urlPath);
+                    localStorage.setItem('productQtyStatus', productQtyStatus)
+                }
+            },
+            productType: {
+                handler(productType, oldVal) {
+                    this.getProductData(this.urlPath);
+                    localStorage.setItem('productType', productType)
                 }
             },
             urlPath: {
@@ -453,7 +527,9 @@
                     params: {
                         flag: self.flag,
                         order: self.defaultOrder,
-                        locale: self.locale
+                        locale: self.locale,
+                        productType: self.productType,
+                        qty: self.productQtyStatus
                     }
                 }).then(result => {
                     var productData = result.data;
@@ -466,19 +542,26 @@
                     self.eachPage = []; 
 
                     result.data.data.forEach(item => {
-                        self.products.push({
+                        let itemVO = {
                             productGuid: item.productGuid,
                             productTitle: item.productTitle,
                             authorName: item.authorName,
                             categoryTitle: item.categoryTitle,
                             serialNumber: item.serialNumber,
                             price: item.price,
+                            productType: item.productType,
                             quantity: item.quantity,
                             locale: item.locale,
                             isPublish: Boolean(item.isPublish),
                             isSelect: false,
                             created_at: item.created_at
-                        })
+                        }
+
+                        if (itemVO.productType == "variable") {
+                            itemVO.subProduct = item.subProduct
+                        }
+
+                        self.products.push(itemVO)
                     });
 
                     for (var i = 0; i < productData.last_page; i++) {
@@ -510,6 +593,16 @@
                 newUrl = newUrl + '/thumbs/' + urlArray[urlArray.length - 1];
 
                 return newUrl;
+            },
+            handleClose() {
+                this.subDialogVisible = false
+                this.subProductCache = []
+            },
+            showSubProduct(item) {
+                let self = this
+                
+                this.subDialogVisible = true
+                this.subProductCache = JSON.parse(JSON.stringify(item))
             },
             showMessage: function (type, string) {
                 toastr[type](string)

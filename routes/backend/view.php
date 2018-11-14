@@ -251,3 +251,9 @@ Route::get('/meta/remind', function ()
         'panelTitle' => '安心購物宣言'
     ]);
 });
+Route::get('/meta/other', function ()
+{
+    return view('backend.meta.other', [
+        'panelTitle' => '其他資訊管理'
+    ]);
+});

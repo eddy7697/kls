@@ -263,3 +263,13 @@ table.product-detail-table {
 .arc text {
     font: 10px Microsoft JhengHei;
 }
+
+.el-button {
+    span {
+        line-height: inherit;
+    }
+}
+.page-title .title_left {
+    position: absolute;
+    top: 7px;
+}

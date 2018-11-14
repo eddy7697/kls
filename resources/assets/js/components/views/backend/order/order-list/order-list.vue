@@ -24,7 +24,7 @@
                         <th>訂單編號</th>
                         <th>購買日期時間</th>
                         <th>會員帳號</th>
-                        <!-- <th>客戶名稱</th> -->
+                        <th>客戶名稱</th>
                         <th>付款狀態</th>
                         <th>訂單內容</th>
                         <th>訂單狀態</th>
@@ -38,7 +38,7 @@
                         <td>{{item.created_at}}</td>
                         <td v-if="item.owner !== 'guest'">{{item.email}}</td>
                         <td v-else><span style="color: brown; font-weight: bold">訪客</span></td>
-                        <!-- <td>{{item.shippingTarget.ReceiverName}}</td> -->
+                        <td>{{item.shippingTarget.ReceiverName}}</td>
                         <td>
                             <span style="color: brown; font-weight: bold" v-if="item.paymentStatus === 'uncheck'">未對帳</span>
                             <span style="color: red; font-weight: bold" v-if="item.paymentStatus === 'unpaid'">未付款</span>
@@ -49,6 +49,7 @@
                         </td>
                         <td>
                             <span style="color: brown; font-weight: bold" v-if="item.orderStatus == 'undisposed'">未處理</span>
+                            <span style="color: brown; font-weight: bold" v-if="item.orderStatus == 'disposing'">處理中</span>
                             <span style="color: green; font-weight: bold" v-if="item.orderStatus == 'contacted'">已聯絡</span>
                             <span style="color: green; font-weight: bold" v-if="item.orderStatus == 'disposed'">已出貨</span>
                             <span style="color: red; font-weight: bold" v-if="item.orderStatus == 'canceled'">已取消</span>
@@ -92,6 +93,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>商品</th>
+                                                    <th>貨號</th>
                                                     <th>數量</th>
                                                     <th>單價</th>
                                                 </tr>
@@ -99,6 +101,7 @@
                                             <tbody>
                                                 <tr v-for="(item, index) in itemShowed.content" v-bind:key="index">
                                                     <td>{{item.Name}}</td>
+                                                    <td>{{item.id.serialNumber}}</td>
                                                     <td>{{item.qty}}</td>
                                                     <td>{{item.price}}</td>
                                                 </tr>
@@ -212,19 +215,22 @@
                                             <select v-model="itemShowed.orderStatus">
                                                 <option value="undisposed" v-if="itemShowed.orderStatus == 'undisposed'" selected>未處理</option>
                                                 <option value="undisposed" v-else>未處理</option>
-                                                <option value="contacted" v-if="itemShowed.orderStatus == 'contacted'" selected>已聯絡</option>
-                                                <option value="contacted" v-else>已聯絡</option>
+                                                <option value="disposing" v-if="itemShowed.orderStatus == 'disposing'" selected>處理中</option>
+                                                <option value="disposing" v-else>處理中</option>
+                                                <!-- <option value="contacted" v-if="itemShowed.orderStatus == 'contacted'" selected>已聯絡</option>
+                                                <option value="contacted" v-else>已聯絡</option> -->
                                                 <option value="disposed" v-if="itemShowed.orderStatus == 'disposed'" selected>已出貨</option>
                                                 <option value="disposed" v-else>已出貨</option>
                                                 <option value="canceled" v-if="itemShowed.orderStatus == 'canceled'" selected>已取消</option>
                                                 <option value="canceled" v-else>已取消</option>
-                                                <option value="success" v-if="itemShowed.orderStatus == 'success'" selected>完成</option>
-                                                <option value="success" v-else>完成</option>
+                                                <!-- <option value="success" v-if="itemShowed.orderStatus == 'success'" selected>完成</option>
+                                                <option value="success" v-else>完成</option> -->
                                             </select>
                                             <button type="button" name="button" @click="modifyOrderStatus()"><i class="fa fa-check" aria-hidden="true"></i></button>
                                         </div>
                                         <div v-else>
                                             <span style="color: brown; font-weight: bold" v-if="itemShowed.orderStatus == 'undisposed'">未處理</span>
+                                            <span style="color: brown; font-weight: bold" v-if="itemShowed.orderStatus == 'disposing'">處理中</span>
                                             <span style="color: green; font-weight: bold" v-if="itemShowed.orderStatus == 'contacted'">已聯絡</span>
                                             <span style="color: green; font-weight: bold" v-if="itemShowed.orderStatus == 'disposed'">已出貨</span>
                                             <span style="color: red; font-weight: bold" v-if="itemShowed.orderStatus == 'canceled'">已取消</span>
@@ -261,6 +267,10 @@
                                                 <td>電子郵件</td>
                                                 <td>{{itemShowed.shippingTarget.ReceiverEmail}}</td>
                                             </tr>
+                                            <tr v-if="itemShowed.paymentMethod == 'Remit'">
+                                                <td>帳號末五碼</td>
+                                                <td>{{itemShowed.shippingTarget.LastFiveChar}}</td>
+                                            </tr>
                                             <tr v-if="itemShowed.receipt">
                                                 <td>發票抬頭</td>
                                                 <td>{{itemShowed.receipt}}</td>
@@ -289,24 +299,26 @@
                                             {{itemShowed.shippingTarget.ReceiverPort + itemShowed.shippingTarget.ReceiverCity + itemShowed.shippingTarget.ReceiverAddress}}
                                         </span> -->                                        
                                         <div v-if="itemShowed.shippingMethod === 'delivery'" id="ready-to-print" style="border: 1px #ccc dashed; padding: 10px; width: max-content ">
-                                            <span style="font-size: 12px;">269宜蘭縣冬山鄉香城路15巷6號 (易耕事業有限公司 03-9590903)</span>
-                                            <br>
+                                            <!-- <span style="font-size: 12px;">269宜蘭縣冬山鄉香城路15巷6號 (易耕事業有限公司 03-9590903)</span>
+                                            <br> -->
                                             <span style="font-size: 16px;">
-                                                TO : {{itemShowed.shippingTarget.ReceiverPort + itemShowed.shippingTarget.ReceiverCity + itemShowed.shippingTarget.ReceiverAddress}}
+                                                {{`${itemShowed.shippingTarget.ReceiverPort}  ${itemShowed.shippingTarget.ReceiverAddress}`}}
                                             </span>
                                             <br>
                                             <span style="font-size: 16px;">
                                                 {{itemShowed.shippingTarget.ReceiverName}} 收 ({{itemShowed.shippingTarget.ReceiverCellPhone}})
                                             </span>                                      
                                         </div>
-                                        <button v-if="itemShowed.shippingMethod === 'delivery'" class="btn btn-primary btn-sm" style="margin-top: 10px;" @click="printAddress()">列印</button>
+                                        <!-- <button v-if="itemShowed.shippingMethod === 'delivery'" class="btn btn-primary btn-sm" style="margin-top: 10px;" @click="printAddress()">列印</button> -->
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>備註</td>
                                     <td>
                                         <div v-if="!itemShowed.remarkModify">
-                                            {{itemShowed.remarks}}&nbsp;&nbsp;
+                                            <div class="remark-info" v-if="itemShowed.remarks">
+                                                {{itemShowed.remarks}}
+                                            </div>                                            
                                             <button type="button" class="btn btn-primary btn-sm" @click="toggleRemarkModify()">更改備註</button>
                                         </div>
                                         <div v-else>
@@ -455,7 +467,6 @@
 
             },
             openModal: function (item) {
-                // console.log(item);
                 this.itemShowed = {};
                 this.itemShowed = JSON.parse(JSON.stringify(item));
 
@@ -645,3 +656,12 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+.remark-info {
+    width: 480px;
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+</style>

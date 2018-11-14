@@ -551,8 +551,7 @@ class OrderController extends Controller
      */
     public function getNewOrder()
     {
-        return Order::where('orderStatus', 'undisposed')
-                    ->orderBy('id', 'desc')
+        return Order::orderBy('id', 'desc')
                     ->take(10)->get();
     }
     

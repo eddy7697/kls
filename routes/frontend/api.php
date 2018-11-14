@@ -14,6 +14,7 @@ Route::get('/getAddress/{guid}', 'HomeController@getAddress')->middleware('auth'
  */
 Route::get('/products', 'Frontend\ProductController@getAllProducts');
 Route::get('/products/get/{guid}', 'Frontend\ProductController@getByGuid');
+Route::get('/products/get/sub/{guid}', 'Frontend\ProductController@getSubProducts');
 Route::get('/products/newest', 'Frontend\ProductController@getNewestProducts');
 Route::get('/products/popular', 'Frontend\ProductController@getPopularProducts');
 Route::get('/products/byCategory/{guid}', 'Frontend\ProductController@getByCategory');
@@ -34,6 +35,7 @@ Route::get('/posts/category', 'Frontend\CategoryController@getPostCategory');
  */
 Route::post('/cart/add/single/{guid}', 'Frontend\CartController@addSingleProduct');
 Route::post('/cart/add/{guid}', 'Frontend\CartController@addProduct');
+Route::post('/cart/add/sub/{guid}', 'Frontend\CartController@addSubProduct');
 Route::post('/cart/delete/single/{rowid}', 'Frontend\CartController@removeSingleProduct');
 Route::get('/cart/get', 'Frontend\CartController@getCartContent');
 Route::get('/cart/delete/all', 'Frontend\CartController@truncateCart');
@@ -65,3 +67,14 @@ Route::post('/address/add/{guid}', 'Frontend\AddressController@addAddress');
 Route::post('/registerNormalUser', 'Frontend\UserController@registerNormalUser');
 Route::post('/sendResetPasswordMail', 'Frontend\UserController@sendResetPasswordMail')->name('sendResetPasswordMail');
 Route::post('/resetPasswordFunction', 'Frontend\UserController@resetPasswordFunction')->name('resetPasswordFunction');
+
+/** 
+ * Contact form method
+ */
+Route::post('/send-form', 'MailController@sendForm')->name('sendForm');
+
+/** 
+ * Payment methods
+ */
+Route::post('/hppe-callback', 'Backend\OrderController@hppeOrder');
+Route::get('/esun_callback', 'Backend\OrderController@esunCheckOrder');

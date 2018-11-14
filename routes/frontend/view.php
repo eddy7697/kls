@@ -6,18 +6,24 @@
  */
 Route::get('/', 'Frontend\PageController@index');
 
+Route::get('/maintenance', function ()
+{
+    return view('maintenance');
+})->name('maintenance');
+
 /**
  * about
  */
  Route::group(['prefix' => 'about'], function()
  {
-     Route::get('/', 'Frontend\PageController@about')->name('about');
-     Route::get('/mercurius', 'Frontend\PageController@mercurius')->name('mercurius');
-     Route::get('/stockmar', 'Frontend\PageController@stockmar')->name('stockmar');
-     Route::get('/lyra', 'Frontend\PageController@lyra')->name('lyra');
-     Route::get('/chorol', 'Frontend\PageController@chorol')->name('chorol');
-     Route::get('/privacy', 'Frontend\PageController@privacy')->name('privacy');
-     Route::get('/notice', 'Frontend\PageController@notice')->name('notice');
+    Route::get('/', 'Frontend\PageController@about')->name('about');
+    Route::get('/mercurius', 'Frontend\PageController@mercurius')->name('mercurius');
+    Route::get('/stockmar', 'Frontend\PageController@stockmar')->name('stockmar');
+    Route::get('/lyra', 'Frontend\PageController@lyra')->name('lyra');
+    Route::get('/choroi', 'Frontend\PageController@chorol')->name('chorol');
+    Route::get('/privacy', 'Frontend\PageController@privacy')->name('privacy');
+    Route::get('/remind', 'Frontend\PageController@remind')->name('remind');
+    Route::get('/notice', 'Frontend\PageController@notice')->name('notice');
  });
 
 /**
@@ -25,7 +31,7 @@ Route::get('/', 'Frontend\PageController@index');
  */
 // Route::get('/product-deatil/{guid}', 'Frontend\ProductController@productDetail');
 // Route::get('/product-deatil/{id}/show', 'Frontend\ProductController@productDetailFromId');
-Route::get('/product-deatil/{path}', 'Frontend\ProductController@productDetailFromPath');
+Route::get('/product-deatil/{path}', 'Frontend\ProductController@productDetailFromPath')->name('productDetail');
 Route::get('/product-all', 'Frontend\PageController@productAll');
 Route::get('/product-category/{guid}', 'Frontend\ProductController@productCategory');
 
@@ -38,13 +44,13 @@ Route::get('/blog', function ()
         'isThumbShow' => false,
     ]);
 })->name('blog');
-// Route::get('/blog/{guid}', function ($guid)
-// {
-//     return view('frontend.blog.post', [
-//         'post' => PostView::get($guid),
-//         'isThumbShow' => false,
-//     ]);
-// });
+Route::get('blog/category/{category}', function ($category)
+{
+    return view('frontend.blog.category', [
+        'isThumbShow' => false,
+        'category' => $category
+    ]);
+});
 Route::get('/blog/{id}/detail', function ($id)
 {
     return view('frontend.blog.post', [
@@ -107,6 +113,13 @@ Route::get('/check-order', function ()
         'thumb' => null
     ]);
 });
+Route::get('/remittance-information', function ()
+{
+    return view('frontend.checkoutMethod.remittanceInformation', [
+        'isThumbShow' => false,
+        'thumb' => null
+    ]);
+});
 
 /**
  * CONTACT
@@ -123,7 +136,14 @@ Route::get('/importScout', 'Frontend\SearchController@importScout');
 /**
  * test area
  */
-Route::get('/ga-test', 'HomeController@gaTest');
+// Route::get('/ga-test', 'HomeController@gaTest');
+
+// Route::get('/hppe-test', function() {
+//     return view('test', [
+//         'order' => str_random(6)
+//     ]);
+// });
+
 // Route::get('/test-area', function ()
 // {
 //     return view('test', [

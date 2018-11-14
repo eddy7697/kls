@@ -336,32 +336,33 @@ class CheckoutController extends Controller
             //Go to EcPay
             // echo "<h1 style='text-align: center; margin-top: 100px;'>交易資訊傳輸中，請勿重新整理或者關閉視窗，以免重複下訂。</h1>";
 
-            // if (env('APP_ENV') === 'prod') {
-            //     Mail::send('mail.orderNotice', [
-            //         'data' => $data,
-            //         'cartInfo' => $cartInfo,
-            //         'shippingTarget' => $shippingTarget,
-            //         'merchantIdCache' => $merchantIdCache
-            //     ], function($message) use ($sender, $shippingTarget) {
-            //         $message->to([
-            //             'hi@meansgood.com.tw',
-            //         ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
-            //         $message->from($sender, $name = "明谷生機 MeansGood");
-            //     });
+            if (env('APP_ENV') === 'prod') {
+                Mail::send('mail.orderNotice', [
+                    'data' => $data,
+                    'cartInfo' => $cartInfo,
+                    'shippingTarget' => $shippingTarget,
+                    'merchantIdCache' => $merchantIdCache
+                ], function($message) use ($sender, $shippingTarget) {
+                    $message->to([
+                        env('MAIL_USERNAME'),
+                        '044555@gmail.com'
+                    ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
+                    $message->from($sender, $name = env('APP_NAME'));
+                });
 
-            //     Mail::send('mail.notice', [
-            //         'data' => $data,
-            //         'cartInfo' => $cartInfo,
-            //         'shippingTarget' => $shippingTarget,
-            //         'merchantIdCache' => $merchantIdCache
-            //     ], function($message) use ($sender, $shippingTarget) {
-            //         $message->to([
-            //             $shippingTarget['ReceiverEmail'],
-            //             $sender,
-            //         ])->subject('訂單成立通知信');
-            //         $message->from($sender, $name = "明谷生機 MeansGood");
-            //     });
-            // }
+                Mail::send('mail.notice', [
+                    'data' => $data,
+                    'cartInfo' => $cartInfo,
+                    'shippingTarget' => $shippingTarget,
+                    'merchantIdCache' => $merchantIdCache
+                ], function($message) use ($sender, $shippingTarget) {
+                    $message->to([
+                        $shippingTarget['ReceiverEmail'],
+                        $sender,
+                    ])->subject('訂單成立通知信');
+                    $message->from($sender, $name = env('APP_NAME'));
+                });
+            }
 
             // echo Ecpay::instance()->CheckOutString();
 
