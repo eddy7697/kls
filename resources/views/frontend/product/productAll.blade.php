@@ -2,7 +2,6 @@
 
 @section('custom-style')
     <link rel="stylesheet" href="{{ asset('js/plugins/jquery.fancytree/dist/skin-themeroller/ui.fancytree.min.css') }}">
-
 @endsection
 
 @section('custom-script')
@@ -53,6 +52,4 @@
     <div id="product-filter">
         <product-filter></product-filter>
     </div>
-    
-    
 @endsection
