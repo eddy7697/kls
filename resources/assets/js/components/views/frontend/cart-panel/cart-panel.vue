@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="shopping-Cart-Icon" @click="getCart(true)">
-            <img src="/img/shopping car-black.svg" alt="">
+            <img src="\img\cartIcon.png" alt="">
             <span class="count" v-if="cartContent.length">{{cartContent.length}}</span>  
         </div>
-        <div class="litext" @click="getCart(true)">
+        <!-- <div class="litext" @click="getCart(true)">
             <p>&nbsp;&nbsp;購物車</p>
-        </div>
+        </div> -->
         <!--<button class="cart pull-right" @click="getCart(true)">-->
         <!--<img v-bind:src="(isCartEmpty ? '/img/icon/cart-empty.svg' : '/img/icon/cart-full.svg')" alt="" width="25" height="25">-->
         <!--&lt;!&ndash; <i class="fa fa-shopping-cart" aria-hidden="true"></i> &ndash;&gt;-->
@@ -249,11 +249,11 @@
         position: relative;
     }
     .shopping-Cart-Icon img{
-        width: 30px;
-        height: 30px;
+        /* width: 30px;
+        height: 30px; */
     }
     .shopping-Cart-Icon, .litext{
-        display: inline-block;
+        /* display: inline-block; */
     }
     .shopping-Cart-Icon span.count{
         position: absolute;

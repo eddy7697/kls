@@ -316,8 +316,9 @@
                         <li class="sub-icon">
                             <img src="\img\likeIcon.png" alt="">
                         </li>
-                        <li class="sub-icon">
-                            <img src="\img\cartIcon.png" alt="">
+                        <li class="sub-icon" id="cart-panel">
+                            <cart-panel></cart-panel>
+                            {{-- <img src="\img\cartIcon.png" alt=""> --}}
                         </li>
                     </ul> 
                 </div>
