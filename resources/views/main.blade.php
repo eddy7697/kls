@@ -273,6 +273,53 @@
         
     </section>
 @else
+    <button class="klsBurger-switch">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="klsBurger-menu">
+        <div class="klsBurger-menu-inner">
+            <div class="klsBurger-menu-logo">
+                <a href="/">
+                    <img src="/img/KLSLogoWhite.svg" alt="">
+                </a>
+            </div>
+            <ul>
+                <li>
+                    <a href="{{route('about')}}">
+                        關於凱麗絲
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('productAll')}}">
+                        品牌行李箱                   
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('productFitting')}}">
+                        行李箱配件
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('/blog')}}">
+                        部落格
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('location')}}">
+                        店鋪資訊
+                    </a>
+                </li>
+                <li class="nav_final">
+                    <a href="{{route('contact')}}">
+                        諮詢專區
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <section>
         <div class="container-fulid sub-page-header">
             <div class="row sub-page-header-inner">
