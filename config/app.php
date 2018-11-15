@@ -221,6 +221,7 @@ return [
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
+        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
 
 
     ],
@@ -276,6 +277,7 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
 
         'PublicServiceProvider' => App\Services\PublicServiceProvider::class,
         'AddressInfo' => App\Services\AddressInfo::class,
