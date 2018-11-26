@@ -110,7 +110,7 @@
   }
 }
 .openNow-filter{
-  filter    : blur(8px);
+  filter    : blur(20px);
   transition: 0.5s;
 }
 .klsBurger-menu{
@@ -201,14 +201,86 @@
   }
 }
 /*----------header---------*/
+.open > .dropdown-menu {
+  display: flex;
+}
+.mega-menu {
+  position: static !important;
+  .mega-menu-product{
+    width  : 60%;
+    right  : 0 !important;
+    left   : auto;
+    z-index: 99999;
+    align-items: stretch;
+    li{
+      padding: 20px 10px;
+      margin: 0 !important;
+    }
+    .mega-menu-title{
+      text-align: center;
+      h2{
+        font-weight: 900;
+        margin-top: 0;
+      }
+      p{
+        font-weight: 900;
+        color: #B3B3B3;
+      }
+    }
+    .mega-menu-list{
+      text-align: center;
+      &:hover{
+        a{
+          border-bottom: solid 1px #fff !important;
+        }
+      }
+      ul{
+        padding: 0;
+        li{
+          padding: 15px 10px;
+          a{
+            color: #636b6f !important;
+            border: solid 1px #fff !important;
+            padding-bottom: 0 !important;
+            padding: 5px 25px !important;
+            border-radius: 8px;
+          }
+          &:hover{
+            a{
+              border: solid 1px #B3B3B3 !important;
+            }
+          }
+        }
+      }
+    }
+    .mega-menu-img{
+      margin: 0 !important;
+      height: 330px;
+      width: 300px;
+      padding: 20px 0px;
+      .dropdown-menu-inner-img{
+        position: relative;
+        min-width: 100%;
+        min-height: 100%;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+    .mega-menu-text{
+      .dropdown-menu-inner-text{
 
+      }
+    }
+  }
+}
 #header{
   position: relative;
   .header_top_area{
     display: flex;
     height : 90%;
     .header_left{
-      width: 30%;
+      width   : 30%;
+      overflow: hidden;
       .logo_area{
         position: relative;
         height  : 70%;
@@ -457,13 +529,14 @@
   .navbar{
     width           : 100%;
     height          : 10%;
-    z-index         : 2;
+    z-index         : 99999;
     background-color: $color-grey;
     font-weight     : 700;
     margin-bottom   : 0;
     display         : flex;
     justify-content : center;
     align-items     : center;
+    
     ul{
       margin : 0;
       padding: 0;
@@ -484,46 +557,8 @@
           } 
         }
       }
-      li.nav_final{
-        border-right: none;
-        position    : relative;
-        cursor      : pointer;
-        a{
-          border-bottom: none;
-        }
-        #contact-menu{
-          opacity         : 0;
-          transform       : scale(0.7);
-          position        : absolute;
-          width           : 100%;
-          top             : 100%;
-          left            : 0;
-          background-color: #3E3A39;
-          padding         : 15px 5px;
-          transition      : 0.5s;
-          text-align      : center;
-          li{
-            border-right: none;
-            padding     : 10px 0;
-            &:hover{
-              background-color: #fff;
-              a{
-                color: $color-grey;
-              }
-            }
-            a{
-              margin: 10px;
-              cursor: pointer;
-            }
-          }
-        }
-      }
     }
   }
-}
-.contact-menu-open{
-  opacity  : 1 !important;
-  transform: scale(1) !important;
 }
 
 /*----------footer---------*/
@@ -939,50 +974,43 @@
         margin          : 10px;
         padding         : 5px;
         position        : relative;
+        overflow        : hidden;
         border-radius   : 20px; 
         .newsPostMask{
-          opacity         : 0;
+          border          : solid 0px $color-black-mask;
           position        : absolute;
           top             : 0;
           left            : 0;
           right           : 0;
           bottom          : 0;
-          background-color: $color-black-mask;
           z-index         : 2;
           transition      : 0.5s;
           border-radius   : 20px;
-          a{
-            display         : flex;
-            justify-content : center;
-            align-items     : center;
-            text-decoration : none;
-            width           : 100%;
-            height          : 100%;
-            color           : $color-white;
-            font-size       : 30px;
-            P{
-              
-            }
-          }
-          .maskLine{
-            position        : absolute;
-            left            : 50%;
-            background-color: $color-white;
-            opacity         : 0.5;
-            width           : 1px;
-            height          : 205%;
-          }
-          .lineLeft{
-            transform: rotate(61deg);
-            top      : -52%;
-          }
-          .lineRight{
-            transform: rotate(-61deg);
-            top      : -52%;
+        }
+        .newsPost-ReadMore{
+          opacity         : 0;
+          z-index         : 3;
+          display         : flex;
+          justify-content : center;
+          align-items     : center;
+          text-decoration : none;
+          position        : absolute;
+          top             : 0;
+          left            : 0;
+          right           : 0;
+          bottom          : 0;
+          color           : $color-white;
+          transition      : all 0.5s linear 0.2s;
+          font-size       : 30px;
+          p{
+            white-space: nowrap;             
           }
         }
         &:hover{
           .newsPostMask{
+            border: solid 250px $color-black-mask;
+          }
+          .newsPost-ReadMore{
             opacity: 1;
           }
         } 
@@ -1008,8 +1036,8 @@
             overflow     : hidden;
           }
           .newPostTextP{
-            color      : $color-grey;
-            line-height: 40px;
+            color        : $color-grey;
+            line-height  : 40px;
             text-overflow: ellipsis;
             overflow     : hidden;
           }
@@ -1125,7 +1153,7 @@
     }
     .sub-nav-menu {
       padding: 15px 0px;
-      ul {
+      .sub-nav-menu-ul {
         display: flex;
         margin-top: auto;
         margin-bottom: auto;
@@ -1184,7 +1212,7 @@
     }
     .sub-nav-menu {
       padding: 15px 0px;
-      ul {
+      .sub-nav-menu-ul {
         display: flex;
         margin-top: auto;
         margin-bottom: auto;
@@ -2194,11 +2222,6 @@
               height: 100%;
               border: solid 1px #EDEDED;
             }
-            .facebook{
-            }
-            .instagram{
-  
-            }
           }
         }
       }
@@ -2219,7 +2242,6 @@
     text-align: center;
   }
   .blog-post{
-    margin: 0 10px;
     .blog-post-inner{
       padding: 40px 0 !important;
     }
@@ -2348,3 +2370,7 @@
     text-align: center;
   }
 }
+
+
+
+

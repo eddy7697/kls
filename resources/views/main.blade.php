@@ -41,7 +41,16 @@
 </head>
 <body>
 <div class="loading-bar">
-    <img src="/img/icon/default-loading.svg">
+    <div class="loading-bar-inner">
+        <img src="/img/KLS-loading.svg">
+        <div class="loader">
+            <h1></h1>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    
 </div>
 
 @unless (Auth::guest())
@@ -213,22 +222,52 @@
             </div>
         </div>
         
-        <div class="navbar" data-hover= "hide">
+        <div class="navbar">
             <ul>
                 <li>
                     <a href="{{route('about')}}">
                         關於凱麗絲
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('productAll')}}">
-                        品牌行李箱                   
+                <li class="mega-menu dropdown dropdown-large">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        所有商品
+                        <span class="caret"></span>
                     </a>
-                </li>
-                <li>
-                    <a href="{{route('productFitting')}}">
-                        行李箱配件
-                    </a>
+                                
+                    <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                        <li class="col-sm-3 mega-menu-title">
+                            <h2>所有商品</h2>
+                            <p>ALL PRODUCT</p>
+                        </li>
+                        <li class="col-sm-3 mega-menu-list">
+                            <ul>
+                                <li>
+                                    <a href="{{route('productAll')}}">
+                                        品牌行李箱                   
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('productFitting')}}">
+                                        旅行配件
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                            品牌背包
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-md-3 mega-menu-img">
+                            <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
+                        </li>
+                        <li class="col-md-3 mega-menu-text">
+                            <div class="dropdown-menu-inner-text">
+                                <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
+                            </div>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{url('/blog')}}">
@@ -240,37 +279,52 @@
                         店鋪資訊
                     </a>
                 </li>
-                <li class="nav_final">
-                    <a href="{{route('contact')}}">
+                <li class="mega-menu dropdown dropdown-large">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         諮詢專區
                         <span class="caret"></span>
                     </a>
-                    <ul id="contact-menu">
-                        <li>
-                            <a href="#">
-                                安全購物宣言
-                            </a>
+                    <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                        <li class="col-sm-3 mega-menu-title">
+                            <h2>諮詢專區</h2>
+                            <p>CONSULTING AREA</p>
                         </li>
-                        <li>
-                            <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021">
-                                隱私權條款
-                            </a>
+                        <li class="col-sm-3 mega-menu-list">
+                            <ul>
+                                <li>
+                                    <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021">
+                                        隱私權條款
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('contact')}}">
+                                        購物需知
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('contact')}}">
+                                        諮詢專區
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        安心購物宣言
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="{{route('contact')}}">
-                                聯絡我們
-                            </a>
+                        <li class="col-md-3 mega-menu-img">
+                            <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
                         </li>
-                        <li>
-                            <a href="{{route('contact')}}">
-                                第四選項
-                            </a>
+                        <li class="col-md-3 mega-menu-text">
+                            <div class="dropdown-menu-inner-text">
+                                <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
+                            </div>
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> 
         </div>
-        
     </section>
 @else
     <button class="klsBurger-switch">
@@ -329,21 +383,51 @@
                     </a>
                 </div>
                 <div class="sub-nav-menu">
-                    <ul>
+                    <ul class="sub-nav-menu-ul">
                         <li>
                             <a href="{{route('about')}}">
                                 關於凱麗絲
                             </a>
                         </li>
-                        <li>
-                            <a href="{{route('productAll')}}">
-                                品牌行李箱                   
+                        <li class="mega-menu dropdown dropdown-large">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                所有商品
+                                <span class="caret"></span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{route('productFitting')}}">
-                                行李箱配件
-                            </a>
+                                
+                            <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                                <li class="col-sm-3 mega-menu-title">
+                                    <h2>所有商品</h2>
+                                    <p>ALL PRODUCT</p>
+                                </li>
+                                <li class="col-sm-3 mega-menu-list">
+                                    <ul>
+                                        <li>
+                                            <a href="{{route('productAll')}}">
+                                                品牌行李箱                   
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('productFitting')}}">
+                                                旅行配件
+                                            </a>
+                                        </li>
+                                    <li>
+                                        <a href="">
+                                                品牌背包
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-3 mega-menu-img">
+                                    <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
+                                </li>
+                                <li class="col-md-3 mega-menu-text">
+                                    <div class="dropdown-menu-inner-text">
+                                        <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="{{url('/blog')}}">
@@ -355,11 +439,50 @@
                                 店鋪資訊
                             </a>
                         </li>
-                        <li class="nav_final">
-                            <a href="{{route('contact')}}">
-                                諮詢專區
-                            </a>
-                        </li>
+                        <li class="mega-menu dropdown dropdown-large">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    諮詢專區
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                                    <li class="col-sm-3 mega-menu-title">
+                                        <h2>諮詢專區</h2>
+                                        <p>CONSULTING AREA</p>
+                                    </li>
+                                    <li class="col-sm-3 mega-menu-list">
+                                        <ul>
+                                            <li>
+                                                <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021">
+                                                    隱私權條款
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('contact')}}">
+                                                   購物需知
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('contact')}}">
+                                                    諮詢專區
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    安心購物宣言
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-md-3 mega-menu-img">
+                                        <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
+                                    </li>
+                                    <li class="col-md-3 mega-menu-text">
+                                        <div class="dropdown-menu-inner-text">
+                                            <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
                         <li class="sub-icon">
                             <img src="\img\likeIcon.png" alt="">
                         </li>
@@ -463,7 +586,7 @@
                     </a>
                 </div>
                 <div class="sub-nav-menu">
-                    <ul>
+                    <ul class="sub-nav-menu-ul">
                         <li>
                             <a href="{{route('about')}}">
                                 關於凱麗絲
@@ -633,18 +756,6 @@ $(document).ready(() => {
             },
         }
     });
-    //data-hover= "hide"
-    $('.navbar').hover(()=>{
-        $(this).attr('data-hover','show');
-    },()=>{
-        $(this).attr('data-hover','hide');
-    });
-    
-    $('li.nav_final').hover(()=>{
-        $('#contact-menu').addClass('contact-menu-open');
-    },()=>{
-        $('#contact-menu').removeClass('contact-menu-open');
-    })
 });
 
    

@@ -529,15 +529,12 @@
             <div class="row newsPostRow">
                 <div class="col-md-6">
                     <div class="newsPost">
-                        <div class="newsPostMask">
-                            <div class="maskLine lineLeft"></div>
-                            <div class="maskLine lineRight"></div>
-                            <a href="">
-                                <p>
-                                    (Read more...)
-                                </p>
-                            </a>
-                        </div>
+                        <div class="newsPostMask"></div>
+                        <a class="newsPost-ReadMore" href="">
+                            <p>
+                                (Read more...)
+                            </p>
+                        </a>
                         <div class= "newsImgBox" style="background-image: url(/img/newsImage01.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">硬殼旅行箱材質到底該怎麼分呢?</p>
@@ -548,15 +545,12 @@
                 </div>
                 <div class="col-md-6">
                     <div class="newsPost">
-                        <div class="newsPostMask">
-                            <div class="maskLine lineLeft"></div>
-                            <div class="maskLine lineRight"></div>
-                            <a href="">
-                                <p>
-                                    (Read more...)
-                                </p>
-                            </a>
-                        </div>
+                        <div class="newsPostMask"></div>
+                        <a class="newsPost-ReadMore" href="">
+                            <p>
+                                (Read more...)
+                            </p>
+                        </a>
                         <div class= "newsImgBox" style="background-image: url(/img/newsImage02.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">一月一度的直播拍賣會來嚕</p>
@@ -569,15 +563,12 @@
             <div class="row newsPostRow">
                 <div class="col-md-6">
                     <div class="newsPost">
-                        <div class="newsPostMask">
-                            <div class="maskLine lineLeft"></div>
-                            <div class="maskLine lineRight"></div>
-                            <a href="">
-                                <p>
-                                    (Read more...)
-                                </p>
-                            </a>
-                        </div>
+                        <div class="newsPostMask"></div>
+                        <a class="newsPost-ReadMore" href="">
+                            <p>
+                                (Read more...)
+                            </p>
+                        </a>
                         <div class= "newsImgBox" style="background-image: url(/img/newsImage03.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">請大家注意冒用凱麗斯貼文的詐騙</p>
@@ -588,15 +579,12 @@
                 </div>
                 <div class="col-md-6">
                     <div class="newsPost">
-                        <div class="newsPostMask">
-                            <div class="maskLine lineLeft"></div>
-                            <div class="maskLine lineRight"></div>
-                            <a href="">
-                                <p>
-                                    (Read more...)
-                                </p>
-                            </a>
-                        </div>
+                        <div class="newsPostMask"></div>
+                        <a class="newsPost-ReadMore" href="">
+                            <p>
+                                (Read more...)
+                            </p>
+                        </a>
                         <div class= "newsImgBox" style="background-image: url(/img/newsImage04.jpg);"></div>
                         <div class="newsText">
                             <p class="newsTextTitle">端午連結營業時間公告</p>

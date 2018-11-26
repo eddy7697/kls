@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 592);
+/******/ 	return __webpack_require__(__webpack_require__.s = 590);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -175,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 592:
+/***/ 590:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(593);
+module.exports = __webpack_require__(591);
 
 
 /***/ }),
 
-/***/ 593:
+/***/ 591:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('product-filter', __webpack_require__(594));
+Vue.component('product-filter', __webpack_require__(592));
 
 var app = new Vue({
     el: '#product-filter'
@@ -194,15 +194,15 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 594:
+/***/ 592:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(595)
+var __vue_script__ = __webpack_require__(593)
 /* template */
-var __vue_template__ = __webpack_require__(596)
+var __vue_template__ = __webpack_require__(594)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -242,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 595:
+/***/ 593:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -492,7 +492,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 596:
+/***/ 594:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
