@@ -37,6 +37,7 @@ class Product extends Model
         'shortDescription',
         'productInformation',
         'socialImage',
+        'tags',
         'seoTitle',
         'seoKeyword',
         'seoDescription',

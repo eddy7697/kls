@@ -50,7 +50,8 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
  // Product view
  mix.js('resources/assets/js/components/views/backend/product/add-product/add-product.js', 'public/js/backend')
     .js('resources/assets/js/components/views/backend/product/product-list/product-list.js', 'public/js/backend')
-    .js('resources/assets/js/components/views/backend/product/product-category/product-category.js', 'public/js/backend');
+    .js('resources/assets/js/components/views/backend/product/product-category/product-category.js', 'public/js/backend')
+    .js('resources/assets/js/components/views/backend/product/tag-manager/tag-manager.js', 'public/js/backend');
 
  // Post view
  mix.js('resources/assets/js/components/views/backend/post/add-post/add-post.js', 'public/js/backend')

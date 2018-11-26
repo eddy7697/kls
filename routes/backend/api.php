@@ -122,6 +122,7 @@ Route::post('/admin/feature/create', 'Backend\ProductController@createFeature');
 Route::post('/admin/feature/update', 'Backend\ProductController@updateFeature');
 Route::get('/admin/product/low_qty', 'Backend\ProductController@getSimpleLowQty');
 Route::get('/admin/product/sub/low_qty', 'Backend\ProductController@getSubLowQty');
+Route::post('/admin/tag/create', 'Backend\ProductController@saveTag');
 
 /**
  * Page

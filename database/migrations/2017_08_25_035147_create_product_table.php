@@ -37,6 +37,7 @@ class CreateProductTable extends Migration
             $table->string('rule')->nullable();
             $table->string('rate')->nullable();
             $table->longtext('command')->nullable();
+            $table->json('tags')->nullable();
             $table->longtext('seoKeyword')->nullable();
             $table->string('seoTitle')->nullable();
             $table->string('productInformation')->nullable();

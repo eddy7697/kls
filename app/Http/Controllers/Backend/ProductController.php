@@ -623,4 +623,26 @@ class ProductController extends Controller
                             ->select('sub_products.*', 'products.productTitle')
                             ->get();
     }
+
+    /**
+     * 建立標籤
+     */
+    public function saveTag(Request $request)
+    {
+        try {
+            if ( CustomField::where('type', 'tag')->exist()) {
+                CustomField::where('type', 'tag')->update([
+                    'content' => $request->data
+                ]);
+            } else {
+                CustomField::create([
+                    'type' => 'tag',
+                    'content' => $request->data
+                ]);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        return $request->data;
+    }
 }

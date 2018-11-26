@@ -95,19 +95,16 @@ Route::get('/product/add', function () {
         'mode' => 'add',
     ]);
 });
-
 Route::get('/product/category', function () {
     return view('backend.product.productCategory', [
         'panelTitle' => '商品類別管理'
     ]);
 });
-
 Route::get('/product/list', function () {
     return view('backend.product.productList', [
         'panelTitle' => '商品列表'
     ]);
 });
-
 Route::get('/product/edit/{guid}', function ($guid) {
     return view('backend.product.addProduct', [
         'panelTitle' => '編輯商品',
@@ -115,6 +112,13 @@ Route::get('/product/edit/{guid}', function ($guid) {
         'guid' => $guid
     ]);
 });
+// tag-manager
+Route::get('/tag/management', function () {
+    return view('backend.product.tagManager', [
+        'panelTitle' => '標籤管理',
+    ]);
+});
+
 
 
 /*****************
