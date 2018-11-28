@@ -6,9 +6,8 @@
 @endsection
 
 @section('custom-script')
-    <script src="{{ asset('js/product-filter.js') }}"></script>
+    <script src="{{ asset('js/product-fitting.js') }}"></script>
     <script type="text/javascript">
-        $('.product-innertext').append(innerHtml);
         $('.collapseBtn').on('click',function(){
             $('.filter-title,.filter').fadeToggle();
             $(this).find('img').toggleClass('closeFilter');
@@ -30,7 +29,7 @@
 @endsection
 
 @section('content')
-    <div id="product-filter">
-        <product-filter></product-filter>
+    <div id="product-fitting">
+        <product-fitting></product-fitting>
     </div>
 @endsection
