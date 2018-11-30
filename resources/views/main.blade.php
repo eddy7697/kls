@@ -254,7 +254,7 @@
                                 </li>
                                 <li>
                                     <a href="">
-                                            品牌背包
+                                        品牌背包
                                     </a>
                                 </li>
                             </ul>
@@ -394,7 +394,6 @@
                                 所有商品
                                 <span class="caret"></span>
                             </a>
-                                
                             <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
                                 <li class="col-sm-3 mega-menu-title">
                                     <h2>所有商品</h2>
@@ -697,14 +696,25 @@ $(document).ready(() => {
     
 
     $(function() {
+
+        
+        function megaMenuScroll () {
+            let megaMenu = $('.mega-menu-product');
+            if (document.documentElement.scrollTop < 400){
+                megaMenu.css('top','-360%');
+            } else {
+                megaMenu.css('top','100%');
+            }; 
+        };
+
         try {
-            var fix   = $('.navbar');                      //title
-            var fixTop= fix.offset().top              //title 與頂部的距離
-           
-    
+            let fix   = $('.navbar');                      //title
+            let fixTop = fix.offset().top;             //title 與頂部的距離
+            megaMenuScroll ()
             $(window).scroll(() => {
+                megaMenuScroll ()
                 // 頁面與頂部高度
-                var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);  
+                let docTop = Math.max(document.documentElement.scrollTop);  
                 if (fixTop < docTop) {
                     fix.css({
                         'position': 'fixed',
@@ -719,9 +729,9 @@ $(document).ready(() => {
         } catch (error) {
             console.log(error.message)
         }
-        
     });
 
+    
 
     var swiper = new Swiper ('.header_right',{
         direction : 'vertical',
