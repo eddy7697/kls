@@ -330,6 +330,7 @@ class ProductController extends Controller
                     'reserveStatus' => $reserveStatus,
                     // 'rule' => $data['rule'],
                     'price' => $data['price'],
+                    'command' => $data['command'],
                     'productType' => $data['productType'],
                     'Temperature' => $data['Temperature'],
                     'productInformation' => $data['productInformation'],
@@ -406,6 +407,7 @@ class ProductController extends Controller
                     'discountedPrice' => $data['discountedPrice'],
                     'productType' => $data['productType'],
                     // 'customPath' => $data['customPath'],
+                    'command' => $data['command'],
                     'Temperature' => $data['Temperature'],
                     'productDescription' => $data['productDescription'],
                     'seoTitle' => $data['seoTitle'],
@@ -644,5 +646,13 @@ class ProductController extends Controller
             //throw $th;
         }
         return $request->data;
+    }
+
+    /**
+     * 取得標籤
+     */
+    public function getTag()
+    {
+        return CustomField::where('type', 'tag')->first()['content'];
     }
 }

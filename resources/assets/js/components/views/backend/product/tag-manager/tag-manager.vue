@@ -30,28 +30,6 @@
                 </el-form-item>
             </el-form>
         </div>
-        <!-- <div class="col-md-12" v-for="(item, index) in tagGroupKeys" :key="index">
-            <h3>{{item.title}}</h3>
-            <el-tag
-                :key="tag"
-                v-for="tag in tagGroup[item.key]"
-                closable
-                :disable-transitions="false"
-                @close="handleClose(tagGroup[item.key], tag)">
-                {{tag}}
-            </el-tag>
-            <el-input
-                class="input-new-tag"
-                v-if="inputVisible[item.key]"
-                v-model="inputValue[item.key]"
-                ref="saveTagInput"
-                size="small"
-                @keyup.enter.native="handleInputConfirm(tagGroup[item.key], item.key)"
-                @blur="handleInputConfirm(tagGroup[item.key], item.key)"
-                >
-            </el-input>
-            <el-button v-else class="button-new-tag" size="small" @click="showInput(item.key)">+ 新增標籤</el-button>
-        </div> -->
     </div>
 </template>
 

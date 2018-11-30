@@ -42,6 +42,9 @@
                                 <li>
                                     <a href="#panel-119853" data-toggle="tab">SEO 設定</a>
                                 </li>
+                                <li>
+                                    <a href="#panel-119444" data-toggle="tab">標籤設定</a>
+                                </li>
                             </ul>
                             <div class="tab-content ch-tab-content">
                                 <div class="tab-pane active" id="panel-817886">
@@ -221,6 +224,21 @@
                                             </td>
                                             <td>
                                                 <textarea type="text" name="seoDescription" class="form-control" style="resize: vertical;" v-model="productContent.seoDescription"></textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane " id="panel-119444">
+                                    <table class="table field-table">
+                                        <tr v-for="(item, index) in Object.keys(tagLabel)" :key="index">
+                                            <td width="130">
+                                                <label :for="`tab-${item}`">{{tagLabel[item]}}</label>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" :name="`tab-${item}`" :id="`tab-${item}`" v-model="selectedTag[item]" placeholder="choose">
+                                                    <option :value="null">-- 請選擇一項標籤 --</option>
+                                                    <option :value="tag" v-for="(tag, tagIndex) in tagGroup[item]" :key="tagIndex">{{tag}}</option>
+                                                </select>
                                             </td>
                                         </tr>
                                     </table>
@@ -424,6 +442,27 @@
         },
         data() {
             return {
+                tagGroup: {
+                    brand: null,
+                    size: null,
+                    trip: null,
+                    price: null,
+                    material: null
+                },
+                tagLabel: {
+                    brand: '品牌 Brand',
+                    size: '尺寸 Size',
+                    trip: '旅程 Trip',
+                    price: '價格 Price',
+                    material: '材質 Material'
+                },
+                selectedTag: {
+                    brand: null,
+                    size: null,
+                    trip: null,
+                    price: null,
+                    material: null
+                },
                 isLoaded: false,
                 isEdit: false,
                 guid: $('#row-guid').val(),
@@ -446,6 +485,7 @@
                     seoTitle: null,
                     seoDescription: null,
                     seoKeyword: null,
+                    command: '',
                     productInformation: {
                         weight: null,
                         size: {
@@ -454,7 +494,7 @@
                             productHeight: null
                         }
                     },
-                    reserveStatus: false,
+                    reserveStatus: true,
                     productType: 'simple',
                     featureImage: null,
                     productCategory: 'null',
@@ -501,7 +541,8 @@
                 this.isLoaded = true;
 
             }
-            this.getCategories();
+            this.getCategories()
+            this.getTag()
 
             $('.loading-bar').fadeOut('100');
         },
@@ -511,6 +552,22 @@
                     var self = this;
 
                     this.isDirty = true;
+                },
+                deep: true
+            },
+            selectedTag: {
+                handler(val, oldVal) {
+                    let selected = {}
+
+                    Object.keys(val).forEach(elm => {
+                        if (typeof(val[elm]) == 'string') {
+                            selected[elm] = val[elm]                            
+                        } else {
+                            selected[elm] = null
+                        }
+                    })
+
+                    this.productContent.command = JSON.stringify(selected)
                 },
                 deep: true
             }
@@ -682,6 +739,7 @@
                                         seoDescription: self.productContent.seoDescription,
                                         seoKeyword: self.productContent.seoKeyword,
                                         featureImage: self.productContent.featureImage,
+                                        command: self.productContent.command,
                                         productInformation: JSON.stringify(self.productContent.productInformation),
                                         album: JSON.stringify(self.productContent.album),
                                         productStatus: self.productContent.productStatus,
@@ -726,7 +784,15 @@
                     .then(res => {
                         self.productContent.subProduct = res.data.data
                     })
-                },
+            },
+            getTag() {
+                axios.get('/admin/tag/get')
+                    .then(res => {
+                        Object.keys(res.data).forEach(elm => {
+                            this.tagGroup[elm] = res.data[elm]
+                        })
+                    })
+            },
             getProduct() {
                 var self = this;
 
@@ -761,6 +827,8 @@
                     self.productContent.socialImage = result.socialImage;
                     self.productContent.schedulePost = (result.schedulePost != null) ? moment(result.schedulePost) : null;
                     self.productContent.scheduleDelete = (result.scheduleDelete != null) ? moment(result.scheduleDelete) : null;
+                    self.selectedTag = JSON.parse(result.command)
+                    
 
                     self.config = {
                         minDate: (result.schedulePost != null) ? moment(result.schedulePost) : null
