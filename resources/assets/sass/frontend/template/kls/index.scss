@@ -3,6 +3,10 @@
   font-family: 微軟正黑體;
 }
 
+.margin-top-Md{
+  margin-top: 20px;
+}
+
 .section_title{
   margin-top   : 80px;
   margin-bottom: 50px;
@@ -1009,7 +1013,7 @@
         }
         &:hover{
           .newsPostMask{
-            border: solid 250px $color-black-mask;
+            border: solid 300px $color-black-mask;
           }
           .newsPost-ReadMore{
             opacity: 1;
@@ -1809,6 +1813,217 @@
       }
     }
   }
+  .information-inner{
+    margin: 80px auto;
+    .row{
+      padding-top: 120px;
+      .col-md-6{
+        position: relative;
+        height: 430px;
+        .information-inner-img{
+          background-position: center;
+          background-size: cover;
+          height: 100%;
+        }
+        .information-inner-store{
+          position: absolute;
+          padding: 15px;
+          top: 50%;
+          left: 50%;
+          width: 78%;
+          transform: translateX(-50%) translateY(-50%);
+          p{
+            font-size: 12px;
+          }
+          .information-inner-store-name{
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            span{
+              font-size: 20px;
+            }
+          }
+          .storeName{
+            margin-bottom: 11px;
+          }
+          .information-inner-store-intro{
+            font-size: 14px;
+            line-height: 30px;
+          }
+          .information-inner-store-reservation{
+
+          }
+          .information-inner-store-number-title{
+            font-size: 14px;
+            font-weight: 900;
+          }
+          .information-inner-store-number{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 11px;
+            font-weight: 900;
+            img{
+              width: 35px;
+              margin-right: 10px;
+            }
+            p{
+              font-size: 36px;
+              margin: 0;
+            }
+          }
+          .information-inner-store-time{
+            font-size: 14px;
+            span{
+              margin-left: 35px;
+              font-weight: 900;
+            }
+          }
+          .time-open{
+            span{
+              margin-left: 40px;
+            }
+          }
+        }
+        .guanxin{}
+        .emailContact{
+          
+        }
+      }
+      .information-inner-navBar{
+        border-bottom: solid 1px #636b6f;
+        .information-inner-navBar-inner{
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          .navBar-title{
+            p{
+              font-size: 28px;
+              font-weight: 900;
+              span{
+                margin-left: 20px;
+                font-size: 20px;
+              }
+            }
+          }
+          .navBar-list{
+            ul{
+              display: flex;
+              li{
+                list-style: none;
+                margin-left: 20px;
+                a{
+                  text-decoration: none;
+                  color: #636b6f;
+                  font-size: 20px;
+                  cursor: pointer;
+                  transition: .5s;
+                  &:hover{
+                    color: #8CC63F;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.information-link{
+  display: flex;
+  margin-top: 30px;
+  .emailContact{
+    width: 40%;
+    p:nth-child(1){
+      font-weight: 900;
+    }
+  }
+  .storeLocation{
+    width: 60%;
+    p:nth-child(1){
+      font-weight: 900;
+    }
+    .storeLocation-address{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 11px;
+      p{
+        font-size: 36px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.information-btn{
+  background-color: #333333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  width: 130px;
+  height: 35px;
+  transition: .5s;
+  &:hover{
+    background-color: #8CC63F;
+  }
+}
+.information-map-link{
+  outline: none;
+  .google-contact{
+    margin-left: 15px;
+  }
+}
+.online-contact{
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+/*----------subPage-privacy---------*/
+#subPage-privacy{
+  margin-top: 150px;
+  margin-bottom: 80px;
+  color: #636b6f;
+  .information-banner{
+    background-image: url('/img/black-1072366_1920.jpg');
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 500px;
+    .information-banner-inner{
+      .information-banner-inner-text{
+        h1{
+          color: #fff;
+          font-size: 50px;
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+    }
+  }
+  .container{
+    margin-top: 80px;
+    .row{
+      .col-md-12{
+        border: solid 1px #636b6f;
+        border-radius: 12px;
+        margin: 0 20px;
+        .privacy-inner{
+          margin: 30px;
+          line-height: 45px;
+          .privacy-clause{
+            p{
+              font-size: 16px;
+              margin-bottom: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /*---------RWD---------*/
@@ -1887,7 +2102,6 @@
     }
   } 
 }
-
 
 @media screen and (max-width: 1024px){
   
@@ -2205,6 +2419,154 @@
       width: 500px;
     }
   } 
+  #feedback{
+    display: none;
+  }
+  #choose{
+    margin-bottom: 0;
+  }
+
+  //Information
+  #subPage-Information{
+    .information-inner{
+      margin: 80px auto;
+      .row{
+        padding-top: 75px;
+        .col-md-6{
+          position: relative;
+          height: 430px;
+          .information-inner-img{
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+          }
+          .information-inner-store{
+            position: absolute;
+            padding: 15px;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translateX(-50%) translateY(-50%);
+            p{
+              font-size: 12px;
+            }
+            .information-inner-store-name{
+              font-size: 28px;
+              font-weight: 900;
+              span{
+                font-size: 20px;
+              }
+            }
+            .information-inner-store-intro{
+              font-size: 14px;
+            }
+            .information-inner-store-reservation{
+
+            }
+            .information-inner-store-number-title{
+              font-size: 14px;
+              font-weight: 900;
+            }
+            .information-inner-store-number{
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              margin-bottom: 11px;
+              font-weight: 900;
+              img{
+                width: 35px;
+                margin-right: 10px;
+              }
+              p{
+                font-size: 36px;
+                margin: 0;
+              }
+            }
+            .information-inner-store-time{
+              font-size: 14px;
+              span{
+                margin-left: 35px;
+                font-weight: 900;
+              }
+            }
+            .time-open{
+              span{
+                margin-left: 40px;
+              }
+            }
+          }
+          .guanxin{}
+          .emailContact{
+            
+          }
+        }
+        .information-inner-navBar{
+          border-bottom: solid 1px #636b6f;
+          .information-inner-navBar-inner{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .navBar-title{
+              p{
+                font-size: 20px;
+                font-weight: 900;
+                span{
+                  margin-left: 20px;
+                  font-size: 16px;
+                }
+              }
+            }
+            .navBar-list{
+              ul{
+                display: flex;
+                padding: 0;
+                li{
+                  list-style: none;
+                  margin-left: 20px;
+                  a{
+                    text-decoration: none;
+                    color: #636b6f;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: .5s;
+                    &:hover{
+                      color: #8CC63F;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .information-link{
+    display: block;
+    margin-top: 0px;
+    .emailContact{
+      width: 100%;
+      p:nth-child(1){
+        font-weight: 900;
+      }
+    }
+    .storeLocation{
+      width: 100%;
+      p:nth-child(1){
+        font-weight: 900;
+      }
+      .storeLocation-address{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 11px;
+        p{
+          font-size: 36px;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 768px){
@@ -2341,6 +2703,7 @@
     }
   }
 }
+
 @media screen and (max-width: 460px){
   #footer{
     .footer_logo{
@@ -2393,6 +2756,164 @@
   .sub-page-footer-inner{
     display: block !important;
     text-align: center;
+    padding-bottom: 0;
+  }
+
+  //Information
+  #subPage-Information{
+    .information-inner{
+      margin: 80px auto;
+      .row{
+        padding-top: 75px;
+        .col-md-6{
+          position: relative;
+          height: 400px;
+          .information-inner-img{
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+          }
+          .information-inner-store{
+            position: absolute;
+            padding: 15px;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translateX(-50%) translateY(-50%);
+            p{
+              font-size: 12px;
+            }
+            .information-inner-store-name{
+              font-size: 28px;
+              font-weight: 900;
+              span{
+                font-size: 20px;
+              }
+            }
+            .information-inner-store-intro{
+              font-size: 14px;
+            }
+            .information-inner-store-reservation{
+
+            }
+            .information-inner-store-number-title{
+              font-size: 14px;
+              font-weight: 900;
+            }
+            .information-inner-store-number{
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              margin-bottom: 11px;
+              font-weight: 900;
+              img{
+                width: 35px;
+                margin-right: 10px;
+              }
+              p{
+                font-size: 36px;
+                margin: 0;
+              }
+            }
+            .information-inner-store-time{
+              font-size: 14px;
+              span{
+                margin-left: 35px;
+                font-weight: 900;
+              }
+            }
+            .time-open{
+              span{
+                margin-left: 40px;
+              }
+            }
+          }
+          .guanxin{}
+          .emailContact{
+            
+          }
+        }
+        .information-inner-navBar{
+          border-bottom: none;
+          .information-inner-navBar-inner{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: solid 1px #636b6f;
+            .navBar-title{
+              width: 30%;
+              p{
+                font-size: 20px;
+                font-weight: 900;
+                span{
+                  margin-left: 0px;
+                  font-size: 12px;
+                }
+              }
+            }
+            .navBar-list{
+              width: 60%;
+              ul{
+                display: flex;
+                padding: 0;
+                li{
+                  list-style: none;
+                  margin-left: 20px;
+                  a{
+                    text-decoration: none;
+                    color: #636b6f;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: .5s;
+                    &:hover{
+                      color: #8CC63F;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .information-inner-into{
+        padding-top: 15px;
+        .information-inner-into-col{
+          height: 300px;
+          .information-inner-store{
+            padding: 0px 15px;
+          }
+        }
+        .into-first{
+          height: 250px;
+        }
+      }
+    }
+  }
+  .information-link{
+    display: block;
+    margin-top: 0px;
+    .emailContact{
+      width: 100%;
+      p:nth-child(1){
+        font-weight: 900;
+      }
+    }
+    .storeLocation{
+      width: 100%;
+      p:nth-child(1){
+        font-weight: 900;
+      }
+      .storeLocation-address{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 11px;
+        p{
+          font-size: 24px;
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }
 

@@ -31,10 +31,11 @@ input::-webkit-inner-spin-button {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translateX(-50%) translateY(-50%);position: absolute;
+        transform: translateX(-50%) translateY(-50%);
+        position: absolute;
         top: 50%;
         left: 50%;
-        img {
+        #loading_svg {
             width: 150px;
             height: 150px;
             margin-top: -25px;
