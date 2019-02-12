@@ -2,11 +2,7 @@
 
 @section('custom-script')
     <script type="text/javascript">
-        $(document).ready( () => {
-            $('#guanxin').on('click',function() {
-                console.log($(this).offset().top)
-            });
-        });
+         
     </script>
 @endsection
 
@@ -55,20 +51,34 @@
                     <p class="information-inner-store-intro">
                         若您在本店線上商店查看了我們的產品後，仍想親臨店鋪查看箱款實物，為了避免您白跑一趟，您可先透過以下管道預約挑箱，我們將為您準備好您希望體驗的箱款，並且告知您箱款所在店面，以便您有更好的挑箱體驗，透過網路預訂。
                     </p>
-                    <div class="information-inner-store-reservation margin-top-Md">
+                    <div class="information-inner-store-reservation margin-top-Md information-flex">
 
-                        <p class="information-inner-store-number-title">
-                            透過電話預訂
-                        </p>
-                        <div class="information-inner-store-number">
-                            <img src="/img/phoneIcon-01.svg" alt="">
+                        <div class="information-inner-store-reservation-inner">
+
+                            <p class="information-inner-store-number-title">
+                                透過電話預訂
+                            </p>
+                            <div class="information-inner-store-number">
+                                <img src="/img/phoneIcon-01.svg" alt="">
+                                <p>
+                                    03-5638999
+                                </p>
+                            </div>
                             <p>
-                                03-5638999
+                                ※營業時間為 13:00 - 20:00，每周一公休。
                             </p>
                         </div>
-                        <p>
-                            ※營業時間為 13:00 - 20:00，每周一公休。
-                        </p>
+
+                        <div class="information-inner-store-reservation-inner">
+                            <p class="information-inner-store-number-title">
+                                透過Web預訂
+                            </p>
+                            <button class="information-btn online-contact" style="margin-top: 8px; width: 174px;">
+                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                網路預訂
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -117,7 +127,7 @@
                 <div class="information-inner-img" style="background-image: url('/img/department-store-1270119_1920.jpg');"></div>
             </div>
             <div class="col-md-6">
-                <div class="information-inner-store">
+                <div class="information-inner-store store-info">
                     <p>
                         Store Informations 
                     </p>
@@ -153,9 +163,8 @@
                         電子郵件聯繫 <span>Email Contact</span>
                     </p>
                     <button class="information-btn online-contact">
-                        <i class="fa fa-envelope-o" aria-hidden="true">
-                            線上聯繫
-                        </i>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        線上聯繫
                     </button>
                     <p>
                         ※點擊前往表單連結進行填寫。
@@ -171,9 +180,8 @@
                         </p>
                         <a class="information-map-link" href="https://goo.gl/maps/AvLidq4Sea32"  target="_blank">
                             <button class="information-btn google-contact">
-                                <i class="fa fa-map-marker" aria-hidden="true">
-                                    Google Maps
-                                </i>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Google Maps
                             </button>
                         </a>
                         
@@ -190,7 +198,7 @@
                 <div class="information-inner-img" style="background-image: url('/img/store-984393_1920.jpg');"></div>
             </div>
             <div class="col-md-6">
-                <div class="information-inner-store">
+                <div class="information-inner-store store-info">
                     <p>
                         Store Informations 
                     </p>
@@ -226,9 +234,8 @@
                         電子郵件聯繫 <span>Email Contact</span>
                     </p>
                     <button class="information-btn online-contact">
-                        <i class="fa fa-envelope-o" aria-hidden="true">
-                            線上聯繫
-                        </i>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        線上聯繫
                     </button>
                     <p>
                         ※點擊前往表單連結進行填寫。
@@ -244,9 +251,8 @@
                         </p>
                         <a class="information-map-link" href="https://goo.gl/maps/ZsqSNpedyyH2"  target="_blank">
                             <button class="information-btn google-contact">
-                                <i class="fa fa-map-marker" aria-hidden="true">
-                                    Google Maps
-                                </i>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Google Maps
                             </button>
                         </a>
                     </div>
@@ -262,7 +268,7 @@
                 <div class="information-inner-img" style="background-image: url('/img/adidas-458043_1920.jpg');"></div>
             </div>
             <div class="col-md-6">
-                <div class="information-inner-store">
+                <div class="information-inner-store store-info">
                     <p>
                         Store Informations 
                     </p>
@@ -298,9 +304,8 @@
                         電子郵件聯繫 <span>Email Contact</span>
                     </p>
                     <button class="information-btn online-contact">
-                        <i class="fa fa-envelope-o" aria-hidden="true">
-                            線上聯繫
-                        </i>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        線上聯繫
                     </button>
                     <p>
                         ※點擊前往表單連結進行填寫。
@@ -316,9 +321,8 @@
                         </p>
                         <a class="information-map-link" href="https://goo.gl/maps/s2ycsjN3i412"  target="_blank">
                             <button class="information-btn google-contact">
-                                <i class="fa fa-map-marker" aria-hidden="true">
-                                    Google Maps
-                                </i>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Google Maps
                             </button>
                         </a>
                     </div>

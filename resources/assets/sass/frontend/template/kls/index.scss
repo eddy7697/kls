@@ -1795,11 +1795,9 @@
 //Information
 #subPage-Information{
   .information-banner{
+    @extend %flex-center;
     background-image: url('/img/information-banner.jpg');
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
     margin-top: 100px;
     min-height: 500px;
@@ -1825,9 +1823,10 @@
           background-size: cover;
           height: 100%;
         }
+        
         .information-inner-store{
           position: absolute;
-          padding: 15px;
+          padding: 10px;
           top: 50%;
           left: 50%;
           width: 78%;
@@ -1851,7 +1850,17 @@
             line-height: 30px;
           }
           .information-inner-store-reservation{
-
+            
+          }
+          .information-flex{
+            @extend %flex-center;
+            align-items: flex-start;
+            .information-inner-store-reservation-inner:nth-child(1){
+              width: 60%;
+            }
+            .information-inner-store-reservation-inner:nth-child(2){
+              width: 40%;
+            }
           }
           .information-inner-store-number-title{
             font-size: 14px;
@@ -1868,7 +1877,7 @@
               margin-right: 10px;
             }
             p{
-              font-size: 36px;
+              font-size: 32px;
               margin: 0;
             }
           }
@@ -1884,6 +1893,9 @@
               margin-left: 40px;
             }
           }
+        }
+        .store-info{
+          width: 95%;
         }
         .guanxin{}
         .emailContact{
@@ -1934,13 +1946,13 @@
   display: flex;
   margin-top: 30px;
   .emailContact{
-    width: 40%;
+    width: 25%;
     p:nth-child(1){
       font-weight: 900;
     }
   }
   .storeLocation{
-    width: 60%;
+    width: 75%;
     p:nth-child(1){
       font-weight: 900;
     }
@@ -1950,7 +1962,7 @@
       align-items: center;
       margin-bottom: 11px;
       p{
-        font-size: 36px;
+        font-size: 32px;
         margin-bottom: 0;
       }
     }
@@ -1962,11 +1974,15 @@
   color: #fff;
   border: none;
   border-radius: 4px;
-  width: 130px;
+  width: 160px;
+  font-size: 16px;
   height: 35px;
   transition: .5s;
   &:hover{
     background-color: #8CC63F;
+  }
+  i{
+    margin-right: 5px;
   }
 }
 .information-map-link{
@@ -1986,11 +2002,9 @@
   margin-bottom: 80px;
   color: #636b6f;
   .information-banner{
+    @extend %flex-center;
     background-image: url('/img/black-1072366_1920.jpg');
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
     min-height: 500px;
     .information-banner-inner{
@@ -2146,11 +2160,11 @@
               align-items    : center;
               width          : 100%;
               .shop{
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 width          : calc(100% / 3);
                 height         : 100%;
-                display        : flex;
-                justify-content: center;
-                align-items    : center;
                 border-left    : solid 1px #EDEDED;
                 .shop_contact{
                   line-height: 15px;
@@ -2171,10 +2185,10 @@
               }
             }
             .facebook,.instagram{
-              height         : 50%;
-              display        : flex;
+              display: flex;
               justify-content: center;
-              align-items    : center;
+              align-items: center;
+              height         : 50%;
               text-decoration: none;
               color          : $color-text-grey;
               cursor         : pointer;
@@ -2229,12 +2243,12 @@
     .footer_contact{
       width: 30%;
       .footer_addr{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position       : relative;
         width          : 70%;
         border-right   : solid 1px $color-grey-font-color;
-        display        : flex;
-        justify-content: center;
-        align-items    : center;
         padding        : 30px 0; 
         .shop_list{
           height: 100%;
@@ -2259,10 +2273,10 @@
           text-align: center;
         }
         .facebook,.instagram{
-          height         : 50%;
-          display        : flex;
+          display: flex;
           justify-content: center;
-          align-items    : center;
+          align-items: center;
+          height         : 50%;
           text-decoration: none;
           color          : $color-text-grey;
           cursor         : pointer;
