@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div class="container information-inner">
+    <div class="container-fulid information-inner">
 
         <div class="row information-inner-into">
 
@@ -41,7 +41,7 @@
 
         </div>
 
-        <div class="row information-inner-into">
+        <div class="row information-inner-into into-bottom">
 
             <div class="col-md-6 information-inner-into-col">
                 <div class="information-inner-store">
@@ -73,7 +73,7 @@
                             <p class="information-inner-store-number-title">
                                 透過Web預訂
                             </p>
-                            <button class="information-btn online-contact" style="margin-top: 8px; width: 174px;">
+                            <button class="information-btn online-contact" style="margin-top: 8px; width: 185px;">
                                 <i class="fa fa-calendar-o" aria-hidden="true"></i>
                                 網路預訂
                             </button>
