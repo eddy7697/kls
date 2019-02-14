@@ -739,13 +739,15 @@
     margin: 0 80px;
     .row{
       .co_post{
-        padding: 0 30px;
+        padding: 0 45px;
         .choose_post{
           .img_div{
             position      : relative;
             padding-bottom: 100%;
             overflow      : hidden;
             border-radius : 8px;
+            background-size: cover;
+            background-position: top;
             img{
               position     : absolute;
               top          : 50%;
@@ -763,16 +765,15 @@
             }
             p{
               color: $color-text-grey;
+              font-size: $title-bottom-font-size;
             }
             .choose_btn{
-              display        : flex;
-              justify-content: center;
-              align-items    : center;
+              @extend %flex-center;
               .goBuy{
                 margin-top      : 20px;
                 border          : none;
                 outline         : none;
-                padding         : 3px 30px;
+                padding         : 5px 40px;
                 border-radius   : 8px;
                 margin-bottom   : 20px;
                 transition      : 0.5s;
@@ -784,6 +785,7 @@
                   color          : $color-white;
                   text-decoration: none;
                   font-weight    : 500;
+                  font-size: $title-bottom-font-size;
                 }
               }
             }
@@ -821,6 +823,7 @@
     z-index : 2;
     .row{
       .product_nav{
+        padding:  0 30px;
         .navbar-default{
           background-color: transparent;
           z-index : 2;
@@ -937,6 +940,7 @@
                 }
               }
               .buy_click{
+                outline: none;
                 background-color: $color-coffee;
                 color           : $color-white;
                 border-radius   : 50%;
@@ -970,6 +974,7 @@
 #news{
   overflow: hidden;
   .container-fluid{
+    margin: 0 80px;
     .row{
       .newsPost{
         display         : flex;
