@@ -69,3 +69,18 @@ $title-bottom-input-font-size: 12px;
 $font-size-number            : 55px;
 $font-size-span              : 18px;
 $font-size-footer-title      : 28px;
+
+
+%flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+%force-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

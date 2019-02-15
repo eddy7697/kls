@@ -58,9 +58,9 @@
                  });
             };
             let newsPostOldText = $('.newPostTextP').text();
-            newPostTextRWD($('.newPostTextP'),100);
-            newPostTextRWD($('.post_text p'),300);
-            newPostTextRWD($('.feedback-Inner p'),150);
+            newPostTextRWD($('.newPostTextP'),200);
+            newPostTextRWD($('.post_text p'),400);
+            newPostTextRWD($('.feedback-Inner p'),250);
             
             $('.newsPost').each(function(){
                 let postText = $(this).find('.newPostTextP');
@@ -82,8 +82,8 @@
                     };
                     if (_width < 991){
                         $(postText).text(newsPostOldText);
+                        newPostTextRWD($('.newPostTextP'),300);
                     }
-
                 })
             })
         })
@@ -108,8 +108,7 @@
             <div class="row">
                 <div class="col-md-3 co_post">
                     <div class="choose_post">
-                        <div class="img_div">
-                            <img src="/img/choose01.jpg" alt="">
+                        <div class="img_div" style="background-image: url(/img/choose01.jpg)">
                         </div>
                         <div class="post_text">
                             <h3>
@@ -141,8 +140,7 @@
                 </div>
                 <div class="col-md-3 co_post">
                     <div class="choose_post">
-                        <div class="img_div">
-                            <img src="/img/choose02.jpg" alt="">
+                        <div class="img_div" style="background-image: url(/img/choose02.jpg)">
                         </div>
                         <div class="post_text">
                             <h3>
@@ -174,8 +172,7 @@
                 </div>
                 <div class="col-md-3 co_post">
                     <div class="choose_post">
-                        <div class="img_div">
-                            <img src="/img/choose03.jpg" alt="">
+                        <div class="img_div" style="background-image: url(/img/choose03.jpg)">
                         </div>
                         <div class="post_text">
                             <h3>
@@ -207,8 +204,7 @@
                 </div>
                 <div class="col-md-3 co_post">
                     <div class="choose_post">
-                        <div class="img_div">
-                            <img src="/img/choose04.jpg" alt="">
+                        <div class="img_div" style="background-image: url(/img/choose04.jpg)">
                         </div>
                         <div class="post_text">
                             <h3>
@@ -559,8 +555,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row newsPostRow">
                 <div class="col-md-6">
                     <div class="newsPost">
                         <div class="newsPostMask"></div>
