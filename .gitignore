@@ -18,3 +18,7 @@ npm-debug.log
 yarn-error.log
 .env
 /public/mix-manifest.json
+/public/css/page-builder.css
+/public/fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.svg
+/public/fonts/vendor/slick-carousel/slick/slick.svg
+/public/js/product-filter.js
