@@ -2,7 +2,7 @@
 
 @section('custom-script')
     <script>
-        $(document).ready(()=>{
+        $(document).ready(function(){
             var swiper = new Swiper ('.product_nav_index .tab-pane',{
                 direction : 'horizontal',
                 loop      : true,

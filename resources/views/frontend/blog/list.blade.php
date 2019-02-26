@@ -3,7 +3,7 @@
 @section('custom-script')
     <script type="text/javascript">
         function readMoreLock(){
-            $('#readMore-btn').on('click',() => {
+            $('#readMore-btn').on('click',function() {
                 $('.blog-post-open').fadeIn();
             });
             $('.blog-filter-inner button').on('click',function(){
@@ -18,20 +18,20 @@
             $('.blog-post-open .blog-post-row').removeClass('row').eq(2).addClass('row');
         };
         function blogFilter(){
-            $('.filterBtn-active').on('click',()=>{
+            $('.filterBtn-active').on('click',function(){
                 $('.vol01,.vol02,.vol03').fadeIn();
                 $('.blog-post-row').addClass('row');
             });
             
-            $('.filterBtn-unpacking').on('click',()=>{
+            $('.filterBtn-unpacking').on('click',function(){
                 blogFilterHide('.vol02','.vol01,.vol03');
             });
             
-            $('.filterBtn-news').on('click',()=>{
+            $('.filterBtn-news').on('click',function(){
                 blogFilterHide('.vol03','.vol01,.vol02');
             });
             
-            $('.filterBtn-teaching').on('click',()=>{
+            $('.filterBtn-teaching').on('click',function(){
                 blogFilterHide('.vol01','.vol02,.vol03');
             });
         };

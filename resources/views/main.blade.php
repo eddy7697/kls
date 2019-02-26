@@ -223,107 +223,113 @@
         </div>
         
         <div class="navbar">
-            <ul>
-                <li>
-                    <a href="{{route('about')}}">
-                        關於凱麗絲
-                    </a>
-                </li>
-                <li class="mega-menu dropdown dropdown-large">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        所有商品
-                        <span class="caret"></span>
-                    </a>
-                                
-                    <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
-                        <li class="col-sm-3 mega-menu-title">
-                            <h2>所有商品</h2>
-                            <p>ALL PRODUCT</p>
-                        </li>
-                        <li class="col-sm-3 mega-menu-list">
-                            <ul>
-                                <li>
-                                    <a href="{{route('productAll')}}">
-                                        品牌行李箱                   
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('productFitting')}}">
-                                        旅行配件
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        品牌背包
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="col-md-3 mega-menu-img">
-                            <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
-                        </li>
-                        <li class="col-md-3 mega-menu-text">
-                            <div class="dropdown-menu-inner-text">
-                                <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{url('/blog')}}">
-                        部落格
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('location')}}">
-                        店鋪資訊
-                    </a>
-                </li>
-                <li class="mega-menu dropdown dropdown-large">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        諮詢專區
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
-                        <li class="col-sm-3 mega-menu-title">
-                            <h2>諮詢專區</h2>
-                            <p>CONSULTING AREA</p>
-                        </li>
-                        <li class="col-sm-3 mega-menu-list">
-                            <ul>
-                                <li>
-                                    <a href="{{url('/about/privacy')}}"> {{--  href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" --}}
-                                        隱私權條款
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('contact')}}">
-                                        購物需知
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('contact')}}">
-                                        諮詢專區
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        安心購物宣言
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="col-md-3 mega-menu-img">
-                            <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
-                        </li>
-                        <li class="col-md-3 mega-menu-text">
-                            <div class="dropdown-menu-inner-text">
-                                <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="navbar-ul">
+                            <li>
+                                <a href="{{route('about')}}">
+                                    關於凱麗絲
+                                </a>
+                            </li>
+                            <li class="mega-menu dropdown dropdown-large">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    所有商品
+                                    <span class="caret"></span>
+                                </a>
+                                            
+                                <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                                    <li class="col-sm-3 mega-menu-title">
+                                        <h2>所有商品</h2>
+                                        <p>ALL PRODUCT</p>
+                                    </li>
+                                    <li class="col-sm-3 mega-menu-list">
+                                        <ul>
+                                            <li>
+                                                <a href="{{route('productAll')}}">
+                                                    品牌行李箱                   
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('productFitting')}}">
+                                                    旅行配件
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    品牌背包
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-md-3 mega-menu-img">
+                                        <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
+                                    </li>
+                                    <li class="col-md-3 mega-menu-text">
+                                        <div class="dropdown-menu-inner-text">
+                                            <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{url('/blog')}}">
+                                    部落格
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('location')}}">
+                                    店鋪資訊
+                                </a>
+                            </li>
+                            <li class="mega-menu dropdown dropdown-large">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    諮詢專區
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                                    <li class="col-sm-3 mega-menu-title">
+                                        <h2>諮詢專區</h2>
+                                        <p>CONSULTING AREA</p>
+                                    </li>
+                                    <li class="col-sm-3 mega-menu-list">
+                                        <ul>
+                                            <li>
+                                                <a href="{{url('/about/privacy')}}"> {{--  href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" --}}
+                                                    隱私權條款
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('contact')}}">
+                                                    購物需知
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('contact')}}">
+                                                    諮詢專區
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    安心購物宣言
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-md-3 mega-menu-img">
+                                        <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
+                                    </li>
+                                    <li class="col-md-3 mega-menu-text">
+                                        <div class="dropdown-menu-inner-text">
+                                            <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @else
@@ -668,110 +674,104 @@
 @endif
 
 <script>
-
     // heights
       
-$(document).ready(() => {
-    
-    function get_H(){
-
-        let h      = $(window).height()
-        let logo_h = $('.logo').height()
-        let nav_h  = $('.navbar').height()
-
-        $('#header').css('height',h)
-            
-    };
-    get_H()
-
-    $(window).resize(() => {
-        get_H()
-    });
-
-    $('.klsBurger-switch').on('click',function(){
-        $(this).toggleClass('openNow');
-        $('.klsBurger-menu').toggleClass('openNow-menu');
-        $('section').toggleClass('openNow-filter');
-    });
-    
-
-    $(function() {
-
+    $(document).ready(function() {
         
-        function megaMenuScroll () {
-            let megaMenu = $('.mega-menu-product');
-            if (document.documentElement.scrollTop < 400){
-                megaMenu.css('top','-360%');
-            } else {
-                megaMenu.css('top','100%');
-            }; 
+        function get_H(){
+
+            let h      = $(window).height()
+            let logo_h = $('.logo').height()
+            let nav_h  = $('.navbar').height()
+
+            $('#header').css('height',h)
+                
         };
+        get_H()
 
-        try {
-            let fix   = $('.navbar');                      //title
-            let fixTop = fix.offset().top;             //title 與頂部的距離
-            megaMenuScroll ()
-            $(window).scroll(() => {
-                megaMenuScroll ()
-                // 頁面與頂部高度
-                let docTop = Math.max(document.documentElement.scrollTop);  
-                if (fixTop < docTop) {
-                    fix.css({
-                        'position': 'fixed',
-                        'top'     : 0,
-                        'width'   : '100%',
-                        'z-index' : '99999'
-                        })
-                } else {
-                    fix.css("position","relative");
-                    }
-                })
-        } catch (error) {
-            console.log(error.message)
-        }
-    });
+        $(window).resize(function() {
+            get_H()
+        });
 
-    
-
-    var swiper = new Swiper ('.header_right',{
-        direction : 'vertical',
-        loop      : true,
-        speed     : 1000,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        },
-        autoplay  : {
-            delay: 10000,
-            disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: '.top',
-            prevEl: '.bottom',
-        },
-        on:{
-            transitionStart: function(){
-                $('.banner_word').css({
-                    'opacity'   : 0,
-                    'transform' : 'translateY(100%) translateX(-20%)',
-                    'transition': '0.3s'
-                })
-            },
-            transitionEnd: function(){
-                $('.banner_word').css({
-                    'opacity'   : 1,
-                    'transform' : 'translateY(-60%) translateX(-20%)',
-                    'transition': '0.8s'
-                })
-            },
-        }
-    });
-});
-
-   
-
-                  
+        $('.klsBurger-switch').on('click',function(){
+            $(this).toggleClass('openNow');
+            $('.klsBurger-menu').toggleClass('openNow-menu');
+            $('section').toggleClass('openNow-filter');
+        });
         
+
+        $(function() {
+
+            
+            function megaMenuScroll () {
+                let megaMenu = $('.mega-menu-product');
+                if (document.documentElement.scrollTop < 400){
+                    megaMenu.css('top','-360%');
+                } else {
+                    megaMenu.css('top','100%');
+                }; 
+            };
+
+            try {
+                let fix   = $('.navbar');                      //title
+                let fixTop = fix.offset().top;             //title 與頂部的距離
+                megaMenuScroll ()
+                $(window).scroll(function() {
+                    megaMenuScroll ()
+                    // 頁面與頂部高度
+                    let docTop = Math.max(document.documentElement.scrollTop);  
+                    if (fixTop < docTop) {
+                        fix.css({
+                            'position': 'fixed',
+                            'top'     : 0,
+                            'width'   : '100%',
+                            'z-index' : '99999'
+                            })
+                    } else {
+                        fix.css("position","relative");
+                        }
+                    })
+            } catch (error) {
+                console.log(error.message)
+            }
+        });
+
+        
+
+        var swiper = new Swiper ('.header_right',{
+            direction : 'vertical',
+            loop      : true,
+            speed     : 1000,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            autoplay  : {
+                delay: 10000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.top',
+                prevEl: '.bottom',
+            },
+            on:{
+                transitionStart: function(){
+                    $('.banner_word').css({
+                        'opacity'   : 0,
+                        'transform' : 'translateY(100%) translateX(-20%)',
+                        'transition': '0.3s'
+                    })
+                },
+                transitionEnd: function(){
+                    $('.banner_word').css({
+                        'opacity'   : 1,
+                        'transform' : 'translateY(-60%) translateX(-20%)',
+                        'transition': '0.8s'
+                    })
+                },
+            }
+        });
+    }); 
 </script>
 
 </body>

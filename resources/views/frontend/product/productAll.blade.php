@@ -14,7 +14,7 @@
         $('.productHeart').on('click',function(){
             $(this).toggleClass('productHeart-active'); 
         });
-        $('#readMore-btn').on('click',()=>{
+        $('#readMore-btn').on('click',function(){
             $('.product-more').fadeIn();
         });
         

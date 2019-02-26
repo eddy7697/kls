@@ -71,10 +71,69 @@ $font-size-span              : 18px;
 $font-size-footer-title      : 28px;
 
 
-%flex-center{
+@mixin set-in() {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+@mixin size-setting($w , $h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin background-setting($url, $bgp, $bgz) {
+    background-image: url($url);
+    background-position: $bgp;
+    background-size: $bgz;
+}
+
+@mixin flex-mix($align, $justify) {
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    -webkit-box-align: $align;
+    -moz-box-align: $align;
+    -ms-flex-align: $align;
+    -webkit-align-items: $align;
+    align-items: $align;
+    -webkit-box-pack: $justify;
+    -moz-justify-content: $justify;
+    -webkit-justify-content: $justify;
+    justify-content: $justify;
+    flex-wrap: wrap;
+}
+
+%just-flex{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+%flex-center{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    -webkit-box-pack: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    
     flex-wrap: wrap;
 }
 

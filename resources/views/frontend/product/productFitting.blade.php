@@ -12,7 +12,7 @@
             $('.filter-title,.filter').fadeToggle();
             $(this).find('img').toggleClass('closeFilter');
         });
-        $('.filter-remakeBtn').on('click',e => {
+        $('.filter-remakeBtn').on('click',function(e) {
             for (let index = 0; index < $('.filters-selects').find('input').length; index++) {
                 $('.filters-selects').find('input')[index].checked = false;
             };
@@ -20,7 +20,7 @@
         $('.productHeart').on('click',function(){
             $(this).toggleClass('productHeart-active'); 
         });
-        $('#readMore-btn').on('click',()=>{
+        $('#readMore-btn').on('click',function(){
             $('.product-more').fadeIn();
         });
         
