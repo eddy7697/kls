@@ -56,6 +56,8 @@ $color-coffee         : #7A6A56;
 $font-color-focus     : #F8B62D;
 $color-coffee-hover   : #422F18;
 $color-product        : #3E3A39;
+$color-blue           : #0f2746;
+$color-yellow         : #d9ae24;
 
 //-------------------------------------------------Font-size-------------------------------------------------
 
@@ -69,14 +71,6 @@ $title-bottom-input-font-size: 12px;
 $font-size-number            : 55px;
 $font-size-span              : 18px;
 $font-size-footer-title      : 28px;
-
-
-@mixin set-in() {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 @mixin size-setting($w , $h) {
     width: $w;

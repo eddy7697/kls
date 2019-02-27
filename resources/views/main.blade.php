@@ -236,8 +236,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     所有商品
                                     <span class="caret"></span>
-                                </a>
-                                            
+                                </a>      
                                 <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
                                     <li class="col-sm-3 mega-menu-title">
                                         <h2>所有商品</h2>
@@ -325,6 +324,10 @@
                                         </div>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="navbar-icon">
+                                <img src="/img/navbar-heart-01.svg" alt="">
+                                <img src="/img/navbar-cart-01.svg" alt="">
                             </li>
                         </ul> 
                     </div>
