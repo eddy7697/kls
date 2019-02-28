@@ -218,6 +218,11 @@
     li{
       padding: 20px 10px;
       margin : 0 !important;
+      border-right: none !important;
+      list-style: none;
+      a{
+        margin: 0 !important;
+      }
     }
     .mega-menu-title{
       text-align: center;
@@ -234,7 +239,7 @@
       text-align: center;
       &:hover{
         a{
-          border-bottom: solid 1px #fff !important;
+          border-bottom: solid 1px $color-white !important;
         }
       }
       ul{
@@ -243,7 +248,7 @@
           padding: 15px 10px;
           a{
             color: #636b6f !important;
-            border: solid 1px #fff !important;
+            border: solid 1px $color-white !important;
             padding-bottom: 0 !important;
             padding: 5px 25px !important;
             border-radius: 8px;
@@ -282,7 +287,7 @@
   .header_top_area{
     @extend %just-flex;
     flex-wrap: nowrap;
-    height : 90%;
+    height : 88%;
     .header_left{
       width   : 30%;
       overflow: hidden;
@@ -439,9 +444,8 @@
         right      : 0;
         border-left: dashed 1px $color-white;
         .banner_arrow{
+          @include size-setting(40px,50px);
           position: absolute;
-          width   : 40px;
-          height  : 50px;
           z-index : 99999;
           outline : none; 
         }
@@ -520,42 +524,68 @@
   }
   
   .navbar{
-    @include size-setting(100%,10%);
+    @include size-setting(100%,12%);
     @extend %flex-center;
     z-index         : 99999;
     background-color: $color-blue;
     font-weight     : 700;
     margin-bottom   : 0;
-    .navbar-ul{
-      @include size-setting(100%,100%);
+    position: relative;
+    border-bottom: solid 1px $color-white;
+    .navbar-icon{
       @extend %flex-center;
-    }
-    ul{
-      margin : 0;
-      padding: 0;
-      .navbar-icon{
-        @extend %flex-center;
-        border-right: none;
-        img{
-          @include size-setting(30px,30px);
+      border-right: none !important;
+      position: absolute;
+      right: 0;
+      img{
+        @include size-setting(25px,25px);
+        margin: 0 20px;
+        cursor: pointer;
+        transition: .5s;
+        &:hover{
+          opacity: .7;
         }
       }
-      li{
-        font-size   : 15px;
-        display     : inline-block;
-        list-style  : none;
-        border-right: solid 1px $color-yellow;
-        a{
-          text-decoration: none;
-          color          : $color-white;
-          margin         : 0px 30px;
-          padding-bottom : 28px;
-          border-bottom  : solid 3px transparent;
-          transition     : 0.5s ease;
-          &:hover{
-            border-bottom: solid 3px $color-white;
-          } 
+    }
+    .container{
+      height: 100%;
+      .row{
+        height: 100%;
+        .col-md-12{
+          height: 100%;
+          .navbar-ul{
+            @include size-setting(100%,100%);
+            @extend %flex-center;
+            margin : 0;
+            padding: 0;
+            .navbar-ul-li{
+              font-size   : $title-bottom-font-size;
+              display     : inline-block;
+              list-style  : none;
+              width: 135px;
+              text-align: center;
+              border-bottom  : solid 3px transparent;
+              transition     : 0.5s ease;
+              &:hover{
+                border-bottom: solid 3px $color-yellow;
+              } 
+              a{
+                text-decoration: none;
+                color: $color-white;
+                p{
+                  margin-bottom: 0;
+                  margin: 32px 0;
+                  border-right: solid 1px $color-yellow;
+                }
+              }
+            }
+          }
         }
+      }
+    }
+    .mega-menu {
+      .mega-menu-product{
+        @include size-setting(80%,auto);
       }
     }
   }
@@ -564,25 +594,20 @@
 /*----------footer---------*/
 
 #footer{
-  display        : flex;
-  justify-content: center;
-  align-items    : stretch;
+  @include flex-mix(stretch, center);
   border-top     : solid 1px $color-grey-font-color;
   .footer_logo{
-    background-image   : url('/img/footer-1.jpg');
-    background-position: center;
-    background-size    : cover;
-    width              : 37.5%;
+    @include background-setting('/img/footer-1.jpg',center,cover);
+    width: 37.5%;
     .logo_area{
+      @include size-setting(100%,100%);
       position: relative;
-      height  : 100%;
-      width   : 100%;
       .logo{
-        position           : absolute;
-        top                : 0;
-        right              : 0;
-        left               : 0;
-        bottom             : 0;
+        position: absolute;
+        top     : 0;
+        right   : 0;
+        left    : 0;
+        bottom  : 0;
         .mark{
           @extend %force-center;
           background-color: transparent;
@@ -786,24 +811,14 @@
 /*----------products---------*/
 
 #products{
-  background-image     : url('/img/products_background.jpg');
-  background-position  : top center;
-  background-size      : 200%;
-  background-attachment: fixed;
+  background-color: $color-blue;
   position             : relative;
   z-index              : 1;
-  &::after{
-    content         : '';
-    position        : absolute;
-    top             : 0;
-    right           : 0;
-    left            : 0;
-    bottom          : 0;
-    background-color: #F6F6F6;
-    opacity         : 0.8;
-    z-index         : 0; 
+  .section_title{
+    p{
+      color: $color-white;
+    }
   }
-  
   .container-fluid{
     overflow: hidden;
     margin  : 0 80px;
@@ -818,8 +833,8 @@
             border: none;
             .active{
               a{
-                background-color: $color-coffee;
-                border          : solid 2px $color-coffee;
+                background-color: $color-white;
+                border          : solid 2px $color-white;
                 color           : $color-white;   
               }
             }
@@ -827,8 +842,8 @@
               z-index: 2;
               a{
                 border-radius   : 8px;
-                border          : solid 2px $color-mask-logo;
-                color           : $color-mask-logo;
+                border          : solid 2px $color-white;
+                color           : $color-white;
                 font-weight     : 700;
                 transition      : 0.5s;
                 background-color: transparent; 
@@ -928,7 +943,7 @@
               }
               .buy_click{
                 outline: none;
-                background-color: $color-coffee;
+                background-color: $color-yellow;
                 color           : $color-white;
                 border-radius   : 50%;
                 border          : none;
@@ -937,14 +952,14 @@
                 font-size       : $font-size-span;
                 white-space     : nowrap;
                 &:hover{
-                  background-color: $color-coffee-hover;
+                  opacity: .7;
                 }
               }
             }
             .product_series,
             .product_name,
             .product_price{
-              color: $color-product;
+              color: $color-white;
             }
             .product_price,
             .product_name{
@@ -1055,23 +1070,14 @@
 /*----------news---------*/
 
 #feedback{
-  background-image     : url('/img/products_background.jpg');
-  background-position  : top center;
-  background-size      : 200%;
-  background-attachment: fixed;
+  background-color: $color-blue;
   position             : relative;
   padding-bottom       : 80px;
   z-index              : 1;
-  &:after{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #F6F6F6;
-    opacity: 0.5;
-    z-index: 0;
+  .section_title{
+    p{
+      color: $color_white;
+    }
   }
   .container-fluid{
     margin : 0 80px;
@@ -1132,7 +1138,7 @@
   top: 0;
   width: 100%;
   z-index: 99999;
-  background-color: #fff;
+  background-color: $color-white;
   .sub-page-header-inner {
     display: flex;
     justify-content: space-between;
@@ -1224,7 +1230,7 @@
             opacity: 0.7;
           }
           a {
-            color: #fff;
+            color: $color-white;
             font-size: 15px;
             white-space: nowrap;
             text-decoration: none;
@@ -1329,12 +1335,12 @@
       font-size: 20px;
       font-weight: 600;
       outline: none;
-      background-color: #fff;
+      background-color: $color-white;
       transition: 0.3s;
       border-radius: 8px;
       &:hover {
         background-color: #3E3A39;
-        color: #fff;
+        color: $color-white;
       }
     }
   }
@@ -1351,7 +1357,7 @@
       display: flex;
       justify-content: center;
       align-items: stretch;
-      background-color: #fff;
+      background-color: $color-white;
       margin: 20px 0;
       cursor: pointer;
       position: relative;
@@ -1386,7 +1392,7 @@
     background-color: #3E3A39;
     border: none;
     outline: none;
-    color: #fff;
+    color: $color-white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1473,7 +1479,7 @@
   border-radius: 8px;
   border: none;
   outline: none;
-  color: #fff;
+  color: $color-white;
   position: absolute;
   right: 5px;
   bottom: -30px;
@@ -1504,7 +1510,7 @@
   font-weight: 100;
   .product-left .productCount-sort span {
     background-color: grey;
-    color: #fff;
+    color: $color-white;
     padding: 1px 10px;
     border-radius: 8spx;
   }
@@ -1538,7 +1544,7 @@
 }
 
 .collapseBtn {
-  color: #fff;
+  color: $color-white;
   background-color: #333333;
   border: none;
   outline: none;
@@ -1660,7 +1666,7 @@
   width: 100%;
 }
 #submitBtn{
-  color: #fff; 
+  color: $color-white; 
   background-color: #636b6f;
   padding: 15px 80px; 
   transition:0.3s; 
@@ -1669,7 +1675,7 @@
   &:hover{
     color: #636b6f; 
     border: solid 1px #636b6f;
-    background-color: #fff;
+    background-color: $color-white;
   }
 }
 
@@ -1708,25 +1714,25 @@
       border: solid 1px #636b6f;
       border-radius: 12px;
       color: #636b6f;
-      background-color: #fff;
+      background-color: $color-white;
       outline: none;
       transition: 0.3s;
       font-size: $title-bottom-font-size;
       padding: 5px 35px;
       margin: 5px 20px;
       &:hover{
-        color: #fff;
+        color: $color-white;
         background-color: #636b6f;
       }
       &:active{
-        color: #fff;
+        color: $color-white;
         background-color: #3E3A39;
       }
     }
   }
 }
 .filterBtn-active{
-  color: #fff !important;
+  color: $color-white !important;
   background-color: #636b6f !important;
 }
 .blog-post{
@@ -1744,12 +1750,12 @@
     font-size: 20px;
     font-weight: 600;
     outline: none;
-    background-color: #fff;
+    background-color: $color-white;
     transition: 0.3s;
     border-radius: 8px;
     &:hover{
       background-color: #3E3A39;
-      color: #fff;
+      color: $color-white;
     }
   }
 }
@@ -1798,7 +1804,7 @@
     .information-banner-inner{
       .information-banner-inner-text{
         h1{
-          color: #fff;
+          color: $color-white;
           font-size: 50px;
           font-weight: 500;
         }
@@ -1964,7 +1970,7 @@
 
 .information-btn{
   background-color: #333333;
-  color: #fff;
+  color: $color-white;
   border: none;
   border-radius: 4px;
   width: 200px;
@@ -2003,7 +2009,7 @@
     .information-banner-inner{
       .information-banner-inner-text{
         h1{
-          color: #fff;
+          color: $color-white;
           font-size: 50px;
           font-weight: 500;
           margin: 0;

@@ -227,15 +227,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="navbar-ul">
-                            <li>
-                                <a href="{{route('about')}}">
-                                    關於凱麗絲
+                            <li class="navbar-ul-li">
+                                <a href="/">
+                                    <p>
+                                        首頁
+                                    </p>
                                 </a>
                             </li>
-                            <li class="mega-menu dropdown dropdown-large">
+                            <li class="navbar-ul-li">
+                                <a href="{{route('about')}}">
+                                    <p>
+                                        關於凱麗絲
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="navbar-ul-li mega-menu dropdown dropdown-large">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    所有商品
-                                    <span class="caret"></span>
+                                    <p>
+                                        所有商品
+                                        <span class="caret"></span>
+                                    </p>
                                 </a>      
                                 <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
                                     <li class="col-sm-3 mega-menu-title">
@@ -271,20 +282,33 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="navbar-ul-li">
                                 <a href="{{url('/blog')}}">
-                                    部落格
+                                    <p>
+                                        部落格
+                                    </p>
                                 </a>
                             </li>
-                            <li>
+                            <li class="navbar-ul-li">
+                                <a href="/">
+                                    <p>
+                                        最新消息
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="navbar-ul-li">
                                 <a href="{{route('location')}}">
-                                    店鋪資訊
+                                    <p>
+                                        店鋪資訊
+                                    </p>
                                 </a>
                             </li>
-                            <li class="mega-menu dropdown dropdown-large">
+                            <li class="navbar-ul-li mega-menu dropdown dropdown-large">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    諮詢專區
-                                    <span class="caret"></span>
+                                    <p  style="border-right: none;">
+                                         諮詢專區
+                                        <span class="caret"></span>
+                                    </p>
                                 </a>
                                 <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
                                     <li class="col-sm-3 mega-menu-title">
@@ -325,13 +349,13 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="navbar-icon">
-                                <img src="/img/navbar-heart-01.svg" alt="">
-                                <img src="/img/navbar-cart-01.svg" alt="">
-                            </li>
                         </ul> 
                     </div>
                 </div>
+            </div>
+            <div class="navbar-icon">
+                <img src="/img/navbar-heart-01.svg" alt="">
+                <img src="/img/navbar-cart-01.svg" alt="">
             </div>
         </div>
     </section>
@@ -709,7 +733,7 @@
             function megaMenuScroll () {
                 let megaMenu = $('.mega-menu-product');
                 if (document.documentElement.scrollTop < 400){
-                    megaMenu.css('top','-360%');
+                    megaMenu.css('top','-310%');
                 } else {
                     megaMenu.css('top','100%');
                 }; 
