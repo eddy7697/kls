@@ -357,6 +357,18 @@
                 <img src="/img/navbar-heart-01.svg" alt="">
                 <img src="/img/navbar-cart-01.svg" alt="">
             </div>
+            <div class="navbar-icon-mobile dropdown">
+                <button class="navbar-icon-mobile-switch dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="navbar-icon-mobile-inner dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <img src="/img/navbar-heart-01.svg" alt="">
+                    <img src="/img/navbar-cart-01.svg" alt="">
+                </div>
+            </div>
         </div>
     </section>
 @else
@@ -707,9 +719,9 @@
         
         function get_H(){
 
-            let h      = $(window).height()
-            let logo_h = $('.logo').height()
-            let nav_h  = $('.navbar').height()
+            var h      = $(window).height()
+            var logo_h = $('.logo').height()
+            var nav_h  = $('.navbar').height()
 
             $('#header').css('height',h)
                 
@@ -731,7 +743,7 @@
 
             
             function megaMenuScroll () {
-                let megaMenu = $('.mega-menu-product');
+                var megaMenu = $('.mega-menu-product');
                 if (document.documentElement.scrollTop < 400){
                     megaMenu.css('top','-310%');
                 } else {
@@ -740,13 +752,13 @@
             };
 
             try {
-                let fix   = $('.navbar');                      //title
-                let fixTop = fix.offset().top;             //title 與頂部的距離
+                var fix   = $('.navbar');                      //title
+                var fixTop = fix.offset().top;             //title 與頂部的距離
                 megaMenuScroll ()
                 $(window).scroll(function() {
                     megaMenuScroll ()
                     // 頁面與頂部高度
-                    let docTop = Math.max(document.documentElement.scrollTop);  
+                    var docTop = Math.max(document.documentElement.scrollTop);  
                     if (fixTop < docTop) {
                         fix.css({
                             'position': 'fixed',

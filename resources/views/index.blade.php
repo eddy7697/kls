@@ -22,31 +22,6 @@
                     prevEl: '.left'
                 }
             });
-
-            function color_function(className,color){
-                let z = 
-                    $('.porduct_colors')
-                    .find(className)
-                    .css('background-color' , color)
-                return z    
-            };
-            
-            let product_li_class = $('.porduct_colors li').each(function(a,b){
-                let color_className = b.className
-                switch(color_className)
-                {
-                case 'red': color_function('.red','#C30D23'); break;
-                case 'pink': color_function('.pink','#A40B5D'); break;
-                case 'grey': color_function('.grey','#838584'); break;
-                case 'blue': color_function('.blue','#036EB8'); break;
-                case 'black': color_function('.black','#3E3A39'); break;
-                case 'white': color_function('.white','#FFFFFF'); break;
-                case 'green': color_function('.green','#00A29A'); break;
-                case 'yellow': color_function('.yellow','#C9BC9C'); break;
-                case 'sky_blue': color_function('.sky_blue','#2EA7E0'); break;
-                case 'dark_blue': color_function('.dark_blue','#171C61'); break;
-                }
-            });
             
             function newPostTextRWD (x,y){
                 x.each(function() {
@@ -57,16 +32,16 @@
                        }
                  });
             };
-            let newsPostOldText = $('.newPostTextP').text();
+            var newsPostOldText = $('.newPostTextP').text();
             newPostTextRWD($('.newPostTextP'),200);
             newPostTextRWD($('.post_text p'),400);
             newPostTextRWD($('.feedback-Inner p'),250);
             
             $('.newsPost').each(function(){
-                let postText = $(this).find('.newPostTextP');
-                let newsPostOldText = $(this).find('.newPostTextP').text();
+                var postText = $(this).find('.newPostTextP');
+                var newsPostOldText = $(this).find('.newPostTextP').text();
                 $(window).resize(function(){
-                    let _width = $(this).width();
+                    var _width = $(this).width();
                     if (_width < 1300){
                         $(postText).text(newsPostOldText);
                         newPostTextRWD($('.newPostTextP'),70);
@@ -316,9 +291,8 @@
                                                 <img class="product_img_inside" src="/img/product_img.jpg" alt="">
                                                 <div class="product_quick_view">
                                                     <p class="product_quick_text">
-                                                        快速檢視    
+                                                        READ MORE    
                                                     </p>
-                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
                                                 </div>
                                             </div>
                                             <h3 class="product_series">
@@ -329,12 +303,13 @@
                                             </h3>
                                             <div class="product_category">
                                                 <div class="product_category_detail">
-                                                    <ul class="porduct_colors">
-                                                        <li class="grey"></li>
-                                                        <li class="sky_blue"></li>
-                                                        <li class="black"></li>
-                                                        <li class="yellow"></li>
-                                                        <li class="blue"></li>
+                                                    <ul class="porduct_size">
+                                                        <li>
+                                                            尺寸: <span>22</span> 吋
+                                                        </li>
+                                                        <li>
+                                                            容量: <span>76.6</span> L
+                                                        </li>
                                                     </ul>
                                                     <h2 class="product_price">
                                                         NTD 3,680
@@ -351,9 +326,8 @@
                                                 <img class="product_img_inside" src="/img/product_img.jpg" alt="">
                                                 <div class="product_quick_view">
                                                     <p class="product_quick_text">
-                                                        快速檢視    
+                                                        READ MORE    
                                                     </p>
-                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
                                                 </div>
                                             </div>
                                             <h3 class="product_series">
@@ -364,10 +338,13 @@
                                             </h3>
                                             <div class="product_category">
                                                 <div class="product_category_detail">
-                                                    <ul class="porduct_colors">
-                                                        <li class="green"></li>
-                                                        <li class="dark_blue"></li>
-                                                        <li class="white"></li>
+                                                    <ul class="porduct_size">
+                                                        <li>
+                                                            尺寸: <span>22</span> 吋
+                                                        </li>
+                                                        <li>
+                                                            容量: <span>76.6</span> L
+                                                        </li>
                                                     </ul>
                                                     <h2 class="product_price">
                                                         NTD 3,680
@@ -384,9 +361,8 @@
                                                 <img class="product_img_inside" src="/img/product_img.jpg" alt="">
                                                 <div class="product_quick_view">
                                                     <p class="product_quick_text">
-                                                        快速檢視    
+                                                        READ MORE   
                                                     </p>
-                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
                                                 </div>
                                             </div>
                                             <h3 class="product_series">
@@ -397,9 +373,13 @@
                                             </h3>
                                             <div class="product_category">
                                                 <div class="product_category_detail">
-                                                    <ul class="porduct_colors">
-                                                        <li class="pink"></li>
-                                                        <li class="grey"></li>
+                                                    <ul class="porduct_size">
+                                                        <li>
+                                                            尺寸: <span>22</span> 吋
+                                                        </li>
+                                                        <li>
+                                                            容量: <span>76.6</span> L
+                                                        </li>
                                                     </ul>
                                                     <h2 class="product_price">
                                                         NTD 3,680
@@ -416,9 +396,8 @@
                                                 <img class="product_img_inside" src="/img/product_img.jpg" alt="">
                                                 <div class="product_quick_view">
                                                     <p class="product_quick_text">
-                                                        快速檢視    
+                                                        READ MORE    
                                                     </p>
-                                                    <img class="product_quick_icon" src="/img/quick-view.png" alt="">
                                                 </div>
                                             </div>
                                             <h3 class="product_series">
@@ -429,11 +408,13 @@
                                             </h3>
                                             <div class="product_category">
                                                 <div class="product_category_detail">
-                                                    <ul class="porduct_colors">
-                                                        <li class="white"></li>
-                                                        <li class="blue"></li>
-                                                        <li class="black"></li>
-                                                        <li class="red"></li>
+                                                    <ul class="porduct_size">
+                                                        <li>
+                                                            尺寸: <span>22</span> 吋
+                                                        </li>
+                                                        <li>
+                                                            容量: <span>76.6</span> L
+                                                        </li>
                                                     </ul>
                                                     <h2 class="product_price">
                                                         NTD 3,680
@@ -447,7 +428,6 @@
                                     </div>
                                 @endfor    
                             </div>
-
                         </div>
                         <div id="menu1" class="tab-pane fade">
                             <h3>

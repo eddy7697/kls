@@ -72,6 +72,8 @@ $font-size-number            : 55px;
 $font-size-span              : 18px;
 $font-size-footer-title      : 28px;
 
+
+// css前墜
 @mixin size-setting($w , $h) {
     width: $w;
     height: $h;
@@ -136,4 +138,28 @@ $font-size-footer-title      : 28px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+%switch-span{
+    span{
+        @include size-setting(25px,3px);
+        background-color: $color-yellow;
+        position        : absolute;
+        left            : 50%;
+        transform       : translateX(-50%); 
+        transition      : 0.3s; 
+      }
+      span:nth-child(1){
+        top   : 8px;
+      }
+      span:nth-child(2){
+        top    : 50%;
+        opacity: 0;
+      }
+      span:nth-child(3){
+        top: 50%;
+      }
+      span:nth-child(4){
+        bottom: 4px;
+      }
 }
