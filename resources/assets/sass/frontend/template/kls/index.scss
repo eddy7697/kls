@@ -8,8 +8,8 @@
 }
 
 .section_title{
-  margin-top   : 80px;
-  margin-bottom: 50px;
+  margin-top   : 50px;
+  margin-bottom: 30px;
   z-index      : 2;
   p{
     text-align : center;
@@ -587,7 +587,7 @@
               border-bottom: solid 3px transparent;
               transition   : 0.5s ease;
               &:hover{
-                border-bottom: solid 3px $color-yellow;
+                border-bottom: solid 3px $font-color-focus;
               } 
               a{
                 text-decoration: none;
@@ -595,7 +595,7 @@
                 p{
                   margin-bottom: 0;
                   margin: 32px 0;
-                  border-right: solid 1px $color-yellow;
+                  border-right: solid 1px $font-color-focus;
                 }
               }
             }
@@ -615,7 +615,6 @@
 
 #footer{
   @include flex-mix(stretch, center);
-  border-top     : solid 1px $color-grey-font-color;
   .footer_logo{
     @include background-setting('/img/footer-1.jpg',center,cover);
     width: 37.5%;
@@ -761,7 +760,8 @@
 /*----------choose---------*/
 
 #choose{
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+  margin-top: 50px;
   .container-fluid{
     margin: 0 80px;
     .row{
@@ -770,17 +770,10 @@
         .choose_post{
           .img_div{
             position      : relative;
-            padding-bottom: 100%;
-            overflow      : hidden;
+            padding-bottom: 115%;
             border-radius : 8px;
             background-size: cover;
             background-position: top;
-            img{
-              @extend %force-center;
-              max-width    : 100%;
-              max-height   : 100%;
-              border-radius: 12px;
-            }
           }
           .post_text{
             h3{
@@ -790,6 +783,7 @@
             p{
               color: $color-text-grey;
               font-size: $title-bottom-font-size;
+              line-height: 20px;
             }
             .choose_btn{
               @extend %flex-center;
@@ -801,12 +795,12 @@
                 border-radius   : 8px;
                 margin-bottom   : 20px;
                 transition      : 0.5s;
-                background-color: $color-coffee;
+                background-color: $font-color-focus;
                 &:hover{
                   opacity: 0.7;
                 }
                 a{
-                  color          : $color-white;
+                  color          : $color-grey;
                   text-decoration: none;
                   font-weight    : 500;
                   font-size: $title-bottom-font-size;
@@ -834,6 +828,7 @@
   .container-fluid{
     overflow: hidden;
     margin  : 0 80px;
+    padding-bottom: 20px;
     z-index : 2;
     .row{
       .product_nav{
@@ -845,8 +840,8 @@
             border: none;
             .active{
               a{
-                background-color: $color-yellow;
-                border          : solid 2px $color-yellow;
+                background-color: $font-color-focus;
+                border          : solid 2px $font-color-focus;
                 color           : $color-blue;   
               }
             }
@@ -862,8 +857,8 @@
                 padding         : 5px 18px;
                 margin          : 0 3px;
                 &:hover{
-                  background-color: $color-yellow;
-                  border          : solid 2px $color-yellow;
+                  background-color: $font-color-focus;
+                  border          : solid 2px $font-color-focus;
                   color           : $color-blue;                  
                 }
               }
@@ -942,7 +937,7 @@
               }
               .buy_click{
                 outline: none;
-                background-color: $color-yellow;
+                background-color: $font-color-focus;
                 color           : $color-blue;
                 border          : solid 1px transparent;
                 border-radius   : 50%;
@@ -952,8 +947,8 @@
                 white-space     : nowrap;
                 &:hover{
                   background-color: $color-blue;
-                  color           : $color-yellow;
-                  border          : solid 1px $color-yellow;
+                  color           : $font-color-focus;
+                  border          : solid 1px $font-color-focus;
                 }
               }
             }
@@ -977,13 +972,14 @@
 
 #news{
   overflow: hidden;
+  margin-bottom: 80px;
   .container-fluid{
     margin: 0 80px;
     .row{
       .newsPost{
         @include flex-mix(stretch,space-between);
         background-color: $color-grey-light;
-        margin          : 10px;
+        margin          : 10px 0;
         padding         : 5px;
         position        : relative;
         overflow        : hidden;
@@ -1047,7 +1043,7 @@
           }
           .newPostTextP{
             color        : $color-grey;
-            line-height  : 40px;
+            line-height  : 30px;
             text-overflow: ellipsis;
             overflow     : hidden;
           }
@@ -1093,6 +1089,7 @@
                 background-color: $color-white;
                 position        : relative;
                 overflow        : hidden;
+                border-radius:  0px 8px 8px 8px; 
                 .feedback-Icon{
                   width      : 15%;
                   margin-top : -5px;
@@ -1113,7 +1110,7 @@
                     position     : absolute;
                     right        : 10px;
                     bottom       : 0;
-                    border-bottom: solid 3px $font-color-focus;
+                    border-bottom: solid 5px $font-color-focus;
                     margin       : 0;
                     font-weight  : 700;
                     font-size    : 25px;

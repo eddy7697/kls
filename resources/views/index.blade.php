@@ -33,9 +33,9 @@
                  });
             };
             var newsPostOldText = $('.newPostTextP').text();
-            newPostTextRWD($('.newPostTextP'),200);
-            newPostTextRWD($('.post_text p'),400);
-            newPostTextRWD($('.feedback-Inner p'),250);
+            newPostTextRWD($('.newPostTextP'),60);
+            newPostTextRWD($('.post_text p'),500);
+            newPostTextRWD($('.feedback-Inner p'),150);
             
             $('.newsPost').each(function(){
                 var postText = $(this).find('.newPostTextP');
@@ -311,9 +311,9 @@
                                                             容量: <span>76.6</span> L
                                                         </li>
                                                     </ul>
-                                                    <h2 class="product_price">
+                                                    <h1 class="product_price">
                                                         NTD 3,680
-                                                    </h2>
+                                                    </h1>
                                                 </div>
                                                 <button class="buy_click">
                                                     點我<br>購買
@@ -346,9 +346,9 @@
                                                             容量: <span>76.6</span> L
                                                         </li>
                                                     </ul>
-                                                    <h2 class="product_price">
+                                                    <h1 class="product_price">
                                                         NTD 3,680
-                                                    </h2>
+                                                    </h1>
                                                 </div>
                                                 <button class="buy_click" class="buy_click">
                                                     點我<br>購買
@@ -381,9 +381,9 @@
                                                             容量: <span>76.6</span> L
                                                         </li>
                                                     </ul>
-                                                    <h2 class="product_price">
+                                                    <h1 class="product_price">
                                                         NTD 3,680
-                                                    </h2>
+                                                    </h1>
                                                 </div>
                                                 <button class="buy_click" class="buy_click">
                                                     點我<br>購買
@@ -416,9 +416,9 @@
                                                             容量: <span>76.6</span> L
                                                         </li>
                                                     </ul>
-                                                    <h2 class="product_price">
+                                                    <h1 class="product_price">
                                                         NTD 3,680
-                                                    </h2>
+                                                    </h1>
                                                 </div>
                                                 <button class="buy_click" class="buy_click">
                                                     點我<br>購買
@@ -498,7 +498,7 @@
             <div class="row">
                 <div class="col-md-12 section_title">
                    <p> 
-                       最新消息
+                       部落格
                    </p>
                 </div>
             </div>

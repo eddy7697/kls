@@ -57,7 +57,6 @@ $font-color-focus     : #F8B62D;
 $color-coffee-hover   : #422F18;
 $color-product        : #3E3A39;
 $color-blue           : #0f2746;
-$color-yellow         : #d9ae24;
 
 //-------------------------------------------------Font-size-------------------------------------------------
 
@@ -143,7 +142,7 @@ $font-size-footer-title      : 28px;
 %switch-span{
     span{
         @include size-setting(25px,3px);
-        background-color: $color-yellow;
+        background-color: $font-color-focus;
         position        : absolute;
         left            : 50%;
         transform       : translateX(-50%); 
