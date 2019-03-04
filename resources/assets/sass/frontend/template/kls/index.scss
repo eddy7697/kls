@@ -22,6 +22,7 @@
 
 .sw_mask{
   position: absolute;
+  top: 0;
   width   : 60px;
   height  : 100%;
   z-index : 2;
@@ -59,6 +60,9 @@
   border  : none;
   cursor  : pointer;
   outline : none; 
+  span{
+    // background-color: $color-blue;
+  }
 }
 
 .openNow{
@@ -175,6 +179,15 @@
   transform: rotate(180deg)
 }
 
+.information-banner{
+  @extend %flex-center;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  margin-top: 134px;
+  min-height: 650px;
+}
+
 @keyframes aniBackground{
   0%{
     background-position: center 100%;
@@ -189,14 +202,18 @@
 
 /*----------header---------*/
 .open > .dropdown-menu {
-  @extend %just-flex;
+  display: -webkit-box !important; 
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important; 
+  display: flex !important;
 }
 
 .mega-menu {
   position: static !important;
   .mega-menu-product{
-    @include size-setting(60%,auto);
-    right      : 0 !important;
+    @include size-setting(70%,auto);
+    right      : 8% !important;
     left       : auto;
     z-index    : 99999;
     align-items: stretch;
@@ -238,6 +255,7 @@
             padding-bottom: 0 !important;
             padding: 5px 25px !important;
             border-radius: 8px;
+            font-size: $title-bottom-font-size;
           }
           &:hover{
             a{
@@ -1063,7 +1081,7 @@
 
 /*----------feedback---------*/
 
-#feedback{
+.feedback{
   background-color: $color-blue;
   position             : relative;
   padding-bottom       : 80px;
@@ -1132,7 +1150,7 @@
   top: 0;
   width: 100%;
   z-index: 99999;
-  background-color: $color-white;
+  background-color: $color-blue;
   .sub-page-header-inner {
     @include flex-mix(flex-end,space-between);
     margin: 0 auto;
@@ -1157,7 +1175,7 @@
           list-style: none;
           margin: 0 20px;
           &:hover a {
-            border-bottom: solid 1px #FBB03B;
+            border-bottom: solid 3px #FBB03B;
           }
         }
         .sub-icon img {
@@ -1165,12 +1183,12 @@
           cursor: pointer;
         }
         li a {
-          color: #3E3A39;
-          font-size: $font-size-span;
+          color: $color-white;
+          font-size: $title-bottom-font-size;
           white-space: nowrap;
           text-decoration: none;
           transition: 0.5s;
-          border-bottom: solid 1px transparent;
+          border-bottom: solid 3px transparent;
         }
       }
     }
@@ -1186,7 +1204,7 @@
 }
 
 .sub-page-footer {
-  background-color: #3E3A39;
+  background-color: $color-blue;
   .sub-page-footer-inner {
     @include flex-mix(flex-end,space-between);
     margin: 0 auto;
@@ -1653,12 +1671,10 @@
 }
 
 // blog
-
-.blog-banner{
-  @include background-setting('/img/bg-blog.jpg',center,cover);
-  padding-bottom: 38%;
-  margin-top: 100px;
-  margin-bottom: 50px;
+#subPage-blog{
+  .information-banner{
+    background-image: url('/img/bg-blog.jpg');
+  }
 }
 .blog-filter{
   margin-bottom: 50px;
@@ -1747,12 +1763,8 @@
 //Information
 #subPage-Information{
   .information-banner{
-    @extend %flex-center;
     background-image: url('/img/information-banner.jpg');
-    background-position: center;
-    position: relative;
-    margin-top: 100px;
-    min-height: 600px;
+    
     .information-banner-inner{
       .information-banner-inner-text{
         h1{
@@ -1940,15 +1952,10 @@
 
 /*----------subPage-privacy---------*/
 #subPage-privacy{
-  margin-top: 150px;
   margin-bottom: 80px;
   color: #636b6f;
   .information-banner{
-    @extend %flex-center;
     background-image: url('/img/black-1072366_1920.jpg');
-    background-position: center;
-    position: relative;
-    min-height: 500px;
     .information-banner-inner{
       .information-banner-inner-text{
         h1{
@@ -1978,6 +1985,50 @@
           }
         }
       }
+    }
+  }
+}
+
+/*----------about---------*/
+#about-section{
+  .information-banner{
+    background-image: url('/img/about-banner-01.jpg');
+    .information-banner-inner{
+      @include size-setting(70%,370px);
+      position: relative;
+      opacity: .7;
+      .information-banner-inner-text{
+        color: $color-white;
+        font-weight: 900;
+        h1{
+          font-size: 50px;
+          margin-bottom: 0;
+        }
+        h1:nth-child(2){
+          margin-top: 0;
+          margin-bottom: 30px;
+        }
+        p{
+          font-size: 20px;
+        }
+      }
+      img{
+        width: 250px;
+        height: auto;
+        position: absolute;
+        right: 10px;
+        bottom: 0;
+      }
+    }
+  }
+  .feedback{
+    background-color: $color-white;
+    padding-top: 80px;
+    .feedbackPost{
+      border: solid 1px #888888;
+    }
+    .mask_right, .mask_left{
+      border: none;
     }
   }
 }
@@ -2025,6 +2076,9 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .information-banner{
+    margin-top: 117px;
+  }
   .sub-page-header {
     .sub-page-header-inner {
       .sub-logo {
@@ -2093,7 +2147,9 @@
 }
 
 @media screen and (max-width: 1024px){
-  
+  .information-banner{
+    margin-top: 5.5rem;
+  }
   .klsBurger-switch{
     display: block
   }
@@ -2226,7 +2282,7 @@
               vertical-align: middle;
             }
             .shop_contact{
-              line-height: 5px;
+              line-height: 10px;
               p{
                 margin: 12px 0px;
               }
@@ -2265,14 +2321,14 @@
         .facebook{
           border-bottom: solid 1px $color-grey-font-color;
           img{
-            width : 30px;
-            height: 30px;
+            width : 2.1rem;
+            height: 2.1rem;
           }
         }
         .instagram{
           img{
-            width : 30px;
-            height: 30px;
+            width : 2.1rem;
+            height: 2.1rem;
           }
         }
       }
@@ -2295,14 +2351,7 @@
 }
 
 @media screen and (max-width: 991px){
-  #subPage-Information{
-    .information-banner{
-      margin-top: 65px;
-      .information-banner-inner{
-        
-      }
-    }
-  }
+  
   .into-bottom{
     @include flex-mix(center,center);
     padding-top: 0 !important;
@@ -2321,10 +2370,11 @@
     .footer_contact{
       display : block;
       .footer_addr{
+        border-top: solid 1px rgba(0,0,0,0.2);
         width        : 100%;
         height       : 73%;
-        padding      : 0; 
-        margin-bottom: 6px;
+        padding      : 1rem 0; 
+        margin-bottom: .5rem;
         .shop_list{
           .shop{
             font-size: $header-contact-font-size;
@@ -2338,6 +2388,9 @@
         width          : 100%;
         .link{
           text-align: center;
+          p{
+            display: none;
+          }
         }
         .facebook,.instagram{
           width : 50%;
@@ -2347,8 +2400,8 @@
           border-bottom: none;
           border-right : solid 1px rgba(0,0,0,0.2);
           img{
-            width : 25px;
-            height: 25px;
+            width : 2.1rem;
+            height: 2.1rem;
           }
           .link{
             p{
@@ -2358,8 +2411,8 @@
         }
         .instagram{
           img{
-            width : 25px;
-            height: 25px;
+            width : 2.1rem;
+            height: 2.1rem;
           }
           .link{
             p{
@@ -2415,7 +2468,7 @@
       width: 500px;
     }
   } 
-  #feedback{
+  .feedback{
     display: none;
   }
   #choose{
@@ -2625,9 +2678,6 @@
   }
   .filter-area, .container-productCount {
     width: 100%;
-  }
-  .blog-banner{
-    padding-bottom: 50%;
   }
   #readMore-btn{
     padding: 14px 100px !important;

@@ -12,56 +12,7 @@
                     prevEl: '.left'
                 }
             });
-
-            var swiper = new Swiper ('.feedback-Index',{
-                direction : 'horizontal',
-                loop      : true,
-                speed     : 1000,
-                navigation: {
-                    nextEl: '.right',
-                    prevEl: '.left'
-                }
-            });
-            
-            function newPostTextRWD (x,y){
-                x.each(function() {
-                    var maxwidth = y;
-                       if ($(this).text().length > maxwidth) {
-                           $(this).text($(this).text().substring(0, maxwidth));
-                           $(this).html($(this).html() + '...');
-                       }
-                 });
-            };
-            var newsPostOldText = $('.newPostTextP').text();
-            newPostTextRWD($('.newPostTextP'),60);
-            newPostTextRWD($('.post_text p'),500);
-            newPostTextRWD($('.feedback-Inner p'),150);
-            
-            $('.newsPost').each(function(){
-                var postText = $(this).find('.newPostTextP');
-                var newsPostOldText = $(this).find('.newPostTextP').text();
-                $(window).resize(function(){
-                    var _width = $(this).width();
-                    if (_width < 1300){
-                        $(postText).text(newsPostOldText);
-                        newPostTextRWD($('.newPostTextP'),70);
-                    }else{
-                        $(postText).text(newsPostOldText);
-                        newPostTextRWD($('.newPostTextP'),100);
-                    };
-                    if (_width < 1200){
-                        newPostTextRWD($('.newPostTextP'),50);
-                    }else{
-                        $(postText).text(newsPostOldText);
-                        newPostTextRWD($('.newPostTextP'),100);
-                    };
-                    if (_width < 991){
-                        $(postText).text(newsPostOldText);
-                        newPostTextRWD($('.newPostTextP'),300);
-                    }
-                })
-            })
-        })
+        });
         
     </script>
 @endsection
@@ -571,8 +522,8 @@
         </div>
     </section> 
     
-    <!------------------------books------------------------>
-    <section id="feedback">
+    <!------------------------feedback------------------------>
+    <section class="feedback">
         <div class="sw_mask mask_left">
             <img class="product_arrow left" src="/img/arrow-left.png" alt="">
         </div>

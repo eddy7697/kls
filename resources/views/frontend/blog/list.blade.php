@@ -2,6 +2,10 @@
 
 @section('custom-script')
     <script type="text/javascript">
+        $(document).ready(function(){
+            readMoreLock();
+            blogFilter();
+        });
         function readMoreLock(){
             $('#readMore-btn').on('click',function() {
                 $('.blog-post-open').fadeIn();
@@ -35,8 +39,6 @@
                 blogFilterHide('.vol01','.vol02,.vol03');
             });
         };
-        readMoreLock();
-        blogFilter();
     </script>
 @endsection
 
@@ -48,7 +50,7 @@
 
 @section('content')
     <section id="subPage-blog">
-        <div class="container-fulid blog-banner"></div>
+        <div class="container-fulid information-banner"></div>
         <div class="container blog-filter">
             <div class="row">
                 <div class="col-md-12 blog-filter-inner">

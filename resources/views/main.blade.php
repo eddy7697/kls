@@ -249,7 +249,7 @@
                                     </p>
                                 </a>      
                                 <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
-                                    <li class="col-sm-3 mega-menu-title">
+                                    <li class="col-sm-2 mega-menu-title">
                                         <h2>所有商品</h2>
                                         <p>ALL PRODUCT</p>
                                     </li>
@@ -272,7 +272,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="col-md-3 mega-menu-img">
+                                    <li class="col-md-4 mega-menu-img">
                                         <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
                                     </li>
                                     <li class="col-md-3 mega-menu-text">
@@ -311,7 +311,7 @@
                                     </p>
                                 </a>
                                 <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
-                                    <li class="col-sm-3 mega-menu-title">
+                                    <li class="col-sm-2 mega-menu-title">
                                         <h2>諮詢專區</h2>
                                         <p>CONSULTING AREA</p>
                                     </li>
@@ -339,7 +339,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="col-md-3 mega-menu-img">
+                                    <li class="col-md-4 mega-menu-img">
                                         <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
                                     </li>
                                     <li class="col-md-3 mega-menu-text">
@@ -424,7 +424,7 @@
             <div class="row sub-page-header-inner">
                 <div class="sub-logo">
                     <a href="/">
-                        <img src="/img/KLSLogoBlack.svg" alt="">
+                        <img src="/img/KLSLogoBlack-01.svg" alt="">
                     </a>
                 </div>
                 <div class="sub-nav-menu">
@@ -440,7 +440,7 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
-                                <li class="col-sm-3 mega-menu-title">
+                                <li class="col-sm-2 mega-menu-title">
                                     <h2>所有商品</h2>
                                     <p>ALL PRODUCT</p>
                                 </li>
@@ -463,7 +463,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="col-md-3 mega-menu-img">
+                                <li class="col-md-4 mega-menu-img">
                                     <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
                                 </li>
                                 <li class="col-md-3 mega-menu-text">
@@ -489,7 +489,7 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
-                                    <li class="col-sm-3 mega-menu-title">
+                                    <li class="col-sm-2 mega-menu-title">
                                         <h2>諮詢專區</h2>
                                         <p>CONSULTING AREA</p>
                                     </li>
@@ -502,7 +502,7 @@
                                             </li>
                                             <li>
                                                 <a href="{{route('contact')}}">
-                                                   購物需知
+                                                    購物需知
                                                 </a>
                                             </li>
                                             <li>
@@ -517,7 +517,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="col-md-3 mega-menu-img">
+                                    <li class="col-md-4 mega-menu-img">
                                         <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
                                     </li>
                                     <li class="col-md-3 mega-menu-text">
@@ -528,11 +528,10 @@
                                 </ul>
                             </li>
                         <li class="sub-icon">
-                            <img src="\img\likeIcon.png" alt="">
+                            <img src="\img\likeIcon-01.png" alt="">
                         </li>
                         <li class="sub-icon" id="cart-panel">
-                            <cart-panel></cart-panel>
-                            {{-- <img src="\img\cartIcon.png" alt=""> --}}
+                            <img src="\img\cartIcon-01.png" alt="">
                         </li>
                     </ul> 
                 </div>
@@ -541,152 +540,152 @@
     </section>
 @endif
 
-
-
-@yield('content')
-
+<div class="kls-page">
+    @yield('content')
+    
 <!------------------------footer------------------------>
-@if (Route::current()->getName() == 'index')
-    <section id="footer">
-        <div class="footer_logo">
-            <div class="logo_area">
-                <div class="logo">
-                    <a href="/" class="mark">
-                        <img src="/img/KLSLogoWhite.svg" alt="">
-                        <p class="mark_text mark_middle">
-                            凱麗絲旅行箱專賣店
-                        </p>
-                        <p class="mark_text mark_bottom">
-                            KLS Baggage Department Store.
-                        </p>
+    @if (Route::current()->getName() == 'index')
+        <section id="footer">
+            <div class="footer_logo">
+                <div class="logo_area">
+                    <div class="logo">
+                        <a href="/" class="mark">
+                            <img src="/img/KLSLogoWhite.svg" alt="">
+                            <p class="mark_text mark_middle">
+                                凱麗絲旅行箱專賣店
+                            </p>
+                            <p class="mark_text mark_bottom">
+                                KLS Baggage Department Store.
+                            </p>
+                        </a>
+                    </div>
+                    <p class="footerCopyRight">Copyright  ©  2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
+                </div>
+            </div>
+            <div class="footer_contact">
+                <div class="footer_addr">
+                    <div class="shop_list">
+                        <div class="shop zhubei">
+                            <img src="\img\thumbtack.svg" alt="">
+                            <div class="shop_contact">
+                                <p>竹北店 (09:00 - 20:00)</p>
+                                <p>03-6565528</p>
+                                <p>新竹縣竹北市光明六路15號</p>
+                            </div>
+                        </div>
+                        <div class="shop bigcity">
+                            <img src="\img\thumbtack.svg" alt="">
+                            <div class="shop_contact">
+                                <p>巨城店 (09:00 - 20:00)</p>
+                                <p>03-5326191</p>
+                                <p>新竹市民權路173號</p>
+                            </div>             
+                        </div>
+                        <div class="shop guanxin">
+                            <img src="\img\thumbtack.svg" alt="">
+                            <div class="shop_contact">
+                                <p>關新店 (09:00 - 22:00)</p>
+                                <p>03-5638999</p>
+                                <p>新竹市關新路201號</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="community">
+                    <a target="_blank" href="https://www.facebook.com/baggageworld/" class="facebook">
+                        <div class="link">
+                            <img src="\img\facebook.svg" alt="">
+                            <p>
+                                facebook
+                            </p>
+                        </div>
                     </a>
+                    <a target="_blank" href="https://www.instagram.com/kls520/" class="instagram">
+                        <div class="link">
+                            <img src="\img\instagram.svg" alt="">
+                            <p>
+                                instagram
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="footer_copy">
+                <div class="footer_copy_textArea">
+                    <p>陪伴，你每一場華麗的冒險。</p>
+                    <p>Every gorgeous adventure, with you.</p>
                 </div>
                 <p class="footerCopyRight">Copyright  ©  2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
             </div>
-        </div>
-        <div class="footer_contact">
-            <div class="footer_addr">
-                <div class="shop_list">
-                    <div class="shop zhubei">
-                        <img src="\img\thumbtack.svg" alt="">
-                        <div class="shop_contact">
-                            <p>竹北店 (09:00 - 20:00)</p>
-                            <p>03-6565528</p>
-                            <p>新竹縣竹北市光明六路15號</p>
-                        </div>
+        </section>
+    @else
+        <section>
+            <div class="container-fulid sub-page-footer">
+                <div class="row sub-page-footer-inner">
+                    <div class="sub-logo">
+                        <a href="/">
+                            <img src="/img/KLS_logo_white.svg" alt="">
+                        </a>
                     </div>
-                    <div class="shop bigcity">
-                        <img src="\img\thumbtack.svg" alt="">
-                        <div class="shop_contact">
-                            <p>巨城店 (09:00 - 20:00)</p>
-                            <p>03-5326191</p>
-                            <p>新竹市民權路173號</p>
-                        </div>             
+                    <div class="sub-nav-menu">
+                        <ul class="sub-nav-menu-ul">
+                            <li>
+                                <a href="{{route('about')}}">
+                                    關於凱麗絲
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('productAll')}}">
+                                    品牌行李箱                   
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('productFitting')}}">
+                                    行李箱配件
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('/blog')}}">
+                                    部落格
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('location')}}">
+                                    店鋪資訊
+                                </a>
+                            </li>
+                            <li class="nav_final">
+                                <a href="{{route('contact')}}">
+                                    諮詢專區
+                                </a>
+                            </li>
+                        </ul> 
                     </div>
-                    <div class="shop guanxin">
-                        <img src="\img\thumbtack.svg" alt="">
-                        <div class="shop_contact">
-                            <p>關新店 (09:00 - 22:00)</p>
-                            <p>03-5638999</p>
-                            <p>新竹市關新路201號</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="community">
-                <a target="_blank" href="https://www.facebook.com/baggageworld/" class="facebook">
-                    <div class="link">
-                        <img src="\img\facebook.svg" alt="">
-                        <p>
-                            facebook
-                        </p>
-                    </div>
-                </a>
-                <a target="_blank" href="https://www.instagram.com/kls520/" class="instagram">
-                    <div class="link">
-                        <img src="\img\instagram.svg" alt="">
-                        <p>
-                            instagram
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="footer_copy">
-            <div class="footer_copy_textArea">
-                <p>陪伴，你每一場華麗的冒險。</p>
-                <p>Every gorgeous adventure, with you.</p>
-            </div>
-            <p class="footerCopyRight">Copyright  ©  2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
-        </div>
-    </section>
-@else
-    <section>
-        <div class="container-fulid sub-page-footer">
-            <div class="row sub-page-footer-inner">
-                <div class="sub-logo">
-                    <a href="/">
-                        <img src="/img/KLS_logo_white.svg" alt="">
-                    </a>
-                </div>
-                <div class="sub-nav-menu">
-                    <ul class="sub-nav-menu-ul">
-                        <li>
-                            <a href="{{route('about')}}">
-                                關於凱麗絲
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('productAll')}}">
-                                品牌行李箱                   
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('productFitting')}}">
-                                行李箱配件
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('/blog')}}">
-                                部落格
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('location')}}">
-                                店鋪資訊
-                            </a>
-                        </li>
-                        <li class="nav_final">
-                            <a href="{{route('contact')}}">
-                                諮詢專區
-                            </a>
-                        </li>
-                    </ul> 
-                </div>
-                <div class="sub-contact-icon">
-                    <div class="sub-icons">
-                        <img src="\img\facebook-white.svg" alt="">
-                        <img src="\img\instagram-white.svg" alt="">
-                        <img src="\img\line_icon.svg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row sub-page-footer-copyright">
-                <div class="col-md-12">
-                    <div class="sub-page-footer-copyright-inner">
-                        <div class="copyRight">
-                            <p>Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
-                        </div>
-                        <div class="needKnow">
-                            <p><span>隱私權條款</span> | <span>購物須知</span></p>
+                    <div class="sub-contact-icon">
+                        <div class="sub-icons">
+                            <img src="\img\facebook-white.svg" alt="">
+                            <img src="\img\instagram-white.svg" alt="">
+                            <img src="\img\line_icon.svg" alt="">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div> 
-    </section>
-@endif
+                <div class="row sub-page-footer-copyright">
+                    <div class="col-md-12">
+                        <div class="sub-page-footer-copyright-inner">
+                            <div class="copyRight">
+                                <p>Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
+                            </div>
+                            <div class="needKnow">
+                                <p><span>隱私權條款</span> | <span>購物須知</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+    @endif
 
+</div>
 
 <!-- Scripts -->
 <script src="{{ asset('js/frontend.js') }}"></script>
@@ -735,7 +734,7 @@
         $('.klsBurger-switch').on('click',function(){
             $(this).toggleClass('openNow');
             $('.klsBurger-menu').toggleClass('openNow-menu');
-            $('section').toggleClass('openNow-filter');
+            $('.kls-page').toggleClass('openNow-filter');
         });
         
 
@@ -775,7 +774,15 @@
             }
         });
 
-        
+        var swiper = new Swiper ('.feedback-Index',{
+            direction : 'horizontal',
+            loop      : true,
+            speed     : 1000,
+            navigation: {
+                nextEl: '.right',
+                prevEl: '.left'
+            }
+        });
 
         var swiper = new Swiper ('.header_right',{
             direction : 'vertical',
@@ -810,6 +817,46 @@
                 },
             }
         });
+
+         
+        function newPostTextRWD (x,y){
+            x.each(function() {
+                var maxwidth = y;
+                   if ($(this).text().length > maxwidth) {
+                       $(this).text($(this).text().substring(0, maxwidth));
+                       $(this).html($(this).html() + '...');
+                   }
+             });
+        };
+        var newsPostOldText = $('.newPostTextP').text();
+        newPostTextRWD($('.newPostTextP'),60);
+        newPostTextRWD($('.post_text p'),500);
+        newPostTextRWD($('.feedback-Inner p'),150);
+        
+        $('.newsPost').each(function(){
+            var postText = $(this).find('.newPostTextP');
+            var newsPostOldText = $(this).find('.newPostTextP').text();
+            $(window).resize(function(){
+                var _width = $(this).width();
+                if (_width < 1300){
+                    $(postText).text(newsPostOldText);
+                    newPostTextRWD($('.newPostTextP'),70);
+                }else{
+                    $(postText).text(newsPostOldText);
+                    newPostTextRWD($('.newPostTextP'),100);
+                };
+                if (_width < 1200){
+                    newPostTextRWD($('.newPostTextP'),50);
+                }else{
+                    $(postText).text(newsPostOldText);
+                    newPostTextRWD($('.newPostTextP'),100);
+                };
+                if (_width < 991){
+                    $(postText).text(newsPostOldText);
+                    newPostTextRWD($('.newPostTextP'),300);
+                }
+            })
+        })
     }); 
 </script>
 
