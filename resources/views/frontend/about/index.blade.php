@@ -34,10 +34,22 @@
         <div class="about-into">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-
+                    <div class="col-md-7 about-into-text">
+                        <h1>
+                            旅程。從KLS 開始
+                        </h1>
+                        <p>
+                            KLS於1993年成立，至今新竹地區已有三間門市，旗艦店位於新竹市關新路，新莊火車站旁。<br>
+                            KLS提供專業服務、品牌眾多、價位等級廣泛，除了箱類以外，也販售多種旅行、商務包款，多樣化產品，給所有旅人們最貼心的建議與選擇，來到KLS給您最不一樣的挑箱體驗。<br>
+                            讓旅行箱再也不止是裝滿行李，也是您旅途中裝載回憶的最佳旅伴。<br>
+                            跟我們一起眺望世界最美的遺跡，<br>
+                            等待不一樣的日出.日落，嚐遍所有的美食。<br>
+                            準備好了，就跟隨自己的心。出發吧！<br>
+                            As long as we take the first step,<br> 
+                            we will be able to live a new life.<br>
+                        </p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5 about-into-img">
 
                     </div>
                 </div>
@@ -45,7 +57,14 @@
         </div>
 
         <div class="about-hr-banner">
-            
+            <div class="about-hr-banner-text">
+                <h1>
+                    我們的客戶
+                </h1>
+                <p>
+                    KLS提供專業的購物分析，協助所有首購族、商務客、旅人們最適合自己的專屬旅行箱。
+                </p>
+            </div>
         </div>
 
         <div class="feedback">
