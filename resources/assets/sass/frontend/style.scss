@@ -449,26 +449,26 @@ ul.pagination {
     }
 }
 
-.scrollToTop{
-    padding: 10px 16px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.7);
-    font-weight: bold;
-    color: #444;
-    text-decoration: none;
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    z-index: 999999;
-    display: none;
-    border: #ccc thin solid;
-    border-radius: 50%;
-    box-shadow: 2px 2px 12px -2px rgba(0,0,0,0.3);
+// .scrollToTop{
+//     padding: 10px 16px;
+//     text-align: center;
+//     background: rgba(255, 255, 255, 0.7);
+//     font-weight: bold;
+//     color: #444;
+//     text-decoration: none;
+//     position: fixed;
+//     bottom: 70px;
+//     right: 20px;
+//     z-index: 999999;
+//     display: none;
+//     border: #ccc thin solid;
+//     border-radius: 50%;
+//     box-shadow: 2px 2px 12px -2px rgba(0,0,0,0.3);
 
-    &:hover{
-    	text-decoration:none;
-    }
-}
+//     &:hover{
+//     	text-decoration:none;
+//     }
+// }
 
 table.product-comment {
     width: 100%;
@@ -611,6 +611,20 @@ table.product-comment {
 	animation: loadingAni2 1.2s infinite linear;
 }
 
+.fixed-button-group {
+    position: fixed;
+    right: 35px;
+    bottom: 10%;
+    width: 40px;
+    z-index: 99;
+    opacity: 0;
+    transition: 1s;
+
+    img {
+        width: 60px;
+        margin: 5px;
+    }
+} 
 
 @keyframes loadingAni1 {
     0% {

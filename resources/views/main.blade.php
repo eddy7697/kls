@@ -52,12 +52,14 @@
             </div>
             
         </div>
+
         <button class="klsBurger-switch">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
         </button>
+
         <div class="klsBurger-menu">
             <div class="klsBurger-menu-inner">
                 <div class="klsBurger-menu-logo">
@@ -99,6 +101,22 @@
                 </ul>
             </div>
         </div>
+
+        <div class="fixed-button-group">
+            <a>
+                <img style="cursor: pointer" class="pointer scrollToTop" src="/img/icon/backtotop-01.svg" alt="">
+            </a>
+            
+        
+            <a href="">
+                <img style="cursor: pointer; background-color: #006EAE; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/member-01.svg" alt="">
+            </a>   
+        
+            <a href="">
+                <img style="cursor: pointer; background-color: #F8A94B; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/shoppingcar-01.svg" alt="">
+            </a>
+        </div>
+
         @unless (Auth::guest())
             @if (Auth::user()->role == 'ADMIN')
                 {{-- <div class="container-fluid admin-bar">
@@ -110,8 +128,10 @@
                 </div> --}}
             @endif
         @endunless
+
         <div class="kls-page">
             @if (Route::current()->getName() == 'index')
+
                 <div class="forwardNews">
                     <a href="">
                         2018/07/19 7月份月度直播拍賣會時間：7/21（六）晚上10:00，想看看闆娘仔細介紹的朋友，請點我參加喔！(Live 點我加入直播)
@@ -370,6 +390,7 @@
                         </div>
                     </div>
                 </section>
+
             @else
                 
                 <section>
@@ -809,7 +830,28 @@
                             newPostTextRWD($('.newPostTextP'),300);
                         }
                     })
-                })
+                });
+
+                // fixed-button-group 過banner後再出現
+
+                var banner_height =  100;
+                
+                $(window).scroll(function(){
+                    var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop); 
+
+                    if (docTop < banner_height) {
+                        $('.fixed-button-group').css({
+                            'opacity'    : '0',
+                            'transition' : '1s'
+                        })
+                    }else{
+                        $('.fixed-button-group').css({
+                            'opacity'    : '1',
+                            'transition' : '1s'
+                        })
+                    }
+                });
+
             }); 
         </script>
 

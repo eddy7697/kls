@@ -1674,10 +1674,12 @@
 #subPage-blog{
   .information-banner{
     background-image: url('/img/bg-blog.jpg');
+    min-height: auto;
+    padding-bottom: 50%;
   }
 }
 .blog-filter{
-  margin-bottom: 50px;
+  margin: 50px auto;
   .blog-filter-inner{
     @extend %flex-center;
     button{
@@ -2574,8 +2576,30 @@
   .feedback{
     display: none;
   }
+
+  /*----------choose---------*/
   #choose{
     margin-bottom: 0;
+    .container-fluid{
+      .row{
+        .co_post{
+          .choose_post{
+            width: 500px;
+            margin: 0 auto;
+            .img_div{}
+            .post_text{
+              h3{}
+              p{}
+              .choose_btn{
+                .goBuy{
+                  a{}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   //Information
@@ -2767,7 +2791,11 @@
       display: none;
     }
   }
-
+  .section_title{
+    p{
+      font-size: 32px;
+    }
+  }
   #news{
     .container-fluid{
       .row{
@@ -2804,24 +2832,64 @@
   }
   #header{
     .header_top_area{
+      border-bottom: none;
       .header_left{
+        
+        .logo_area{
+          height: 75%;
+          .logo{
+            
+            .mark{
+              
+              .mark_text{
+                
+              }
+              .mark_middle{
+                display: none;
+              }
+              .mark_bottom{
+                display: none;
+              }
+              img{
+               
+              }
+            }
+            .mark_time{
+              right: 0;
+              text-align: right;
+              img{
+                width: 70%;
+              }
+            }
+          }
+        }
         .header_contact{
-          font-size: $header-contact-font-size;
-          display  : block;
-          height   : 30%;
+          height: 20%;
           .header_addr{
-            width : 100%;
-            height: 50%;
+            display: none;
             .shop_list{
+              
               .shop{
                 border: solid 1px #EDEDED;
+                .shop_contact,img{
+                  
+                }
+                img{
+                  
+                }
+                .shop_contact{
+                  
+                  p{
+                    
+                  }
+                }   
               }
             }    
           }
           .community{
             @include flex-mix(center,center);
-            width          : 100%;
-            height         : 50%;
+            @include size-setting(100%,100%);
+            box-shadow: 0 0 4rem inset;
             .link{
               text-align: center;
               p{
@@ -2831,7 +2899,18 @@
             .facebook,.instagram{
               width : 50%;
               height: 100%;
-              border: solid 1px #EDEDED;
+              img{
+               
+              }
+              p{
+                
+              }
+            }
+            .facebook{
+              
+            }
+            .instagram{
+  
             }
           }
         }
@@ -2867,6 +2946,23 @@
    .contact-banner{
     background-position:  10% center;
   } 
+  #subPage-blog{
+    .blog-post{
+      margin: 0 1rem;
+      .blog-post-inner{
+        padding: 1.8rem 0 !important;
+      }
+    }
+    .blog-filter {
+      .blog-filter-inner {
+        button{
+          width: 70%;
+          padding: .3rem 0;
+          margin: .5rem 0;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 600px){
@@ -2946,6 +3042,32 @@
       }
     }
   }
+  /*----------choose---------*/
+  #choose{
+    margin-top: 0;
+    .container-fluid{
+      .row{
+        .co_post{
+          margin: 3rem 0;
+          .choose_post{
+            width: 100%;
+            .img_div{
+              padding-bottom: 100%;
+            }
+            .post_text{
+              h3{}
+              p{}
+              .choose_btn{
+                .goBuy{
+                  a{}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 460px){
@@ -2959,7 +3081,8 @@
   }
   #footer{
     .footer_logo{
-      width: 50%;
+      width: 100%;
+      height: 15rem;
       .logo_area{
         .logo{
           a{
@@ -2974,7 +3097,24 @@
       }
     }
     .footer_contact{
-      width: 50%;
+      width: 100%;
+      .footer_addr{
+        height: auto;
+        box-shadow: 0 0 4rem inset;
+        .shop_list{
+          .shop{
+            border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+          }
+          .shop:nth-child(3){
+            border-bottom: none;
+          }
+        }
+      }
+      .community{
+        height: auto;
+        padding: 3rem 0;
+        box-shadow: 0 0 4rem inset;
+      }
     }
   }
   .contact-container{
