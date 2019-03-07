@@ -13,7 +13,7 @@
 @section('content')
     <section id="subPage-contact">
         
-        <div class="container-fulid contact-banner">
+        <div class="container-fulid information-banner">
             <div class="contact-banner-inner">
                 <div class="contact-banner-inner-text">
                     <h1>諮詢專區</h1>

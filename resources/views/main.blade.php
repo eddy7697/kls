@@ -342,7 +342,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="{{route('contact')}}">
+                                                            <a href="{{url('/about/notice')}}">
                                                                 購物需知
                                                             </a>
                                                         </li>
@@ -476,7 +476,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="{{route('contact')}}">
+                                                                    <a href="{{url('/about/notice')}}">
                                                                         購物需知
                                                                     </a>
                                                                 </li>
@@ -651,7 +651,7 @@
                                     <p>Copyright © 2018 凱麗斯旅行箱包 KLS Baggage Department Store. All Rights Reserved.</p>
                                 </div>
                                 <div class="needKnow">
-                                    <p><span>隱私權條款</span> | <span>購物須知</span></p>
+                                    <p><span><a href="{{url('/about/privacy')}}">隱私權條款</a></span> | <span><a href="{{url('/about/notice')}}">購物需知</a></span></p>
                                 </div>
                             </div>
                         </div>
