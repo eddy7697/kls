@@ -1,6 +1,6 @@
 .mg-business {
-    margin: 10px auto 30px auto;
-
+    margin: 134px auto 30px auto;
+    padding-top: 20px;
     .cart-list {
         width: 100%;
         // table-layout: fixed;
@@ -71,11 +71,18 @@
             li {
                 list-style: none;
                 display: inline;
-                color: #A7B5BB;
+                color: #636B6F;
+                opacity: .7;
                 padding: 20px;
 
                 &.active {
-                    color: #636B6F;
+                    opacity: 1;
+                }
+
+                img{
+                    width: 40px;
+                    height: 40px;
+                    margin-top: -6px;
                 }
             }
         }

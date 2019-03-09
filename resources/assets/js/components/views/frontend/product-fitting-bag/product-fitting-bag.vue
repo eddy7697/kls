@@ -4,7 +4,7 @@
         <div class="container filter-area">
             <div class="row filter">
                 <div class="col-md-12 filter-title">
-                <h1>行李箱配件</h1>
+                <h1>品牌背包</h1>
                 <div class="filter-title-hr"></div>
                 <p style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                 </div>
@@ -148,7 +148,7 @@
                     </div>
                 </div>
             </div>
-            <button class="collapseBtn" v-on:click="collapse">
+            <button class="collapseBtn">
                 收合
                 <img src="/img/collapseIcon.png" alt="">
             </button>

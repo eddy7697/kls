@@ -3,7 +3,7 @@
         <form v-on:submit.prevent="createOrder">
             <div class="col-md-7">
                 <div class="shipping-form">
-                    <h4>商品寄送資訊</h4>
+                    <h4>訂購資訊</h4>
                     <hr>
                     <div class="row" v-if="useUserInfo">
                         <div class="col-md-6">
@@ -287,9 +287,21 @@
                         </label>
                     </div>
                 </div>
+                <div class="remind" style="text-align: center;">
+                    <p>
+                        我們不會將您輸入的任何個人信息用於回答查詢以外的目的。此外，我們將根據<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=6">個人資料保護法第六條</a>，妥善管理您的個人信息，
+                    </p>
+                    <p>
+                        您亦可點擊這裡查看更多關於KLS提供的<a href="/about/privacy" style="color:#f0aa3f;">隱私權保護政策</a>。 
+                    </p>
+                    <p>
+                        <span style="color:#f0aa3f;">*</span>
+                        請您務必將KLS的電子郵件地址或域名設置為可接收的電子郵件，以免錯過我們的回覆，您亦可直接與我們聯繫 (<a href="/contact" style="color:#f0aa3f;">點擊這裡查看聯絡訊息</a>)。
+                    </p>
+                </div>
                 <button type="submit" v-if="(paymentMethod == 'cod') && (shippingMethod == 'cvs')" class="btn btn-primary btn-lg btn-block" name="button">超商取貨付款</button>
                 <button type="submit" v-if="(shippingMethod == 'cvs') && (paymentMethod !== 'cod')" class="btn btn-primary btn-lg btn-block" name="button">超商取貨</button>
-                <button type="submit" v-if="shippingMethod !== 'cvs'" class="btn btn-primary btn-lg btn-block" name="button">確認購買</button>
+                <button type="submit" v-if="shippingMethod !== 'cvs'" class="btn btn-primary btn-lg btn-block" name="button">提交訂單</button>
             </div>
         </form>
 

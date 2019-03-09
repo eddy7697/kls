@@ -11,6 +11,7 @@
 /public/css/page-builder.css
 /public/js/product-fitter.js
 /public/js/product-fitting.js
+/public/js/product-fitting-bag.js
 /storage/*.key
 vendor
 /.idea

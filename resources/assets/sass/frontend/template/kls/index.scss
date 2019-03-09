@@ -1352,6 +1352,7 @@
     padding: 15px;
     .product-inner {
       @include flex-mix(stretch,center);
+      flex-wrap: nowrap;
       background-color: $color-white;
       margin: 20px 0;
       cursor: pointer;
@@ -1425,6 +1426,9 @@
   }
   .product-img p {
     @extend %force-center;
+    border-top: solid 1px $color-white;
+    border-bottom: solid 1px $color-white;
+    color: $color-white;
     opacity: 0;
     transition: 0.5s;
   }

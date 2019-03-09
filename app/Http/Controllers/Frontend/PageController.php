@@ -56,6 +56,17 @@ class PageController extends Controller
         ]);
     }
 
+    public function productFittingBag()
+    {
+        $productAll = Product::paginate(15);
+
+        return view('frontend.product.productFittingBag', [
+            'productAll' => $productAll,
+            'isThumbShow' => true,
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;品牌背包'
+        ]);
+    }
+
     public function login()
     {
         return view('frontend.authentication.login', [

@@ -108,11 +108,11 @@
             </a>
             
         
-            <a href="">
+            {{-- <a href="">
                 <img style="cursor: pointer; background-color: #006EAE; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/member-01.svg" alt="">
             </a>   
-        
-            <a href="">
+         --}}
+            <a href="/cart">
                 <img style="cursor: pointer; background-color: #F8A94B; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/shoppingcar-01.svg" alt="">
             </a>
         </div>
@@ -285,7 +285,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
+                                                            <a href="{{route('productFittingBag')}}">
                                                                 品牌背包
                                                             </a>
                                                         </li>
@@ -432,7 +432,7 @@
                                                                 </a>
                                                             </li>
                                                         <li>
-                                                            <a href="">
+                                                            <a href="{{route('productFittingBag')}}">
                                                                     品牌背包
                                                                 </a>
                                                             </li>
@@ -503,10 +503,14 @@
                                                     </ul>
                                                 </li>
                                             <li class="sub-icon">
-                                                <img src="\img\likeIcon-01.png" alt="">
+                                                <a href="">
+                                                    <img src="\img\likeIcon-01.png" alt="">
+                                                </a>
                                             </li>
                                             <li class="sub-icon" id="cart-panel">
-                                                <img src="\img\cartIcon-01.png" alt="">
+                                                <a href="/cart">
+                                                    <img src="\img\cartIcon-01.png" alt="">
+                                                </a>
                                             </li>
                                         </ul> 
                                     </div>
