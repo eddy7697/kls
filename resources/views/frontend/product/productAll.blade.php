@@ -2,6 +2,11 @@
 
 @section('custom-style')
     <link rel="stylesheet" href="{{ asset('js/plugins/jquery.fancytree/dist/skin-themeroller/ui.fancytree.min.css') }}">
+    <style media="screen">
+        .mega-menu .product .mega-menu-list ul li:nth-child(1) a{
+            border: solid 1px #B3B3B3 !important;
+        }
+    </style>
 @endsection
 
 @section('custom-script')

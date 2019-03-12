@@ -1,6 +1,20 @@
 
 @extends('main')
 
+@section('custom-script')
+    <script type="text/javascript">
+         
+    </script>
+@endsection
+
+@section('custom-style')
+    <style media="screen">
+        .mega-menu .contact .mega-menu-list ul li:nth-child(2) a{
+            border: solid 1px #B3B3B3 !important;
+        }
+    </style>
+@endsection
+
 @section('content')
     <section class="subPage-privacy">
         <div class="container">
@@ -9,7 +23,7 @@
                     <div class="privacy-inner">
                         <div class="privacy-clause">
                             <h1>
-                                隱私權條款
+                                購物需知
                             </h1>
                             <p>
                                 歡迎您來到的凱麗斯KLS的網站（以下簡稱本網站），凱麗斯重視您的隱私權，為了確保您的個人資料安全，讓您能夠安心使用本網站的各項服務與資訊，我們訂立了以下的隱私權政策，請您詳細閱讀以了解本網站如何蒐集，應用，保護您的資料。

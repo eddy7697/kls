@@ -414,7 +414,7 @@
                                                     所有商品
                                                     <span class="caret"></span>
                                                 </a>
-                                                <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                                                <ul class="mega-menu-product dropdown-menu dropdown-menu-large product row">
                                                     <li class="col-sm-2 mega-menu-title">
                                                         <h2>所有商品</h2>
                                                         <p>ALL PRODUCT</p>
@@ -463,7 +463,7 @@
                                                         諮詢專區
                                                         <span class="caret"></span>
                                                     </a>
-                                                    <ul class="mega-menu-product dropdown-menu dropdown-menu-large row">
+                                                    <ul class="mega-menu-product dropdown-menu dropdown-menu-large contact row">
                                                         <li class="col-sm-2 mega-menu-title">
                                                             <h2>諮詢專區</h2>
                                                             <p>CONSULTING AREA</p>
@@ -506,9 +506,7 @@
                                                 <a href="">
                                                     <img src="\img\likeIcon-01.png" alt="">
                                                 </a>
-                                            </li>
-                                            <li class="sub-icon" id="cart-panel">
-                                                <a href="/cart">
+                                                <a href="/cart" id="cart-panel">
                                                     <img src="\img\cartIcon-01.png" alt="">
                                                 </a>
                                             </li>
