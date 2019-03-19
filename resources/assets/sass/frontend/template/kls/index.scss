@@ -2,6 +2,113 @@
 *{
   font-family: 微軟正黑體;
 }
+.scrollDown{
+  position: absolute;
+  display: none;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  .chevron {
+    position: absolute;
+    left: 35%;
+    width: 28px;
+    height: 8px;
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+    animation: move 3s ease-out infinite;
+  }
+  
+  .chevron:first-child {
+    animation: move 3s ease-out 1s infinite;
+  }
+  
+  .chevron:nth-child(2) {
+    animation: move 3s ease-out 2s infinite;
+  }
+  
+  .chevron:before,
+  .chevron:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: #fff;
+  }
+  
+  .chevron:before {
+    left: 0;
+    transform: skew(0deg, 30deg);
+  }
+  
+  .chevron:after {
+    right: 0;
+    width: 50%;
+    transform: skew(0deg, -30deg);
+  }
+}
+
+
+@keyframes move {
+  25% {
+    opacity: 1;
+
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+.text {
+  display: block;
+  margin-top: 65px;
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: .25;
+  animation: pulse 2s linear alternate infinite;
+}
+
+@keyframes pulse {
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes aniBackground{
+  0%{
+    background-position: center 100%;
+  }
+  50%{
+    background-position: center 0%;
+  }
+  100%{
+    background-position: center 100%;
+  }
+}
+@keyframes aniBackground{
+  0%{
+    background-position: center 100%;
+  }
+  50%{
+    background-position: center 0%;
+  }
+  100%{
+    background-position: center 100%;
+  }
+}
+
 
 .margin-top-Md{
   margin-top: 50px;
@@ -54,8 +161,8 @@
   display : none;
   position: fixed;
   background-color: transparent;
-  top     : 15px;
-  left    : 15px;
+  top     : 1.3rem;
+  left    : 1.3rem;
   z-index : 9999999;
   border  : none;
   cursor  : pointer;
@@ -94,7 +201,7 @@
   opacity         : 1 !important;
   transition      : 0.5s;
   z-index         : 1000001 !important;
-  .klsBurger-menu-inner{
+  .klsBurger-menu-inner, .burge-link{
     transform : scale(1) !important;
   }
 }
@@ -103,7 +210,21 @@
   filter    : blur(20px);
   transition: 0.5s;
 }
-
+.burge-link{
+  @extend %flex-center;
+  text-align: center;
+  position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
+  transform : scale(0.85);
+  transition: 0.5s;
+  a{
+    margin: 0 1rem;
+    img{
+      @include size-setting(2.5rem,2.5rem);
+    }
+  }
+}
 .klsBurger-menu{
   @extend %flex-center;
   @include size-setting(100%,100%);
@@ -116,33 +237,34 @@
   color           : $color-white;
   transition      : 0.5s;
   user-select     : none;
-  z-index: -1;
+  z-index         : -1;
   .klsBurger-menu-inner{
     transform : scale(0.85);
     transition: 0.5s;
     font-size : $title-bottom-font-size;
     .klsBurger-menu-close{
       position: absolute;
-      top     : 10px;
-      right   : 10px;
+      top     : 1rem;
+      right   : 1rem;
     }
+    
     ul{
       width       : 100%;
       text-align  : center;
       padding-left: 0;
-      margin-top  : 60px;
+      margin: 2rem 0;
       li{
         list-style   : none;
-        margin-top   : 25px;
-        transition: 0.5s;
-        &:hover{
-          transform: scale(0.8);
-        }
+        margin-top   : 2rem;
         a{
           color          : $color-white;
           text-decoration: none;
           padding-bottom : 5px;
         }
+      }
+      img{
+        width: 3rem;
+        height: auto;
       }
     }
     .klsBurger-menu-logo{
@@ -198,17 +320,6 @@
   }
 }
 
-@keyframes aniBackground{
-  0%{
-    background-position: center 100%;
-  }
-  50%{
-    background-position: center 0%;
-  }
-  100%{
-    background-position: center 100%;
-  }
-}
 
 /*----------header---------*/
 .open > .dropdown-menu {
@@ -334,6 +445,7 @@
             z-index         : 2;
             text-align      : center;
             text-decoration : none;
+            width           : 100%;
             cursor          : pointer;
             .mark_text{
               color      : $color-white;
@@ -346,7 +458,7 @@
               font-size: $header-contact-font-size;
             }
             img{
-              width: 100%;
+              width: 200px;
             }
           }
           .mark_time{
@@ -364,6 +476,7 @@
         @extend %just-flex;
         font-size: $header-contact-font-size;
         height   : 30%;
+        position: relative;
         .header_addr{
           @extend %flex-center;
           position    : relative;
@@ -538,12 +651,11 @@
   .navbar{
     @include size-setting(100%,12%);
     @extend %flex-center;
-    z-index         : 99999;
+    z-index         : 999;
     background-color: $color-blue;
     font-weight     : 700;
     margin-bottom   : 0;
     position: relative;
-    border-bottom: solid 1px $color-white;
     li{
       list-style: none;
     }
@@ -578,7 +690,7 @@
         cursor  : pointer;
         outline : none; 
         span:nth-child(1){
-          top: 6px;
+          top: 8px;
         }
       }
       .navbar-icon-mobile-inner{
@@ -586,6 +698,7 @@
         left: -20px;
         padding: 10px 20px;
         background-color: $color-blue;
+        flex-wrap: wrap;
         img{
           @include size-setting(25px,25px);
           cursor: pointer;
@@ -2181,6 +2294,9 @@
 }
 
 @media screen and (max-width: 1200px) {
+  #header .navbar .container .row .col-md-12 .navbar-ul{
+    margin-left: -4rem;
+  }
   .information-banner{
     margin-top: 117px;
   }
@@ -2853,8 +2969,8 @@
 }
 
 @media screen and (max-width: 768px){
-  .klsBurger-switch{
-    top: 15px;
+  .scrollDown{
+    display: block;
   }
   .forwardNews{
     display: none;
@@ -2865,7 +2981,7 @@
       .header_left{
         
         .logo_area{
-          height: 75%;
+          height: 100%;
           .logo{
             
             .mark{
@@ -2873,75 +2989,17 @@
               .mark_text{
                 
               }
-              .mark_middle{
-                display: none;
-              }
-              .mark_bottom{
-                display: none;
-              }
               img{
                
               }
             }
             .mark_time{
-              right: 0;
-              text-align: right;
-              img{
-                width: 70%;
-              }
+              display: none;
             }
           }
         }
         .header_contact{
-          height: 20%;
-          .header_addr{
-            display: none;
-            .shop_list{
-              
-              .shop{
-                border: solid 1px #EDEDED;
-                .shop_contact,img{
-                  
-                }
-                img{
-                  
-                }
-                .shop_contact{
-                  
-                  p{
-                    
-                  }
-                }   
-              }
-            }    
-          }
-          .community{
-            @include flex-mix(center,center);
-            @include size-setting(100%,100%);
-            box-shadow: 0 0 4rem inset;
-            .link{
-              text-align: center;
-              p{
-                margin-bottom: 0;
-              }
-            }
-            .facebook,.instagram{
-              width : 50%;
-              height: 100%;
-              img{
-               
-              }
-              p{
-                
-              }
-            }
-            .facebook{
-              
-            }
-            .instagram{
-  
-            }
-          }
+          display: none;
         }
       }
     }

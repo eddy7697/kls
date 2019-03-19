@@ -61,13 +61,25 @@
         </button>
 
         <div class="klsBurger-menu">
+            <div class="burge-link">
+                <a target="_blank" href="https://www.facebook.com/baggageworld/" class="facebook">
+                    <div class="link">
+                        <img src="\img\fb_white-01.svg" alt="">
+                    </div>
+                </a>
+                <a target="_blank" href="https://www.instagram.com/kls520/" class="instagram">
+                    <div class="link">
+                        <img src="\img\ig_white-01.svg" alt="">
+                    </div>
+                </a>
+            </div>
             <div class="klsBurger-menu-inner">
                 <div class="klsBurger-menu-logo">
                     <a href="/">
                         <img src="/img/KLSLogoWhite.svg" alt="">
                     </a>
                 </div>
-                <ul>
+                <ul> 
                     <li>
                         <a href="{{route('about')}}">
                             關於凱麗絲
@@ -142,6 +154,12 @@
                 <section id="header">
                     <div class="header_top_area">
                         <div class="header_left">
+                            <div class="scrollDown">
+                                <div class="chevron"></div>
+                                <div class="chevron"></div>
+                                <div class="chevron"></div>
+                                <span class="text">Scroll down</span>
+                            </div>
                             <div class="logo_area">
                                 <div class="logo">
                                     <a href="/" class="mark">
@@ -308,13 +326,13 @@
                                                 </p>
                                             </a>
                                         </li>
-                                        <li class="navbar-ul-li">
+                                        {{-- <li class="navbar-ul-li">
                                             <a href="/">
                                                 <p>
                                                     最新消息
                                                 </p>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li class="navbar-ul-li">
                                             <a href="{{route('location')}}">
                                                 <p>
@@ -739,10 +757,13 @@
                                     'position': 'fixed',
                                     'top'     : 0,
                                     'width'   : '100%',
-                                    'z-index' : '99999'
+                                    'box-shadow': '0px 5px 10px rgba(0,0,0,0.8)'
                                     })
                             } else {
-                                fix.css("position","relative");
+                                fix.css({
+                                    "position" : "relative",
+                                    'box-shadow': 'none'
+                                });
                                 }
                             })
                     } catch (error) {
@@ -806,7 +827,7 @@
                 };
                 var newsPostOldText = $('.newPostTextP').text();
                 newPostTextRWD($('.newPostTextP'),60);
-                newPostTextRWD($('.post_text p'),500);
+                newPostTextRWD($('.post_text p'),300);
                 newPostTextRWD($('.feedback-Inner p'),150);
                 
                 $('.newsPost').each(function(){
