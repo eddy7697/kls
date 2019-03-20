@@ -392,7 +392,9 @@
                         </div>
                         <div class="navbar-icon">
                             <img src="/img/navbar-heart-01.svg" alt="">
-                            <img src="/img/navbar-cart-01.svg" alt="">
+                            <a href="/cart-list">
+                                <img src="/img/navbar-cart-01.svg" alt="">
+                            </a>
                         </div>
                         <div class="navbar-icon-mobile dropdown">
                             <button class="navbar-icon-mobile-switch dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -403,7 +405,10 @@
                             </button>
                             <div class="navbar-icon-mobile-inner dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <img src="/img/navbar-heart-01.svg" alt="">
-                                <img src="/img/navbar-cart-01.svg" alt="">
+                                <a href="/cart-list">
+                                    <img src="/img/navbar-cart-01.svg" alt="">
+                                </a>
+                               
                             </div>
                         </div>
                     </div>
@@ -524,7 +529,7 @@
                                                 <a href="">
                                                     <img src="\img\likeIcon-01.png" alt="">
                                                 </a>
-                                                <a href="/cart" id="cart-panel">
+                                                <a href="/cart-list" id="cart-panel">
                                                     <img src="\img\cartIcon-01.png" alt="">
                                                 </a>
                                             </li>
@@ -691,6 +696,8 @@
         <script src="{{ asset('js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 
         <script src="{{ asset('js/plugins/AOS/aos.js') }}" charset="utf-8"></script>
+
+        <script src="\js\plugins\tw-city\tw-city-selector.min.js"></script>
 
         <script src="\js\plugins\swipe\swiper.min.js"></script>
 

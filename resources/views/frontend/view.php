@@ -135,31 +135,6 @@ Route::get('/contact', 'Frontend\PageController@contact')->name('contact');
 Route::post('/search-option', 'Frontend\SearchController@searchProduct');
 Route::get('/importScout', 'Frontend\SearchController@importScout');
 
-// cart page
-Route::get('/cart-end', function ()
-{
-    return view('frontend.cart.cart-end', [
-        'isThumbShow' => false,
-    ]);
-});
-Route::get('/cart-list', function ()
-{
-    return view('frontend.cart.cart-list', [
-        'isThumbShow' => false,
-    ]);
-});
-Route::get('/cart-info', function ()
-{
-    return view('frontend.cart.cart-info', [
-        'isThumbShow' => false,
-    ]);
-});
-Route::get('/productDetailPage', function ()
-{
-    return view('frontend.cart.productDetailPage', [
-        'isThumbShow' => false,
-    ]);
-});
 
 /**
  * test area
