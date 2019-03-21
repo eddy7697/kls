@@ -124,7 +124,7 @@
                 <img style="cursor: pointer; background-color: #006EAE; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/member-01.svg" alt="">
             </a>   
          --}}
-            <a href="/cart">
+            <a href="/cart-list">
                 <img style="cursor: pointer; background-color: #F8A94B; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/shoppingcar-01.svg" alt="">
             </a>
         </div>
@@ -391,15 +391,14 @@
                             </div>
                         </div>
                         <div class="navbar-icon">
-                            <img src="/img/navbar-heart-01.svg" alt="">
+                            <a href="/">
+                                <img src="/img/navbar-heart-01.svg" alt="">
+                            </a>
                             <div id="cart-panel">
                                 <cart-panel />
                             </div>
-                            {{-- <a href="/cart-list">
-                                <img src="/img/navbar-cart-01.svg" alt="">
-                            </a> --}}
                         </div>
-                        <div class="navbar-icon-mobile dropdown">
+                        {{-- <div class="navbar-icon-mobile dropdown">
                             <button class="navbar-icon-mobile-switch dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span></span>
                                 <span></span>
@@ -411,9 +410,8 @@
                                 <a href="/cart-list">
                                     <img src="/img/navbar-cart-01.svg" alt="">
                                 </a>
-                               
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </section>
 
@@ -530,11 +528,11 @@
                                                 </li>
                                             <li class="sub-icon">
                                                 <a href="">
-                                                    <img src="\img\likeIcon-01.png" alt="">
+                                                    <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
                                                 </a>
-                                                <a href="/cart-list">
-                                                    <img src="\img\cartIcon-01.png" alt="">
-                                                </a>
+                                                <div id="cart-panel">
+                                                    <cart-panel />
+                                                </div>
                                             </li>
                                         </ul> 
                                     </div>

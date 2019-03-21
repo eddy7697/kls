@@ -56,7 +56,7 @@ button.cart {
             display: block;
             height: 1px;
             width: 100%;
-            background: #666;
+            background: $color-blue;
             opacity: 1;
             left: 0;
             -webkit-transition: .25s ease-in-out;
@@ -72,9 +72,17 @@ button.cart {
     }
 
     .btn-default {
-        border-color: #501b0c;
-        background: white;
-        color: #501b0c;
+        // border-color: #501b0c;
+        border-color: $color-blue;
+        background: $color-blue;
+        color: $font-color-focus;
+        transition: .5s;
+        // color: #501b0c;
+        &:hover{
+            border-color: $color-blue;
+            background: $color-white;
+            color: $color-blue;
+        } 
     }
 }
 

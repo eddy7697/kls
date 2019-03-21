@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="shopping-Cart-Icon" @click="getCart(true)">
-            <img src="\img\cartIcon.png" alt="">
+            <img v-if="isIndex()" src="/img/navbar-cart-01.svg" alt="">
+            <img v-else src="/img/cartIcon-01.png" alt="">
             <span class="count" v-if="cartContent.length">{{cartContent.length}}</span>  
         </div>
         <!-- <div class="litext" @click="getCart(true)">
@@ -65,17 +66,18 @@
     import 'element-ui/lib/theme-chalk/index.css';
     import lang from 'element-ui/lib/locale/lang/zh-TW'
     import locale from 'element-ui/lib/locale'
-
     Vue.use(ElementUI);
     locale.use(lang)
     $('.loading-bar').fadeOut('100');
     export default {
         data() {
+            let isSubPage = window.location.pathname;
+            
             return {
                 displayPanel: false,
                 amount: null,
                 cartContent: [],
-                isCartEmpty: true
+                isCartEmpty: true                
             }
         },
         created: function () {
@@ -221,9 +223,18 @@
             },
             togglePanel: function () {
                 this.displayPanel = this.displayPanel ? false : true;
+            },
+            isIndex: function(){
+                let isIndex = window.location.pathname;
+                if(isIndex != '/'){
+                    return false;
+                }else{
+                    return true;
+                }
             }
         }
     }
+    
 </script>
 
 <style media="screen">
