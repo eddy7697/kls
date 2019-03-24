@@ -23,7 +23,7 @@
                     <div class="privacy-inner">
                         <div class="privacy-clause">
                             <h1>
-                                一.購物須知
+                                購物須知
                             </h1>
                             <p>
                                 1.全館消費享有免運費服務。(不包含離島、海外)
