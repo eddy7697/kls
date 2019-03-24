@@ -34,7 +34,7 @@ Route::group(['prifix' => 'product'], function ()
     Route::get('/all', 'Frontend\PageController@productAll')->name('productAll');
     Route::get('/fitting', 'Frontend\PageController@productFitting')->name('productFitting');
     Route::get('/fittingBag', 'Frontend\PageController@productFittingBag')->name('productFittingBag');
-    Route::get('/detail/{path}', 'Frontend\ProductController@productDetailFromPath')->name('productDetail');    
+    Route::get('/detail/{path}', 'Frontend\ProductController@productDetailFromPath');    
     Route::get('/category/{guid}', 'Frontend\ProductController@productCategory');
 });
 

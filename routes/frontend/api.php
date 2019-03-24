@@ -19,6 +19,7 @@ Route::get('/products/newest', 'Frontend\ProductController@getNewestProducts');
 Route::get('/products/popular', 'Frontend\ProductController@getPopularProducts');
 Route::get('/products/byCategory/{guid}', 'Frontend\ProductController@getByCategory');
 Route::get('/products/category', 'Frontend\CategoryController@getProductCategory');
+Route::post('/products/tag', 'Frontend\ProductController@getByTag');
 
 
 /**

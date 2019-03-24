@@ -30,7 +30,7 @@
                 </ul>
             </div>
             <div class="col-md-12" id="checkout">
-                <input type="hidden" id="shipping_method" value="{{$shippingMethod}}">
+                <input type="hidden" id="shipping_method">
                 <checkout></checkout>
             </div>
         </div>

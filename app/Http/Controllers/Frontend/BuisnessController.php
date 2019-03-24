@@ -84,7 +84,7 @@ class BuisnessController extends Controller
             return redirect('/');
         } else {
             return view('frontend.checkoutMethod.checkout', [
-                'shippingMethod' => $data['shipping_method'],
+                // 'shippingMethod' => $data['shipping_method'],
                 'isThumbShow' => false,
                 'thumb' => null
             ]);

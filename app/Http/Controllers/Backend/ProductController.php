@@ -632,18 +632,18 @@ class ProductController extends Controller
     public function saveTag(Request $request)
     {
         try {
-            if ( CustomField::where('type', 'tag')->exist()) {
-                CustomField::where('type', 'tag')->update([
+            if ( CustomField::where('type', 'tag')->exists()) {
+                return CustomField::where('type', 'tag')->update([
                     'content' => $request->data
                 ]);
             } else {
-                CustomField::create([
+                return CustomField::create([
                     'type' => 'tag',
                     'content' => $request->data
                 ]);
             }
         } catch (\Throwable $th) {
-            //throw $th;
+            return $th;
         }
         return $request->data;
     }

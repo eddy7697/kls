@@ -68,9 +68,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function productDetailFromPath($customPath)
+    public function productDetailFromPath($guid)
     {
-        $product = Product::where('customPath', $customPath)->first();
+        $product = Product::where('productGuid', $guid)->first();
         $comentList = Comment::where('source', $product->guid)->get();
         $productList = Product::orderBy('id', 'desc')->take(5)->get();
 
@@ -180,5 +180,35 @@ class ProductController extends Controller
         }
 
         return response()->json([ 'status' => $status, 'message' => $message, 'data' => $data], $status);
+    }    
+
+    public function getByTag(Request $request)
+    {
+        return Product::where(function ($q) use ($request)
+                        {
+                            $tag = $request->tag;
+
+                            if ($tag['brand'] !== null) {
+                                $q->where('command', 'like', '%'.$tag['brand'].'%');
+                            }
+
+                            if ($tag['material'] !== null) {
+                                $q->where('command', 'like', '%'.$tag['material'].'%');
+                            }
+
+                            if ($tag['price'] !== null) {
+                                $q->where('command', 'like', '%'.$tag['price'].'%');
+                            }
+
+                            if ($tag['size'] !== null) {
+                                $q->where('command', 'like', '%'.$tag['size'].'%');
+                            }
+
+                            if ($tag['trip'] !== null) {
+                                $q->where('command', 'like', '%'.$tag['trip'].'%');
+                            }
+                        })
+                        ->orderBy('id', 'desc')
+                        ->paginate(8);
     }
 }

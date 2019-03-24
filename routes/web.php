@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Log;
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,22 @@ Route::group(['prefix' => 'cyberholic-system', 'middleware' => 'auth', 'middlewa
 require_once "frontend/view.php";
 require_once "frontend/api.php";
 
+Route::get('/test_prod', function ()
+{
+    $products = Product::inRandomOrder()->take(10);
 
+    return $products->update([
+        'productTitle' => 'AD 亞蘭德倫 20 - 23吋 3 - 7天 10000 - 15000 防水尼龍',
+        'command' => '{"brand":"AD 亞蘭德倫","size":"20 - 23吋","trip":"3 - 7天","price":"10000 - 15000","material":"防水尼龍"}'
+    ]);
+
+    return $products;
+    // foreach ($products as $key => $value) {
+    //     Product::where('id', $value->id)->update([
+    //         'productGuid' => str_random(6)
+    //     ]);
+    // }
+});
 Route::get('/create_admin', 'HomeController@createAdmin');
 // Route::get('/esun', 'Backend\OrderController@esun');
 Route::get('/esun', function ()

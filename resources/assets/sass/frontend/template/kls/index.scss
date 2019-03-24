@@ -1482,6 +1482,9 @@
   }
   .filter-product-row {
     padding: 50px 0;
+    a {
+      text-decoration: none;
+    }
     &.product-more {
       padding-top: 0;
       display: none;

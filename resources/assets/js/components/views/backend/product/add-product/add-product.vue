@@ -235,7 +235,7 @@
                                                 <label :for="`tab-${item}`">{{tagLabel[item]}}</label>
                                             </td>
                                             <td>
-                                                <select class="form-control" :name="`tab-${item}`" :id="`tab-${item}`" v-model="selectedTag[item]" placeholder="choose">
+                                                <select class="form-control" :name="`tab-${item}`" :id="`tab-${item}`" v-model="selectedTag[item]" placeholder="choose" required>
                                                     <option :value="null">-- 請選擇一項標籤 --</option>
                                                     <option :value="tag" v-for="(tag, tagIndex) in tagGroup[item]" :key="tagIndex">{{tag}}</option>
                                                 </select>

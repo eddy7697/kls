@@ -268,7 +268,7 @@
                             </div>
                         </label>
                     </div> -->
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="payment-Credit">
                             <input type="radio" id="payment-Credit" name="payment-method-option" value="Credit" v-model="paymentMethod" style="width: initial">
                             <strong>信用卡付款</strong>
@@ -276,7 +276,7 @@
                                 <p>提供線上刷卡的服務，確認付款完成後將會進行後續出貨的動作。</p>
                             </div>
                         </label>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="payment-Remit">
                             <input type="radio" id="payment-Remit" name="payment-method-option" value="Remit" v-model="paymentMethod" style="width: initial">
@@ -318,8 +318,8 @@
                 // shippingCosts: 60,
                 amount: null,
                 // amountString: null,
-                shippingTag: $('#shipping_method').val(),
-                paymentMethod: 'Credit',
+                // shippingTag: $('#shipping_method').val(),
+                paymentMethod: 'Remit',
                 point: null,
                 useUserInfo: true,
                 dontUseUserInfo: false,
