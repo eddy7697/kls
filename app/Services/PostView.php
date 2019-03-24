@@ -22,6 +22,8 @@ class PostView
             $int = 15;
         }
         return Post::where('isPublish', '1')
+                    ->leftJoin('categories', 'posts.postCategory', '=', 'categories.categoryGuid')
+                    ->select('posts.*', 'categories.categoryTitle')
                     ->orderBy('id', 'desc')
                     ->paginate($int);
     }

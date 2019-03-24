@@ -369,6 +369,7 @@
                     .then(function (isPath) {
                         if (true) {
                             if (self.isAllowToSave) {
+                                $('.loading-bar').show()
                                 $.ajax({
                                     url: self.isEdit ? '/admin/post/edit/' + self.guid : '/admin/post/add',
                                     type: 'POST',
@@ -393,7 +394,11 @@
                                     }
                                 })
                                 .done(function() {
-                                    window.location.href="/cyberholic-system/post/list";
+                                    self.showMessage('success', '文章儲存成功');
+
+                                    setTimeout(() => {
+                                        window.location.href="/cyberholic-system/post/list";    
+                                    }, 1000);
                                     console.log("success");
                                 })
                                 .fail(function() {
@@ -401,6 +406,7 @@
                                 })
                                 .always(function() {
                                     console.log("complete");
+                                    $('.loading-bar').hide()
                                 });
 
                             } else {

@@ -1824,7 +1824,7 @@
   margin: 50px auto;
   .blog-filter-inner{
     @extend %flex-center;
-    button{
+    button, a{
       border: solid 1px #636b6f;
       border-radius: 12px;
       color: #636b6f;
@@ -1832,6 +1832,7 @@
       outline: none;
       transition: 0.3s;
       font-size: $title-bottom-font-size;
+      text-decoration: none;
       padding: 5px 35px;
       margin: 5px 20px;
       &:hover{
@@ -1841,6 +1842,10 @@
       &:active{
         color: $color-white;
         background-color: #3E3A39;
+      }
+      &.active{
+        color: $color-white !important;
+        background-color: #636b6f !important;
       }
     }
   }
