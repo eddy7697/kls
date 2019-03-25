@@ -101,6 +101,7 @@
                         </a>
                     </li>
                     <li>
+                        
                         <a href="{{route('location')}}">
                             店鋪資訊
                         </a>
@@ -118,13 +119,7 @@
             <a>
                 <img style="cursor: pointer" class="pointer scrollToTop" src="/img/icon/backtotop-01.svg" alt="">
             </a>
-            
-        
-            {{-- <a href="">
-                <img style="cursor: pointer; background-color: #006EAE; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/member-01.svg" alt="">
-            </a>   
-         --}}
-            <a href="/cart-list">
+            <a href="/cart">
                 <img style="cursor: pointer; background-color: #F8A94B; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/shoppingcar-01.svg" alt="">
             </a>
         </div>
@@ -407,7 +402,7 @@
                             </button>
                             <div class="navbar-icon-mobile-inner dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <img src="/img/navbar-heart-01.svg" alt="">
-                                <a href="/cart-list">
+                                <a href="/cart">
                                     <img src="/img/navbar-cart-01.svg" alt="">
                                 </a>
                             </div>

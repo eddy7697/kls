@@ -5,25 +5,72 @@
         </div>
     </div>
     <div class="row" v-else>
-        <div class="col-md-8">
-            <table class="cart-list">
-                <thead>
-                    <tr>
-                        <th colspan="3">
-                            商品
-                        </th>
-                        <th>
-                            價格
-                        </th>
-                        <th style="text-align: center">
+        <div class="col-md-12">
+            <div class="cart-list">
+                <ul v-for="(item, index) in cart" v-bind:key="index">
+                    <li class="cart_list_title">
+                        <p>
+                            產品名稱
+                        </p>
+                        <p>
+                            尺寸
+                        </p>
+                        <p>
+                            型號
+                        </p>
+                        <p>
                             數量
-                        </th>
-                        <th style="text-align: right">
-                            總計
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+                        </p>
+                        <p>
+                            優惠價
+                        </p>
+                        <p class="hide"></p>
+                    </li>
+                    <li>
+                        <p>
+                            <span>
+                                01
+                            </span>
+                                <a  data-title="商品" v-bind:href="productLink(item.id.guid)">{{item.id.title}}</a>
+                            <br>
+                            <img src="/img/product-logo.jpg" alt="">
+                        </p>
+                        <p>
+                            27吋
+                        </p>
+                        <p>
+                            型號:<span>HD-515</span>
+                        </p>
+                        <p data-title="數量" class="count">
+                            {{item.qty}}
+                        </p>
+                        <p data-title="價格">
+                            NT$<span>{{item.price}}</span> 
+                        </p>
+                        <p>
+                            <a href="#" class="remove" aria-label="移除這項商品" style="text-decoration: none;" @click="deleteProduct(item)">
+                                <img src="/img/buyIcon/deleteIcon-01.png" alt="">
+                            </a>
+                        </p>
+                    </li>
+                    <form class="" action="/checkout/billing" method="post">
+                        <li class="cart_list_total">
+                            <p data-title="小計">
+                                商品小計 : NT$
+                                <span>
+                                    {{amount}}
+                                </span>
+                            </p>
+                            <p data-title="總計">
+                                訂單總金額 : NT$
+                                <span>
+                                    {{totalAmount}}
+                                </span>
+                            </p>
+                        </li>
+                    </form>
+                </ul>
+                <!-- <tbody>
                     <tr v-for="(item, index) in cart" v-bind:key="index">
                         <td class="product-remove">
                             <a href="#" class="remove" aria-label="移除這項商品" style="text-decoration: none;" @click="deleteProduct(item)">×</a>
@@ -63,31 +110,31 @@
                             <span><span>NT$</span> {{item.total}}</span>
                         </td>
                     </tr>
-                </tbody>
-            </table>
+                </tbody> -->
+            </div>
             <br>
-            <button v-if="isDirty" class="btn btn-default" name="button" @click="updateCart">更新購物車</button>
+            <!-- <button v-if="isDirty" class="btn btn-default" name="button" @click="updateCart">更新購物車</button>
             <button v-else class="btn btn-default" name="button" disabled>更新購物車</button>
-            <button class="btn btn-default" name="button" @click="deleteAll">清空購物車</button>
+            <button class="btn btn-default" name="button" @click="deleteAll">清空購物車</button> -->
         </div>
-        <div class="col-md-4">
+        <div class="col-md-12">
             <div class="cart-sidebar">
                 <div class="cart_totals calculated_shipping">
 
-                    <table cellspacing="0" class="cart-list">
+                    <!-- <table cellspacing="0" class="cart-list">
                         <thead>
                             <tr>
                                 <th class="product-name" colspan="2" style="border-width:3px;">購物車總計</th>
                             </tr>
                         </thead>
-                    </table>
+                    </table> -->
 
                     <form class="" action="/checkout/billing" method="post">
                         <input type="hidden" name="_token" v-bind:value="token">
                         <table cellspacing="0" class="shop_table shop_table_responsive cart-list">
 
                             <tbody>
-                                <tr class="cart-subtotal">
+                                <!-- <tr class="cart-subtotal">
                                     <th>小計</th>
                                     <td data-title="小計"><span><span>NT$</span> {{amount}}</span>
                                     </td>
@@ -112,18 +159,23 @@
                                             </li>
                                         </ul>
                                     </td>
-                                </tr>
-
+                                </tr> -->
+<!-- 
                                 <tr class="order-total">
                                     <th>總計</th>
                                     <td data-title="總計"><strong><span><span>NT$</span> </span></strong> {{totalAmount}}</td>
-                                </tr>
+                                </tr> -->
 
                             </tbody>
                         </table>
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-block check-btn">前往結帳</button>
+                        <div class="nextBtn">
+                            <button type="submit">
+                                送出，前往下一步
+                            </button>
                         </div>
+                        <!-- <div>
+                            <button type="submit" class="btn btn-primary btn-block check-btn">前往結帳</button>
+                        </div> -->
                     </form>
 
                 </div>
@@ -426,3 +478,121 @@
         }
     }
 </script>
+
+<style>
+* a {
+  text-decoration: none;
+}
+.hide {
+  visibility: hidden;
+}
+.cart-list ul {
+  padding: 0;
+}
+.cart-list ul li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: 'center';
+  -moz-box-align: 'center';
+  -ms-flex-align: 'center';
+  -webkit-align-items: 'center';
+  align-items: 'center';
+  -webkit-box-pack: 'center';
+  -moz-justify-content: 'center';
+  -webkit-justify-content: 'center';
+  justify-content: 'center';
+  flex-wrap: wrap;
+  padding: 40px 15px;
+  list-style: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+.cart-list ul li p {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+.cart-list ul li p img {
+  max-width: 80px;
+}
+.cart-list ul li p:nth-child(1) {
+  width: 30%;
+}
+.cart-list ul li p:nth-child(1) span {
+  float: left;
+  margin-left: 5px;
+  margin-top: 15px;
+}
+.cart-list ul li p:nth-child(2), 
+.cart-list ul li p:nth-child(3), 
+.cart-list ul li p:nth-child(4), 
+.cart-list ul li p:nth-child(5) {
+  width: 16%;
+  margin-top: 15px;
+}
+.cart-list ul li p:nth-child(6) {
+  width: 5%;
+  margin-top: 10px;
+}
+.cart-list ul li p:nth-child(6) img {
+  width: 70%;
+  height: auto;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cart-list ul li p:nth-child(6) img:hover {
+  filter: drop-shadow(1px 1px 1px #333);
+}
+.cart-list ul .cart_list_title, .cart-list ul .cart_list_total {
+  background-color: #0f2746;
+  color: #fff;
+  padding: 15px;
+}
+.cart-list ul .cart_list_title p:nth-child(2), 
+.cart-list ul .cart_list_total p:nth-child(2), 
+.cart-list ul .cart_list_title p:nth-child(3), 
+.cart-list ul .cart_list_total p:nth-child(3), 
+.cart-list ul .cart_list_title p:nth-child(4), 
+.cart-list ul .cart_list_total p:nth-child(4), 
+.cart-list ul .cart_list_title p:nth-child(5), 
+.cart-list ul .cart_list_total p:nth-child(5), 
+.cart-list ul .cart_list_title p:nth-child(6), 
+.cart-list ul .cart_list_total p:nth-child(6) {
+  margin-top: 0;
+}
+.cart-list ul li.cart_list_total {
+  display: block;
+}
+.cart-list ul li.cart_list_total p {
+  width: 100%;
+  text-align: right;
+}
+.cart-list ul li.cart_list_total p:nth-child(2) {
+  color: #f8b62d;
+  font-size: 24px;
+}
+.cart-list ul li.cart_list_total span {
+  float: none !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+}
+.nextBtn {
+  width: 100%;
+  text-align: center;
+  margin: 70px 0 50px;
+}
+.nextBtn button {
+  border: solid 1px transparent;
+  background-color: #0f2746;
+  color: #fff;
+  padding: 15px 70px;
+  transition: 0.5s;
+  font-size: 16px;
+}
+.nextBtn button:hover {
+  background-color: #f8b62d;
+}
+</style>
+

@@ -5,6 +5,14 @@
 @endsection
 
 @section('content')
+    <div class="container-fulid information-banner" style="background-image: url('/img/black-1072366_1920.jpg')">
+        <div class="cart-banner-inner">
+            <div class="cart-banner-inner-text">
+                <h1>感謝您的購買</h1>
+                <p>完成最後的下單準備，準備出發吧!</p>
+            </div>
+        </div>
+    </div>
     <div class="container mg-business">
         <div class="row">
             <div class="col-md-12 checkout-thumbnail">

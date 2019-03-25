@@ -69,32 +69,31 @@
                                 u can't see me
                             </p>
                         </li>
-                        @for ($i = 0; $i < 3; $i++)
-                            <li>
-                                <p>
-                                    <span>
-                                        01
-                                    </span>
-                                    細鋁框異型箱 - 銀 <br>
-                                    <img src="/img/product-logo.jpg" alt="">
-                                </p>
-                                <p>
-                                    27吋
-                                </p>
-                                <p>
-                                    型號:<span>HD-515</span>
-                                </p>
-                                <p>
-                                    1
-                                </p>
-                                <p>
-                                    NT$<span>12,000</span> 
-                                </p>
-                                <p>
-                                    <img src="/img/buyIcon/deleteIcon-01.png" alt="">
-                                </p>
-                            </li>
-                        @endfor
+                        <li>
+                            <p>
+                                <span>
+                                    01
+                                </span>
+                                細鋁框異型箱 - 銀 <br>
+                                <img src="/img/product-logo.jpg" alt="">
+                            </p>
+                            <p>
+                                27吋
+                            </p>
+                            <p>
+                                型號:<span>HD-515</span>
+                            </p>
+                            <p>
+                                1
+                            </p>
+                            <p>
+                                NT$<span>12,000</span> 
+                            </p>
+                            <p>
+                                <img src="/img/buyIcon/deleteIcon-01.png" alt="">
+                            </p>
+                        </li>
+                        
                         <li class="cart_list_total">
                             <p>
                                 商品小計 : NT$
@@ -117,7 +116,6 @@
                             送出，前往下一步
                         </button>
                     </a>
-                    
                 </div>
                 {{-- @if (count($cart))
                     <cart-page></cart-page>

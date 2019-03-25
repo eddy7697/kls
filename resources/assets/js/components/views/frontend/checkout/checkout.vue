@@ -1,11 +1,166 @@
 <template>
     <div class="row">
         <form v-on:submit.prevent="createOrder">
-            <div class="col-md-7">
+            <div class="cart_info">
+                <h3>
+                    訂購資訊
+                </h3>
+                <hr>
+                <form action="">
+                    <table>
+
+                        <tbody>
+
+                            <tr v-if="useUserInfo">
+                                <td class="cart_info_title">
+                                    收件人姓名
+                                    <strong v-if="!formValidation.ReceiverName" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                                <td>
+                                    <input type="text" id="shipping-name" placeholder="" v-model="customerParametor.ReceiverName" required>
+                                    <input type="radio" name="sex" id="male">
+                                    <label for="male">先生</label>
+                                    <input type="radio" name="sex" id="female">
+                                    <label for="female">小姐</label>
+                                </td>
+                            </tr>
+                            <tr v-else>
+                                <td class="cart_info_title">
+                                    收件人姓名
+                                    <strong v-if="!formValidation.ReceiverName" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                                <td>
+                                    <input type="text" id="shipping-name" placeholder="" v-model="customerParametorForShipping.ReceiverName" required>
+                                    <input type="radio" name="sex" id="male">
+                                    <label for="male">先生</label>
+                                    <input type="radio" name="sex" id="female">
+                                    <label for="female">小姐</label>
+                                </td>
+                            </tr>
+
+                            <tr v-if="useUserInfo">
+                                <td class="cart_info_title">
+                                    聯絡電話
+                                    <strong v-if="!formValidation.ReceiverCellPhone" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                                <td>
+                                    <input type="tel" id="shipping-phone" placeholder="" v-model="customerParametor.ReceiverCellPhone" required>
+                                    <span>
+                                        請依照格式填寫，如 : 06-231766
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr v-else>
+                                <td class="cart_info_title">
+                                    聯絡電話
+                                    <strong v-if="!formValidation.ReceiverCellPhone" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                                <td>
+                                    <input type="tel" id="shipping-phone" placeholder="" v-model="customerParametorForShipping.ReceiverCellPhone" required>
+                                    <span>
+                                        請依照格式填寫，如 : 06-231766
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr v-if="useUserInfo">
+                                <td class="cart_info_title">
+                                    電子郵件
+                                    <strong v-if="!formValidation.ReceiverEmail" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                                <td>
+                                     <input type="email" id="shipping-email" placeholder="" v-model="customerParametor.ReceiverEmail" required>
+                                    <span>
+                                        請依照格式填寫，如 : a12345@gmail.com
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr v-else>
+                                <td class="cart_info_title">
+                                    電子郵件
+                                    <strong v-if="!formValidation.ReceiverEmail" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                                <td>
+                                     <input type="email" id="shipping-email" placeholder="" v-model="customerParametorForShipping.ReceiverEmail" required>
+                                    <span>
+                                        請依照格式填寫，如 : a12345@gmail.com
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr v-if="shippingMethod == 'delivery' && useUserInfo">
+                                <td class="cart_info_title">
+                                    配送地址
+                                </td>
+                                <td>
+                                    <span role="tw-city-selector"></span>
+                                    <input class="tw-address" type="text" id="shipping-city" placeholder="" v-model="customerParametor.ReceiverAddress" required>
+                                    <strong v-if="!formValidation.ReceiverAddress" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                            </tr>
+
+                            <tr v-if="shippingMethod == 'delivery' && !useUserInfo">
+                                <td class="cart_info_title">
+                                    配送地址
+                                </td>
+                                <td>
+                                    <span role="tw-city-selector"></span>
+                                    <input class="tw-address" type="text" id="shipping-city" placeholder="" v-model="customerParametorForShipping.ReceiverAddress" required>
+                                    <strong v-if="!formValidation.ReceiverAddres" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="cart_info_title">
+                                    發票開立方式
+                                </td>
+                                <td>
+                                    <input type="radio" name="invoice" id="donation">
+                                    <label for="donation">捐贈發票</label>
+                                    <input type="radio" name="invoice" id="two-way">
+                                    <label for="two-way">二聯式電子發票</label>
+                                    <input type="radio" name="invoice" id="three-way">
+                                    <label for="three-way">三聯式發票</label>
+                                </td>
+                            </tr>
+                            <tr class="cart_info_text">
+                                <td class="cart_info_title">
+                                    備註事項
+                                </td>
+                                <td >
+                                    <textarea cols="30" rows="10"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="remind">
+                <p>
+                    我們不會將您輸入的任何個人信息用於回答查詢以外的目的。此外，我們將根據<a target="_blank" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=6">個人資料保護法第六條</a>，妥善管理您的個人信息，   
+                </p>
+                <p>
+                    您亦可點擊這裡查看更多關於KLS提供的<a target="_blank" href="/about/privacy">隱私權保護政策</a>。 
+                </p>
+                <p>
+                    <a>*</a>請您務必將KLS的電子郵件地址或域名設置為可接收的電子郵件，以免錯過我們的回覆，您亦可直接與我們聯繫 (<a target="_blank" href="/contact">點擊這裡查看聯絡訊息</a>)。
+                </p>
+            </div>
+            <div class="nextBtn">
+                <button type="submit" v-if="shippingMethod !== 'cvs'" >
+                    提交訂單
+                </button>
+            </div>
+            
+
+
+
+
+            <!-- <div class="col-md-7">
                 <div class="shipping-form">
                     <h4>訂購資訊</h4>
                     <hr>
-                    <div class="row" v-if="useUserInfo">
+                    <div class="row"  v-if="useUserInfo" >
                         <div class="col-md-6">
                             <div class="form-row">
                                 <label for="shipping-name">收件人姓名 *</label>
@@ -29,13 +184,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" v-else>
+                    <div class="row" v-else >
                         <div class="col-md-6">
                             <div class="form-row">
                                 <label for="shipping-name">收件人姓名 *</label>
                                 <strong v-if="!formValidation.ReceiverName" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
                                 <input class="form-control" type="text" id="shipping-name" placeholder="" v-model="customerParametorForShipping.ReceiverName" required>
-
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -53,7 +207,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row" v-if="shippingMethod == 'delivery' && useUserInfo">
                         <hr>
                         <div class="col-md-6">
@@ -79,6 +232,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row" v-if="shippingMethod == 'delivery' && !useUserInfo">
                         <hr>
                         <div class="col-md-6">
@@ -138,7 +292,7 @@
                     <label for="shipping-taxid">統一編號</label>
                     <input class="form-control" type="text" id="shipping-taxid" placeholder="" v-model="customerParametor.taxId">
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-5 checkout-method">
                 <h4>訂單資訊</h4>
                 <hr>
@@ -179,7 +333,7 @@
                                     </ul>
                                 </td>
                             </tr>
-                            <!-- <tr v-if="owner !== 'guest'">
+                            <tr v-if="owner !== 'guest'">
                                 <td>購物金使用：剩餘 {{point}}元</td>
                                 <td align="right">
                                     <div class="form-group" style="width:125px">
@@ -198,7 +352,7 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr> -->
+                            </tr>
                             <tr v-if="shippingMethod == 'cvs'">
                                 <td colspan="2">
                                     <div class="form-group">
@@ -217,7 +371,7 @@
                                 <td><strong>總計</strong></td>
                                 <td style="text-align: right; min-width:50px;">NT$ {{(finalAmount - pointUsage) + parseInt(shippingCosts)}}</td>
                             </tr>
-                            <!-- <tr v-if="owner == 'guest'">
+                            <tr v-if="owner == 'guest'">
                                 <td colspan="2">
                                     <br>
                                     <strong><a href="/register">加入會員即可獲得購物金50元，並享有購物金額10%紅利累積回饋</a></strong>
@@ -230,10 +384,10 @@
                                 <td style="text-align: right; min-width:50px;">
                                     {{Math.ceil(((parseInt(finalAmount) - parseInt(pointUsage))) * (parseInt(percentage) / 100)) }} 元
                                 </td>
-                            </tr> -->
-                            <!-- <tr>
+                            </tr>
+                            <tr>
                                 <td colspan="2">有優惠券嗎? <a @click="typeCoupon()" style="cursor: pointer">點我輸入優惠碼</a></td>
-                            </tr> -->
+                            </tr>
                             <tr v-if="isCouponFieldShow">
                                 <td colspan="2">
                                     <input style="margin-bottom: 10px;" type="text" class="form-control" id="coupon-field" v-model="couponNumber" placeholder="優惠券號碼">
@@ -259,7 +413,7 @@
                             </div>
                         </label>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="payment-ATM">
                             <input type="radio" id="payment-ATM" name="payment-method-option" value="ATM" v-model="paymentMethod">
                             <strong>ATM轉帳付款</strong>
@@ -267,8 +421,8 @@
                                 <p>提供線上或者實體ATM轉帳付款的服務，確認付款完成後將會進行後續出貨的動作。</p>
                             </div>
                         </label>
-                    </div> -->
-                    <!-- <div class="form-group">
+                    </div>
+                    <div class="form-group">
                         <label for="payment-Credit">
                             <input type="radio" id="payment-Credit" name="payment-method-option" value="Credit" v-model="paymentMethod" style="width: initial">
                             <strong>信用卡付款</strong>
@@ -276,7 +430,7 @@
                                 <p>提供線上刷卡的服務，確認付款完成後將會進行後續出貨的動作。</p>
                             </div>
                         </label>
-                    </div> -->
+                    </div>
                     <div class="form-group">
                         <label for="payment-Remit">
                             <input type="radio" id="payment-Remit" name="payment-method-option" value="Remit" v-model="paymentMethod" style="width: initial">

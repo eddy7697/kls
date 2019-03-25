@@ -1539,8 +1539,7 @@
     }
   }
   .product-innertext .buyIt img {
-    width: 15px;
-    height: 15px;
+    @include size-setting(15px,15px);
   }
   .buyIt p {
     margin: 0;
@@ -1580,7 +1579,8 @@
   .product-innertext {
     width: 65%;
     margin-left: 20px;
-    padding: 15px 5px;
+    padding: 15px 48px;
+    padding-left: 15px;
     .product-title p {
       font-size: 25px;
       font-weight: 700;
