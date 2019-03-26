@@ -506,7 +506,7 @@
     }
 </script>
 
-<style>
+<style lang="scss">
 * a {
   text-decoration: none;
 }

@@ -220,14 +220,18 @@
                             <div class="sw_mask mask_right">
                                 <img class="banner_arrow top" src="\img\big-arrow-01.svg" alt="">
                                 {{-- {{count(SiteMetaView::album())}} --}}
-                                <p id="banner_count">0<span id="swipe-index">1</span>/0</p>
+                                <p class="banner_count_col">
+                                    <span id="banner_count">1</span>
+                                    / {{-- 這條斜線不是偶然 --}}
+                                    <span id="swipe-index">1</span> 
+                                </p>
                                 <img class="banner_arrow bottom" src="\img\big-arrow-01.svg" alt="">
                             </div>
                             
                             <div class="swiper-wrapper">
 
                                 @for ($i = 0; $i < 5; $i++)
-                                    <div class="swiper-qslide banner ban_page1">
+                                    <div class="swiper-slide banner ban_page1">
                                         <div class="banner_word">
                                             <h1>
                                                 我在LA機場的人來人往...
