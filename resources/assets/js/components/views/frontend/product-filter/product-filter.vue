@@ -101,10 +101,10 @@
             <div class="row">
                 <div class="col-md-12 productCount">
                     <div class="productCount-left">
-                        <div class="productCount-icon">
+                        <!-- <div class="productCount-icon">
                             <img class="cube01" src="/img/selectCube-01.svg" alt="">
                             <img class="cube02" src="/img/selectCube-02.svg" alt="">
-                        </div>
+                        </div> -->
                         <div class="productCount-sort">
                             <span>價格由高到低排列 ↓</span>
                             <span>價格由低到高排列 ↑</span>
@@ -219,7 +219,7 @@
             getData() {
                 let vo = {
                     tag: this.filterGroup,
-                    category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
+                    category: this.type
                 }
 
                 axios.post('/products/tag', vo)

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 599);
+/******/ 	return __webpack_require__(__webpack_require__.s = 600);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -175,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 599:
+/***/ 600:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(600);
+module.exports = __webpack_require__(601);
 
 
 /***/ }),
 
-/***/ 600:
+/***/ 601:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('product-filter', __webpack_require__(601));
+Vue.component('product-filter', __webpack_require__(602));
 
 var app = new Vue({
     el: '#product-filter'
@@ -194,15 +194,15 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 601:
+/***/ 602:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(602)
+var __vue_script__ = __webpack_require__(603)
 /* template */
-var __vue_template__ = __webpack_require__(603)
+var __vue_template__ = __webpack_require__(604)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -242,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 602:
+/***/ 603:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -475,7 +475,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var vo = {
                 tag: this.filterGroup,
-                category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
+                category: this.type
             };
 
             axios.post('/products/tag', vo).then(function (res) {
@@ -524,7 +524,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 603:
+/***/ 604:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1012,18 +1012,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "productCount-left" }, [
-      _c("div", { staticClass: "productCount-icon" }, [
-        _c("img", {
-          staticClass: "cube01",
-          attrs: { src: "/img/selectCube-01.svg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "cube02",
-          attrs: { src: "/img/selectCube-02.svg", alt: "" }
-        })
-      ]),
-      _vm._v(" "),
       _c("div", { staticClass: "productCount-sort" }, [
         _c("span", [_vm._v("價格由高到低排列 ↓")]),
         _vm._v(" "),

@@ -139,11 +139,11 @@
         <div class="kls-page">
             @if (Route::current()->getName() == 'index')
 
-                <div class="forwardNews">
+                {{-- <div class="forwardNews">
                     <a href="">
                         2018/07/19 7月份月度直播拍賣會時間：7/21（六）晚上10:00，想看看闆娘仔細介紹的朋友，請點我參加喔！(Live 點我加入直播)
                     </a>
-                </div>
+                </div> --}}
                 
                 <!------------------------header------------------------>
                 <section id="header">
@@ -166,9 +166,9 @@
                                             KLS Baggage Department Store.
                                         </p>
                                     </a>
-                                    <div class="mark_time">
+                                    {{-- <div class="mark_time">
                                         <img src="/img/time.svg" alt="">
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="header_contact">
@@ -227,7 +227,7 @@
                             <div class="swiper-wrapper">
 
                                 @for ($i = 0; $i < 5; $i++)
-                                    <div class="swiper-slide banner ban_page1">
+                                    <div class="swiper-qslide banner ban_page1">
                                         <div class="banner_word">
                                             <h1>
                                                 我在LA機場的人來人往...
