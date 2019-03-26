@@ -1410,10 +1410,13 @@
       color: $color_white;
       text-align: right;
       span {
-        cursor: pointer;
-        transition: 0.5s;
-        &:hover {
-          color: rgba(255, 255, 255, 1);
+        margin: 0 5px;
+        a{
+          color: rgba(255, 255, 255, 0.5);
+          transition: 0.5s;
+          &:hover {
+            color: rgba(255, 255, 255, 1);
+          }
         }
       }
     }

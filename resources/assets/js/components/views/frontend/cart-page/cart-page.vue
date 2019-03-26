@@ -57,11 +57,11 @@
                     </li>
                     <form class="" action="/checkout/billing" method="post">
                         <li class="cart_list_total">
-                            <p>
+                            <div>
                                 <button v-if="isDirty" class="btn btn-default" name="button" @click="updateCart">更新購物車</button>
                                 <button v-else class="btn btn-default" name="button" disabled>更新購物車</button>
                                 <button class="btn btn-default" name="button" @click="deleteAll">清空購物車</button>
-                            </p>
+                            </div>
                             <p data-title="小計">
                                 商品小計 : NT$
                                 <span>
@@ -507,119 +507,117 @@
 </script>
 
 <style lang="scss">
-* a {
-  text-decoration: none;
+
+@mixin flex-mix($align, $justify) {
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    -webkit-box-align: $align;
+    -moz-box-align: $align;
+    -ms-flex-align: $align;
+    -webkit-align-items: $align;
+    align-items: $align;
+    -webkit-box-pack: $justify;
+    -moz-justify-content: $justify;
+    -webkit-justify-content: $justify;
+    justify-content: $justify;
+    flex-wrap: wrap;
 }
+
+.cart-list{
+   * a {
+        text-decoration: none;
+    } 
+}
+
 .hide {
   visibility: hidden;
 }
+
 .cart-list ul {
   padding: 0;
+  li {
+    @include flex-mix(center, center);
+    padding: 40px 15px;
+    list-style: none;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    p {
+      text-align: center;
+      margin-bottom: 0;
+      font-size: 16px;
+      img {
+        max-width: 80px;
+      }
+      &:nth-child(1) {
+        width: 30%;
+        span {
+          float: left;
+          margin-left: 5px;
+          margin: 10px;
+        }
+      }
+      &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+        width: 16%;
+        margin-top: 15px;
+      }
+      &:nth-child(6) {
+        width: 5%;
+        margin-top: 10px;
+        img {
+          width: 70%;
+          height: auto;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            filter: drop-shadow(1px 1px 1px #333);
+          }
+        }
+      }
+    }
+  }
+  .cart_list_title, .cart_list_total {
+    background-color: #0f2746;
+    color: #fff;
+    padding: 15px;
+  }
+  .cart_list_title p:nth-child(2), .cart_list_total p:nth-child(2), .cart_list_title p:nth-child(3), .cart_list_total p:nth-child(3), .cart_list_title p:nth-child(4), .cart_list_total p:nth-child(4), .cart_list_title p:nth-child(5), .cart_list_total p:nth-child(5), .cart_list_title p:nth-child(6), .cart_list_total p:nth-child(6) {
+    margin-top: 0;
+  }
+  li.cart_list_total {
+    display: block;
+    p {
+      width: 100%;
+      text-align: right;
+      &:nth-child(2) {
+        color: #f8b62d;
+        font-size: 24px;
+      }
+    }
+    span {
+      float: none !important;
+      margin-left: 0 !important;
+      margin-top: 0 !important;
+    }
+  }
 }
-.cart-list ul li {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: 'center';
-  -moz-box-align: 'center';
-  -ms-flex-align: 'center';
-  -webkit-align-items: 'center';
-  align-items: 'center';
-  -webkit-box-pack: 'center';
-  -moz-justify-content: 'center';
-  -webkit-justify-content: 'center';
-  justify-content: 'center';
-  flex-wrap: wrap;
-  padding: 40px 15px;
-  list-style: none;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-}
-.cart-list ul li p {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
-}
-.cart-list ul li p img {
-  max-width: 80px;
-}
-.cart-list ul li p:nth-child(1) {
-  width: 30%;
-}
-.cart-list ul li p:nth-child(1) span {
-  float: left;
-  margin-left: 5px;
-  margin-top: 15px;
-}
-.cart-list ul li p:nth-child(2), 
-.cart-list ul li p:nth-child(3), 
-.cart-list ul li p:nth-child(4), 
-.cart-list ul li p:nth-child(5) {
-  width: 16%;
-  margin-top: 15px;
-}
-.cart-list ul li p:nth-child(6) {
-  width: 5%;
-  margin-top: 10px;
-}
-.cart-list ul li p:nth-child(6) img {
-  width: 70%;
-  height: auto;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.cart-list ul li p:nth-child(6) img:hover {
-  filter: drop-shadow(1px 1px 1px #333);
-}
-.cart-list ul .cart_list_title, .cart-list ul .cart_list_total {
-  background-color: #0f2746;
-  color: #fff;
-  padding: 15px;
-}
-.cart-list ul .cart_list_title p:nth-child(2), 
-.cart-list ul .cart_list_total p:nth-child(2), 
-.cart-list ul .cart_list_title p:nth-child(3), 
-.cart-list ul .cart_list_total p:nth-child(3), 
-.cart-list ul .cart_list_title p:nth-child(4), 
-.cart-list ul .cart_list_total p:nth-child(4), 
-.cart-list ul .cart_list_title p:nth-child(5), 
-.cart-list ul .cart_list_total p:nth-child(5), 
-.cart-list ul .cart_list_title p:nth-child(6), 
-.cart-list ul .cart_list_total p:nth-child(6) {
-  margin-top: 0;
-}
-.cart-list ul li.cart_list_total {
-  display: block;
-}
-.cart-list ul li.cart_list_total p {
-  width: 100%;
-  text-align: right;
-}
-.cart-list ul li.cart_list_total p:nth-child(2) {
-  color: #f8b62d;
-  font-size: 24px;
-}
-.cart-list ul li.cart_list_total span {
-  float: none !important;
-  margin-left: 0 !important;
-  margin-top: 0 !important;
-}
+
 .nextBtn {
   width: 100%;
   text-align: center;
   margin: 70px 0 50px;
-}
-.nextBtn button {
-  border: solid 1px transparent;
-  background-color: #0f2746;
-  color: #fff;
-  padding: 15px 70px;
-  transition: 0.5s;
-  font-size: 16px;
-}
-.nextBtn button:hover {
-  background-color: #f8b62d;
+  button {
+    border: solid 1px transparent;
+    background-color: #0f2746;
+    color: #fff;
+    padding: 15px 70px;
+    transition: 0.5s;
+    font-size: 16px;
+    &:hover {
+      background-color: #f8b62d;
+    }
+  }
 }
 </style>
 

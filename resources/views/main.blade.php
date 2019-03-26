@@ -368,11 +368,11 @@
                                                                 諮詢專區
                                                             </a>
                                                         </li>
-                                                        <li>
+                                                        {{-- <li>
                                                             <a href="">
                                                                 安心購物宣言
                                                             </a>
-                                                        </li>
+                                                        </li> --}}
                                                     </ul>
                                                 </li>
                                                 <li class="col-md-4 mega-menu-img">
@@ -508,11 +508,11 @@
                                                                         諮詢專區
                                                                     </a>
                                                                 </li>
-                                                                <li>
+                                                                {{-- <li>
                                                                     <a href="">
                                                                         安心購物宣言
                                                                     </a>
-                                                                </li>
+                                                                </li> --}}
                                                             </ul>
                                                         </li>
                                                         <li class="col-md-4 mega-menu-img">
