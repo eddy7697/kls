@@ -188,6 +188,8 @@ class ProductController extends Controller
                         {
                             $tag = $request->tag;
 
+                            $q->where('productCategory', $request->category);
+
                             if ($tag['brand'] !== null) {
                                 $q->where('command', 'like', '%'.$tag['brand'].'%');
                             }

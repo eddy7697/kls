@@ -1277,7 +1277,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99999;
+  z-index: 99;
   background-color: $color-blue;
   .sub-page-header-inner {
     @include flex-mix(flex-end,space-between);

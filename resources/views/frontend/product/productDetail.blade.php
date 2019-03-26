@@ -12,7 +12,11 @@
 @endsection
 
 @section('custom-script')
+    <script src="/js/product-methods.js"></script>
     <script type="text/javascript">
+        $('.mg-product').css({
+            'margin-top': ($('.sub-page-header').height() + 10) + 'px'
+        })
         function addSingleProduct(guid) {
             CH.addSingleProductToCart(guid);
             return;
@@ -39,7 +43,7 @@
                 asNavFor: '.product-thumb'
            });
            $('.product-thumb').slick({
-               slidesToShow: 3,
+               slidesToShow: 4,
                slidesToScroll: 1,
                asNavFor: '.product-img',
                dots: true,
@@ -66,7 +70,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-    <div class="container mg-site-thumbnail">
+    {{-- <div class="container mg-site-thumbnail">
         <div class="col-md-12">
             <a href="/">首頁</a>
             &nbsp;&nbsp;>&nbsp;&nbsp;
@@ -75,41 +79,51 @@
                 &nbsp;&nbsp;>&nbsp;&nbsp;
                 <a href="/product/category/{{$product->category}}">{{CategoryView::get($product->category)->categoryTitle}}</a>                
             @else
-                {{-- &nbsp;&nbsp;>&nbsp;&nbsp;
-                <a href="/product/all">所有商品</a>                 --}}
             @endif
             &nbsp;&nbsp;>&nbsp;&nbsp;{{$product->productTitle}}
         </div>
-    </div>
+    </div> --}}
 
     <div class="container mg-product">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="row">
                     {{--商品圖片輪播--}}
-                    <div class="col-md-5 product-gallery">
+                    <div class="col-md-7 product-gallery">
                         <div class="product-img">
-                            <img src="{{$product->featureImage}}" alt="">
+                            <div class="product-item">
+                                <img src="{{$product->featureImage}}" alt="">
+                            </div>
                             @foreach ($album as $item)
-                                <li>
+                                <div class="product-item">
                                     <img src="{{$item->imageUrl}}" alt="">
-                                </li>
+                                </div>
                             @endforeach
                         </div>
-                        <ul class="product-thumb">
-                            <li>
-                                <img src="{{$product->featureImage}}" alt="">
-                            </li>
-                            @foreach ($album as $item)
-                                <li>
-                                    <img src="{{$item->imageUrl}}" alt="">
-                                </li>
-                            @endforeach
-                        </ul>
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <ul class="product-thumb">
+                                    <li>
+                                        <div class="thumb-item">
+                                            <img src="{{$product->featureImage}}" alt="">
+                                        </div>
+                                        
+                                    </li>
+                                    @foreach ($album as $item)
+                                        <li>
+                                            <div class="thumb-item">
+                                                <img src="{{$item->imageUrl}}" alt="">
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        
                     </div>
 
                     {{--商品資訊以及功能--}}
-                    <div class="col-md-7 product-info">
+                    <div class="col-md-5 product-info">
                         <h3>{{$product->productTitle}}</h3>
                         @unless (count($comentList) == 0)
                             <div class="rate-box">
@@ -274,7 +288,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <div class="center-hr">
                     <span>
                         最新商品
@@ -285,7 +299,7 @@
                         <li><a href="//product/detail/{{$item->guid}}">{{$item->productTitle}}</a></li>
                     @endforeach
                 </ul>
-            </div>
+            </div> --}}
         </div>
     </div>
 

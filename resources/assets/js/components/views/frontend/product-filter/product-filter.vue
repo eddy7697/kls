@@ -9,7 +9,7 @@
                 <p style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                 </div>
             </div>
-            <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;">
+            <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
                 <div class="col-md-12 filter-filtering">
                     <div class="col-md-4">
                         <div class="filter-filters">
@@ -110,14 +110,14 @@
                             <span>價格由低到高排列 ↑</span>
                         </div>
                     </div>
-                    <div class="productCount-number">
+                    <div class="productCount-number" v-if="isLoaded">
                         <span>顯示總數</span>
-                        <span>08/</span>
-                        <span>127</span>
+                        <span>{{pageData.data.length}}/</span>
+                        <span>{{pageData.total}}</span>
                     </div>
                 </div>
             </div>
-            <button class="collapseBtn">
+            <button class="collapseBtn" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
                 收合
                 <img src="/img/collapseIcon.png" alt="">
             </button>
@@ -156,7 +156,7 @@
                         </div>                    
                     </div>
                 </div>
-                <div class="col-md-12 filter-product-readMore">
+                <div class="col-md-12 filter-product-readMore" @click="learnMoreAction" v-if="pageData.last_page != pageData.current_page">
                     <button id="readMore-btn">查看更多</button>
                 </div>
             </div>
@@ -171,8 +171,10 @@
         mounted () {
             console.log('Component mounted.')
         },
+        props: ['type'],
         data () {
             return {
+                isLoaded: false,
                 tagGroup: {
                     brand: null,
                     size: null,
@@ -216,16 +218,31 @@
             },
             getData() {
                 let vo = {
-                    tag: this.filterGroup
+                    tag: this.filterGroup,
+                    category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
                 }
 
                 axios.post('/products/tag', vo)
                     .then(res => {
                         this.pageData = res.data
+                        this.isLoaded = true
                     })
             },
             addSigleProduct(guid) {
                 addSigleProduct(guid)
+            },
+            learnMoreAction() {
+                let vo = {
+                    tag: this.filterGroup,
+                    category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
+                }
+
+                axios.post(this.pageData.next_page_url, vo)
+                    .then(res => {
+                        this.pageData.next_page_url = res.data.next_page_url
+                        this.pageData.current_page = res.data.current_page
+                        this.pageData.data = _.concat(this.pageData.data, res.data.data)
+                    })
             },
             clearFilter() {
                 this.filterGroup = {

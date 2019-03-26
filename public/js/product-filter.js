@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 597);
+/******/ 	return __webpack_require__(__webpack_require__.s = 599);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -175,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 597:
+/***/ 599:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(598);
+module.exports = __webpack_require__(600);
 
 
 /***/ }),
 
-/***/ 598:
+/***/ 600:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('product-filter', __webpack_require__(599));
+Vue.component('product-filter', __webpack_require__(601));
 
 var app = new Vue({
     el: '#product-filter'
@@ -194,15 +194,15 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 599:
+/***/ 601:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(600)
+var __vue_script__ = __webpack_require__(602)
 /* template */
-var __vue_template__ = __webpack_require__(601)
+var __vue_template__ = __webpack_require__(603)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -242,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 600:
+/***/ 602:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -420,8 +420,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         console.log('Component mounted.');
     },
+
+    props: ['type'],
     data: function data() {
         return {
+            isLoaded: false,
             tagGroup: {
                 brand: null,
                 size: null,
@@ -471,11 +474,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             var vo = {
-                tag: this.filterGroup
+                tag: this.filterGroup,
+                category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
             };
 
             axios.post('/products/tag', vo).then(function (res) {
                 _this2.pageData = res.data;
+                _this2.isLoaded = true;
             });
         },
         addSigleProduct: function (_addSigleProduct) {
@@ -491,6 +496,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }(function (guid) {
             addSigleProduct(guid);
         }),
+        learnMoreAction: function learnMoreAction() {
+            var _this3 = this;
+
+            var vo = {
+                tag: this.filterGroup,
+                category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
+            };
+
+            axios.post(this.pageData.next_page_url, vo).then(function (res) {
+                _this3.pageData.next_page_url = res.data.next_page_url;
+                _this3.pageData.current_page = res.data.current_page;
+                _this3.pageData.data = _.concat(_this3.pageData.data, res.data.data);
+            });
+        },
         clearFilter: function clearFilter() {
             this.filterGroup = {
                 brand: null,
@@ -505,7 +524,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 601:
+/***/ 603:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -516,252 +535,334 @@ var render = function() {
     _c("div", { staticClass: "container filter-area" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "row filter",
-          staticStyle: { "margin-top": "80px", "margin-bottom": "80px" }
-        },
-        [
-          _c("div", { staticClass: "col-md-12 filter-filtering" }, [
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "filter-filters" }, [
-                _vm._m(1),
+      _vm.type == "R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V"
+        ? _c(
+            "div",
+            {
+              staticClass: "row filter",
+              staticStyle: { "margin-top": "80px", "margin-bottom": "80px" }
+            },
+            [
+              _c("div", { staticClass: "col-md-12 filter-filtering" }, [
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "filter-filters" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "filters-selects" }, [
+                      _c(
+                        "div",
+                        { staticClass: "filters-selects-div" },
+                        _vm._l(_vm.tagGroup.brand, function(item, index) {
+                          return _c(
+                            "label",
+                            { key: index, attrs: { for: item } },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filterGroup.brand,
+                                    expression: "filterGroup.brand"
+                                  }
+                                ],
+                                attrs: {
+                                  name: "brand",
+                                  id: item,
+                                  type: "radio"
+                                },
+                                domProps: {
+                                  value: item,
+                                  checked: _vm._q(_vm.filterGroup.brand, item)
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.$set(_vm.filterGroup, "brand", item)
+                                  }
+                                }
+                              }),
+                              _vm._v(
+                                _vm._s(item) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("hr"),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "filter-filters" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "filters-selects" }, [
+                      _c(
+                        "div",
+                        { staticClass: "filters-selects-div" },
+                        _vm._l(_vm.tagGroup.size, function(item, index) {
+                          return _c(
+                            "label",
+                            { key: index, attrs: { for: item } },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filterGroup.size,
+                                    expression: "filterGroup.size"
+                                  }
+                                ],
+                                attrs: {
+                                  name: "size",
+                                  id: item,
+                                  type: "radio"
+                                },
+                                domProps: {
+                                  value: item,
+                                  checked: _vm._q(_vm.filterGroup.size, item)
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.$set(_vm.filterGroup, "size", item)
+                                  }
+                                }
+                              }),
+                              _vm._v(
+                                _vm._s(item) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("form", { staticClass: "filters-selects" }, [
-                  _c(
-                    "div",
-                    { staticClass: "filters-selects-div" },
-                    _vm._l(_vm.tagGroup.brand, function(item, index) {
-                      return _c("label", { key: index, attrs: { for: item } }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.filterGroup.brand,
-                              expression: "filterGroup.brand"
-                            }
-                          ],
-                          attrs: { name: "brand", id: item, type: "radio" },
-                          domProps: {
-                            value: item,
-                            checked: _vm._q(_vm.filterGroup.brand, item)
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.$set(_vm.filterGroup, "brand", item)
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          _vm._s(item) + "\n                                "
-                        )
-                      ])
-                    })
-                  )
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "filter-filters" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "filters-selects" }, [
+                      _c(
+                        "div",
+                        { staticClass: "filters-selects-div" },
+                        _vm._l(_vm.tagGroup.trip, function(item, index) {
+                          return _c(
+                            "label",
+                            { key: index, attrs: { for: item } },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filterGroup.trip,
+                                    expression: "filterGroup.trip"
+                                  }
+                                ],
+                                attrs: {
+                                  name: "trip",
+                                  id: item,
+                                  type: "radio"
+                                },
+                                domProps: {
+                                  value: item,
+                                  checked: _vm._q(_vm.filterGroup.trip, item)
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.$set(_vm.filterGroup, "trip", item)
+                                  }
+                                }
+                              }),
+                              _vm._v(
+                                _vm._s(item) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12 filter-filtering" }, [
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "filter-filters" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "filters-selects" }, [
+                      _c(
+                        "div",
+                        { staticClass: "filters-selects-div" },
+                        _vm._l(_vm.tagGroup.price, function(item, index) {
+                          return _c(
+                            "label",
+                            { key: index, attrs: { for: item } },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filterGroup.price,
+                                    expression: "filterGroup.price"
+                                  }
+                                ],
+                                attrs: {
+                                  name: "price",
+                                  id: item,
+                                  type: "radio"
+                                },
+                                domProps: {
+                                  value: item,
+                                  checked: _vm._q(_vm.filterGroup.price, item)
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.$set(_vm.filterGroup, "price", item)
+                                  }
+                                }
+                              }),
+                              _vm._v(
+                                _vm._s(item) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "filter-filters" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "filters-selects" }, [
+                      _c(
+                        "div",
+                        { staticClass: "filters-selects-div" },
+                        _vm._l(_vm.tagGroup.material, function(item, index) {
+                          return _c(
+                            "label",
+                            { key: index, attrs: { for: item } },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filterGroup.material,
+                                    expression: "filterGroup.material"
+                                  }
+                                ],
+                                attrs: {
+                                  name: "material",
+                                  id: item,
+                                  type: "radio"
+                                },
+                                domProps: {
+                                  value: item,
+                                  checked: _vm._q(
+                                    _vm.filterGroup.material,
+                                    item
+                                  )
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.$set(_vm.filterGroup, "material", item)
+                                  }
+                                }
+                              }),
+                              _vm._v(
+                                _vm._s(item) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "filter-remakeBtn",
+                    on: {
+                      click: function($event) {
+                        _vm.clearFilter()
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "filter-remakeBtnImg",
+                      attrs: { src: "/img/remakeIcon.svg", alt: "" }
+                    }),
+                    _vm._v(
+                      "\n                    重製選取條件\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" })
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "filter-filters" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c("form", { staticClass: "filters-selects" }, [
-                  _c(
-                    "div",
-                    { staticClass: "filters-selects-div" },
-                    _vm._l(_vm.tagGroup.size, function(item, index) {
-                      return _c("label", { key: index, attrs: { for: item } }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.filterGroup.size,
-                              expression: "filterGroup.size"
-                            }
-                          ],
-                          attrs: { name: "size", id: item, type: "radio" },
-                          domProps: {
-                            value: item,
-                            checked: _vm._q(_vm.filterGroup.size, item)
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.$set(_vm.filterGroup, "size", item)
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          _vm._s(item) + "\n                                "
-                        )
-                      ])
-                    })
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "filter-filters" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c("form", { staticClass: "filters-selects" }, [
-                  _c(
-                    "div",
-                    { staticClass: "filters-selects-div" },
-                    _vm._l(_vm.tagGroup.trip, function(item, index) {
-                      return _c("label", { key: index, attrs: { for: item } }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.filterGroup.trip,
-                              expression: "filterGroup.trip"
-                            }
-                          ],
-                          attrs: { name: "trip", id: item, type: "radio" },
-                          domProps: {
-                            value: item,
-                            checked: _vm._q(_vm.filterGroup.trip, item)
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.$set(_vm.filterGroup, "trip", item)
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          _vm._s(item) + "\n                                "
-                        )
-                      ])
-                    })
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-12 filter-filtering" }, [
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "filter-filters" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c("form", { staticClass: "filters-selects" }, [
-                  _c(
-                    "div",
-                    { staticClass: "filters-selects-div" },
-                    _vm._l(_vm.tagGroup.price, function(item, index) {
-                      return _c("label", { key: index, attrs: { for: item } }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.filterGroup.price,
-                              expression: "filterGroup.price"
-                            }
-                          ],
-                          attrs: { name: "price", id: item, type: "radio" },
-                          domProps: {
-                            value: item,
-                            checked: _vm._q(_vm.filterGroup.price, item)
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.$set(_vm.filterGroup, "price", item)
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          _vm._s(item) + "\n                                "
-                        )
-                      ])
-                    })
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "filter-filters" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c("form", { staticClass: "filters-selects" }, [
-                  _c(
-                    "div",
-                    { staticClass: "filters-selects-div" },
-                    _vm._l(_vm.tagGroup.material, function(item, index) {
-                      return _c("label", { key: index, attrs: { for: item } }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.filterGroup.material,
-                              expression: "filterGroup.material"
-                            }
-                          ],
-                          attrs: { name: "material", id: item, type: "radio" },
-                          domProps: {
-                            value: item,
-                            checked: _vm._q(_vm.filterGroup.material, item)
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.$set(_vm.filterGroup, "material", item)
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          _vm._s(item) + "\n                                "
-                        )
-                      ])
-                    })
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "filter-remakeBtn",
-                on: {
-                  click: function($event) {
-                    _vm.clearFilter()
-                  }
-                }
-              },
-              [
-                _c("img", {
-                  staticClass: "filter-remakeBtnImg",
-                  attrs: { src: "/img/remakeIcon.svg", alt: "" }
-                }),
-                _vm._v("\n                    重製選取條件\n                ")
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" })
-          ])
-        ]
-      )
+            ]
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _vm._m(6),
+    _c(
+      "div",
+      {
+        staticClass: "container container-productCount",
+        staticStyle: { position: "relative" }
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12 productCount" }, [
+            _vm._m(6),
+            _vm._v(" "),
+            _vm.isLoaded
+              ? _c("div", { staticClass: "productCount-number" }, [
+                  _c("span", [_vm._v("顯示總數")]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.pageData.data.length) + "/")]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.pageData.total))])
+                ])
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.type == "R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V"
+          ? _c("button", { staticClass: "collapseBtn" }, [
+              _vm._v("\n            收合\n            "),
+              _c("img", { attrs: { src: "/img/collapseIcon.png", alt: "" } })
+            ])
+          : _vm._e()
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "container-fulid filter-product-out" }, [
       _c("div", { staticClass: "row filter-product" }, [
@@ -831,7 +932,20 @@ var render = function() {
           })
         ),
         _vm._v(" "),
-        _vm._m(8)
+        _vm.pageData.last_page != _vm.pageData.current_page
+          ? _c(
+              "div",
+              {
+                staticClass: "col-md-12 filter-product-readMore",
+                on: { click: _vm.learnMoreAction }
+              },
+              [
+                _c("button", { attrs: { id: "readMore-btn" } }, [
+                  _vm._v("查看更多")
+                ])
+              ]
+            )
+          : _vm._e()
       ])
     ])
   ])
@@ -897,51 +1011,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "container container-productCount",
-        staticStyle: { position: "relative" }
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12 productCount" }, [
-            _c("div", { staticClass: "productCount-left" }, [
-              _c("div", { staticClass: "productCount-icon" }, [
-                _c("img", {
-                  staticClass: "cube01",
-                  attrs: { src: "/img/selectCube-01.svg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "cube02",
-                  attrs: { src: "/img/selectCube-02.svg", alt: "" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "productCount-sort" }, [
-                _c("span", [_vm._v("價格由高到低排列 ↓")]),
-                _vm._v(" "),
-                _c("span", [_vm._v("價格由低到高排列 ↑")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "productCount-number" }, [
-              _c("span", [_vm._v("顯示總數")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("08/")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("127")])
-            ])
-          ])
-        ]),
+    return _c("div", { staticClass: "productCount-left" }, [
+      _c("div", { staticClass: "productCount-icon" }, [
+        _c("img", {
+          staticClass: "cube01",
+          attrs: { src: "/img/selectCube-01.svg", alt: "" }
+        }),
         _vm._v(" "),
-        _c("button", { staticClass: "collapseBtn" }, [
-          _vm._v("\n            收合\n            "),
-          _c("img", { attrs: { src: "/img/collapseIcon.png", alt: "" } })
-        ])
-      ]
-    )
+        _c("img", {
+          staticClass: "cube02",
+          attrs: { src: "/img/selectCube-02.svg", alt: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "productCount-sort" }, [
+        _c("span", [_vm._v("價格由高到低排列 ↓")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("價格由低到高排列 ↑")])
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -949,14 +1037,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "productHeart" }, [
       _c("img", { attrs: { src: "/img/productHeart.svg", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 filter-product-readMore" }, [
-      _c("button", { attrs: { id: "readMore-btn" } }, [_vm._v("查看更多")])
     ])
   }
 ]

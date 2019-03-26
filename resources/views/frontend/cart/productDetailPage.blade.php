@@ -13,6 +13,7 @@
 
 @section('custom-script')
     <script type="text/javascript">
+        
         function addSingleProduct(guid) {
             CH.addSingleProductToCart(guid);
             return;
@@ -66,7 +67,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-    <div class="container mg-site-thumbnail">
+    {{-- <div class="container mg-site-thumbnail">
         <div class="col-md-12">
             <a href="/">首頁</a>
             &nbsp;&nbsp;>&nbsp;&nbsp;
@@ -75,12 +76,10 @@
                 &nbsp;&nbsp;>&nbsp;&nbsp;
                 <a href="/product/category/{{$product->category}}">{{CategoryView::get($product->category)->categoryTitle}}</a>                
             @else
-                {{-- &nbsp;&nbsp;>&nbsp;&nbsp;
-                <a href="/product/all">所有商品</a>                 --}}
             @endif
             &nbsp;&nbsp;>&nbsp;&nbsp;{{$product->productTitle}}
         </div>
-    </div>
+    </div> --}}
 
     <div class="container mg-product">
         <div class="row">

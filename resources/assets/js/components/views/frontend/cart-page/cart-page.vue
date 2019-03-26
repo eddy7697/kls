@@ -7,7 +7,7 @@
     <div class="row" v-else>
         <div class="col-md-12">
             <div class="cart-list">
-                <ul v-for="(item, index) in cart" v-bind:key="index">
+                <ul>
                     <li class="cart_list_title">
                         <p>
                             產品名稱
@@ -26,14 +26,14 @@
                         </p>
                         <p class="hide"></p>
                     </li>
-                    <li>
+                    <li v-for="(item, index) in cart" v-bind:key="index">
                         <p>
                             <span>
-                                01
+                                {{index + 1}}
                             </span>
                                 <a  data-title="商品" v-bind:href="productLink(item.id.guid)">{{item.id.title}}</a>
                             <br>
-                            <img src="/img/product-logo.jpg" alt="">
+                            <!-- <img src="/img/product-logo.jpg" alt=""> -->
                         </p>
                         <p>
                             27吋
@@ -42,7 +42,9 @@
                             型號:<span>HD-515</span>
                         </p>
                         <p data-title="數量" class="count">
-                            {{item.qty}}
+                            <el-input-number 
+                            v-model="item.qty" size="small" 
+                            label="請選擇數量"></el-input-number>
                         </p>
                         <p data-title="價格">
                             NT$<span>{{item.price}}</span> 
@@ -55,6 +57,11 @@
                     </li>
                     <form class="" action="/checkout/billing" method="post">
                         <li class="cart_list_total">
+                            <p>
+                                <button v-if="isDirty" class="btn btn-default" name="button" @click="updateCart">更新購物車</button>
+                                <button v-else class="btn btn-default" name="button" disabled>更新購物車</button>
+                                <button class="btn btn-default" name="button" @click="deleteAll">清空購物車</button>
+                            </p>
                             <p data-title="小計">
                                 商品小計 : NT$
                                 <span>
@@ -64,7 +71,7 @@
                             <p data-title="總計">
                                 訂單總金額 : NT$
                                 <span>
-                                    {{totalAmount}}
+                                    {{numberFormat(amountNum, 0, '.', ',')}}
                                 </span>
                             </p>
                         </li>
@@ -160,7 +167,7 @@
                                         </ul>
                                     </td>
                                 </tr> -->
-<!-- 
+                                <!-- 
                                 <tr class="order-total">
                                     <th>總計</th>
                                     <td data-title="總計"><strong><span><span>NT$</span> </span></strong> {{totalAmount}}</td>
@@ -186,6 +193,23 @@
 
 <script>
     $('.loading-bar').fadeOut('100');
+    var h = require('../../../lib/helper.js', ).default;
+    import {
+        Dialog,
+        InputNumber,
+        Radio,
+        RadioGroup,
+    } from 'element-ui';
+    import 'element-ui/lib/theme-chalk/index.css';
+    import lang from 'element-ui/lib/locale/lang/zh-TW'
+    import locale from 'element-ui/lib/locale'
+
+    Vue.use(Dialog);
+    Vue.use(InputNumber);
+    Vue.use(Radio);
+    Vue.use(RadioGroup);
+    locale.use(lang)
+
     export default {
         data() {
             return {
@@ -474,7 +498,10 @@
             },
             showMessage: function (type, string) {
                 toastr[type](string);
-            }
+            },
+            numberFormat(n, c, d, t) {
+                return h.number_format(n, c, d, t)
+            },
         }
     }
 </script>

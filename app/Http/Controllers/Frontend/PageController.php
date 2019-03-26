@@ -39,6 +39,7 @@ class PageController extends Controller
         $productAll = Product::paginate(15);
 
         return view('frontend.product.productAll', [
+            'type' => 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V',
             'productAll' => $productAll,
             'isThumbShow' => true,
             'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;系列商品'
@@ -49,7 +50,8 @@ class PageController extends Controller
     {
         $productAll = Product::paginate(15);
 
-        return view('frontend.product.productFitting', [
+        return view('frontend.product.productAll', [
+            'type' => 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd',
             'productAll' => $productAll,
             'isThumbShow' => true,
             'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;行李箱配件'
@@ -60,7 +62,8 @@ class PageController extends Controller
     {
         $productAll = Product::paginate(15);
 
-        return view('frontend.product.productFittingBag', [
+        return view('frontend.product.productAll', [
+            'type' => '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe',
             'productAll' => $productAll,
             'isThumbShow' => true,
             'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;品牌背包'

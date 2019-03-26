@@ -1,13 +1,22 @@
 .mg-product {
     margin-bottom: 50px;
 
-
-
     .product-gallery {
 
         .product-img {
             box-sizing: border-box;
             padding: 5px;
+
+            .product-item {
+                position: relative;
+                padding-bottom: 70%;
+                img {
+                    @extend %middle-center;
+                    width: auto;
+                    max-width: 90%;
+                    max-height: 90%;
+                }
+            }
 
             img {
                 width: 100%;
@@ -23,6 +32,19 @@
                 width: 30%;
                 margin: 10px 0;
                 padding: 10px;
+
+                .thumb-item {
+                    position: relative;
+                    border: #ccc thin solid;
+                    padding-bottom: 100%;
+
+                    img {
+                        @extend %middle-center;
+                        width: auto;
+                        max-width: 90%;
+                        max-height: 90%;
+                    }
+                }
 
                 img {
                     width: 100%;
@@ -45,6 +67,7 @@
     }
 
     .product-info {
+        padding-top: 20px;
 
         h3 {
             margin: 10px 0;
@@ -76,7 +99,40 @@
         }
 
         .product-function {
-            margin-top: 10px;
+            // margin-top: 10px;
+
+            .option-group {
+                margin-top: 5px;
+                .option-item {
+                    overflow: hidden;
+                    position: relative;
+                    display: inline-block;
+                    border: #ccc solid thin;
+                    color: #999;
+                    padding: 10px 25px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    transition: background-color .2s ease;
+
+                    &.active, &:hover {
+                        border: none;
+                        padding: 11px 26px;
+                        background: #0f2746;
+                        color: #eee;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 20px;
+                            height: 20px;
+                            background-color: #F1AB40;
+                            transform: rotate(45deg);
+                            right: -12px;
+                            top: -15px;
+                        }
+                    }
+                }
+            }
 
             .product-quantity {
                 height: 30px;

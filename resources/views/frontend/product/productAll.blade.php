@@ -29,6 +29,6 @@
 
 @section('content')
     <div id="product-filter">
-        <product-filter></product-filter>
+        <product-filter type="{{$type}}"></product-filter>
     </div>
 @endsection

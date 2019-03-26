@@ -11,13 +11,23 @@
         </div>
         <div v-else>
             <strong v-if="serialNumber">貨號：{{serialNumber}}</strong>
-            <br>
+            <br v-if="chossedSub">
             <strong v-if="price" :class="{ 'del-line': discountedPrice }">建議售價：<span style="color: red">{{price}}元</span></strong>
             <strong v-if="discountedPrice && discountedPrice" style="font-size: 20px;">特價：<span style="color: red">{{discountedPrice}}元</span></strong>
         </div>
         <!-- <br> -->
+        <div class="option-group" v-if="productType == 'variable'" >
+            <div class="option-item" 
+                :class="{active: item.id == chossedSub}"
+                v-for="(item, index) in subProducts" 
+                :key="index"
+                @click="chossedSub = item.id">
+                {{item.subTitle}}
+            </div>
+        </div>
+
         <el-radio-group 
-            v-if="productType == 'variable'" 
+            v-if="false" 
             @change="selectSub"
             v-model="chossedSub" 
             size="medium">
@@ -53,12 +63,20 @@
 </template>
 
 <script>
-    import ElementUI from 'element-ui';
+    import {
+        Dialog,
+        InputNumber,
+        Radio,
+        RadioGroup,
+    } from 'element-ui';
     import 'element-ui/lib/theme-chalk/index.css';
     import lang from 'element-ui/lib/locale/lang/zh-TW'
     import locale from 'element-ui/lib/locale'
 
-    Vue.use(ElementUI);
+    Vue.use(Dialog);
+    Vue.use(InputNumber);
+    Vue.use(Radio);
+    Vue.use(RadioGroup);
     locale.use(lang)
 
     export default {
@@ -97,6 +115,9 @@
                     }
                     
                 }
+            },
+            chossedSub(val) {
+                this.selectSub(val)
             }
         },
         methods: {
@@ -161,7 +182,8 @@
                     title: this.choosedSubItem.subTitle,
                     subPrice: parseInt(this.choosedSubItem.subPrice),
                     subDiscountPrice: this.choosedSubItem.subDiscountPrice ? parseInt(this.choosedSubItem.subDiscountPrice) : 0,
-                    qty: this.subQuantity
+                    qty: this.subQuantity,
+                    subSerialNumber: this.choosedSubItem.subSerialNumber
                 }
 
                 axios.post(`/cart/add/sub/${this.guid}`, choosed)

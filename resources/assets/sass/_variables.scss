@@ -10,7 +10,7 @@ $panel-default-border    : $laravel-border-color;
 $panel-inner-border      : $laravel-border-color;
 
 // Brands
-$brand-primary           : #2A3F54;
+$brand-primary           : #0f2746;
 $brand-info              : #8eb4cb;
 $brand-success           : #2ab27b;
 $brand-warning           : #cbb956;
@@ -138,6 +138,13 @@ $font-size-footer-title      : 28px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+%middle-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 %switch-span{

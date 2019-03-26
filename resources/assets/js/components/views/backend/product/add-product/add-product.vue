@@ -42,7 +42,7 @@
                                 <li>
                                     <a href="#panel-119853" data-toggle="tab">SEO 設定</a>
                                 </li>
-                                <li>
+                                <li v-if="productContent.productCategory == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
                                     <a href="#panel-119444" data-toggle="tab">標籤設定</a>
                                 </li>
                             </ul>
@@ -228,7 +228,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="tab-pane " id="panel-119444">
+                                <div class="tab-pane " id="panel-119444" v-if="productContent.productCategory == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
                                     <table class="table field-table">
                                         <tr v-for="(item, index) in Object.keys(tagLabel)" :key="index">
                                             <td width="130">
@@ -971,13 +971,12 @@
                 })
                 .done(function(result) {
                     self.categories = [];
+                    console.log(result)
                     result.forEach(function(item) {
-                        if (item.parentId) {
-                            self.categories.push({
-                                'name': item.categoryTitle,
-                                'guid': item.categoryGuid
-                            }); 
-                        }
+                        self.categories.push({
+                            'name': item.categoryTitle,
+                            'guid': item.categoryGuid
+                        }); 
                     });
 
                 })
