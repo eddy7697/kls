@@ -584,7 +584,7 @@
           right    : 0;
           transform: rotate(180deg)
         }
-        #banner_count{
+        .banner_count_col{
           position      : absolute;
           top           : 45%;
           right         : 10px;
@@ -1407,6 +1407,7 @@
     width: 83%;
     padding: 0 20px;
     .needKnow {
+      color: $color_white;
       text-align: right;
       span {
         cursor: pointer;
@@ -1889,6 +1890,9 @@
 }
 .blog-post{
   .blog-post-group{
+    a{
+      text-decoration: none;
+    }
     .blog-post-inner{
       padding: 40px;
       .blog-post-inner-img{
