@@ -1,6 +1,8 @@
 <template>
     <section>
-        
+        <div class="loading-mask" v-if="isLoading">
+            <img class="loading-spinner" src="/img/loading-spinner.svg" alt="">
+        </div>
         <div class="container filter-area">
             <div class="row filter">
                 <div class="col-md-12 filter-title">
@@ -106,8 +108,8 @@
                             <img class="cube02" src="/img/selectCube-02.svg" alt="">
                         </div> -->
                         <div class="productCount-sort">
-                            <span :class="{active: order == 'asc'}" @click="order = 'asc'">價格由高到低排列 ↓</span>
-                            <span :class="{active: order == 'desc'}" @click="order = 'desc'">價格由低到高排列 ↑</span>
+                            <span :class="{active: order == 'desc'}" @click="order = 'desc'">價格由高到低排列 ↓</span>
+                            <span :class="{active: order == 'asc'}" @click="order = 'asc'">價格由低到高排列 ↑</span>
                         </div>
                     </div>
                     <div class="productCount-number" v-if="isLoaded">
@@ -157,7 +159,9 @@
                     </div>
                 </div>
                 <div class="col-md-12 filter-product-readMore" @click="learnMoreAction" v-if="pageData.last_page != pageData.current_page">
-                    <button id="readMore-btn">查看更多</button>
+                    <button id="readMore-btn">
+                        <span class="learnmore" :class="{loading: isLoadingLearnMore}">查看更多</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -174,6 +178,8 @@
         props: ['type'],
         data () {
             return {
+                isLoading: false,
+                isLoadingLearnMore: false,
                 order: 'desc',
                 isLoaded: false,
                 tagGroup: {
@@ -227,10 +233,15 @@
                     order: this.order
                 }
 
+                this.isLoading = true
                 axios.post('/products/tag', vo)
                     .then(res => {
                         this.pageData = res.data
                         this.isLoaded = true
+                    }).catch(err => {
+
+                    }).then(() => {
+                        this.isLoading = false
                     })
             },
             addSigleProduct(guid) {
@@ -242,11 +253,19 @@
                     category: this.type
                 }
 
+                this.isLoading = true
+                this.isLoadingLearnMore = true
+                
                 axios.post(this.pageData.next_page_url, vo)
                     .then(res => {
                         this.pageData.next_page_url = res.data.next_page_url
                         this.pageData.current_page = res.data.current_page
                         this.pageData.data = _.concat(this.pageData.data, res.data.data)
+                    }).catch(err => {
+
+                    }).then(() => {
+                        this.isLoading = false
+                        this.isLoadingLearnMore = false
                     })
             },
             clearFilter() {
@@ -261,3 +280,42 @@
         }
     }
 </script>
+
+<style lang="scss">
+.loading-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($color: #fff, $alpha: 0.3);
+    z-index: 100;
+
+    .loading-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+    }
+}
+
+// <img class="loading-spinner" src="/img/loading-spinner.svg" alt="">
+.learnmore {
+    position: relative;
+
+    &.loading {
+        &::before {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-image: url('/img/loading-spinner.svg');
+            background-size: cover;
+            content: '',
+        }
+    }
+}
+</style>
