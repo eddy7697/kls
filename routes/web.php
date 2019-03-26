@@ -39,11 +39,18 @@ Route::get('/test_prod', function ()
 {
     $products = Product::inRandomOrder()->take(10);
 
-    return $products->update([
-        'price' => rand(8000, 20000)
-    ]);
+    foreach ($products as $key => $value) {
+        Product::where('id', $value->id)
+                ->update([
+                    'price' => rand(8000, 20000)
+                ]);
+    }
 
-    return $products;
+    // return $products->update([
+        
+    // ]);
+
+    return $products->get();
     // foreach ($products as $key => $value) {
     //     Product::where('id', $value->id)->update([
     //         'productGuid' => str_random(6)
