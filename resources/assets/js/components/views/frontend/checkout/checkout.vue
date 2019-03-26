@@ -293,7 +293,7 @@
                     <input class="form-control" type="text" id="shipping-taxid" placeholder="" v-model="customerParametor.taxId">
                 </div>
             </div> -->
-            <div class="col-md-5 checkout-method">
+            <!-- <div class="col-md-5 checkout-method">
                 <h4>訂單資訊</h4>
                 <hr>
                 <div class="payment-gateway">
@@ -456,7 +456,7 @@
                 <button type="submit" v-if="(paymentMethod == 'cod') && (shippingMethod == 'cvs')" class="btn btn-primary btn-lg btn-block" name="button">超商取貨付款</button>
                 <button type="submit" v-if="(shippingMethod == 'cvs') && (paymentMethod !== 'cod')" class="btn btn-primary btn-lg btn-block" name="button">超商取貨</button>
                 <button type="submit" v-if="shippingMethod !== 'cvs'" class="btn btn-primary btn-lg btn-block" name="button">提交訂單</button>
-            </div>
+            </div> -->
         </form>
 
     </div>

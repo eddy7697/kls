@@ -308,16 +308,6 @@
   position: relative;
   margin-top: 134px;
   min-height: 650px;
-  &:after{
-    content: '';
-    @include background-setting('/img/subPageBanner-01.jpg',center,cover);
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    opacity: .2;
-  }
 }
 
 
@@ -1828,8 +1818,10 @@
 #subPage-blog{
   .information-banner{
     background-image: url('/img/bg-blog.jpg');
+    background-size: auto;
+    background-repeat: no-repeat;
     min-height: auto;
-    padding-bottom: 50%;
+    height: 600px;
   }
 }
 .blog-filter{

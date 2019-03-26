@@ -391,26 +391,12 @@
                         </div>
                         <div class="navbar-icon">
                             <a href="/">
-                                <img src="/img/navbar-heart-01.svg" alt="">
+                                <img src="/img/navbar-heart-01.png" alt="">
                             </a>
                             <div id="cart-panel">
                                 <cart-panel />
                             </div>
                         </div>
-                        {{-- <div class="navbar-icon-mobile dropdown">
-                            <button class="navbar-icon-mobile-switch dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <div class="navbar-icon-mobile-inner dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <img src="/img/navbar-heart-01.svg" alt="">
-                                <a href="/cart">
-                                    <img src="/img/navbar-cart-01.svg" alt="">
-                                </a>
-                            </div>
-                        </div> --}}
                     </div>
                 </section>
 

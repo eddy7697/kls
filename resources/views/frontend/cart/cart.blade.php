@@ -24,9 +24,11 @@
             <div class="col-md-12 checkout-thumbnail">
                 <ul>
                     <li class="active">
-                        <img src="/img/buyIcon/buyList-01.png" alt="">
-                        <span class="caret"></span>
-                        購物清單
+                        <a href="/cart">
+                            <img src="/img/buyIcon/buyList-01.png" alt="">
+                            <span class="caret"></span>
+                            購物清單
+                        </a>
                     </li>
                     <li style="padding: 20px 50px;">
                         <span class="liinner" style="border-right: solid 2px #636B6F;"></span>
