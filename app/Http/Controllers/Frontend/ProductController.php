@@ -210,7 +210,7 @@ class ProductController extends Controller
                                 $q->where('command', 'like', '%'.$tag['trip'].'%');
                             }
                         })
-                        ->orderBy('id', 'desc')
+                        ->orderBy('price', $request->order)
                         ->paginate(8);
     }
 }

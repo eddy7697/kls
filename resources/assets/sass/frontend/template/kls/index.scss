@@ -1663,6 +1663,11 @@
   }
   .productCount-sort {
     cursor: pointer;
+    font-weight: 300;
+
+    &.active {
+      font-weight: 800;
+    }
   }
   .productCount-number {
     font-size: $font-size-span;

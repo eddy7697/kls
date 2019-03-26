@@ -106,8 +106,8 @@
                             <img class="cube02" src="/img/selectCube-02.svg" alt="">
                         </div> -->
                         <div class="productCount-sort">
-                            <span>價格由高到低排列 ↓</span>
-                            <span>價格由低到高排列 ↑</span>
+                            <span :class="{active: order == 'asc'}" @click="order = 'asc'">價格由高到低排列 ↓</span>
+                            <span :class="{active: order == 'desc'}" @click="order = 'desc'">價格由低到高排列 ↑</span>
                         </div>
                     </div>
                     <div class="productCount-number" v-if="isLoaded">
@@ -174,6 +174,7 @@
         props: ['type'],
         data () {
             return {
+                order: 'desc',
                 isLoaded: false,
                 tagGroup: {
                     brand: null,
@@ -198,6 +199,9 @@
                     this.getData()
                 },
                 deep: true
+            },
+            order(val) {
+                this.getData()
             }
         },
         created() {
@@ -219,7 +223,8 @@
             getData() {
                 let vo = {
                     tag: this.filterGroup,
-                    category: this.type
+                    category: this.type,
+                    order: this.order
                 }
 
                 axios.post('/products/tag', vo)
@@ -234,7 +239,7 @@
             learnMoreAction() {
                 let vo = {
                     tag: this.filterGroup,
-                    category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
+                    category: this.type
                 }
 
                 axios.post(this.pageData.next_page_url, vo)

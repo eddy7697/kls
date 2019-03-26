@@ -115,14 +115,14 @@
             </div>
         </div>
 
-        <div class="fixed-button-group">
+        {{-- <div class="fixed-button-group">
             <a>
                 <img style="cursor: pointer" class="pointer scrollToTop" src="/img/icon/backtotop-01.svg" alt="">
             </a>
             <a href="/cart">
                 <img style="cursor: pointer; background-color: #F8A94B; border-radius: 50%; padding: 10px;" class="pointer" src="/img/icon/shoppingcar-01.svg" alt="">
             </a>
-        </div>
+        </div> --}}
 
         @unless (Auth::guest())
             @if (Auth::user()->role == 'ADMIN')

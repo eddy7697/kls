@@ -40,8 +40,7 @@ Route::get('/test_prod', function ()
     $products = Product::inRandomOrder()->take(10);
 
     return $products->update([
-        'productTitle' => 'AD 亞蘭德倫 20 - 23吋 3 - 7天 10000 - 15000 防水尼龍',
-        'command' => '{"brand":"AD 亞蘭德倫","size":"20 - 23吋","trip":"3 - 7天","price":"10000 - 15000","material":"防水尼龍"}'
+        'price' => rand(8000, 20000)
     ]);
 
     return $products;

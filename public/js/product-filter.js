@@ -424,6 +424,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['type'],
     data: function data() {
         return {
+            order: 'desc',
             isLoaded: false,
             tagGroup: {
                 brand: null,
@@ -450,6 +451,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
 
             deep: true
+        },
+        order: function order(val) {
+            this.getData();
         }
     },
     created: function created() {
@@ -475,7 +479,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var vo = {
                 tag: this.filterGroup,
-                category: this.type
+                category: this.type,
+                order: this.order
             };
 
             axios.post('/products/tag', vo).then(function (res) {
@@ -501,7 +506,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var vo = {
                 tag: this.filterGroup,
-                category: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'
+                category: this.type
             };
 
             axios.post(this.pageData.next_page_url, vo).then(function (res) {
@@ -841,7 +846,35 @@ var render = function() {
       [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-12 productCount" }, [
-            _vm._m(6),
+            _c("div", { staticClass: "productCount-left" }, [
+              _c("div", { staticClass: "productCount-sort" }, [
+                _c(
+                  "span",
+                  {
+                    class: { active: _vm.order == "asc" },
+                    on: {
+                      click: function($event) {
+                        _vm.order = "asc"
+                      }
+                    }
+                  },
+                  [_vm._v("價格由高到低排列 ↓")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    class: { active: _vm.order == "desc" },
+                    on: {
+                      click: function($event) {
+                        _vm.order = "desc"
+                      }
+                    }
+                  },
+                  [_vm._v("價格由低到高排列 ↑")]
+                )
+              ])
+            ]),
             _vm._v(" "),
             _vm.isLoaded
               ? _c("div", { staticClass: "productCount-number" }, [
@@ -906,7 +939,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(7, true),
+                  _vm._m(6, true),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -1005,18 +1038,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filters-title" }, [
       _c("p", [_vm._v("材質 Material")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "productCount-left" }, [
-      _c("div", { staticClass: "productCount-sort" }, [
-        _c("span", [_vm._v("價格由高到低排列 ↓")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("價格由低到高排列 ↑")])
-      ])
     ])
   },
   function() {
