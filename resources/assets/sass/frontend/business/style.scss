@@ -166,10 +166,11 @@
 }
 
 .cart_info{
+    padding: 0 2rem;
     h3{
         font-weight: 900;
     }
-    form{
+    .table_col{
         overflow: auto;
     }
     table{
@@ -258,7 +259,14 @@
       transition: 0.5s;
       font-size: 16px;
       &:hover {
-        background-color: #f8b62d;
+        border: solid 1px #0f2746;
+        background-color: #fff;
+        color: #0f2746;
+      }
+      &:active{
+        border: solid 1px transparent;
+        background-color: #0f2746;
+        color: #fff;
       }
     }
   }

@@ -6,11 +6,9 @@
                     訂購資訊
                 </h3>
                 <hr>
-                <form action="">
+                <div class="table_col">
                     <table>
-
                         <tbody>
-
                             <tr v-if="useUserInfo">
                                 <td class="cart_info_title">
                                     收件人姓名
@@ -133,7 +131,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </form>
+                </div>
             </div>
             <div class="remind">
                 <p>
@@ -463,7 +461,7 @@
 </template>
 
 <script>
-    $('.loading-bar').fadeOut('100');
+    $('.loading-bar').fadeOut('500');
     export default {
         data() {
             return {

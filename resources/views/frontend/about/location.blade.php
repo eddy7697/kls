@@ -27,7 +27,7 @@
 
         <div class="row information-inner-into">
 
-            <div class="col-md-6 ">
+            <div class="col-md-6 info-img">
                 <div class="information-inner-img" style="background-image: url('/img/clothes-2586201_1920.jpg');"></div>
             </div>
 
@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 info-img">
                 <div class="information-inner-img" style="background-image: url('/img/clothes-2586201_1920.jpg');"></div>
             </div>
 
@@ -126,7 +126,7 @@
         </div>
 
         <div class="row" id="guanxin">
-            <div class="col-md-6">
+            <div class="col-md-6 info-img">
                 <div class="information-inner-img" style="background-image: url('/img/department-store-1270119_1920.jpg');"></div>
             </div>
             <div class="col-md-6">
@@ -197,7 +197,7 @@
         </div>
 
         <div class="row" id="bigCity">
-            <div class="col-md-6">
+            <div class="col-md-6 info-img">
                 <div class="information-inner-img" style="background-image: url('/img/store-984393_1920.jpg');"></div>
             </div>
             <div class="col-md-6">
@@ -267,7 +267,7 @@
         </div>
 
         <div class="row" id="zhubei" style="margin-bottom: 0px;">
-            <div class="col-md-6">
+            <div class="col-md-6 info-img">
                 <div class="information-inner-img" style="background-image: url('/img/adidas-458043_1920.jpg');"></div>
             </div>
             <div class="col-md-6">

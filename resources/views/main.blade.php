@@ -59,7 +59,7 @@
             <span></span>
             <span></span>
         </button>
-
+        
         <div class="klsBurger-menu">
             <div class="burge-link">
                 <a target="_blank" href="https://www.facebook.com/baggageworld/" class="facebook">
@@ -82,7 +82,7 @@
                 <ul> 
                     <li>
                         <a href="{{route('about')}}">
-                            關於凱麗絲
+                            關於凱麗斯
                         </a>
                     </li>
                     <li>
@@ -137,6 +137,13 @@
         @endunless
 
         <div class="kls-page">
+
+            <div class="kls_rwd_menu">
+                <a href="/">
+                    <img src="/img/KLSLogoBlack-01.svg" alt="">
+                </a>
+            </div>
+
             @if (Route::current()->getName() == 'index')
 
                 {{-- <div class="forwardNews">
@@ -160,7 +167,7 @@
                                     <a href="/" class="mark">
                                         <img src="/img/KLSLogoWhite.svg" alt="">
                                         <p class="mark_text mark_middle">
-                                            凱麗絲旅行箱專賣店
+                                            凱麗斯旅行箱專賣店
                                         </p>
                                         <p class="mark_text mark_bottom">
                                             KLS Baggage Department Store.
@@ -273,7 +280,7 @@
                                         <li class="navbar-ul-li">
                                             <a href="{{route('about')}}">
                                                 <p>
-                                                    關於凱麗絲
+                                                    關於凱麗斯
                                                 </p>
                                             </a>
                                         </li>
@@ -415,7 +422,7 @@
                                         <ul class="sub-nav-menu-ul">
                                             <li>
                                                 <a href="{{route('about')}}">
-                                                    關於凱麗絲
+                                                    關於凱麗斯
                                                 </a>
                                             </li>
                                             <li class="mega-menu dropdown dropdown-large">
@@ -539,7 +546,7 @@
                                 <a href="/" class="mark">
                                     <img src="/img/KLSLogoWhite.svg" alt="">
                                     <p class="mark_text mark_middle">
-                                        凱麗絲旅行箱專賣店
+                                        凱麗斯旅行箱專賣店
                                     </p>
                                     <p class="mark_text mark_bottom">
                                         KLS Baggage Department Store.
@@ -618,7 +625,7 @@
                                 <ul class="sub-nav-menu-ul">
                                     <li>
                                         <a href="{{route('about')}}">
-                                            關於凱麗絲
+                                            關於凱麗斯
                                         </a>
                                     </li>
                                     <li>

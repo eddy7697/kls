@@ -110,6 +110,21 @@
 }
 
 
+.kls_rwd_menu{
+  background-color: $color-blue;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: none;
+  z-index: 90 ;
+  img{
+    float: right;
+    width: 13rem;
+    margin-right: 1.3rem;
+    margin-top: 0.6rem;
+  }
+}
+
 .margin-top-Md{
   margin-top: 50px;
 }
@@ -209,6 +224,9 @@
 .openNow-filter{
   filter    : blur(20px);
   transition: 0.5s;
+  .kls_rwd_menu{
+    opacity: 0;
+  }
 }
 .burge-link{
   @extend %flex-center;
@@ -2146,9 +2164,9 @@
   .information-banner{
     background-image: url('/img/about-banner-01.jpg');
     .information-banner-inner{
-      @include size-setting(70%,370px);
+      @include size-setting(61%,370px);
       position: relative;
-      opacity: .8;
+      opacity: .9;
       .information-banner-inner-text{
         color: $color-white;
         h1{
@@ -2158,11 +2176,12 @@
         }
         h1:nth-child(2){
           margin-top: 0;
-          margin-bottom: 30px;
+          margin-bottom: 25px;
         }
         p{
           font-size: 20px;
           font-weight: 900;
+          line-height: 50px;
         }
       }
       img{
@@ -2170,7 +2189,7 @@
         height: auto;
         position: absolute;
         right: 10px;
-        bottom: 0;
+        bottom: -10px;
       }
     }
   }
@@ -2410,11 +2429,14 @@
 }
 
 @media screen and (max-width: 1024px){
+  .kls_rwd_menu{
+    display: block;
+  }
   .filter-area{
     margin-top: 5rem;
   }
   .information-banner{
-    margin-top: 5.5rem;
+    margin-top: 5.2rem;
   }
   .klsBurger-switch{
     display: block
@@ -2726,6 +2748,9 @@
   .filter-product {
     width: 100%;
   }
+  .information-banner{
+    min-height: 30rem;
+  }
   // contact
   #subPage-contact{
     .information-banner{
@@ -2800,9 +2825,6 @@
             }
             .information-inner-store-intro{
               font-size: $title-bottom-font-size;
-            }
-            .information-inner-store-reservation{
-
             }
             .information-inner-store-number-title{
               font-size: 14px;
@@ -2911,6 +2933,7 @@
       .information-banner-inner{
         @include size-setting(80%,430px);
         .information-banner-inner-text{
+          margin-top: 4.5rem;
           h1{
             font-size: 3.6rem;
           }
@@ -2919,12 +2942,14 @@
           }
           p{
             font-size: 1.6rem;
+            line-height: unset;
           }
         }
         img{
           width: 15rem;
           right: 50%;
           transform: translateX(50%);
+          bottom: 0;
         }
       }
     }
@@ -2989,6 +3014,12 @@
 }
 
 @media screen and (max-width: 768px){
+  .information-content {
+    margin: 2rem 0;
+    .center-content{
+      border: none;
+    }
+  }
   .scrollDown{
     display: block;
   }
@@ -3082,6 +3113,9 @@
 }
 
 @media screen and (max-width: 600px){
+  .info-img{
+    max-height: 25rem;
+  }
   #footer{
     .footer_logo{
       width: 60%;
@@ -3108,12 +3142,10 @@
   // contact
   #subPage-contact{
     .information-banner{
-      background-image: url('/img/contact-banner.jpg');
       background-position: 10% center;
       background-size: cover;
       padding-bottom: 40%;
       position: relative;
-      margin-top: 80px;
       min-height: 500px;
       .contact-banner-inner-text{
         position: absolute;
@@ -3122,7 +3154,7 @@
         transform: translateX(-50%) translateY(-50%);
         background-color: rgba(255,255,255,0.3);
         padding: 5px 22px;
-        width: 400px;
+        width: 100%;
         h1{
           font-weight: 700;
           color: #666666;
@@ -3189,6 +3221,9 @@
 }
 
 @media screen and (max-width: 460px){
+  #subPage-Information .information-banner .information-banner-inner .information-banner-inner-text h1{
+    font-size: 36px;
+  }
   .information-flex{
     .information-inner-store-reservation-inner:nth-child(1){
       width: 100% !important;
@@ -3242,21 +3277,23 @@
       margin-right: 0px;
       margin-left: 0px;
       .center-content{
-        padding-right: 0px;
-        padding-left: 0px;
         .contact-table{
           margin: 5px;
+          tr{
+            flex-wrap: wrap;
+            margin: 3.5rem 0;
+          }
           .form-group{
             margin: 0 5px;
           }
           .form-group-text-must{
-            width: 11%;
+            width: 15%;
           }
           .form-group-text-input{
-            width: 55%;
+            width: 100%;
           }
           .form-group-text-td{
-            width: 25%;
+            width: 70%;
           }
         }
       }
@@ -3277,7 +3314,7 @@
         padding-top: 50px;
         .col-md-6{
           position: relative;
-          height: 450px;
+          height: 40rem;
           .information-inner-img{
             background-position: center;
             background-size: cover;
@@ -3343,6 +3380,7 @@
         }
         .information-inner-navBar{
           border-bottom: none;
+          margin-top: -5rem;
           .information-inner-navBar-inner{
             @include flex-mix(center,space-around);
             border-bottom: solid 1px #636b6f;
@@ -3383,8 +3421,9 @@
       }
       .information-inner-into{
         padding-top: 15px;
+        margin-bottom: 5rem;
         .information-inner-into-col{
-          height: 500px;
+          height: 48rem;
           .information-inner-store{
             padding: 0px 15px;
           }
