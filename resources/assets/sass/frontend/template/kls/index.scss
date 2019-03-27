@@ -3202,7 +3202,7 @@
           .choose_post{
             width: 100%;
             .img_div{
-              padding-bottom: 100%;
+              padding-bottom: 90%;
             }
             .post_text{
               h3{}
@@ -3254,6 +3254,7 @@
       .footer_addr{
         height: auto;
         box-shadow: 0 0 4rem inset;
+        margin-bottom: 0;
         .shop_list{
           .shop{
             border-bottom: solid 1px rgba(0, 0, 0, 0.2);
@@ -3264,9 +3265,7 @@
         }
       }
       .community{
-        height: auto;
-        padding: 3rem 0;
-        box-shadow: 0 0 4rem inset;
+       display: none;
       }
     }
   }
