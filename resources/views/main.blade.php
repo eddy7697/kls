@@ -709,21 +709,32 @@
             // heights
             
             $(document).ready(function() {
-                
-                function get_H(){
+                var $width = $(this).width();
+                get_H();
+                scrollMenu();
+                headerBannerSwiper();
+                rwdSwiper($width);
 
+                $(window).resize(function() {
+                    get_H();
+                });
+
+                function rwdSwiper(w){
+                    if( w < 991 ){
+                        indexFeedbackSwiper(1);
+                        indexProductSwiper(1);
+                    } else {
+                        indexFeedbackSwiper(3);
+                        indexProductSwiper(3);
+                    }
+                };
+
+                function get_H(){
                     var h      = $(window).height()
                     var logo_h = $('.logo').height()
                     var nav_h  = $('.navbar').height()
-
                     $('#header').css('height',h)
-                        
                 };
-                get_H()
-
-                $(window).resize(function() {
-                    get_H()
-                });
 
                 $('.klsBurger-switch').on('click',function(){
                     $(this).toggleClass('openNow');
@@ -731,19 +742,16 @@
                     $('.kls-page').toggleClass('openNow-filter');
                 });
                 
+                function megaMenuScroll () {
+                    var megaMenu = $('.mega-menu-product');
+                    if (document.documentElement.scrollTop < 400){
+                        megaMenu.css('top','-310%');
+                    } else {
+                        megaMenu.css('top','100%');
+                    }; 
+                };
 
-                $(function() {
-
-                    
-                    function megaMenuScroll () {
-                        var megaMenu = $('.mega-menu-product');
-                        if (document.documentElement.scrollTop < 400){
-                            megaMenu.css('top','-310%');
-                        } else {
-                            megaMenu.css('top','100%');
-                        }; 
-                    };
-
+                function scrollMenu() {
                     try {
                         var fix   = $('.navbar');                      //title
                         var fixTop = fix.offset().top;             //title 與頂部的距離
@@ -769,52 +777,74 @@
                     } catch (error) {
                         console.log(error.message)
                     }
-                });
+                };
 
-                var swiper = new Swiper ('.feedback-Index',{
-                    direction : 'horizontal',
-                    loop      : true,
-                    speed     : 1000,
-                    navigation: {
-                        nextEl: '.right',
-                        prevEl: '.left'
-                    }
-                });
-
-                var swiper = new Swiper ('.header_right',{
-                    direction : 'vertical',
-                    loop      : true,
-                    speed     : 1000,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true
-                    },
-                    autoplay  : {
-                        delay: 10000,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: '.top',
-                        prevEl: '.bottom',
-                    },
-                    on:{
-                        transitionStart: function(){
-                            $('.banner_word').css({
-                                'opacity'   : 0,
-                                'transform' : 'translateY(100%) translateX(-20%)',
-                                'transition': '0.3s'
-                            })
+                function headerBannerSwiper(){
+                    var swiper = new Swiper ('.header_right',{
+                        direction : 'vertical',
+                        loop      : true,
+                        speed     : 1000,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true
                         },
-                        transitionEnd: function(){
-                            $('.banner_word').css({
-                                'opacity'   : 1,
-                                'transform' : 'translateY(-60%) translateX(-20%)',
-                                'transition': '0.8s'
-                            })
+                        autoplay  : {
+                            delay: 10000,
+                            disableOnInteraction: false,
                         },
-                    }
-                });
+                        navigation: {
+                            nextEl: '.top',
+                            prevEl: '.bottom',
+                        },
+                        on:{
+                            transitionStart: function(){
+                                $('.banner_word').css({
+                                    'opacity'   : 0,
+                                    'transform' : 'translateY(100%) translateX(-20%)',
+                                    'transition': '0.3s'
+                                })
+                            },
+                            transitionEnd: function(){
+                                $('.banner_word').css({
+                                    'opacity'   : 1,
+                                    'transform' : 'translateY(-60%) translateX(-20%)',
+                                    'transition': '0.8s'
+                                })
+                            },
+                        }
+                    });
+                };
 
+
+                function indexFeedbackSwiper(val){
+                    var swiper = new Swiper ('.feedback-Index',{
+                        direction : 'horizontal',
+                        loop      : true,
+                        speed     : 1000,
+                        slidesPerView: val,
+                        spaceBetween: 30,
+                        slidesPerGroup: val,
+                        navigation: {
+                            nextEl: '.right',
+                            prevEl: '.left'
+                        }
+                    });
+                };
+
+                function indexProductSwiper(val){
+                    var swiper = new Swiper ('.product_nav_index .tab-pane',{
+                        direction : 'horizontal',
+                        loop      : true,
+                        speed     : 1000,
+                        slidesPerView: val,
+                        spaceBetween: 30,
+                        slidesPerGroup: val,
+                        navigation: {
+                            nextEl: '.right',
+                            prevEl: '.left'
+                        }
+                    });
+                };
                 
                 function newPostTextRWD (x,y){
                     x.each(function() {

@@ -1237,41 +1237,38 @@
         z-index : 2;
         .swiper-wrapper{
           .swiper-slide{
-            .col-md-4{
-              margin: 15px 0;
-              .feedbackPost{
-                background-color: $color-white;
-                position        : relative;
-                overflow        : hidden;
-                border-radius:  0px 8px 8px 8px; 
-                .feedback-Icon{
-                  width      : 15%;
-                  margin-top : -5px;
-                  margin-left: -2px;
-                  text-align : left;
+            .feedbackPost{
+              background-color: $color-white;
+              position        : relative;
+              overflow        : hidden;
+              border-radius:  0px 8px 8px 8px; 
+              .feedback-Icon{
+                width      : 15%;
+                margin-top : -5px;
+                margin-left: -2px;
+                text-align : left;
+              }
+              .feedback-Inner{
+                padding : 30px 15px;
+                p{
+                  font-size: 15px;
                 }
-                .feedback-Inner{
-                  padding : 30px 15px;
-                  p{
-                    font-size: 15px;
-                  }
+              }
+              .feedback-Author{
+                @include size-setting(100%,50px);
+                position  : relative;
+                text-align: right;
+                p{
+                  position     : absolute;
+                  right        : 10px;
+                  bottom       : 0;
+                  border-bottom: solid 5px $font-color-focus;
+                  margin       : 0;
+                  font-weight  : 700;
+                  font-size    : 25px;
                 }
-                .feedback-Author{
-                  @include size-setting(100%,50px);
-                  position  : relative;
-                  text-align: right;
-                  p{
-                    position     : absolute;
-                    right        : 10px;
-                    bottom       : 0;
-                    border-bottom: solid 5px $font-color-focus;
-                    margin       : 0;
-                    font-weight  : 700;
-                    font-size    : 25px;
-                  }
-                }
-              } 
-            }
+              }
+            } 
           }
         }
       }
@@ -2653,9 +2650,6 @@
   #subPage-Information .information-inner{
     width: 90%;
   }
-  #products{
-    display: none;
-  }
   #footer{
     .footer_contact{
       display : block;
@@ -2763,10 +2757,6 @@
       }
     } 
   }
-  .feedback{
-    display: none;
-  }
-
   /*----------choose---------*/
   #choose{
     margin-bottom: 0;
