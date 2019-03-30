@@ -158,10 +158,10 @@
 
     <section id="products">
         <div class="sw_mask mask_left">
-            <img class="product_arrow left" src="/img/arrow-left.png" alt="">
+            <img class="product_arrow product-left" src="/img/arrow-left.png" alt="">
         </div>
         <div class="sw_mask mask_right">
-            <img class="product_arrow right" src="/img/arrow-right.png" alt="">
+            <img class="product_arrow product-right" src="/img/arrow-right.png" alt="">
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -409,10 +409,10 @@
     <!------------------------feedback------------------------>
     <section class="feedback">
         <div class="sw_mask mask_left">
-            <img class="product_arrow left" src="/img/arrow-left.png" alt="">
+            <img class="product_arrow feedback-left" src="/img/arrow-left.png" alt="">
         </div>
         <div class="sw_mask mask_right">
-            <img class="product_arrow right" src="/img/arrow-right.png" alt="">
+            <img class="product_arrow feedback-right" src="/img/arrow-right.png" alt="">
         </div>
         <div class="container-fluid">
             <div class="row">

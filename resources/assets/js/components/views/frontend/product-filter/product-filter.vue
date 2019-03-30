@@ -145,7 +145,7 @@
                                     <p>{{item.productTitle}}</p>
                                 </div>
                                 <div class="product-style">
-                                    <div v-html="item.shortDescription">
+                                    <div class="style-inner" v-html="item.shortDescription">
                                         <!-- 這裡會自動帶入產品說明 -->
                                     </div>
                                     <p class="product-price">$ {{item.price}}</p>
@@ -280,6 +280,7 @@
             }
         }
     }
+    
 </script>
 
 <style lang="scss">

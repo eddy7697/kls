@@ -6,7 +6,21 @@
 
 @section('custom-script')
     <script type="text/javascript">
-         
+        $(document).ready(function(){
+            // $("#tree").fancytree({
+            //     icon: false,
+            //     click: function (event, data) {
+            //     },
+            //     activate: function (event, data) {
+            //         console.log(data.node.key)
+            //         window.location.href = '/blog/category/' + data.node.key
+            //     }
+            // });
+            $('.blog-filter-inner a').on('click',function(){
+                $('.blog-filter-inner a').removeClass('active');
+                $(this).addClass('active');
+            });
+        });  
     </script>
 @endsection
 
@@ -16,20 +30,6 @@
             border-bottom: solid 3px #FBB03B;
         }
     </style>
-@endsection
-
-@section('custom-script')
-    <script type="text/javascript">
-        $("#tree").fancytree({
-            icon: false,
-            click: function (event, data) {
-            },
-            activate: function (event, data) {
-                console.log(data.node.key)
-                window.location.href = '/blog/category/' + data.node.key
-            }
-        });
-    </script>
 @endsection
 
 @section('custom-style')
@@ -44,7 +44,7 @@
         <div class="container blog-filter">
             <div class="row">
                 <div class="col-md-12 blog-filter-inner">
-                    <a>全部文章</a>
+                    <a class="active">全部文章</a>
                     <a>職人開箱</a>
                     <a>箱款新知</a>
                     <a>挑箱教學</a>

@@ -154,10 +154,10 @@
     top      : 50%;
     transform: translateY(-50%);
   }
-  .left{
+  .product-left,.feedback-left{
     left: 10px;
   }
-  .right{
+  .product-right,.feedback-right{
     right: 10px;
   }
 }
@@ -588,11 +588,11 @@
           right: 0;
         }
         .bottom{
-          top      : 54%;
+          top      : 57%;
           right    : 0;
           transform: rotate(180deg)
         }
-        .banner_count_col{
+        #banner_count{
           position      : absolute;
           top           : 45%;
           right         : 10px;
@@ -979,6 +979,9 @@
       color: $color-white;
     }
   }
+  .swiper-slide{
+    padding: 25px;
+  }
   .container-fluid{
     overflow: hidden;
     margin  : 0 80px;
@@ -1230,6 +1233,7 @@
   .container-fluid{
     margin : 0 80px;
     z-index: 2;
+    
     .row{
       z-index: 2;
       .feedback-Index{
@@ -1469,7 +1473,6 @@
 }
 
 .filter-product {
-  color: #E6E6E6;
   .filter-product-readMore {
     @extend %flex-center;
     padding-bottom: 50px;
@@ -1587,17 +1590,28 @@
   }
   .product-innertext {
     width: 65%;
-    margin-left: 20px;
+    margin-left: 10px;
     padding: 15px 48px;
     padding-left: 15px;
     .product-title p {
       font-size: 25px;
       font-weight: 700;
       color: black;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .product-style {
       font-size: $header-contact-font-size;
       line-height: 15px;
+      .style-inner{
+        overflow: auto;
+        height: 220px;
+        margin-bottom: 10px;
+      }
+      ul{
+        padding-left: 15px;
+      }
       .product-model {
         color: #b3b3b3;
       }
@@ -1815,7 +1829,6 @@
   }
 }
 
-
 .contact-table .form-group-text-input{
   width: 70%;
 }
@@ -1833,10 +1846,6 @@
 #subPage-blog{
   .information-banner{
     background-image: url('/img/bg-blog.jpg');
-    background-size: auto;
-    background-repeat: no-repeat;
-    min-height: auto;
-    height: 600px;
   }
 }
 .blog-filter{
@@ -1854,18 +1863,19 @@
       text-decoration: none;
       padding: 5px 35px;
       margin: 5px 20px;
+      cursor: pointer;
       &:hover{
         color: $color-white;
         background-color: #636b6f;
-      }
-      &:active{
-        color: $color-white;
-        background-color: #3E3A39;
       }
       &.active{
         color: $color-white !important;
         background-color: #636b6f !important;
       }
+    }
+    .active{
+      color: $color-white;
+      background-color: #636b6f;
     }
   }
 }
@@ -1930,7 +1940,27 @@
     }
   }
 }
-
+.blog-post-container{
+  .row{
+    margin-top: 50px;
+    .blog-post-time{
+      img{
+        @include size-setting(20px,20px);
+        margin-top: -.5rem;
+      }
+    }
+    .blog-post-title{
+      @include flex-mix(center,space-between);
+      margin-top: 22px;
+      h2{
+        margin-top: 0;
+      }
+      .share{
+        @include size-setting(200px,auto);
+      }
+    }
+  }
+}
 //Information
 #subPage-Information{
   .information-banner{
@@ -2426,6 +2456,11 @@
 }
 
 @media screen and (max-width: 1024px){
+  .blog-post-container{
+    .row{
+      margin-top: 0;
+    }
+  }
   .kls_rwd_menu{
     display: block;
   }
@@ -2638,7 +2673,29 @@
 }
 
 @media screen and (max-width: 991px){
-  
+  #products{
+    display: none;
+  }
+  .feedback{
+    .sw_mask{
+      
+    }
+    .mask_right{
+      border-left: none;
+    }
+    .mask_left{
+      border-right: none;
+    }
+    .container-fluid{
+      margin: 0 3rem;
+      position: relative;
+      .row {
+        .feedback-Index{
+          
+        }
+      }
+    }
+  } 
   .into-bottom{
     @include flex-mix(center,center);
     padding-top: 0 !important;
@@ -3084,6 +3141,9 @@
     } 
   }
   #subPage-blog{
+    .information-banner{
+      display: none;
+    }
     .blog-post{
       margin: 0 1rem;
       .blog-post-inner{
@@ -3091,7 +3151,18 @@
       }
     }
     .blog-filter {
+      margin-top: 7rem;
       .blog-filter-inner {
+        a{
+          width: 100%;
+          border: none;
+          border-bottom: solid 1px #636b6f;
+          border-radius: unset;
+          &::after{
+            content: '>>';
+            margin-left: 1rem;
+          }
+        }
         button{
           width: 70%;
           padding: .3rem 0;
@@ -3211,6 +3282,20 @@
 }
 
 @media screen and (max-width: 460px){
+  .blog-post-container{
+    .row{
+      .blog-post-title{
+        .share{
+          width: 7rem;
+          tr{
+            td:nth-child(1){
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
   #subPage-Information .information-banner .information-banner-inner .information-banner-inner-text h1{
     font-size: 36px;
   }

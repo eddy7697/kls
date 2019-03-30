@@ -226,17 +226,11 @@
                             <div class="sw_mask mask_left"></div>
                             <div class="sw_mask mask_right">
                                 <img class="banner_arrow top" src="\img\big-arrow-01.svg" alt="">
-                                {{-- {{count(SiteMetaView::album())}} --}}
-                                <p class="banner_count_col">
-                                    <span id="banner_count">1</span>
-                                    / {{-- 這條斜線不是偶然 --}}
-                                    <span id="swipe-index">1</span> 
-                                </p>
+                                <p id="banner_count">0<span id="swipe-index">1</span> / <span id="swipe-length">0</span> {{-- {{count(SiteMetaView::album())}} --}}</p>
                                 <img class="banner_arrow bottom" src="\img\big-arrow-01.svg" alt="">
                             </div>
                             
                             <div class="swiper-wrapper">
-
                                 @for ($i = 0; $i < 5; $i++)
                                     <div class="swiper-slide banner ban_page1">
                                         <div class="banner_word">
@@ -710,24 +704,15 @@
             
             $(document).ready(function() {
                 var $width = $(this).width();
+
                 get_H();
                 scrollMenu();
-                headerBannerSwiper();
-                rwdSwiper($width);
+                ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
 
                 $(window).resize(function() {
                     get_H();
                 });
 
-                function rwdSwiper(w){
-                    if( w < 991 ){
-                        indexFeedbackSwiper(1);
-                        indexProductSwiper(1);
-                    } else {
-                        indexFeedbackSwiper(3);
-                        indexProductSwiper(3);
-                    }
-                };
 
                 function get_H(){
                     var h      = $(window).height()
@@ -779,45 +764,71 @@
                     }
                 };
 
-                function headerBannerSwiper(){
-                    var swiper = new Swiper ('.header_right',{
-                        direction : 'vertical',
-                        loop      : true,
-                        speed     : 1000,
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true
+                var swiper = new Swiper ('.header_right',{
+                    direction : 'vertical',
+                    loop      : true,
+                    speed     : 1000,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    },
+                    autoplay  : {
+                        delay: 10000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.top',
+                        prevEl: '.bottom',
+                    },
+                    on:{
+                        transitionStart: function(){
+                            $('.banner_word').css({
+                                'opacity'   : 0,
+                                'transform' : 'translateY(100%) translateX(-20%)',
+                                'transition': '0.3s'
+                            })
                         },
-                        autoplay  : {
-                            delay: 10000,
-                            disableOnInteraction: false,
+                        transitionEnd: function(){
+                            $('.banner_word').css({
+                                'opacity'   : 1,
+                                'transform' : 'translateY(-60%) translateX(-20%)',
+                                'transition': '0.8s'
+                            })
                         },
-                        navigation: {
-                            nextEl: '.top',
-                            prevEl: '.bottom',
-                        },
-                        on:{
-                            transitionStart: function(){
-                                $('.banner_word').css({
-                                    'opacity'   : 0,
-                                    'transform' : 'translateY(100%) translateX(-20%)',
-                                    'transition': '0.3s'
-                                })
-                            },
-                            transitionEnd: function(){
-                                $('.banner_word').css({
-                                    'opacity'   : 1,
-                                    'transform' : 'translateY(-60%) translateX(-20%)',
-                                    'transition': '0.8s'
-                                })
-                            },
+                        slideChange(){
+                            var bullet = $('.swiper-pagination-bullet');
+                            for (var i = 0; i < bullet.length; i++) {
+                                if($(bullet[i]).hasClass('swiper-pagination-bullet-active')) {
+                                    $('#swipe-index').html(i + 1)
+                                }
+                            }
                         }
-                    });
-                };
+                    }
+                });
 
+                var bullet = $('.header_right .swiper-pagination-bullet');
+                if( bullet.length < 10 ){
+                    $('#swipe-length').text( '0'+ bullet.length );
+                } else {
+                    $('#swipe-length').text( bullet.length );
+                }
+                
 
-                function indexFeedbackSwiper(val){
-                    var swiper = new Swiper ('.feedback-Index',{
+                var producswiper = new Swiper ('.product_nav_index .tab-pane',{
+                    direction : 'horizontal',
+                    loop      : true,
+                    speed     : 1000,
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    slidesPerGroup: 3,
+                    navigation: {
+                        nextEl: '.product-right',
+                        prevEl: '.product-left'
+                    }
+                });
+
+                function indexSwiper(val){
+                    var feedbackswiper = new Swiper ('.feedback-Index',{
                         direction : 'horizontal',
                         loop      : true,
                         speed     : 1000,
@@ -825,23 +836,8 @@
                         spaceBetween: 30,
                         slidesPerGroup: val,
                         navigation: {
-                            nextEl: '.right',
-                            prevEl: '.left'
-                        }
-                    });
-                };
-
-                function indexProductSwiper(val){
-                    var swiper = new Swiper ('.product_nav_index .tab-pane',{
-                        direction : 'horizontal',
-                        loop      : true,
-                        speed     : 1000,
-                        slidesPerView: val,
-                        spaceBetween: 30,
-                        slidesPerGroup: val,
-                        navigation: {
-                            nextEl: '.right',
-                            prevEl: '.left'
+                            nextEl: '.feedback-right',
+                            prevEl: '.feedback-left'
                         }
                     });
                 };
@@ -849,41 +845,24 @@
                 function newPostTextRWD (x,y){
                     x.each(function() {
                         var maxwidth = y;
-                           if ($(this).text().length > maxwidth) {
-                               $(this).text($(this).text().substring(0, maxwidth));
-                               $(this).html($(this).html() + '...');
-                           }
-                     });
+                    if ($(this).text().length > maxwidth) {
+                        $(this).text($(this).text().substring(0, maxwidth));
+                        $(this).html($(this).html() + '...');
+                    }
+                 });
                 };
-                var newsPostOldText = $('.newPostTextP').text();
-                newPostTextRWD($('.newPostTextP'),60);
-                newPostTextRWD($('.post_text p'),300);
-                newPostTextRWD($('.feedback-Inner p'),150);
+                if ($width > 991){
+                    newPostTextRWD($('.newPostTextP'),60);
+                    newPostTextRWD($('.post_text p'),300);
+                    newPostTextRWD($('.feedback-Inner p'),150);
+                } else {
+                    newPostTextRWD($('.newPostTextP'),60);
+                    newPostTextRWD($('.post_text p'),300);
+                    newPostTextRWD($('.feedback-Inner p'),100);
+                }
                 
-                $('.newsPost').each(function(){
-                    var postText = $(this).find('.newPostTextP');
-                    var newsPostOldText = $(this).find('.newPostTextP').text();
-                    $(window).resize(function(){
-                        var _width = $(this).width();
-                        if (_width < 1300){
-                            $(postText).text(newsPostOldText);
-                            newPostTextRWD($('.newPostTextP'),70);
-                        }else{
-                            $(postText).text(newsPostOldText);
-                            newPostTextRWD($('.newPostTextP'),100);
-                        };
-                        if (_width < 1200){
-                            newPostTextRWD($('.newPostTextP'),50);
-                        }else{
-                            $(postText).text(newsPostOldText);
-                            newPostTextRWD($('.newPostTextP'),100);
-                        };
-                        if (_width < 991){
-                            $(postText).text(newsPostOldText);
-                            newPostTextRWD($('.newPostTextP'),300);
-                        }
-                    })
-                });
+                
+
 
                 // fixed-button-group 過banner後再出現
 

@@ -13,16 +13,16 @@
 
 @section('custom-script')
     <script>
-    $('.blog-container').css({
-        'margin-top': ($('.sub-page-header').height() + 10) + 'px'
-    })
-    jQuery('#line-share').on('click', function() {
-      window.open("http://line.me/R/msg/text/?" + document.title + '%0D%0A' + window.location.href);
-    });
+        $('.blog-container').css({
+            'margin-top': ($('.sub-page-header').height() + 10) + 'px'
+        })
+        jQuery('#line-share').on('click', function() {
+            window.open("http://line.me/R/msg/text/?" + document.title + '%0D%0A' + window.location.href);
+        });
 
-    jQuery('#facebook-share').on('click', function() {
-      window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href + '&src=sdkpreparse');
-    });
+        jQuery('#facebook-share').on('click', function() {
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href + '&src=sdkpreparse');
+        });
     </script>
 @endsection
 
@@ -42,24 +42,50 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+        .blog-content{
+            position: relative;
+        }
+        .blog-content img{
+            max-width: 100%;
+            height: auto !important;
+        }
+        .blog-content iframe{
+            max-width: 100%;
+            position: relative !important;
+        }
     </style>
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container blog-post-container">
     <div class="row">
         <div class="col-md-12 blog-container">
+            <div class="blog-post-time">
+                <img src="/img/icon/date-01.png" alt="">
+                <span>{{$post->created_at}}</span>
+            </div>
+            
+            <div class="blog-post-title">
+                <h2>test</h2>
+                <div class="share">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>SHARE THIS POST</td>
+                            <td style="border-bottom: none;">
+                                <img id="facebook-share" class="alignleft" src="/img/icon/fb-post-share-01.png" alt="" width="32px" />
+                            </td>
+                            <td style="border-bottom: none;">
+                                <img id="line-share" class="aligncenter" src="/img/icon/line-post-share-01.png" alt="" width="32px" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            {{-- {{$post->title}} --}}
             <div class="blog-featureImage">
                 <img src="/img/16x9.png" alt="">
             </div>
-            <h2>{{$post->title}}</h2>
-            <h4>{{$post->authorName}} 發表於 {{$post->created_at}}</h4>
-            <table style="width: 80px;">
-                <tr>
-                    <td width="50%" align="left" style="border-bottom: none;"><img id="facebook-share" class="alignleft" src="/img/icon/facebook-icon.svg" alt="" width="80%" /></td>
-                    <td width="50%" align="left" style="border-bottom: none;"><img id="line-share" class="aligncenter" src="/img/icon/line-icon.svg" alt="" width="80%" /></td>
-                </tr>
-            </table>
             <hr>
             <div class="blog-content">
                 {!!$post->content!!}
