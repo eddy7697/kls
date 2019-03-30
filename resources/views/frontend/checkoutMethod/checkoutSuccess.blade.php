@@ -9,14 +9,18 @@
             <div class="col-md-12 checkout-thumbnail">
                 <ul>
                     <li>
-                        <img src="/img/buyIcon/buyList-01.png" alt="">
-                        購物清單
+                        <a href="/cart">
+                            <img src="/img/buyIcon/buyList-01.png" alt="">
+                            <span class="caret"></span>
+                            購物清單
+                        </a>
                     </li>
                     <li style="padding: 20px 50px;">
                         <span class="liinner" style="border-right: solid 2px #636B6F;"></span>
                     </li>
                     <li>
                         <img src="/img/buyIcon/info-01.png" alt="">
+                        <span class="caret"></span>
                         訂購資訊
                     </li>
                     <li style="padding: 20px 50px;">
@@ -24,6 +28,7 @@
                     </li>
                     <li class="active">
                         <img src="/img/buyIcon/send-notyet-01.png" alt="">
+                        <span class="caret"></span>
                         準備出發
                     </li>
                 </ul>

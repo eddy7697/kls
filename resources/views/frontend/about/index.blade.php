@@ -21,7 +21,7 @@
                 <div class="information-banner-inner">
                     <div class="information-banner-inner-text">
                         <h1>
-                            關於凱莉絲
+                            關於凱麗斯
                         </h1>
                         <h1>
                             About KLS

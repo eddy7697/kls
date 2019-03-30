@@ -6,11 +6,9 @@
                     訂購資訊
                 </h3>
                 <hr>
-                <form action="">
+                <div class="table_col">
                     <table>
-
                         <tbody>
-
                             <tr v-if="useUserInfo">
                                 <td class="cart_info_title">
                                     收件人姓名
@@ -133,7 +131,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </form>
+                </div>
             </div>
             <div class="remind">
                 <p>
@@ -293,7 +291,7 @@
                     <input class="form-control" type="text" id="shipping-taxid" placeholder="" v-model="customerParametor.taxId">
                 </div>
             </div> -->
-            <div class="col-md-5 checkout-method">
+            <!-- <div class="col-md-5 checkout-method">
                 <h4>訂單資訊</h4>
                 <hr>
                 <div class="payment-gateway">
@@ -456,14 +454,14 @@
                 <button type="submit" v-if="(paymentMethod == 'cod') && (shippingMethod == 'cvs')" class="btn btn-primary btn-lg btn-block" name="button">超商取貨付款</button>
                 <button type="submit" v-if="(shippingMethod == 'cvs') && (paymentMethod !== 'cod')" class="btn btn-primary btn-lg btn-block" name="button">超商取貨</button>
                 <button type="submit" v-if="shippingMethod !== 'cvs'" class="btn btn-primary btn-lg btn-block" name="button">提交訂單</button>
-            </div>
+            </div> -->
         </form>
 
     </div>
 </template>
 
 <script>
-    $('.loading-bar').fadeOut('100');
+    $('.loading-bar').fadeOut('500');
     export default {
         data() {
             return {

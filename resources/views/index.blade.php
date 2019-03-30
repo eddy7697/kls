@@ -2,17 +2,7 @@
 
 @section('custom-script')
     <script>
-        $(document).ready(function(){
-            var swiper = new Swiper ('.product_nav_index .tab-pane',{
-                direction : 'horizontal',
-                loop      : true,
-                speed     : 1000,
-                navigation: {
-                    nextEl: '.right',
-                    prevEl: '.left'
-                }
-            });
-        });
+        
         
     </script>
 @endsection
@@ -235,150 +225,44 @@
                         <div id="home" class="tab-pane fade in active">
 
                             <div class="swiper-wrapper">
-                                @for ($i = 0; $i < 2; $i++)
-                                    <div class="swiper-slide">    
-                                        <div class="col-md-3">
-                                            <div class="product_img">
-                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
-                                                <div class="product_quick_view">
-                                                    <p class="product_quick_text">
-                                                        READ MORE    
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <h3 class="product_series">
-                                                DEPARTURE/HD-202系列
-                                            </h3>
-                                            <h3 class="product_name">
-                                                22吋登機箱
-                                            </h3>
-                                            <div class="product_category">
-                                                <div class="product_category_detail">
-                                                    <ul class="porduct_size">
-                                                        <li>
-                                                            尺寸: <span>22</span> 吋
-                                                        </li>
-                                                        <li>
-                                                            容量: <span>76.6</span> L
-                                                        </li>
-                                                    </ul>
-                                                    <h1 class="product_price">
-                                                        NTD 3,680
-                                                    </h1>
-                                                </div>
-                                                <button class="buy_click">
-                                                    點我<br>購買
-                                                </button>
+                                @for ($i = 0; $i < 3; $i++)
+                                    <div class="swiper-slide">
+                                        <div class="product_img">
+                                            <img class="product_img_inside" src="/img/product_img.jpg" alt="">
+                                            <div class="product_quick_view">
+                                                <p class="product_quick_text">
+                                                    READ MORE    
+                                                </p>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-3">
-                                            <div class="product_img">
-                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
-                                                <div class="product_quick_view">
-                                                    <p class="product_quick_text">
-                                                        READ MORE    
-                                                    </p>
-                                                </div>
+                                        <h3 class="product_series">
+                                            DEPARTURE/HD-202系列
+                                        </h3>
+                                        <h3 class="product_name">
+                                            22吋登機箱
+                                        </h3>
+                                        <div class="product_category">
+                                            <div class="product_category_detail">
+                                                <ul class="porduct_size">
+                                                    <li>
+                                                        尺寸: <span>22</span> 吋
+                                                    </li>
+                                                    <li>
+                                                        容量: <span>76.6</span> L
+                                                    </li>
+                                                </ul>
+                                                <h1 class="product_price">
+                                                    NTD 3,680
+                                                </h1>
                                             </div>
-                                            <h3 class="product_series">
-                                                DEPARTURE/HD-202系列
-                                            </h3>
-                                            <h3 class="product_name">
-                                                22吋登機箱
-                                            </h3>
-                                            <div class="product_category">
-                                                <div class="product_category_detail">
-                                                    <ul class="porduct_size">
-                                                        <li>
-                                                            尺寸: <span>22</span> 吋
-                                                        </li>
-                                                        <li>
-                                                            容量: <span>76.6</span> L
-                                                        </li>
-                                                    </ul>
-                                                    <h1 class="product_price">
-                                                        NTD 3,680
-                                                    </h1>
-                                                </div>
-                                                <button class="buy_click" class="buy_click">
-                                                    點我<br>購買
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="product_img">
-                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
-                                                <div class="product_quick_view">
-                                                    <p class="product_quick_text">
-                                                        READ MORE   
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <h3 class="product_series">
-                                                DEPARTURE/HD-202系列
-                                            </h3>
-                                            <h3 class="product_name">
-                                                22吋登機箱
-                                            </h3>
-                                            <div class="product_category">
-                                                <div class="product_category_detail">
-                                                    <ul class="porduct_size">
-                                                        <li>
-                                                            尺寸: <span>22</span> 吋
-                                                        </li>
-                                                        <li>
-                                                            容量: <span>76.6</span> L
-                                                        </li>
-                                                    </ul>
-                                                    <h1 class="product_price">
-                                                        NTD 3,680
-                                                    </h1>
-                                                </div>
-                                                <button class="buy_click" class="buy_click">
-                                                    點我<br>購買
-                                                </button>
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="col-md-3">
-                                            <div class="product_img">
-                                                <img class="product_img_inside" src="/img/product_img.jpg" alt="">
-                                                <div class="product_quick_view">
-                                                    <p class="product_quick_text">
-                                                        READ MORE    
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <h3 class="product_series">
-                                                DEPARTURE/HD-202系列
-                                            </h3>
-                                            <h3 class="product_name">
-                                                22吋登機箱
-                                            </h3>
-                                            <div class="product_category">
-                                                <div class="product_category_detail">
-                                                    <ul class="porduct_size">
-                                                        <li>
-                                                            尺寸: <span>22</span> 吋
-                                                        </li>
-                                                        <li>
-                                                            容量: <span>76.6</span> L
-                                                        </li>
-                                                    </ul>
-                                                    <h1 class="product_price">
-                                                        NTD 3,680
-                                                    </h1>
-                                                </div>
-                                                <button class="buy_click" class="buy_click">
-                                                    點我<br>購買
-                                                </button>
-                                            </div>
+                                            <button class="buy_click">
+                                                點我<br>購買
+                                            </button>
                                         </div>
                                     </div>
                                 @endfor    
                             </div>
+                            
                         </div>
                         <div id="menu1" class="tab-pane fade">
                             <h3>
@@ -543,23 +427,19 @@
                     <div class="swiper-wrapper">
                         @for ($i = 0; $i < 3; $i++)
                             <div class="swiper-slide">
-                                @for ($i = 0; $i < 3; $i++)   
-                                <div class="col-md-4">
-                                    <div class="feedbackPost">
-                                        <img class="feedback-Icon" src="/img/feedbackIcon.svg" alt="">
-                                        <div class="feedback-Inner">
-                                            <p>
-                                                異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘的耐心回答任何問題及推薦，謝謝闆闆願意順路幫我送到家，讓我緊急帶出國！這次是買27吋的異形箱！d牌的形李箱讓我離不開這品牌了！
-                                            </p>
-                                        </div>
-                                        <div class="feedback-Author">
-                                            <p>
-                                                卜一一
-                                            </p>
-                                        </div>
+                                <div class="feedbackPost">
+                                    <img class="feedback-Icon" src="/img/feedbackIcon.svg" alt="">
+                                    <div class="feedback-Inner">
+                                        <p>
+                                            異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘的耐心回答任何問題及推薦，謝謝闆闆願意順路幫我送到家，讓我緊急帶出國！這次是買27吋的異形箱！d牌的形李箱讓我離不開這品牌了！
+                                        </p>
+                                    </div>
+                                    <div class="feedback-Author">
+                                        <p>
+                                            卜一一
+                                        </p>
                                     </div>
                                 </div>
-                                @endfor
                             </div>
                         @endfor    
                     </div>
@@ -567,4 +447,5 @@
             </div>
         </div>
     </section>
+
 @endsection

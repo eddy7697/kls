@@ -59,7 +59,7 @@
             <span></span>
             <span></span>
         </button>
-
+        
         <div class="klsBurger-menu">
             <div class="burge-link">
                 <a target="_blank" href="https://www.facebook.com/baggageworld/" class="facebook">
@@ -82,7 +82,7 @@
                 <ul> 
                     <li>
                         <a href="{{route('about')}}">
-                            關於凱麗絲
+                            關於凱麗斯
                         </a>
                     </li>
                     <li>
@@ -137,6 +137,13 @@
         @endunless
 
         <div class="kls-page">
+
+            <div class="kls_rwd_menu">
+                <a href="/">
+                    <img src="/img/KLSLogoBlack-01.svg" alt="">
+                </a>
+            </div>
+
             @if (Route::current()->getName() == 'index')
 
                 {{-- <div class="forwardNews">
@@ -160,7 +167,7 @@
                                     <a href="/" class="mark">
                                         <img src="/img/KLSLogoWhite.svg" alt="">
                                         <p class="mark_text mark_middle">
-                                            凱麗絲旅行箱專賣店
+                                            凱麗斯旅行箱專賣店
                                         </p>
                                         <p class="mark_text mark_bottom">
                                             KLS Baggage Department Store.
@@ -273,7 +280,7 @@
                                         <li class="navbar-ul-li">
                                             <a href="{{route('about')}}">
                                                 <p>
-                                                    關於凱麗絲
+                                                    關於凱麗斯
                                                 </p>
                                             </a>
                                         </li>
@@ -391,26 +398,12 @@
                         </div>
                         <div class="navbar-icon">
                             <a href="/">
-                                <img src="/img/navbar-heart-01.svg" alt="">
+                                <img src="/img/navbar-heart-01.png" alt="">
                             </a>
                             <div id="cart-panel">
                                 <cart-panel />
                             </div>
                         </div>
-                        {{-- <div class="navbar-icon-mobile dropdown">
-                            <button class="navbar-icon-mobile-switch dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <div class="navbar-icon-mobile-inner dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <img src="/img/navbar-heart-01.svg" alt="">
-                                <a href="/cart">
-                                    <img src="/img/navbar-cart-01.svg" alt="">
-                                </a>
-                            </div>
-                        </div> --}}
                     </div>
                 </section>
 
@@ -429,7 +422,7 @@
                                         <ul class="sub-nav-menu-ul">
                                             <li>
                                                 <a href="{{route('about')}}">
-                                                    關於凱麗絲
+                                                    關於凱麗斯
                                                 </a>
                                             </li>
                                             <li class="mega-menu dropdown dropdown-large">
@@ -553,7 +546,7 @@
                                 <a href="/" class="mark">
                                     <img src="/img/KLSLogoWhite.svg" alt="">
                                     <p class="mark_text mark_middle">
-                                        凱麗絲旅行箱專賣店
+                                        凱麗斯旅行箱專賣店
                                     </p>
                                     <p class="mark_text mark_bottom">
                                         KLS Baggage Department Store.
@@ -632,7 +625,7 @@
                                 <ul class="sub-nav-menu-ul">
                                     <li>
                                         <a href="{{route('about')}}">
-                                            關於凱麗絲
+                                            關於凱麗斯
                                         </a>
                                     </li>
                                     <li>
@@ -716,21 +709,32 @@
             // heights
             
             $(document).ready(function() {
-                
-                function get_H(){
+                var $width = $(this).width();
+                get_H();
+                scrollMenu();
+                headerBannerSwiper();
+                rwdSwiper($width);
 
+                $(window).resize(function() {
+                    get_H();
+                });
+
+                function rwdSwiper(w){
+                    if( w < 991 ){
+                        indexFeedbackSwiper(1);
+                        indexProductSwiper(1);
+                    } else {
+                        indexFeedbackSwiper(3);
+                        indexProductSwiper(3);
+                    }
+                };
+
+                function get_H(){
                     var h      = $(window).height()
                     var logo_h = $('.logo').height()
                     var nav_h  = $('.navbar').height()
-
                     $('#header').css('height',h)
-                        
                 };
-                get_H()
-
-                $(window).resize(function() {
-                    get_H()
-                });
 
                 $('.klsBurger-switch').on('click',function(){
                     $(this).toggleClass('openNow');
@@ -738,19 +742,16 @@
                     $('.kls-page').toggleClass('openNow-filter');
                 });
                 
+                function megaMenuScroll () {
+                    var megaMenu = $('.mega-menu-product');
+                    if (document.documentElement.scrollTop < 400){
+                        megaMenu.css('top','-310%');
+                    } else {
+                        megaMenu.css('top','100%');
+                    }; 
+                };
 
-                $(function() {
-
-                    
-                    function megaMenuScroll () {
-                        var megaMenu = $('.mega-menu-product');
-                        if (document.documentElement.scrollTop < 400){
-                            megaMenu.css('top','-310%');
-                        } else {
-                            megaMenu.css('top','100%');
-                        }; 
-                    };
-
+                function scrollMenu() {
                     try {
                         var fix   = $('.navbar');                      //title
                         var fixTop = fix.offset().top;             //title 與頂部的距離
@@ -776,52 +777,74 @@
                     } catch (error) {
                         console.log(error.message)
                     }
-                });
+                };
 
-                var swiper = new Swiper ('.feedback-Index',{
-                    direction : 'horizontal',
-                    loop      : true,
-                    speed     : 1000,
-                    navigation: {
-                        nextEl: '.right',
-                        prevEl: '.left'
-                    }
-                });
-
-                var swiper = new Swiper ('.header_right',{
-                    direction : 'vertical',
-                    loop      : true,
-                    speed     : 1000,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true
-                    },
-                    autoplay  : {
-                        delay: 10000,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: '.top',
-                        prevEl: '.bottom',
-                    },
-                    on:{
-                        transitionStart: function(){
-                            $('.banner_word').css({
-                                'opacity'   : 0,
-                                'transform' : 'translateY(100%) translateX(-20%)',
-                                'transition': '0.3s'
-                            })
+                function headerBannerSwiper(){
+                    var swiper = new Swiper ('.header_right',{
+                        direction : 'vertical',
+                        loop      : true,
+                        speed     : 1000,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true
                         },
-                        transitionEnd: function(){
-                            $('.banner_word').css({
-                                'opacity'   : 1,
-                                'transform' : 'translateY(-60%) translateX(-20%)',
-                                'transition': '0.8s'
-                            })
+                        autoplay  : {
+                            delay: 10000,
+                            disableOnInteraction: false,
                         },
-                    }
-                });
+                        navigation: {
+                            nextEl: '.top',
+                            prevEl: '.bottom',
+                        },
+                        on:{
+                            transitionStart: function(){
+                                $('.banner_word').css({
+                                    'opacity'   : 0,
+                                    'transform' : 'translateY(100%) translateX(-20%)',
+                                    'transition': '0.3s'
+                                })
+                            },
+                            transitionEnd: function(){
+                                $('.banner_word').css({
+                                    'opacity'   : 1,
+                                    'transform' : 'translateY(-60%) translateX(-20%)',
+                                    'transition': '0.8s'
+                                })
+                            },
+                        }
+                    });
+                };
 
+
+                function indexFeedbackSwiper(val){
+                    var swiper = new Swiper ('.feedback-Index',{
+                        direction : 'horizontal',
+                        loop      : true,
+                        speed     : 1000,
+                        slidesPerView: val,
+                        spaceBetween: 30,
+                        slidesPerGroup: val,
+                        navigation: {
+                            nextEl: '.right',
+                            prevEl: '.left'
+                        }
+                    });
+                };
+
+                function indexProductSwiper(val){
+                    var swiper = new Swiper ('.product_nav_index .tab-pane',{
+                        direction : 'horizontal',
+                        loop      : true,
+                        speed     : 1000,
+                        slidesPerView: val,
+                        spaceBetween: 30,
+                        slidesPerGroup: val,
+                        navigation: {
+                            nextEl: '.right',
+                            prevEl: '.left'
+                        }
+                    });
+                };
                 
                 function newPostTextRWD (x,y){
                     x.each(function() {
