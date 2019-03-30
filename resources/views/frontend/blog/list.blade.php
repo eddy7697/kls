@@ -53,7 +53,7 @@
         </div>
         <div class="container-fulid blog-post">
             <div class="row blog-post-row">
-                @foreach (PostView::all(1) as $item => $value)
+                @foreach (PostView::all(6) as $item => $value)
                     <div class="col-md-4 blog-post-group vol03">
                         <a href="/blog/{{$value->customPath}}">
                             <div class="blog-post-inner">
@@ -70,7 +70,7 @@
             </div>
             <div class="row" style="margin: 10px auto 30px auto">
                 <div class="col-md-12">
-                    {{PostView::all(1)}}
+                    {{PostView::all(6)}}
                 </div>
             </div>
         </div>

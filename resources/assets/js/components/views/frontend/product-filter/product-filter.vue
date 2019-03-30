@@ -1,5 +1,6 @@
 <template>
     <section>
+        <img style="display: none" src="/img/loading-spinner.svg" alt="">
         <div class="loading-mask" v-if="isLoading">
             <img class="loading-spinner" src="/img/loading-spinner.svg" alt="">
         </div>

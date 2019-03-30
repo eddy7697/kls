@@ -13,6 +13,9 @@
 
 @section('custom-script')
     <script>
+    $('.blog-container').css({
+        'margin-top': ($('.sub-page-header').height() + 10) + 'px'
+    })
     jQuery('#line-share').on('click', function() {
       window.open("http://line.me/R/msg/text/?" + document.title + '%0D%0A' + window.location.href);
     });
@@ -45,7 +48,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 blog-container">
+        <div class="col-md-12 blog-container">
             <div class="blog-featureImage">
                 <img src="/img/16x9.png" alt="">
             </div>
@@ -62,7 +65,7 @@
                 {!!$post->content!!}
             </div>
         </div>
-        <div class="col-md-4 blog-container">
+        {{-- <div class="col-md-4 blog-container">
             <div class="center-hr">
                 <span>
                     其他文章
@@ -75,7 +78,7 @@
                     </li>
                 @endforeach
             </ul>
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection
