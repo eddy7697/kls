@@ -27,8 +27,6 @@
         $('#readMore-btn').on('click',function(){
             $('.product-more').fadeIn();
         });
-        
-        
     </script>
 @endsection
 

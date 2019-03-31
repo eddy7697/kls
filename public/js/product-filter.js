@@ -548,7 +548,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -623,6 +622,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/products/tag', vo).then(function (res) {
                 _this2.pageData = res.data;
                 _this2.isLoaded = true;
+                _this2.getTitle();
+                _this2.scrollMore();
             }).catch(function (err) {}).then(function () {
                 _this2.isLoading = false;
             });
@@ -668,6 +669,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 price: null,
                 material: null
             };
+        },
+        getTitle: function getTitle() {
+            var title = $('#thisTitle');
+            var vo = {
+                category: this.type
+            };
+            var fiterType = {
+                all: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V',
+                other: 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd',
+                bag: '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'
+            };
+
+            switch (vo.category) {
+                case fiterType.all:
+                    title.text('品牌旅行箱');
+                    this.menuStyle(1);
+                    break;
+                case fiterType.other:
+                    title.text('旅行配件');
+                    this.menuStyle(2);
+                    break;
+                case fiterType.bag:
+                    title.text('品牌背包');
+                    this.menuStyle(3);
+                    break;
+            }
+        },
+        menuStyle: function menuStyle(val) {
+            $('.mega-menu .product .mega-menu-list ul li:nth-child(' + val + ') a').css('border', 'solid 1px #B3B3B3');
+        },
+        scrollMore: function scrollMore() {
+            var _this4 = this;
+
+            $(document).scroll(function () {
+                if ($(document).scrollTop() + window.innerHeight == $(document).height()) {
+                    _this4.learnMoreAction();
+                }
+            });
         }
     }
 });
@@ -1123,29 +1162,7 @@ var render = function() {
               ])
             ])
           })
-        ),
-        _vm._v(" "),
-        _vm.pageData.last_page != _vm.pageData.current_page
-          ? _c(
-              "div",
-              {
-                staticClass: "col-md-12 filter-product-readMore",
-                on: { click: _vm.learnMoreAction }
-              },
-              [
-                _c("button", { attrs: { id: "readMore-btn" } }, [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "learnmore",
-                      class: { loading: _vm.isLoadingLearnMore }
-                    },
-                    [_vm._v("查看更多")]
-                  )
-                ])
-              ]
-            )
-          : _vm._e()
+        )
       ])
     ])
   ])
@@ -1157,7 +1174,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row filter" }, [
       _c("div", { staticClass: "col-md-12 filter-title" }, [
-        _c("h1", [_vm._v("品牌行李箱")]),
+        _c("h1", { attrs: { id: "thisTitle" } }, [_vm._v("品牌行李箱")]),
         _vm._v(" "),
         _c("div", { staticClass: "filter-title-hr" }),
         _vm._v(" "),

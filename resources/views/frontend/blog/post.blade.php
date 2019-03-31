@@ -66,7 +66,7 @@
             </div>
             
             <div class="blog-post-title">
-                <h2>test</h2>
+                <h2>{{$post->title}}</h2>
                 <div class="share">
                     <table style="width: 100%;">
                         <tr>
@@ -81,8 +81,6 @@
                     </table>
                 </div>
             </div>
-            <hr>
-            {{-- {{$post->title}} --}}
             <div class="blog-featureImage">
                 <img src="/img/16x9.png" alt="">
             </div>

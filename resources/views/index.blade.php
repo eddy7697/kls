@@ -338,70 +338,30 @@
                 </div>
             </div>
             <div class="row newsPostRow">
-                <div class="col-md-6">
-                    <div class="newsPost">
-                        <div class="newsPostMask"></div>
-                        <a class="newsPost-ReadMore" href="">
-                            <p>
-                                (Read more...)
-                            </p>
-                        </a>
-                        <div class= "newsImgBox" style="background-image: url(/img/newsImage01.jpg);"></div>
-                        <div class="newsText">
-                            <p class="newsTextTitle">硬殼旅行箱材質到底該怎麼分呢?</p>
-                            <p>2018/07/14</p>
-                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，其實這一點是有一些誤解的！ 挑行李箱跟挑水果不一樣啦！ 快來聽聽月月怎麼說吧！#趕快分享給親朋好友#凱麗斯KLS旅行箱包專賣店</p>
+                @foreach (PostView::all(6) as $key => $value)
+                    <div class="col-md-6">
+                        <div class="newsPost">
+                            <div class="newsPostMask"></div>
+                            <a class="newsPost-ReadMore" href="/blog/{{$value->customPath}}">
+                                <p>
+                                    (Read more...)
+                                </p>
+                            </a>
+                            <div class= "newsImgBox" style="background-image: url('{{$value->featureImage}}');"></div>
+                            <div class="newsText">
+                                <p class="newsTextTitle">
+                                    {{$value->postTitle}}
+                                </p>
+                                <p>
+                                    {{$value->created_at->format('Y-M-d')}}
+                                </p>
+                                <p class="newPostTextP">
+                                    {{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $value->content), 0, 120, "...")}}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="newsPost">
-                        <div class="newsPostMask"></div>
-                        <a class="newsPost-ReadMore" href="">
-                            <p>
-                                (Read more...)
-                            </p>
-                        </a>
-                        <div class= "newsImgBox" style="background-image: url(/img/newsImage02.jpg);"></div>
-                        <div class="newsText">
-                            <p class="newsTextTitle">一月一度的直播拍賣會來嚕</p>
-                            <p>2018/07/14</p>
-                            <p class="newPostTextP">一樣有超便宜的箱子給大家競標撿便宜，另外這次還會介紹這個月剛到的新款！！ ，就是［DEPARTURE］的煞車箱HD-502S與 細鋁框異形箱HD-515，很多朋友們都在期待，想看看闆娘仔細介紹的朋友，一定要記得鎖定觀看唷！！！</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="newsPost">
-                        <div class="newsPostMask"></div>
-                        <a class="newsPost-ReadMore" href="">
-                            <p>
-                                (Read more...)
-                            </p>
-                        </a>
-                        <div class= "newsImgBox" style="background-image: url(/img/newsImage03.jpg);"></div>
-                        <div class="newsText">
-                            <p class="newsTextTitle">請大家注意冒用凱麗斯貼文的詐騙</p>
-                            <p>2018/07/14</p>
-                            <p class="newPostTextP">請大家注意 「非我們官方粉絲團的帳號貼文都不是凱麗斯喔」今天有人冒用我們的名義在公開社團貼文宣稱抽獎活動不是真的喔！！！可能是要騙取個資，請大家要小心喲！#謝謝熱心提醒我們的朋友們#真是什麼奇怪的壞人都有</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="newsPost">
-                        <div class="newsPostMask"></div>
-                        <a class="newsPost-ReadMore" href="">
-                            <p>
-                                (Read more...)
-                            </p>
-                        </a>
-                        <div class= "newsImgBox" style="background-image: url(/img/newsImage04.jpg);"></div>
-                        <div class="newsText">
-                            <p class="newsTextTitle">端午連結營業時間公告</p>
-                            <p>2018/07/14</p>
-                            <p class="newPostTextP">大多人會以為有軟殼與硬殼的差異，其實這一點是有一些誤解的！ 挑行李箱跟挑水果不一樣啦！快來聽聽月月怎麼說吧！#趕快分享給親朋好友#凱麗斯KLS旅行箱包專賣店</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section> 

@@ -7,7 +7,7 @@
         <div class="container filter-area">
             <div class="row filter">
                 <div class="col-md-12 filter-title">
-                <h1>品牌行李箱</h1>
+                <h1 id="thisTitle">品牌行李箱</h1>
                 <div class="filter-title-hr"></div>
                 <p style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                 </div>
@@ -159,14 +159,13 @@
                         </div>                    
                     </div>
                 </div>
-                <div class="col-md-12 filter-product-readMore" @click="learnMoreAction" v-if="pageData.last_page != pageData.current_page">
+                <!-- <div class="col-md-12 filter-product-readMore" @click="learnMoreAction" v-if="pageData.last_page != pageData.current_page">
                     <button id="readMore-btn">
                         <span class="learnmore" :class="{loading: isLoadingLearnMore}">查看更多</span>
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
-
         
     </section>
 </template>
@@ -239,6 +238,8 @@
                     .then(res => {
                         this.pageData = res.data
                         this.isLoaded = true
+                        this.getTitle()
+                        this.scrollMore()
                     }).catch(err => {
 
                     }).then(() => {
@@ -277,6 +278,43 @@
                     price: null,
                     material: null
                 }
+            },
+            getTitle() {
+                let title = $('#thisTitle')
+                let vo = {
+                    category: this.type
+                }
+                let fiterType = {
+                    all : 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V',
+                    other : 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd',
+                    bag : '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'
+                }
+                
+                switch(vo.category)
+                {
+                case fiterType.all:
+                    title.text('品牌旅行箱')
+                    this.menuStyle(1)
+                break;
+                case fiterType.other:
+                    title.text('旅行配件')
+                    this.menuStyle(2)
+                break;
+                case fiterType.bag:
+                    title.text('品牌背包')
+                    this.menuStyle(3)
+                break;
+                }
+            },
+            menuStyle(val) {
+                $(`.mega-menu .product .mega-menu-list ul li:nth-child(${val}) a`).css('border','solid 1px #B3B3B3')
+            },
+            scrollMore(){
+                $(document).scroll(() => {
+                if ($(document).scrollTop() + window.innerHeight == $(document).height()) {
+                        this.learnMoreAction()
+                    }
+                });
             }
         }
     }

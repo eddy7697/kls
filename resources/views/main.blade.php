@@ -852,11 +852,9 @@
                  });
                 };
                 if ($width > 991){
-                    newPostTextRWD($('.newPostTextP'),60);
                     newPostTextRWD($('.post_text p'),300);
                     newPostTextRWD($('.feedback-Inner p'),150);
                 } else {
-                    newPostTextRWD($('.newPostTextP'),60);
                     newPostTextRWD($('.post_text p'),300);
                     newPostTextRWD($('.feedback-Inner p'),100);
                 }
