@@ -2468,7 +2468,7 @@
     margin-top: 5rem;
   }
   .information-banner{
-    margin-top: 5.2rem;
+    margin-top: 5.1rem;
   }
   .klsBurger-switch{
     display: block
@@ -2800,7 +2800,7 @@
     width: 100%;
   }
   .information-banner{
-    min-height: 30rem;
+    min-height: 35rem;
   }
   // contact
   #subPage-contact{
@@ -3203,18 +3203,8 @@
   // contact
   #subPage-contact{
     .information-banner{
-      background-position: 10% center;
       background-size: cover;
-      padding-bottom: 40%;
-      position: relative;
-      min-height: 500px;
       .contact-banner-inner-text{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        background-color: rgba(255,255,255,0.3);
-        padding: 5px 22px;
         width: 100%;
         h1{
           font-weight: 700;
