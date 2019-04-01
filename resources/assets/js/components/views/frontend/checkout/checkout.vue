@@ -16,9 +16,9 @@
                                 </td>
                                 <td>
                                     <input type="text" id="shipping-name" placeholder="" v-model="customerParametor.ReceiverName" required>
-                                    <input type="radio" name="sex" id="male">
+                                    <input type="radio" name="sex" v-model="customerParametor.ReceiverGender" id="male" required>
                                     <label for="male">先生</label>
-                                    <input type="radio" name="sex" id="female">
+                                    <input type="radio" name="sex" v-model="customerParametor.ReceiverGender" id="female" required>
                                     <label for="female">小姐</label>
                                 </td>
                             </tr>
@@ -29,9 +29,9 @@
                                 </td>
                                 <td>
                                     <input type="text" id="shipping-name" placeholder="" v-model="customerParametorForShipping.ReceiverName" required>
-                                    <input type="radio" name="sex" id="male">
+                                    <input type="radio" name="sex" v-model="customerParametorForShipping.ReceiverGender" id="male" value="male" required>
                                     <label for="male">先生</label>
-                                    <input type="radio" name="sex" id="female">
+                                    <input type="radio" name="sex" v-model="customerParametorForShipping.ReceiverGender" id="female" value="female" required>
                                     <label for="female">小姐</label>
                                 </td>
                             </tr>
@@ -113,11 +113,11 @@
                                     發票開立方式
                                 </td>
                                 <td>
-                                    <input type="radio" name="invoice" id="donation">
+                                    <input type="radio" name="invoice" v-model="customerParametorForShipping.receipt" value="donation" id="donation" required>
                                     <label for="donation">捐贈發票</label>
-                                    <input type="radio" name="invoice" id="two-way">
+                                    <input type="radio" name="invoice" v-model="customerParametorForShipping.receipt" value="twoWay" id="two-way" required>
                                     <label for="two-way">二聯式電子發票</label>
-                                    <input type="radio" name="invoice" id="three-way">
+                                    <input type="radio" name="invoice" v-model="customerParametorForShipping.receipt" value="threeWay" id="three-way" required>
                                     <label for="three-way">三聯式發票</label>
                                 </td>
                             </tr>
@@ -126,7 +126,7 @@
                                     備註事項
                                 </td>
                                 <td >
-                                    <textarea cols="30" rows="10"></textarea>
+                                    <textarea cols="30" rows="10" v-model="customerParametorForShipping.remarks"></textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -488,6 +488,7 @@
                 shippingMethods: [],
                 customerParametor: {
                     ReceiverName: '',
+                    ReceiverGender: null,
                     ReceiverCellPhone: '',
                     ReceiverEmail: '',
                     ReceiverCity: '',
@@ -501,6 +502,7 @@
                 customerParametorForShipping: {
                     ReceiverName: '',
                     ReceiverCellPhone: '',
+                    ReceiverGender: null,
                     ReceiverEmail: '',
                     ReceiverCity: '',
                     ReceiverPort: '',
@@ -876,12 +878,12 @@
 
                 this.validateForm();
 
-                if (!Number.isInteger(parseInt(this.customerParametor.ReceiverCellPhone)) ||
-                    (this.customerParametor.ReceiverCellPhone.length < 10) ||
-                    (this.customerParametor.ReceiverCellPhone.length > 10)) {
-                    this.showMessage('warning', '請確認行動電話格式正確。');
-                    return;
-                }
+                // if (!Number.isInteger(parseInt(this.customerParametor.ReceiverCellPhone)) ||
+                //     (this.customerParametor.ReceiverCellPhone.length < 10) ||
+                //     (this.customerParametor.ReceiverCellPhone.length > 10)) {
+                //     this.showMessage('warning', '請確認行動電話格式正確。');
+                //     return;
+                // }
 
                 // return console.log(emailRule.test(this.customerParametor.ReceiverEmail));
                 if (!emailRule.test(this.customerParametor.ReceiverEmail)) {
@@ -889,10 +891,10 @@
                     return;
                 }
 
-                if (!this.isAllow) {
-                    this.showMessage('warning', '請確認運送資訊填寫是否完整。');
-                    return;
-                }
+                // if (!this.isAllow) {
+                //     this.showMessage('warning', '請確認運送資訊填寫是否完整。');
+                //     return;
+                // }
 
                 switch (method) {
                     case 'cvsCod':      // 超商取貨付款
@@ -933,6 +935,7 @@
                 var useUserInfo = document.createElement("input");
                 var Remark = document.createElement("textArea");
                 var usedCoupon = document.createElement("textArea");
+                // ReceiverGender
 
                 // 目前累計點數的倍率
                 var pointMag = parseInt(this.percentage) / 100;
@@ -1027,6 +1030,8 @@
                             ReceiverCellPhone: this.customerParametor.ReceiverCellPhone,
                             ReceiverEmail: this.customerParametor.ReceiverEmail
                         });
+
+                        console.log(1)
                     } else {
                         shippingTarget.value = JSON.stringify({
                             MerchantTradeNo: this.cvsParametor.MerchantTradeNo,
@@ -1039,6 +1044,7 @@
                             ReceiverCellPhone: this.customerParametorForShipping.ReceiverCellPhone,
                             ReceiverEmail: this.customerParametorForShipping.ReceiverEmail
                         });
+                        console.log(2)
                     }
 
                     
@@ -1054,8 +1060,11 @@
                             ReceiverCity: this.customerParametor.ReceiverCity,
                             ReceiverPort: this.customerParametor.ReceiverPort,
                             ReceiverAddress: this.customerParametor.ReceiverAddress,
-                            ReceiverEmail: this.customerParametor.ReceiverEmail
+                            ReceiverGender: this.customerParametorForShipping.ReceiverGender,
+                            remarks: this.customerParametorForShipping.remarks,
+                            receipt: this.customerParametorForShipping.receipt,
                         });
+                        console.log(3)
                     } else {
                         shippingTarget.value = JSON.stringify({
                             ReceiverName: this.customerParametorForShipping.ReceiverName,
@@ -1064,8 +1073,11 @@
                             ReceiverCity: this.customerParametorForShipping.ReceiverCity,
                             ReceiverPort: this.customerParametorForShipping.ReceiverPort,
                             ReceiverAddress: this.customerParametorForShipping.ReceiverAddress,
-                            ReceiverEmail: this.customerParametorForShipping.ReceiverEmail
+                            ReceiverGender: this.customerParametorForShipping.ReceiverGender,
+                            remarks: this.customerParametorForShipping.remarks,
+                            receipt: this.customerParametorForShipping.receipt,
                         });
+                        console.log(4)
                     }
                     
                     shippingTarget.name = "shippingTarget";
@@ -1086,8 +1098,10 @@
                 localStorage.removeItem('logistic_cache');
                 localStorage.setItem('shipping_address', JSON.stringify(this.customerParametorForShipping))
                 // console.log(form)
+                // console.log(shippingTarget.value)
                 // return;
                 
+
                 form.submit();
                 $('.loading-bar').fadeIn('100');
             },
