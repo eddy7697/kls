@@ -118,7 +118,7 @@ Route::get('/check-order', function ()
 });
 Route::get('/remittance-information', function ()
 {
-    return view('frontend.checkoutMethod.remittanceInformation', [
+    return view('frontend.checkoutMethod.checkoutSuccess', [
         'isThumbShow' => false,
         'thumb' => null
     ]);
