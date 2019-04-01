@@ -703,7 +703,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             $(document).scroll(function () {
-                if ($(document).scrollTop() + window.innerHeight == $(document).height()) {
+                if ($(document).scrollTop() + window.innerHeight == $(document).height() - 150) {
                     _this4.learnMoreAction();
                 }
             });
