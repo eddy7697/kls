@@ -30,7 +30,7 @@
                             行李箱首購族最大的困擾大多是什麼行李箱才適合我這趟旅行，PVC、ABS、軟殼箱、鋁框箱到底哪一款適合我？購買第二顆行李箱也常常考慮到CP值、耐用性，如何比前一顆好？職人線上幫你整理懶人包、影音開箱，這裏，總有一款屬於你的冒險。
                         </p>
                     </div>
-                    <img src="/img/KLSLogoBlack-01.svg" alt="">
+                    <img src="/img/KLSLogoBlack-01.png" alt="">
                 </div>
             </div>
         </div>

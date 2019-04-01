@@ -76,7 +76,7 @@
             <div class="klsBurger-menu-inner">
                 <div class="klsBurger-menu-logo">
                     <a href="/">
-                        <img src="/img/KLSLogoWhite.svg" alt="">
+                        <img src="/img/KLSLogoWhite.png" alt="">
                     </a>
                 </div>
                 <ul> 
@@ -140,7 +140,7 @@
 
             <div class="kls_rwd_menu">
                 <a href="/">
-                    <img src="/img/KLSLogoBlack-01.svg" alt="">
+                    <img src="/img/KLSLogoBlack-01.png" alt="">
                 </a>
             </div>
 
@@ -165,7 +165,7 @@
                             <div class="logo_area">
                                 <div class="logo">
                                     <a href="/" class="mark">
-                                        <img src="/img/KLSLogoWhite.svg" alt="">
+                                        <img src="/img/KLSLogoWhite.png" alt="">
                                         <p class="mark_text mark_middle">
                                             凱麗斯旅行箱專賣店
                                         </p>
@@ -409,7 +409,7 @@
                                 <div class="row sub-page-header-inner">
                                     <div class="sub-logo">
                                         <a href="/">
-                                            <img src="/img/KLSLogoBlack-01.svg" alt="">
+                                            <img src="/img/KLSLogoBlack-01.png" alt="">
                                         </a>
                                     </div>
                                     <div class="sub-nav-menu">
@@ -538,7 +538,7 @@
                         <div class="logo_area">
                             <div class="logo">
                                 <a href="/" class="mark">
-                                    <img src="/img/KLSLogoWhite.svg" alt="">
+                                    <img src="/img/KLSLogoWhite.png" alt="">
                                     <p class="mark_text mark_middle">
                                         凱麗斯旅行箱專賣店
                                     </p>
@@ -612,7 +612,7 @@
                         <div class="row sub-page-footer-inner">
                             <div class="sub-logo">
                                 <a href="/">
-                                    <img src="/img/KLS_logo_white.svg" alt="">
+                                    <img src="/img/KLS_logo_white.png" alt="">
                                 </a>
                             </div>
                             <div class="sub-nav-menu">

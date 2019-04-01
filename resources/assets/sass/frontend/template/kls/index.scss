@@ -8,7 +8,7 @@
   bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999;
+  z-index: 89;
   .chevron {
     position: absolute;
     left: 35%;
@@ -288,7 +288,7 @@
     .klsBurger-menu-logo{
       text-align: center;
       img{
-        width: 250px;
+        width: 150px;
       }
     }
   }
@@ -468,7 +468,7 @@
               font-size: $header-contact-font-size;
             }
             img{
-              width: 200px;
+              width: 150px;
             }
           }
           .mark_time{
@@ -802,7 +802,7 @@
             font-size: $header-contact-font-size;
           }
           img{
-            width: 200px;
+            width: 150px;
           }
         }
       }
@@ -1335,7 +1335,7 @@
       width: 30%;
       position: relative;
       img {
-        width: 300px;
+        width: 250px;
       }
     }
     .sub-nav-menu {
@@ -2467,7 +2467,7 @@
     display: block;
   }
   .filter-area{
-    margin-top: 5rem;
+    margin-top: 8rem;
   }
   .information-banner{
     margin-top: 5.1rem;
@@ -3288,6 +3288,12 @@
 }
 
 @media screen and (max-width: 460px){
+  .sw_mask .product-right, .sw_mask .feedback-right{
+    right: .5rem;
+  }
+  .sw_mask .product-left, .sw_mask .feedback-left{
+    left: 0.5rem;
+  }
   .blog-post-container{
     .row{
       .blog-post-title{
@@ -3316,7 +3322,7 @@
   #footer{
     .footer_logo{
       width: 100%;
-      height: 15rem;
+      height: 20rem;
       .logo_area{
         .logo{
           a{
@@ -3333,17 +3339,7 @@
     .footer_contact{
       width: 100%;
       .footer_addr{
-        height: auto;
-        box-shadow: 0 0 4rem inset;
-        margin-bottom: 0;
-        .shop_list{
-          .shop{
-            border-bottom: solid 1px rgba(0, 0, 0, 0.2);
-          }
-          .shop:nth-child(3){
-            border-bottom: none;
-          }
-        }
+        display: none;
       }
       .community{
        display: none;
