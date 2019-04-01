@@ -406,46 +406,100 @@
                 <section>
                     <div class="sub-page-header">
                         <div class="container">
-                                <div class="row sub-page-header-inner">
-                                    <div class="sub-logo">
-                                        <a href="/">
-                                            <img src="/img/KLSLogoBlack-01.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="sub-nav-menu">
-                                        <ul class="sub-nav-menu-ul">
-                                            <li>
-                                                <a href="{{route('about')}}">
-                                                    關於凱麗斯
-                                                </a>
-                                            </li>
-                                            <li class="mega-menu dropdown dropdown-large">
+                            <div class="row sub-page-header-inner">
+                                <div class="sub-logo">
+                                    <a href="/">
+                                        <img src="/img/KLSLogoBlack-01.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="sub-nav-menu">
+                                    <ul class="sub-nav-menu-ul">
+                                        <li>
+                                            <a class="sub-nav-menu-ul-a" href="{{route('about')}}">
+                                                關於凱麗斯
+                                            </a>
+                                        </li>
+                                        <li class="mega-menu dropdown dropdown-large">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                所有商品
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="mega-menu-product dropdown-menu dropdown-menu-large product row">
+                                                <li class="col-sm-2 mega-menu-title">
+                                                    <h2>所有商品</h2>
+                                                    <p>ALL PRODUCT</p>
+                                                </li>
+                                                <li class="col-sm-3 mega-menu-list">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="{{route('productAll')}}">
+                                                                品牌行李箱                   
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{route('productFitting')}}">
+                                                                旅行配件
+                                                            </a>
+                                                        </li>
+                                                    <li>
+                                                        <a href="{{route('productFittingBag')}}">
+                                                                品牌背包
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-md-4 mega-menu-img">
+                                                    <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
+                                                </li>
+                                                <li class="col-md-3 mega-menu-text">
+                                                    <div class="dropdown-menu-inner-text">
+                                                        <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="sub-nav-menu-ul-a" href="{{url('/blog')}}">
+                                                部落格
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-nav-menu-ul-a" href="{{route('location')}}">
+                                                店鋪資訊
+                                            </a>
+                                        </li>
+                                        <li class="mega-menu dropdown dropdown-large">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                    所有商品
+                                                    諮詢專區
                                                     <span class="caret"></span>
                                                 </a>
-                                                <ul class="mega-menu-product dropdown-menu dropdown-menu-large product row">
+                                                <ul class="mega-menu-product dropdown-menu dropdown-menu-large contact row">
                                                     <li class="col-sm-2 mega-menu-title">
-                                                        <h2>所有商品</h2>
-                                                        <p>ALL PRODUCT</p>
+                                                        <h2>諮詢專區</h2>
+                                                        <p>CONSULTING AREA</p>
                                                     </li>
                                                     <li class="col-sm-3 mega-menu-list">
                                                         <ul>
                                                             <li>
-                                                                <a href="{{route('productAll')}}">
-                                                                    品牌行李箱                   
+                                                                <a href="{{url('/about/privacy')}}"> {{--  href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" --}}
+                                                                    隱私權條款
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="{{route('productFitting')}}">
-                                                                    旅行配件
+                                                                <a href="{{url('/about/notice')}}">
+                                                                    購物需知
                                                                 </a>
                                                             </li>
-                                                        <li>
-                                                            <a href="{{route('productFittingBag')}}">
-                                                                    品牌背包
+                                                            <li>
+                                                                <a href="{{route('contact')}}">
+                                                                    諮詢專區
                                                                 </a>
                                                             </li>
+                                                            {{-- <li>
+                                                                <a href="">
+                                                                    安心購物宣言
+                                                                </a>
+                                                            </li> --}}
                                                         </ul>
                                                     </li>
                                                     <li class="col-md-4 mega-menu-img">
@@ -458,71 +512,17 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li>
-                                                <a href="{{url('/blog')}}">
-                                                    部落格
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{route('location')}}">
-                                                    店鋪資訊
-                                                </a>
-                                            </li>
-                                            <li class="mega-menu dropdown dropdown-large">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        諮詢專區
-                                                        <span class="caret"></span>
-                                                    </a>
-                                                    <ul class="mega-menu-product dropdown-menu dropdown-menu-large contact row">
-                                                        <li class="col-sm-2 mega-menu-title">
-                                                            <h2>諮詢專區</h2>
-                                                            <p>CONSULTING AREA</p>
-                                                        </li>
-                                                        <li class="col-sm-3 mega-menu-list">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="{{url('/about/privacy')}}"> {{--  href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" --}}
-                                                                        隱私權條款
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="{{url('/about/notice')}}">
-                                                                        購物需知
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="{{route('contact')}}">
-                                                                        諮詢專區
-                                                                    </a>
-                                                                </li>
-                                                                {{-- <li>
-                                                                    <a href="">
-                                                                        安心購物宣言
-                                                                    </a>
-                                                                </li> --}}
-                                                            </ul>
-                                                        </li>
-                                                        <li class="col-md-4 mega-menu-img">
-                                                            <div class="dropdown-menu-inner-img" style="background-image:url('/img/megaMenuProduct.jpg')"></div>
-                                                        </li>
-                                                        <li class="col-md-3 mega-menu-text">
-                                                            <div class="dropdown-menu-inner-text">
-                                                                <p>凱麗斯嚴選各大品牌行李箱配件，此區包含有行李箱綁帶、行李秤、收納袋與各式旅行配件，讓您更完善您的旅行體驗，當您在完成旅行夥伴選購後，務必前來更完善您的遠征體驗。</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            <li class="sub-icon">
-                                                <a href="">
-                                                    <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
-                                                </a>
-                                                <div id="cart-panel">
-                                                    <cart-panel />
-                                                </div>
-                                            </li>
-                                        </ul> 
-                                    </div>
+                                        <li class="sub-icon">
+                                            <a href="">
+                                                <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
+                                            </a>
+                                            <div id="cart-panel">
+                                                <cart-panel />
+                                            </div>
+                                        </li>
+                                    </ul> 
                                 </div>
+                            </div>
                         </div>
                     </div> 
                 </section>

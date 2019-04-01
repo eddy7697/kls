@@ -178,7 +178,7 @@
   background-color: transparent;
   top     : 1.3rem;
   left    : 1.3rem;
-  z-index : 9999999;
+  z-index : 91;
   border  : none;
   cursor  : pointer;
   outline : none; 
@@ -324,7 +324,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
-  margin-top: 134px;
+  margin-top: 120px;
   min-height: 650px;
 }
 
@@ -2675,6 +2675,9 @@
 }
 
 @media screen and (max-width: 991px){
+  .information-content{
+    margin: 3rem 0;
+  }
   /*----------subPage-privacy---------*/
 .subPage-privacy{
   margin-top: 6rem;
@@ -3077,10 +3080,33 @@
 }
 
 @media screen and (max-width: 768px){
-  .information-content {
-    margin: 2rem 0;
-    .center-content{
-      border: none;
+  .contact-container{
+    padding: 0;
+    .information-content{
+      padding: 0;
+      margin: 0;
+      .center-content{
+        border: none;
+        .contact-table{
+          margin: 5px;
+          tr{
+            flex-wrap: wrap;
+            margin: 3rem 0;
+          }
+          .form-group{
+            margin: 0 5px;
+          }
+          .form-group-text-must{
+            width: 15%;
+          }
+          .form-group-text-input{
+            width: 100%;
+          }
+          .form-group-text-td{
+            width: 70%;
+          }
+        }
+      }
     }
   }
   .scrollDown{
@@ -3221,6 +3247,7 @@
     .information-banner{
       background-size: cover;
       .contact-banner-inner-text{
+        padding: 1rem 3rem;
         width: 100%;
         h1{
           font-weight: 700;
@@ -3346,35 +3373,7 @@
       }
     }
   }
-  .contact-container{
-    padding: 0;
-    .information-content{
-      padding: 15px 0;
-      margin-right: 0px;
-      margin-left: 0px;
-      .center-content{
-        .contact-table{
-          margin: 5px;
-          tr{
-            flex-wrap: wrap;
-            margin: 3.5rem 0;
-          }
-          .form-group{
-            margin: 0 5px;
-          }
-          .form-group-text-must{
-            width: 15%;
-          }
-          .form-group-text-input{
-            width: 100%;
-          }
-          .form-group-text-td{
-            width: 70%;
-          }
-        }
-      }
-    }
-  }
+  
   
   .sub-page-footer-inner{
     display: block !important;

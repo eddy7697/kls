@@ -311,7 +311,7 @@
             },
             scrollMore(){
                 $(document).scroll(() => {
-                if ($(document).scrollTop() + window.innerHeight == $(document).height()) {
+                if ($(document).scrollTop() + window.innerHeight == $(document).height() - 150) {
                         this.learnMoreAction()
                     }
                 });

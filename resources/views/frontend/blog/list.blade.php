@@ -26,7 +26,7 @@
 
 @section('custom-style')
     <style media="screen">
-        .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(3) a{
+        .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(3) .sub-nav-menu-ul-a{
             border-bottom: solid 3px #FBB03B;
         }
     </style>
