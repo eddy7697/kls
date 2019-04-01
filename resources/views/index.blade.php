@@ -225,42 +225,47 @@
                         <div id="home" class="tab-pane fade in active">
 
                             <div class="swiper-wrapper">
-                                @for ($i = 0; $i < 3; $i++)
+                                @foreach (ProductView::all() as $item)
                                     <div class="swiper-slide">
                                         <div class="product_img">
-                                            <img class="product_img_inside" src="/img/product_img.jpg" alt="">
-                                            <div class="product_quick_view">
-                                                <p class="product_quick_text">
-                                                    READ MORE    
-                                                </p>
-                                            </div>
+                                            <img class="product_img_inside" src="{{$item->featureImage}}" alt="">
+                                            <a href="/detail/{{$item->productGuid}}">
+                                                <div class="product_quick_view">
+                                                    <p class="product_quick_text">
+                                                        READ MORE    
+                                                    </p>
+                                                </div>
+                                            </a>
                                         </div>
                                         <h3 class="product_series">
-                                            DEPARTURE/HD-202系列
+                                            {{$item->productTitle}}
                                         </h3>
+                                        @php
+                                            $command = json_decode($item->command);
+                                        @endphp
                                         <h3 class="product_name">
-                                            22吋登機箱
+                                            {{$command->brand}}
                                         </h3>
                                         <div class="product_category">
                                             <div class="product_category_detail">
                                                 <ul class="porduct_size">
                                                     <li>
-                                                        尺寸: <span>22</span> 吋
+                                                        尺寸： {{$command->size}}
                                                     </li>
                                                     <li>
-                                                        容量: <span>76.6</span> L
+                                                        材質： {{$command->material}}
                                                     </li>
                                                 </ul>
                                                 <h1 class="product_price">
-                                                    NTD 3,680
+                                                    NTD {{number_format($item->price)}}
                                                 </h1>
                                             </div>
-                                            <button class="buy_click">
+                                            <button class="buy_click" onclick="addSigleProduct('{{$item->productGuid}}')">
                                                 點我<br>購買
                                             </button>
                                         </div>
                                     </div>
-                                @endfor    
+                                @endforeach
                             </div>
                             
                         </div>
