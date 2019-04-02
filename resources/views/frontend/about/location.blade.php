@@ -76,10 +76,12 @@
                             <p class="information-inner-store-number-title">
                                 透過Web預訂
                             </p>
-                            <button class="information-btn online-contact" style="margin-top: 8px; width: 185px;">
-                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                網路預訂
-                            </button>
+                            <a href="/contact">
+                                <button class="information-btn online-contact" style="margin-top: 8px; width: 185px;">
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                    網路預訂
+                                </button>
+                            </a>
                         </div>
                         
                     </div>
@@ -165,10 +167,12 @@
                     <p>
                         電子郵件聯繫 <span>Email Contact</span>
                     </p>
-                    <button class="information-btn online-contact">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        線上聯繫
-                    </button>
+                    <a href="/contact">
+                        <button class="information-btn online-contact">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            線上聯繫
+                        </button>
+                    </a>
                     <p>
                         ※點擊前往表單連結進行填寫。
                     </p>
@@ -236,10 +240,12 @@
                     <p>
                         電子郵件聯繫 <span>Email Contact</span>
                     </p>
-                    <button class="information-btn online-contact">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        線上聯繫
-                    </button>
+                    <a href="/contact">
+                        <button class="information-btn online-contact">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            線上聯繫
+                        </button>
+                    </a>
                     <p>
                         ※點擊前往表單連結進行填寫。
                     </p>
@@ -306,10 +312,12 @@
                     <p>
                         電子郵件聯繫 <span>Email Contact</span>
                     </p>
-                    <button class="information-btn online-contact">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        線上聯繫
-                    </button>
+                    <a href="/contact">
+                        <button class="information-btn online-contact">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            線上聯繫
+                        </button>
+                    </a>
                     <p>
                         ※點擊前往表單連結進行填寫。
                     </p>
