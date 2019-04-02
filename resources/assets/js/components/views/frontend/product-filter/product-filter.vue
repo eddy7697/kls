@@ -9,7 +9,7 @@
                 <div class="col-md-12 filter-title">
                 <h1 id="thisTitle">品牌行李箱</h1>
                 <div class="filter-title-hr"></div>
-                <p style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
+                <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                 </div>
             </div>
             <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
@@ -298,6 +298,7 @@
                 break;
                 case fiterType.other:
                     title.text('旅行配件')
+                    $('.filter-subTitle').hide()
                     this.menuStyle(2)
                 break;
                 case fiterType.bag:

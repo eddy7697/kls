@@ -688,6 +688,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     break;
                 case fiterType.other:
                     title.text('旅行配件');
+                    $('.filter-subTitle').hide();
                     this.menuStyle(2);
                     break;
                 case fiterType.bag:
@@ -1178,9 +1179,14 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "filter-title-hr" }),
         _vm._v(" "),
-        _c("p", { staticStyle: { "margin-top": "50px" } }, [
-          _vm._v("這裡總有一款屬於你的冒險")
-        ])
+        _c(
+          "p",
+          {
+            staticClass: "filter-subTitle",
+            staticStyle: { "margin-top": "50px" }
+          },
+          [_vm._v("這裡總有一款屬於你的冒險")]
+        )
       ])
     ])
   },

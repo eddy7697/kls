@@ -147,14 +147,14 @@
                                     <td>
                                         <p class="form-remind">
                                             我們不會將您輸入的任何個人信息用於回答查詢以外的目的，此外，我們將根據
-                                            <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021">個人資料保護法</a>
-                                            第六條，妥善管理您的個人信息。您亦可<a href="">點擊這裡</a>查看更多關於KLS提供的隱私權保護政策。
-                                            請您務必將KLS的電子郵件地址或域名設置為可接收的電子郵件，以免錯過我們的回覆，您亦可直接我們聯繫<a href="">(點擊這裡查看聯絡訊息)</a>
+                                            <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" target="_blank">個人資料保護法</a>
+                                            第六條，妥善管理您的個人信息。您亦可<a href="/about/privacy" target="_blank">點擊這裡</a>查看更多關於KLS提供的隱私權保護政策。
+                                            請您務必將KLS的電子郵件地址或域名設置為可接收的電子郵件，以免錯過我們的回覆，您亦可直接我們聯繫<a href="/about/location" target="_blank">(點擊這裡查看聯絡訊息)</a>
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="margin: 0 auto;">
                                         {!! NoCaptcha::renderJs() !!}
                                         {!! NoCaptcha::display() !!}
                                         @if ($errors->has('g-recaptcha-response'))
