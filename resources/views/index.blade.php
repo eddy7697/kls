@@ -2,11 +2,14 @@
 
 @section('custom-script')
     <script>
+        function quickView(path) {
+            window.location.href = '/product-deatil/' + path
+        };   
         function renderPruductDetail(guid){
-            let getDetailApi = "/products/get/" + guid ;
+            var getDetailApi = "/products/get/" + guid ;
             
             axios.get(getDetailApi)
-                .then(res => {
+                .then(function(res){
                     console.log(res.data.data)
                     $('#productDetailModal').modal('show');
                     $('.modal-title').text(res.data.data.productTitle);
@@ -24,11 +27,8 @@
                     $('#modal-QuickView').attr({
                         'onclick': 'quickView("' + res.data.data.customPath + '")'
                     });
-                    $('#modal-AddProduct').attr({
-                        'onclick': 'addSingleProduct("' + res.data.data.productGuid + '")'
-                    });
                 })
-                .catch(err => {
+                .catch(function(err) {
                     console.log(err);
                 });
         };
@@ -120,8 +120,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="modal-QuickView" class="btn btn-primary">查看商品詳情</button>
-                        <button type="button" id="modal-AddProduct" class="btn btn-primary">加入購物車</button>
+                        <button id="modal-QuickView" class="btn btn-primary" type="button">繼續諮詢</button>
+                        <a href="/all">
+                            <button class="btn btn-primary" type="button">查看更多箱款</button>
+                        </a>
                     </div>
                 </div>
             </div>
