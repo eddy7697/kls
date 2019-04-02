@@ -142,7 +142,7 @@
                                         </table>
                                     </td>
                                 </tr> -->
-                                <tr>
+                                <tr v-if="false">
                                     <td>付款方式</td>
                                     <td>
                                         <span v-if="itemShowed.paymentMethod === 'ATM'">ATM轉帳</span>
@@ -242,7 +242,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-if="false">
                                     <td>運送方式</td>
                                     <td>
                                         <span v-if="itemShowed.shippingMethod === 'delivery'">國內宅配</span>
@@ -282,7 +282,7 @@
                                         </table>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-if="false">
                                     <td>運送標的</td>
                                     <td>
                                         <table class="table" v-if="itemShowed.shippingMethod === 'cvs'">
@@ -319,7 +319,7 @@
                                             <div class="remark-info" v-if="itemShowed.remarks">
                                                 {{itemShowed.remarks}}
                                             </div>                                            
-                                            <button type="button" class="btn btn-primary btn-sm" @click="toggleRemarkModify()">更改備註</button>
+                                            <button type="button" class="btn btn-primary btn-sm" @click="toggleRemarkModify()">編輯備註</button>
                                         </div>
                                         <div v-else>
                                             <textarea class="form-control" rows="3" v-model="itemShowed.remarks"></textarea>

@@ -26,6 +26,7 @@ class CustomField extends Model
         'customField7',
         'customField8',
         'customField9',
-        'customField10'
+        'customField10',
+        'sortIndex'
     ];
 }
