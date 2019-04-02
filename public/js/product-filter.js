@@ -704,7 +704,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             $(document).scroll(function () {
-                if ($(document).scrollTop() + window.innerHeight == $(document).height() - 150) {
+                var docH = $(document).height();
+                var scrollH = $(document).scrollTop() + $('.sub-page-footer').height() / 2 + window.innerHeight;
+                if (scrollH > docH) {
                     _this4.learnMoreAction();
                 }
             });

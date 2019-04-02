@@ -391,7 +391,7 @@
                             </div>
                         </div>
                         <div class="navbar-icon">
-                            <a href="/">
+                            <a href="/wish-list">
                                 <img src="/img/navbar-heart-01.png" alt="">
                             </a>
                             <div id="cart-panel">
@@ -513,7 +513,7 @@
                                                 </ul>
                                             </li>
                                         <li class="sub-icon">
-                                            <a href="">
+                                            <a href="/wish-list">
                                                 <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
                                             </a>
                                             <div id="cart-panel">

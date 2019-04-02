@@ -312,16 +312,13 @@
             },
             scrollMore(){
                 $(document).scroll(() => {
-                    let docH = $(document).height();
-                    let scrollH = $(document).scrollTop() + ($('.sub-page-footer').height()/2) + window.innerHeight;
-                    if (scrollH > docH) {
-                        this.learnMoreAction();
+                if ($(document).scrollTop() + window.innerHeight == $(document).height() - 150) {
+                        this.learnMoreAction()
                     }
                 });
             }
         }
     }
-    
 </script>
 
 <style lang="scss">

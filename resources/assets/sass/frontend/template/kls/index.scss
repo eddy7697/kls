@@ -951,15 +951,12 @@
                 border-radius   : 8px;
                 margin-bottom   : 20px;
                 transition      : 0.5s;
+                font-size: $title-bottom-font-size;
+                color : $color-blue;
                 background-color: $font-color-focus;
                 &:hover{
-                  opacity: 0.7;
-                }
-                a{
-                  color          : $color-grey;
-                  text-decoration: none;
-                  font-weight    : 500;
-                  font-size: $title-bottom-font-size;
+                  background-color: $color-blue;
+                  color : $font-color-focus;
                 }
               }
             }
@@ -1049,7 +1046,7 @@
 
               &:hover{
                 &::before{
-                  border: solid 200px $color-black-mask;
+                  border: solid 250px $color-black-mask;
                 }
                 .product_quick_view{
                   opacity: 1;
@@ -1952,13 +1949,14 @@
       }
     }
     .blog-post-title{
-      @include flex-mix(center,space-between);
-      margin-top: 22px;
+      margin-top: 2rem;
+      margin-bottom: 7rem;
       h2{
         margin-top: 0;
       }
       .share{
         @include size-setting(200px,auto);
+        float: right;
       }
     }
   }
@@ -2151,6 +2149,56 @@
 .online-contact{
   margin-top: 12px;
   margin-bottom: 20px;
+}
+
+// productDetailModal
+#productDetailModal{
+  .modal-content{
+    button.close{
+      background: $color-blue;
+      color: $color-white;
+      font-size: 36px;
+      opacity: 1;
+      padding: 0px 7px 7px 8px;
+      border-radius: 50%;
+      transition: .5s;
+      &:hover{
+        transform: rotate(180deg);
+      }
+    }
+    .modal-header{
+      border-bottom: none;
+    }
+    .modal-body{
+      .modal-img-container{
+        width: 45%;
+        position: relative;
+        padding-bottom: 45%;
+        overflow: hidden;
+        img{
+          @extend %force-center;
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+    }
+    .modal-text-container{
+      width: 52%;
+    }
+    .modal-footer{
+      button{
+        background-color: $font-color-focus;
+        color: $color-blue;
+        border-color: $font-color-focus;
+        transition: .5s;
+        &:hover{
+          background-color: $color-blue;
+          color: $font-color-focus;
+          border-color: $color-blue;
+        }
+      }
+    }
+  }
 }
 
 /*----------subPage-privacy---------*/

@@ -12,6 +12,7 @@
 /public/js/product-fitter.js
 /public/js/product-fitting.js
 /public/js/product-fitting-bag.js
+/public/js/wish-list.js
 /storage/*.key
 vendor
 /.idea

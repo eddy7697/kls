@@ -106,17 +106,6 @@
                             <div class="modal-shortDescription"></div>
                             <hr>
                             <div class="modal-quantity"></div>
-                            <div class="modal-price">
-                                會員優惠 :
-                                <span></span>
-                                元
-                            </div>
-                            <hr>
-                            <div class="modal-discountedPrice">
-                                限時價格 :
-                                <span></span>
-                                元
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
