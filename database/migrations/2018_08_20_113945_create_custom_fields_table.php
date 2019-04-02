@@ -28,6 +28,7 @@ class CreateCustomFieldsTable extends Migration
             $table->string('customField8')->nullable();
             $table->string('customField9')->nullable();
             $table->string('customField10')->nullable();
+            $table->integer('sortIndex')->nullable();
             $table->timestamps();
         });
     }

@@ -159,6 +159,39 @@ Route::get('/business/giftOrder', function () {
 
 
 /*****************
+    witness
+*****************/
+Route::group(['prefix' => 'witness'], function ()
+{
+    Route::get('/add', function ()
+    {
+        return view('backend.witness.addWitness', [
+            'mode' => 'add',
+            'panelTitle' => '新增證言',
+            'mode' => 'add'
+        ]);
+    });
+
+    Route::get('/list', function ()
+    {
+        return view('backend.witness.witnessList', [
+            'panelTitle' => '證言列表',
+            'mode' => 'add'
+        ]);
+    });
+
+    Route::get('/edit/{id}', function ($id)
+    {
+        return view('backend.witness.addWitness', [
+            'panelTitle' => '編輯證言',
+            'id' => $id,
+            'mode' => 'edit'
+        ]);
+    });
+});
+
+
+/*****************
     PAGE
 *****************/
 Route::get('/page/managment', function()

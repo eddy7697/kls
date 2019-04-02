@@ -16,10 +16,10 @@
             //         window.location.href = '/blog/category/' + data.node.key
             //     }
             // });
-            $('.blog-filter-inner a').on('click',function(){
-                $('.blog-filter-inner a').removeClass('active');
-                $(this).addClass('active');
-            });
+            // $('.blog-filter-inner a').on('click',function(){
+            //     $('.blog-filter-inner a').removeClass('active');
+            //     $(this).addClass('active');
+            // });
         });  
     </script>
 @endsection
@@ -45,9 +45,12 @@
             <div class="row">
                 <div class="col-md-12 blog-filter-inner">
                     <a class="active">全部文章</a>
-                    <a>職人開箱</a>
+                    @foreach (CategoryView::post() as $item)
+                        <a href="/blog/category/{{$item->categoryGuid}}">{{$item->categoryTitle}}</a>    
+                    @endforeach
+                    {{-- <a>職人開箱</a>
                     <a>箱款新知</a>
-                    <a>挑箱教學</a>
+                    <a>挑箱教學</a> --}}
                 </div>
             </div>
         </div>

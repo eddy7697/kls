@@ -21,6 +21,7 @@ use Log;
 use Artisan;
 use Config;
 use Analytics;
+use Session;
 use Spatie\Analytics\Period;
 
 class HomeController extends Controller
@@ -145,5 +146,21 @@ class HomeController extends Controller
     public function esunec(Request $request)
     {
         return $request->all();
+    }
+
+    public function testSession($id)
+    {
+        if (Session::has('favorite'))  {
+            $favorite = Session::get('favorite');
+
+            if (!in_array($id, $favorite)) {
+                array_push($favorite, $id);
+                Session::put('favorite', $favorite);
+            }
+        } else {
+            Session::put('favorite', array($id));
+        }
+
+        return Session::all();
     }
 }

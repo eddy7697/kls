@@ -58,6 +58,7 @@ Route::get('/test_prod', function ()
     // }
 });
 Route::get('/create_admin', 'HomeController@createAdmin');
+Route::get('/test_session/{id}', 'HomeController@testSession');
 // Route::get('/esun', 'Backend\OrderController@esun');
 Route::get('/esun', function ()
 {

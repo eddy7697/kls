@@ -47,7 +47,7 @@ Route::get('/blog', function ()
         'isThumbShow' => false,
     ]);
 })->name('blog');
-Route::get('blog/category/{category}', function ($category)
+Route::get('/blog/category/{category}', function ($category)
 {
     return view('frontend.blog.category', [
         'isThumbShow' => false,
