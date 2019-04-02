@@ -154,7 +154,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="margin: 0 auto;">
                                         {!! NoCaptcha::renderJs() !!}
                                         {!! NoCaptcha::display() !!}
                                         @if ($errors->has('g-recaptcha-response'))
