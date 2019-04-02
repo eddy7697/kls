@@ -65,6 +65,7 @@
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 51:
 /***/ (function(module, exports) {
 
@@ -149,6 +150,9 @@ function toComment(sourceMap) {
 /***/ }),
 
 /***/ 6:
+=======
+/***/ 5:
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -258,7 +262,94 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 612:
+=======
+/***/ 51:
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ 600:
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(613);
@@ -285,7 +376,11 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(615)
 }
+<<<<<<< HEAD
 var normalizeComponent = __webpack_require__(6)
+=======
+var normalizeComponent = __webpack_require__(5)
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 /* script */
 var __vue_script__ = __webpack_require__(617)
 /* template */
@@ -339,7 +434,11 @@ var content = __webpack_require__(616);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
+<<<<<<< HEAD
 var update = __webpack_require__(78)("51fa9ddc", content, false, {});
+=======
+var update = __webpack_require__(74)("51fa9ddc", content, false, {});
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -704,7 +803,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             $(document).scroll(function () {
-                if ($(document).scrollTop() + window.innerHeight == $(document).height() - 150) {
+                var docH = $(document).height();
+                var scrollH = $(document).scrollTop() + $('.sub-page-footer').height() / 2 + window.innerHeight;
+                if (scrollH > docH) {
                     _this4.learnMoreAction();
                 }
             });
@@ -1250,7 +1351,11 @@ if (false) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 78:
+=======
+/***/ 74:
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1269,7 +1374,11 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
+<<<<<<< HEAD
 var listToStyles = __webpack_require__(79)
+=======
+var listToStyles = __webpack_require__(75)
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 
 /*
 type StyleObject = {
@@ -1479,7 +1588,11 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 79:
+=======
+/***/ 75:
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 /***/ (function(module, exports) {
 
 /**

@@ -23,6 +23,7 @@
         jQuery('#facebook-share').on('click', function() {
             window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href + '&src=sdkpreparse');
         });
+        console.log()
     </script>
 @endsection
 
@@ -55,7 +56,6 @@
         }
     </style>
 @endsection
-
 @section('content')
 <div class="container blog-post-container">
     <div class="row">
@@ -66,7 +66,7 @@
             </div>
             
             <div class="blog-post-title">
-                <h2>{{$post->title}}</h2>
+                <h2>{{$post->postTitle}}</h2>
                 <div class="share">
                     <table style="width: 100%;">
                         <tr>

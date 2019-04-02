@@ -1,12 +1,12 @@
 <template>
-    <div class="row" v-if="isCartEmpty && isLoaded">
+    <!-- <div class="row" v-if="isCartEmpty && isLoaded">
         <div class="col-md-12">
-            <h3 class="center" style="padding: 250px 0; text-align: center">購物車裡面沒有商品，趕快去逛逛吧~</h3>
+            <h3 class="center" style="padding: 250px 0; text-align: center">願望清單裡面沒有商品，趕快去逛逛吧~</h3>
         </div>
-    </div>
-    <div class="row" v-else>
+    </div>v-else -->
+    <div class="row">
         <div class="col-md-12">
-            <div class="cart-list">
+            <!-- <div class="cart-list">
                 <ul>
                     <li class="cart_list_title">
                         <p>
@@ -33,7 +33,6 @@
                             </span>
                                 <a  data-title="商品" v-bind:href="productLink(item.id.guid)">{{item.id.title}}</a>
                             <br>
-                            <!-- <img src="/img/product-logo.jpg" alt=""> -->
                         </p>
                         <p>
                             27吋
@@ -42,100 +41,79 @@
                             型號:<span>HD-515</span>
                         </p>
                         <p data-title="數量" class="count">
-                            <el-input-number 
-                            v-model="item.qty" size="small" 
-                            label="請選擇數量"></el-input-number>
+                            {{item.qty}}
                         </p>
                         <p data-title="價格">
                             NT$<span>{{item.price}}</span> 
                         </p>
                         <p>
                             <a href="#" class="remove" aria-label="移除這項商品" style="text-decoration: none;" @click="deleteProduct(item)">
-                                <img src="/img/buyIcon/deleteIcon-01.png" alt="">
+                                <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
                             </a>
                         </p>
                     </li>
-                    <form class="" action="/checkout/billing" method="post">
-                        <li class="cart_list_total">
-                            <div class="function_btn">
-                                <button v-if="isDirty" class="btn btn-default" name="button" @click="updateCart">更新購物車</button>
-                                <button v-else class="btn btn-default" name="button" disabled>更新購物車</button>
-                                <button class="btn btn-default" name="button" @click="deleteAll">清空購物車</button>
-                            </div>
-                            <p data-title="小計">
-                                商品小計 : NT$
-                                <span>
-                                    {{amount}}
-                                </span>
+                </ul>
+            </div> -->
+            <div class="cart-list">
+                    <ul>
+                        <li class="cart_list_title">
+                            <p>
+                                產品名稱
                             </p>
-                            <p data-title="總計">
-                                訂單總金額 : NT$
-                                <span>
-                                    {{numberFormat(amountNum, 0, '.', ',')}}
-                                </span>
+                            <p>
+                                尺寸
+                            </p>
+                            <p>
+                                型號
+                            </p>
+                            <p>
+                                數量
+                            </p>
+                            <p>
+                                優惠價
+                            </p>
+                            <p class="hide">
+                                u can't see me
                             </p>
                         </li>
-                    </form>
-                </ul>
-            </div>
+                        <li>
+                            <p>
+                                <span>
+                                    01
+                                </span>
+                                細鋁框異型箱 - 銀 <br>
+                                <img src="/img/product-logo.jpg" alt="">
+                            </p>
+                            <p>
+                                27吋
+                            </p>
+                            <p>
+                                型號:<span>HD-515</span>
+                            </p>
+                            <p>
+                                1
+                            </p>
+                            <p>
+                                NT$<span>12,000</span> 
+                            </p>
+                            <p>
+                                <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             <br>
         </div>
         <div class="col-md-12">
             <div class="cart-sidebar">
                 <div class="cart_totals calculated_shipping">
-
-                    <!-- <table cellspacing="0" class="cart-list">
-                        <thead>
-                            <tr>
-                                <th class="product-name" colspan="2" style="border-width:3px;">購物車總計</th>
-                            </tr>
-                        </thead>
-                    </table> -->
-
-                    <form class="" action="/checkout/billing" method="post">
-                        <input type="hidden" name="_token" v-bind:value="token">
-                        <!-- <table cellspacing="0" class="shop_table shop_table_responsive cart-list">
-                            <tbody>
-                                <tr class="cart-subtotal">
-                                    <th>小計</th>
-                                    <td data-title="小計"><span><span>NT$</span> {{amount}}</span>
-                                    </td>
-                                </tr>
-                                <tr class="shipping">
-                                    <th>運送方式</th>
-                                    <td data-title="運送方式 1">
-                                        <ul id="shipping_method">
-                                            <li v-for="(item, index) in methodsTranslate" v-bind:key="index">
-                                                <input type="radio" name="shipping_method" v-bind:id="item.id" v-bind:value="item.id" class="shipping_method" v-model="choosedShipping" required>
-                                                <label
-                                                    v-if="item.freeShipping && (amountNum >= item.freeShippingMininum)"
-                                                    v-bind:for="item.id">{{item.shippingTitle}}: 滿額免運</label>
-                                                <label
-                                                    v-else
-                                                    v-bind:for="item.id">{{item.shippingTitle}}: <span><span>NT$</span>{{item.shippingPrice}}</span></label>
-                                                <div v-if="amount < item.freeShippingMininum && choosedShipping === item.id">
-                                                    購物滿 {{item.freeShippingMininum}} 元即可享有免運費的優惠唷！
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr class="order-total">
-                                    <th>總計</th>
-                                    <td data-title="總計"><strong><span><span>NT$</span> </span></strong> {{totalAmount}}</td>
-                                </tr>
-                            </tbody>
-                        </table> -->
+                    <a href="/cart">
                         <div class="nextBtn">
-                            <button type="submit">
-                                送出，前往下一步
+                            <button>
+                                前往購物車，完成訂購
                             </button>
                         </div>
-                        <!-- <div>
-                            <button type="submit" class="btn btn-primary btn-block check-btn">前往結帳</button>
-                        </div> -->
-                    </form>
-
+                    </a>
                 </div>
             </div>
         </div>
@@ -459,131 +437,40 @@
 
 <style lang="scss">
 
-@mixin flex-mix($align, $justify) {
-    display: -webkit-box; 
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex; 
-    display: flex;
-    -webkit-box-align: $align;
-    -moz-box-align: $align;
-    -ms-flex-align: $align;
-    -webkit-align-items: $align;
-    align-items: $align;
-    -webkit-box-pack: $justify;
-    -moz-justify-content: $justify;
-    -webkit-justify-content: $justify;
-    justify-content: $justify;
-    flex-wrap: wrap;
-}
-.hide {
-  visibility: hidden;
-}
-.cart-list{
-    * a {
-        text-decoration: none;
-    } 
-    ul {
-        padding: 0;
-        li {
-            @include flex-mix(center, center);
-            padding: 40px 15px;
-            list-style: none;
-            border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-            p {
-                text-align: center;
-                margin-bottom: 0;
-                font-size: 16px;
-                img {
-                    max-width: 80px;
-                }
-                &:nth-child(1) {
-                    width: 30%;
-                    span {
-                        float: left;
-                        margin-left: 5px;
-                        margin: 10px;
-                    }
-                }
-                &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
-                    width: 16%;
-                    margin-top: 15px;
-                }
-                &:nth-child(6) {
-                    width: 5%;
-                    margin-top: 10px;
-                    img {
-                        width: 70%;
-                        height: auto;
-                        cursor: pointer;
-                        transition: 0.3s;
-                        &:hover {
-                            filter: drop-shadow(1px 1px 1px #333);
-                            transform: translateX(-3px) translateY(-3px);
-                        }
-                        &:active{
-                            filter: none;
-                            transform: translateX(0) translateY(0);
-                        }
-                    }
-                }
-            }
-        }
-        .cart_list_title, .cart_list_total {
-            background-color: #0f2746;
-            color: #fff;
-            padding: 10px 15px;
-        }
-        .cart_list_title p:nth-child(2), 
-        .cart_list_total p:nth-child(2), 
-        .cart_list_title p:nth-child(3), 
-        .cart_list_total p:nth-child(3), 
-        .cart_list_title p:nth-child(4), 
-        .cart_list_total p:nth-child(4), 
-        .cart_list_title p:nth-child(5), 
-        .cart_list_total p:nth-child(5), 
-        .cart_list_title p:nth-child(6), 
-        .cart_list_total p:nth-child(6) {
-            margin-top: 0;
-        }
-        li.cart_list_total {
-            display: block;
-            position: relative;
-            p {
-                width: 100%;
-                text-align: right;
-                &:nth-child(2) {
-                    color: #f8b62d;
-                    font-size: 24px;
-                }
-            }
-            span {
-                float: none !important;
-                margin-left: 0 !important;
-                margin-top: 0 !important;
-            }
-            .function_btn{
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 15px;
-                button{
-
-                }
-            }
-        }
+    @mixin flex-mix($align, $justify) {
+        display: -webkit-box; 
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex; 
+        display: flex;
+        -webkit-box-align: $align;
+        -moz-box-align: $align;
+        -ms-flex-align: $align;
+        -webkit-align-items: $align;
+        align-items: $align;
+        -webkit-box-pack: $justify;
+        -moz-justify-content: $justify;
+        -webkit-justify-content: $justify;
+        justify-content: $justify;
+        flex-wrap: wrap;
     }
-}
- 
-
-
-
-@media screen and (max-width: 991px) {
+    .mg-business{
+        margin-top: 7rem;
+    }
+    .hide {
+        visibility: hidden;
+    }
     .cart-list{
-        overflow: auto;
+        * a {
+            text-decoration: none;
+        } 
         ul {
-            min-width: 70rem;
+            padding: 0;
             li {
+                @include flex-mix(center, center);
+                padding: 40px 15px;
+                list-style: none;
+                border-bottom: solid 1px rgba(0, 0, 0, 0.1);
                 p {
                     text-align: center;
                     margin-bottom: 0;
@@ -599,24 +486,112 @@
                             margin: 10px;
                         }
                     }
+                    &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+                        width: 16%;
+                        margin-top: 15px;
+                    }
                     &:nth-child(6) {
+                        width: 5%;
+                        margin-top: 10px;
                         img {
-                            min-width: 2.5rem;
+                            width: 70%;
+                            height: auto;
+                            cursor: pointer;
+                            transition: 0.3s;
+                            &:hover {
+                                filter: drop-shadow(1px 1px 1px #333);
+                                transform: translateX(-3px) translateY(-3px);
+                            }
+                            &:active{
+                                filter: none;
+                                transform: translateX(0) translateY(0);
+                            }
                         }
                     }
                 }
             }
-            .cart_list_title,.cart_list_total{
-                p:nth-child(2),
-                p:nth-child(3),
-                p:nth-child(4),
-                p:nth-child(5),
-                p:nth-child(6){
-                    margin-top: 0;
+            .cart_list_title, .cart_list_total {
+                background-color: #0f2746;
+                color: #fff;
+                padding: 10px 15px;
+            }
+            .cart_list_title p:nth-child(2), 
+            .cart_list_total p:nth-child(2), 
+            .cart_list_title p:nth-child(3), 
+            .cart_list_total p:nth-child(3), 
+            .cart_list_title p:nth-child(4), 
+            .cart_list_total p:nth-child(4), 
+            .cart_list_title p:nth-child(5), 
+            .cart_list_total p:nth-child(5), 
+            .cart_list_title p:nth-child(6), 
+            .cart_list_total p:nth-child(6) {
+                margin-top: 0;
+            }
+            li.cart_list_total {
+                display: block;
+                position: relative;
+                p {
+                    width: 100%;
+                    text-align: right;
+                    &:nth-child(2) {
+                        color: #f8b62d;
+                        font-size: 24px;
+                    }
+                }
+                span {
+                    float: none !important;
+                    margin-left: 0 !important;
+                    margin-top: 0 !important;
+                }
+                .function_btn{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 15px;
                 }
             }
         }
     }
-}
-</style>
 
+    @media screen and (max-width: 991px) {
+        .cart-list{
+            overflow: auto;
+            ul {
+                min-width: 70rem;
+                li {
+                    p {
+                        text-align: center;
+                        margin-bottom: 0;
+                        font-size: 16px;
+                        img {
+                            max-width: 80px;
+                        }
+                        &:nth-child(1) {
+                            width: 30%;
+                            span {
+                                float: left;
+                                margin-left: 5px;
+                                margin: 10px;
+                            }
+                        }
+                        &:nth-child(6) {
+                            img {
+                                min-width: 2.5rem;
+                            }
+                        }
+                    }
+                }
+                .cart_list_title,.cart_list_total{
+                    p:nth-child(2),
+                    p:nth-child(3),
+                    p:nth-child(4),
+                    p:nth-child(5),
+                    p:nth-child(6){
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+</style>

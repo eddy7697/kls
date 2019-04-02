@@ -65,7 +65,11 @@
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 6:
+=======
+/***/ 5:
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -198,7 +202,11 @@ var app = new Vue({
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+<<<<<<< HEAD
 var normalizeComponent = __webpack_require__(6)
+=======
+var normalizeComponent = __webpack_require__(5)
+>>>>>>> d2e0045e02e673212028e79027c4821a083dde88
 /* script */
 var __vue_script__ = __webpack_require__(622)
 /* template */

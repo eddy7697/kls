@@ -160,6 +160,12 @@ Route::get('/productDetailPage', function ()
         'isThumbShow' => false,
     ]);
 });
+Route::get('/wish-list', function ()
+{
+    return view('frontend.cart.wish-list', [
+        'isThumbShow' => false,
+    ]);
+});
 
 /**
  * test area
