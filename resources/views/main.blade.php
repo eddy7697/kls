@@ -231,28 +231,20 @@
                             </div>
                             
                             <div class="swiper-wrapper">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <div class="swiper-slide banner ban_page1">
-                                        <div class="banner_word">
-                                            <h1>
-                                                我在LA機場的人來人往...
-                                            </h1>
-                                            <p>
-                                                #長途旅行專用行李箱
-                                            </p>
-                                            <p>
-                                                #30吋/29吋熱賣中
-                                            </p>
-                                            <p>
-                                                #PC硬殼箱
-                                            </p>
-                                            <img class="banner_Thumbtack" src="/img/thumbtack-white-01.svg" alt="">
-                                            <p class="eng">
-                                                10285 Post Way,Los Angeles,LAX AirPort,洛杉磯機場
-                                            </p>
+                                {{-- @foreach (SiteMetaView::album() as $item => $value)
+                                    <a href="{{$value->link ? $value->link : '#'}}">
+                                        <div class="swiper-slide banner" style="background-image: url('{{$value->url}}')">
+                                            <div class="banner_word">
+                                                <h1>
+                                                    {!!nl2br(e($value->title))!!}
+                                                </h1>
+                                                <p>
+                                                    {!!nl2br(e($value->content))!!}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endfor
+                                    </a>
+                                @endforeach --}}
 
                             </div>
                             <div class="swiper-pagination"></div> 

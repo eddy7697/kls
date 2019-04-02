@@ -1,361 +1,597 @@
 <template>
-    <section>
-        <img style="display: none" src="/img/loading-spinner.svg" alt="">
-        <div class="loading-mask" v-if="isLoading">
-            <img class="loading-spinner" src="/img/loading-spinner.svg" alt="">
+    <!-- <div class="row" v-if="isCartEmpty && isLoaded">
+        <div class="col-md-12">
+            <h3 class="center" style="padding: 250px 0; text-align: center">願望清單裡面沒有商品，趕快去逛逛吧~</h3>
         </div>
-        <div class="container filter-area">
-            <div class="row filter">
-                <div class="col-md-12 filter-title">
-                <h1 id="thisTitle">品牌行李箱</h1>
-                <div class="filter-title-hr"></div>
-                <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
+    </div>v-else -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <div class="cart-list">
+                <ul>
+                    <li class="cart_list_title">
+                        <p>
+                            產品名稱
+                        </p>
+                        <p>
+                            尺寸
+                        </p>
+                        <p>
+                            型號
+                        </p>
+                        <p>
+                            數量
+                        </p>
+                        <p>
+                            優惠價
+                        </p>
+                        <p class="hide"></p>
+                    </li>
+                    <li v-for="(item, index) in cart" v-bind:key="index">
+                        <p>
+                            <span>
+                                {{index + 1}}
+                            </span>
+                                <a  data-title="商品" v-bind:href="productLink(item.id.guid)">{{item.id.title}}</a>
+                            <br>
+                        </p>
+                        <p>
+                            27吋
+                        </p>
+                        <p>
+                            型號:<span>HD-515</span>
+                        </p>
+                        <p data-title="數量" class="count">
+                            {{item.qty}}
+                        </p>
+                        <p data-title="價格">
+                            NT$<span>{{item.price}}</span> 
+                        </p>
+                        <p>
+                            <a href="#" class="remove" aria-label="移除這項商品" style="text-decoration: none;" @click="deleteProduct(item)">
+                                <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+            </div> -->
+            <div class="cart-list">
+                    <ul>
+                        <li class="cart_list_title">
+                            <p>
+                                產品名稱
+                            </p>
+                            <p>
+                                尺寸
+                            </p>
+                            <p>
+                                型號
+                            </p>
+                            <p>
+                                數量
+                            </p>
+                            <p>
+                                優惠價
+                            </p>
+                            <p class="hide">
+                                u can't see me
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <span>
+                                    01
+                                </span>
+                                細鋁框異型箱 - 銀 <br>
+                                <img src="/img/product-logo.jpg" alt="">
+                            </p>
+                            <p>
+                                27吋
+                            </p>
+                            <p>
+                                型號:<span>HD-515</span>
+                            </p>
+                            <p>
+                                1
+                            </p>
+                            <p>
+                                NT$<span>12,000</span> 
+                            </p>
+                            <p>
+                                <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            <br>
+        </div>
+        <div class="col-md-12">
+            <div class="cart-sidebar">
+                <div class="cart_totals calculated_shipping">
+                    <a href="/cart">
+                        <div class="nextBtn">
+                            <button>
+                                前往購物車，完成訂購
+                            </button>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
-                <div class="col-md-12 filter-filtering">
-                    <div class="col-md-4">
-                        <div class="filter-filters">
-                            <div class="filters-title">
-                                <p>品牌 Brand</p>
-                            </div>
-                            <hr>
-                            <form class="filters-selects">
-                                <div class="filters-selects-div">
-                                    <label :for="item" v-for="(item, index) in tagGroup.brand" :key="index">
-                                        <input name="brand" v-model="filterGroup.brand" :value="item" :id="item" type="radio">{{item}}
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-4">  
-                        <div class="filter-filters">
-                            <div class="filters-title">
-                            <p>尺寸 Size</p>
-                            </div>
-                            <hr>
-                            <form class="filters-selects">
-                                <div class="filters-selects-div">
-                                    <label :for="item" v-for="(item, index) in tagGroup.size" :key="index">
-                                        <input name="size" v-model="filterGroup.size" :value="item" :id="item" type="radio">{{item}}
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-filters">
-                            <div class="filters-title">
-                                <p>旅程 Trip</p>
-                            </div>
-                            <hr>
-                            <form class="filters-selects">
-                                <div class="filters-selects-div">
-                                    <label :for="item" v-for="(item, index) in tagGroup.trip" :key="index">
-                                        <input name="trip" v-model="filterGroup.trip" :value="item" :id="item" type="radio">{{item}}
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 filter-filtering">
-                    <div class="col-md-4">
-                        <div class="filter-filters">
-                            <div class="filters-title">
-                                <p>價格 Price</p>
-                            </div>
-                            <hr>
-                            <form class="filters-selects">
-                                <div class="filters-selects-div">
-                                    <label :for="item" v-for="(item, index) in tagGroup.price" :key="index">
-                                        <input name="price" v-model="filterGroup.price" :value="item" :id="item" type="radio">{{item}}
-                                    </label>
-                                </div>                     
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-filters">
-                            <div class="filters-title">
-                                <p>材質 Material</p>
-                            </div>
-                            <hr>
-                            <form class="filters-selects">
-                                <div class="filters-selects-div">
-                                    <label :for="item" v-for="(item, index) in tagGroup.material" :key="index">
-                                        <input name="material" v-model="filterGroup.material" :value="item" :id="item" type="radio">{{item}}
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <button class="filter-remakeBtn" @click="clearFilter()">
-                        <img class="filter-remakeBtnImg" src="/img/remakeIcon.svg" alt="">
-                        重製選取條件
-                    </button>
-                    <div class="col-md-4"></div>
-                </div>
-            </div>
         </div>
-
-        <div class="container container-productCount" style="position: relative;">
-            <div class="row">
-                <div class="col-md-12 productCount">
-                    <div class="productCount-left">
-                        <!-- <div class="productCount-icon">
-                            <img class="cube01" src="/img/selectCube-01.svg" alt="">
-                            <img class="cube02" src="/img/selectCube-02.svg" alt="">
-                        </div> -->
-                        <div class="productCount-sort">
-                            <span :class="{active: order == 'desc'}" @click="order = 'desc'">價格由高到低排列 ↓</span>
-                            <span :class="{active: order == 'asc'}" @click="order = 'asc'">價格由低到高排列 ↑</span>
-                        </div>
-                    </div>
-                    <div class="productCount-number" v-if="isLoaded">
-                        <span>顯示總數</span>
-                        <span>{{pageData.data.length}}/</span>
-                        <span>{{pageData.total}}</span>
-                    </div>
-                </div>
-            </div>
-            <button class="collapseBtn" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
-                收合
-                <img src="/img/collapseIcon.png" alt="">
-            </button>
-        </div>
-
-        <div class="container-fulid filter-product-out">
-            <div class="row filter-product">
-                <div class="filter-product-row">
-                    <div class="col-md-6" v-for="(item, index) in pageData.data" :key="index">
-                        <div class="product-inner">
-                            <div class="product-img" :style="`background-image: url('${item.featureImage}');`">
-                                <a :href="`/detail/${item.productGuid}`">
-                                    <div class="product-img-mask"></div>
-                                    <p>查看商品</p>
-                                </a>
-                                
-                            </div>
-                            
-                            <div class="product-innertext">
-                                <!-- <div class="product-label"><img src="/img/product-logo.jpg" alt=""></div> -->
-                                <div class="product-title">
-                                    <p>{{item.productTitle}}</p>
-                                </div>
-                                <div class="product-style">
-                                    <div class="style-inner" v-html="item.shortDescription">
-                                        <!-- 這裡會自動帶入產品說明 -->
-                                    </div>
-                                    <p class="product-price">$ {{item.price}}</p>
-                                </div>
-                                <div class="productHeart"><img src="/img/productHeart.svg" alt=""></div>
-                                <button class="buyIt" @click="addSigleProduct(item.productGuid)">
-                                    <img src="/img/cartIconWhite.svg" alt="">
-                                    <p>加入購物車</p>
-                                </button>
-                            </div>
-                        </div>                    
-                    </div>
-                </div>
-                <!-- <div class="col-md-12 filter-product-readMore" @click="learnMoreAction" v-if="pageData.last_page != pageData.current_page">
-                    <button id="readMore-btn">
-                        <span class="learnmore" :class="{loading: isLoadingLearnMore}">查看更多</span>
-                    </button>
-                </div> -->
-            </div>
-        </div>
-        
-    </section>
+    </div>
 </template>
 
 <script>
+    $('.loading-bar').fadeOut('100');
+    var h = require('../../../lib/helper.js', ).default;
+    import {
+        Dialog,
+        InputNumber,
+        Radio,
+        RadioGroup,
+    } from 'element-ui';
+    import 'element-ui/lib/theme-chalk/index.css';
+    import lang from 'element-ui/lib/locale/lang/zh-TW'
+    import locale from 'element-ui/lib/locale'
+
+    Vue.use(Dialog);
+    Vue.use(InputNumber);
+    Vue.use(Radio);
+    Vue.use(RadioGroup);
+    locale.use(lang)
+
     export default {
-        mounted () {
-            console.log('Component mounted.')
-        },
-        props: ['type'],
-        data () {
+        data() {
             return {
-                isLoading: false,
-                isLoadingLearnMore: false,
-                order: 'desc',
+                token: $('meta[name="csrf-token"]').attr('content'),
+                cart: [],
                 isLoaded: false,
-                tagGroup: {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
-                },
-                filterGroup: {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
-                },
-                pageData: {}
+                choosedShipping: null,
+                shippingMethods: [],
+                amount: null,
+                isDirty: false,
+                isCartEmpty: true
             }
         },
         watch: {
-            filterGroup: {
-                handler(filterGroup, oldVal) {
-                    this.getData()
+            cart: {
+                handler: function (cart, oldVal) {
+                    var self = this;
+                    this.isDirty = true;
                 },
                 deep: true
             },
-            order(val) {
-                this.getData()
+            choosedShipping: {
+                handler: function (choosedShipping, oldVal) {
+                    localStorage.setItem('choosedShipping', choosedShipping);
+                },
+                deep: true
+            },
+            shippingMethods: {
+                handler(shippingMethods, oldVal) {
+                    if (shippingMethods.length > 0) {
+                        this.choosedShipping = shippingMethods[0].id
+                    }
+                }
             }
         },
-        created() {
-            this.getTag()
+        computed: {
+            amountNum: function () {
+                if (this.amount == null) {
+                    return 0;
+                } else {
+                    var amount = this.amount.split(',');
+                    var amountNum = '';
+
+                    for (var i = 0; i < amount.length; i++) {
+                        amountNum = amountNum + amount[i];
+                    }
+
+                    return parseInt(amountNum);
+                }
+
+            },
+            totalAmount: function () {
+                if (this.amount) {
+                    var self = this;
+                    var totalAmount = 0;
+                    var amount = this.amount.split(',');
+                    var amountNum = '';
+
+                    for (var i = 0; i < amount.length; i++) {
+                        amountNum = amountNum + amount[i];
+                    }
+
+                    this.shippingMethods.forEach(function (item) {
+                        if (item.id == self.choosedShipping) {
+                            if ((item.freeShipping == '1') && (amountNum >= parseInt(item.freeShippingMininum))) {
+                                totalAmount = parseInt(amountNum);
+                            } else {
+                                totalAmount = parseInt(amountNum) + parseInt(item.shippingPrice);
+                            }
+
+                        }
+                    });
+
+                    return totalAmount;
+                }
+
+                return this.amount;
+            },
+            methodsTranslate: function () {
+                var shippingMethods = this.shippingMethods;
+                var cache = [];
+
+                shippingMethods.forEach(function (item) {
+                    cache.push({
+                        freeShipping: (item.freeShipping == 1) ? true : false,
+                        freeShippingMininum: item.freeShippingMininum,
+                        id: item.id,
+                        shippingPrice: item.shippingPrice,
+                        shippingTemperature: item.shippingTemperature,
+                        shippingTitle: item.shippingTitle,
+                        shippingType: item.shippingType
+                    });
+                });
+                return cache;
+            }
         },
-        methods: {
-            getTag() {
-                axios.get('/admin/tag/get')
-                    .then(res => {
-                        Object.keys(res.data).forEach(elm => {
-                            this.tagGroup[elm] = res.data[elm]
-                        })
+        created: function () {
+            var self = this;
 
-                        this.$nextTick(() => {
-                            this.getData()
-                        })
-                    })
-            },
-            getData() {
-                let vo = {
-                    tag: this.filterGroup,
-                    category: this.type,
-                    order: this.order
-                }
+            var getShippingMethodPromise = new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: '/shipping/get',
+                    type: 'GET',
+                    cache: false,
+                    dataType: 'json',
+                })
+                .done(function(response) {
+                    resolve(response.data);
+                })
+                .fail(function(error) {
+                    reject(error);
+                });
 
-                this.isLoading = true
-                axios.post('/products/tag', vo)
-                    .then(res => {
-                        this.pageData = res.data
-                        this.isLoaded = true
-                        this.getTitle()
-                        this.scrollMore()
-                    }).catch(err => {
+            });
 
-                    }).then(() => {
-                        this.isLoading = false
-                    })
-            },
-            addSigleProduct(guid) {
-                addSigleProduct(guid)
-            },
-            learnMoreAction() {
-                let vo = {
-                    tag: this.filterGroup,
-                    category: this.type
-                }
+            var checkCartTempPromise = new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: '/cart/checkTemp',
+                    type: 'GET',
+                    cache: false,
+                    dataType: 'json'
+                })
+                .done(function(response) {
+                    resolve(response);
+                })
+                .fail(function(error) {
+                    reject(error);
+                });
 
-                this.isLoading = true
-                this.isLoadingLearnMore = true
-                
-                axios.post(this.pageData.next_page_url, vo)
-                    .then(res => {
-                        this.pageData.next_page_url = res.data.next_page_url
-                        this.pageData.current_page = res.data.current_page
-                        this.pageData.data = _.concat(this.pageData.data, res.data.data)
-                    }).catch(err => {
+            });
 
-                    }).then(() => {
-                        this.isLoading = false
-                        this.isLoadingLearnMore = false
-                    })
-            },
-            clearFilter() {
-                this.filterGroup = {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
-                }
-            },
-            getTitle() {
-                let title = $('#thisTitle')
-                let vo = {
-                    category: this.type
-                }
-                let fiterType = {
-                    all : 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V',
-                    other : 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd',
-                    bag : '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'
-                }
-                
-                switch(vo.category)
-                {
-                case fiterType.all:
-                    title.text('品牌旅行箱')
-                    this.menuStyle(1)
-                break;
-                case fiterType.other:
-                    title.text('旅行配件')
-                    $('.filter-subTitle').hide()
-                    this.menuStyle(2)
-                break;
-                case fiterType.bag:
-                    title.text('品牌背包')
-                    this.menuStyle(3)
-                break;
-                }
-            },
-            menuStyle(val) {
-                $(`.mega-menu .product .mega-menu-list ul li:nth-child(${val}) a`).css('border','solid 1px #B3B3B3')
-            },
-            scrollMore(){
-                $(document).scroll(() => {
-                if ($(document).scrollTop() + window.innerHeight == $(document).height() - 150) {
-                        this.learnMoreAction()
+            Promise.all([
+                getShippingMethodPromise,
+                checkCartTempPromise
+            ]).then(function (results) {
+
+                results[0].forEach(function (item) {
+                    if (item.shippingTemperature === results[1].Temperature) {
+                        self.shippingMethods.push(item);
                     }
                 });
-            }
+
+            });
+
+
+            this.getCart();
+        },
+        methods: {
+            updateCart: function () {
+                var self = this;
+
+                $('.loading-bar').fadeIn('100');
+
+                $.ajax({
+                    url: '/cart/update',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        cart: JSON.stringify(self.cart)
+                    },
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+
+                })
+                .done(function(response) {
+                    self.getCart();
+                    self.showMessage('success', '更新購物車成功');
+                    $('.loading-bar').fadeOut('100');
+                    // console.log(response);
+                })
+                .fail(function() {
+                    // console.log("error");
+                })
+                .always(function() {
+                    // console.log("complete");
+                });
+
+            },
+            getCart: function () {
+                var self = this;
+                $('.loading-bar').fadeIn('100');
+
+                $.ajax({
+                    url: '/cart/get',
+                    type: 'GET',
+                    dataType: 'json'
+                })
+                .done(function(response) {
+                    self.cart = [];
+                    self.cart = response.cart;
+                    self.amount = response.amount;
+
+                    setTimeout(function () {
+                        self.isDirty = false;
+                    }, 100);
+
+                    if (response.cart.length === 0) {
+                        $('button.cart').removeClass('full');
+                        self.isCartEmpty = true;
+                        $('button.cart').find('img').attr('src', '/img/icon/cart-empty.svg');
+                    } else {
+                        self.isCartEmpty = false;
+                        $('button.cart').find('img').attr('src', '/img/icon/cart-full.svg');
+                    }
+
+                    self.isLoaded = true
+                })
+                .fail(function() {
+                    // console.log("error");
+                })
+                .always(function() {
+                    $('.loading-bar').fadeOut('100');
+                    // console.log("complete");
+                });
+
+            },
+            deleteProduct: function (item) {
+                var check = confirm('確認要刪除此商品?');
+                var self = this;
+
+                if (check) {
+                    $('.loading-bar').fadeIn('100');
+                    $.ajax({
+                        url: '/cart/delete/single/' + item.rowId,
+                        type: 'POST',
+                        dataType: 'json',
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    })
+                    .done(function(response) {
+                        self.getCart();
+                    })
+                    .fail(function() {
+                        // console.log("error");
+                    })
+                    .always(function() {
+                        $('.loading-bar').fadeOut('100');
+                        // console.log("complete");
+                    });
+
+                } else {
+                    return;
+                }
+            },
+            deleteAll: function () {
+                var check = confirm('確認要刪除所有商品?');
+                var self = this;
+
+                if (check) {
+                    $('.loading-bar').fadeIn('100');
+                    $.ajax({
+                        url: '/cart/delete/all',
+                        type: 'GET',
+                        dataType: 'json',
+                    })
+                    .done(function(response) {
+                        // console.log(response);
+                        self.getCart();
+                    })
+                    .fail(function() {
+                        // console.log("error");
+                    })
+                    .always(function() {
+                        $('.loading-bar').fadeOut('100');
+                        self.getCart();
+                        // console.log("complete");
+                    });
+
+                } else {
+                    return;
+                }
+            },
+            changeQty: function (method, item) {
+                if (method == 'up') {
+                    item.qty = parseInt(item.qty) + 1;
+                } else {
+                    if (!(item.qty <= 0)) {
+                        item.qty = parseInt(item.qty) - 1;
+                    }
+                }
+            },
+            productLink: function (guid) {
+                return "//product/detail/" + guid;
+            },
+            showMessage: function (type, string) {
+                toastr[type](string);
+            },
+            numberFormat(n, c, d, t) {
+                return h.number_format(n, c, d, t)
+            },
         }
     }
 </script>
 
 <style lang="scss">
-.loading-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba($color: #fff, $alpha: 0.3);
-    z-index: 100;
 
-    .loading-spinner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 50px;
+    @mixin flex-mix($align, $justify) {
+        display: -webkit-box; 
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex; 
+        display: flex;
+        -webkit-box-align: $align;
+        -moz-box-align: $align;
+        -ms-flex-align: $align;
+        -webkit-align-items: $align;
+        align-items: $align;
+        -webkit-box-pack: $justify;
+        -moz-justify-content: $justify;
+        -webkit-justify-content: $justify;
+        justify-content: $justify;
+        flex-wrap: wrap;
     }
-}
-
-// <img class="loading-spinner" src="/img/loading-spinner.svg" alt="">
-.learnmore {
-    position: relative;
-
-    &.loading {
-        &::before {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            left: -25px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-image: url('/img/loading-spinner.svg');
-            background-size: cover;
-            content: '',
+    .mg-business{
+        margin-top: 7rem;
+    }
+    .hide {
+        visibility: hidden;
+    }
+    .cart-list{
+        * a {
+            text-decoration: none;
+        } 
+        ul {
+            padding: 0;
+            li {
+                @include flex-mix(center, center);
+                padding: 40px 15px;
+                list-style: none;
+                border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+                p {
+                    text-align: center;
+                    margin-bottom: 0;
+                    font-size: 16px;
+                    img {
+                        max-width: 80px;
+                    }
+                    &:nth-child(1) {
+                        width: 30%;
+                        span {
+                            float: left;
+                            margin-left: 5px;
+                            margin: 10px;
+                        }
+                    }
+                    &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+                        width: 16%;
+                        margin-top: 15px;
+                    }
+                    &:nth-child(6) {
+                        width: 5%;
+                        margin-top: 10px;
+                        img {
+                            width: 70%;
+                            height: auto;
+                            cursor: pointer;
+                            transition: 0.3s;
+                            &:hover {
+                                filter: drop-shadow(1px 1px 1px #333);
+                                transform: translateX(-3px) translateY(-3px);
+                            }
+                            &:active{
+                                filter: none;
+                                transform: translateX(0) translateY(0);
+                            }
+                        }
+                    }
+                }
+            }
+            .cart_list_title, .cart_list_total {
+                background-color: #0f2746;
+                color: #fff;
+                padding: 10px 15px;
+            }
+            .cart_list_title p:nth-child(2), 
+            .cart_list_total p:nth-child(2), 
+            .cart_list_title p:nth-child(3), 
+            .cart_list_total p:nth-child(3), 
+            .cart_list_title p:nth-child(4), 
+            .cart_list_total p:nth-child(4), 
+            .cart_list_title p:nth-child(5), 
+            .cart_list_total p:nth-child(5), 
+            .cart_list_title p:nth-child(6), 
+            .cart_list_total p:nth-child(6) {
+                margin-top: 0;
+            }
+            li.cart_list_total {
+                display: block;
+                position: relative;
+                p {
+                    width: 100%;
+                    text-align: right;
+                    &:nth-child(2) {
+                        color: #f8b62d;
+                        font-size: 24px;
+                    }
+                }
+                span {
+                    float: none !important;
+                    margin-left: 0 !important;
+                    margin-top: 0 !important;
+                }
+                .function_btn{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 15px;
+                }
+            }
         }
     }
-}
+
+    @media screen and (max-width: 991px) {
+        .cart-list{
+            overflow: auto;
+            ul {
+                min-width: 70rem;
+                li {
+                    p {
+                        text-align: center;
+                        margin-bottom: 0;
+                        font-size: 16px;
+                        img {
+                            max-width: 80px;
+                        }
+                        &:nth-child(1) {
+                            width: 30%;
+                            span {
+                                float: left;
+                                margin-left: 5px;
+                                margin: 10px;
+                            }
+                        }
+                        &:nth-child(6) {
+                            img {
+                                min-width: 2.5rem;
+                            }
+                        }
+                    }
+                }
+                .cart_list_title,.cart_list_total{
+                    p:nth-child(2),
+                    p:nth-child(3),
+                    p:nth-child(4),
+                    p:nth-child(5),
+                    p:nth-child(6){
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+
 </style>

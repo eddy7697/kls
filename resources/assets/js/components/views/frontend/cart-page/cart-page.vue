@@ -77,52 +77,8 @@
                         </li>
                     </form>
                 </ul>
-                <!-- <tbody>
-                    <tr v-for="(item, index) in cart" v-bind:key="index">
-                        <td class="product-remove">
-                            <a href="#" class="remove" aria-label="移除這項商品" style="text-decoration: none;" @click="deleteProduct(item)">×</a>
-                        </td>
-
-                        <td class="product-thumbnail">
-                            <a v-bind:href="productLink(item.id.guid)">
-                                <img width="50" v-bind:src="item.id.featureImage" >
-                            </a>
-                        </td>
-
-                        <td class="product-name" data-title="商品">
-                            <a v-bind:href="productLink(item.id.guid)">{{item.id.title}}</a>
-                        </td>
-
-                        <td class="product-price" data-title="價格">
-                            <span><span>NT$</span> {{item.price}}</span>
-                        </td>
-
-                        <td class="product-quantity" width="125" data-title="數量" style="text-align: center">
-                            <div class="form-group" style="width:122px; float: right; margin-top: 15px;">
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button" @click="changeQty('down', item)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                    </span>
-                                    <input type="number" id="point-input" class="form-control" style="text-align: center; padding: 0px 10px;"
-                                        v-model="item.qty"
-                                        min="0">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button" @click="changeQty('up', item)"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                    </span>
-                                </div>
-                            </div>
-                        </td>
-
-                        <td class="product-subtotal" data-title="總計" align="right">
-                            <span><span>NT$</span> {{item.total}}</span>
-                        </td>
-                    </tr>
-                </tbody> -->
             </div>
             <br>
-            <!-- <button v-if="isDirty" class="btn btn-default" name="button" @click="updateCart">更新購物車</button>
-            <button v-else class="btn btn-default" name="button" disabled>更新購物車</button>
-            <button class="btn btn-default" name="button" @click="deleteAll">清空購物車</button> -->
         </div>
         <div class="col-md-12">
             <div class="cart-sidebar">
@@ -576,7 +532,7 @@
         .cart_list_title, .cart_list_total {
             background-color: #0f2746;
             color: #fff;
-            padding: 15px;
+            padding: 10px 15px;
         }
         .cart_list_title p:nth-child(2), 
         .cart_list_total p:nth-child(2), 
@@ -649,11 +605,6 @@
                         }
                     }
                 }
-            }
-            .cart_list_title, .cart_list_total {
-                background-color: #0f2746;
-                color: #fff;
-                padding: 15px;
             }
             .cart_list_title,.cart_list_total{
                 p:nth-child(2),

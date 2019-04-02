@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fulid information-banner" style="background-image: url('/img/black-1072366_1920.jpg')">
+    <div class="container-fulid information-banner" style="min-height: 400px; background-image: url('/img/cart-banner.jpg')">
         <div class="cart-banner-inner">
             <div class="cart-banner-inner-text">
                 <h1>感謝您的購買</h1>

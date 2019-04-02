@@ -11,86 +11,18 @@
 @endsection
 
 @section('content')
-    <div class="container-fulid information-banner" style="background-image: url('/img/black-1072366_1920.jpg')">
+    <div class="container-fulid information-banner" style="min-height: 400px; background-image: url('/img/wish-list-banner.jpg')">
         <div class="cart-banner-inner">
-            <div class="cart-banner-inner-text">
+            <div class="cart-banner-inner-text" style="text-align: center;">
                 <h1>願望清單</h1>
+                <p>還在猶豫嗎 ? 只剩3個步驟，下定決心出發冒險吧 !</p>
             </div>
         </div>
     </div>
     <div class="container mg-business">
         <div class="row">
             <div class="col-md-12" id="wish-list">
-                <div class="cart_list">
-                    <ul>
-                        <li class="cart_list_title">
-                            <p>
-                                產品名稱
-                            </p>
-                            <p>
-                                尺寸
-                            </p>
-                            <p>
-                                型號
-                            </p>
-                            <p>
-                                數量
-                            </p>
-                            <p>
-                                優惠價
-                            </p>
-                            <p class="hide">
-                                u can't see me
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <span>
-                                    01
-                                </span>
-                                細鋁框異型箱 - 銀 <br>
-                                <img src="/img/product-logo.jpg" alt="">
-                            </p>
-                            <p>
-                                27吋
-                            </p>
-                            <p>
-                                型號:<span>HD-515</span>
-                            </p>
-                            <p>
-                                1
-                            </p>
-                            <p>
-                                NT$<span>12,000</span> 
-                            </p>
-                            <p>
-                                <img src="/img/buyIcon/deleteIcon-01.png" alt="">
-                            </p>
-                        </li>
-                        
-                        <li class="cart_list_total">
-                            <p>
-                                商品小計 : NT$
-                                <span>
-                                    36,000
-                                </span>
-                            </p>
-                            <p>
-                                訂單總金額 : NT$
-                                <span>
-                                    36,000
-                                </span>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nextBtn">
-                    <a href="/cart-info">
-                        <button>
-                            送出，前往下一步
-                        </button>
-                    </a>
-                </div>
+                <wish-list></wish-list>
                 {{-- @if (count($cart))
                     <wish-list></wish-list>
                 @else
@@ -98,9 +30,5 @@
                 @endif --}}
             </div>
         </div>
-
     </div>
-
-
-
 @endsection

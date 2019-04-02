@@ -93,7 +93,7 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
     .js('resources/assets/js/components/views/frontend/cart-panel/cart-panel.js', 'public/js')
     .js('resources/assets/js/components/views/frontend/product-filter/product-filter.js', 'public/js')
     .js('resources/assets/js/components/views/frontend/product-fitting/product-fitting.js', 'public/js')
-    .js('resources/assets/js/components/views/frontend/product-fitting-bag/product-fitting-bag.js', 'public/js');
+    .js('resources/assets/js/components/views/frontend/product-fitting-bag/product-fitting-bag.js', 'public/js')
     .js('resources/assets/js/components/views/frontend/wish-list/wish-list.js', 'public/js');
 
 
