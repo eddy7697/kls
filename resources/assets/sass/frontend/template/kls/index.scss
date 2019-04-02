@@ -608,16 +608,6 @@
         height             : 100%;
         background-size    : cover;
         background-position: center;
-        &::before{
-          content         : '';
-          background-color: $color-mask-banner;
-          position        : absolute;
-          top             : 0;
-          right           : 0;
-          bottom          : 0;
-          left            : 0;
-          opacity         : 0.4;
-        }
         .banner_word{
           transition      : 0.5s;
           position        : absolute;
@@ -1318,7 +1308,7 @@
   z-index: 99;
   background-color: $color-blue;
   .sub-page-header-inner {
-    @include flex-mix(flex-end,space-between);
+    @include flex-mix(center,space-between);
     margin: 0 auto;
     padding: 15px 0px;
     .sub-logo {
