@@ -202,7 +202,7 @@
                             </li>
                             <li>
                                 <a data-toggle="tab" href="#menu5">
-                                    30吋逃離專用
+                                    30吋長途旅行
                                 </a>
                             </li>
                             <li>
