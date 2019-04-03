@@ -24,10 +24,10 @@
                         <p class="hide"></p>
                     </li>
                     <li v-for="(item, index) in wish" v-bind:key="index">
-                        <a href="">
-                            <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteFavorite(item.productGuid, callback)">
+                        <a>
+                            <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item)">
                         </a>
-                        <img :src="item.featureImage" alt="" style="width: 150px">
+                        <img :src="item.featureImage" alt="" style="max-width: 150px">
                         <p>
                             <a data-title="商品" v-bind:href="productLink(item.productGuid)">{{item.productTitle}}</a>
                         </p>
@@ -91,11 +91,7 @@
             }
         },
         created: function () {
-            var self = this;
-            axios.get('/favorite/get')
-                .then(res => {
-                    this.wish = res.data;
-                })
+            this.getList();
         },
         methods: {
             productLink: function (guid) {
@@ -104,11 +100,23 @@
             addSigleProduct(guid) {
                 addSigleProduct(guid)
             },
-            deleteFavorite(Guid, callback){
-                deleteFavorite('GxBTIe', function() {
-                    alert('asdasd')
-                })
-            }
+            getList: function (){
+                axios.get('/favorite/get')
+                    .then(res => {
+                        this.wish = res.data;
+                    })
+            },
+            deleteWish: function (item) {
+                var check = confirm('確認要刪除此商品?');
+                var self = this;
+
+                if (check) {
+                    $('.loading-bar').fadeIn('100');
+                    deleteFavorite(item.productGuid, self.getList())
+                } else {
+                    return;
+                }
+            },
         }
     }
 </script>
@@ -145,12 +153,13 @@
         ul {
             padding: 0;
             li {
-                @include flex-mix(center, center);
+                @include flex-mix(center, space-around);
                 padding: 40px 15px;
                 list-style: none;
                 border-bottom: solid 1px rgba(0, 0, 0, 0.1);
             img {
                     max-width: 35px;
+                    width: 35px;
                     z-index: 2;
                 }
                 p {
