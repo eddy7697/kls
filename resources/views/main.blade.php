@@ -42,7 +42,7 @@
     <body>
         <div class="loading-bar">
             <div class="loading-bar-inner">
-                <svg id="loading_svg" data-name="loading_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><style>.cls-1{font-size:204.59px;fill:#1a1a1a;font-family:BrushScriptMT, Brush Script MT;font-style:italic;}.cls-2{font-family:BrushScriptMT, Brush Script MT;font-style:italic;font-size:117.34px;}.cls-3{font-family:BrushScriptMT, Brush Script MT;font-style:italic;fill:#fbb03b;}</style></defs><title>KLS-loading</title><text class="cls-1" transform="translate(5.4 206.45)">K<tspan class="cls-2" x="134.16" y="0">LS</tspan></text><path class="cls-3" d="M109.27,76.4l-3.59-21.57L118.54,60l7.73-15.59L134,60l12.87-5.19-3.61,21.57a5.25,5.25,0,0,1-5.15,4.41H114.16A5,5,0,0,1,109.27,76.4Z"/><ellipse class="cls-3" cx="126.37" cy="44.45" rx="5.12" ry="5.1"/><ellipse class="cls-3" cx="146.85" cy="54.65" rx="5.12" ry="5.1"/><ellipse class="cls-3" cx="105.88" cy="54.63" rx="5.12" ry="5.1"/></svg>
+                <img src="/img/loaing-logo.png" alt="">
                 <div class="loader">
                     <h1></h1>
                     <span></span>

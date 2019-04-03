@@ -11,6 +11,7 @@
         .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(4) .sub-nav-menu-ul-a{
             border-bottom: solid 3px #FBB03B;
         }
+        .loaing-logo.png
     </style>
 @endsection
 
@@ -68,7 +69,7 @@
                                 </p>
                             </div>
                             <p>
-                                ※營業時間為 13:00 - 20:00，每周一公休。
+                                ※營業時間為 13:00 - 20:00，每周二公休。
                             </p>
                         </div>
 
@@ -158,7 +159,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 20:00，每周一公休。
+                        ※營業時間為 13:00 - 20:00，每周二公休。
                     </p>
                 </div>
             </div>
@@ -231,7 +232,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 20:00，每周一公休。
+                        ※營業時間為 13:00 - 20:00，每周二公休。
                     </p>
                 </div>
             </div>
@@ -303,7 +304,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 20:00，每周一公休。
+                        ※營業時間為 13:00 - 20:00，每周二公休。
                     </p>
                 </div>
             </div>

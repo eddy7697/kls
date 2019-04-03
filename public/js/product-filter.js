@@ -548,6 +548,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -670,6 +672,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 material: null
             };
         },
+        addFavorite: function (_addFavorite) {
+            function addFavorite(_x2) {
+                return _addFavorite.apply(this, arguments);
+            }
+
+            addFavorite.toString = function () {
+                return _addFavorite.toString();
+            };
+
+            return addFavorite;
+        }(function (guid) {
+            addFavorite(guid);
+        }),
         getTitle: function getTitle() {
             var title = $('#thisTitle');
             var vo = {
@@ -1141,7 +1156,22 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(6, true),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "productHeart",
+                      on: {
+                        click: function($event) {
+                          _vm.addFavorite(item.productGuid)
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/img/productHeart.svg", alt: "" }
+                      })
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -1230,14 +1260,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filters-title" }, [
       _c("p", [_vm._v("材質 Material")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "productHeart" }, [
-      _c("img", { attrs: { src: "/img/productHeart.svg", alt: "" } })
     ])
   }
 ]

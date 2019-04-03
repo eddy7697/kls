@@ -6,7 +6,7 @@
     </div>v-else -->
     <div class="row">
         <div class="col-md-12">
-            <!-- <div class="cart-list">
+            <div class="cart-list">
                 <ul>
                     <li class="cart_list_title">
                         <p>
@@ -19,20 +19,17 @@
                             型號
                         </p>
                         <p>
-                            數量
-                        </p>
-                        <p>
                             優惠價
                         </p>
                         <p class="hide"></p>
                     </li>
-                    <li v-for="(item, index) in cart" v-bind:key="index">
+                    <li v-for="(item, index) in wish" v-bind:key="index">
+                        <a href="">
+                            <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteFavorite(item.productGuid, callback)">
+                        </a>
+                        <img :src="item.featureImage" alt="" style="width: 150px">
                         <p>
-                            <span>
-                                {{index + 1}}
-                            </span>
-                                <a  data-title="商品" v-bind:href="productLink(item.id.guid)">{{item.id.title}}</a>
-                            <br>
+                            <a data-title="商品" v-bind:href="productLink(item.productGuid)">{{item.productTitle}}</a>
                         </p>
                         <p>
                             27吋
@@ -40,73 +37,21 @@
                         <p>
                             型號:<span>HD-515</span>
                         </p>
-                        <p data-title="數量" class="count">
-                            {{item.qty}}
-                        </p>
                         <p data-title="價格">
                             NT$<span>{{item.price}}</span> 
                         </p>
-                        <p>
-                            <a href="#" class="remove" aria-label="移除這項商品" style="text-decoration: none;" @click="deleteProduct(item)">
+                        <p> 
+                            <a @click="addSigleProduct(item.productGuid)">
                                 <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
                             </a>
                         </p>
                     </li>
                 </ul>
-            </div> -->
-            <div class="cart-list">
-                    <ul>
-                        <li class="cart_list_title">
-                            <p>
-                                產品名稱
-                            </p>
-                            <p>
-                                尺寸
-                            </p>
-                            <p>
-                                型號
-                            </p>
-                            <p>
-                                數量
-                            </p>
-                            <p>
-                                優惠價
-                            </p>
-                            <p class="hide">
-                                u can't see me
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <span>
-                                    01
-                                </span>
-                                細鋁框異型箱 - 銀 <br>
-                                <img src="/img/product-logo.jpg" alt="">
-                            </p>
-                            <p>
-                                27吋
-                            </p>
-                            <p>
-                                型號:<span>HD-515</span>
-                            </p>
-                            <p>
-                                1
-                            </p>
-                            <p>
-                                NT$<span>12,000</span> 
-                            </p>
-                            <p>
-                                <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            <br>
+            </div>
         </div>
         <div class="col-md-12">
             <div class="cart-sidebar">
-                <div class="cart_totals calculated_shipping">
+                <div class="cart_totals calculated_shipping box-sizing: border-box;}">
                     <a href="/cart">
                         <div class="nextBtn">
                             <button>
@@ -142,295 +87,28 @@
     export default {
         data() {
             return {
-                token: $('meta[name="csrf-token"]').attr('content'),
-                cart: [],
-                isLoaded: false,
-                choosedShipping: null,
-                shippingMethods: [],
-                amount: null,
-                isDirty: false,
-                isCartEmpty: true
-            }
-        },
-        watch: {
-            cart: {
-                handler: function (cart, oldVal) {
-                    var self = this;
-                    this.isDirty = true;
-                },
-                deep: true
-            },
-            choosedShipping: {
-                handler: function (choosedShipping, oldVal) {
-                    localStorage.setItem('choosedShipping', choosedShipping);
-                },
-                deep: true
-            },
-            shippingMethods: {
-                handler(shippingMethods, oldVal) {
-                    if (shippingMethods.length > 0) {
-                        this.choosedShipping = shippingMethods[0].id
-                    }
-                }
-            }
-        },
-        computed: {
-            amountNum: function () {
-                if (this.amount == null) {
-                    return 0;
-                } else {
-                    var amount = this.amount.split(',');
-                    var amountNum = '';
-
-                    for (var i = 0; i < amount.length; i++) {
-                        amountNum = amountNum + amount[i];
-                    }
-
-                    return parseInt(amountNum);
-                }
-
-            },
-            totalAmount: function () {
-                if (this.amount) {
-                    var self = this;
-                    var totalAmount = 0;
-                    var amount = this.amount.split(',');
-                    var amountNum = '';
-
-                    for (var i = 0; i < amount.length; i++) {
-                        amountNum = amountNum + amount[i];
-                    }
-
-                    this.shippingMethods.forEach(function (item) {
-                        if (item.id == self.choosedShipping) {
-                            if ((item.freeShipping == '1') && (amountNum >= parseInt(item.freeShippingMininum))) {
-                                totalAmount = parseInt(amountNum);
-                            } else {
-                                totalAmount = parseInt(amountNum) + parseInt(item.shippingPrice);
-                            }
-
-                        }
-                    });
-
-                    return totalAmount;
-                }
-
-                return this.amount;
-            },
-            methodsTranslate: function () {
-                var shippingMethods = this.shippingMethods;
-                var cache = [];
-
-                shippingMethods.forEach(function (item) {
-                    cache.push({
-                        freeShipping: (item.freeShipping == 1) ? true : false,
-                        freeShippingMininum: item.freeShippingMininum,
-                        id: item.id,
-                        shippingPrice: item.shippingPrice,
-                        shippingTemperature: item.shippingTemperature,
-                        shippingTitle: item.shippingTitle,
-                        shippingType: item.shippingType
-                    });
-                });
-                return cache;
+                wish: [],
             }
         },
         created: function () {
             var self = this;
-
-            var getShippingMethodPromise = new Promise(function (resolve, reject) {
-                $.ajax({
-                    url: '/shipping/get',
-                    type: 'GET',
-                    cache: false,
-                    dataType: 'json',
+            axios.get('/favorite/get')
+                .then(res => {
+                    this.wish = res.data;
                 })
-                .done(function(response) {
-                    resolve(response.data);
-                })
-                .fail(function(error) {
-                    reject(error);
-                });
-
-            });
-
-            var checkCartTempPromise = new Promise(function (resolve, reject) {
-                $.ajax({
-                    url: '/cart/checkTemp',
-                    type: 'GET',
-                    cache: false,
-                    dataType: 'json'
-                })
-                .done(function(response) {
-                    resolve(response);
-                })
-                .fail(function(error) {
-                    reject(error);
-                });
-
-            });
-
-            Promise.all([
-                getShippingMethodPromise,
-                checkCartTempPromise
-            ]).then(function (results) {
-
-                results[0].forEach(function (item) {
-                    if (item.shippingTemperature === results[1].Temperature) {
-                        self.shippingMethods.push(item);
-                    }
-                });
-
-            });
-
-
-            this.getCart();
         },
         methods: {
-            updateCart: function () {
-                var self = this;
-
-                $('.loading-bar').fadeIn('100');
-
-                $.ajax({
-                    url: '/cart/update',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        cart: JSON.stringify(self.cart)
-                    },
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-
-                })
-                .done(function(response) {
-                    self.getCart();
-                    self.showMessage('success', '更新購物車成功');
-                    $('.loading-bar').fadeOut('100');
-                    // console.log(response);
-                })
-                .fail(function() {
-                    // console.log("error");
-                })
-                .always(function() {
-                    // console.log("complete");
-                });
-
-            },
-            getCart: function () {
-                var self = this;
-                $('.loading-bar').fadeIn('100');
-
-                $.ajax({
-                    url: '/cart/get',
-                    type: 'GET',
-                    dataType: 'json'
-                })
-                .done(function(response) {
-                    self.cart = [];
-                    self.cart = response.cart;
-                    self.amount = response.amount;
-
-                    setTimeout(function () {
-                        self.isDirty = false;
-                    }, 100);
-
-                    if (response.cart.length === 0) {
-                        $('button.cart').removeClass('full');
-                        self.isCartEmpty = true;
-                        $('button.cart').find('img').attr('src', '/img/icon/cart-empty.svg');
-                    } else {
-                        self.isCartEmpty = false;
-                        $('button.cart').find('img').attr('src', '/img/icon/cart-full.svg');
-                    }
-
-                    self.isLoaded = true
-                })
-                .fail(function() {
-                    // console.log("error");
-                })
-                .always(function() {
-                    $('.loading-bar').fadeOut('100');
-                    // console.log("complete");
-                });
-
-            },
-            deleteProduct: function (item) {
-                var check = confirm('確認要刪除此商品?');
-                var self = this;
-
-                if (check) {
-                    $('.loading-bar').fadeIn('100');
-                    $.ajax({
-                        url: '/cart/delete/single/' + item.rowId,
-                        type: 'POST',
-                        dataType: 'json',
-                        beforeSend: function(xhr) {
-                            xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    })
-                    .done(function(response) {
-                        self.getCart();
-                    })
-                    .fail(function() {
-                        // console.log("error");
-                    })
-                    .always(function() {
-                        $('.loading-bar').fadeOut('100');
-                        // console.log("complete");
-                    });
-
-                } else {
-                    return;
-                }
-            },
-            deleteAll: function () {
-                var check = confirm('確認要刪除所有商品?');
-                var self = this;
-
-                if (check) {
-                    $('.loading-bar').fadeIn('100');
-                    $.ajax({
-                        url: '/cart/delete/all',
-                        type: 'GET',
-                        dataType: 'json',
-                    })
-                    .done(function(response) {
-                        // console.log(response);
-                        self.getCart();
-                    })
-                    .fail(function() {
-                        // console.log("error");
-                    })
-                    .always(function() {
-                        $('.loading-bar').fadeOut('100');
-                        self.getCart();
-                        // console.log("complete");
-                    });
-
-                } else {
-                    return;
-                }
-            },
-            changeQty: function (method, item) {
-                if (method == 'up') {
-                    item.qty = parseInt(item.qty) + 1;
-                } else {
-                    if (!(item.qty <= 0)) {
-                        item.qty = parseInt(item.qty) - 1;
-                    }
-                }
-            },
             productLink: function (guid) {
                 return "//product/detail/" + guid;
             },
-            showMessage: function (type, string) {
-                toastr[type](string);
+            addSigleProduct(guid) {
+                addSigleProduct(guid)
             },
-            numberFormat(n, c, d, t) {
-                return h.number_format(n, c, d, t)
-            },
+            deleteFavorite(Guid, callback){
+                deleteFavorite('GxBTIe', function() {
+                    alert('asdasd')
+                })
+            }
         }
     }
 </script>
@@ -471,13 +149,15 @@
                 padding: 40px 15px;
                 list-style: none;
                 border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+            img {
+                    max-width: 35px;
+                    z-index: 2;
+                }
                 p {
                     text-align: center;
                     margin-bottom: 0;
                     font-size: 16px;
-                    img {
-                        max-width: 80px;
-                    }
+                   
                     &:nth-child(1) {
                         width: 30%;
                         span {
@@ -563,9 +243,6 @@
                         text-align: center;
                         margin-bottom: 0;
                         font-size: 16px;
-                        img {
-                            max-width: 80px;
-                        }
                         &:nth-child(1) {
                             width: 30%;
                             span {

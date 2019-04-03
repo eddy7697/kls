@@ -150,7 +150,9 @@
                                     </div>
                                     <p class="product-price">$ {{item.price}}</p>
                                 </div>
-                                <div class="productHeart"><img src="/img/productHeart.svg" alt=""></div>
+                                <div class="productHeart" @click="addFavorite(item.productGuid)">
+                                    <img src="/img/productHeart.svg" alt="">
+                                </div>
                                 <button class="buyIt" @click="addSigleProduct(item.productGuid)">
                                     <img src="/img/cartIconWhite.svg" alt="">
                                     <p>加入購物車</p>
@@ -278,6 +280,9 @@
                     price: null,
                     material: null
                 }
+            },
+            addFavorite(guid){
+                addFavorite(guid)
             },
             getTitle() {
                 let title = $('#thisTitle')
