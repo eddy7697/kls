@@ -282,11 +282,11 @@
                         </div>
                         <div class="panel-footer">
                             <button v-if="isDirty" type="submit" class="btn btn-primary btn-sm btn-block" @click="isSubmit = true">
-                                <span v-if="isEdit">編輯商品</span>
+                                <span v-if="isEdit">儲存編輯</span>
                                 <span v-else>發布商品</span>
                             </button>
                             <button v-else type="button" class="btn btn-primary btn-sm btn-block" name="button" disabled>
-                                <span v-if="isEdit">編輯商品</span>
+                                <span v-if="isEdit">儲存編輯</span>
                                 <span v-else>發布商品</span>
                             </button>
                         </div>

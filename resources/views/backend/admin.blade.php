@@ -62,24 +62,26 @@
 												@if (false)
 													<li><a href="/cyberholic-system/page/add">新增頁面</a></li>
 												@endif
-												<li><a href="/cyberholic-system/page/list">頁面列表</a></li>
+												{{-- <li><a href="/cyberholic-system/page/list">頁面列表</a></li> --}}
 												<li><a href="/cyberholic-system/page/block">區塊列表</a></li>
 												<li><a href="/cyberholic-system/meta/notice">購物須知管理</a></li>
 												<li><a href="/cyberholic-system/meta/privacy">隱私權政策管理</a></li>
-												<li><a href="/cyberholic-system/meta/remind">安心購物宣言管理</a></li>
-												<li><a href="/cyberholic-system/meta/other">其他資訊管理</a></li>
+												{{-- <li><a href="/cyberholic-system/meta/remind">安心購物宣言管理</a></li> --}}
+												<li><a href="/cyberholic-system/meta/other">挑選適合您的行李箱</a></li>
 											</ul>
 										</li>
+										@if (false)
 										<li class=""><a><i class="fa fa-users"></i> 會員管理系統 <span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu" style="display: none;">
 												<li><a href="/cyberholic-system/account/list">會員資料列表</a></li>
 											</ul>
 										</li>
-										<li class=""><a><i class="fa fa-pencil-square-o"></i> 最新消息管理系統 <span class="fa fa-chevron-down"></span></a>
+										@endif
+										<li class=""><a><i class="fa fa-pencil-square-o"></i> 部落格管理系統 <span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu" style="display: none;">
-												<li><a href="/cyberholic-system/post/add">新增最新消息</a></li>
-												<li><a href="/cyberholic-system/post/list">最新消息列表</a></li>
-												<li><a href="/cyberholic-system/post/category">最新消息類別管理</a></li>
+												<li><a href="/cyberholic-system/post/add">新增部落格</a></li>
+												<li><a href="/cyberholic-system/post/list">部落格列表</a></li>
+												<li><a href="/cyberholic-system/post/category">部落格類別管理</a></li>
 											</ul>
 										</li>
 										<li><a><i class="fa fa-picture-o"></i> 媒體與檔案 <span class="fa fa-chevron-down"></span></a>
@@ -97,8 +99,8 @@
 											<ul class="nav child_menu" style="">
 												<li><a href="/cyberholic-system/product/add">新增銷售商品</a></li>
 												<li><a href="/cyberholic-system/product/list">商品列表</a></li>
-												<li><a href="/cyberholic-system/product/category">商品類別管理</a></li>
-												<li><a href="/cyberholic-system/tag/management">標籤管理</a></li>
+												{{-- <li><a href="/cyberholic-system/product/category">商品類別管理</a></li> --}}
+												<li><a href="/cyberholic-system/tag/management">行李箱標籤管理</a></li>
 											</ul>
 										</li>
 										@if (false)
@@ -113,7 +115,7 @@
 										<li class=""><a><i class="fa fa-shopping-basket"></i> 訂單管理系統 <span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu" style="display: none;">
 												<li><a href="/cyberholic-system/order/list">訂單資料查詢</a></li>
-												@if (true)
+												@if (false)
 													<li><a href="/cyberholic-system/order/shipping-method">運費規格設定</a></li>
 												@endif
 											</ul>

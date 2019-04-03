@@ -92,4 +92,22 @@ class ProductView
                         ->select('products.*', 'categories.categoryTitle')
                         ->orderBy('schedulePost', 'desc')->take(10)->get();
     }
+
+    public static function takeByTag($tag)
+    {
+        return Product::where('isPublish', '1')
+                        // ->where('quantity', '>', 0)
+                        ->where(function ($query) {
+                            $query->where('schedulePost', '>', time())
+                                ->orwhere('schedulePost','=',null);
+                        })
+                        ->where(function ($query) {
+                            $query->where('scheduleDelete','<',time())
+                                ->orwhere('scheduleDelete','=',null);
+                        })
+                        ->where('command', 'like', '%'.$tag.'%')
+                        ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
+                        ->select('products.*', 'categories.categoryTitle')
+                        ->orderBy('schedulePost', 'desc')->take(10)->get();
+    }
 }

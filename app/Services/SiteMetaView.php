@@ -145,4 +145,14 @@ class SiteMetaView
             return '';
         }
     }
+
+    public static function boxMethods()
+    {
+        try {
+            $content = CustomField::where('type', 'OTHER')->first()['content'];
+            return $content;
+        } catch (\Exception $e) {
+            return '';
+        }
+    }
 }

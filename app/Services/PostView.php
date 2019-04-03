@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Post;
+use App\CustomField;
 
 class PostView
 {
@@ -65,5 +66,15 @@ class PostView
         return Post::where('isPublish', '1')
                     ->orderBy('id', 'desc')
                     ->where('postCategory', $category)->paginate($int);
+    }
+
+    public static function witness()
+    {
+        return CustomField::where('type', 'witness')->get();
+    }
+
+    public static function tags()
+    {
+        return CustomField::where('type', 'tag')->first()->content;
     }
 }

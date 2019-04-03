@@ -5,33 +5,44 @@
         function quickView(path) {
             window.location.href = '/product-deatil/' + path
         };   
-        function renderPruductDetail(guid){
-            var getDetailApi = "/products/get/" + guid ;
-            
-            axios.get(getDetailApi)
-                .then(function(res){
-                    console.log(res.data.data)
-                    $('#productDetailModal').modal('show');
-                    $('.modal-title').text(res.data.data.productTitle);
-                    $('.modal-img').attr('src',res.data.data.featureImage);
-                    $('.modal-description').html(res.data.data.productDescription);
-                    $('.modal-shortDescription').html(res.data.data.shortDescription)
-                    $('.modal-price span').text(res.data.data.price);
-                    ((res.data.data.discountedPrice === null)?
-                        $('.modal-discountedPrice').css('display','none'):
-                        $('.modal-discountedPrice').css('display','block')
-                            .find('span')
-                                .text(res.data.data.discountedPrice)
-                            .end()
-                    );
-                    $('#modal-QuickView').attr({
-                        'onclick': 'quickView("' + res.data.data.customPath + '")'
-                    });
-                })
-                .catch(function(err) {
-                    console.log(err);
-                });
+
+        function renderPruductDetail(title, type){
+            var jsonContent = JSON.parse($('#json-content').val());
+
+            console.log(jsonContent);
+
+            $('#productDetailModal').modal('show');
+            $('.modal-title').text(title);
+            $('.modal-img').attr('src',jsonContent[type].featureImage);
+            $('.modal-description').html(jsonContent[type].content);
         };
+        // function renderPruductDetail(type){
+        //     var getDetailApi = "/products/get/" + guid ;
+            
+        //     axios.get(getDetailApi)
+        //         .then(function(res){
+        //             console.log(res.data.data)
+        //             $('#productDetailModal').modal('show');
+        //             $('.modal-title').text(res.data.data.productTitle);
+        //             $('.modal-img').attr('src',res.data.data.featureImage);
+        //             $('.modal-description').html(res.data.data.productDescription);
+        //             $('.modal-shortDescription').html(res.data.data.shortDescription)
+        //             $('.modal-price span').text(res.data.data.price);
+        //             ((res.data.data.discountedPrice === null)?
+        //                 $('.modal-discountedPrice').css('display','none'):
+        //                 $('.modal-discountedPrice').css('display','block')
+        //                     .find('span')
+        //                         .text(res.data.data.discountedPrice)
+        //                     .end()
+        //             );
+        //             $('#modal-QuickView').attr({
+        //                 'onclick': 'quickView("' + res.data.data.customPath + '")'
+        //             });
+        //         })
+        //         .catch(function(err) {
+        //             console.log(err);
+        //         });
+        // };
         
     </script>
 @endsection
@@ -40,6 +51,9 @@
 @section('content')
 
     <!------------------------choose------------------------>
+    <textarea id="json-content" cols="30" rows="10" style="display: none">
+            {{SiteMetaView::boxMethods()}}
+    </textarea>
 
     <section id="choose">
         <div class="container-fluid">
@@ -51,39 +65,81 @@
                 </div>
             </div>
             <div class="row">
-                @for ($i = 0; $i < 4; $i++)
-                    <div class="col-md-3 co_post">
-                        <div class="choose_post">
-                            <div class="img_div" style="background-image: url(/img/choose02.jpg)">
-                            </div>
-                            <div class="post_text">
-                                <h3>
-                                    鋁框式硬殼箱
-                                </h3>
-                                <p>
-                                    鋁合金特性是耐用、耐磨、耐衝擊、箱
-                                    殼本身的使用年限大多可以保持在五年
-                                    或十年以上，有分一體成型，如ZERO，
-                                    或組合成型、如RIMOWA。但周邊的配
-                                    件損壞還是可以維修的，如果你要求外
-                                    觀漂亮完整，大概不可能，除非，是您
-                                    想換個新的行李箱，要不然，要使用到
-                                    不堪使用的情況，應該是很少發生的、
-                                    但前提是、必須在正確使用行李箱的方
-                                    法之下、才能發揮它的特性、他跟一般
-                                    行李箱的比較來說，重量重一點價格比
-                                    一般的還要貴很多。
-                                </p>
-                                {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
-                                <div class="choose_btn">
-                                    <button class ="goBuy" onclick="renderPruductDetail(123)">
-                                        了解更多                  
-                                    </button>
-                                </div>
+                <div class="col-md-3 co_post">
+                    <div class="choose_post">
+                        <div class="img_div" style="background-image: url('{{SiteMetaView::noticeService()->featureImage}}')">
+                        </div>
+                        <div class="post_text">
+                            <h3>
+                                拉鍊式硬殼箱
+                            </h3>
+                            <p>{!!nl2br(SiteMetaView::noticeService()->content)!!}</p>
+                            {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
+                            <div class="choose_btn">
+                                <button class ="goBuy" onclick="renderPruductDetail('拉鍊式硬殼箱', 'service')">
+                                    了解更多                  
+                                </button>
                             </div>
                         </div>
                     </div>
-                @endfor
+                </div>
+
+                <div class="col-md-3 co_post">
+                    <div class="choose_post">
+                        <div class="img_div" style="background-image: url('{{SiteMetaView::noticeShipping()->featureImage}}')">
+                        </div>
+                        <div class="post_text">
+                            <h3>
+                                鋁框式硬殼箱
+                            </h3>
+                            <p>{!!nl2br(SiteMetaView::noticeShipping()->content)!!}</p>
+                            {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
+                            <div class="choose_btn">
+                                <button class ="goBuy" onclick="renderPruductDetail('鋁框式硬殼箱', 'shipping')">
+                                    了解更多                  
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 co_post">
+                    <div class="choose_post">
+                        <div class="img_div" style="background-image: url('{{SiteMetaView::noticeReturn()->featureImage}}')">
+                        </div>
+                        <div class="post_text">
+                            <h3>
+                                軟殼布面箱
+                            </h3>
+                            <p>{!!nl2br(SiteMetaView::noticeReturn()->content)!!}</p>
+                            {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
+                            <div class="choose_btn">
+                                <button class ="goBuy" onclick="renderPruductDetail('軟殼布面箱', 'return')">
+                                    了解更多                  
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 co_post">
+                    <div class="choose_post">
+                        <div class="img_div" style="background-image: url('{{SiteMetaView::noticeAntiFraud()->featureImage}}')">
+                        </div>
+                        <div class="post_text">
+                            <h3>
+                                品牌特殊箱
+                            </h3>
+                            <p>{!!nl2br(SiteMetaView::noticeAntiFraud()->content)!!}</p>
+                            {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
+                            <div class="choose_btn">
+                                <button class ="goBuy" onclick="renderPruductDetail('品牌特殊箱', 'antiFraud')">
+                                    了解更多                  
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -91,21 +147,20 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px; ">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="modal-img-container">
-                            <img class="modal-img" src="" alt="">
-                        </div>
-                        <div class="modal-text-container">
-                            <div class="modal-description"></div>
-                            <hr>
-                            <div class="modal-shortDescription"></div>
-                            <hr>
-                            <div class="modal-quantity"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img width="100%" class="modal-img" src="" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 2.5rem; font-weight: bolder;"></h5>
+                                <div class="modal-description" style="font-size: 1.8rem; line-height: 3rem; font-weight: bolder; color: #999; "></div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -122,6 +177,9 @@
     
     <!------------------------products------------------------>
 
+    @php
+        $tags = json_decode(PostView::tags());
+    @endphp
     <section id="products">
         <div class="sw_mask mask_left">
             <img class="product_arrow product-left" src="/img/arrow-left.png" alt="">
@@ -146,7 +204,14 @@
                                     全部商品
                                 </a>
                             </li>
-                            <li>
+                            @foreach ($tags->size as $key => $item)
+                                <li>
+                                    <a data-toggle="tab" href="#menu{{$key}}">
+                                        {{$item}}
+                                    </a>
+                                </li>
+                            @endforeach
+                            {{-- <li>
                                 <a data-toggle="tab" href="#menu1">
                                     20吋登機箱
                                 </a>
@@ -180,7 +245,7 @@
                                 <a data-toggle="tab" href="#menu7">
                                     旅行箱配件
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>
@@ -233,9 +298,55 @@
                                     </div>
                                 @endforeach
                             </div>
-                            
                         </div>
-                        <div id="menu1" class="tab-pane fade">
+                        @foreach ($tags->size as $key => $elm)
+                            <div id="menu{{$key}}" class="tab-pane fade">
+                                <div class="swiper-wrapper">
+                                    @foreach (ProductView::takeByTag($elm) as $item)
+                                        <div class="swiper-slide">
+                                            <div class="product_img">
+                                                <img class="product_img_inside" src="{{$item->featureImage}}" alt="">
+                                                <a href="/detail/{{$item->productGuid}}">
+                                                    <div class="product_quick_view">
+                                                        <p class="product_quick_text">
+                                                            READ MORE    
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <h3 class="product_series">
+                                                {{$item->productTitle}}
+                                            </h3>
+                                            @php
+                                                $command = json_decode($item->command);
+                                            @endphp
+                                            <h3 class="product_name">
+                                                {{$command->brand}}
+                                            </h3>
+                                            <div class="product_category">
+                                                <div class="product_category_detail">
+                                                    <ul class="porduct_size">
+                                                        <li>
+                                                            尺寸： {{$command->size}}
+                                                        </li>
+                                                        <li>
+                                                            材質： {{$command->material}}
+                                                        </li>
+                                                    </ul>
+                                                    <h1 class="product_price">
+                                                        NTD {{number_format($item->price)}}
+                                                    </h1>
+                                                </div>
+                                                <button class="buy_click" onclick="addSigleProduct('{{$item->productGuid}}')">
+                                                    點我<br>購買
+                                                </button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                         {{-- <div id="menu1" class="tab-pane fade">
                             <h3>
                                 Menu 1
                             </h3>
@@ -290,7 +401,7 @@
                             <p>
                                 Waittong for Data...
                             </p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -356,23 +467,21 @@
             <div class="row">
                 <div class="col-md-12 feedback-Index">
                     <div class="swiper-wrapper">
-                        @for ($i = 0; $i < 3; $i++)
+                        @foreach (PostView::witness() as $item)
                             <div class="swiper-slide">
                                 <div class="feedbackPost">
                                     <img class="feedback-Icon" src="/img/feedbackIcon.svg" alt="">
                                     <div class="feedback-Inner">
-                                        <p>
-                                            異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘的耐心回答任何問題及推薦，謝謝闆闆願意順路幫我送到家，讓我緊急帶出國！這次是買27吋的異形箱！d牌的形李箱讓我離不開這品牌了！
-                                        </p>
+                                        {!!$item->content!!}
                                     </div>
                                     <div class="feedback-Author">
                                         <p>
-                                            卜一一
+                                            {{$item->locale}}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                        @endfor    
+                        @endforeach   
                     </div>
                 </div>
             </div>

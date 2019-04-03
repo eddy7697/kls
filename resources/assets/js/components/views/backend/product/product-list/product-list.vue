@@ -61,15 +61,39 @@
                     label="貨號">
                 </el-table-column>
                 <el-table-column
+                    prop="quantity"
+                    width="120"
+                    label="庫存狀態">
+                    <template slot-scope="scope">
+                        <div v-if="scope.row.productType !== 'variable'">
+                            <span v-if="scope.row.quantity < 1" style="color: red">無庫存</span>
+                            <span v-if="scope.row.quantity <= 10 && scope.row.quantity >= 1" style="color: brown">低庫存</span>
+                            <span v-if="scope.row.quantity > 10" style="color: green">庫存充足</span>
+                        </div>
+                    </template>
+                </el-table-column>
+                <el-table-column
                     prop="price"
                     width="120"
                     label="價格">
                     <template slot-scope="scope">
-                        <div v-if="scope.row.productType == 'simple'">
+                        <span v-if="scope.row.quantity < 1" style="color: red">缺貨中</span>
+                        <span v-else>{{scope.row.price}}</span>
+                        <!-- <div v-if="scope.row.productType == 'simple'">
                             <span v-if="scope.row.quantity < 1" style="color: red">缺貨中</span>
                             <span v-else>{{scope.row.price}}</span>
                         </div>
                         <div v-else>
+                            <el-button size="mini" @click="showSubProduct(scope.row.subProduct)">查看子商品</el-button>
+                        </div> -->
+                    </template>
+                </el-table-column>
+                <el-table-column
+                    prop="price"
+                    width="120"
+                    label="子商品">
+                    <template slot-scope="scope">
+                        <div v-if="scope.row.productType !== 'simple'">
                             <el-button size="mini" @click="showSubProduct(scope.row.subProduct)">查看子商品</el-button>
                         </div>
                     </template>

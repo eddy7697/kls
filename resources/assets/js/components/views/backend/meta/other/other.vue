@@ -3,39 +3,47 @@
         <div class="col-md-9">
 
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">客服資訊</a></li>
-                <li><a data-toggle="tab" href="#menu1">運送資訊</a></li>
-                <li><a data-toggle="tab" href="#menu2">退換貨政策</a></li>
-                <li><a data-toggle="tab" href="#menu3">反詐騙提醒</a></li>
+                <li class="active"><a data-toggle="tab" href="#home">拉鍊式硬殼箱</a></li>
+                <li><a data-toggle="tab" href="#menu1">鋁框式硬殼箱</a></li>
+                <li><a data-toggle="tab" href="#menu2">軟殼布面箱</a></li>
+                <li><a data-toggle="tab" href="#menu3">品牌特殊箱</a></li>
             </ul>
 
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
+                    <img style="max-width: 50%; margin: 10px;" :src="otherContent.service.featureImage" alt="">
+                    <button style="margin: 10px;" class="btn btn-primary" @click="editImage('service')">編輯圖片</button>
                     <ckeditor
                         class="ch-product-description"
                         :config="ckConfig"
-                        v-model="otherContent.service">
+                        v-model="otherContent.service.content">
                     </ckeditor>
                 </div>
                 <div id="menu1" class="tab-pane fade">
+                    <img style="max-width: 50%; margin: 10px;" :src="otherContent.shipping.featureImage" alt="">
+                    <button style="margin: 10px;" class="btn btn-primary" @click="editImage('shipping')">編輯圖片</button>
                     <ckeditor
                         class="ch-product-description"
                         :config="ckConfig"
-                        v-model="otherContent.shipping">
+                        v-model="otherContent.shipping.content">
                     </ckeditor>
                 </div>
                 <div id="menu2" class="tab-pane fade">
+                    <img style="max-width: 50%; margin: 10px;" :src="otherContent.return.featureImage" alt="">
+                    <button style="margin: 10px;" class="btn btn-primary" @click="editImage('return')">編輯圖片</button>
                     <ckeditor
                         class="ch-product-description"
                         :config="ckConfig"
-                        v-model="otherContent.return">
+                        v-model="otherContent.return.content">
                     </ckeditor>
                 </div>
                 <div id="menu3" class="tab-pane fade">
+                    <img style="max-width: 50%; margin: 10px;" :src="otherContent.antiFraud.featureImage" alt="">
+                    <button style="margin: 10px;" class="btn btn-primary" @click="editImage('antiFraud')">編輯圖片</button>
                     <ckeditor
                         class="ch-product-description"
                         :config="ckConfig"
-                        v-model="otherContent.antiFraud">
+                        v-model="otherContent.antiFraud.content">
                     </ckeditor>
                 </div>
             </div>
@@ -87,10 +95,22 @@
                     locale: 'zh-tw'
                 },
                 otherContent: {
-                    service: null,
-                    shipping: null,
-                    return: null,
-                    antiFraud: null
+                    service: {
+                        featureImage: null,
+                        content: null
+                    },
+                    shipping: {
+                        featureImage: null,
+                        content: null
+                    },
+                    return: {
+                        featureImage: null,
+                        content: null
+                    },
+                    antiFraud: {
+                        featureImage: null,
+                        content: null
+                    }
                 },
                 ckConfig: {
                     height: 300,
@@ -129,11 +149,20 @@
                     .then(res => {
                         console.log(res)
                         self.getOther()
+                        self.showMessage('success', '編輯成功')
                     }).catch(err => {
                         console.log(err)
                     }).then(() => {
                         $('.loading-bar').fadeOut('100')
                     })
+            },
+            editImage(type) {
+                var self = this;
+
+                window.open('/laravel-filemanager' + '?type=Images', 'FileManager', 'width=900,height=600');
+                window.SetUrl = function (url, file_path) {
+                    self.otherContent[type].featureImage = file_path;
+                };
             },
             getOther: function (guid) {
                 var self = this;
