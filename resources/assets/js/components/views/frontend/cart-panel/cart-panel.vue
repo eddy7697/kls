@@ -85,6 +85,8 @@
 
             window.updateCount = this.getCart
             window.addSigleProduct = this.addSigleProduct
+            window.addFavorite = this.addFavorite
+            window.deleteFavorite = this.deleteFavorite
         },
         methods: {
             getCart: function (status) {
@@ -223,6 +225,19 @@
             },
             togglePanel: function () {
                 this.displayPanel = this.displayPanel ? false : true;
+            },
+            addFavorite(guid) {
+                axios.get(`/favorite/add/${guid}`)
+                    .then(res => {
+                        this.$message.success('新增至願望清單成功')
+                    })
+            },
+            deleteFavorite(guid, callback) {
+                axios.get(`/favorite/delete/${guid}`)
+                    .then(res => {
+                        this.$message.success('刪除項目成功')
+                        callback()
+                    })
             },
             isIndex: function(){
                 let isIndex = window.location.pathname;

@@ -79,3 +79,13 @@ Route::post('/send-form', 'MailController@sendForm')->name('sendForm');
  */
 Route::post('/hppe-callback', 'Backend\OrderController@hppeOrder');
 Route::get('/esun_callback', 'Backend\OrderController@esunCheckOrder');
+
+/**
+ * Favorite methods
+ */
+Route::group(['prefix' => 'favorite'], function ()
+{
+    Route::get('/add/{guid}', 'FavoriteController@addFavorite');
+    Route::get('/get', 'FavoriteController@getFavorite');
+    Route::get('/delete/{guid}', 'FavoriteController@deleteFavorite');
+});
