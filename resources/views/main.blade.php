@@ -231,7 +231,6 @@
                             </div>
                             
                             <div class="swiper-wrapper">
-                                
                                 @foreach (SiteMetaView::album() as $item => $value)
                                     {{-- <a href="{{$value->link ? $value->link : '#'}}"> --}}
                                         <div class="swiper-slide banner" style="background-image: url('{{$value->url}}')">
