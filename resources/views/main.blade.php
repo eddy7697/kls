@@ -878,7 +878,9 @@
                     axios.get('/favorite/get')
                         .then(function(res){
                             var wishCount = res.data.length;
-                            $('.wish-icon .count').text(wishCount);
+                            if(wishCount){
+                                $('.wish-icon .count').text(wishCount);
+                            }
                         })
                 };
 

@@ -349,8 +349,6 @@
                     dataType: 'json'
                 })
                 .done(function(response) {
-                    console.log(response)
-
                     self.cart = [];
                     self.cart = response.cart;
                     self.amount = response.amount;
