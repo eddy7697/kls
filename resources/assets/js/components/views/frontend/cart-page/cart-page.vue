@@ -33,7 +33,6 @@
                             </span>
                                 <a  data-title="商品" v-bind:href="productLink(item.id.guid)">{{item.id.title}}</a>
                             <br>
-                            <!-- <img src="/img/product-logo.jpg" alt=""> -->
                         </p>
                         <p>
                             27吋
@@ -350,6 +349,8 @@
                     dataType: 'json'
                 })
                 .done(function(response) {
+                    console.log(response)
+
                     self.cart = [];
                     self.cart = response.cart;
                     self.amount = response.amount;
@@ -445,7 +446,7 @@
                 }
             },
             productLink: function (guid) {
-                return "//product/detail/" + guid;
+                return "/detail/" + guid;
             },
             showMessage: function (type, string) {
                 toastr[type](string);
