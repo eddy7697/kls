@@ -6,17 +6,20 @@
     </div>v-else -->
     <div class="row">
         <div class="col-md-12">
-            <div class="cart-list">
+            <div style="text-align: center" v-if="wish.length == 0">
+                <h1>你目前沒有加入收藏任何商品到「願望清單」裡面</h1>
+            </div>
+            <div class="cart-list" v-else>
                 <ul>
                     <li class="cart_list_title">
                         <p>
                             產品名稱
                         </p>
                         <p>
-                            尺寸
+                            <!-- 尺寸 -->
                         </p>
                         <p>
-                            型號
+                            <!-- 型號 -->
                         </p>
                         <p>
                             優惠價
@@ -25,23 +28,23 @@
                     </li>
                     <li v-for="(item, index) in wish" v-bind:key="index">
                         <a>
-                            <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item)">
+                            <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item)" style="cursor: pointer">
                         </a>
-                        <img :src="item.featureImage" alt="" style="max-width: 150px">
+                        <img :src="item.featureImage" alt="" style="max-width: 150px; width: 100%;">
                         <p>
                             <a data-title="商品" v-bind:href="productLink(item.productGuid)">{{item.productTitle}}</a>
                         </p>
                         <p>
-                            27吋
+                            <!-- 27吋 -->
                         </p>
                         <p>
-                            型號:<span>HD-515</span>
+                            <!-- 型號:<span>HD-515</span> -->
                         </p>
                         <p data-title="價格">
                             NT$<span>{{item.price}}</span> 
                         </p>
                         <p> 
-                            <a @click="addSigleProduct(item.productGuid)">
+                            <a @click="addSigleProduct(item.productGuid)" style="cursor: pointer">
                                 <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
                             </a>
                         </p>
@@ -49,7 +52,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
             <div class="cart-sidebar">
                 <div class="cart_totals calculated_shipping box-sizing: border-box;}">
                     <a href="/cart">
@@ -61,7 +64,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -92,10 +95,11 @@
         },
         created: function () {
             this.getList();
+            window.getList = this.getList
         },
         methods: {
             productLink: function (guid) {
-                return "//product/detail/" + guid;
+                return "/product/detail/" + guid;
             },
             addSigleProduct(guid) {
                 addSigleProduct(guid)
@@ -112,7 +116,10 @@
 
                 if (check) {
                     $('.loading-bar').fadeIn('100');
-                    deleteFavorite(item.productGuid, self.getList())
+                    deleteFavorite(item.productGuid, () => {
+                        getList()
+                        $('.loading-bar').fadeOut('100');
+                    })
                 } else {
                     return;
                 }
@@ -140,8 +147,10 @@
         justify-content: $justify;
         flex-wrap: wrap;
     }
+    
     .mg-business{
         margin-top: 7rem;
+        margin-bottom: 7rem;
     }
     .hide {
         visibility: hidden;

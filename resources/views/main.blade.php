@@ -42,7 +42,7 @@
     <body>
         <div class="loading-bar">
             <div class="loading-bar-inner">
-                <img src="/img/loaing-logo.png" alt="">
+                <img src="/img/loaing-logo.png" alt="" style="width: 150px;">
                 <div class="loader">
                     <h1></h1>
                     <span></span>
