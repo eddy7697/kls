@@ -383,8 +383,9 @@
                             </div>
                         </div>
                         <div class="navbar-icon">
-                            <a href="/wish-list">
+                            <a class="wish-icon" href="/wish-list">
                                 <img src="/img/navbar-heart-01.png" alt="">
+                                <span class="count"></span>
                             </a>
                             <div id="cart-panel">
                                 <cart-panel />
@@ -505,8 +506,9 @@
                                                 </ul>
                                             </li>
                                         <li class="sub-icon">
-                                            <a href="/wish-list">
+                                            <a class="wish-icon" href="/wish-list">
                                                 <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
+                                                <span style="bottom: -5px; right: 0px;" class="count"></span>
                                             </a>
                                             <div id="cart-panel">
                                                 <cart-panel />
@@ -699,6 +701,7 @@
 
                 get_H();
                 scrollMenu();
+                getWishListLeng();
                 ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
 
                 $(window).resize(function() {
@@ -851,9 +854,6 @@
                     newPostTextRWD($('.feedback-Inner p'),100);
                 }
                 
-                
-
-
                 // fixed-button-group 過banner後再出現
 
                 var banner_height =  100;
@@ -873,6 +873,14 @@
                         })
                     }
                 });
+
+                function getWishListLeng(){
+                    axios.get('/favorite/get')
+                        .then(function(res){
+                            var wishCount = res.data.length;
+                            $('.wish-icon .count').text(wishCount);
+                        })
+                };
 
             }); 
         </script>

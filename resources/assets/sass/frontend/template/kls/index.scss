@@ -2,6 +2,21 @@
 *{
   font-family: 微軟正黑體;
 }
+.wish-icon{
+  position: relative;
+}
+.wish-icon .count{
+  position: absolute;
+  font-size: 12px;
+  background-color: red;
+  color: white;
+  padding: 0 6px 0 6px;
+  border-radius: 50%;
+  bottom: -5px;
+  right: 10px;
+  -webkit-box-shadow: 2px 2px 12px -2px #666;
+  box-shadow: 2px 2px 12px -2px #666;
+}
 .scrollDown{
   position: absolute;
   display: none;

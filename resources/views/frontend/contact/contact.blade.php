@@ -119,8 +119,13 @@
                                     <td class="form-group form-group-text-input">
                                         <div class="form-group-input">
                                             <select class="form-control" name="search" id="search">
-                                                <option value="option1">選項一</option>
-                                                <option value="option2">選項二</option>
+                                                <option value="porductInfo">箱款資訊</option>
+                                                <option value="shoppingQ">購物問題</option>
+                                                <option value="warrantyQ">保固問題</option>
+                                                <option value="transportQ">運送問題</option>
+                                                <option value="dealQ">經銷問題</option>
+                                                <option value="reservation">預約看箱</option>
+                                                <option value="other">其他</option>
                                             </select>
                                         </div>
                                     </td>

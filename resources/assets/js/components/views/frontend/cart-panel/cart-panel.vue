@@ -1,9 +1,11 @@
 <template>
     <div>
+    
         <div class="shopping-Cart-Icon" @click="getCart(true)">
             <img v-if="isIndex()" src="/img/navbar-cart-01.svg" alt="">
             <img v-else src="/img/cartIcon-01.png" alt="">
-            <span class="count" v-if="cartContent.length">{{cartContent.length}}</span>  
+            <span class="count" v-if="cartContent.length && isIndex()">{{cartContent.length}}</span> 
+            <span class="count" style="bottom: -5px; right: 0px;" v-else-if="cartContent.length">{{cartContent.length}}</span> 
         </div>
         <!-- <div class="litext" @click="getCart(true)">
             <p>&nbsp;&nbsp;購物車</p>
@@ -288,8 +290,8 @@
         color: white;
         padding: 0 6px 0 6px;
         border-radius: 50%;
-        bottom: 0;
-        right: -10px;
+        bottom: -5px;
+        right: 10px;
         box-shadow: 2px 2px 12px -2px #666;
     }
 </style>
