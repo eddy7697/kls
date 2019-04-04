@@ -23,7 +23,7 @@
                     <tr>
                         <th>訂單編號</th>
                         <th>購買日期時間</th>
-                        <th>會員帳號</th>
+                        <!-- <th>會員帳號</th> -->
                         <th>客戶名稱</th>
                         <th>付款狀態</th>
                         <th>訂單內容</th>
@@ -36,8 +36,8 @@
                     <tr v-for="(item, index) in orderList" v-bind:key="index">
                         <td>{{item.merchantID}}</td>
                         <td>{{item.created_at}}</td>
-                        <td v-if="item.owner !== 'guest'">{{item.email}}</td>
-                        <td v-else><span style="color: brown; font-weight: bold">訪客</span></td>
+                        <!-- <td v-if="item.owner !== 'guest'">{{item.email}}</td>
+                        <td v-else><span style="color: brown; font-weight: bold">訪客</span></td> -->
                         <td>{{item.shippingTarget.ReceiverName}}</td>
                         <td>
                             <span style="color: brown; font-weight: bold" v-if="item.paymentStatus === 'uncheck'">未對帳</span>

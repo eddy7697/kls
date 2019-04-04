@@ -15,6 +15,7 @@
             $('.modal-title').text(title);
             $('.modal-img').attr('src',jsonContent[type].featureImage);
             $('.modal-description').html(jsonContent[type].content);
+            
         };
         // function renderPruductDetail(type){
         //     var getDetailApi = "/products/get/" + guid ;
@@ -58,7 +59,7 @@
     <section id="choose">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 section_title">
+                <div class="col-md-12 section_title" data-aos="zoom-in">
                    <p> 
                        挑選適合你的旅行箱
                    </p>
@@ -66,7 +67,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3 co_post">
-                    <div class="choose_post">
+                    <div class="choose_post" data-aos="fade-right">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeService()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -85,7 +86,7 @@
                 </div>
 
                 <div class="col-md-3 co_post">
-                    <div class="choose_post">
+                    <div class="choose_post" data-aos="fade-right">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeShipping()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -104,7 +105,7 @@
                 </div>
 
                 <div class="col-md-3 co_post">
-                    <div class="choose_post">
+                    <div class="choose_post" data-aos="fade-left">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeReturn()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -123,7 +124,7 @@
                 </div>
 
                 <div class="col-md-3 co_post">
-                    <div class="choose_post">
+                    <div class="choose_post" data-aos="fade-left">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeAntiFraud()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -188,9 +189,9 @@
             <img class="product_arrow product-right" src="/img/arrow-right.png" alt="">
         </div>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" data-aos="zoom-in">
                 <div class="col-md-12 section_title">
-                   <p> 
+                   <p > 
                        凱麗斯旅行箱
                    </p>
                 </div>
@@ -211,41 +212,6 @@
                                     </a>
                                 </li>
                             @endforeach
-                            {{-- <li>
-                                <a data-toggle="tab" href="#menu1">
-                                    20吋登機箱
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#menu2">
-                                    23吋商務旅行
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#menu3">
-                                    25吋輕旅行
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#menu4">
-                                    27吋重裝上陣
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#menu5">
-                                    30吋長途旅行
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#menu6">
-                                    特殊規格旅行箱
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#menu7">
-                                    旅行箱配件
-                                </a>
-                            </li> --}}
                         </ul>
                     </nav>
                 </div>
@@ -346,62 +312,6 @@
                                 </div>
                             </div>
                         @endforeach
-                         {{-- <div id="menu1" class="tab-pane fade">
-                            <h3>
-                                Menu 1
-                            </h3>
-                            <p>
-                                Waittong for Data...
-                            </p>
-                        </div>
-                        <div id="menu2" class="tab-pane fade">
-                            <h3>
-                                Menu 2
-                            </h3>
-                            <p>
-                                Waittong for Data...
-                            </p>
-                        </div>
-                        <div id="menu3" class="tab-pane fade">
-                            <h3>
-                                Menu 3
-                            </h3>
-                            <p>
-                                Waittong for Data...
-                            </p>
-                        </div>
-                        <div id="menu4" class="tab-pane fade">
-                            <h3>
-                                Menu 4
-                            </h3>
-                            <p>
-                                Waittong for Data...
-                            </p>
-                        </div>
-                        <div id="menu5" class="tab-pane fade">
-                            <h3>
-                                Menu 5
-                            </h3>
-                            <p>
-                                Waittong for Data...
-                            </p>
-                        </div>
-                        <div id="menu6" class="tab-pane fade">
-                            <h3>
-                                Menu 6
-                            </h3>
-                            <p>
-                                Waittong for Data...
-                            </p>
-                        </div>
-                        <div id="menu7" class="tab-pane fade">
-                            <h3>
-                                Menu 7
-                            </h3>
-                            <p>
-                                Waittong for Data...
-                            </p>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -413,7 +323,7 @@
     <section id="news">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 section_title">
+                <div class="col-md-12 section_title"  data-aos="zoom-in">
                    <p> 
                        部落格
                    </p>
@@ -458,7 +368,7 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 section_title">
+                <div class="col-md-12 section_title"  data-aos="zoom-in">
                     <p> 
                         使用迴響
                     </p>

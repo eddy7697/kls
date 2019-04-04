@@ -215,7 +215,7 @@
 .openNow-menu{
   opacity         : 1 !important;
   transition      : 0.5s;
-  z-index         : 1000001 !important;
+  z-index         : 90 !important;
   .klsBurger-menu-inner, .burge-link{
     transform : scale(1) !important;
   }
@@ -1587,10 +1587,17 @@
     .product-style {
       font-size: $header-contact-font-size;
       line-height: 15px;
+      position: relative;
+        &::after{
+          content: '...';
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
       .style-inner{
-        overflow: auto;
-        height: 240px;
-        margin-bottom: 10px;
+        overflow: hidden;
+        height: 180px;
+        margin-bottom: 2rem;
       }
       ul{
         padding-left: 15px;
@@ -3381,7 +3388,7 @@
   #footer{
     .footer_logo{
       width: 100%;
-      height: 20rem;
+      height: 23rem;
       .logo_area{
         .logo{
           a{
@@ -3398,7 +3405,7 @@
     .footer_contact{
       width: 100%;
       .footer_addr{
-        display: none;
+
       }
       .community{
        display: none;

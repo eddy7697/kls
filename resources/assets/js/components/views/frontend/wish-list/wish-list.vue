@@ -30,7 +30,7 @@
                         <a>
                             <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item)" style="cursor: pointer">
                         </a>
-                        <img :src="item.featureImage" alt="" style="max-width: 150px">
+                        <img :src="item.featureImage" alt="" style="max-width: 150px; width: 100%;">
                         <p>
                             <a data-title="商品" v-bind:href="productLink(item.productGuid)">{{item.productTitle}}</a>
                         </p>
