@@ -283,6 +283,13 @@
             },
             addFavorite(guid){
                 addFavorite(guid)
+                 axios.get('/favorite/get')
+                        .then(function(res){
+                            var wishCount = res.data.length;
+                            if(wishCount){
+                                $('.wish-icon .count').text(wishCount);
+                            }
+                        })
             },
             getTitle() {
                 let title = $('#thisTitle')

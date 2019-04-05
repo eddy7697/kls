@@ -99,7 +99,7 @@
         },
         methods: {
             productLink: function (guid) {
-                return "/product/detail/" + guid;
+                return "/detail/" + guid;
             },
             addSigleProduct(guid) {
                 addSigleProduct(guid)
@@ -118,12 +118,22 @@
                     $('.loading-bar').fadeIn('100');
                     deleteFavorite(item.productGuid, () => {
                         getList()
+                        self.resetIconSpan()
                         $('.loading-bar').fadeOut('100');
                     })
                 } else {
                     return;
                 }
             },
+            resetIconSpan: function(){
+                 axios.get('/favorite/get')
+                        .then(function(res){
+                            var wishCount = res.data.length;
+                            if(wishCount){
+                                $('.wish-icon .count').text(wishCount);
+                            }
+                        })
+            }
         }
     }
 </script>
