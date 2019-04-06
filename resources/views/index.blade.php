@@ -8,42 +8,13 @@
 
         function renderPruductDetail(title, type){
             var jsonContent = JSON.parse($('#json-content').val());
-
             console.log(jsonContent);
-
             $('#productDetailModal').modal('show');
             $('.modal-title').text(title);
             $('.modal-img').attr('src',jsonContent[type].featureImage);
             $('.modal-description').html(jsonContent[type].content);
             
         };
-        // function renderPruductDetail(type){
-        //     var getDetailApi = "/products/get/" + guid ;
-            
-        //     axios.get(getDetailApi)
-        //         .then(function(res){
-        //             console.log(res.data.data)
-        //             $('#productDetailModal').modal('show');
-        //             $('.modal-title').text(res.data.data.productTitle);
-        //             $('.modal-img').attr('src',res.data.data.featureImage);
-        //             $('.modal-description').html(res.data.data.productDescription);
-        //             $('.modal-shortDescription').html(res.data.data.shortDescription)
-        //             $('.modal-price span').text(res.data.data.price);
-        //             ((res.data.data.discountedPrice === null)?
-        //                 $('.modal-discountedPrice').css('display','none'):
-        //                 $('.modal-discountedPrice').css('display','block')
-        //                     .find('span')
-        //                         .text(res.data.data.discountedPrice)
-        //                     .end()
-        //             );
-        //             $('#modal-QuickView').attr({
-        //                 'onclick': 'quickView("' + res.data.data.customPath + '")'
-        //             });
-        //         })
-        //         .catch(function(err) {
-        //             console.log(err);
-        //         });
-        // };
         
     </script>
 @endsection
@@ -183,10 +154,10 @@
     @endphp
     <section id="products">
         <div class="sw_mask mask_left">
-            <img class="product_arrow product-left" src="/img/arrow-left.png" alt="">
+            
         </div>
         <div class="sw_mask mask_right">
-            <img class="product_arrow product-right" src="/img/arrow-right.png" alt="">
+            
         </div>
         <div class="container-fluid">
             <div class="row" data-aos="zoom-in">
@@ -200,7 +171,7 @@
                 <div class="col-md-12 product_nav">
                     <nav class="nav navbar-default">
                         <ul id="product_list" class="nav nav-tabs">
-                            <li>
+                            <li class="active">
                                 <a data-toggle="tab" href="#home"> 
                                     全部商品
                                 </a>
@@ -220,7 +191,6 @@
                 <div class="col-md-12 product_nav_index">
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
-
                             <div class="swiper-wrapper">
                                 @foreach (ProductView::all() as $item)
                                     <div class="swiper-slide">
@@ -264,6 +234,8 @@
                                     </div>
                                 @endforeach
                             </div>
+                            {{-- <img class="product_arrow product-left" src="/img/arrow-left.png" alt="">
+                            <img class="product_arrow product-right" src="/img/arrow-right.png" alt=""> --}}
                         </div>
                         @foreach ($tags->size as $key => $elm)
                             <div id="menu{{$key}}" class="tab-pane fade">
@@ -310,6 +282,8 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                {{-- <img class="product_arrow product-left{{$key}}" src="/img/arrow-left.png" alt="">
+                                <img class="product_arrow product-right{{$key}}" src="/img/arrow-right.png" alt=""> --}}
                             </div>
                         @endforeach
                     </div>

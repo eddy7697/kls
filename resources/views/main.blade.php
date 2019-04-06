@@ -702,6 +702,7 @@
                 get_H();
                 scrollMenu();
                 getWishListLeng();
+                index_product_swiper();
                 ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
 
                 $(window).resize(function() {
@@ -807,20 +808,47 @@
                 } else {
                     $('#swipe-length').text( bullet.length );
                 }
+
+                function index_product_swiper(){
+                    var itemID;
+                    $('.product_nav_index .tab-pane').each(function(index,item){
+                        var itemID = $(item).attr('id');
+                        if (itemID !== 'home'){
+                            console.log(itemID)
+                            var itemID = new Swiper ('#' + itemID,{
+                                direction : 'horizontal',
+                                loop      : true,
+                                speed     : 1000,
+                                slidesPerView: 4,
+                                spaceBetween: 30,
+                                slidesPerGroup: 4,
+                                observer: true, //修改swiper自己或子元素時，自動初始化swiper
+                                observeParents: true, //修改swiper的父元素時，自動初始化swiper
+                                // navigation: {
+                                //     nextEl: '.product-right',
+                                //     prevEl: '.product-left'
+                                // }
+                            });
+                        }
+                    });
+                    var itemID = new Swiper ('#home',{
+                        direction : 'horizontal',
+                        loop      : true,
+                        speed     : 1000,
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                        slidesPerGroup: 4,
+                        observer: true, //修改swiper自己或子元素時，自動初始化swiper
+                        observeParents: true, //修改swiper的父元素時，自動初始化swiper
+                        // navigation: {
+                        //     nextEl: '.product-right',
+                        //     prevEl: '.product-left'
+                        // }
+                    });
+                };
                 
 
-                var producswiper = new Swiper ('.product_nav_index .tab-pane',{
-                    direction : 'horizontal',
-                    loop      : true,
-                    speed     : 1000,
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                    slidesPerGroup: 3,
-                    navigation: {
-                        nextEl: '.product-right',
-                        prevEl: '.product-left'
-                    }
-                });
+               
 
                 function indexSwiper(val){
                     var feedbackswiper = new Swiper ('.feedback-Index',{

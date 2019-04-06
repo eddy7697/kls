@@ -156,25 +156,24 @@
     margin-bottom: 20px;
   }
 }
-
+.product_arrow{
+  position : absolute;
+  width    : 35px;
+  top      : 50%;
+  transform: translateY(-50%);
+}
+.product-left,.feedback-left{
+  left: 10px;
+}
+.product-right,.feedback-right{
+  right: 10px;
+}
 .sw_mask{
   position: absolute;
   top: 0;
   width   : 60px;
   height  : 100%;
   z-index : 2;
-  .product_arrow{
-    position : absolute;
-    width    : 35px;
-    top      : 50%;
-    transform: translateY(-50%);
-  }
-  .product-left,.feedback-left{
-    left: 10px;
-  }
-  .product-right,.feedback-right{
-    right: 10px;
-  }
 }
 .mask_left{
   left        : 0;
@@ -979,6 +978,7 @@
   }
   .swiper-slide{
     padding: 25px;
+    // max-width: 33%;
   }
   .container-fluid{
     overflow: hidden;
