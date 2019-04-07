@@ -703,6 +703,7 @@
                 scrollMenu();
                 getWishListLeng();
                 index_product_swiper();
+                fakeArrow();
                 ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
 
                 $(window).resize(function() {
@@ -813,42 +814,38 @@
                     var itemID;
                     $('.product_nav_index .tab-pane').each(function(index,item){
                         var itemID = $(item).attr('id');
-                        if (itemID !== 'home'){
-                            console.log(itemID)
-                            var itemID = new Swiper ('#' + itemID,{
-                                direction : 'horizontal',
-                                loop      : true,
-                                speed     : 1000,
-                                slidesPerView: 4,
-                                spaceBetween: 30,
-                                slidesPerGroup: 4,
-                                observer: true, //修改swiper自己或子元素時，自動初始化swiper
-                                observeParents: true, //修改swiper的父元素時，自動初始化swiper
-                                // navigation: {
-                                //     nextEl: '.product-right',
-                                //     prevEl: '.product-left'
-                                // }
-                            });
-                        }
-                    });
-                    var itemID = new Swiper ('#home',{
-                        direction : 'horizontal',
-                        loop      : true,
-                        speed     : 1000,
-                        slidesPerView: 4,
-                        spaceBetween: 30,
-                        slidesPerGroup: 4,
-                        observer: true, //修改swiper自己或子元素時，自動初始化swiper
-                        observeParents: true, //修改swiper的父元素時，自動初始化swiper
-                        // navigation: {
-                        //     nextEl: '.product-right',
-                        //     prevEl: '.product-left'
-                        // }
+                        itemID = new Swiper ('#' + itemID,{
+                            direction : 'horizontal',
+                            loop      : true,
+                            speed     : 1000,
+                            slidesPerView: 4,
+                            spaceBetween: 30,
+                            slidesPerGroup: 4,
+                            observer: true, //修改swiper自己或子元素時，自動初始化swiper
+                            observeParents: true, //修改swiper的父元素時，自動初始化swiper
+                            navigation: {
+                                nextEl: '.product-right' + itemID,
+                                prevEl: '.product-left' + itemID
+                            }
+                        });
                     });
                 };
-                
 
-               
+                function fakeArrow(){
+                    arrowClick('.product-right', 'home');
+                    arrowClick('.product-left', 'home');
+                    $('#product_list li a').on('click',function(){
+                        var currentID = $(this).attr('href').replace('#','');
+                        arrowClick('.product-right', currentID);
+                        arrowClick('.product-left', currentID);
+                    });
+                };
+
+                function arrowClick(doc,id){
+                    $(doc).off('click').on('click',function(){
+                        $(doc + id).click();
+                    });
+                };
 
                 function indexSwiper(val){
                     var feedbackswiper = new Swiper ('.feedback-Index',{

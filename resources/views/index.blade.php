@@ -154,10 +154,10 @@
     @endphp
     <section id="products">
         <div class="sw_mask mask_left">
-            
+            <img class="product_arrow product-left" src="/img/arrow-left.png" alt="">
         </div>
         <div class="sw_mask mask_right">
-            
+            <img class="product_arrow product-right" src="/img/arrow-right.png" alt="">
         </div>
         <div class="container-fluid">
             <div class="row" data-aos="zoom-in">
@@ -234,8 +234,8 @@
                                     </div>
                                 @endforeach
                             </div>
-                            {{-- <img class="product_arrow product-left" src="/img/arrow-left.png" alt="">
-                            <img class="product_arrow product-right" src="/img/arrow-right.png" alt=""> --}}
+                            <img class="product_arrow product-lefthome hide" src="/img/arrow-left.png" alt="">
+                            <img class="product_arrow product-righthome hide" src="/img/arrow-right.png" alt="">
                         </div>
                         @foreach ($tags->size as $key => $elm)
                             <div id="menu{{$key}}" class="tab-pane fade">
@@ -282,8 +282,8 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                {{-- <img class="product_arrow product-left{{$key}}" src="/img/arrow-left.png" alt="">
-                                <img class="product_arrow product-right{{$key}}" src="/img/arrow-right.png" alt=""> --}}
+                                <img class="product_arrow product-leftmenu{{$key}} hide" src="/img/arrow-left.png" alt="">
+                                <img class="product_arrow product-rightmenu{{$key}} hide" src="/img/arrow-right.png" alt="">
                             </div>
                         @endforeach
                     </div>
@@ -357,9 +357,9 @@
                                     <div class="feedbackPostInfo">
                                         <img class="feedback-Icon" src="/img/icon/male.png" alt="">
                                         <div class="feedback-Author">
-                                            <p>
+                                            <h2>
                                                 {{$item->locale}}
-                                            </p>
+                                            </h2>
                                         </div>
                                     </div>
                                     <div class="feedback-img">
@@ -367,6 +367,13 @@
                                     </div>
                                     <div class="feedback-Inner">
                                         {!!$item->content!!}
+                                    </div>
+                                    <div class="choose_btn">
+                                        <a href="/feedBack">
+                                            <button class="goBuy">
+                                                閱讀更多                  
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -2,6 +2,9 @@
 *{
   font-family: 微軟正黑體;
 }
+.hide{
+  display: none;
+}
 .wish-icon{
   position: relative;
 }
@@ -912,7 +915,25 @@
 }
 
 /*----------choose---------*/
-
+.choose_btn{
+  @extend %flex-center;
+  .goBuy{
+    margin-top      : 20px;
+    border          : none;
+    outline         : none;
+    padding         : 5px 40px;
+    border-radius   : 8px;
+    margin-bottom   : 20px;
+    transition      : 0.5s;
+    font-size: $title-bottom-font-size;
+    color : $color-blue;
+    background-color: $font-color-focus;
+    &:hover{
+      background-color: $color-blue;
+      color : $font-color-focus;
+    }
+  }
+}
 #choose{
   margin-bottom: 100px;
   margin-top: 50px;
@@ -938,25 +959,6 @@
               color: $color-text-grey;
               font-size: $title-bottom-font-size;
               line-height: 20px;
-            }
-            .choose_btn{
-              @extend %flex-center;
-              .goBuy{
-                margin-top      : 20px;
-                border          : none;
-                outline         : none;
-                padding         : 5px 40px;
-                border-radius   : 8px;
-                margin-bottom   : 20px;
-                transition      : 0.5s;
-                font-size: $title-bottom-font-size;
-                color : $color-blue;
-                background-color: $font-color-focus;
-                &:hover{
-                  background-color: $color-blue;
-                  color : $font-color-focus;
-                }
-              }
             }
           }
         }
@@ -1107,6 +1109,11 @@
                 }
               }
             }
+            .product_series{
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
             .product_series,
             .product_name,
             .product_price{
@@ -1217,7 +1224,15 @@
 }
 
 /*----------feedback---------*/
-
+.feedback-Icon{
+  @include size-setting(30%,auto);
+  max-width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-align: left;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px #bdbdbd;
+}
 .feedback{
   background-color: $color-blue;
   position             : relative;
@@ -1231,7 +1246,6 @@
   .container-fluid{
     margin : 0 80px;
     z-index: 2;
-    
     .row{
       z-index: 2;
       .feedback-Index{
@@ -1246,21 +1260,13 @@
               border-radius: 8px;
               .feedbackPostInfo{
                 @include flex-mix(center, space-around);
-                width: 80%;
+                @include size-setting(100%,auto);
                 margin: 20px auto;
               }
-              .feedback-Icon{
-                width: 30%;
-                margin-top: 10px;
-                margin-left: 10px;
-                text-align: left;
-                border-radius: 50%;
-                box-shadow: 2px 2px 10px #bdbdbd;
-              }
               .feedback-img{
+                @include size-setting(80%,auto);
                 position: relative;
                 overflow: hidden;
-                width: 80%;
                 margin: 0 auto;
                 padding-bottom: 60%;
                 img{
@@ -1269,7 +1275,9 @@
                 }
               }
               .feedback-Inner{
-                padding : 30px 15px;
+                padding: 10px 0;
+                width: 80%;
+                margin: 0 auto;
                 p{
                   font-size: 15px;
                 }
@@ -1278,9 +1286,8 @@
                 @include size-setting(200px,auto);
                 position  : relative;
                 text-align: center;
-                p{
+                h2{
                   font-weight  : 700;
-                  font-size    : 20px;
                 }
               }
             } 
@@ -1288,6 +1295,23 @@
         }
       }
     }
+  }
+}
+
+.blog-content{
+  .blog-content-info{
+    border-radius: 12px;
+    background-color: #f6f3f1;
+    .authoInfo{
+      @include flex-mix(center,space-evenly);
+      padding: 3rem 0;
+      p{
+        
+      }
+    }
+  }
+  .blog-content-inner{
+  
   }
 }
 
@@ -3433,7 +3457,7 @@
     .footer_contact{
       width: 100%;
       .footer_addr{
-
+        height: 100%;
       }
       .community{
        display: none;

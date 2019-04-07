@@ -68,6 +68,12 @@ Route::get('/blog/{path}', function ($path)
         'isThumbShow' => false,
     ]);
 });
+Route::get('/feedBack', function ()
+{
+    return view('frontend.blog.feedBack', [
+        'isThumbShow' => false,
+    ]);
+});
 
 /**
  * MEMBER
