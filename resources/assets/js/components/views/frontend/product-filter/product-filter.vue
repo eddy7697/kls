@@ -148,7 +148,7 @@
                                     <div class="style-inner" v-html="item.shortDescription">
                                         <!-- 這裡會自動帶入產品說明 -->
                                     </div>
-                                    <p class="product-price">$ {{item.price}}</p>
+                                    <p class="product-price">$ {{numberFormat(item.price, 0, '.', ',')}}</p>
                                 </div>
                                 <div class="productHeart" @click="addFavorite(item.productGuid)">
                                     <img src="/img/productHeart.svg" alt="">
@@ -173,6 +173,7 @@
 </template>
 
 <script>
+    var h = require('../../../lib/helper.js', ).default;
     export default {
         mounted () {
             console.log('Component mounted.')
@@ -330,6 +331,9 @@
                         this.learnMoreAction();
                     }
                 });
+            },
+            numberFormat(n, c, d, t) {
+                return h.number_format(n, c, d, t)
             }
         }
     }

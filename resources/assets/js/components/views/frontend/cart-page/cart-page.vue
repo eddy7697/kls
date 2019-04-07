@@ -46,7 +46,9 @@
                             label="請選擇數量"></el-input-number>
                         </p>
                         <p data-title="價格">
-                            NT$<span>{{item.price}}</span> 
+                            NT$<span>
+                                {{numberFormat(item.price, 0, '.', ',')}}
+                            </span> 
                         </p>
                         <p>
                             <a href="#" class="remove" aria-label="移除這項商品" style="text-decoration: none;" @click="deleteProduct(item)">

@@ -91,16 +91,16 @@
             </div>
             <hr>
             <div class="blog-content row">
-                <div class="blog-content-info col-md-5">
+                <div class="blog-content-info col-md-4">
                     <div class="authoInfo">
                         <img class="feedback-Icon" src="/img/icon/male.png" alt="">
                         <h3>
-                            Author Name
+                            XXX 先生
                         </h3>
                     </div>
                 </div>
-                <div class="blog-content-inner col-md-7">
-                    content!!
+                <div class="blog-content-inner col-md-8">
+                        異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘...
                     {{-- {!!$post->content!!} --}}
                 </div>
             </div>

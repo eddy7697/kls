@@ -2766,6 +2766,20 @@
 }
 
 @media screen and (max-width: 991px){
+  .blog-content{
+    .blog-content-info{
+      margin: 0 30px;
+      margin-bottom: 20px;
+      .authoInfo{
+        p{
+          
+        }
+      }
+    }
+    .blog-content-inner{
+      font-size: 16px;
+    }
+  }
   .information-content{
     margin: 3rem 0;
   }

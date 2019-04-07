@@ -13,10 +13,10 @@
                 <ul>
                     <li class="cart_list_title">
                         <p>
-                            產品名稱
+                            <!-- 尺寸 -->
                         </p>
                         <p>
-                            <!-- 尺寸 -->
+                            產品名稱
                         </p>
                         <p>
                             <!-- 型號 -->
@@ -30,23 +30,28 @@
                         <a>
                             <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item)" style="cursor: pointer">
                         </a>
-                        <img :src="item.featureImage" alt="" style="max-width: 150px; width: 100%;">
-                        <p>
-                            <a data-title="商品" v-bind:href="productLink(item.productGuid)">{{item.productTitle}}</a>
-                        </p>
-                        <p>
+                        <a class="example-image-link" :href="item.featureImage" data-lightbox="example-1">
+                           <img :src="item.featureImage" alt="image-1" style="max-width: 150px; width: 100%;">
+                        </a>
+                        <p class="hide">
                             <!-- 27吋 -->
+                        </p>
+                        <p style="width: 32%;">
+                            <a data-title="商品" v-bind:href="productLink(item.productGuid)">{{item.productTitle}}</a>
                         </p>
                         <p>
                             <!-- 型號:<span>HD-515</span> -->
                         </p>
                         <p data-title="價格">
-                            NT$<span>{{item.price}}</span> 
+                            NT$<span>{{item.price}}</span>
+                            <span>
+                                <a @click="addSigleProduct(item.productGuid)" style="cursor: pointer">
+                                    <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
+                                </a>
+                            </span> 
                         </p>
                         <p> 
-                            <a @click="addSigleProduct(item.productGuid)" style="cursor: pointer">
-                                <img src="/img/buyIcon/wish-list-delIcon.svg" alt="">
-                            </a>
+                            
                         </p>
                     </li>
                 </ul>
@@ -127,12 +132,12 @@
             },
             resetIconSpan: function(){
                  axios.get('/favorite/get')
-                        .then(function(res){
-                            var wishCount = res.data.length;
-                            if(wishCount){
-                                $('.wish-icon .count').text(wishCount);
-                            }
-                        })
+                    .then(function(res){
+                        var wishCount = res.data.length;
+                        if(wishCount){
+                            $('.wish-icon .count').text(wishCount);
+                        }
+                    });
             }
         }
     }
@@ -195,17 +200,21 @@
                         }
                     }
                     &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
-                        width: 16%;
+                        width: 15%;
                         margin-top: 15px;
                     }
                     &:nth-child(6) {
-                        width: 5%;
+                        @include flex-mix(center, flex-start);
+                        flex-wrap: nowrap;
+                        width: 8%;
                         margin-top: 10px;
                         img {
                             width: 70%;
+                            min-width: 3rem;
                             height: auto;
                             cursor: pointer;
                             transition: 0.3s;
+                            margin-left: .5rem;
                             &:hover {
                                 filter: drop-shadow(1px 1px 1px #333);
                                 transform: translateX(-3px) translateY(-3px);
@@ -265,7 +274,7 @@
         .cart-list{
             overflow: auto;
             ul {
-                min-width: 70rem;
+                min-width: 85rem;
                 li {
                     p {
                         text-align: center;

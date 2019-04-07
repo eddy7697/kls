@@ -26,7 +26,8 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/js/plugins/AOS/aos.css">
         <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
-        <link rel="stylesheet" href="\js\plugins\swipe\swiper.min.css">
+        <link rel="stylesheet" href="/js/plugins/swipe/swiper.min.css">
+        <link rel="stylesheet" href="/js/plugins/lightbox2/src/css/lightbox.css">
         <!-- Styles -->
         <style>
             .paytest {
@@ -508,7 +509,7 @@
                                         <li class="sub-icon">
                                             <a class="wish-icon" href="/wish-list">
                                                 <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
-                                                <span style="bottom: -5px; right: 0px;" class="count"></span>
+                                                <span style="bottom: -7px; right: 0px;" class="count"></span>
                                             </a>
                                             <div id="cart-panel">
                                                 <cart-panel />
@@ -678,9 +679,11 @@
 
         <script src="{{ asset('js/plugins/AOS/aos.js') }}" charset="utf-8"></script>
 
-        <script src="\js\plugins\tw-city\tw-city-selector.min.js"></script>
+        <script src="/js/plugins/tw-city/tw-city-selector.min.js"></script>
 
-        <script src="\js\plugins\swipe\swiper.min.js"></script>
+        <script src="/js/plugins/swipe/swiper.min.js"></script>
+
+        <script src="/js/plugins/lightbox2/src/js/lightbox.js"></script>
 
         <script type="text/javascript">
             AOS.init();
