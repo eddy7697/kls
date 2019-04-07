@@ -354,14 +354,19 @@
                         @foreach (PostView::witness() as $item)
                             <div class="swiper-slide">
                                 <div class="feedbackPost">
-                                    <img class="feedback-Icon" src="/img/feedbackIcon.svg" alt="">
+                                    <div class="feedbackPostInfo">
+                                        <img class="feedback-Icon" src="/img/icon/male.png" alt="">
+                                        <div class="feedback-Author">
+                                            <p>
+                                                {{$item->locale}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="feedback-img">
+                                        <img src="/img/store-984393_1920.jpg" alt="">
+                                    </div>
                                     <div class="feedback-Inner">
                                         {!!$item->content!!}
-                                    </div>
-                                    <div class="feedback-Author">
-                                        <p>
-                                            {{$item->locale}}
-                                        </p>
                                     </div>
                                 </div>
                             </div>
