@@ -65,7 +65,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 317:
+/***/ 296:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -604,7 +604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var h = __webpack_require__(317).default;
+var h = __webpack_require__(296).default;
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         console.log('Component mounted.');
@@ -778,12 +778,18 @@ var h = __webpack_require__(317).default;
         scrollMore: function scrollMore() {
             var _this4 = this;
 
+            var timer = void 0;
             $(document).scroll(function () {
-                var docH = $(document).height();
-                var scrollH = $(document).scrollTop() + $('.sub-page-footer').height() / 2 + window.innerHeight;
-                if (scrollH > docH) {
-                    _this4.learnMoreAction();
-                }
+                window.clearTimeout(timer);
+
+                timer = window.setTimeout(function () {
+                    var docH = $(document).height();
+                    var scrollH = $(document).scrollTop() + $('.sub-page-footer').height() / 2 + window.innerHeight;
+                    if (scrollH > docH) {
+                        _this4.learnMoreAction();
+                        console.log('123');
+                    }
+                }, 100);
             });
         },
         numberFormat: function numberFormat(n, c, d, t) {

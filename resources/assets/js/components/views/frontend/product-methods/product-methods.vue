@@ -6,14 +6,14 @@
         <div v-if="chossedSub && (productType == 'variable')">
             <strong v-if="choosedSubItem">貨號：{{choosedSubItem.subSerialNumber}}</strong>
             <br v-if="choosedSubItem">
-            <strong v-if="choosedSubItem" :class="{ 'del-line': choosedSubItem.subDiscountPrice }">建議售價：<span style="color: red">{{choosedSubItem.subPrice}}元</span></strong>
-            <strong v-if="choosedSubItem && choosedSubItem.subDiscountPrice" style="font-size: 20px;">特價：<span style="color: red">{{choosedSubItem.subDiscountPrice}}元</span></strong>
+            <strong v-if="choosedSubItem" :class="{ 'del-line': choosedSubItem.subDiscountPrice }">建議售價：<span style="color: red">{{numberFormat(choosedSubItem.subPrice, 0, '.', ',')}}元</span></strong>
+            <strong v-if="choosedSubItem && choosedSubItem.subDiscountPrice" style="font-size: 20px;">特價：<span style="color: red">{{numberFormat(choosedSubItem.subDiscountPrice, 0, '.', ',')}}元</span></strong>
         </div>
         <div v-else>
             <strong v-if="serialNumber">貨號：{{serialNumber}}</strong>
             <br v-if="chossedSub">
-            <strong v-if="price" :class="{ 'del-line': discountedPrice }">建議售價：<span style="color: red">{{price}}元</span></strong>
-            <strong v-if="discountedPrice && discountedPrice" style="font-size: 20px;">特價：<span style="color: red">{{discountedPrice}}元</span></strong>
+            <strong v-if="price" :class="{ 'del-line': discountedPrice }">建議售價：<span style="color: red">{{numberFormat(price, 0, '.', ',')}}元</span></strong>
+            <strong v-if="discountedPrice && discountedPrice" style="font-size: 20px;">特價：<span style="color: red">{{numberFormat(discountedPrice, 0, '.', ',')}}元</span></strong>
         </div>
         <!-- <br> -->
         <div class="option-group" v-if="productType == 'variable'" >
@@ -63,6 +63,7 @@
 </template>
 
 <script>
+    var h = require('../../../lib/helper.js', ).default;
     import {
         Dialog,
         InputNumber,
@@ -203,6 +204,9 @@
                 })
 
                 this.choosedSubItem = choosed
+            },
+            numberFormat(n, c, d, t) {
+                return h.number_format(n, c, d, t)
             }
         }
     }

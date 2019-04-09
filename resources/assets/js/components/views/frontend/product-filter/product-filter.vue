@@ -324,12 +324,19 @@
                 $(`.mega-menu .product .mega-menu-list ul li:nth-child(${val}) a`).css('border','solid 1px #B3B3B3')
             },
             scrollMore(){
+                let timer;
                 $(document).scroll(() => {
-                    let docH = $(document).height();
-                    let scrollH = $(document).scrollTop() + ($('.sub-page-footer').height()/2) + window.innerHeight;
-                    if (scrollH > docH) {
-                        this.learnMoreAction();
-                    }
+                    window.clearTimeout(timer);
+
+                    timer = window.setTimeout(()=> {
+                        let docH = $(document).height();
+                        let scrollH = $(document).scrollTop() + ($('.sub-page-footer').height()/2) + window.innerHeight;
+                        if (scrollH > docH) {
+                            this.learnMoreAction();
+                            console.log('123')
+                        }
+                    }, 100);
+                   
                 });
             },
             numberFormat(n, c, d, t) {

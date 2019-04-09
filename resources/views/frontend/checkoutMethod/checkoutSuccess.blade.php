@@ -1,8 +1,15 @@
 @extends('main')
 
 @section('custom-script')
+    <script src="/resources/assets/js/components/lib/helper.js"></script>
     <script>
-       
+        // var h = require('/resources/assets/js/components/lib/helper.js', ).default;
+        var data = '100,000'
+        // function numberFormat(n, c, d, t) {
+        //     return h.number_format(n, c, d, t)
+        // }
+        $('.total_price span').text(data);
+        
     </script>
 @endsection
 
@@ -43,7 +50,7 @@
                 <h3 style="font-weight: 900;">恭喜您完成訂購！請留意以下匯款事項！</h3>
                 <hr>
                 <p>恭喜您已完成訂購，您的訂單總金額為 - </p>
-                <h3 class="total_price" style="color: #fbb03b; margin-bottom: 22px;">NTD &nbsp;<span>1000000</span></h3>
+                <h3 class="total_price" style="color: #fbb03b; margin-bottom: 22px;">NTD &nbsp;<span>0</span></h3>
                 <p>我們將會在收到您的匯款後一個工作日處理您的訂單，匯款方式請您參照如下 - </p>
                 <h3>銀行：台北富邦 012（風城分行）</h3>
                 <h3>帳號：6841-6812-6200</h3>

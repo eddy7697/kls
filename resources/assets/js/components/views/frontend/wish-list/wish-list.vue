@@ -30,8 +30,8 @@
                         <a>
                             <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item)" style="cursor: pointer">
                         </a>
-                        <a class="example-image-link" :href="item.featureImage" data-lightbox="example-1">
-                           <img :src="item.featureImage" alt="image-1" style="max-width: 150px; width: 100%;">
+                        <a class="example-image-link" :href="item.featureImage" data-lightbox="example-set">
+                           <img :src="item.featureImage" alt="" style="max-width: 150px; width: 100%;">
                         </a>
                         <p class="hide">
                             <!-- 27吋 -->
@@ -114,6 +114,7 @@
                     .then(res => {
                         this.wish = res.data;
                     })
+                this.lightOption();    
             },
             deleteWish: function (item) {
                 var check = confirm('確認要刪除此商品?');
@@ -138,6 +139,11 @@
                             $('.wish-icon .count').text(wishCount);
                         }
                     });
+            },
+            lightOption: function(){
+                lightbox.option({
+                    'albumLabel': '第 %1 張圖片，共 %2 張',
+                });
             }
         }
     }
@@ -269,7 +275,28 @@
             }
         }
     }
-
+    .example-image-link{
+        position: relative;
+        &::after{
+            content: '放大檢視';
+            @include flex-mix(center, center);
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            opacity: 0;
+            font-size: 16px;
+            transition: .5s;
+        }
+        &:hover{
+            &::after{
+                opacity: 1;
+            }
+        }
+    }
     @media screen and (max-width: 991px) {
         .cart-list{
             overflow: auto;
