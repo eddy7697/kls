@@ -234,7 +234,6 @@
         created: function () {
             var self = this;
             var token = this.token;
-
             var checkAuthPromise = new Promise(function (resolve, reject) {
                 $.ajax({
                     url: '/checkAuth',
@@ -510,7 +509,6 @@
                         self.customerParametorForShipping.ReceiverPort = shippingAddress.ReceiverPort;
                         self.customerParametorForShipping.ReceiverAddress = shippingAddress.ReceiverAddress;
                     }
-
                 })
                 .fail(function() {
                 })
@@ -552,7 +550,6 @@
                 var self = this;
                 var emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
                 var method;
-
                 // return console.log(this.usedCouponContent);
 
                 if ((this.paymentMethod == 'cod') && (this.shippingMethod == 'cvs')) {

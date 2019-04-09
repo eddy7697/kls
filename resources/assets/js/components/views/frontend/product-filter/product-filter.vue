@@ -150,7 +150,7 @@
                                     </div>
                                     <p class="product-price">$ {{numberFormat(item.price, 0, '.', ',')}}</p>
                                 </div>
-                                <div class="productHeart" @click="addFavorite(item.productGuid)">
+                                <div class="productHeart" :data-id= item.productGuid @click="addFavorite(item.productGuid)">
                                     <img src="/img/productHeart.svg" alt="">
                                 </div>
                                 <button class="buyIt" @click="addSigleProduct(item.productGuid)">
@@ -243,6 +243,7 @@
                         this.isLoaded = true
                         this.getTitle()
                         this.scrollMore()
+                        this.getFavorite()
                     }).catch(err => {
 
                     }).then(() => {
@@ -283,14 +284,26 @@
                 }
             },
             addFavorite(guid){
+                let target = event.target
+                let tagName = clickTarget.tagName
+                this.getFavorite(tagName,target)
                 addFavorite(guid)
-                 axios.get('/favorite/get')
-                        .then(function(res){
-                            var wishCount = res.data.length;
-                            if(wishCount){
-                                $('.wish-icon .count').text(wishCount);
-                            }
-                        })
+            },
+            getFavorite(tagName,target){
+                let self = this;
+                axios.get('/favorite/get')
+                    .then(function(res){
+                        var wishCount = res.data.length
+                        self.isFavorited(res.data)
+                        if(wishCount){
+                            $('.wish-icon .count').text(wishCount)
+                        }
+                        if(tagName == 'IMG'){
+                            $(target).parent('.productHeart').addClass('productHeart-active')
+                        } else {
+                            $(target).addClass('productHeart-active')
+                        } 
+                    })
             },
             getTitle() {
                 let title = $('#thisTitle')
@@ -341,7 +354,12 @@
             },
             numberFormat(n, c, d, t) {
                 return h.number_format(n, c, d, t)
-            }
+            },
+            isFavorited(data){
+                data.forEach((item,index) => {
+                    $('.productHeart[data-id="'+ item.productGuid +'"]').addClass('productHeart-active')
+                })
+            },
         }
     }
     

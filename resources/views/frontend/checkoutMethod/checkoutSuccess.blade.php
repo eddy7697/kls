@@ -3,13 +3,8 @@
 @section('custom-script')
     <script src="/resources/assets/js/components/lib/helper.js"></script>
     <script>
-        // var h = require('/resources/assets/js/components/lib/helper.js', ).default;
-        var data = '100,000'
-        // function numberFormat(n, c, d, t) {
-        //     return h.number_format(n, c, d, t)
-        // }
-        $('.total_price span').text(data);
-        
+        var amount = localStorage.cartAmount;
+        $('.total_price span').text(amount);
     </script>
 @endsection
 

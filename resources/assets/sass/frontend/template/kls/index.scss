@@ -1548,25 +1548,31 @@
       position: relative;
     }
   }
-  .product-inner .productHeart {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #E6E6E6;
-    padding: 4px 7px 7px 7px;
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover {
-      background-color: #636b6f;
+  .product-inner {
+    .productHeart {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #E6E6E6;
+      padding: 4px 7px 7px 7px;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background-color: #636b6f;
+      }
+      img{
+        z-index: 0;
+      }
     }
   }
 }
 
 .productHeart-active {
-  background-color: #636b6f !important;
+  background-color: red !important;
 }
 
 .filter-product .product-inner {

@@ -354,7 +354,10 @@
                     self.cart = [];
                     self.cart = response.cart;
                     self.amount = response.amount;
-
+                    localStorage.removeItem('cartAmount');
+                    localStorage.cartAmount = response.amount;
+                    var amount = localStorage.cartAmount;
+                    console.log(amount)
                     setTimeout(function () {
                         self.isDirty = false;
                     }, 100);
