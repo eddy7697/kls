@@ -375,7 +375,7 @@
                                         {!!$item->content!!}
                                     </div>
                                     <div class="choose_btn">
-                                        <a href="/witness/{{$item->id}}">
+                                        <a href="/witness">
                                             <button class="goBuy">
                                                 閱讀更多                  
                                             </button>
