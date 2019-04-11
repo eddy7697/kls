@@ -273,9 +273,9 @@
                         </div>
                         <div class="panel-body">
                             <div class="tabbable" id="tabs-464193">
-                                <label for="price">會員優惠 NT$:</label>
+                                <label for="price">原價 NT$:</label>
                                 <input type="number" class="form-control" name="price" v-model="productContent.price" required>
-                                <label for="discountedPrice">促銷價 NT$:</label>
+                                <label for="discountedPrice">會員優惠 NT$:</label>
                                 <input type="number" class="form-control" name="discountedPrice" v-model="productContent.discountedPrice">
                         
                             </div>
