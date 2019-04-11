@@ -15,11 +15,11 @@
         <!--&lt;!&ndash; <i class="fa fa-shopping-cart" aria-hidden="true"></i> &ndash;&gt;-->
         <!--</button>-->
         <transition name="fade">
-            <div class="cart-section" v-if="displayPanel" @click="togglePanel()"></div>
+            <div class="cart-section" v-if="displayPanel" @click="closePanel()"></div>
         </transition>
         <transition name="slide-fade">
             <div class="cart-panel" v-if="displayPanel">
-                <button type="button" class="close-panel-btn" @click="togglePanel()">
+                <button type="button" class="close-panel-btn" @click="closePanel()">
                     <span></span>
                     <span></span>
                 </button>
@@ -227,6 +227,9 @@
             },
             togglePanel: function () {
                 this.displayPanel = this.displayPanel ? false : true;
+            },
+            closePanel: function(){
+                this.displayPanel = false;
             },
             addFavorite(guid) {
                 axios.get(`/favorite/add/${guid}`)

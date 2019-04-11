@@ -285,7 +285,7 @@
             },
             addFavorite(guid){
                 let target = event.target
-                let tagName = clickTarget.tagName
+                let tagName = target.tagName
                 this.getFavorite(tagName,target)
                 addFavorite(guid)
             },

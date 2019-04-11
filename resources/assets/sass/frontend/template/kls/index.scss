@@ -1122,6 +1122,7 @@
             .product_price,
             .product_name{
               margin: 11px 0;
+              font-size: 28px;
             }
           }
         }
@@ -1257,7 +1258,7 @@
               background-color: $color-white;
               position        : relative;
               overflow        : hidden;
-              border-radius: 8px;
+              border-radius: 20px;
               .feedbackPostInfo{
                 @include flex-mix(center, space-around);
                 @include size-setting(100%,auto);
@@ -2208,7 +2209,7 @@
       color: $color-white;
       font-size: 36px;
       opacity: 1;
-      padding: 0px 7px 7px 8px;
+      padding: 0px 8px 8px 8px;
       border-radius: 50%;
       transition: .5s;
       &:hover{

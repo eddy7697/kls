@@ -319,13 +319,6 @@
                                                 </p>
                                             </a>
                                         </li>
-                                        {{-- <li class="navbar-ul-li">
-                                            <a href="/">
-                                                <p>
-                                                    最新消息
-                                                </p>
-                                            </a>
-                                        </li> --}}
                                         <li class="navbar-ul-li">
                                             <a href="{{route('location')}}">
                                                 <p>
@@ -362,11 +355,6 @@
                                                                 諮詢專區
                                                             </a>
                                                         </li>
-                                                        {{-- <li>
-                                                            <a href="">
-                                                                安心購物宣言
-                                                            </a>
-                                                        </li> --}}
                                                     </ul>
                                                 </li>
                                                 <li class="col-md-4 mega-menu-img">
@@ -489,11 +477,6 @@
                                                                     諮詢專區
                                                                 </a>
                                                             </li>
-                                                            {{-- <li>
-                                                                <a href="">
-                                                                    安心購物宣言
-                                                                </a>
-                                                            </li> --}}
                                                         </ul>
                                                     </li>
                                                     <li class="col-md-4 mega-menu-img">

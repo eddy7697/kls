@@ -79,4 +79,24 @@ class PostController extends Controller
         return response()->json([ 'status' => $status, 'message' => $message, 'data' => $data], $status);
     }
 
+    public function custom_fields()
+    {
+        $custom_fields = DB::table('custom_fields')
+                ->where('isPublish', 1)
+                ->where('schedulePost', '<', date('Y-m-d H:i:s'))
+                ->where('scheduleDelete', '>', date('Y-m-d H:i:s'))
+                ->paginate(15);
+
+        if ($data) {
+            $status = 200;
+            $message = 'Get all posts success.';
+        } else {
+            $status = 205;
+            $message = 'Posts list is Null.';
+        }
+
+        return response()->json([ 'status' => $status, 'message' => $message, 'data' => $data], $status);
+    }
+
+
 }

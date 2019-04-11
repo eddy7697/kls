@@ -17,14 +17,13 @@
             'margin-top': ($('.sub-page-header').height() + 10) + 'px',
             'margin-bottom': '80px'
         })
-        jQuery('#line-share').on('click', function() {
+        jQuery('.line-share').on('click', function() {
             window.open("http://line.me/R/msg/text/?" + document.title + '%0D%0A' + window.location.href);
         });
 
-        jQuery('#facebook-share').on('click', function() {
+        jQuery('.facebook-share').on('click', function() {
             window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href + '&src=sdkpreparse');
         });
-        console.log()
     </script>
 @endsection
 
@@ -65,7 +64,6 @@
                 <img src="/img/icon/date-01.png" alt="">
                 <span>{{$post->created_at}}</span>
             </div>
-            
             <div class="blog-post-title">
                 <h2>{{$post->postTitle}}</h2>
                 <div class="share">
@@ -73,10 +71,10 @@
                         <tr>
                             <td>SHARE THIS POST</td>
                             <td style="border-bottom: none;">
-                                <img id="facebook-share" class="alignleft" src="/img/icon/fb-post-share-01.png" alt="" width="32px" />
+                                <img class="facebook-share alignleft" src="/img/icon/fb-post-share-01.png" alt="" width="32px" />
                             </td>
                             <td style="border-bottom: none;">
-                                <img id="line-share" class="aligncenter" src="/img/icon/line-post-share-01.png" alt="" width="32px" />
+                                <img class="line-share aligncenter" src="/img/icon/line-post-share-01.png" alt="" width="32px" />
                             </td>
                         </tr>
                     </table>

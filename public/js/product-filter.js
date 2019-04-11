@@ -680,6 +680,7 @@ var h = __webpack_require__(296).default;
                 _this2.isLoaded = true;
                 _this2.getTitle();
                 _this2.scrollMore();
+                _this2.getFavorite();
             }).catch(function (err) {}).then(function () {
                 _this2.isLoading = false;
             });
@@ -737,14 +738,26 @@ var h = __webpack_require__(296).default;
 
             return addFavorite;
         }(function (guid) {
+            var target = event.target;
+            var tagName = target.tagName;
+            this.getFavorite(tagName, target);
             addFavorite(guid);
+        }),
+        getFavorite: function getFavorite(tagName, target) {
+            var self = this;
             axios.get('/favorite/get').then(function (res) {
                 var wishCount = res.data.length;
+                self.isFavorited(res.data);
                 if (wishCount) {
                     $('.wish-icon .count').text(wishCount);
                 }
+                if (tagName == 'IMG') {
+                    $(target).parent('.productHeart').addClass('productHeart-active');
+                } else {
+                    $(target).addClass('productHeart-active');
+                }
             });
-        }),
+        },
         getTitle: function getTitle() {
             var title = $('#thisTitle');
             var vo = {
@@ -794,6 +807,11 @@ var h = __webpack_require__(296).default;
         },
         numberFormat: function numberFormat(n, c, d, t) {
             return h.number_format(n, c, d, t);
+        },
+        isFavorited: function isFavorited(data) {
+            data.forEach(function (item, index) {
+                $('.productHeart[data-id="' + item.productGuid + '"]').addClass('productHeart-active');
+            });
         }
     }
 });
@@ -1231,6 +1249,7 @@ var render = function() {
                     "div",
                     {
                       staticClass: "productHeart",
+                      attrs: { "data-id": item.productGuid },
                       on: {
                         click: function($event) {
                           _vm.addFavorite(item.productGuid)

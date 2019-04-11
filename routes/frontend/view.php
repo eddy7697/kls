@@ -68,9 +68,16 @@ Route::get('/blog/{path}', function ($path)
         'isThumbShow' => false,
     ]);
 });
-Route::get('/feedBack', function ()
+
+/**
+ * WITNESS
+ */
+
+// Route::get('/witness/{path}', 'Frontend\PageController@witness')->name('witness');
+Route::get('witness/{id}', function ($id)
 {
-    return view('frontend.blog.feedBack', [
+    return view('frontend.witness.witness', [
+        'post' => PostView::getById($id),
         'isThumbShow' => false,
     ]);
 });

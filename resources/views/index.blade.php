@@ -5,7 +5,8 @@
         function quickView(path) {
             window.location.href = '/product-deatil/' + path
         };   
-
+        var x = JSON.parse($('.test').html());
+            console.log(x);
         function renderPruductDetail(title, type){
             var jsonContent = JSON.parse($('#json-content').val());
             console.log(jsonContent);
@@ -13,9 +14,7 @@
             $('.modal-title').text(title);
             $('.modal-img').attr('src',jsonContent[type].featureImage);
             $('.modal-description').html(jsonContent[type].content);
-            
         };
-        
     </script>
 @endsection
 
@@ -136,7 +135,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="modal-QuickView" class="btn btn-primary" type="button">繼續諮詢</button>
+                        <a href="/contact">
+                            <button class="btn btn-primary" type="button">繼續諮詢</button>
+                        </a>
                         <a href="/all">
                             <button class="btn btn-primary" type="button">查看更多箱款</button>
                         </a>
@@ -352,10 +353,15 @@
                 <div class="col-md-12 feedback-Index">
                     <div class="swiper-wrapper">
                         @foreach (PostView::witness() as $item)
+                        <div class="test" style="display: none;">{{$item}}</div>
                             <div class="swiper-slide">
                                 <div class="feedbackPost">
                                     <div class="feedbackPostInfo">
-                                        <img class="feedback-Icon" src="/img/icon/male.png" alt="">
+                                        @if ($item->customField6 == 'male')
+                                            <img class="feedback-Icon" src="/img/icon/male.png" alt="">
+                                        @else
+                                            <img class="feedback-Icon" src="/img/icon/female.png" alt="">
+                                        @endif
                                         <div class="feedback-Author">
                                             <h2>
                                                 {{$item->locale}}
@@ -369,7 +375,7 @@
                                         {!!$item->content!!}
                                     </div>
                                     <div class="choose_btn">
-                                        <a href="/feedBack">
+                                        <a href="/witness/{{$item->id}}">
                                             <button class="goBuy">
                                                 閱讀更多                  
                                             </button>
