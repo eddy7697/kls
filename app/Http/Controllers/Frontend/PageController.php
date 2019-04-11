@@ -141,20 +141,4 @@ class PageController extends Controller
             'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;銷售據點'
         ]);
     }
-
-    public function witness()
-    {
-        return view('frontend.witness.witness', [
-            'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;使用迴響'
-        ]);
-    }
 }
-        // $witness = PostView::witness();
-
-        // return view('frontend.product.productAll', [
-        //     'type' => '$witness',
-        //     'witness' => $witness,
-        //     'isThumbShow' => true,
-        //     'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;品牌背包'
-        // ]);

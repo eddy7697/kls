@@ -72,16 +72,12 @@ Route::get('/blog/{path}', function ($path)
 /**
  * WITNESS
  */
-
-Route::get('/witness', 'Frontend\PageController@witness')->name('witness');
-// Route::get('witness/{id}', function ($id)
-// {
-//     return view('frontend.witness.witness', [
-//         'post' => PostView::getById($id),
-//         'isThumbShow' => false,
-//     ]);
-// });
-
+Route::get('/witness', function ()
+{
+    return view('frontend.blog.witness', [
+        'isThumbShow' => false,
+    ]);
+});
 
 /**
  * MEMBER
