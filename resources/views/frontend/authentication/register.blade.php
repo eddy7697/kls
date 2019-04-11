@@ -1,7 +1,35 @@
 @extends('main')
 
+@section('custom-script')
+    <script>
+        $(document).ready(function(){
+            var topBarH = $('.sub-page-header').height();
+            $('.register-container').css('margin-top', topBarH + 'px')
+        });
+    </script>
+@endsection
+
+@section('custom-style')
+    <style media="screen">
+        .g-recaptcha div{
+            margin: 0 auto;
+        }
+        .register-submit{
+            width: 150px;
+            background-color: #0f2746;
+            color: #F8B62D;
+            transition: .5s;
+            border: none;
+        }
+        .register-submit:hover{
+            background-color: #F8B62D;
+            color: #0f2746;
+        }
+    </style>
+@endsection
+
 @section('content')
-    <div class="container" style="margin-bottom: 30px">
+    <div class="container register-container" style="margin-bottom: 30px">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 member-auth-form-table">
                 {{-- {{Route::getCurrentRoute()->getActionName()}} --}}
@@ -32,7 +60,7 @@
                         </span>
                     </div>
                     {{ csrf_field() }}
-                    <strong style="font-size: 150%"><p>加入會員立即獲得購物金50元，<br>並享有消費金額10％購物金累積回饋。</p></strong>
+                    {{-- <strong style="font-size: 150%"><p>加入會員立即獲得購物金50元，<br>並享有消費金額10％購物金累積回饋。</p></strong> --}}
 
                     <p>請詳細的逐項填寫下列相關之資料，以方便我們為您提供更貼切之服務。您所填寫的相關資料係僅作為我們提供會員購物服務之使用，本公司依據「個人資料保護法」第八條規定將盡妥善保管之責任。</p>
                     <table class="sign-form">
@@ -103,10 +131,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding: 20px 5px;">
-                                <button type="submit" class="btn btn-success">註冊</button>
-                                <input type="checkbox" id="subscriptable" name="subscriptable" value="true">
-                                <label for="subscriptable">訂閱電子報，享有不定期優惠代碼</label>
+                            <td style="padding: 20px 5px; text-align: center;">
+                                <button type="submit" class="register-submit btn btn-success">註冊</button>
+                                {{-- <input type="checkbox" id="subscriptable" name="subscriptable" value="true">
+                                <label for="subscriptable">訂閱電子報，享有不定期優惠代碼</label> --}}
                             </td>
                         </tr>
                     </table>

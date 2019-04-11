@@ -408,7 +408,8 @@
           }
           &:hover{
             a{
-              border: solid 1px #B3B3B3;
+              border: solid 1px #B3B3B3 !important;
+              border-bottom: solid 1px #B3B3B3 !important;
             }
           }
         }
@@ -1899,33 +1900,33 @@
 }
 .blog-filter{
   margin: 50px auto;
-  .blog-filter-inner{
-    @extend %flex-center;
-    button, a{
-      border: solid 1px #636b6f;
-      border-radius: 12px;
-      color: #636b6f;
-      background-color: $color-white;
-      outline: none;
-      transition: 0.3s;
-      font-size: $title-bottom-font-size;
-      text-decoration: none;
-      padding: 5px 35px;
-      margin: 5px 20px;
-      cursor: pointer;
-      &:hover{
-        color: $color-white;
-        background-color: #636b6f;
-      }
-      &.active{
-        color: $color-white !important;
-        background-color: #636b6f !important;
-      }
-    }
-    .active{
+}
+.blog-filter-inner{
+  @extend %flex-center;
+  button, a{
+    border: solid 1px #636b6f;
+    border-radius: 12px;
+    color: #636b6f;
+    background-color: $color-white;
+    outline: none;
+    transition: 0.3s;
+    font-size: $title-bottom-font-size;
+    text-decoration: none;
+    padding: 5px 35px;
+    margin: 5px 20px;
+    cursor: pointer;
+    &:hover{
       color: $color-white;
       background-color: #636b6f;
     }
+    &.active{
+      color: $color-white !important;
+      background-color: #636b6f !important;
+    }
+  }
+  .active{
+    color: $color-white;
+    background-color: #636b6f;
   }
 }
 .filterBtn-active{
@@ -3294,6 +3295,26 @@
       }
     } 
   }
+  .blog-filter {
+    margin-top: 7rem;
+  }
+  .blog-filter-inner {
+    a{
+      width: 100%;
+      border: none;
+      border-bottom: solid 1px #636b6f;
+      border-radius: unset;
+      &::after{
+        content: '>>';
+        margin-left: 1rem;
+      }
+    }
+    button{
+      width: 70%;
+      padding: .3rem 0;
+      margin: .5rem 0;
+    }
+  }
   #subPage-blog{
     .information-banner{
       display: none;
@@ -3302,26 +3323,6 @@
       margin: 0 1rem;
       .blog-post-inner{
         padding: 1.8rem 0 !important;
-      }
-    }
-    .blog-filter {
-      margin-top: 7rem;
-      .blog-filter-inner {
-        a{
-          width: 100%;
-          border: none;
-          border-bottom: solid 1px #636b6f;
-          border-radius: unset;
-          &::after{
-            content: '>>';
-            margin-left: 1rem;
-          }
-        }
-        button{
-          width: 70%;
-          padding: .3rem 0;
-          margin: .5rem 0;
-        }
       }
     }
   }

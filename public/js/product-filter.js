@@ -417,7 +417,7 @@ exports = module.exports = __webpack_require__(48)(false);
 
 
 // module
-exports.push([module.i, "\n.loading-mask {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: rgba(255, 255, 255, 0.3);\n  z-index: 100;\n}\n.loading-mask .loading-spinner {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    width: 50px;\n}\n.learnmore {\n  position: relative;\n}\n.learnmore.loading::before {\n    position: absolute;\n    width: 20px;\n    height: 20px;\n    left: -25px;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    background-image: url(\"/img/loading-spinner.svg\");\n    background-size: cover;\n    content: \"\";\n}\n", ""]);
+exports.push([module.i, "\n.loading-mask {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: rgba(255, 255, 255, 0.3);\n  z-index: 100;\n}\n.loading-mask .loading-spinner {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    width: 50px;\n}\n.learnmore {\n  position: relative;\n}\n.learnmore.loading::before {\n    position: absolute;\n    width: 20px;\n    height: 20px;\n    left: -25px;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    background-image: url(\"/img/loading-spinner.svg\");\n    background-size: cover;\n    content: \"\";\n}\n.searchBar {\n  padding: 5px 10px;\n  width: 175px;\n  margin: 0 auto;\n  border: solid 1px #bdbdbd;\n  color: #bdbdbd;\n  border-radius: 12px;\n}\n.searchBar .cearch-icon input {\n    outline: none;\n}\n", ""]);
 
 // exports
 
@@ -429,6 +429,29 @@ exports.push([module.i, "\n.loading-mask {\n  position: fixed;\n  top: 0;\n  lef
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -777,10 +800,13 @@ var h = __webpack_require__(296).default;
                 case fiterType.other:
                     title.text('旅行配件');
                     $('.filter-subTitle').hide();
+                    $('.searchBar').css('margin-top', '50px');
                     this.menuStyle(2);
                     break;
                 case fiterType.bag:
                     title.text('品牌背包');
+                    $('.filter-subTitle').hide();
+                    $('.searchBar').css('margin-top', '50px');
                     this.menuStyle(3);
                     break;
             }
@@ -800,7 +826,6 @@ var h = __webpack_require__(296).default;
                     var scrollH = $(document).scrollTop() + $('.sub-page-footer').height() / 2 + window.innerHeight;
                     if (scrollH > docH) {
                         _this4.learnMoreAction();
-                        console.log('123');
                     }
                 }, 100);
             });
@@ -1137,6 +1162,28 @@ var render = function() {
               ])
             ]
           )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd"
+        ? _c(
+            "div",
+            {
+              staticClass: "row filter",
+              staticStyle: { "margin-top": "80px", "margin-bottom": "80px" }
+            },
+            [_vm._m(6)]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe"
+        ? _c(
+            "div",
+            {
+              staticClass: "row filter",
+              staticStyle: { "margin-top": "80px", "margin-bottom": "80px" }
+            },
+            [_vm._m(7)]
+          )
         : _vm._e()
     ]),
     _vm._v(" "),
@@ -1308,7 +1355,27 @@ var staticRenderFns = [
             staticStyle: { "margin-top": "50px" }
           },
           [_vm._v("這裡總有一款屬於你的冒險")]
-        )
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "searchBar" }, [
+          _c(
+            "i",
+            {
+              staticClass: "fa fa-search lg cearch-icon",
+              attrs: { "aria-hidden": "true" }
+            },
+            [
+              _c("input", {
+                staticStyle: {
+                  "padding-left": "10px",
+                  border: "none",
+                  width: "90%"
+                },
+                attrs: { type: "text", placeholder: "輸入要尋找的商品" }
+              })
+            ]
+          )
+        ])
       ])
     ])
   },
@@ -1350,6 +1417,40 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filters-title" }, [
       _c("p", [_vm._v("材質 Material")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 blog-filter-inner" }, [
+      _c("a", { staticClass: "active" }, [_vm._v("全部文章")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("束帶")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("行李秤")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("收納包")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("行李箱保護套")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("護照包")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("其他")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 blog-filter-inner" }, [
+      _c("a", { staticClass: "active" }, [_vm._v("全部文章")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("價格")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("品牌")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("類型")])
     ])
   }
 ]

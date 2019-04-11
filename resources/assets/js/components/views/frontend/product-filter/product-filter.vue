@@ -7,9 +7,15 @@
         <div class="container filter-area">
             <div class="row filter">
                 <div class="col-md-12 filter-title">
-                <h1 id="thisTitle">品牌行李箱</h1>
-                <div class="filter-title-hr"></div>
-                <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
+                    <h1 id="thisTitle">品牌行李箱</h1>
+                    <div class="filter-title-hr"></div>
+                    <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
+                    <div class="searchBar">
+                        <i class="fa fa-search lg cearch-icon" aria-hidden="true">
+                            <input style="padding-left: 10px; border: none; width: 90%;" 
+                                   type="text" placeholder="輸入要尋找的商品">
+                        </i>
+                    </div>
                 </div>
             </div>
             <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
@@ -98,6 +104,25 @@
                     <div class="col-md-4"></div>
                 </div>
             </div>
+            <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd'">
+                <div class="col-md-12 blog-filter-inner">
+                    <a class="active">全部文章</a>
+                    <a href="">束帶</a>
+                    <a href="">行李秤</a>  
+                    <a href="">收納包</a>  
+                    <a href="">行李箱保護套</a>
+                    <a href="">護照包</a>
+                    <a href="">其他</a>
+                </div>
+            </div>
+            <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'">
+                <div class="col-md-12 blog-filter-inner">
+                    <a class="active">全部文章</a>
+                    <a href="">價格</a>
+                    <a href="">品牌</a>  
+                    <a href="">類型</a> 
+                </div>
+            </div>
         </div>
 
         <div class="container container-productCount" style="position: relative;">
@@ -136,9 +161,7 @@
                                     <div class="product-img-mask"></div>
                                     <p>查看商品</p>
                                 </a>
-                                
                             </div>
-                            
                             <div class="product-innertext">
                                 <!-- <div class="product-label"><img src="/img/product-logo.jpg" alt=""></div> -->
                                 <div class="product-title">
@@ -325,10 +348,13 @@
                 case fiterType.other:
                     title.text('旅行配件')
                     $('.filter-subTitle').hide()
+                    $('.searchBar').css('margin-top','50px');
                     this.menuStyle(2)
                 break;
                 case fiterType.bag:
                     title.text('品牌背包')
+                    $('.filter-subTitle').hide()
+                    $('.searchBar').css('margin-top','50px');
                     this.menuStyle(3)
                 break;
                 }
@@ -346,7 +372,6 @@
                         let scrollH = $(document).scrollTop() + ($('.sub-page-footer').height()/2) + window.innerHeight;
                         if (scrollH > docH) {
                             this.learnMoreAction();
-                            console.log('123')
                         }
                     }, 100);
                    
@@ -402,4 +427,19 @@
         }
     }
 }
+
+.searchBar{
+    padding: 5px 10px;
+    width: 175px;
+    margin: 0 auto;
+    border: solid 1px #bdbdbd;
+    color: #bdbdbd;
+    border-radius: 12px;
+    .cearch-icon{
+        input{
+            outline: none;
+        }
+    }
+}
+
 </style>

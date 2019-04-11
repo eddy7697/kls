@@ -202,8 +202,20 @@
                 this.addSigle(guid)
             },
             addSigle(guid) {
-                let self = this
-
+                let self = this;
+                axios.post('/checkAuth')
+                    .then(res => {                        
+                        if (res.data.auth) {
+                            self.addToCart(guid)
+                            this.$refs.eventForm.initForm(res.data)
+                        } else {
+                            alert('請先登入!')
+                            window.location.href = '/login'
+                        }
+                    })
+                    
+            },
+            addToCart: guid => {
                 axios.post(`/cart/add/single/${guid}`
                     ).then(res => {
                         self.$message.success('成功加入購物車！')

@@ -15,6 +15,9 @@
         .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(3) a{
             border-bottom: solid 3px #FBB03B;
         }
+        .mega-menu .mega-menu-product .mega-menu-list ul li a{
+            border-bottom: solid 1px #fff !important;
+        }
     </style>
 @endsection
 
@@ -31,7 +34,7 @@
     <section id="subPage-blog">
         <div class="container-fulid information-banner"></div>
         <div class="container blog-filter">
-            <div class="row">
+            <div class="row blog-filter-row">
                 <div class="col-md-12 blog-filter-inner">
                     <a href="/blog">全部文章</a>
                     @foreach (CategoryView::post() as $item)

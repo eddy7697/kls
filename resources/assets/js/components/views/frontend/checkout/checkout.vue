@@ -121,6 +121,27 @@
                                     <label for="three-way">三聯式發票</label>
                                 </td>
                             </tr>
+
+                            <tr class="invoice-title-td" style="display: none;">
+                                <td class="cart_info_title">
+                                    發票抬頭
+                                </td>
+                                <td>
+                                    <input class="invoice-title" type="text" id="invoice-title" placeholder="" v-model="customerParametorForShipping.ReceiverAddress" required>
+                                    <!-- <strong v-if="!formValidation.ReceiverAddres" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong> -->
+                                </td>
+                            </tr>
+                            
+                            <tr class="GUI-number-td" style="display: none;">
+                                <td class="cart_info_title">
+                                    統一編號
+                                </td>
+                                <td>
+                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" v-model="customerParametorForShipping.ReceiverAddress" required>
+                                    <!-- <strong v-if="!formValidation.ReceiverAddres" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong> -->
+                                </td>
+                            </tr>
+
                             <tr class="cart_info_text">
                                 <td class="cart_info_title">
                                     備註事項
@@ -308,6 +329,7 @@
                 var shippingMethods = results[1];
                 var cartContent = results[2];
                 var cartTemp = results[3];
+                self.ifThreeWay();
 
                 // 確認登入狀態
                 self.isAuth = authStatus.auth;
@@ -372,7 +394,6 @@
                     self.cvsParametor.CVSStoreName = shop + cvs.CVSStoreName;
                     self.cvsParametor.CVSAddress = cvs.CVSAddress;
                     self.cvsParametor.CVSTelephone = cvs.CVSTelephone;
-
                 }
 
             });
@@ -1121,6 +1142,21 @@
             },
             showMessage: function (type, string) {
                 toastr[type](string);
+            },
+            ifThreeWay: function(){
+                let self = this;
+                $("input[name='invoice']").focus( e =>{
+                    let choseVal = $(e.target).val();
+                    choseVal == 'threeWay' ? self.showThreeWayInput() : self.hideThreeWayInput();                    
+                })
+            },
+            showThreeWayInput: function(){
+                $('.GUI-number-td').fadeIn();
+                $('.invoice-title-td').fadeIn();
+            },
+            hideThreeWayInput: function(){
+                $('.GUI-number-td').fadeOut();
+                $('.invoice-title-td').fadeOut();
             }
         }
     }

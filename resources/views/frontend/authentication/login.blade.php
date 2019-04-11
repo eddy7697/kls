@@ -1,7 +1,35 @@
 @extends('main')
 
+@section('custom-script')
+    <script>
+        $(document).ready(function(){
+            var topBarH = $('.sub-page-header').height();
+            $('.login-container').css('margin-top', topBarH + 'px')
+        });
+    </script>
+@endsection
+
+@section('custom-style')
+    <style media="screen">
+        .g-recaptcha div{
+            margin: 0 auto;
+        }
+        .register-submit{
+            width: 90px;
+            background-color: #0f2746;
+            color: #F8B62D;
+            transition: .5s;
+            border: none;
+        }
+        .register-submit:hover{
+            background-color: #F8B62D;
+            color: #0f2746;
+        }
+    </style>
+@endsection
+
 @section('content')
-    <div class="container" style="margin-bottom: 30px">
+    <div class="container login-container" style="margin-bottom: 30px">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 member-auth-form-table">
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -76,13 +104,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding: 5px;">
-                                <button type="submit" class="btn btn-success" name="button">登入</button>
+                            <td style="padding: 5px; text-align: center">
+                                <button type="submit" class="btn btn-success register-submit" name="button">登入</button>
                                 <input type="checkbox" id="remamber" name="remamber" value="">
                                 <label for="remamber">記住我</label>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style="text-align: center">
                             <td>
                                 <a href="{{ url('/forget-password') }}">忘記您的密碼？</a>&nbsp;|&nbsp;
                                 <a href="{{ url('/register') }}">點我註冊</a>
