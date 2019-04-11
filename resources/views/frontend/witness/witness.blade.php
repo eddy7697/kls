@@ -13,9 +13,6 @@
 
 @section('custom-script')
     <script>
-        var x = $('.test').html()
-        console.log(x)
-        console.log('123')
         $('.blog-container').css({
             'margin-top': ($('.sub-page-header').height() + 10) + 'px',
             'margin-bottom': '80px'
@@ -63,17 +60,16 @@
 @endsection
 @section('content')
 <div class="container blog-post-container">
-    <div class="test" style="display: none;">{{$post}}</div>
     <div class="row">
         <div class="col-md-12 blog-container">
             <div class="blog-post-time">
                 <img src="/img/icon/date-01.png" alt="">
-                <span>{{$post->created_at}}</span>
+                <span>2019/04/12</span>
                 {{-- {{$post->created_at}} --}}
             </div>
             
             <div class="blog-post-title">
-                <h2>{{$post->postTitle}}</h2>
+                <h2>文章標題</h2>
                 {{-- {{$post->postTitle}} --}}
                 <div class="share">
                     <table style="width: 100%;">
@@ -103,8 +99,8 @@
                     </div>
                 </div>
                 <div class="blog-content-inner col-md-8">
-                        {{-- 異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘... --}}
-                    {!!$post->content!!}
+                    異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘...
+                    {{-- {!!$post->content!!} --}}
                 </div>
             </div>
         </div>

@@ -29,7 +29,7 @@
     <section id="choose">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 section_title" data-aos="zoom-in">
+                <div class="col-md-12 section_title">
                    <p> 
                        挑選適合你的旅行箱
                    </p>
@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3 co_post">
-                    <div class="choose_post" data-aos="fade-right">
+                    <div class="choose_post">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeService()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="col-md-3 co_post">
-                    <div class="choose_post" data-aos="fade-right">
+                    <div class="choose_post">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeShipping()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="col-md-3 co_post">
-                    <div class="choose_post" data-aos="fade-left">
+                    <div class="choose_post">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeReturn()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="col-md-3 co_post">
-                    <div class="choose_post" data-aos="fade-left">
+                    <div class="choose_post">
                         <div class="img_div" style="background-image: url('{{SiteMetaView::noticeAntiFraud()->featureImage}}')">
                         </div>
                         <div class="post_text">
@@ -161,7 +161,7 @@
             <img class="product_arrow product-right" src="/img/arrow-right.png" alt="">
         </div>
         <div class="container-fluid">
-            <div class="row" data-aos="zoom-in">
+            <div class="row">
                 <div class="col-md-12 section_title">
                    <p > 
                        凱麗斯旅行箱
@@ -298,7 +298,7 @@
     <section id="news">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 section_title"  data-aos="zoom-in">
+                <div class="col-md-12 section_title">
                    <p> 
                        部落格
                    </p>
@@ -341,9 +341,9 @@
         <div class="sw_mask mask_right">
             <img class="product_arrow feedback-right" src="/img/arrow-right.png" alt="">
         </div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-md-12 section_title"  data-aos="zoom-in">
+                <div class="col-md-12 section_title">
                     <p> 
                         使用迴響
                     </p>
