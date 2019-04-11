@@ -72,6 +72,7 @@ Route::get('/blog/{path}', function ($path)
 /**
  * WITNESS
  */
+
 Route::get('/witness', function ()
 {
     return view('frontend.blog.witness', [

@@ -1,14 +1,14 @@
 @extends('main')
 
 @section('custom-meta')
-    <meta property="og:url" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"}}"></meta>
+    {{-- <meta property="og:url" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"}}"></meta>
     <meta property="og:title" content="{{$post->seoTitle}}" />
     <meta property="og:description" content="{{$post->seoDescription}}" />
     <!--分享用圖片在這，一樣有保留-->
     <meta property="og:image" content="https://www.meansgood.com.tw{{$post->featureImage}}"/>
     <meta property="fb:app_id" content="1758202757809745" />
     <!--**************************-->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="website" /> --}}
 @endsection
 
 @section('custom-script')
@@ -29,13 +29,13 @@
 
 @section('custom-style')
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
+    {{-- <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
       js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10&appId=124798941401730";
       fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));</script> --}}
     
     {{-- {{$post->featureImage}} --}}
     <style media="screen">

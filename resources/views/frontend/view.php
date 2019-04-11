@@ -137,16 +137,6 @@ Route::get('/importScout', 'Frontend\SearchController@importScout');
 
 
 /**
- * WITNESS
- */
-Route::get('/witness', function ()
-{
-    return view('frontend.blog.witness', [
-        'isThumbShow' => false,
-    ]);
-});
-
-/**
  * test area
  */
 // Route::get('/ga-test', 'HomeController@gaTest');
