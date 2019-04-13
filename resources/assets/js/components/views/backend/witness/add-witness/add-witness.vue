@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-md-8">
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                <el-form-item label="見證人稱謂" prop="locale">
+                <el-form-item label="客戶名稱" prop="locale">
                     <el-input v-model="ruleForm.locale"></el-input>
                 </el-form-item>
-                <!-- <el-form-item label="文章日期" prop="customField7">
+                <el-form-item label="評論日期" prop="customField7">
                     <el-date-picker
                         v-model="ruleForm.customField7"
                         type="date"
                         placeholder="選擇日期">
                     </el-date-picker>
-                </el-form-item> -->
+                </el-form-item>
                 <!-- <el-form-item label="性別" prop="customField6">
                     <el-radio v-model="ruleForm.customField6" label="male" border>
                         男性
@@ -44,10 +44,10 @@
                         v-model="ruleForm.content">
                     </ckeditor>
                 </el-form-item>
-                <el-form-item label="排序編碼" prop="sortIndex">
+                <!-- <el-form-item label="排序編碼" prop="sortIndex">
                     <el-input type="text" v-model="ruleForm.sortIndex"></el-input>
-                </el-form-item>
-                <!-- <el-form-item label="顯示於首頁" prop="sortIndex">
+                </el-form-item> -->
+                <el-form-item label="隱藏、啟用" prop="customField8">
                     <el-switch
                         v-model="ruleForm.customField8"
                         active-color="#13ce66"
@@ -55,7 +55,7 @@
                         active-value="active"
                         inactive-value="inactive">
                     </el-switch>
-                </el-form-item> -->
+                </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="submitForm('ruleForm')">
                         <span v-if="mode == 'edit'">儲存</span>

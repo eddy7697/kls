@@ -7,8 +7,8 @@
         @yield('custom-meta')
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {{--<meta name="keywords" content="{{SiteMetaView::keyword()}}">--}}
-        {{--<meta name="description" content="{{SiteMetaView::description()}}">--}}
+        <meta name="keywords" content="{{SiteMetaView::keyword()}}">
+        <meta name="description" content="{{SiteMetaView::description()}}">
         <link rel="alternate" href="https://www.meansgood.com.tw/" hreflang="zh-TW" />
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -16,9 +16,9 @@
 
 
         {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-        {{--<title>{{ SiteMetaView::title() }}</title>--}}
+        <title>{{ SiteMetaView::title() }}</title>
 
-        {{--<link rel="shortcut icon" href="{{ SiteMetaView::shortcut() }}">--}}
+        <link rel="shortcut icon" href="{{ SiteMetaView::shortcut() }}">
 
         <!-- Fonts -->
         <link href="{{ asset('css/frontend.css') }}" rel="stylesheet">

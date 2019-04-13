@@ -12,14 +12,10 @@
         <div class="col-md-12">
             <el-table
                 :data="pageData.data"
-                style="width: 100%">
+                style="width: 768px">
                 <el-table-column
                     prop="locale"
                     label="見證人">
-                </el-table-column>
-                <el-table-column
-                    prop="customField3"
-                    label="職稱">
                 </el-table-column>
                 <el-table-column
                     prop="created_at"

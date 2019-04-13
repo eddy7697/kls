@@ -5,17 +5,20 @@
                 :keyword="keyword"
                 :btnTitle="'搜尋最新消息'"
                 @newKeyword="newKeyword($event)"
-                @searchPost="searchPost($event)"/>
+                @searchPost="searchPost($event)">
+            </searchBar>
         </div>
-        <!-- <div class="col-md-3">
-            <categoryList 
-                :btnTitle="'變更最新消息類別'"
-                :selectedCategoryName="selectedCategoryName"
-                :data="categories"
-                :selectedCategoryKey="selectedCategoryKey"
-                @changeCategory="changeCategory($event)"/>
-        </div> -->
-        <div class="col-md-12" v-if="!isEmpty">            
+        <div class="col-md-2">
+            <select class="form-control" v-model="selectedCategoryKey">
+                <option value="ALL">
+                    全部類別
+                </option>
+                <option v-for="(item, index) in categories" :key="index" :value="item.guid">
+                    {{item.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-12" v-if="!isEmpty">
             <itemList 
                 :column="column"
                 :config="listConfig"
@@ -143,6 +146,9 @@
 
                     this.allSelect = isAllSelected;
                 }
+            },
+            selectedCategoryKey(val) {
+                this.changeCategory(val)
             }
         },
         computed: {
@@ -245,7 +251,7 @@
             changeCategory (key) {
                 $('.loading-bar').fadeIn('100')
 
-                this.selectedCategoryKey = key
+                // this.selectedCategoryKey = key
 
                 if (key == 'ALL') {
                     this.selectedCategoryName = '全部類別'

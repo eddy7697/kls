@@ -4,9 +4,10 @@
     <meta property="og:url" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"}}"></meta>
     <meta property="og:title" content="{{$post->seoTitle}}" />
     <meta property="og:description" content="{{$post->seoDescription}}" />
+    <meta property="og:keyword" content="{{$post->seoKeyword}}" />
     <!--分享用圖片在這，一樣有保留-->
-    <meta property="og:image" content="https://www.meansgood.com.tw{{$post->featureImage}}"/>
-    <meta property="fb:app_id" content="1758202757809745" />
+    <meta property="og:image" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]"}}{{$post->featureImage}}"/>
+    {{-- <meta property="fb:app_id" content="1758202757809745" /> --}}
     <!--**************************-->
     <meta property="og:type" content="website" />
 @endsection

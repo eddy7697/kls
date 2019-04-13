@@ -1,7 +1,7 @@
 <template>
     <div class="row" v-if="isLoaded">
         <div class="col-md-9">
-            <input type="text" class="form-control ch-product-title" name="title" value="" placeholder="最新消息標題" v-model="postContent.postTitle">
+            <input type="text" class="form-control ch-product-title" name="title" value="" placeholder="部落格標題" v-model="postContent.postTitle">
             <!-- <div class="form-group">
                 <label for="">{{currentPath}}/blog/</label>
                 <input type="text" class="form-control" v-model="postContent.customPath" style="width: fit-content; display:inline-block">
@@ -14,7 +14,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        最新消息資訊
+                        部落格資訊
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -86,7 +86,7 @@
                         <table width="100%">
                             <tr>
                                 <td>
-                                    <label for="isPublish">最新消息狀態</label>
+                                    <label for="isPublish">部落格狀態</label>
                                 </td>
                                 <td align="right">
                                     <toggle-button v-model="postContent.isPublish"/>
@@ -104,7 +104,7 @@
                                     <table width="100%">
                                         <tr>
                                             <td>
-                                                <label for="isPublish">最新消息狀態</label>
+                                                <label for="isPublish">部落格狀態</label>
                                             </td>
                                             <td align="right">
                                                 <toggle-button v-model="postContent.isPublish"/>
@@ -123,7 +123,7 @@
                                             <td colspan="2">
                                                 <date-picker
                                                     v-model="postContent.schedulePost"
-                                                    placeholder="選擇最新消息發布時間"
+                                                    placeholder="選擇部落格發布時間"
                                                     :config="config">
                                                 </date-picker>
                                             </td>
@@ -141,7 +141,7 @@
                                             <td colspan="2">
                                                 <date-picker
                                                     v-model="postContent.scheduleDelete"
-                                                    placeholder="選擇最新消息下線時間"
+                                                    placeholder="選擇部落格下線時間"
                                                     :config="scheduleDeleteConfig">
                                                 </date-picker>
                                             </td>
@@ -152,8 +152,8 @@
             			</div>
     				</div>
     				<div class="panel-footer">
-                        <button v-if="isDirty" type="button" class="btn btn-primary btn-sm btn-block" name="button" @click="savePost()">發布最新消息</button>
-                        <button v-else type="button" class="btn btn-primary btn-sm btn-block" name="button" disabled>發布最新消息</button>
+                        <button v-if="isDirty" type="button" class="btn btn-primary btn-sm btn-block" name="button" @click="savePost()">發布部落格</button>
+                        <button v-else type="button" class="btn btn-primary btn-sm btn-block" name="button" disabled>發布部落格</button>
     				</div>
     			</div>
                 <div class="panel panel-default">

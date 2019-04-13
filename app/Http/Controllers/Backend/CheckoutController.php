@@ -243,7 +243,7 @@ class CheckoutController extends Controller
                 $productType = Product::where('productGuid', $item->id->guid)->first()['productType'];
 
                 if ($productType == 'variable') {
-                    $subQuantity = SubProduct::where('id', $item->id['subProductId'])->first()->subQuantity;
+                    $subQuantity = SubProduct::where('id', $item->id->subProductId)->first()->subQuantity;
                     $checkOrderStockAndQty = (int)$item->qty > (int)$subQuantity;
 
                     if ($checkOrderStockAndQty) {
@@ -545,7 +545,8 @@ class CheckoutController extends Controller
                         'merchantIdCache'   => $merchantIdCache
                     ], function($message) use ($sender, $shippingTarget) {
                         $message->to([
-                            env('MAIL_USERNAME'),
+                            'jiro16610@hotmail.com',
+                            'alan333335@yahoo.com.tw',
                         ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
                         $message->from($sender, $name = env('APP_NAME'));
                     });

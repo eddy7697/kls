@@ -171,15 +171,19 @@
                                     <div class="style-inner" v-html="item.shortDescription">
                                         <!-- 這裡會自動帶入產品說明 -->
                                     </div>
-                                    <p class="product-price">$ {{numberFormat(item.price, 0, '.', ',')}}</p>
+                                    <p v-if="item.productType == 'simple'" class="product-price">$ {{numberFormat(item.price, 0, '.', ',')}}</p>
+                                    <p v-else>多規格商品</p>
                                 </div>
                                 <div class="productHeart" :data-id= item.productGuid @click="addFavorite(item.productGuid)">
                                     <img src="/img/productHeart.svg" alt="">
                                 </div>
-                                <button class="buyIt" @click="addSigleProduct(item.productGuid)">
+                                <button v-if="item.productType == 'simple'" class="buyIt" @click="addSigleProduct(item.productGuid)">
                                     <img src="/img/cartIconWhite.svg" alt="">
                                     <p>加入購物車</p>
                                 </button>
+                                <a v-else class="buyIt" :href="`/detail/${item.productGuid}`">
+                                    選擇規格
+                                </a>
                             </div>
                         </div>                    
                     </div>
@@ -290,6 +294,13 @@
                         this.pageData.next_page_url = res.data.next_page_url
                         this.pageData.current_page = res.data.current_page
                         this.pageData.data = _.concat(this.pageData.data, res.data.data)
+                        this.$nextTick(() => {
+                            this.pageData.data.forEach(elm => {
+                                if (elm.productType == 'variable') {
+                                    console.log(elm)
+                                }
+                            });
+                        })
                     }).catch(err => {
 
                     }).then(() => {

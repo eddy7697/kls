@@ -89,10 +89,10 @@
 												<li><a href="/cyberholic-system/media/manager?type=Images">媒體庫</a></li>
 											</ul>
 										</li>
-										<li class=""><a><i class="fa fa-product-hunt" aria-hidden="true"></i> 客戶證言管理 <span class="fa fa-chevron-down"></span></a>
+										<li class=""><a><i class="fa fa-product-hunt" aria-hidden="true"></i> 客戶評論管理系統 <span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu" style="display: none;">
-												<li><a href="/cyberholic-system/witness/add">新增證言</a></li>
-												<li><a href="/cyberholic-system/witness/list">證言列表</a></li>
+												<li><a href="/cyberholic-system/witness/add">新增評論</a></li>
+												<li><a href="/cyberholic-system/witness/list">評論列表</a></li>
 											</ul>
 										</li>
 										<li><a><i class="fa fa-shopping-cart"></i> 電商管理系統 <span class="fa fa-chevron-down"></span></a>

@@ -36,7 +36,7 @@
                     <div id="panel-element-915732" class="panel-collapse collapse" v-bind:class="{ in: isPost }">
                         <div class="panel-body">
                             <ul>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/add">新增最新消息</a></li>
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/add">新增部落格</a></li>
                                 <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/list">最新消息列表</a></li>
                                 <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/postOrder">最新消息排序設定</a></li>
                                 <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/category">最新消息類別管理</a></li>

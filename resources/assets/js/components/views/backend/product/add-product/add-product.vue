@@ -42,9 +42,6 @@
                                 <li>
                                     <a href="#panel-119853" data-toggle="tab">SEO 設定</a>
                                 </li>
-                                <li v-if="productContent.productCategory == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
-                                    <a href="#panel-119444" data-toggle="tab">標籤設定</a>
-                                </li>
                             </ul>
                             <div class="tab-content ch-tab-content">
                                 <div class="tab-pane active" id="panel-817886">
@@ -228,23 +225,30 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="tab-pane " id="panel-119444" v-if="productContent.productCategory == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
-                                    <table class="table field-table">
-                                        <tr v-for="(item, index) in Object.keys(tagLabel)" :key="index">
-                                            <td width="130">
-                                                <label :for="`tab-${item}`">{{tagLabel[item]}}</label>
-                                            </td>
-                                            <td>
-                                                <select class="form-control" :name="`tab-${item}`" :id="`tab-${item}`" v-model="selectedTag[item]" placeholder="choose" required>
-                                                    <option :value="null">-- 請選擇一項標籤 --</option>
-                                                    <option :value="tag" v-for="(tag, tagIndex) in tagGroup[item]" :key="tagIndex">{{tag}}</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" v-if="productContent.productCategory == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            商品標籤
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table field-table">
+                            <tr v-for="(item, index) in Object.keys(tagLabel)" :key="index">
+                                <td width="130">
+                                    <label :for="`tab-${item}`">{{tagLabel[item]}}</label>
+                                </td>
+                                <td>
+                                    <select class="form-control" :name="`tab-${item}`" :id="`tab-${item}`" v-model="selectedTag[item]" placeholder="choose" required>
+                                        <option :value="null">-- 請選擇一項標籤 --</option>
+                                        <option :value="tag" v-for="(tag, tagIndex) in tagGroup[item]" :key="tagIndex">{{tag}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div class="panel panel-default">
@@ -705,6 +709,8 @@
                     self.openSubProductModal()
                     return
                 }
+
+
 
                 // if (!this.productContent.customPath) {
                 //     this.productContent.customPath = this.clearString(this.productContent.productTitle);

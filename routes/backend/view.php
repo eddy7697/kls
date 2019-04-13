@@ -48,7 +48,7 @@ Route::get('/account/list', function () {
 *****************/
 Route::get('/post/add', function () {
     return view('backend.post.addPost', [
-        'panelTitle' => '新增最新消息',
+        'panelTitle' => '部落格資訊',
         'mode' => 'add'
     ]);
 });

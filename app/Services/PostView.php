@@ -70,7 +70,7 @@ class PostView
 
     public static function witness()
     {
-        return CustomField::where('type', 'witness')->get();
+        return CustomField::where('type', 'witness')->where('customField8', "active")->orderBy('customField7', 'desc')->get();
     }
 
     public static function tags()

@@ -122,7 +122,7 @@
                                 </td>
                             </tr>
 
-                            <tr class="invoice-title-td" style="display: none;">
+                            <tr class="invoice-title-td" v-if="customerParametorForShipping.receipt == 'threeWay'">
                                 <td class="cart_info_title">
                                     發票抬頭
                                 </td>
@@ -132,7 +132,7 @@
                                 </td>
                             </tr>
                             
-                            <tr class="GUI-number-td" style="display: none;">
+                            <tr class="GUI-number-td" v-if="customerParametorForShipping.receipt == 'threeWay'">
                                 <td class="cart_info_title">
                                     統一編號
                                 </td>
