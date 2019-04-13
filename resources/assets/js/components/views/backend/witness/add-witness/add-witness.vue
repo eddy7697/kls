@@ -32,10 +32,10 @@
                 <!-- <el-form-item label="客戶背景" prop="customField1">
                     <el-input type="textarea" v-model="ruleForm.customField1"></el-input>
                 </el-form-item> -->
-                <!-- <el-form-item label="代表圖片" prop="customField4">
+                <el-form-item label="代表圖片" prop="customField4">
                     <el-button v-if="!ruleForm.customField4" @click="addImage()" circle type="primary" icon="el-icon-plus"></el-button>
                     <img v-else @click="addImage()" :src="ruleForm.customField4" alt="" style="max-width:100%">
-                </el-form-item> -->
+                </el-form-item>
                 <el-form-item label="見證內容" prop="content">
                     <!-- <el-input type="textarea" v-model="ruleForm.content"></el-input> -->
                     <ckeditor

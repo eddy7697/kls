@@ -48,14 +48,14 @@ Route::get('/account/list', function () {
 *****************/
 Route::get('/post/add', function () {
     return view('backend.post.addPost', [
-        'panelTitle' => '部落格資訊',
+        'panelTitle' => '部落格',
         'mode' => 'add'
     ]);
 });
 
 Route::get('/post/edit/{guid}', function ($guid) {
     return view('backend.post.addPost', [
-        'panelTitle' => '編輯最新消息',
+        'panelTitle' => '編輯部落格',
         'mode' => 'edit',
         'guid' => $guid
     ]);
@@ -63,25 +63,25 @@ Route::get('/post/edit/{guid}', function ($guid) {
 
 Route::get('/post/list', function () {
     return view('backend.post.postList', [
-        'panelTitle' => '最新消息列表'
+        'panelTitle' => '部落格列表'
     ]);
 });
 
 Route::get('/post/postOrder', function () {
     return view('backend.post.postOrder', [
-        'panelTitle' => '最新消息排序設定'
+        'panelTitle' => '部落格排序設定'
     ]);
 });
 
 Route::get('/post/category', function () {
     return view('backend.post.category', [
-        'panelTitle' => '最新消息類別管理'
+        'panelTitle' => '部落格類別管理'
     ]);
 });
 
 Route::get('/post/categoryOrder', function () {
     return view('backend.post.categoryOrder', [
-        'panelTitle' => '最新消息類別排序'
+        'panelTitle' => '部落格類別排序'
     ]);
 });
 

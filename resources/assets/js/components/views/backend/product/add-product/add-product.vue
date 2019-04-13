@@ -64,10 +64,10 @@
                                                     <el-form-item label="促銷價" :label-width="'120px'">
                                                         <el-input v-model="item.subDiscountPrice" autocomplete="off"></el-input>
                                                     </el-form-item>
-                                                    <el-form-item label="選擇顏色" :label-width="'120px'">
+                                                    <!-- <el-form-item label="選擇顏色" :label-width="'120px'">
                                                         <el-input style="display: none" v-model="item.cf_1" autocomplete="off"></el-input>
                                                         <el-color-picker v-model="item.cf_1"></el-color-picker>
-                                                    </el-form-item>
+                                                    </el-form-item> -->
                                                     <el-form-item label="子商品圖片" :label-width="'120px'">
                                                         <el-button v-if="!item.subFeatureImage" icon="el-icon-picture-outline" type="primary" plain circle @click="editSubProductImage(item)"></el-button>
                                                         <img v-else :src="item.subFeatureImage" width="50%" @click="editSubProductImage(item)">
