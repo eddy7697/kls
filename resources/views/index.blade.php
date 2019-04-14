@@ -44,7 +44,8 @@
                             <h3>
                                 拉鍊式硬殼箱
                             </h3>
-                            <p>{!!nl2br(SiteMetaView::noticeService()->content)!!}</p>
+                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeService()->content)), 0, 195, "...")}}</p>
+                            {{-- <p>{!!nl2br(SiteMetaView::noticeService()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
                                 <button class ="goBuy" onclick="renderPruductDetail('拉鍊式硬殼箱', 'service')">
@@ -63,7 +64,8 @@
                             <h3>
                                 鋁框式硬殼箱
                             </h3>
-                            <p>{!!nl2br(SiteMetaView::noticeShipping()->content)!!}</p>
+                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeShipping()->content)), 0, 195, "...")}}</p>
+                            {{-- <p>{!!nl2br(SiteMetaView::noticeShipping()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
                                 <button class ="goBuy" onclick="renderPruductDetail('鋁框式硬殼箱', 'shipping')">
@@ -82,7 +84,8 @@
                             <h3>
                                 軟殼布面箱
                             </h3>
-                            <p>{!!nl2br(SiteMetaView::noticeReturn()->content)!!}</p>
+                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeReturn()->content)), 0, 195, "...")}}</p>
+                            {{-- <p>{!!nl2br(SiteMetaView::noticeReturn()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
                                 <button class ="goBuy" onclick="renderPruductDetail('軟殼布面箱', 'return')">
@@ -101,7 +104,8 @@
                             <h3>
                                 品牌特殊箱
                             </h3>
-                            <p>{!!nl2br(SiteMetaView::noticeAntiFraud()->content)!!}</p>
+                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeAntiFraud()->content)), 0, 195, "...")}}</p>
+                            {{-- <p>{!!nl2br(SiteMetaView::noticeAntiFraud()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
                                 <button class ="goBuy" onclick="renderPruductDetail('品牌特殊箱', 'antiFraud')">
@@ -322,9 +326,7 @@
                                 <p>
                                     {{$value->created_at->format('Y-M-d')}}
                                 </p>
-                                <p class="newPostTextP">
-                                    {{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $value->content), 0, 120, "...")}}
-                                </p>
+                                <p class="newPostTextP">{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $value->content), 0, 120, "...")}}</p>
                             </div>
                         </div>
                     </div>
@@ -363,17 +365,17 @@
                                             <img class="feedback-Icon" src="/img/icon/female.png" alt="">
                                         @endif
                                         <div class="feedback-Author">
-                                            <h2>
+                                            <h4>
                                                 {{$item->locale}}
-                                            </h2>
+                                            </h4>
+                                            <p>旅遊地點:日本，購買商品:《異形鋁框箱》行李箱-27吋 霧面黑色，到店時間: 2019/04/14</p>
                                         </div>
                                     </div>
-                                    <div class="feedback-img">
-                                        <img src="/img/store-984393_1920.jpg" alt="">
+                                    <div class="feedback-img" style="background-image: url('{{$item->customField4}}')">
+                                        {{-- <img src="{{$item->customField4}}" alt=""> --}}
                                     </div>
-                                    <div class="feedback-Inner">
-                                        {!!$item->content!!}
-                                    </div>
+                                    <div class="feedback-Inner">{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $item->content), 0, 150, "...")}}</div>
+                                    {{-- {!!$item->content!!} --}}
                                     <div class="choose_btn">
                                         <a href="/witness">
                                             <button class="goBuy">
@@ -386,6 +388,7 @@
                         @endforeach   
                     </div>
                 </div>
+                <div class="feedback-pagination swiper-pagination"></div>
             </div>
         </div>
     </section>

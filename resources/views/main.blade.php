@@ -841,13 +841,16 @@
                         slidesPerView: val,
                         spaceBetween: 30,
                         slidesPerGroup: val,
+                        pagination: {
+                            el: '.swiper-pagination',
+                        },
                         navigation: {
                             nextEl: '.feedback-right',
                             prevEl: '.feedback-left'
                         }
                     });
                 };
-                
+
                 function newPostTextRWD (x,y){
                     x.each(function() {
                         var maxwidth = y;
@@ -858,11 +861,9 @@
                  });
                 };
                 if ($width > 991){
-                    newPostTextRWD($('.post_text p'),300);
-                    newPostTextRWD($('.feedback-Inner p'),150);
+                    newPostTextRWD($('.feedback-Author p'),20);
                 } else {
-                    newPostTextRWD($('.post_text p'),300);
-                    newPostTextRWD($('.feedback-Inner p'),100);
+                    newPostTextRWD($('.feedback-Author p'),30);
                 }
                 
                 // fixed-button-group 過banner後再出現

@@ -919,7 +919,6 @@
 .choose_btn{
   @extend %flex-center;
   .goBuy{
-    margin-top      : 20px;
     border          : none;
     outline         : none;
     padding         : 5px 40px;
@@ -1228,8 +1227,7 @@
 /*----------feedback---------*/
 .feedback-Icon{
   @include size-setting(30%,auto);
-  max-width: 100px;
-  margin-top: 10px;
+  max-width: 70px;
   margin-left: 10px;
   text-align: left;
   border-radius: 50%;
@@ -1249,6 +1247,7 @@
     z-index: 2;
     .row{
       z-index: 2;
+      position: relative;
       .feedback-Index{
         overflow: hidden;
         z-index : 2;
@@ -1259,42 +1258,76 @@
               position        : relative;
               overflow        : hidden;
               border-radius: 20px;
+              .feedbackPostInfo,.feedback-img,.feedback-Inner{
+                @include size-setting(90%,auto);
+                margin: 0 auto;
+              }
               .feedbackPostInfo{
                 @include flex-mix(center, space-around);
-                @include size-setting(100%,auto);
                 margin: 20px auto;
               }
               .feedback-img{
-                @include size-setting(80%,auto);
                 position: relative;
                 overflow: hidden;
-                margin: 0 auto;
-                padding-bottom: 60%;
-                img{
-                  @extend %force-center;
-                  max-width: 100%;
-                }
+                padding-bottom: 50%;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+                background-position: center;
+                background-size: cover;
+                // img{
+                //   @extend %force-center;
+                //   max-width: 100%;
+                // }
+                // &::before,&::after{
+                //   content: '';
+                //   @include size-setting(50px,100%);
+                //   position: absolute;
+                //   top: 0;
+                //   background-color: #fff;
+                //   z-index: 2;
+                // }
+                // &::before{
+                //   left: 0;
+                // }
+                // &::after{
+                //   right: 0;
+                // }
               }
               .feedback-Inner{
                 padding: 10px 0;
-                width: 80%;
-                margin: 0 auto;
                 p{
                   font-size: 15px;
                 }
               }
               .feedback-Author{
-                @include size-setting(200px,auto);
+                @include size-setting(150px,auto);
                 position  : relative;
                 text-align: center;
-                h2{
+                h4{
                   font-weight  : 700;
+                  margin-bottom: 20px;
+                }
+                &::after{
+                  content: '';
+                  @include size-setting(50px,2px);
+                  position: absolute;
+                  bottom: 0;
+                  right: 50%;
+                  transform: translateX(50%);
+                  background-color: $font-color-focus;
                 }
               }
             } 
           }
         }
       }
+    }
+  }
+  .feedback-pagination{
+    @include size-setting(100%,auto);
+    bottom: -4rem;
+    display: none;
+    .swiper-pagination-bullet{
+      margin: 0 5px;
     }
   }
 }
@@ -2773,6 +2806,14 @@
 }
 
 @media screen and (max-width: 991px){
+  .feedback{
+    .feedback-pagination{
+      display: block;
+    }
+    .feedback-left, .feedback-right{
+      display: none;
+    }
+  }
   .blog-content{
     .blog-content-info{
       margin: 0 30px;
@@ -2827,6 +2868,7 @@
   }
   .feedback-Icon{
     width: 25%;
+    margin-bottom: 1rem;
   }
   .feedback{
     .sw_mask{
@@ -3441,10 +3483,10 @@
 }
 
 @media screen and (max-width: 460px){
-  .sw_mask .product-right, .sw_mask .feedback-right{
+  .sw_mask .product-right{
     right: .5rem;
   }
-  .sw_mask .product-left, .sw_mask .feedback-left{
+  .sw_mask .product-left{
     left: 0.5rem;
   }
   .blog-post-container{
