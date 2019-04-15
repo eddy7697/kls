@@ -24,30 +24,32 @@
                     <span></span>
                 </button>
 
-                <table v-if="!isCartEmpty" class="cart-panel-table" v-for="(item, index) in cartContent" v-bind:key="index">
-                    <tr>
-                        <!-- <td rowspan="2">
-                            <button type="button" name="button" @click="removeProduct(item)">x</button>
-                        </td> -->
-                        <td rowspan="3">
-                            <img class="cart-item-img" v-bind:src="thumb(item.featureImage)" alt="">
-                        </td>
-                        <td align="right">
-                            <strong>{{item.title}} x {{item.qty}}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <strong>NT$ {{item.total}}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <a href="#" @click="removeProduct(item)">刪除商品</a>
-                            <!-- <button type="button" name="button" @click="removeProduct(item)">x</button> -->
-                        </td>
-                    </tr>
-                </table>
+                <div v-if="!isCartEmpty">
+                    <table class="cart-panel-table" v-for="(item, index) in cartContent" v-bind:key="index">
+                        <tr>
+                            <!-- <td rowspan="2">
+                                <button type="button" name="button" @click="removeProduct(item)">x</button>
+                            </td> -->
+                            <td rowspan="3">
+                                <img class="cart-item-img" v-bind:src="thumb(item.featureImage)" alt="">
+                            </td>
+                            <td align="right">
+                                <strong>{{item.title}} x {{item.qty}}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <strong>NT$ {{item.total}}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <a href="#" @click="removeProduct(item)">刪除商品</a>
+                                <!-- <button type="button" name="button" @click="removeProduct(item)">x</button> -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>                
 
                 <hr>
                 <h4 v-if="!isCartEmpty" style="text-align: center"><strong>小計 NT$ {{amount}}</strong></h4>
@@ -218,11 +220,11 @@
             addToCart: guid => {
                 axios.post(`/cart/add/single/${guid}`
                     ).then(res => {
-                        self.$message.success('成功加入購物車！')
+                        this.$message.success('成功加入購物車！')
                     }).catch(err => {
-                        self.$message.error('加入購物車失敗...')
+                        this.$message.error('加入購物車失敗...')
                     }).then(arg => {
-                        self.getCart()
+                        this.getCart()
                     })
             },
             thumb: function (url) {
@@ -290,13 +292,6 @@
     }
     .shopping-Cart-Icon {
         position: relative;
-    }
-    .shopping-Cart-Icon img{
-        /* width: 30px;
-        height: 30px; */
-    }
-    .shopping-Cart-Icon, .litext{
-        /* display: inline-block; */
     }
     .shopping-Cart-Icon span.count{
         position: absolute;
