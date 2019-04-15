@@ -18,6 +18,7 @@ class ProductView
                             $query->where('scheduleDelete','<',time())
                                 ->orwhere('scheduleDelete','=',null);
                         })
+                        ->where('productCategory', 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V')
                         ->leftJoin('categories', 'products.productCategory', '=', 'categories.categoryGuid')
                         ->select('products.*', 'categories.categoryTitle')
                         ->orderBy('schedulePost', 'desc')->paginate(12);
