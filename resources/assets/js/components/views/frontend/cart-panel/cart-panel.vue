@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            <a href="#" @click="removeProduct(item)">刪除商品</a>
+                            <a class="removeProductBtn" href="#" @click="removeProduct(item)">刪除商品</a>
                             <!-- <button type="button" name="button" @click="removeProduct(item)">x</button> -->
                         </td>
                     </tr>
@@ -308,5 +308,8 @@
         bottom: -5px;
         right: 10px;
         box-shadow: 2px 2px 12px -2px #666;
+    }
+    .removeProductBtn{
+        color: #0f2746;
     }
 </style>
