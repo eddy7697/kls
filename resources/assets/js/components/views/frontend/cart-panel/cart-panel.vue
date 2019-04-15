@@ -309,7 +309,7 @@
         right: 10px;
         box-shadow: 2px 2px 12px -2px #666;
     }
-    .removeProductBtn{
-        color: #0f2746;
+    .cart-panel-table .removeProductBtn{
+        color: #0f2746 !important;
     }
 </style>
