@@ -12,12 +12,12 @@
                     <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                     <div class="searchBar">
                         <i class="fa fa-search lg cearch-icon" aria-hidden="true">
-                            <input style="padding-left: 10px; border: none; width: 90%;" 
-                                   type="text" placeholder="輸入要尋找的商品">
+                            <input style="padding-left: 10px; border: none; width: 90%;" type="text" placeholder="輸入要尋找的商品">
                         </i>
                     </div>
                 </div>
             </div>
+
             <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
                 <div class="col-md-12 filter-filtering">
                     <div class="col-md-4">
@@ -38,7 +38,7 @@
                     <div class="col-md-4">  
                         <div class="filter-filters">
                             <div class="filters-title">
-                            <p>尺寸 Size</p>
+                                <p>尺寸 Size</p>
                             </div>
                             <hr>
                             <form class="filters-selects">
@@ -104,6 +104,79 @@
                     <div class="col-md-4"></div>
                 </div>
             </div>
+
+            <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'">
+                <div class="col-md-12 filter-filtering">
+                    <div class="col-md-4">
+                        <div class="filter-filters">
+                            <div class="filters-title">
+                                <p>品牌 Brand</p>
+                            </div>
+                            <hr>
+                            <form class="filters-selects">
+                                <div class="filters-selects-div">
+                                    <label :for="item" v-for="(item, index) in tagGroup.brand" :key="index">
+                                        <input name="brand" v-model="filterGroup.brand" :value="item" :id="item" type="radio">{{item}}
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">  
+                        <div class="filter-filters">
+                            <div class="filters-title">
+                                <p>類型 Types</p>
+                            </div>
+                            <hr>
+                            <form class="filters-selects">
+                                <div class="filters-selects-div">
+                                    <!-- <label :for="item" v-for="(item, index) in tagGroup.size" :key="index">
+                                        <input name="size" v-model="filterGroup.size" :value="item" :id="item" type="radio">{{item}}
+                                    </label> -->
+                                     <label>
+                                        <input name="size"  value="type1" type="radio">Type1
+                                    </label>
+                                     <label>
+                                        <input name="size"  value="type2" type="radio">Type2
+                                    </label>
+                                     <label>
+                                        <input name="size"  value="type3" type="radio">Type3
+                                    </label>
+                                     <label>
+                                        <input name="size"  value="type4" type="radio">Type4
+                                    </label>
+                                     <label>
+                                        <input name="size"  value="type5" type="radio">Type5
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="filter-filters">
+                            <div class="filters-title">
+                                <p>價格 Price</p>
+                            </div>
+                            <hr>
+                            <form class="filters-selects">
+                                <div class="filters-selects-div">
+                                    <label :for="item" v-for="(item, index) in tagGroup.price" :key="index">
+                                        <input name="price" v-model="filterGroup.price" :value="item" :id="item" type="radio">{{item}}
+                                    </label>
+                                </div>                     
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 filter-filtering">
+                    <button class="filter-remakeBtn" @click="clearFilter()">
+                        <img class="filter-remakeBtnImg" src="/img/remakeIcon.svg" alt="">
+                        重製選取條件
+                    </button>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+
             <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd'">
                 <div class="col-md-12 blog-filter-inner">
                     <a class="active">全部文章</a>
@@ -115,14 +188,14 @@
                     <a href="">其他</a>
                 </div>
             </div>
-            <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'">
+            <!-- <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'">
                 <div class="col-md-12 blog-filter-inner">
                     <a class="active">全部文章</a>
                     <a href="">價格</a>
                     <a href="">品牌</a>  
                     <a href="">類型</a> 
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="container container-productCount" style="position: relative;">
@@ -247,6 +320,8 @@
             getTag() {
                 axios.get('/admin/tag/get')
                     .then(res => {
+                            console.log(res)
+
                         Object.keys(res.data).forEach(elm => {
                             this.tagGroup[elm] = res.data[elm]
                         })

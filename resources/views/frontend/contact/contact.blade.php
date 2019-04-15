@@ -2,7 +2,11 @@
 
 @section('custom-script')
     <script type="text/javascript">
-         
+         $(document).ready(function(){
+            var getSearch = window.location.search.split('?')[1];
+            var searchName = getSearch.split('=')[1];
+            (searchName == 'location')? $('#search').val('reservation') : console.log('noLocation') ;
+         });
     </script>
 @endsection
 
