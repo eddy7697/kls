@@ -7,7 +7,7 @@
 @section('panel-content')
 <div class="row ch-product-form" id="tag-manager">
     <div class="col-md-12">
-        <tag-manager></tag-manager>
+        <tag-manager tagtype="{{$type}}"></tag-manager>
     </div>
 </div>
 @endsection

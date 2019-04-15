@@ -189,25 +189,47 @@ class ProductController extends Controller
                             $tag = $request->tag;
 
                             $q->where('productCategory', $request->category);
-
-                            if ($tag['brand'] !== null) {
-                                $q->where('command', 'like', '%'.$tag['brand'].'%');
+                            
+                            if (isset($tag['brand'])) {
+                                if ($tag['brand'] !== null) {
+                                    $q->where('command', 'like', '%'.$tag['brand'].'%');
+                                }
+                            }
+                            
+                            if (isset($tag['material'])) {
+                                if ($tag['material'] !== null) {
+                                    $q->where('command', 'like', '%'.$tag['material'].'%');
+                                }
                             }
 
-                            if ($tag['material'] !== null) {
-                                $q->where('command', 'like', '%'.$tag['material'].'%');
+                            if (isset($tag['price'])) {
+                                if ($tag['price'] !== null) {
+                                    $q->where('command', 'like', '%'.$tag['price'].'%');
+                                }
                             }
 
-                            if ($tag['price'] !== null) {
-                                $q->where('command', 'like', '%'.$tag['price'].'%');
+                            if (isset($tag['size'])) {
+                                if ($tag['size'] !== null) {
+                                    $q->where('command', 'like', '%'.$tag['size'].'%');
+                                }
                             }
 
-                            if ($tag['size'] !== null) {
-                                $q->where('command', 'like', '%'.$tag['size'].'%');
+                            if (isset($tag['trip'])) {
+                                if ($tag['trip'] !== null) {
+                                    $q->where('command', 'like', '%'.$tag['trip'].'%');
+                                }
                             }
 
-                            if ($tag['trip'] !== null) {
-                                $q->where('command', 'like', '%'.$tag['trip'].'%');
+                            if (isset($tag['type'])) {
+                                if ($tag['type'] !== null) {
+                                    $q->where('command', 'like', '%'.$tag['type'].'%');
+                                }
+                            }
+
+                            if (isset($tag['categories'])) {
+                                if ($tag['categories'] !== null) {
+                                    $q->where('command', 'like', '%'.$tag['categories'].'%');
+                                }
                             }
                         })
                         ->orderBy('price', $request->order)

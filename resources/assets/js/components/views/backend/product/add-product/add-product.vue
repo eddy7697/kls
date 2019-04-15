@@ -229,7 +229,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default" v-if="productContent.productCategory == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
+                <div class="panel panel-default" v-if="tagLoaded">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             商品標籤
@@ -446,27 +446,24 @@
         },
         data() {
             return {
-                tagGroup: {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
-                },
-                tagLabel: {
-                    brand: '品牌 Brand',
-                    size: '尺寸 Size',
-                    trip: '旅程 Trip',
-                    price: '價格 Price',
-                    material: '材質 Material'
-                },
+                tagGroup: {},
+                // tagLabel: {
+                //     brand: '品牌 Brand',
+                //     size: '尺寸 Size',
+                //     trip: '旅程 Trip',
+                //     price: '價格 Price',
+                //     material: '材質 Material'
+                // },
                 selectedTag: {
                     brand: null,
                     size: null,
                     trip: null,
+                    type: null,
                     price: null,
-                    material: null
+                    material: null,
+                    categories: null
                 },
+                tagLoaded: false,
                 isLoaded: false,
                 isEdit: false,
                 guid: $('#row-guid').val(),
@@ -530,6 +527,7 @@
                 config: {
                     minDate: moment()
                 },
+                selectedCate: null,
                 isDirty: false,
                 token: $('meta[name="csrf-token"]').attr('content'),
             }
@@ -546,7 +544,12 @@
 
             }
             this.getCategories()
-            this.getTag()
+
+            // if (this.productContent.productCategory !== 'null') {
+                
+            // }
+
+            // this.getTag()
 
             $('.loading-bar').fadeOut('100');
         },
@@ -554,6 +557,25 @@
             productContent: {
                 handler(productContent, oldVal) {
                     var self = this;
+
+                    if (productContent.productCategory != this.selectedCate) {
+                        if (productContent.productCategory !== 'null') {
+                            this.selectedCate = productContent.productCategory
+                            switch (productContent.productCategory) {
+                                case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                                    this.getTag('tag')
+                                    break;
+                                case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                                    this.getTag('bag_tag')
+                                    break;
+                                case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                                    this.getTag('fitting_tag')
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
 
                     this.isDirty = true;
                 },
@@ -639,6 +661,62 @@
             },
             isAllowToSave() {
                 return this.checkTitle && this.checkPrice && this.checkTime;
+            },
+            // tagGroup() {
+            //     switch (this.productContent.productCategory) {
+            //         case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+            //             return {
+            //                 brand: null,
+            //                 size: null,
+            //                 trip: null,
+            //                 price: null,
+            //                 material: null
+            //             }
+            //             break;
+            //         case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+            //             return {
+            //                 brand: null,
+            //                 type: null,
+            //                 price: null,
+            //             }
+            //             break;
+            //         case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+            //             return {
+            //                 categories: null
+            //             }
+            //             break;
+            //         default:
+            //             return {}
+            //             break;
+            //     }
+            // },
+            tagLabel() {
+                switch (this.productContent.productCategory) {
+                    case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                        return {
+                            brand: '品牌 Brand',
+                            size: '尺寸 Size',
+                            trip: '旅程 Trip',
+                            price: '價格 Price',
+                            material: '材質 Material'
+                        }
+                        break;
+                    case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                        return {
+                            brand: '品牌 Brand',
+                            type: '類型 Types',
+                            price: '價格 Price',
+                        }
+                        break;
+                    case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                        return {
+                            categories: '配件類別 Categories'
+                        }
+                        break;
+                    default:
+                        return {}
+                        break;
+                }
             }
         },
         methods: {
@@ -791,12 +869,22 @@
                         self.productContent.subProduct = res.data.data
                     })
             },
-            getTag() {
-                axios.get('/admin/tag/get')
+            getTag(type) {
+                $('.loading-bar').show()
+                this.tagLoaded = false
+                axios.get(`/admin/tag/get/${type}`)
                     .then(res => {
                         Object.keys(res.data).forEach(elm => {
                             this.tagGroup[elm] = res.data[elm]
                         })
+
+                        this.$nextTick(() => {
+                            this.tagLoaded = true
+                        })
+                    }).catch(err => {
+
+                    }).then(() => {
+                        $('.loading-bar').hide()
                     })
             },
             getProduct() {

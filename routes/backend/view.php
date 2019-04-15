@@ -115,7 +115,20 @@ Route::get('/product/edit/{guid}', function ($guid) {
 // tag-manager
 Route::get('/tag/management', function () {
     return view('backend.product.tagManager', [
-        'panelTitle' => '標籤管理',
+        'panelTitle' => '行李箱標籤管理',
+        'type' => 'tag'
+    ]);
+});
+Route::get('/tag/management/bag', function () {
+    return view('backend.product.tagManager', [
+        'panelTitle' => '品牌背包標籤管理',
+        'type' => 'bag_tag'
+    ]);
+});
+Route::get('/tag/management/fitting', function () {
+    return view('backend.product.tagManager', [
+        'panelTitle' => '旅行配件標籤管理',
+        'type' => 'fitting_tag'
     ]);
 });
 

@@ -688,21 +688,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var h = __webpack_require__(296).default;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -712,25 +697,61 @@ var h = __webpack_require__(296).default;
 
     props: ['type'],
     data: function data() {
+        var tagType = void 0,
+            tagGroup = new Object(),
+            filterGroup = new Object();
+
+        switch (this.type) {
+            case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                tagType = 'tag';
+                tagGroup = {
+                    brand: null,
+                    size: null,
+                    trip: null,
+                    price: null,
+                    material: null
+                };
+                filterGroup = {
+                    brand: null,
+                    size: null,
+                    trip: null,
+                    price: null,
+                    material: null
+                };
+                break;
+            case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                tagType = 'bag_tag';
+                tagGroup = {
+                    brand: null,
+                    type: null,
+                    price: null
+                };
+                filterGroup = {
+                    brand: null,
+                    type: null,
+                    price: null
+                };
+                break;
+            case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                tagType = 'fitting_tag';
+                tagGroup = {
+                    categories: null
+                };
+                filterGroup = {
+                    categories: null
+                };
+                break;
+            default:
+                break;
+        }
         return {
+            tagType: tagType,
             isLoading: false,
             isLoadingLearnMore: false,
             order: 'desc',
             isLoaded: false,
-            tagGroup: {
-                brand: null,
-                size: null,
-                trip: null,
-                price: null,
-                material: null
-            },
-            filterGroup: {
-                brand: null,
-                size: null,
-                trip: null,
-                price: null,
-                material: null
-            },
+            tagGroup: tagGroup,
+            filterGroup: filterGroup,
             pageData: {}
         };
     },
@@ -755,7 +776,7 @@ var h = __webpack_require__(296).default;
         getTag: function getTag() {
             var _this = this;
 
-            axios.get('/admin/tag/get').then(function (res) {
+            axios.get('/admin/tag/get/' + this.tagType).then(function (res) {
                 console.log(res);
 
                 Object.keys(res.data).forEach(function (elm) {
@@ -1310,7 +1331,56 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(7),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "filter-filters" }, [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "filters-selects" }, [
+                      _c(
+                        "div",
+                        { staticClass: "filters-selects-div" },
+                        _vm._l(_vm.tagGroup.type, function(item, index) {
+                          return _c(
+                            "label",
+                            { key: index, attrs: { for: item } },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filterGroup.type,
+                                    expression: "filterGroup.type"
+                                  }
+                                ],
+                                attrs: {
+                                  name: "type",
+                                  id: item,
+                                  type: "radio"
+                                },
+                                domProps: {
+                                  value: item,
+                                  checked: _vm._q(_vm.filterGroup.type, item)
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.$set(_vm.filterGroup, "type", item)
+                                  }
+                                }
+                              }),
+                              _vm._v(
+                                _vm._s(item) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
@@ -1399,7 +1469,49 @@ var render = function() {
               staticClass: "row filter",
               staticStyle: { "margin-top": "80px", "margin-bottom": "80px" }
             },
-            [_vm._m(9)]
+            [
+              _c(
+                "div",
+                { staticClass: "col-md-12 blog-filter-inner" },
+                [
+                  _c(
+                    "a",
+                    {
+                      class: { active: _vm.filterGroup.categories == null },
+                      on: {
+                        click: function($event) {
+                          _vm.filterGroup.categories = null
+                        }
+                      }
+                    },
+                    [_vm._v("全部文章")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.tagGroup.categories, function(item, index) {
+                    return _c(
+                      "a",
+                      {
+                        key: index,
+                        class: { active: _vm.filterGroup.categories == item },
+                        on: {
+                          click: function($event) {
+                            _vm.filterGroup.categories = item
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(item) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            ]
           )
         : _vm._e()
     ]),
@@ -1455,7 +1567,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm.type == "R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V"
+        _vm.type !== "yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd"
           ? _c("button", { staticClass: "collapseBtn" }, [
               _vm._v("\n            收合\n            "),
               _c("img", { attrs: { src: "/img/collapseIcon.png", alt: "" } })
@@ -1664,53 +1776,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { staticClass: "filter-filters" }, [
-        _c("div", { staticClass: "filters-title" }, [
-          _c("p", [_vm._v("類型 Types")])
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("form", { staticClass: "filters-selects" }, [
-          _c("div", { staticClass: "filters-selects-div" }, [
-            _c("label", [
-              _c("input", {
-                attrs: { name: "size", value: "type1", type: "radio" }
-              }),
-              _vm._v("Type1\n                                ")
-            ]),
-            _vm._v(" "),
-            _c("label", [
-              _c("input", {
-                attrs: { name: "size", value: "type2", type: "radio" }
-              }),
-              _vm._v("Type2\n                                ")
-            ]),
-            _vm._v(" "),
-            _c("label", [
-              _c("input", {
-                attrs: { name: "size", value: "type3", type: "radio" }
-              }),
-              _vm._v("Type3\n                                ")
-            ]),
-            _vm._v(" "),
-            _c("label", [
-              _c("input", {
-                attrs: { name: "size", value: "type4", type: "radio" }
-              }),
-              _vm._v("Type4\n                                ")
-            ]),
-            _vm._v(" "),
-            _c("label", [
-              _c("input", {
-                attrs: { name: "size", value: "type5", type: "radio" }
-              }),
-              _vm._v("Type5\n                                ")
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "filters-title" }, [
+      _c("p", [_vm._v("類型 Types")])
     ])
   },
   function() {
@@ -1719,26 +1786,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filters-title" }, [
       _c("p", [_vm._v("價格 Price")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 blog-filter-inner" }, [
-      _c("a", { staticClass: "active" }, [_vm._v("全部文章")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("束帶")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("行李秤")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("收納包")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("行李箱保護套")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("護照包")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("其他")])
     ])
   }
 ]

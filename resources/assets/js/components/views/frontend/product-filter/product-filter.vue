@@ -130,25 +130,10 @@
                             <hr>
                             <form class="filters-selects">
                                 <div class="filters-selects-div">
-                                    <!-- <label :for="item" v-for="(item, index) in tagGroup.size" :key="index">
-                                        <input name="size" v-model="filterGroup.size" :value="item" :id="item" type="radio">{{item}}
-                                    </label> -->
-                                     <label>
-                                        <input name="size"  value="type1" type="radio">Type1
+                                    <label :for="item" v-for="(item, index) in tagGroup.type" :key="index">
+                                        <input name="type" v-model="filterGroup.type" :value="item" :id="item" type="radio">{{item}}
                                     </label>
-                                     <label>
-                                        <input name="size"  value="type2" type="radio">Type2
-                                    </label>
-                                     <label>
-                                        <input name="size"  value="type3" type="radio">Type3
-                                    </label>
-                                     <label>
-                                        <input name="size"  value="type4" type="radio">Type4
-                                    </label>
-                                     <label>
-                                        <input name="size"  value="type5" type="radio">Type5
-                                    </label>
-                                </div>
+                                </div>                     
                             </form>
                         </div>
                     </div>
@@ -179,13 +164,13 @@
 
             <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd'">
                 <div class="col-md-12 blog-filter-inner">
-                    <a class="active">全部文章</a>
-                    <a href="">束帶</a>
-                    <a href="">行李秤</a>  
-                    <a href="">收納包</a>  
-                    <a href="">行李箱保護套</a>
-                    <a href="">護照包</a>
-                    <a href="">其他</a>
+                    <a @click="filterGroup.categories = null" :class="{active: filterGroup.categories == null}">全部文章</a>
+                    <a v-for="(item, index) in tagGroup.categories" 
+                        :key="index"
+                        @click="filterGroup.categories = item"
+                        :class="{active: filterGroup.categories == item}">
+                        {{item}}
+                    </a>
                 </div>
             </div>
             <!-- <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'">
@@ -218,7 +203,7 @@
                     </div>
                 </div>
             </div>
-            <button class="collapseBtn" v-if="type == 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V'">
+            <button class="collapseBtn" v-if="type !== 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd'">
                 收合
                 <img src="/img/collapseIcon.png" alt="">
             </button>
@@ -280,25 +265,61 @@
         },
         props: ['type'],
         data () {
+            let tagType,
+                tagGroup = new Object,
+                filterGroup = new Object
+
+            switch (this.type) {
+                case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                    tagType = 'tag'
+                    tagGroup = {
+                        brand: null,
+                        size: null,
+                        trip: null,
+                        price: null,
+                        material: null
+                    }
+                    filterGroup = {
+                        brand: null,
+                        size: null,
+                        trip: null,
+                        price: null,
+                        material: null
+                    }
+                    break;
+                case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                    tagType = 'bag_tag'
+                    tagGroup = {
+                        brand: null,
+                        type: null,
+                        price: null,
+                    }
+                    filterGroup = {
+                        brand: null,
+                        type: null,
+                        price: null,
+                    }
+                    break;
+                case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                    tagType = 'fitting_tag'
+                    tagGroup = {
+                        categories: null
+                    }
+                    filterGroup = {
+                        categories: null
+                    }
+                    break;
+                default:
+                    break;
+            }
             return {
+                tagType: tagType,
                 isLoading: false,
                 isLoadingLearnMore: false,
                 order: 'desc',
                 isLoaded: false,
-                tagGroup: {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
-                },
-                filterGroup: {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
-                },
+                tagGroup: tagGroup,
+                filterGroup: filterGroup,
                 pageData: {}
             }
         },
@@ -318,9 +339,9 @@
         },
         methods: {
             getTag() {
-                axios.get('/admin/tag/get')
+                axios.get(`/admin/tag/get/${this.tagType}`)
                     .then(res => {
-                            console.log(res)
+                        console.log(res)
 
                         Object.keys(res.data).forEach(elm => {
                             this.tagGroup[elm] = res.data[elm]

@@ -633,12 +633,12 @@ class ProductController extends Controller
     {
         try {
             if ( CustomField::where('type', 'tag')->exists()) {
-                return CustomField::where('type', 'tag')->update([
+                return CustomField::where('type', $request->type)->update([
                     'content' => $request->data
                 ]);
             } else {
                 return CustomField::create([
-                    'type' => 'tag',
+                    'type' => $request->type,
                     'content' => $request->data
                 ]);
             }
@@ -651,8 +651,8 @@ class ProductController extends Controller
     /**
      * 取得標籤
      */
-    public function getTag()
+    public function getTag($type)
     {
-        return CustomField::where('type', 'tag')->first()['content'];
+        return CustomField::where('type', $type)->first()['content'];
     }
 }
