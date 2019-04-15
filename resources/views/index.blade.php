@@ -372,10 +372,8 @@
                                         </div>
                                     </div>
                                     <div class="feedback-img" style="background-image: url('{{$item->customField4}}')">
-                                        {{-- <img src="{{$item->customField4}}" alt=""> --}}
                                     </div>
                                     <div class="feedback-Inner">{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $item->content), 0, 150, "...")}}</div>
-                                    {{-- {!!$item->content!!} --}}
                                     <div class="choose_btn">
                                         <a href="/witness">
                                             <button class="goBuy">
