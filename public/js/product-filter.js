@@ -307,7 +307,7 @@ exports = module.exports = __webpack_require__(48)(false);
 
 
 // module
-exports.push([module.i, "\n.loading-mask {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: rgba(255, 255, 255, 0.3);\n  z-index: 100;\n}\n.loading-mask .loading-spinner {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    width: 50px;\n}\n.learnmore {\n  position: relative;\n}\n.learnmore.loading::before {\n    position: absolute;\n    width: 20px;\n    height: 20px;\n    left: -25px;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    background-image: url(\"/img/loading-spinner.svg\");\n    background-size: cover;\n    content: \"\";\n}\n.searchBar {\n  padding: 5px 10px;\n  width: 175px;\n  margin: 0 auto;\n  border: solid 1px #bdbdbd;\n  color: #bdbdbd;\n  border-radius: 12px;\n}\n.searchBar .cearch-icon input {\n    outline: none;\n}\n", ""]);
+exports.push([module.i, "\n.loading-mask {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: rgba(255, 255, 255, 0.3);\n  z-index: 100;\n}\n.loading-mask .loading-spinner {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    width: 50px;\n}\n.learnmore {\n  position: relative;\n}\n.learnmore.loading::before {\n    position: absolute;\n    width: 20px;\n    height: 20px;\n    left: -25px;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    background-image: url(\"/img/loading-spinner.svg\");\n    background-size: cover;\n    content: \"\";\n}\n.searchBar {\n  padding: 5px 10px;\n  width: 175px;\n  margin: 0 auto;\n  border: solid 1px #bdbdbd;\n  color: #bdbdbd;\n  border-radius: 12px;\n  font-family: Microsoft JhengHei;\n}\n.searchBar .cearch-icon input {\n    font-family: Microsoft JhengHei;\n    color: #333;\n    outline: none;\n}\n", ""]);
 
 // exports
 
@@ -319,6 +319,8 @@ exports.push([module.i, "\n.loading-mask {\n  position: fixed;\n  top: 0;\n  lef
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -635,6 +637,8 @@ var h = __webpack_require__(296).default;
                 break;
         }
         return {
+            keyword: null,
+            isSearch: false,
             tagType: tagType,
             isLoading: false,
             isLoadingLearnMore: false,
@@ -679,13 +683,25 @@ var h = __webpack_require__(296).default;
         getData: function getData() {
             var _this2 = this;
 
-            var vo = {
-                tag: this.filterGroup,
-                category: this.type,
-                order: this.order
-            };
+            var vo = new Object();
+
+            if (this.isSearch) {
+                vo = {
+                    tag: this.filterGroup,
+                    category: this.type,
+                    order: this.order,
+                    keyword: this.keyword
+                };
+            } else {
+                vo = {
+                    tag: this.filterGroup,
+                    category: this.type,
+                    order: this.order
+                };
+            }
 
             this.isLoading = true;
+
             axios.post('/products/tag', vo).then(function (res) {
                 _this2.pageData = res.data;
                 _this2.isLoaded = true;
@@ -737,13 +753,32 @@ var h = __webpack_require__(296).default;
             });
         },
         clearFilter: function clearFilter() {
-            this.filterGroup = {
-                brand: null,
-                size: null,
-                trip: null,
-                price: null,
-                material: null
-            };
+            this.isSearch = false;
+            switch (this.type) {
+                case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                    this.filterGroup = {
+                        brand: null,
+                        size: null,
+                        trip: null,
+                        price: null,
+                        material: null
+                    };
+                    break;
+                case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                    this.filterGroup = {
+                        brand: null,
+                        type: null,
+                        price: null
+                    };
+                    break;
+                case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                    this.filterGroup = {
+                        categories: null
+                    };
+                    break;
+                default:
+                    break;
+            }
         },
         addFavorite: function (_addFavorite) {
             function addFavorite(_x2) {
@@ -827,6 +862,10 @@ var h = __webpack_require__(296).default;
                 }, 100);
             });
         },
+        searchProduct: function searchProduct(e) {
+            this.isSearch = true;
+            this.getData();
+        },
         numberFormat: function numberFormat(n, c, d, t) {
             return h.number_format(n, c, d, t);
         },
@@ -863,7 +902,72 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "container filter-area" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "row filter" }, [
+        _c("div", { staticClass: "col-md-12 filter-title" }, [
+          _c("h1", { attrs: { id: "thisTitle" } }, [_vm._v("品牌行李箱")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "filter-title-hr" }),
+          _vm._v(" "),
+          _c(
+            "p",
+            {
+              staticClass: "filter-subTitle",
+              staticStyle: { "margin-top": "50px" }
+            },
+            [_vm._v("這裡總有一款屬於你的冒險")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "searchBar" }, [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.searchProduct($event)
+                  }
+                }
+              },
+              [
+                _c(
+                  "i",
+                  {
+                    staticClass: "fa fa-search lg cearch-icon",
+                    attrs: { "aria-hidden": "true" }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.keyword,
+                          expression: "keyword"
+                        }
+                      ],
+                      staticStyle: {
+                        "padding-left": "10px",
+                        border: "none",
+                        width: "90%"
+                      },
+                      attrs: { type: "text", placeholder: "輸入要尋找的商品" },
+                      domProps: { value: _vm.keyword },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.keyword = $event.target.value
+                        }
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _vm.type == "R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V"
         ? _c(
@@ -876,7 +980,7 @@ var render = function() {
               _c("div", { staticClass: "col-md-12 filter-filtering" }, [
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(1),
+                    _vm._m(0),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -927,7 +1031,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(2),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -978,7 +1082,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(3),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -1031,7 +1135,7 @@ var render = function() {
               _c("div", { staticClass: "col-md-12 filter-filtering" }, [
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(4),
+                    _vm._m(3),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -1082,7 +1186,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(5),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -1172,7 +1276,7 @@ var render = function() {
               _c("div", { staticClass: "col-md-12 filter-filtering" }, [
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(6),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -1223,7 +1327,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(7),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -1274,7 +1378,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "filter-filters" }, [
-                    _vm._m(8),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
@@ -1573,47 +1677,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row filter" }, [
-      _c("div", { staticClass: "col-md-12 filter-title" }, [
-        _c("h1", { attrs: { id: "thisTitle" } }, [_vm._v("品牌行李箱")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "filter-title-hr" }),
-        _vm._v(" "),
-        _c(
-          "p",
-          {
-            staticClass: "filter-subTitle",
-            staticStyle: { "margin-top": "50px" }
-          },
-          [_vm._v("這裡總有一款屬於你的冒險")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "searchBar" }, [
-          _c(
-            "i",
-            {
-              staticClass: "fa fa-search lg cearch-icon",
-              attrs: { "aria-hidden": "true" }
-            },
-            [
-              _c("input", {
-                staticStyle: {
-                  "padding-left": "10px",
-                  border: "none",
-                  width: "90%"
-                },
-                attrs: { type: "text", placeholder: "輸入要尋找的商品" }
-              })
-            ]
-          )
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

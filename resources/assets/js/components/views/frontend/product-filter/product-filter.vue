@@ -11,9 +11,11 @@
                     <div class="filter-title-hr"></div>
                     <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                     <div class="searchBar">
-                        <i class="fa fa-search lg cearch-icon" aria-hidden="true">
-                            <input style="padding-left: 10px; border: none; width: 90%;" type="text" placeholder="輸入要尋找的商品">
-                        </i>
+                        <form v-on:submit.prevent="searchProduct">
+                            <i class="fa fa-search lg cearch-icon" aria-hidden="true">
+                                <input style="padding-left: 10px; border: none; width: 90%;" v-model="keyword" type="text" placeholder="輸入要尋找的商品">
+                            </i>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -313,6 +315,8 @@
                     break;
             }
             return {
+                keyword: null,
+                isSearch: false,
                 tagType: tagType,
                 isLoading: false,
                 isLoadingLearnMore: false,
@@ -351,13 +355,25 @@
                     })
             },
             getData() {
-                let vo = {
-                    tag: this.filterGroup,
-                    category: this.type,
-                    order: this.order
+                let vo = new Object
+
+                if (this.isSearch) {
+                    vo = {
+                        tag: this.filterGroup,
+                        category: this.type,
+                        order: this.order,
+                        keyword: this.keyword
+                    }
+                } else {
+                    vo = {
+                        tag: this.filterGroup,
+                        category: this.type,
+                        order: this.order,
+                    }
                 }
 
                 this.isLoading = true
+
                 axios.post('/products/tag', vo)
                     .then(res => {
                         this.pageData = res.data
@@ -403,12 +419,31 @@
                     })
             },
             clearFilter() {
-                this.filterGroup = {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
+                this.isSearch = false
+                switch (this.type) {
+                    case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                        this.filterGroup = {
+                            brand: null,
+                            size: null,
+                            trip: null,
+                            price: null,
+                            material: null
+                        }
+                        break;
+                    case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                        this.filterGroup = {
+                            brand: null,
+                            type: null,
+                            price: null,
+                        }
+                        break;
+                    case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                        this.filterGroup = {
+                            categories: null
+                        }
+                        break;
+                    default:
+                        break;
                 }
             },
             addFavorite(guid){
@@ -484,6 +519,10 @@
                    
                 });
             },
+            searchProduct(e) {
+                this.isSearch = true
+                this.getData()
+            },
             numberFormat(n, c, d, t) {
                 return h.number_format(n, c, d, t)
             },
@@ -542,8 +581,12 @@
     border: solid 1px #bdbdbd;
     color: #bdbdbd;
     border-radius: 12px;
+    font-family: Microsoft JhengHei;
+
     .cearch-icon{
         input{
+            font-family: Microsoft JhengHei;
+            color: #333;
             outline: none;
         }
     }

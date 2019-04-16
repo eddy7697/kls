@@ -189,6 +189,10 @@ class ProductController extends Controller
                             $tag = $request->tag;
 
                             $q->where('productCategory', $request->category);
+
+                            if (isset($request->keyword)) {
+                                $q->where('productTitle', 'like', '%'.$request->keyword.'%');
+                            }
                             
                             if (isset($tag['brand'])) {
                                 if ($tag['brand'] !== null) {
