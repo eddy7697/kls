@@ -71,6 +71,7 @@
             </div>
         </div>
 
+        <!------------------------feedback------------------------>
         <div class="feedback">
             <div class="sw_mask mask_left">
                 <img class="product_arrow feedback-left" src="/img/arrow-left.png" alt="">
@@ -78,29 +79,43 @@
             <div class="sw_mask mask_right">
                 <img class="product_arrow feedback-right" src="/img/arrow-right.png" alt="">
             </div>
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-12 feedback-Index">
                         <div class="swiper-wrapper">
-                            @for ($i = 0; $i < 3; $i++)
+                            @foreach (PostView::witness() as $item)
+                            <div class="test" style="display: none;">{{$item}}</div>
                                 <div class="swiper-slide">
                                     <div class="feedbackPost">
-                                        <img class="feedback-Icon" src="/img/feedbackIcon.svg" alt="">
-                                        <div class="feedback-Inner">
-                                            <p>
-                                                異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘的耐心回答任何問題及推薦，謝謝闆闆願意順路幫我送到家，讓我緊急帶出國！這次是買27吋的異形箱！d牌的形李箱讓我離不開這品牌了！
-                                            </p>
+                                        <div class="feedbackPostInfo">
+                                            @if ($item->customField6 == 'male')
+                                                <img class="feedback-Icon" src="/img/icon/male.png" alt="">
+                                            @else
+                                                <img class="feedback-Icon" src="/img/icon/female.png" alt="">
+                                            @endif
+                                            <div class="feedback-Author">
+                                                <h4>
+                                                    {{$item->locale}}
+                                                </h4>
+                                                <p>旅遊地點:日本，購買商品:《異形鋁框箱》行李箱-27吋 霧面黑色，到店時間: 2019/04/14</p>
+                                            </div>
                                         </div>
-                                        <div class="feedback-Author">
-                                            <p>
-                                                卜一一
-                                            </p>
+                                        <div class="feedback-img" style="background-image: url('{{$item->customField4}}')">
+                                        </div>
+                                        <div class="feedback-Inner">{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $item->content), 0, 150, "...")}}</div>
+                                        <div class="choose_btn">
+                                            <a href="/witness">
+                                                <button class="goBuy">
+                                                    閱讀更多                  
+                                                </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            @endfor    
+                            @endforeach   
                         </div>
                     </div>
+                    <div class="feedback-pagination swiper-pagination"></div>
                 </div>
             </div>
         </div>

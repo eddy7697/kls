@@ -70,9 +70,11 @@
     import 'element-ui/lib/theme-chalk/index.css';
     import lang from 'element-ui/lib/locale/lang/zh-TW'
     import locale from 'element-ui/lib/locale'
+
     Vue.use(ElementUI);
     locale.use(lang)
     $('.loading-bar').fadeOut('100');
+
     export default {
         data() {
             let isSubPage = window.location.pathname;
@@ -86,7 +88,6 @@
         },
         created: function () {
             this.getCart(false);
-
             window.updateCount = this.getCart
             window.addSigleProduct = this.addSigleProduct
             window.addFavorite = this.addFavorite
@@ -94,7 +95,7 @@
         },
         methods: {
             getCart: function (status) {
-                var self = this;
+                let self = this;
 
                 $.ajax({
                     url: '/cart/get',
@@ -206,10 +207,11 @@
             addSigle(guid) {
                 let self = this;
                 axios.post('/checkAuth')
-                    .then(res => {                        
+                    .then(res => {          
                         if (res.data.auth) {
                             self.addToCart(guid)
-                            this.$refs.eventForm.initForm(res.data)
+                            updateCount()
+                            // self.$refs.eventForm.initForm(res.data)
                         } else {
                             alert('請先登入!')
                             window.location.href = '/login'
@@ -217,14 +219,15 @@
                     })
                     
             },
-            addToCart: guid => {
+            addToCart: function(guid) {
+                let self = this;
                 axios.post(`/cart/add/single/${guid}`
                     ).then(res => {
-                        this.$message.success('成功加入購物車！')
+                        self.$message.success('成功加入購物車！')
                     }).catch(err => {
-                        this.$message.error('加入購物車失敗...')
+                        self.$message.error('加入購物車失敗...')
                     }).then(arg => {
-                        this.getCart()
+                        self.getCart()
                     })
             },
             thumb: function (url) {
@@ -246,15 +249,17 @@
                 this.displayPanel = false;
             },
             addFavorite(guid) {
+                let self = this;
                 axios.get(`/favorite/add/${guid}`)
                     .then(res => {
-                        this.$message.success('新增至願望清單成功')
+                        self.$message.success('新增至願望清單成功')
                     })
             },
             deleteFavorite(guid, callback) {
+                let self = this;
                 axios.get(`/favorite/delete/${guid}`)
                     .then(res => {
-                        this.$message.success('刪除項目成功')
+                        self.$message.success('刪除項目成功')
                         callback()
                     })
             },

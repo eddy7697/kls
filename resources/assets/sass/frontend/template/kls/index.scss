@@ -2814,6 +2814,15 @@
       display: none;
     }
   }
+  #about-section{
+    .feedback{
+      .feedback-pagination{
+        .swiper-pagination-bullet{
+          background: $color-blue;
+        }
+      }
+    }
+  }
   .blog-content{
     .blog-content-info{
       margin: 0 30px;

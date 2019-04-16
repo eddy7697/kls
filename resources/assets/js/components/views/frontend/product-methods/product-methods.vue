@@ -68,6 +68,7 @@
         Dialog,
         InputNumber,
         Radio,
+        Message,
         RadioGroup,
     } from 'element-ui';
     import 'element-ui/lib/theme-chalk/index.css';
@@ -78,6 +79,7 @@
     Vue.use(InputNumber);
     Vue.use(Radio);
     Vue.use(RadioGroup);
+    Vue.use(Message);
     locale.use(lang)
 
     export default {
@@ -165,7 +167,6 @@
             },
             addSimple() {
                 let self = this
-
                 axios.post(`/cart/add/${this.guid}`, {
                     quantity: self.qty
                 }).then(res => {
@@ -186,10 +187,9 @@
                     qty: this.subQuantity,
                     subSerialNumber: this.choosedSubItem.subSerialNumber
                 }
-
+                console.log(self.$message)
                 axios.post(`/cart/add/sub/${this.guid}`, choosed)
                     .then(res => {
-                        console.log(res.data)
                         self.$message.success('成功加入購物車！')
                     }).catch(err => {
                         self.$message.error('加入購物車失敗...')

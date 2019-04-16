@@ -135,8 +135,11 @@
                  axios.get('/favorite/get')
                     .then(function(res){
                         var wishCount = res.data.length;
+                        console.log(wishCount)
                         if(wishCount){
                             $('.wish-icon .count').text(wishCount);
+                        } else {
+                            $('.wish-icon .count').text('');
                         }
                     });
             },

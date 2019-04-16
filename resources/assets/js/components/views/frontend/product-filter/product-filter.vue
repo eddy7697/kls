@@ -341,8 +341,6 @@
             getTag() {
                 axios.get(`/admin/tag/get/${this.tagType}`)
                     .then(res => {
-                        console.log(res)
-
                         Object.keys(res.data).forEach(elm => {
                             this.tagGroup[elm] = res.data[elm]
                         })
@@ -414,19 +412,21 @@
                 }
             },
             addFavorite(guid){
-                let target = event.target
-                let tagName = target.tagName
-                this.getFavorite(tagName,target)
-                addFavorite(guid)
+                let target = event.target;
+                let tagName = target.tagName;
+                addFavorite(guid);
+                this.getFavorite(tagName,target);
             },
             getFavorite(tagName,target){
                 let self = this;
                 axios.get('/favorite/get')
                     .then(function(res){
-                        var wishCount = res.data.length
+                        var wishCount = res.data.length;
                         self.isFavorited(res.data)
                         if(wishCount){
                             $('.wish-icon .count').text(wishCount)
+                        } else {
+                            $('.wish-icon .count').text('')
                         }
                         if(tagName == 'IMG'){
                             $(target).parent('.productHeart').addClass('productHeart-active')

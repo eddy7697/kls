@@ -5,8 +5,12 @@
         function quickView(path) {
             window.location.href = '/product-deatil/' + path
         };   
-        var x = JSON.parse($('.test').html());
+        $('.test').each(function(){
+            var _html = $(this).html();
+            var x = JSON.parse(_html);
             console.log(x);
+        })
+        
         function renderPruductDetail(title, type){
             var jsonContent = JSON.parse($('#json-content').val());
             console.log(jsonContent);

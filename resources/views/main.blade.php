@@ -102,7 +102,6 @@
                         </a>
                     </li>
                     <li>
-                        
                         <a href="{{route('location')}}">
                             店鋪資訊
                         </a>
@@ -355,6 +354,11 @@
                                                                 諮詢專區
                                                             </a>
                                                         </li>
+                                                        <li>
+                                                            <a href="{{url('/user')}}">
+                                                                會員專區
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </li>
                                                 <li class="col-md-4 mega-menu-img">
@@ -475,6 +479,11 @@
                                                             <li>
                                                                 <a href="{{route('contact')}}">
                                                                     諮詢專區
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{{url('/user')}}">
+                                                                    會員專區
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -687,7 +696,7 @@
 
                 get_H();
                 scrollMenu();
-                getWishListLeng();
+                wishListCount();
                 index_product_swiper();
                 fakeArrow();
                 ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
@@ -886,7 +895,7 @@
                     }
                 });
 
-                function getWishListLeng(){
+                function wishListCount(){
                     axios.get('/favorite/get')
                         .then(function(res){
                             var wishCount = res.data.length;

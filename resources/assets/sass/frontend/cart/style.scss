@@ -31,12 +31,15 @@ button.cart {
         tr {
 
             td {
-
+                padding: 5px;
                 .cart-item-img {
                     width: 60px !important;
                     height: auto !important;
+                    cursor: auto;
+                    &:hover{
+                        border-bottom: solid 3px transparent !important; 
+                    }
                 }
-                padding: 5px;
             }
         }
     }

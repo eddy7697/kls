@@ -667,8 +667,6 @@ var h = __webpack_require__(296).default;
             var _this = this;
 
             axios.get('/admin/tag/get/' + this.tagType).then(function (res) {
-                console.log(res);
-
                 Object.keys(res.data).forEach(function (elm) {
                     _this.tagGroup[elm] = res.data[elm];
                 });
@@ -760,8 +758,8 @@ var h = __webpack_require__(296).default;
         }(function (guid) {
             var target = event.target;
             var tagName = target.tagName;
-            this.getFavorite(tagName, target);
             addFavorite(guid);
+            this.getFavorite(tagName, target);
         }),
         getFavorite: function getFavorite(tagName, target) {
             var self = this;
@@ -770,6 +768,8 @@ var h = __webpack_require__(296).default;
                 self.isFavorited(res.data);
                 if (wishCount) {
                     $('.wish-icon .count').text(wishCount);
+                } else {
+                    $('.wish-icon .count').text('');
                 }
                 if (tagName == 'IMG') {
                     $(target).parent('.productHeart').addClass('productHeart-active');

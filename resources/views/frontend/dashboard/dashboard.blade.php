@@ -1,8 +1,17 @@
 @extends('main')
 
+@section('custom-script')
+    <script>
+        $(document).ready(function(){
+            var topH = $('.sub-page-header').height();
+        $('.mg-dashboard').css('margin-top',( topH + 100));
+        });
+    </script>
+@endsection
+
 @section('content')
 
-    <div class="container mg-dashboard">
+    <div class="container mg-dashboard ">
         <div class="row">
             <div class="col-md-3">
                 <div class="center-hr">

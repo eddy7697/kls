@@ -127,8 +127,7 @@
                                     發票抬頭
                                 </td>
                                 <td>
-                                    <input class="invoice-title" type="text" id="invoice-title" placeholder="" v-model="customerParametorForShipping.ReceiverAddress" required>
-                                    <!-- <strong v-if="!formValidation.ReceiverAddres" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong> -->
+                                    <input class="invoice-title" type="text" id="invoice-title" placeholder="" v-model="customerParametorForShipping.invoiceTitle" required>
                                 </td>
                             </tr>
                             
@@ -137,8 +136,7 @@
                                     統一編號
                                 </td>
                                 <td>
-                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" v-model="customerParametorForShipping.ReceiverAddress" required>
-                                    <!-- <strong v-if="!formValidation.ReceiverAddres" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong> -->
+                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='/^\d{8}$/' v-model="customerParametorForShipping.numberGUI" required>
                                 </td>
                             </tr>
 
@@ -212,7 +210,7 @@
                     remarks: '',
                     newMemberPassword: '',
                     receipt: '',
-                    taxId: '',
+                    taxId: ''
                 },
                 customerParametorForShipping: {
                     ReceiverName: '',
@@ -226,6 +224,8 @@
                     newMemberPassword: '',
                     receipt: '',
                     taxId: '',
+                    invoiceTitle: '',
+                    numberGUI: ''
                 },
                 formValidation: {
                     ReceiverName: true,
@@ -329,8 +329,6 @@
                 var shippingMethods = results[1];
                 var cartContent = results[2];
                 var cartTemp = results[3];
-                self.ifThreeWay();
-
                 // 確認登入狀態
                 self.isAuth = authStatus.auth;
 
@@ -1143,21 +1141,15 @@
             showMessage: function (type, string) {
                 toastr[type](string);
             },
-            ifThreeWay: function(){
-                let self = this;
-                $("input[name='invoice']").focus( e =>{
-                    let choseVal = $(e.target).val();
-                    choseVal == 'threeWay' ? self.showThreeWayInput() : self.hideThreeWayInput();                    
-                })
+            checkGUI: () => {
+                let regex = /^\d{8}$/;
+                let GUI = $('#GUI-number').val();
+                if(!GUI){
+                    alert('請輸入統一編號')
+                } else{
+                    (regex.test(GUI))? '' : alert('統一編號錯誤');
+                }
             },
-            showThreeWayInput: function(){
-                $('.GUI-number-td').fadeIn();
-                $('.invoice-title-td').fadeIn();
-            },
-            hideThreeWayInput: function(){
-                $('.GUI-number-td').fadeOut();
-                $('.invoice-title-td').fadeOut();
-            }
         }
     }
 </script>
