@@ -375,7 +375,7 @@
                 }
 
                 this.isLoading = true
-                
+
                 axios.post('/products/tag', vo)
                     .then(res => {
                         this.pageData = res.data
@@ -581,8 +581,12 @@
     border: solid 1px #bdbdbd;
     color: #bdbdbd;
     border-radius: 12px;
+    font-family: Microsoft JhengHei;
+
     .cearch-icon{
         input{
+            font-family: Microsoft JhengHei;
+            color: #333;
             outline: none;
         }
     }
