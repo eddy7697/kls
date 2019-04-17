@@ -9,6 +9,9 @@
 
 @section('custom-style')
     <style media="screen">
+        .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(5) a{
+            opacity: 1;
+        }
         .mega-menu .contact .mega-menu-list ul li:nth-child(1) a{
             border: solid 1px #B3B3B3 !important;
         }

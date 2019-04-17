@@ -1,6 +1,11 @@
 .mg-business {
     margin: 0 auto 30px auto;
     padding-top: 20px;
+    #cart-page {
+        h3{
+            padding: 250px 0px;
+        }
+    }
     .cart-list {
         width: 100%;
         // table-layout: fixed;
@@ -83,6 +88,10 @@
 
                 &.active {
                     opacity: 1;
+                    color: #8cc63f;
+                    a{
+                        color: #8cc63f;
+                    }
                 }
                 
                 img{
@@ -278,12 +287,29 @@
         font-size: 1.5rem;
         padding: 4rem 0;
     }
+    .mg-business{
+        #cart-page {
+            h3{
+                padding: 1rem 0px;
+            }
+        }
+    }
 
+    .cart-banner-inner-text{
+        text-align: center;
+    }
+    
+    .cart-banner-inner-text h1{
+        font-size: 3.5rem;
+    }
+    .cart-banner-inner-text p{
+        font-size: 1.7rem;
+    }
 }
 
 @media screen and (max-width: 680px) {
     .mg-business .checkout-thumbnail {
-        font-size: 1.5rem;
+        font-size: 2rem;
         padding: 4rem 0;
         ul {
             li {

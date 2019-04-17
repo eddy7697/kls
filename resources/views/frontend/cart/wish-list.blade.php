@@ -26,7 +26,7 @@
                 {{-- @if (count($cart))
                     <wish-list></wish-list>
                 @else
-                    <h3 class="center" style="padding: 250px 0;">購物車裡面沒有商品，趕快去逛逛吧~</h3>
+                    <h3 class="center">購物車裡面沒有商品，趕快去逛逛吧~</h3>
                 @endif --}}
             </div>
         </div>

@@ -19,7 +19,7 @@
                <ul>
                     <li>
                         <a href="/cart">
-                            <img src="/img/buyIcon/buyList-01.png" alt="">
+                            <img src="/img/buyIcon/buyList-notyet-01.png" alt="">
                             <span class="caret"></span>
                             購物清單
                         </a>

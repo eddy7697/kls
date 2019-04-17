@@ -502,7 +502,8 @@
                 }
             },
             menuStyle(val) {
-                $(`.mega-menu .product .mega-menu-list ul li:nth-child(${val}) a`).css('border','solid 1px #B3B3B3')
+                $('.sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(2) a').css('opacity','1');
+                $(`.mega-menu .product .mega-menu-list ul li:nth-child(${val}) a`).css('border','solid 1px #B3B3B3');
             },
             scrollMore(){
                 let timer;

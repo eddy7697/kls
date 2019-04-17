@@ -2,8 +2,8 @@
     <div>
     
         <div class="shopping-Cart-Icon" @click="getCart(true)">
-            <img v-if="isIndex()" src="/img/navbar-cart-01.svg" alt="">
-            <img v-else src="/img/cartIcon-01.png" alt="">
+            <img class="icon_white" src="/img/cartIcon-01.png" alt="">
+            <img class="icon_yellow" src="/img/cartIconYellow-01.png" alt="">
             <span class="count" v-if="cartContent.length && isIndex()">{{cartContent.length}}</span> 
             <span class="count" style="bottom: -5px; right: 0px;" v-else-if="cartContent.length">{{cartContent.length}}</span> 
         </div>
@@ -210,7 +210,7 @@
                     .then(res => {          
                         if (res.data.auth) {
                             self.addToCart(guid)
-                            updateCount()
+                            window.updateCount();
                             // self.$refs.eventForm.initForm(res.data)
                         } else {
                             alert('請先登入!')

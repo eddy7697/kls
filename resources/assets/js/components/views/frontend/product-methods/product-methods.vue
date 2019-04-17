@@ -187,7 +187,6 @@
                     qty: this.subQuantity,
                     subSerialNumber: this.choosedSubItem.subSerialNumber
                 }
-                console.log(self.$message)
                 axios.post(`/cart/add/sub/${this.guid}`, choosed)
                     .then(res => {
                         self.$message.success('成功加入購物車！')

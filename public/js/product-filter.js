@@ -844,6 +844,7 @@ var h = __webpack_require__(296).default;
             }
         },
         menuStyle: function menuStyle(val) {
+            $('.sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(2) a').css('opacity', '1');
             $('.mega-menu .product .mega-menu-list ul li:nth-child(' + val + ') a').css('border', 'solid 1px #B3B3B3');
         },
         scrollMore: function scrollMore() {

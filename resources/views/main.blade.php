@@ -97,6 +97,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{route('productFittingBag')}}">
+                            品牌背包
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{url('/blog')}}">
                             部落格
                         </a>
@@ -104,6 +109,11 @@
                     <li>
                         <a href="{{route('location')}}">
                             店鋪資訊
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cart">
+                            查看購物車
                         </a>
                     </li>
                     <li class="nav_final">
@@ -376,8 +386,21 @@
                             </div>
                         </div>
                         <div class="navbar-icon">
+                            @if (Auth::guest() || Auth::user()->role == 'ADMIN')
+                                <a class="login" href="/login?origin={{urlencode(base64_encode($_SERVER['REQUEST_URI']))}}">
+                                    <img class="icon_white" src="\img\login-01.png" alt="">
+                                    <img class="icon_yellow" src="\img\loginYellow-01.png" alt="">
+                                </a>
+                            @else
+                                <a class="login" href="{{ url('/user/address') }}">
+                                    <span>
+                                        {{Auth::user()->name}}，您好
+                                    </span>
+                                </a>
+                            @endif                            
                             <a class="wish-icon" href="/wish-list">
-                                <img src="/img/navbar-heart-01.png" alt="">
+                                <img class="icon_white" src="\img\likeIcon-01.png" alt="">
+                                <img class="icon_yellow" src="\img\likeIconYellow-01.png" alt="">
                                 <span class="count"></span>
                             </a>
                             <div id="cart-panel">
@@ -499,8 +522,21 @@
                                                 </ul>
                                             </li>
                                         <li class="sub-icon">
-                                            <a class="wish-icon" href="/wish-list">
-                                                <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
+                                            @if (Auth::guest() || Auth::user()->role == 'ADMIN')
+                                                <a class="login" href="/login?origin={{urlencode(base64_encode($_SERVER['REQUEST_URI']))}}">
+                                                    <img class="icon_white" src="\img\login-01.png" alt="">
+                                                    <img class="icon_yellow" src="\img\loginYellow-01.png" alt="">
+                                                </a>
+                                            @else
+                                                <a class="login" href="{{ url('/user/address') }}">
+                                                    <span>
+                                                        {{Auth::user()->name}}，您好
+                                                    </span>
+                                                </a>
+                                            @endif   
+                                            <a class="wish-icon" href="/wish-list" style="border-bottom: none;">
+                                                <img class="icon_white" src="\img\likeIcon-01.png" alt="">
+                                                <img class="icon_yellow" src="\img\likeIconYellow-01.png" alt="">
                                                 <span style="bottom: -7px; right: 0px;" class="count"></span>
                                             </a>
                                             <div id="cart-panel">
@@ -699,6 +735,10 @@
                 wishListCount();
                 index_product_swiper();
                 fakeArrow();
+                iconHover('.login');
+                iconHover('.wish-icon');
+                iconHover('.shopping-Cart-Icon');
+
                 ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
 
                 $(window).resize(function() {
@@ -903,6 +943,16 @@
                                 $('.wish-icon .count').text(wishCount);
                             }
                         })
+                };
+                
+                function iconHover(className){
+                    $(className).hover(function(){
+                        $(this).find('img.icon_white').hide().end()
+                            .find('img.icon_yellow').show().end()
+                    },function(){
+                        $(this).find('img.icon_yellow').hide().end()
+                            .find('img.icon_white').show().end()
+                    });
                 };
 
             }); 

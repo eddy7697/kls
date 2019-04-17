@@ -1,5 +1,16 @@
 @extends('main')
 
+@section('custom-style')
+    <style media="screen">
+        .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(5) a{
+            opacity: 1;
+        }
+        .mega-menu .contact .mega-menu-list ul li:nth-child(4) a{
+            border: solid 1px #B3B3B3 !important;
+        }
+    </style>
+@endsection
+
 @section('custom-script')
     <script>
         $(document).ready(function(){
@@ -23,7 +34,10 @@
                     <li><a href="{{ url('/user') }}">我的訂單</a></li>
                     <li><a href="{{ url('/user/address') }}">聯絡資訊</a></li>
                     <li><a href="{{ url('/user/information') }}">會員資訊</a></li>
-                    <li><a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="#">帳號登出</a></li>
+                    <li><a onclick="event.preventDefault(); $('.logout-form').submit();" href="#">帳號登出</a></li>
+                    <form class="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </ul>
             </div>
             <div class="col-md-9">
