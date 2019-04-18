@@ -62,12 +62,12 @@
                         </g>
                     </g>
                 </svg>
-                <div class="loader">
+                <!-- <div class="loader">
                     <h1></h1>
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </div> -->
             </div>
             
         </div>

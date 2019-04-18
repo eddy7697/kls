@@ -32,9 +32,6 @@ input::-webkit-inner-spin-button {
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
-        position: absolute;
-        top: 50%;
-        left: 50%;
         #loading_svg {
             width: 150px;
             height: 150px;
@@ -579,36 +576,36 @@ table.product-comment {
 
 }
 
-.loader{
-    width: 150px;
-    height: 50px;
-    margin: 0 auto;
-    position: relative;
-}
-.loader span{
-	width: 16px;
-	height: 16px;
-	border-radius: 50%;
-	display: inline-block;
-	position: absolute;
-	left: 50%;
-	margin-left: -10px;
-	animation: 3s infinite linear;
-}
+// .loader{
+//     width: 150px;
+//     height: 50px;
+//     margin: 0 auto;
+//     position: relative;
+// }
+// .loader span{
+// 	width: 16px;
+// 	height: 16px;
+// 	border-radius: 50%;
+// 	display: inline-block;
+// 	position: absolute;
+// 	left: 50%;
+// 	margin-left: -10px;
+// 	animation: 3s infinite linear;
+// }
 
 
-.loader span:nth-child(2){
-	background: #FBB03B;
-	animation: loadingAni1 1.2s infinite linear;
-}
-.loader span:nth-child(3){
-	background: #3E3A39;
-	z-index: 100;
-}
-.loader span:nth-child(4){
-	background: #7A6A56;
-	animation: loadingAni2 1.2s infinite linear;
-}
+// .loader span:nth-child(2){
+// 	background: #FBB03B;
+// 	animation: loadingAni1 1.2s infinite linear;
+// }
+// .loader span:nth-child(3){
+// 	background: #3E3A39;
+// 	z-index: 100;
+// }
+// .loader span:nth-child(4){
+// 	background: #7A6A56;
+// 	animation: loadingAni2 1.2s infinite linear;
+// }
 
 .fixed-button-group {
     position: fixed;
