@@ -3,23 +3,6 @@
   font-family: 微軟正黑體;
 }
 
-.airplane{
-	animation: goUp 2s ease-in-out infinite alternate, rotate 4s ease-out infinite;
-}
-@keyframes goUp{
-  to{
-    margin-top:-100px;
-  }
-}
-@keyframes rotate{
-  50%{
-    transform: rotate(-15deg);
-  }
-  75%{
-    transform: rotate(20deg);
-  }
-}
-
 .login{
   span{
     color: #fff;
