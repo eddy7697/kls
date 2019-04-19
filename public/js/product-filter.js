@@ -905,7 +905,7 @@ var render = function() {
     _c("div", { staticClass: "container filter-area" }, [
       _c("div", { staticClass: "row filter" }, [
         _c("div", { staticClass: "col-md-12 filter-title" }, [
-          _c("h1", { attrs: { id: "thisTitle" } }, [_vm._v("品牌行李箱")]),
+          _c("h1", { attrs: { id: "thisTitle" } }),
           _vm._v(" "),
           _c("div", { staticClass: "filter-title-hr" }),
           _vm._v(" "),
