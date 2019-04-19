@@ -2,6 +2,27 @@
 
 @section('custom-script')
     <script type="text/javascript">
+    $(document).ready(function(){
+        var $width = $(this).width();
+        ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
+        function indexSwiper(val){
+            var feedbackswiper = new Swiper ('.feedback-Index',{
+                direction : 'horizontal',
+                loop      : true,
+                speed     : 1000,
+                slidesPerView: val,
+                spaceBetween: 30,
+                slidesPerGroup: val,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.feedback-right',
+                    prevEl: '.feedback-left'
+                }
+            });
+        };
+    });
          
     </script>
 @endsection

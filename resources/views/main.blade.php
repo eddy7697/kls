@@ -566,7 +566,7 @@
                                             <a class="wish-icon" href="/wish-list" style="border-bottom: none;">
                                                 <img class="icon_white" src="\img\likeIcon-01.png" alt="">
                                                 <img class="icon_yellow" src="\img\likeIconYellow-01.png" alt="">
-                                                <span style="bottom: -7px; right: 0px;" class="count"></span>
+                                                <span style="bottom: -3px; right: 0px;" class="count"></span>
                                             </a>
                                             <div id="cart-panel">
                                                 <cart-panel />
@@ -768,7 +768,6 @@
                 iconHover('.wish-icon');
                 iconHover('.shopping-Cart-Icon');
 
-                ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
 
                 $(window).resize(function() {
                     get_H();
@@ -911,23 +910,7 @@
                     });
                 };
 
-                function indexSwiper(val){
-                    var feedbackswiper = new Swiper ('.feedback-Index',{
-                        direction : 'horizontal',
-                        loop      : true,
-                        speed     : 1000,
-                        slidesPerView: val,
-                        spaceBetween: 30,
-                        slidesPerGroup: val,
-                        pagination: {
-                            el: '.swiper-pagination',
-                        },
-                        navigation: {
-                            nextEl: '.feedback-right',
-                            prevEl: '.feedback-left'
-                        }
-                    });
-                };
+                
 
                 function newPostTextRWD (x,y){
                     x.each(function() {

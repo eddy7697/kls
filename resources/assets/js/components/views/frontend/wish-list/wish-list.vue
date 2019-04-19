@@ -26,9 +26,9 @@
                         </p>
                         <p class="hide"></p>
                     </li>
-                    <li v-for="(item, index) in wish" v-bind:key="index">
+                    <li v-for="(item, index) in wish" v-bind:key="index" :class="item.productGuid">
                         <a>
-                            <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item)" style="cursor: pointer">
+                            <img src="/img/buyIcon/deleteIcon-01.png" alt="" @click="deleteWish(item.productGuid)" style="cursor: pointer">
                         </a>
                         <a class="example-image-link" :href="item.featureImage" data-lightbox="example-set">
                            <img :src="item.featureImage" alt="" style="max-width: 150px; width: 100%;">
@@ -107,41 +107,27 @@
                 return "/detail/" + guid;
             },
             addSigleProduct(guid) {
-                addSigleProduct(guid)
+                addSigleProduct(guid);
             },
             getList: function (){
+                $('.loading-bar').fadeIn('100');
                 axios.get('/favorite/get')
                     .then(res => {
                         this.wish = res.data;
+                        $('.loading-bar').fadeOut('100');
                     })
                 this.lightOption();    
             },
-            deleteWish: function (item) {
-                var check = confirm('確認要刪除此商品?');
-                var self = this;
-
+            deleteWish: function (guid) {
+                let check = confirm('確認要將此商品從願望清單移除?');
+                let self = this;
                 if (check) {
-                    $('.loading-bar').fadeIn('100');
-                    deleteFavorite(item.productGuid, () => {
-                        getList()
-                        self.resetIconSpan()
-                        $('.loading-bar').fadeOut('100');
-                    })
+                    deleteFavorite(guid, ()=>{
+                        self.getList()
+                    });
                 } else {
                     return;
                 }
-            },
-            resetIconSpan: function(){
-                 axios.get('/favorite/get')
-                    .then(function(res){
-                        var wishCount = res.data.length;
-                        console.log(wishCount)
-                        if(wishCount){
-                            $('.wish-icon .count').text(wishCount);
-                        } else {
-                            $('.wish-icon .count').text('');
-                        }
-                    });
             },
             lightOption: function(){
                 lightbox.option({

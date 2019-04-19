@@ -2,6 +2,7 @@
 
 @section('custom-script')
     <script>
+        var $width = $(this).width();
         function quickView(path) {
             window.location.href = '/product-deatil/' + path
         };   
@@ -19,6 +20,28 @@
             $('.modal-img').attr('src',jsonContent[type].featureImage);
             $('.modal-description').html(jsonContent[type].content);
         };
+        $(document).ready(function(){
+            var $width = $(this).width();
+            ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(4) )
+            function indexSwiper(val){
+                var feedbackswiper = new Swiper ('.feedback-Index',{
+                    direction : 'horizontal',
+                    loop      : true,
+                    speed     : 1000,
+                    slidesPerView: val,
+                    spaceBetween: 30,
+                    slidesPerGroup: val,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                    navigation: {
+                        nextEl: '.feedback-right',
+                        prevEl: '.feedback-left'
+                    }
+                });
+            };
+        });
+
     </script>
 @endsection
 
@@ -347,7 +370,7 @@
         <div class="sw_mask mask_right">
             <img class="product_arrow feedback-right" src="/img/arrow-right.png" alt="">
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 section_title">
                     <p> 

@@ -5,7 +5,7 @@
             <img class="icon_white" src="/img/cartIcon-01.png" alt="">
             <img class="icon_yellow" src="/img/cartIconYellow-01.png" alt="">
             <span class="count" v-if="cartContent.length && isIndex()">{{cartContent.length}}</span> 
-            <span class="count" style="bottom: -5px; right: 0px;" v-else-if="cartContent.length">{{cartContent.length}}</span> 
+            <span class="count" style="bottom: -4px; right: 0px;" v-else-if="cartContent.length">{{cartContent.length}}</span> 
         </div>
         <!-- <div class="litext" @click="getCart(true)">
             <p>&nbsp;&nbsp;購物車</p>
@@ -83,7 +83,7 @@
                 displayPanel: false,
                 amount: null,
                 cartContent: [],
-                isCartEmpty: true                
+                isCartEmpty: true,                
             }
         },
         created: function () {
@@ -210,20 +210,22 @@
                     .then(res => {          
                         if (res.data.auth) {
                             self.addToCart(guid)
-                            window.updateCount();
                             // self.$refs.eventForm.initForm(res.data)
                         } else {
                             alert('請先登入!')
                             window.location.href = '/login'
                         }
                     })
-                    
             },
             addToCart: function(guid) {
                 let self = this;
                 axios.post(`/cart/add/single/${guid}`
                     ).then(res => {
-                        self.$message.success('成功加入購物車！')
+                        self.$message.success('成功加入購物車！');
+                        self.deleteFavorite(guid);
+                        window.updateCount();
+                        $('.shopping-Cart-Icon').click();
+                        $('li.' + guid).fadeOut(500);
                     }).catch(err => {
                         self.$message.error('加入購物車失敗...')
                     }).then(arg => {
@@ -259,9 +261,26 @@
                 let self = this;
                 axios.get(`/favorite/delete/${guid}`)
                     .then(res => {
-                        self.$message.success('刪除項目成功')
-                        callback()
+                        let hasClass = $('.productHeart[data-id='+ guid +']').hasClass('productHeart-active');
+                        (hasClass) ? self.$message.success('已從願望清單移除商品') : console.log('has been delete');
+                        self.resetIconSpan();
+                        self.removeHeartActive(guid);
+                        callback();
                     })
+            },
+            resetIconSpan: function(){
+                 axios.get('/favorite/get')
+                    .then(function(res){
+                        var wishCount = res.data.length;
+                        if(wishCount){
+                            $('.wish-icon .count').text(wishCount);
+                        } else {
+                            $('.wish-icon .count').text('');
+                        }
+                    });
+            },
+            removeHeartActive: function(guid){
+                $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active');
             },
             isIndex: function(){
                 let isIndex = window.location.pathname;
@@ -270,7 +289,7 @@
                 }else{
                     return true;
                 }
-            }
+            },
         }
     }
     

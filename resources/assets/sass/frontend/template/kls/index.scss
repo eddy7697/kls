@@ -1225,81 +1225,82 @@ img.icon_yellow{
       color: $color_white;
     }
   }
-  .container{
+  .container-fluid{
+    margin: 0 80px;
     z-index: 2;
-    .row{
-      z-index: 2;
-      position: relative;
-      .feedback-Index{
-        overflow: hidden;
-        z-index : 2;
-        .swiper-wrapper{
-          .swiper-slide{
-            .feedbackPost{
-              background-color: $color-white;
-              position        : relative;
-              overflow        : hidden;
-              border-radius: 20px;
-              .feedbackPostInfo,.feedback-img,.feedback-Inner{
-                @include size-setting(90%,auto);
-                margin: 0 auto;
+  }
+  .row{
+    z-index: 2;
+    position: relative;
+    .feedback-Index{
+      overflow: hidden;
+      z-index : 2;
+      .swiper-wrapper{
+        .swiper-slide{
+          .feedbackPost{
+            background-color: $color-white;
+            position        : relative;
+            overflow        : hidden;
+            border-radius: 20px;
+            .feedbackPostInfo,.feedback-img,.feedback-Inner{
+              @include size-setting(90%,auto);
+              margin: 0 auto;
+            }
+            .feedbackPostInfo{
+              @include flex-mix(center, space-around);
+              margin: 20px auto;
+            }
+            .feedback-img{
+              position: relative;
+              overflow: hidden;
+              padding-bottom: 50%;
+              box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+              background-position: center;
+              background-size: cover;
+              // img{
+              //   @extend %force-center;
+              //   max-width: 100%;
+              // }
+              // &::before,&::after{
+              //   content: '';
+              //   @include size-setting(50px,100%);
+              //   position: absolute;
+              //   top: 0;
+              //   background-color: #fff;
+              //   z-index: 2;
+              // }
+              // &::before{
+              //   left: 0;
+              // }
+              // &::after{
+              //   right: 0;
+              // }
+            }
+            .feedback-Inner{
+              padding: 10px 0;
+              p{
+                font-size: 15px;
               }
-              .feedbackPostInfo{
-                @include flex-mix(center, space-around);
-                margin: 20px auto;
+            }
+            .feedback-Author{
+              @include size-setting(150px,auto);
+              position  : relative;
+              text-align: center;
+              h4{
+                font-weight  : 700;
+                margin-bottom: 20px;
               }
-              .feedback-img{
-                position: relative;
-                overflow: hidden;
-                padding-bottom: 50%;
-                box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
-                background-position: center;
-                background-size: cover;
-                // img{
-                //   @extend %force-center;
-                //   max-width: 100%;
-                // }
-                // &::before,&::after{
-                //   content: '';
-                //   @include size-setting(50px,100%);
-                //   position: absolute;
-                //   top: 0;
-                //   background-color: #fff;
-                //   z-index: 2;
-                // }
-                // &::before{
-                //   left: 0;
-                // }
-                // &::after{
-                //   right: 0;
-                // }
+              &::after{
+                content: '';
+                @include size-setting(50px,2px);
+                position: absolute;
+                bottom: 0;
+                right: 50%;
+                transform: translateX(50%);
+                background-color: $font-color-focus;
               }
-              .feedback-Inner{
-                padding: 10px 0;
-                p{
-                  font-size: 15px;
-                }
-              }
-              .feedback-Author{
-                @include size-setting(150px,auto);
-                position  : relative;
-                text-align: center;
-                h4{
-                  font-weight  : 700;
-                  margin-bottom: 20px;
-                }
-                &::after{
-                  content: '';
-                  @include size-setting(50px,2px);
-                  position: absolute;
-                  bottom: 0;
-                  right: 50%;
-                  transform: translateX(50%);
-                  background-color: $font-color-focus;
-                }
-              }
-            } 
-          }
+            }
+          } 
         }
       }
     }
@@ -1313,7 +1314,9 @@ img.icon_yellow{
     }
   }
 }
+.about-section{
 
+}
 .blog-content{
   .blog-content-info{
     border-radius: 12px;
@@ -1577,7 +1580,7 @@ img.icon_yellow{
       cursor: pointer;
       transition: 0.3s;
       &:hover {
-        background-color: #636b6f;
+        background-color: red;
       }
       img{
         z-index: 0;
