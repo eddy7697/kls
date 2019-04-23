@@ -666,6 +666,23 @@ var h = __webpack_require__(296).default;
         this.getTag();
     },
 
+    computed: {
+        brandTitle: function brandTitle() {
+            switch (this.type) {
+                case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                    return '品牌旅行箱';
+                    break;
+                case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                    return '旅行配件';
+                    break;
+                case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                    return '品牌背包';
+                    break;
+                default:
+                    return '';
+            }
+        }
+    },
     methods: {
         getTag: function getTag() {
             var _this = this;
@@ -705,7 +722,6 @@ var h = __webpack_require__(296).default;
             axios.post('/products/tag', vo).then(function (res) {
                 _this2.pageData = res.data;
                 _this2.isLoaded = true;
-                _this2.getTitle();
                 _this2.scrollMore();
                 _this2.getFavorite();
             }).catch(function (err) {}).then(function () {
@@ -813,36 +829,6 @@ var h = __webpack_require__(296).default;
                 }
             });
         },
-        getTitle: function getTitle() {
-            var title = $('#thisTitle');
-            var vo = {
-                category: this.type
-            };
-            var fiterType = {
-                all: 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V',
-                other: 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd',
-                bag: '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'
-            };
-
-            switch (vo.category) {
-                case fiterType.all:
-                    title.text('品牌旅行箱');
-                    this.menuStyle(1);
-                    break;
-                case fiterType.other:
-                    title.text('旅行配件');
-                    $('.filter-subTitle').hide();
-                    $('.searchBar').css('margin-top', '50px');
-                    this.menuStyle(2);
-                    break;
-                case fiterType.bag:
-                    title.text('品牌背包');
-                    $('.filter-subTitle').hide();
-                    $('.searchBar').css('margin-top', '50px');
-                    this.menuStyle(3);
-                    break;
-            }
-        },
         menuStyle: function menuStyle(val) {
             $('.sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(2) a').css('opacity', '1');
             $('.mega-menu .product .mega-menu-list ul li:nth-child(' + val + ') a').css('border', 'solid 1px #B3B3B3');
@@ -905,7 +891,9 @@ var render = function() {
     _c("div", { staticClass: "container filter-area" }, [
       _c("div", { staticClass: "row filter" }, [
         _c("div", { staticClass: "col-md-12 filter-title" }, [
-          _c("h1", { attrs: { id: "thisTitle" } }),
+          _c("h1", { attrs: { id: "thisTitle" } }, [
+            _vm._v(_vm._s(_vm.brandTitle))
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "filter-title-hr" }),
           _vm._v(" "),
