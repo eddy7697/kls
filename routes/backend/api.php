@@ -83,6 +83,7 @@ Route::get('/admin/normal/add', 'Backend\AdminController@createNormalUser');
 Route::post('/admin/normal/search/{keyword}', 'Backend\AdminController@searchUsers');
 Route::get('/admin/normal/get/{guid}', 'Backend\AdminController@getNormalUser');
 Route::post('/admin/normal/update/{guid}', 'Backend\AdminController@updateNormalUser');
+Route::get('/admin/normal/export', 'Backend\AdminController@exportUser');
 Route::post('/admin/address/create', 'Backend\AdminController@createAddress');
 Route::post('/admin/address/update/{guid}', 'Backend\AdminController@updateAddress');
 

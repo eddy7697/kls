@@ -70,7 +70,7 @@
 												<li><a href="/cyberholic-system/meta/other">挑選適合您的行李箱</a></li>
 											</ul>
 										</li>
-										@if (false)
+										@if (true)
 										<li class=""><a><i class="fa fa-users"></i> 會員管理系統 <span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu" style="display: none;">
 												<li><a href="/cyberholic-system/account/list">會員資料列表</a></li>
@@ -105,10 +105,12 @@
 												<li><a href="/cyberholic-system/tag/management/fitting">旅行配件標籤管理</a></li>
 											</ul>
 										</li>
-										@if (false)
+										@if (true)
 											<li class=""><a><i class="fa fa-briefcase"></i> 商務邏輯管理 <span class="fa fa-chevron-down"></span></a>
 												<ul class="nav child_menu" style="display: none;">
-													<li><a href="/cyberholic-system/business/bonus">紅利系統設定</a></li>
+													@if (false)
+														<li><a href="/cyberholic-system/business/bonus">紅利系統設定</a></li>	
+													@endif
 													<li><a href="/cyberholic-system/business/addCoupon">新增優惠券</a></li>
 													<li><a href="/cyberholic-system/business/coupon">優惠券管理</a></li>
 												</ul>

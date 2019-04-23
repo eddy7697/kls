@@ -7,7 +7,7 @@
         <div class="container filter-area">
             <div class="row filter">
                 <div class="col-md-12 filter-title">
-                    <h1 id="thisTitle"></h1>
+                    <h1 id="thisTitle">{{brandTitle}}</h1>
                     <div class="filter-title-hr"></div>
                     <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                     <div class="searchBar">
@@ -341,6 +341,23 @@
         created() {
             this.getTag()
         },
+        computed: {
+            brandTitle() {
+                switch(this.type) {
+                    case 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V':
+                        return '品牌旅行箱'
+                        break;
+                    case 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd':
+                        return '旅行配件'
+                        break;
+                    case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
+                        return '品牌背包'
+                        break;
+                    default: 
+                        return ''
+                }
+            }
+        },
         methods: {
             getTag() {
                 axios.get(`/admin/tag/get/${this.tagType}`)
@@ -378,7 +395,6 @@
                     .then(res => {
                         this.pageData = res.data
                         this.isLoaded = true
-                        this.getTitle()
                         this.scrollMore()
                         this.getFavorite()
                     }).catch(err => {
@@ -469,37 +485,6 @@
                             $(target).addClass('productHeart-active')
                         } 
                     })
-            },
-            getTitle() {
-                let title = $('#thisTitle')
-                let vo = {
-                    category: this.type
-                }
-                let fiterType = {
-                    all : 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V',
-                    other : 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd',
-                    bag : '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe'
-                }
-                
-                switch(vo.category)
-                {
-                case fiterType.all:
-                    title.text('品牌旅行箱')
-                    this.menuStyle(1)
-                break;
-                case fiterType.other:
-                    title.text('旅行配件')
-                    $('.filter-subTitle').hide()
-                    $('.searchBar').css('margin-top','50px');
-                    this.menuStyle(2)
-                break;
-                case fiterType.bag:
-                    title.text('品牌背包')
-                    $('.filter-subTitle').hide()
-                    $('.searchBar').css('margin-top','50px');
-                    this.menuStyle(3)
-                break;
-                }
             },
             menuStyle(val) {
                 $('.sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(2) a').css('opacity','1');

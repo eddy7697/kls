@@ -64,7 +64,7 @@ class UserController extends Controller
 
             $this->guard()->login($user);
 
-            return $this->registered($request, $user) ?: redirect('/');
+            return redirect('/');
         } catch (\Exception $e) {
             return Log::error($e);
         }
