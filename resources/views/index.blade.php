@@ -6,15 +6,9 @@
         function quickView(path) {
             window.location.href = '/product-deatil/' + path
         };   
-        $('.test').each(function(){
-            var _html = $(this).html();
-            var x = JSON.parse(_html);
-            console.log(x);
-        })
         
         function renderPruductDetail(title, type){
             var jsonContent = JSON.parse($('#json-content').val());
-            console.log(jsonContent);
             $('#productDetailModal').modal('show');
             $('.modal-title').text(title);
             $('.modal-img').attr('src',jsonContent[type].featureImage);
@@ -382,7 +376,6 @@
                 <div class="col-md-12 feedback-Index">
                     <div class="swiper-wrapper">
                         @foreach (PostView::witness() as $item)
-                        <div class="test" style="display: none;">{{$item}}</div>
                             <div class="swiper-slide">
                                 <div class="feedbackPost">
                                     <div class="feedbackPostInfo">

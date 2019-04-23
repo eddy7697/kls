@@ -14,6 +14,34 @@
     }
   }
 }
+.navbar-icon.open .login_menu{
+  display: block !important;
+  transition: .5s;
+  width: 50%;
+  a{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin: 10px 0;
+    color: #636b6f;
+    text-decoration: none;
+    span{
+      border: solid 1px transparent;
+      transition: .5s;
+      padding: 5px 25px;
+      border-radius: 8px;
+    }
+    &:hover{
+      span{
+        border: solid 1px #B3B3B3;
+
+      }
+    }
+  }
+  a:last-child{
+    margin-bottom: 30px;
+  }
+}
 .current_subPage{
   opacity: 1 !important;
 }
@@ -474,10 +502,11 @@ img.icon_yellow{
           left            : 0;
           opacity         : 0.4;
           z-index         : 1;
-          background-color: $color-mask-logo;
+          // background-color: $color-mask-logo;
         }
         .logo{
-          @include background-setting('/img/logo_backimg.jpg',center bottom,cover);
+          // @include background-setting('/img/logo_backimg.jpg',center bottom,cover);
+          background-color: #0f2746;
           position : absolute;
           top      : 0;
           right    : 0;
@@ -686,6 +715,7 @@ img.icon_yellow{
     font-weight     : 700;
     margin-bottom   : 0;
     position: relative;
+    border-radius: 0px;
     li{
       list-style: none;
     }

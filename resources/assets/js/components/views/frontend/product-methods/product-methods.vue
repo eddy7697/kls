@@ -149,7 +149,6 @@
             },
             getSubProducts() {
                 let self = this;
-
                 axios.get(`/products/get/sub/${this.guid}`)
                     .then(res => {
                         self.subProducts = res.data
@@ -159,20 +158,34 @@
                     })
             },
             addToCart() {
-                if (this.productType == 'simple') {
-                    this.addSimple()
-                } else {
-                    this.addVariable()
-                }
+                let self = this;
+                axios.post('/checkAuth')
+                    .then(res => {          
+                        if (res.data.auth) {
+                            if (this.productType == 'simple') {
+                                this.addSimple()
+                            } else {
+                                this.addVariable()
+                            }
+                        } else {
+                            alert('請先登入!')
+                            window.location.href = '/login'
+                        }
+                    })
             },
             addSimple() {
                 let self = this
                 axios.post(`/cart/add/${this.guid}`, {
                     quantity: self.qty
                 }).then(res => {
-                    self.$message.success('成功加入購物車！')
+                    console.log(res)
+                    self.$message.success('成功加入購物車！');
+                    $('.shopping-Cart-Icon').click();
+                    deleteFavorite(this.guid);
+                    window.updateCount();
                 }).catch(err => {
                     self.$message.error('加入購物車失敗...')
+                    console.log(err)
                 }).then(arg => {
                     window.updateCount()
                 })
@@ -189,9 +202,13 @@
                 }
                 axios.post(`/cart/add/sub/${this.guid}`, choosed)
                     .then(res => {
-                        self.$message.success('成功加入購物車！')
+                        self.$message.success('成功加入購物車！');
+                        $('.shopping-Cart-Icon').click();
+                        deleteFavorite(this.guid);
+                        window.updateCount();
                     }).catch(err => {
                         self.$message.error('加入購物車失敗...')
+                        console.log(err)
                     }).then(arg => {
                         window.updateCount()
                     })
