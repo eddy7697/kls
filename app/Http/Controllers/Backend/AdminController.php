@@ -51,7 +51,7 @@ class AdminController extends Controller
             $users = DB::table('users')
                           ->where('role', 'NORMAL')
                           ->orderBy($flag, $order)
-                          ->paginate(15);
+                          ->paginate(1);
 
             $status = 200;
             $message = 'Get user information success.';

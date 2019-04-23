@@ -70,7 +70,7 @@
 												<li><a href="/cyberholic-system/meta/other">挑選適合您的行李箱</a></li>
 											</ul>
 										</li>
-										@if (false)
+										@if (true)
 										<li class=""><a><i class="fa fa-users"></i> 會員管理系統 <span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu" style="display: none;">
 												<li><a href="/cyberholic-system/account/list">會員資料列表</a></li>
