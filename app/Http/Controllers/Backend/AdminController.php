@@ -360,7 +360,7 @@ class AdminController extends Controller
         }
 
         $export = new RecordExport($users);
-        return Excel::download($export, time().'.xlsx');
+        return Excel::download($export, '會員列表_'.time().'.xlsx');
     }
 
     // 建立使用者資訊

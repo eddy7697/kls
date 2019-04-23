@@ -474,10 +474,11 @@ img.icon_yellow{
           left            : 0;
           opacity         : 0.4;
           z-index         : 1;
-          background-color: $color-mask-logo;
+          // background-color: $color-mask-logo;
         }
         .logo{
-          @include background-setting('/img/logo_backimg.jpg',center bottom,cover);
+          // @include background-setting('/img/logo_backimg.jpg',center bottom,cover);
+          background-color: #0f2746;
           position : absolute;
           top      : 0;
           right    : 0;
