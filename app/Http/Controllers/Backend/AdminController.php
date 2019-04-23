@@ -7,12 +7,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\RecordExport;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 use App\User;
 use App\Post;
 use App\Address;
 use Auth;
 use Hash;
+use Excel;
 
 class AdminController extends Controller
 {
@@ -51,7 +54,7 @@ class AdminController extends Controller
             $users = DB::table('users')
                           ->where('role', 'NORMAL')
                           ->orderBy($flag, $order)
-                          ->paginate(1);
+                          ->paginate(12);
 
             $status = 200;
             $message = 'Get user information success.';
@@ -331,6 +334,33 @@ class AdminController extends Controller
                     'name' => $data['name'],
                     'remark' => $data['remark']
                 ]);
+    }
+
+    public function exportUser()
+    {
+        $users = array();
+        $data = User::leftJoin('addresses', 'users.guid', 'addresses.owner')
+                    ->select('users.*', 'addresses.cellPhone', 'addresses.country', 'addresses.address', 'addresses.city', 'addresses.postcode')->get();
+
+        foreach ($data as $key => $value) {
+            array_push($users, [
+                '姓名' => $value->name,
+                '電子郵件' => $value->email,
+                '電話' => (string)$value->cellPhone.'　',
+                '郵遞區號' => $value->postcode,
+                '縣市' => $value->city,
+                '行政區' => $value->country,
+                '門牌地址' => $value->address,
+                '加入時間' => Carbon::parse($value->created_at)->format('Y/m/d H:i:s')
+            ]);
+        }
+
+        foreach ($users as &$user) {
+            $user = (array)$user;
+        }
+
+        $export = new RecordExport($users);
+        return Excel::download($export, time().'.xlsx');
     }
 
     // 建立使用者資訊

@@ -7,6 +7,9 @@
                 @newKeyword="newKeyword($event)"
                 @searchPost="searchPost($event)"/>
         </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" @click="exportUser">匯出會員列表</button>
+        </div>
         <div class="col-md-12" style="position: relative">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createAdminModal" style="position: absolute; right: 10px; top: -52px;">
@@ -496,6 +499,9 @@
 
                     this.urlPath = url
                 }
+            },
+            exportUser() {
+                window.location.href = '/admin/normal/export'
             },
             toggleAllSelect: function () {
                 if (this.isAllSelected) {
