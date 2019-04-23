@@ -142,11 +142,11 @@
                                         </table>
                                     </td>
                                 </tr> -->
-                                <tr v-if="false">
+                                <tr v-if="true">
                                     <td>付款方式</td>
                                     <td>
-                                        <span v-if="itemShowed.paymentMethod === 'ATM'">ATM轉帳</span>
-                                        <span v-if="itemShowed.paymentMethod === 'Credit'">信用卡付款</span>
+                                        <!-- <span v-if="itemShowed.paymentMethod === 'ATM'">ATM轉帳</span>
+                                        <span v-if="itemShowed.paymentMethod === 'Credit'">信用卡付款</span> -->
                                         <span v-if="itemShowed.paymentMethod === 'cod'">貨到付款</span>
                                         <span v-if="itemShowed.paymentMethod === 'Remit'">轉帳付款</span>
                                     </td>

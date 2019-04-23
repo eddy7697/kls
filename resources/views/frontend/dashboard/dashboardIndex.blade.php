@@ -31,7 +31,7 @@
                                 已付款
                             @endif
                         @else
-                            超商取貨付款
+                            取貨付款
                         @endunless
 
                     </td>
@@ -171,7 +171,7 @@
                                                                 echo "信用卡";
                                                                 break;
                                                             case 'cod':
-                                                                echo "超商取貨付款";
+                                                                echo "取貨付款";
                                                                 break;
                                                             case 'ATM':
                                                                 echo "ATM 轉帳";

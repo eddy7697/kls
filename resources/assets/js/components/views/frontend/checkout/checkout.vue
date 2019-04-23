@@ -110,6 +110,18 @@
 
                             <tr>
                                 <td class="cart_info_title">
+                                    購物方式
+                                </td>
+                                <td>
+                                    <input type="radio" name="paymentMethod" v-model="paymentMethod" value="Remit" id="remit" required>
+                                    <label for="remit">轉帳付款</label>
+                                    <input type="radio" name="paymentMethod" v-model="paymentMethod" value="cod" id="cod" required>
+                                    <label for="cod">宅配貨到付款</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="cart_info_title">
                                     發票開立方式
                                 </td>
                                 <td>
@@ -136,7 +148,7 @@
                                     統一編號
                                 </td>
                                 <td>
-                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='/^\d{8}$/' v-model="customerParametorForShipping.numberGUI" required>
+                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='/^\d{8}$/' v-model="customerParametorForShipping.taxId" required>
                                 </td>
                             </tr>
 
@@ -225,7 +237,6 @@
                     receipt: '',
                     taxId: '',
                     invoiceTitle: '',
-                    numberGUI: ''
                 },
                 formValidation: {
                     ReceiverName: true,
@@ -577,6 +588,8 @@
                     method = 'cvs';
                 } else if (this.shippingMethod !== 'cvs') {
                     method = 'aoi';
+                } else if (this.paymentMethod == 'cod') {
+                    method = 'aoi';
                 }
 
 
@@ -621,10 +634,10 @@
                 }
             },
             aoiMethod: function () {
-                if ((this.paymentMethod === 'cod') || (this.paymentMethod === null)) {
-                    alert('請選擇付款方式');
-                    return;
-                }
+                // if ((this.paymentMethod === 'cod') || (this.paymentMethod === null)) {
+                //     alert('請選擇付款方式');
+                //     return;
+                // }
                 var self = this;
                 var form = document.createElement("form");
                 var _token = document.createElement("input");
