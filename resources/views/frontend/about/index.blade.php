@@ -94,14 +94,16 @@
 
         <!------------------------feedback------------------------>
         <div class="feedback">
-            <div class="sw_mask mask_left">
-                <img class="product_arrow feedback-left" src="/img/arrow-left.png" alt="">
-            </div>
-            <div class="sw_mask mask_right">
-                <img class="product_arrow feedback-right" src="/img/arrow-right.png" alt="">
-            </div>
+            
             <div class="container">
+                
                 <div class="row">
+                    <div class="sw_mask mask_left">
+                        <img class="product_arrow feedback-left" src="/img/arrow-left.png" alt="">
+                    </div>
+                    <div class="sw_mask mask_right">
+                        <img class="product_arrow feedback-right" src="/img/arrow-right.png" alt="">
+                    </div>
                     <div class="col-md-12 feedback-Index">
                         <div class="swiper-wrapper">
                             @foreach (PostView::witness() as $item)

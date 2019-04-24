@@ -397,20 +397,23 @@
                                         {{Auth::user()->name}}，您好
                                     </span>
                                     <div class="dropdown-menu login_menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ url('/user') }}">
                                             <span>
                                                 會員專區
                                             </span>
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ url('/user/information') }}">
                                             <span>
                                                 會員資訊
                                             </span>
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" onclick="event.preventDefault(); $('.logout-form').submit();">
                                             <span>
                                                 會員登出
                                             </span>
+                                            <form class="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
                                         </a>
                                     </div>
                                 </a>
@@ -550,20 +553,23 @@
                                                         {{Auth::user()->name}}，您好
                                                     </span>
                                                     <div class="dropdown-menu login_menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" href="#">
+                                                        <a class="dropdown-item" href="{{ url('/user') }}">
                                                             <span>
                                                                 會員專區
                                                             </span>
                                                         </a>
-                                                        <a class="dropdown-item" href="#">
+                                                        <a class="dropdown-item" href="{{ url('/user/information') }}">
                                                             <span>
                                                                 會員資訊
                                                             </span>
                                                         </a>
-                                                        <a class="dropdown-item" href="#">
+                                                        <a class="dropdown-item" onclick="event.preventDefault(); $('.logout-form').submit();">
                                                             <span>
                                                                 會員登出
                                                             </span>
+                                                            <form class="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                {{ csrf_field() }}
+                                                            </form>
                                                         </a>
                                                     </div>
                                                 </a>

@@ -148,7 +148,7 @@
                                     統一編號
                                 </td>
                                 <td>
-                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='/^\d{8}$/' v-model="customerParametorForShipping.taxId" required>
+                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='[0-9]{8}' v-model="customerParametorForShipping.taxId" required>
                                 </td>
                             </tr>
 
@@ -1153,16 +1153,7 @@
             },
             showMessage: function (type, string) {
                 toastr[type](string);
-            },
-            checkGUI: () => {
-                let regex = /^\d{8}$/;
-                let GUI = $('#GUI-number').val();
-                if(!GUI){
-                    alert('請輸入統一編號')
-                } else{
-                    (regex.test(GUI))? '' : alert('統一編號錯誤');
-                }
-            },
+            }
         }
     }
 </script>

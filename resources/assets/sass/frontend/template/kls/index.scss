@@ -14,7 +14,7 @@
     }
   }
 }
-.navbar-icon.open .login_menu{
+.open > div.login_menu{
   display: block !important;
   transition: .5s;
   width: 50%;
@@ -25,6 +25,7 @@
     margin: 10px 0;
     color: #636b6f;
     text-decoration: none;
+    cursor: pointer;
     span{
       border: solid 1px transparent;
       transition: .5s;
@@ -40,6 +41,12 @@
   }
   a:last-child{
     margin-bottom: 30px;
+  }
+}
+.sub-page-header{
+  .open > div.login_menu{
+    width: 200px;
+    top: 70px;
   }
 }
 .current_subPage{
@@ -502,10 +509,8 @@ img.icon_yellow{
           left            : 0;
           opacity         : 0.4;
           z-index         : 1;
-          // background-color: $color-mask-logo;
         }
         .logo{
-          // @include background-setting('/img/logo_backimg.jpg',center bottom,cover);
           background-color: #0f2746;
           position : absolute;
           top      : 0;
@@ -1235,7 +1240,6 @@ img.icon_yellow{
     }
   }
 }
-
 /*----------feedback---------*/
 .feedback-Icon{
   @include size-setting(30%,auto);
@@ -1262,6 +1266,12 @@ img.icon_yellow{
   .row{
     z-index: 2;
     position: relative;
+    .mask_left{
+      left: -45px;
+    }
+    .mask_right{
+      right: -45px;
+    }
     .feedback-Index{
       overflow: hidden;
       z-index : 2;
@@ -1380,6 +1390,7 @@ img.icon_yellow{
   }
   .sub-icon {
     @extend %flex-center;
+    position: relative;
     a{
       opacity: 1 !important;
     }
@@ -2483,7 +2494,11 @@ img.icon_yellow{
       }
     }
   }
-
+  .feedback{
+    .container-fluid{
+      margin: 0 30px;
+    }
+  }
   #news{
     .container-fluid{
       margin: 0 30px;
@@ -3458,6 +3473,11 @@ img.icon_yellow{
           font-size: $header-contact-font-size;
         }
       }
+    }
+  }
+  .feedback{
+    .container-fluid{
+      margin: 0;
     }
   }
   #news{
