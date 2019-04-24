@@ -166,7 +166,7 @@
 
             <div class="row filter" style="margin-top: 80px;margin-bottom: 80px;" v-if="type == 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd'">
                 <div class="col-md-12 blog-filter-inner">
-                    <a @click="filterGroup.categories = null" :class="{active: filterGroup.categories == null}">全部文章</a>
+                    <a @click="filterGroup.categories = null" :class="{active: filterGroup.categories == null}">全部商品</a>
                     <a v-for="(item, index) in tagGroup.categories" 
                         :key="index"
                         @click="filterGroup.categories = item"
