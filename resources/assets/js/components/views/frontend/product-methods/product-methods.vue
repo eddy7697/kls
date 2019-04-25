@@ -21,7 +21,9 @@
                 :class="{active: item.id == chossedSub}"
                 v-for="(item, index) in subProducts" 
                 :key="index"
-                @click="chossedSub = item.id">
+                @click="chossedSub = item.id"
+                :data-id = item.id
+                >
                 {{item.subTitle}}
             </div>
         </div>
@@ -79,7 +81,7 @@
     Vue.use(InputNumber);
     Vue.use(Radio);
     Vue.use(RadioGroup);
-    Vue.use(Message);
+    Vue.component(Message);
     locale.use(lang)
 
     export default {
@@ -153,6 +155,9 @@
                     .then(res => {
                         self.subProducts = res.data
                         self.isLoaded = true
+                        setTimeout(() => {
+                            self.clickFirst()
+                        }, 0);
                     }).catch(err => {
                         self.$message.error('Get Subproduct failed.')
                     })
@@ -178,14 +183,12 @@
                 axios.post(`/cart/add/${this.guid}`, {
                     quantity: self.qty
                 }).then(res => {
-                    console.log(res)
                     self.$message.success('成功加入購物車！');
                     $('.shopping-Cart-Icon').click();
                     deleteFavorite(this.guid);
                     window.updateCount();
                 }).catch(err => {
                     self.$message.error('加入購物車失敗...')
-                    console.log(err)
                 }).then(arg => {
                     window.updateCount()
                 })
@@ -208,7 +211,6 @@
                         window.updateCount();
                     }).catch(err => {
                         self.$message.error('加入購物車失敗...')
-                        console.log(err)
                     }).then(arg => {
                         window.updateCount()
                     })
@@ -223,6 +225,10 @@
             },
             numberFormat(n, c, d, t) {
                 return h.number_format(n, c, d, t)
+            },
+            clickFirst(){
+                console.log($('.option-item').attr('data-id'))
+                $('.option-item[data-id="1"]').click()
             }
         }
     }

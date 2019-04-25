@@ -564,8 +564,8 @@
     padding: 5px 10px;
     width: 175px;
     margin: 0 auto;
-    border: solid 1px #bdbdbd;
-    color: #bdbdbd;
+    border: solid 1px #808080;
+    color: #808080;
     border-radius: 12px;
     font-family: Microsoft JhengHei;
 
