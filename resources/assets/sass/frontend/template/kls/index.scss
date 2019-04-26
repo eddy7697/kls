@@ -1718,6 +1718,10 @@
     color: $color-white;
     padding: 1px 10px;
     border-radius: 8px;
+
+    &.active {
+      font-weight: 700;
+    }
   }
   .productCount-left {
     @extend %flex-center;
@@ -1734,11 +1738,12 @@
     }
   }
   .productCount-sort {
-    cursor: pointer;
-    font-weight: 300;
-
-    &.active {
-      font-weight: 800;
+    span {
+      cursor: pointer;
+      font-weight: 300;
+      &.active {
+        font-weight: 800;
+      }
     }
   }
   .productCount-number {

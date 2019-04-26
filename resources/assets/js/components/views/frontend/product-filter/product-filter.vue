@@ -12,7 +12,7 @@
                     <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                     <div class="searchBar">
                         <i class="fa fa-search lg cearch-icon" aria-hidden="true">
-                            <input style="padding-left: 10px; border: none; width: 90%;" 
+                            <input style="padding-left: 10px; border: none; width: 90%; font-family: 微軟正黑體;" 
                                    type="text" placeholder="輸入要尋找的商品">
                         </i>
                     </div>
