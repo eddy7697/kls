@@ -75,30 +75,6 @@
                             </span>
                         </p>
                     </li>
-<<<<<<< HEAD
-                    <!-- <form class="" action="/checkout/billing" method="post">
-                        <li class="cart_list_total">
-                            <div class="function_btn">
-                                <button v-if="isDirty" class="btn btn-default" name="button" @click="updateCart">更新購物車</button>
-                                <button v-else class="btn btn-default" name="button" disabled>更新購物車</button>
-                                <button class="btn btn-default" name="button" @click="deleteAll">清空購物車</button>
-                            </div>
-                            <p data-title="小計">
-                                商品小計 : NT$
-                                <span>
-                                    {{amount}}
-                                </span>
-                            </p>
-                            <p data-title="總計">
-                                訂單總金額 : NT$
-                                <span>
-                                    {{numberFormat(amountNum, 0, '.', ',')}}
-                                </span>
-                            </p>
-                        </li>
-                    </form> -->
-=======
->>>>>>> 9e45f88f253a09ef5ee3eba299de900836d7d4e3
                 </ul>
             </div>
             <br>

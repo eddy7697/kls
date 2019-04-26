@@ -14,6 +14,7 @@ use App\Admin;
 use App\Address;
 use App\SocialProvider;
 use App\Services\PublicServiceProvider;
+use App\Coupon;
 use Auth;
 use Cart;
 use Mail;
@@ -162,5 +163,37 @@ class HomeController extends Controller
         }
 
         return Session::all();
+    }
+
+    public function checkCoupon(Request $request, $coupon)
+    {
+        if (!Coupon::where('serialNumber', $coupon)->exists()) {
+            abort(454);
+            return;
+        }
+        
+        $couponItem = Coupon::where('serialNumber', $coupon)->first();
+
+        if ($couponItem->selectedUser) {
+            if ($couponItem->selectedUser !== Auth::user()->guid) {
+                abort(455);
+                return;
+            }
+        }
+
+        $cartArray = array();
+
+        foreach(Cart::content() as $row) {
+            array_push($cartArray, json_decode($row->name)->guid);
+        }
+
+        if (!in_array($couponItem->selectedProduct, $cartArray)) {
+            abort(456);
+            return;
+        }
+
+        // return $cartArray;
+
+        return $couponItem;
     }
 }

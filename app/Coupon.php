@@ -21,6 +21,8 @@ class Coupon extends Model
         'minimumAmount',
         'maximumAmount',
         'individualUse',
+        'selectedProduct',
+        'selectedUser',
         'usageLimit',
         'usageLimitPerUser'
     ];

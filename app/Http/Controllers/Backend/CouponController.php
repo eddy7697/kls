@@ -31,6 +31,8 @@ class CouponController extends Controller
             'freeShipping' => $data['freeShipping'],
             'minimumAmount' => $data['minimumAmount'],
             'maximumAmount' => $data['maximumAmount'],
+            'selectedProduct' => $data['selectedProduct'],
+            'selectedUser' => $data['selectedUser'],
             'individualUse' => $data['individualUse'],
             'usageLimit' => $data['usageLimit'],
             'usageLimitPerUser' => $data['usageLimitPerUser']
@@ -55,6 +57,8 @@ class CouponController extends Controller
             'minimumAmount' => $data['minimumAmount'],
             'maximumAmount' => $data['maximumAmount'],
             'individualUse' => $data['individualUse'],
+            'selectedProduct' => $data['selectedProduct'],
+            'selectedUser' => $data['selectedUser'],
             'usageLimit' => $data['usageLimit'],
             'usageLimitPerUser' => $data['usageLimitPerUser']
         ]);

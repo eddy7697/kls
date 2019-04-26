@@ -160,6 +160,14 @@
                                     <textarea cols="30" rows="10" v-model="customerParametorForShipping.remarks"></textarea>
                                 </td>
                             </tr>
+                            <tr class="cart_info_text">
+                                <td class="cart_info_title">
+                                    優惠券代碼
+                                </td>
+                                <td >
+                                    <input type="text" placeholder="請輸入優惠券代碼"  v-model="coupon">
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -208,6 +216,7 @@
                 discountType: '',
                 couponAmount: null,
                 Temperature: null,
+                coupon: null,
                 cart: [],
                 couponNumber: '',
                 shippingMethods: [],
@@ -478,12 +487,22 @@
                     switch (discountType) {
                         case 'percentage':
                             amount = this.amount - (this.amount / couponAmount);
+                            localStorage.removeItem('cartAmount');
+                            localStorage.cartAmount = amount;
                             break;
                         case 'cartDiscount':
                             amount = this.amount - couponAmount;
+                            localStorage.removeItem('cartAmount');
+                            localStorage.cartAmount = amount;
+                            break;
+                        case 'productDiscount':
+                            amount = this.amount - couponAmount;    
+                            localStorage.removeItem('cartAmount');
+                            localStorage.cartAmount = amount;                        
                             break;
                         default:
 
+                        
                     }
                     // amount = this.amount;
                 } else {
@@ -619,25 +638,52 @@
                 //     return;
                 // }
 
-                switch (method) {
-                    case 'cvsCod':      // 超商取貨付款
-                        this.cvsCod();
-                        break;
-                    case 'cvs':         // 超商純取貨
-                        this.aoiMethod();
-                        break;
-                    case 'aoi':         //All in one
-                        this.aoiMethod();
-                        break;
-                    default:
+                if (this.coupon) {
+                    axios.get(`/validate/coupon/${this.coupon}`)
+                        .then(res => {
+                            console.log(res)
+                            this.useCoupon()
+                        }).catch(err => {
+                            let result = err.response
 
+                            switch (result.status) {
+                                case 454:
+                                    alert('無效的優惠券代碼')
+                                    break;
+                                case 455:
+                                    alert('非指定會員')
+                                    break;
+                                case 456:
+                                    alert('優惠商品不在訂單內，優惠無法使用')
+                                    break;
+                                default:
+                                    break;
+                            }
+                        })
+                } else {
+                    switch (method) {
+                        case 'cvsCod':      // 超商取貨付款
+                            this.cvsCod();
+                            break;
+                        case 'cvs':         // 超商純取貨
+                            this.aoiMethod();
+                            break;
+                        case 'aoi':         //All in one
+                            this.aoiMethod();
+                            break;
+                        default:
+
+                    }
                 }
+
+                
             },
             aoiMethod: function () {
                 // if ((this.paymentMethod === 'cod') || (this.paymentMethod === null)) {
                 //     alert('請選擇付款方式');
                 //     return;
                 // }
+                
                 var self = this;
                 var form = document.createElement("form");
                 var _token = document.createElement("input");
@@ -1088,13 +1134,9 @@
                 var self = this;
                 var token = this.token;
 
-                if (this.couponNumber === '') {
-                    $('#coupon-field').focus();
-                    return;
-                }
 
                 $.ajax({
-                    url: '/coupon/get/' + this.couponNumber,
+                    url: '/coupon/get/' + this.coupon,
                     type: 'POST',
                     dataType: 'json',
                     beforeSend: function (xhr) {
@@ -1138,6 +1180,10 @@
                     self.couponAmount = couponAmount;
 
                     self.showMessage('success', '優惠券使用成功');
+
+                    self.$nextTick(() => {
+                        self.aoiMethod()
+                    })
                 })
                 .fail(function(xhr) {
                     console.log(xhr.status);

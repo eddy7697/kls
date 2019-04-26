@@ -27,6 +27,8 @@ class CreateCouponTable extends Migration
             $table->integer('minimumAmount')->nullable();
             $table->integer('maximumAmount')->nullable();
             $table->boolean('individualUse')->nullable();
+            $table->string('selectedProduct')->nullable();
+            $table->string('selectedUser')->nullable();
             $table->integer('usageLimit')->default(false)->nullable();
             $table->integer('usageLimitPerUser')->default(false)->nullable();
             $table->timestamps();

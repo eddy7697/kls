@@ -12,7 +12,7 @@
                         <th>優惠券類別</th>
                         <th>折扣金額</th>
                         <th>建立時間</th>
-                        <th width="50" style="text-align: center">狀態</th>
+                        <!-- <th width="50" style="text-align: center">狀態</th> -->
                         <th width="50" style="text-align: center">編輯</th>
                     </tr>
                 </thead>
@@ -23,19 +23,20 @@
                         <td>
                             <span v-if="item.discountType === 'percentage'">百分比折扣</span>
                             <span v-if="item.discountType === 'cartDiscount'">訂單折扣</span>
+                            <span v-if="item.discountType === 'productDiscount'">商品折扣</span>
                         </td>
                         <td>{{ item.couponAmount }} <span v-if="item.discountType === 'percentage'"> %</span></td>
                         <td>{{ item.created_at }}</td>
-                        <td style="padding-top: 8px;">
+                        <!-- <td style="padding-top: 8px;">
                             <toggle-button v-model="item.isPublish" @change="togglePublish(item)"/>
-                        </td>
+                        </td> -->
                         <td align="center"><span @click="editCoupon(item)" class="glyphicon glyphicon-pencil" style="cursor: pointer"></span></td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td><input type="checkbox" v-model="allSelect" v-on:change="toggleAllSelect()"></td>
-                        <td colspan="7">
+                        <td colspan="6">
                             <table>
                                 <tr>
                                     <td>

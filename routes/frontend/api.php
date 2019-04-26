@@ -89,3 +89,6 @@ Route::group(['prefix' => 'favorite'], function ()
     Route::get('/get', 'FavoriteController@getFavorite');
     Route::get('/delete/{guid}', 'FavoriteController@deleteFavorite');
 });
+
+
+Route::get('/validate/coupon/{coupon}', 'HomeController@checkCoupon');
