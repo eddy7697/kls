@@ -3,8 +3,6 @@
 @section('custom-script')
     <script>
         var $width = $(this).width();
-        var xxx = $('#test').text();
-        console.log(JSON.parse(xxx))
         function quickView(path) {
             window.location.href = '/product-deatil/' + path
         };   
@@ -378,9 +376,6 @@
                 <div class="col-md-12 feedback-Index">
                     <div class="swiper-wrapper">
                         @foreach (PostView::witness() as $item)
-                        <div id="test" style="display: none">
-                            {{$item}}
-                        </div>
                             <div class="swiper-slide">
                                 <div class="feedbackPost">
                                     <div class="feedbackPostInfo">

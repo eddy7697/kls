@@ -76,11 +76,7 @@ Route::get('/blog/{path}', function ($path)
 Route::get('/witness/{id}', function ($id)
 {
     return view('frontend.blog.witness', [
-<<<<<<< HEAD
-        'post' => PostView::getById($id),
-=======
         'id' => $id,
->>>>>>> 35b20e3a660d948c66457ea8d75677e1bdab6591
         'isThumbShow' => false,
     ]);
 });

@@ -8,10 +8,10 @@ use App\CustomField;
 
 @section('custom-meta')
     <meta property="og:url" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"}}"></meta>
-    <meta property="og:title" content="{{$post->seoTitle}}" />
-    <meta property="og:description" content="{{$post->seoDescription}}" />
+    <meta property="og:title" content="{{$witness->seoTitle}}" />
+    <meta property="og:description" content="{{$witness->seoDescription}}" />
     <!--分享用圖片在這，一樣有保留-->
-    <meta property="og:image" content="https://www.meansgood.com.tw{{$post->featureImage}}"/>
+    <meta property="og:image" content="https://www.meansgood.com.tw{{$witness->featureImage}}"/>
     <meta property="fb:app_id" content="1758202757809745" />
     <!--**************************-->
     <meta property="og:type" content="website" />
@@ -30,6 +30,10 @@ use App\CustomField;
         jQuery('.facebook-share').on('click', function() {
             window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href + '&src=sdkpreparse');
         });
+        
+        var dataTime = $('.dataTime').text();
+        var setTime = dataTime.split('T');
+        $('.time').text(setTime[0])
     </script>
 @endsection
 
@@ -68,15 +72,17 @@ use App\CustomField;
 <div class="container blog-post-container">
     <div class="row">
         <div class="col-md-12 blog-container">
-            <div class="blog-post-time">
-                <img src="/img/icon/date-01.png" alt="">
-                <span>{{$post->created_at}}</span>
-                {{-- {{$post->created_at}} --}}
-            </div>
+            
             
             <div class="blog-post-title">
-                <h2>{{$post->postTitle}}</h2>
+                {{-- <h2>文章標題</h2> --}}
                 {{-- {{$post->postTitle}} --}}
+                <div class="blog-post-time" style="float: left;">
+                    <img src="/img/icon/date-01.png" alt="">
+                    <span class="dataTime" style="display: none">{{$witness->customField7}}</span>
+                    <span class="time" ></span>
+                    {{-- {{$witness->created_at}} --}}
+                </div>
                 <div class="share">
                     <table style="width: 100%;">
                         <tr>
@@ -92,21 +98,32 @@ use App\CustomField;
                 </div>
             </div>
             <div class="blog-featureImage">
-                <img src="/img/16x9.png" alt="">
+                {{-- <img src="/img/16x9.png" alt=""> --}}
+                <img src="{{$witness->customField4}}" alt="">
             </div>
             <hr>
             <div class="blog-content row">
                 <div class="blog-content-info col-md-4">
                     <div class="authoInfo">
-                        <img class="feedback-Icon" src="/img/icon/male.png" alt="">
+                        @if ($witness->customField6 == "male")
+                            <img class="feedback-Icon" src="/img/icon/male.png" alt="">
+                        @else
+                            <img class="feedback-Icon" src="/img/icon/female.png" alt="">
+                        @endif
                         <h3>
-                            XXX 先生
+                            {{$witness->locale}}
+                            @if ($witness->customField6 == "male")
+                                先生
+                            @else
+                                小姐
+                            @endif
+                            
                         </h3>
                     </div>
                 </div>
                 <div class="blog-content-inner col-md-8">
-                    異形箱真的誇張的好裝、好拖、好美(*^^*)真的不要再猶豫了！男友的2萬的s牌都不想用了，一直和我搶著拖異形箱(o^^o)超滑的，裝20幾公斤，輪子還是好滑好滑，也沒有任何路面感到困難！買了不會後悔的！謝謝闆娘...
-                    {{-- {!!$post->content!!} --}}
+                        {!!$witness->content!!}
+                    {{-- {!!$witness->content!!} --}}
                 </div>
             </div>
         </div>
