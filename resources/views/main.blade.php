@@ -769,7 +769,7 @@
             
             $(document).ready(function() {
                 var $width = $(this).width();
-
+                console.log('123')
                 get_H();
                 scrollMenu();
                 wishListCount();
@@ -805,7 +805,7 @@
                     }else{
                         return true;
                     }
-                },
+                }
                 
                 function megaMenuScroll () {
                     var megaMenu = $('.mega-menu-product');
