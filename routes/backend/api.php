@@ -83,6 +83,7 @@ Route::get('/admin/normal/add', 'Backend\AdminController@createNormalUser');
 Route::post('/admin/normal/search/{keyword}', 'Backend\AdminController@searchUsers');
 Route::get('/admin/normal/get/{guid}', 'Backend\AdminController@getNormalUser');
 Route::post('/admin/normal/update/{guid}', 'Backend\AdminController@updateNormalUser');
+Route::get('/admin/normal/export', 'Backend\AdminController@exportUser');
 Route::post('/admin/address/create', 'Backend\AdminController@createAddress');
 Route::post('/admin/address/update/{guid}', 'Backend\AdminController@updateAddress');
 
@@ -123,7 +124,7 @@ Route::post('/admin/feature/update', 'Backend\ProductController@updateFeature');
 Route::get('/admin/product/low_qty', 'Backend\ProductController@getSimpleLowQty');
 Route::get('/admin/product/sub/low_qty', 'Backend\ProductController@getSubLowQty');
 Route::post('/admin/tag/create', 'Backend\ProductController@saveTag');
-Route::get('/admin/tag/get', 'Backend\ProductController@getTag');
+Route::get('/admin/tag/get/{type}', 'Backend\ProductController@getTag');
 
 /**
  * Page

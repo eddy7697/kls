@@ -34,7 +34,7 @@
                         <span class="liinner" style="border-right: solid 2px #636B6F;"></span>
                     </li>
                     <li>
-                        <img src="/img/buyIcon/info-01.png" alt="">
+                        <img src="/img/buyIcon/info-notyet-01.png" alt="">
                         <span class="caret"></span>
                         訂購資訊
                     </li>
@@ -52,7 +52,7 @@
                 @if (count($cart))
                     <cart-page></cart-page>
                 @else
-                    <h3 class="center" style="padding: 250px 0;">購物車裡面沒有商品，趕快去逛逛吧~</h3>
+                    <h3 class="center">購物車裡面沒有商品，趕快去逛逛吧~</h3>
                 @endif
             </div>
         </div>

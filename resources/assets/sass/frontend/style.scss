@@ -32,10 +32,7 @@ input::-webkit-inner-spin-button {
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        #loading_svg {
+        .loading_svg {
             width: 150px;
             height: 150px;
             margin-top: -25px;
@@ -625,6 +622,24 @@ table.product-comment {
     }
 } 
 
+	
+.airplane{
+	
+}
+
+
+#load {
+    width:500px;
+    height:36px;
+    margin-left:-300px;
+    overflow:visible;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    cursor:default;
+  }
+  
 @keyframes loadingAni1 {
     0% {
         transform:translateX(-20px);
@@ -637,22 +652,18 @@ table.product-comment {
         transform:translateX(-20px);
     }
 }
-
 @keyframes loadingAni2 {
     0% {
         transform: translateX(20px);
     }
-   
-	50%{
+    50%{
         transform: translateX(-20px);
-	}
-	
-	100%{
+    }
+    100%{
         transform: translateX(20px);
-	    z-index: 200;
-	}
+        z-index: 200;
+    }
 }
-
 @media screen and (max-width: 991px) {
     .nav-btn {
         display: block;
@@ -724,7 +735,6 @@ table.product-comment {
         }
     }
 }
-
 
 @media screen and (max-width: 630px) {
     

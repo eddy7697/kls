@@ -46,31 +46,135 @@
         mounted () {
             $('.loading-bar').hide()
         },
+        props: ['tagtype'],
         data () {
-            return {
-                tagGroup: {
-                    brand: ['Departure', 'CROWN 皇冠', 'NOVITA', 'YUE', 'OOSSACK', 'AD 亞蘭德倫', 'MOM', 'AT 美國旅行者', 'SAMSONITE 新秀麗'],
-                    size: ['20吋以下', '20 - 23吋', '23 - 25吋', '27 - 29吋', '30吋以上'],
-                    trip: ['當日來回', '3 - 7天', '7 - 14天', 'Long Stay'],
-                    price: ['0 - 5000', '5000 - 10000', '10000 - 15000', '15000 - 20000', '20000 以上'],
-                    material: ['鋁框', 'PC', 'ABS', '防水尼龍', 'PET', '碳纖維']
-                },
-                inputVisible: {
-                    brand: false,
-                    size: false,
-                    trip: false,
-                    price: false,
-                    material: false
-                },
-                inputValue: {
-                    brand: null,
-                    size: null,
-                    trip: null,
-                    price: null,
-                    material: null
-                },
-                fakeInput: null
+
+            switch (this.tagtype) {
+                case 'tag':
+                    return {
+                        tagGroup: {
+                            brand: [],
+                            size: [],
+                            trip: [],
+                            price: [],
+                            material: []
+                        },
+                        inputVisible: {
+                            brand: false,
+                            size: false,
+                            trip: false,
+                            price: false,
+                            material: false
+                        },
+                        inputValue: {
+                            brand: null,
+                            size: null,
+                            trip: null,
+                            price: null,
+                            material: null
+                        },
+                        fakeInput: null
+                    }
+                    break;
+                case 'bag_tag':
+                    return {
+                        tagGroup: {
+                            brand: [],
+                            type: [],
+                            price: [],
+                        },
+                        inputVisible: {
+                            brand: false,
+                            type: false,
+                            price: false,
+                        },
+                        inputValue: {
+                            brand: null,
+                            type: null,
+                            price: null,
+                        },
+                        fakeInput: null
+                    }
+                    break;
+                case 'fitting_tag':
+                    return {
+                        tagGroup: {
+                            categories: []
+                        },
+                        inputVisible: {
+                            categories: false
+                        },
+                        inputValue: {
+                            categories: null
+                        },
+                        fakeInput: null
+                    }
+                    break;
+                default:
+                    break;
             }
+            // if (this.tagtype = 'tag') {
+            //     return {
+            //         tagGroup: {
+            //             brand: [],
+            //             size: [],
+            //             trip: [],
+            //             price: [],
+            //             material: []
+            //         },
+            //         inputVisible: {
+            //             brand: false,
+            //             size: false,
+            //             trip: false,
+            //             price: false,
+            //             material: false
+            //         },
+            //         inputValue: {
+            //             brand: null,
+            //             size: null,
+            //             trip: null,
+            //             price: null,
+            //             material: null
+            //         },
+            //         fakeInput: null
+            //     }
+            // }
+
+            // if (this.tagtype = 'bag_tag') {
+            //     return {
+            //         tagGroup: {
+            //             brand: [],
+            //             type: [],
+            //             price: [],
+            //         },
+            //         inputVisible: {
+            //             brand: false,
+            //             type: false,
+            //             price: false,
+            //         },
+            //         inputValue: {
+            //             brand: null,
+            //             type: null,
+            //             price: null,
+            //         },
+            //         fakeInput: null
+            //     }
+            // }
+
+            // if (this.tagtype = 'fitting_tag') {
+            //     return {
+            //         tagGroup: {
+            //             categories: []
+            //         },
+            //         inputVisible: {
+            //             categories: false
+            //         },
+            //         inputValue: {
+            //             categories: null
+            //         },
+            //         fakeInput: null
+            //     }
+            // }
         },
         computed: {
             tagGroupKeys() {
@@ -95,6 +199,12 @@
                         case 'material':
                             label = '材質 Material'
                             break;
+                        case 'type':
+                            label = '類型 Types'
+                            break;
+                        case 'categories': 
+                            label = '配件類別 Categories'
+                            break;
                         default:
                             break;
                     }
@@ -105,6 +215,9 @@
                     }
                 })
             }
+        },
+        created() {
+            this.getTagData()
         },
         methods: {
             handleClose(group, tag) {
@@ -126,10 +239,17 @@
                 this.inputVisible[item] = false;
                 this.inputValue[item] = '';
             },
+            getTagData() {
+                axios.get(`/admin/tag/get/${this.tagtype}`)
+                    .then(res => {
+                        this.tagGroup = res.data
+                    })
+            },
             onSubmit() {
                 console.log(JSON.stringify(this.tagGroup))
 
                 axios.post('/admin/tag/create', {
+                    type: this.tagtype,
                     data: JSON.stringify(this.tagGroup)
                 })
             }

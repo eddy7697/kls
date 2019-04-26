@@ -222,6 +222,7 @@ return [
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
         PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
 
     ],
@@ -278,6 +279,7 @@ return [
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
         'PublicServiceProvider' => App\Services\PublicServiceProvider::class,
         'AddressInfo' => App\Services\AddressInfo::class,

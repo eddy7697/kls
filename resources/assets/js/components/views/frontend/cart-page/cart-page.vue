@@ -1,7 +1,7 @@
 <template>
     <div class="row" v-if="isCartEmpty && isLoaded">
         <div class="col-md-12">
-            <h3 class="center" style="padding: 250px 0; text-align: center">購物車裡面沒有商品，趕快去逛逛吧~</h3>
+            <h3 class="center">購物車裡面沒有商品，趕快去逛逛吧~</h3>
         </div>
     </div>
     <div class="row" v-else>
@@ -75,6 +75,7 @@
                             </span>
                         </p>
                     </li>
+<<<<<<< HEAD
                     <!-- <form class="" action="/checkout/billing" method="post">
                         <li class="cart_list_total">
                             <div class="function_btn">
@@ -96,6 +97,8 @@
                             </p>
                         </li>
                     </form> -->
+=======
+>>>>>>> 9e45f88f253a09ef5ee3eba299de900836d7d4e3
                 </ul>
             </div>
             <br>
@@ -442,16 +445,15 @@
                         dataType: 'json',
                     })
                     .done(function(response) {
-                        // console.log(response);
                         self.getCart();
+                        window.updateCount();
                     })
                     .fail(function() {
-                        // console.log("error");
                     })
                     .always(function() {
                         $('.loading-bar').fadeOut('100');
+                        window.updateCount();
                         self.getCart();
-                        // console.log("complete");
                     });
 
                 } else {

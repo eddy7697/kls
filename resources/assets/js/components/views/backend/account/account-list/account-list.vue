@@ -7,55 +7,62 @@
                 @newKeyword="newKeyword($event)"
                 @searchPost="searchPost($event)"/>
         </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" @click="exportUser">匯出會員列表</button>
+        </div>
         <div class="col-md-12" style="position: relative">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createAdminModal" style="position: absolute; right: 10px; top: -52px;">
               <span class="glyphicon glyphicon-plus"></span> 新增帳號
             </button>
+            <el-table
+                :data="accounts"
+                style="width: 100%">
+                <el-table-column
+                    prop="email"
+                    label="帳號">
+                </el-table-column>
+                <el-table-column
+                    prop="name"
+                    label="姓名">
+                </el-table-column>
+                <el-table-column
+                    prop="created_at"
+                    label="建立時間"
+                    width="180">
+                </el-table-column>
+                <el-table-column
+                    prop="created_at"
+                    label="編輯"
+                    width="75">
+                    <template slot-scope="scope">
+                        <div>
+                            <el-button icon="el-icon-edit" @click="editUser(scope.row)" circle />
+                        </div>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                    prop="created_at"
+                    label="刪除"
+                    width="75">
+                    <template slot-scope="scope">
+                        <div>
+                            <el-button type="danger" icon="el-icon-delete" @click="deleteAdmin(scope.row)" circle />
+                        </div>
+                    </template>
+                </el-table-column>
+            </el-table>
 
-            <table class="table field-table">
-                <thead>
-                    <tr>
-                        <!-- <th><input type="checkbox" v-model="allSelect" v-on:change="toggleAllSelect()"></th> -->
-                        <th class="pointer" @click="sortAction('email')">帳號</th>
-                        <th class="pointer" @click="sortAction('name')">名稱</th>
-                        <th class="pointer" @click="sortAction('created_at')">建立時間</th>
-                        <!-- <th width="70" style="text-align: center">剩餘點數</th> -->
-                        <th class="pointer" width="50" @click="sortAction('created_at')" style="text-align: center">狀態</th>
-                        <th width="50" style="text-align: center">編輯</th>
-                        <th width="50" style="text-align: center">刪除</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item, index) in accounts" v-bind:key="index">
-                        <!-- <td><input type="checkbox" v-model="item.isSelect"></td> -->
-                        <td>{{ item.email }}</td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.created_at }}</td>
-                        <!-- <td style="text-align: center">{{ item.point }}</td> -->
-                        <td style="text-align: center">{{ item.status }}</td>
-                        <td align="center"><span @click="editUser(item)" class="glyphicon glyphicon-pencil pointer"></span></td>
-                        <td align="center"><span @click="deleteAdmin(item)" class="glyphicon glyphicon-trash pointer"></span></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="7">
-                            <ul class="pagination">
-                				<li v-if="prev_page_url">
-                					<a href="#" @click="prevPage()">上一頁</a>
-                				</li>
-                				<li v-for="(item, index) in eachPage" v-bind:key="index" v-bind:class="{ active: current_page == item.pageNumber }">
-                					<a href="#" @click="gotoPage(item)">{{item.pageNumber}}</a>
-                				</li>
-                				<li v-if="next_page_url">
-                					<a href="#" @click="nextPage()">下一頁</a>
-                				</li>
-                			</ul>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+            <div class="block">
+                <el-pagination
+                    style="margin-top: 10px"
+                    layout="prev, pager, next"
+                    :current-page.sync="pageData.current_page"
+                    :page-size="pageData.per_page"
+                    @current-change="gotoPage"
+                    :total="pageData.total">
+                </el-pagination>
+            </div>
 
             <!-- 新增帳號視窗 -->
             <div class="modal fade" id="createAdminModal" tabindex="-1" role="dialog" aria-labelledby="createAdminModalLabel">
@@ -194,7 +201,23 @@
 </template>
 
 <script>
-    var searchBar = require('../../../../common/searchBar.vue');
+    var searchBar = require('../../../../common/searchBar.vue')
+    import {
+        Table,
+        TableColumn,
+        Button,
+        Pagination
+    } from 'element-ui'
+    import 'element-ui/lib/theme-chalk/index.css'
+    import lang from 'element-ui/lib/locale/lang/zh-TW'
+    import locale from 'element-ui/lib/locale'    
+    
+    Vue.use(Table)
+    Vue.use(TableColumn)
+    Vue.use(Button)
+    Vue.use(Pagination)
+
+    locale.use(lang)
 
     export default {
         data() {
@@ -224,6 +247,7 @@
                         city: null
                     }
                 },
+                pageData: {},
                 accounts: [],
                 keyword: null,
                 addressExist: false,
@@ -261,6 +285,9 @@
 
                     this.allSelect = isAllSelected;
                 }
+            },
+            urlPath() {
+                this.getUser()
             }
         },
         computed: {
@@ -280,12 +307,12 @@
             }
         },
         methods: {
-            getUser: function (url) {
+            getUser: function () {
                 var self = this
 
                 $('.loading-bar').fadeIn('100');
 
-                axios.post(url, {
+                axios.post(this.urlPath, {
                     flag: self.flag,
                     order: self.defaultOrder
                 }).then(result => {
@@ -315,6 +342,8 @@
                             isSelect: false
                         });
                     });
+
+                    this.pageData = result.data
                     $('.loading-bar').fadeOut('100');
                 }).catch(err => {
                     console.log(err)
@@ -330,10 +359,8 @@
 
                 if (self.keyword) {
                     this.urlPath = `/admin/normal/search/${self.keyword}`
-                    this.getUser(`/admin/normal/search/${self.keyword}`);
                 } else {
                     this.urlPath = '/admin/normal/list';
-                    this.getUser('/admin/normal/list');
                 }
             },
             newKeyword (event) {
@@ -451,8 +478,30 @@
             prevPage: function () {
                 this.getUser(this.prev_page_url);
             },
-            gotoPage: function (item) {
-                this.getUser('/admin/normal/list?page=' + item.pageNumber);
+            gotoPage(page) {
+                let checkPage = this.urlPath.match('page=')
+
+                if (checkPage) {
+                    let pathArray = this.urlPath.split('?')
+                    let pageStrIndex
+
+                    pathArray.forEach(elm => {
+                        if (elm.match('page=')) {
+                            pageStrIndex = pathArray.indexOf(elm)
+                        }
+                    })
+
+                    pathArray[pageStrIndex] = `page=${page}`
+                    
+                    this.urlPath = pathArray.join('?')
+                } else {
+                    const url = `${this.urlPath}?page=${page}`
+
+                    this.urlPath = url
+                }
+            },
+            exportUser() {
+                window.location.href = '/admin/normal/export'
             },
             toggleAllSelect: function () {
                 if (this.isAllSelected) {

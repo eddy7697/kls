@@ -110,6 +110,18 @@
 
                             <tr>
                                 <td class="cart_info_title">
+                                    購物方式
+                                </td>
+                                <td>
+                                    <input type="radio" name="paymentMethod" v-model="paymentMethod" value="Remit" id="remit" required>
+                                    <label for="remit">轉帳付款</label>
+                                    <input type="radio" name="paymentMethod" v-model="paymentMethod" value="cod" id="cod" required>
+                                    <label for="cod">宅配貨到付款</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="cart_info_title">
                                     發票開立方式
                                 </td>
                                 <td>
@@ -127,8 +139,7 @@
                                     發票抬頭
                                 </td>
                                 <td>
-                                    <input class="invoice-title" type="text" id="invoice-title" placeholder="" v-model="customerParametorForShipping.ReceiverAddress" required>
-                                    <!-- <strong v-if="!formValidation.ReceiverAddres" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong> -->
+                                    <input class="invoice-title" type="text" id="invoice-title" placeholder="" v-model="customerParametorForShipping.invoiceTitle" required>
                                 </td>
                             </tr>
                             
@@ -137,8 +148,7 @@
                                     統一編號
                                 </td>
                                 <td>
-                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" v-model="customerParametorForShipping.ReceiverAddress" required>
-                                    <!-- <strong v-if="!formValidation.ReceiverAddres" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong> -->
+                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='[0-9]{8}' v-model="customerParametorForShipping.taxId" required>
                                 </td>
                             </tr>
 
@@ -212,7 +222,7 @@
                     remarks: '',
                     newMemberPassword: '',
                     receipt: '',
-                    taxId: '',
+                    taxId: ''
                 },
                 customerParametorForShipping: {
                     ReceiverName: '',
@@ -226,6 +236,7 @@
                     newMemberPassword: '',
                     receipt: '',
                     taxId: '',
+                    invoiceTitle: '',
                 },
                 formValidation: {
                     ReceiverName: true,
@@ -329,8 +340,6 @@
                 var shippingMethods = results[1];
                 var cartContent = results[2];
                 var cartTemp = results[3];
-                self.ifThreeWay();
-
                 // 確認登入狀態
                 self.isAuth = authStatus.auth;
 
@@ -579,6 +588,8 @@
                     method = 'cvs';
                 } else if (this.shippingMethod !== 'cvs') {
                     method = 'aoi';
+                } else if (this.paymentMethod == 'cod') {
+                    method = 'aoi';
                 }
 
 
@@ -623,10 +634,10 @@
                 }
             },
             aoiMethod: function () {
-                if ((this.paymentMethod === 'cod') || (this.paymentMethod === null)) {
-                    alert('請選擇付款方式');
-                    return;
-                }
+                // if ((this.paymentMethod === 'cod') || (this.paymentMethod === null)) {
+                //     alert('請選擇付款方式');
+                //     return;
+                // }
                 var self = this;
                 var form = document.createElement("form");
                 var _token = document.createElement("input");
@@ -1142,21 +1153,6 @@
             },
             showMessage: function (type, string) {
                 toastr[type](string);
-            },
-            ifThreeWay: function(){
-                let self = this;
-                $("input[name='invoice']").focus( e =>{
-                    let choseVal = $(e.target).val();
-                    choseVal == 'threeWay' ? self.showThreeWayInput() : self.hideThreeWayInput();                    
-                })
-            },
-            showThreeWayInput: function(){
-                $('.GUI-number-td').fadeIn();
-                $('.invoice-title-td').fadeIn();
-            },
-            hideThreeWayInput: function(){
-                $('.GUI-number-td').fadeOut();
-                $('.invoice-title-td').fadeOut();
             }
         }
     }

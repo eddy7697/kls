@@ -2,10 +2,10 @@
     <div>
     
         <div class="shopping-Cart-Icon" @click="getCart(true)">
-            <img v-if="isIndex()" src="/img/navbar-cart-01.svg" alt="">
-            <img v-else src="/img/cartIcon-01.png" alt="">
+            <img class="icon_white" src="/img/cartIcon-01.png" alt="">
+            <img class="icon_yellow" src="/img/cartIconYellow-01.png" alt="">
             <span class="count" v-if="cartContent.length && isIndex()">{{cartContent.length}}</span> 
-            <span class="count" style="bottom: -5px; right: 0px;" v-else-if="cartContent.length">{{cartContent.length}}</span> 
+            <span class="count" style="bottom: -4px; right: 0px;" v-else-if="cartContent.length">{{cartContent.length}}</span> 
         </div>
         <!-- <div class="litext" @click="getCart(true)">
             <p>&nbsp;&nbsp;購物車</p>
@@ -24,30 +24,32 @@
                     <span></span>
                 </button>
 
-                <table v-if="!isCartEmpty" class="cart-panel-table" v-for="(item, index) in cartContent" v-bind:key="index">
-                    <tr>
-                        <!-- <td rowspan="2">
-                            <button type="button" name="button" @click="removeProduct(item)">x</button>
-                        </td> -->
-                        <td rowspan="3">
-                            <img class="cart-item-img" v-bind:src="thumb(item.featureImage)" alt="">
-                        </td>
-                        <td align="right">
-                            <strong>{{item.title}} x {{item.qty}}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <strong>NT$ {{item.total}}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <a href="#" @click="removeProduct(item)">刪除商品</a>
-                            <!-- <button type="button" name="button" @click="removeProduct(item)">x</button> -->
-                        </td>
-                    </tr>
-                </table>
+                <div v-if="!isCartEmpty">
+                    <table class="cart-panel-table" v-for="(item, index) in cartContent" v-bind:key="index">
+                        <tr>
+                            <!-- <td rowspan="2">
+                                <button type="button" name="button" @click="removeProduct(item)">x</button>
+                            </td> -->
+                            <td rowspan="3">
+                                <img class="cart-item-img" v-bind:src="thumb(item.featureImage)" alt="">
+                            </td>
+                            <td align="right">
+                                <strong>{{item.title}} x {{item.qty}}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <strong>NT$ {{item.total}}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <a class="removeProductBtn" href="#" @click="removeProduct(item)">刪除商品</a>
+                                <!-- <button type="button" name="button" @click="removeProduct(item)">x</button> -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>                
 
                 <hr>
                 <h4 v-if="!isCartEmpty" style="text-align: center"><strong>小計 NT$ {{amount}}</strong></h4>
@@ -68,9 +70,11 @@
     import 'element-ui/lib/theme-chalk/index.css';
     import lang from 'element-ui/lib/locale/lang/zh-TW'
     import locale from 'element-ui/lib/locale'
+
     Vue.use(ElementUI);
     locale.use(lang)
     $('.loading-bar').fadeOut('100');
+
     export default {
         data() {
             let isSubPage = window.location.pathname;
@@ -79,12 +83,11 @@
                 displayPanel: false,
                 amount: null,
                 cartContent: [],
-                isCartEmpty: true                
+                isCartEmpty: true,                
             }
         },
         created: function () {
             this.getCart(false);
-
             window.updateCount = this.getCart
             window.addSigleProduct = this.addSigleProduct
             window.addFavorite = this.addFavorite
@@ -92,7 +95,7 @@
         },
         methods: {
             getCart: function (status) {
-                var self = this;
+                let self = this;
 
                 $.ajax({
                     url: '/cart/get',
@@ -204,21 +207,25 @@
             addSigle(guid) {
                 let self = this;
                 axios.post('/checkAuth')
-                    .then(res => {                        
+                    .then(res => {          
                         if (res.data.auth) {
                             self.addToCart(guid)
-                            this.$refs.eventForm.initForm(res.data)
+                            // self.$refs.eventForm.initForm(res.data)
                         } else {
                             alert('請先登入!')
                             window.location.href = '/login'
                         }
                     })
-                    
             },
-            addToCart: guid => {
+            addToCart: function(guid) {
+                let self = this;
                 axios.post(`/cart/add/single/${guid}`
                     ).then(res => {
-                        self.$message.success('成功加入購物車！')
+                        self.$message.success('成功加入購物車！');
+                        self.deleteFavorite(guid);
+                        window.updateCount();
+                        $('.shopping-Cart-Icon').click();
+                        $('li.' + guid).fadeOut(500);
                     }).catch(err => {
                         self.$message.error('加入購物車失敗...')
                     }).then(arg => {
@@ -244,17 +251,36 @@
                 this.displayPanel = false;
             },
             addFavorite(guid) {
+                let self = this;
                 axios.get(`/favorite/add/${guid}`)
                     .then(res => {
-                        this.$message.success('新增至願望清單成功')
+                        self.$message.success('新增至願望清單成功')
                     })
             },
             deleteFavorite(guid, callback) {
+                let self = this;
                 axios.get(`/favorite/delete/${guid}`)
                     .then(res => {
-                        this.$message.success('刪除項目成功')
-                        callback()
+                        let hasClass = $('.productHeart[data-id='+ guid +']').hasClass('productHeart-active');
+                        (hasClass) ? self.$message.success('已從願望清單移除商品') : console.log('has been delete');
+                        self.resetIconSpan();
+                        self.removeHeartActive(guid);
+                        callback();
                     })
+            },
+            resetIconSpan: function(){
+                 axios.get('/favorite/get')
+                    .then(function(res){
+                        var wishCount = res.data.length;
+                        if(wishCount){
+                            $('.wish-icon .count').text(wishCount);
+                        } else {
+                            $('.wish-icon .count').text('');
+                        }
+                    });
+            },
+            removeHeartActive: function(guid){
+                $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active');
             },
             isIndex: function(){
                 let isIndex = window.location.pathname;
@@ -263,7 +289,7 @@
                 }else{
                     return true;
                 }
-            }
+            },
         }
     }
     
@@ -291,13 +317,6 @@
     .shopping-Cart-Icon {
         position: relative;
     }
-    .shopping-Cart-Icon img{
-        /* width: 30px;
-        height: 30px; */
-    }
-    .shopping-Cart-Icon, .litext{
-        /* display: inline-block; */
-    }
     .shopping-Cart-Icon span.count{
         position: absolute;
         font-size: 12px;
@@ -308,5 +327,8 @@
         bottom: -5px;
         right: 10px;
         box-shadow: 2px 2px 12px -2px #666;
+    }
+    .cart-panel-table .removeProductBtn{
+        color: #0f2746 !important;
     }
 </style>

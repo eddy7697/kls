@@ -9,9 +9,8 @@
 @section('custom-style')
     <style media="screen">
         .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(4) .sub-nav-menu-ul-a{
-            border-bottom: solid 3px #FBB03B;
+            opacity: 1;
         }
-        .loaing-logo.png
     </style>
 @endsection
 
@@ -77,7 +76,7 @@
                             <p class="information-inner-store-number-title">
                                 透過Web預訂
                             </p>
-                            <a href="/contact">
+                            <a href="/contact?target=location">
                                 <button class="information-btn online-contact" style="margin-top: 8px; width: 185px;">
                                     <i class="fa fa-calendar-o" aria-hidden="true"></i>
                                     網路預訂

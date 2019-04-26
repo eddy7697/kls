@@ -60,23 +60,23 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 619);
+/******/ 	return __webpack_require__(__webpack_require__.s = 624);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 619:
+/***/ 624:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(620);
+module.exports = __webpack_require__(625);
 
 
 /***/ }),
 
-/***/ 620:
+/***/ 625:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\projects\\kls-p\\resources\\assets\\js\\components\\views\\frontend\\product-fitting\\product-fitting.js'");
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\projects\\kls-p\\resources\\assets\\js\\components\\views\\frontend\\product-fitting-bag\\product-fitting-bag.js'");
 
 /***/ })
 

@@ -21,7 +21,9 @@
                 :class="{active: item.id == chossedSub}"
                 v-for="(item, index) in subProducts" 
                 :key="index"
-                @click="chossedSub = item.id">
+                @click="chossedSub = item.id"
+                :data-id = item.id
+                >
                 {{item.subTitle}}
             </div>
         </div>
@@ -68,6 +70,7 @@
         Dialog,
         InputNumber,
         Radio,
+        Message,
         RadioGroup,
     } from 'element-ui';
     import 'element-ui/lib/theme-chalk/index.css';
@@ -78,6 +81,7 @@
     Vue.use(InputNumber);
     Vue.use(Radio);
     Vue.use(RadioGroup);
+    Vue.component(Message);
     locale.use(lang)
 
     export default {
@@ -147,29 +151,42 @@
             },
             getSubProducts() {
                 let self = this;
-
                 axios.get(`/products/get/sub/${this.guid}`)
                     .then(res => {
                         self.subProducts = res.data
                         self.isLoaded = true
+                        setTimeout(() => {
+                            self.clickFirst()
+                        }, 0);
                     }).catch(err => {
                         self.$message.error('Get Subproduct failed.')
                     })
             },
             addToCart() {
-                if (this.productType == 'simple') {
-                    this.addSimple()
-                } else {
-                    this.addVariable()
-                }
+                let self = this;
+                axios.post('/checkAuth')
+                    .then(res => {          
+                        if (res.data.auth) {
+                            if (this.productType == 'simple') {
+                                this.addSimple()
+                            } else {
+                                this.addVariable()
+                            }
+                        } else {
+                            alert('請先登入!')
+                            window.location.href = '/login'
+                        }
+                    })
             },
             addSimple() {
                 let self = this
-
                 axios.post(`/cart/add/${this.guid}`, {
                     quantity: self.qty
                 }).then(res => {
-                    self.$message.success('成功加入購物車！')
+                    self.$message.success('成功加入購物車！');
+                    $('.shopping-Cart-Icon').click();
+                    deleteFavorite(this.guid);
+                    window.updateCount();
                 }).catch(err => {
                     self.$message.error('加入購物車失敗...')
                 }).then(arg => {
@@ -186,11 +203,12 @@
                     qty: this.subQuantity,
                     subSerialNumber: this.choosedSubItem.subSerialNumber
                 }
-
                 axios.post(`/cart/add/sub/${this.guid}`, choosed)
                     .then(res => {
-                        console.log(res.data)
-                        self.$message.success('成功加入購物車！')
+                        self.$message.success('成功加入購物車！');
+                        $('.shopping-Cart-Icon').click();
+                        deleteFavorite(this.guid);
+                        window.updateCount();
                     }).catch(err => {
                         self.$message.error('加入購物車失敗...')
                     }).then(arg => {
@@ -207,6 +225,10 @@
             },
             numberFormat(n, c, d, t) {
                 return h.number_format(n, c, d, t)
+            },
+            clickFirst(){
+                console.log($('.option-item').attr('data-id'))
+                $('.option-item[data-id="1"]').click()
             }
         }
     }

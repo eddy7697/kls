@@ -97,14 +97,23 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{route('productFittingBag')}}">
+                            品牌背包
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{url('/blog')}}">
                             部落格
                         </a>
                     </li>
                     <li>
-                        
                         <a href="{{route('location')}}">
                             店鋪資訊
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cart">
+                            查看購物車
                         </a>
                     </li>
                     <li class="nav_final">
@@ -355,6 +364,11 @@
                                                                 諮詢專區
                                                             </a>
                                                         </li>
+                                                        <li>
+                                                            <a href="{{url('/user')}}">
+                                                                會員專區
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </li>
                                                 <li class="col-md-4 mega-menu-img">
@@ -372,8 +386,41 @@
                             </div>
                         </div>
                         <div class="navbar-icon">
+                            @if (Auth::guest() || Auth::user()->role == 'ADMIN')
+                                <a class="login" href="/login?origin={{urlencode(base64_encode($_SERVER['REQUEST_URI']))}}">
+                                    <img class="icon_white" src="\img\login-01.png" alt="">
+                                    <img class="icon_yellow" src="\img\loginYellow-01.png" alt="">
+                                </a>
+                            @else
+                                <a class="login dropdown-toggle" href="{{ url('/user/address') }}"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span>
+                                        {{Auth::user()->name}}，您好
+                                    </span>
+                                    <div class="dropdown-menu login_menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="{{ url('/user') }}">
+                                            <span>
+                                                會員專區
+                                            </span>
+                                        </a>
+                                        <a class="dropdown-item" href="{{ url('/user/information') }}">
+                                            <span>
+                                                會員資訊
+                                            </span>
+                                        </a>
+                                        <a class="dropdown-item" onclick="event.preventDefault(); $('.logout-form').submit();">
+                                            <span>
+                                                會員登出
+                                            </span>
+                                            <form class="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </a>
+                                    </div>
+                                </a>
+                            @endif                            
                             <a class="wish-icon" href="/wish-list">
-                                <img src="/img/navbar-heart-01.png" alt="">
+                                <img class="icon_white" src="\img\likeIcon-01.png" alt="">
+                                <img class="icon_yellow" src="\img\likeIconYellow-01.png" alt="">
                                 <span class="count"></span>
                             </a>
                             <div id="cart-panel">
@@ -477,6 +524,11 @@
                                                                     諮詢專區
                                                                 </a>
                                                             </li>
+                                                            <li>
+                                                                <a href="{{url('/user')}}">
+                                                                    會員專區
+                                                                </a>
+                                                            </li>
                                                         </ul>
                                                     </li>
                                                     <li class="col-md-4 mega-menu-img">
@@ -490,9 +542,42 @@
                                                 </ul>
                                             </li>
                                         <li class="sub-icon">
-                                            <a class="wish-icon" href="/wish-list">
-                                                <img style="width: 17px;" src="\img\likeIcon-01.png" alt="">
-                                                <span style="bottom: -7px; right: 0px;" class="count"></span>
+                                            @if (Auth::guest() || Auth::user()->role == 'ADMIN')
+                                                <a class="login" href="/login?origin={{urlencode(base64_encode($_SERVER['REQUEST_URI']))}}">
+                                                    <img class="icon_white" src="\img\login-01.png" alt="">
+                                                    <img class="icon_yellow" src="\img\loginYellow-01.png" alt="">
+                                                </a>
+                                            @else
+                                                <a class="login dropdown-toggle" href="{{ url('/user/address') }}"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span>
+                                                        {{Auth::user()->name}}，您好
+                                                    </span>
+                                                    <div class="dropdown-menu login_menu" aria-labelledby="dropdownMenuLink">
+                                                        <a class="dropdown-item" href="{{ url('/user') }}">
+                                                            <span>
+                                                                會員專區
+                                                            </span>
+                                                        </a>
+                                                        <a class="dropdown-item" href="{{ url('/user/information') }}">
+                                                            <span>
+                                                                會員資訊
+                                                            </span>
+                                                        </a>
+                                                        <a class="dropdown-item" onclick="event.preventDefault(); $('.logout-form').submit();">
+                                                            <span>
+                                                                會員登出
+                                                            </span>
+                                                            <form class="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                {{ csrf_field() }}
+                                                            </form>
+                                                        </a>
+                                                    </div>
+                                                </a>
+                                            @endif   
+                                            <a class="wish-icon" href="/wish-list" style="border-bottom: none;">
+                                                <img class="icon_white" src="\img\likeIcon-01.png" alt="">
+                                                <img class="icon_yellow" src="\img\likeIconYellow-01.png" alt="">
+                                                <span style="bottom: -3px; right: 0px;" class="count"></span>
                                             </a>
                                             <div id="cart-panel">
                                                 <cart-panel />
@@ -687,10 +772,13 @@
 
                 get_H();
                 scrollMenu();
-                getWishListLeng();
+                wishListCount();
                 index_product_swiper();
                 fakeArrow();
-                ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
+                iconHover('.login');
+                iconHover('.wish-icon');
+                iconHover('.shopping-Cart-Icon');
+
 
                 $(window).resize(function() {
                     get_H();
@@ -712,10 +800,13 @@
                 
                 function megaMenuScroll () {
                     var megaMenu = $('.mega-menu-product');
+                    var loginMenu = $('.login_menu');
                     if (document.documentElement.scrollTop < 400){
                         megaMenu.css('top','-310%');
+                        loginMenu.css('top','-230px');
                     } else {
                         megaMenu.css('top','100%');
+                        loginMenu.css('top','300%');
                     }; 
                 };
 
@@ -833,21 +924,8 @@
                     });
                 };
 
-                function indexSwiper(val){
-                    var feedbackswiper = new Swiper ('.feedback-Index',{
-                        direction : 'horizontal',
-                        loop      : true,
-                        speed     : 1000,
-                        slidesPerView: val,
-                        spaceBetween: 30,
-                        slidesPerGroup: val,
-                        navigation: {
-                            nextEl: '.feedback-right',
-                            prevEl: '.feedback-left'
-                        }
-                    });
-                };
                 
+
                 function newPostTextRWD (x,y){
                     x.each(function() {
                         var maxwidth = y;
@@ -858,11 +936,9 @@
                  });
                 };
                 if ($width > 991){
-                    newPostTextRWD($('.post_text p'),300);
-                    newPostTextRWD($('.feedback-Inner p'),150);
+                    newPostTextRWD($('.feedback-Author p'),20);
                 } else {
-                    newPostTextRWD($('.post_text p'),300);
-                    newPostTextRWD($('.feedback-Inner p'),100);
+                    newPostTextRWD($('.feedback-Author p'),30);
                 }
                 
                 // fixed-button-group 過banner後再出現
@@ -885,7 +961,7 @@
                     }
                 });
 
-                function getWishListLeng(){
+                function wishListCount(){
                     axios.get('/favorite/get')
                         .then(function(res){
                             var wishCount = res.data.length;
@@ -893,6 +969,16 @@
                                 $('.wish-icon .count').text(wishCount);
                             }
                         })
+                };
+                
+                function iconHover(className){
+                    $(className).hover(function(){
+                        $(this).find('img.icon_white').hide().end()
+                            .find('img.icon_yellow').show().end()
+                    },function(){
+                        $(this).find('img.icon_yellow').hide().end()
+                            .find('img.icon_white').show().end()
+                    });
                 };
 
             }); 

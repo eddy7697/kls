@@ -25,6 +25,11 @@
             background-color: #F8B62D;
             color: #0f2746;
         }
+        .register-submit:active{
+            color: #F8B62D !important;
+            background-color: #0f2746 !important;
+            border-color: #0f2746 !important;
+        }
     </style>
 @endsection
 
@@ -105,7 +110,7 @@
                         </tr>
                         <tr>
                             <td style="padding: 5px; text-align: center">
-                                <button type="submit" class="btn btn-success register-submit" name="button">登入</button>
+                                <button type="submit" class="btn register-submit" name="button">登入</button>
                                 <input type="checkbox" id="remamber" name="remamber" value="">
                                 <label for="remamber">記住我</label>
                             </td>
