@@ -1,5 +1,11 @@
 @extends('main')
 
+@php
+use App\CustomField;
+
+    $witness = CustomField::where('id', $id)->first();
+@endphp
+
 @section('custom-meta')
     <meta property="og:url" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"}}"></meta>
     <meta property="og:title" content="{{$post->seoTitle}}" />
