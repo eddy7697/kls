@@ -675,7 +675,7 @@
                         <div class="row sub-page-footer-inner">
                             <div class="sub-logo">
                                 <a href="/">
-                                    <img src="/img/KLS_logo_white.png" alt="">
+                                    <img src="/img/KLSLogoBlack-01.png" alt="">
                                 </a>
                             </div>
                             <div class="sub-nav-menu">
@@ -803,10 +803,10 @@
                     var loginMenu = $('.login_menu');
                     if (document.documentElement.scrollTop < 400){
                         megaMenu.css('top','-310%');
-                        loginMenu.css('top','-230px');
+                        loginMenu.css('top','-200px');
                     } else {
                         megaMenu.css('top','100%');
-                        loginMenu.css('top','300%');
+                        loginMenu.css('top','35px');
                     }; 
                 };
 

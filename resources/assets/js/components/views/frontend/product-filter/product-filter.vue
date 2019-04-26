@@ -11,18 +11,11 @@
                     <div class="filter-title-hr"></div>
                     <p class="filter-subTitle" style="margin-top: 50px;">這裡總有一款屬於你的冒險</p>
                     <div class="searchBar">
-<<<<<<< HEAD
-                        <i class="fa fa-search lg cearch-icon" aria-hidden="true">
-                            <input style="padding-left: 10px; border: none; width: 90%; font-family: 微軟正黑體;" 
-                                   type="text" placeholder="輸入要尋找的商品">
-                        </i>
-=======
                         <form v-on:submit.prevent="searchProduct">
                             <i class="fa fa-search lg cearch-icon" aria-hidden="true">
                                 <input style="padding-left: 10px; border: none; width: 90%;" v-model="keyword" type="text" placeholder="輸入要尋找的商品">
                             </i>
                         </form>
->>>>>>> 9e45f88f253a09ef5ee3eba299de900836d7d4e3
                     </div>
                 </div>
             </div>
@@ -470,10 +463,24 @@
                 }
             },
             addFavorite(guid){
+                let self = this;
                 let target = event.target;
                 let tagName = target.tagName;
-                addFavorite(guid);
-                this.getFavorite(tagName,target);
+                let isActive = false;
+                if(tagName == 'IMG'){
+                    isActive = $(target).parent('.productHeart').hasClass('productHeart-active')
+                } else {
+                    isActive = $(target).hasClass('productHeart-active')
+                } 
+                if(isActive){
+                    deleteFavorite(guid, ()=>{ 
+                        $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active') 
+                    });
+                } else{
+                    addFavorite(guid);
+                    this.getFavorite(tagName,target);
+                }
+                
             },
             getFavorite(tagName,target){
                 let self = this;
