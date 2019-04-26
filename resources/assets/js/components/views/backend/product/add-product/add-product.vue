@@ -644,23 +644,8 @@
                     return checkPrice = true;
                 }
             },
-            checkTime() {
-                if (this.productContent.schedulePost && this.productContent.scheduleDelete) {
-                    var schedulePost = this.productContent.schedulePost._d.getTime();
-                    var scheduleDelete = this.productContent.scheduleDelete.getTime();
-
-                    if (schedulePost > scheduleDelete) {
-                        return false;
-                    } else {
-                        return true;
-                    }
-                } else {
-                    return true;
-                }
-
-            },
             isAllowToSave() {
-                return this.checkTitle && this.checkPrice && this.checkTime;
+                return this.checkTitle && this.checkPrice;
             },
             // tagGroup() {
             //     switch (this.productContent.productCategory) {
