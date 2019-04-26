@@ -218,7 +218,7 @@
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
                             <div class="swiper-wrapper">
-                                @foreach (ProductView::all() as $item)
+                                @foreach (ProductView::all() as $key => $item)
                                     <div class="swiper-slide">
                                         <div class="product_img">
                                             <img class="product_img_inside" src="{{$item->featureImage}}" alt="">

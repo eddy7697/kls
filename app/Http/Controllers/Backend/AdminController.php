@@ -339,7 +339,8 @@ class AdminController extends Controller
     public function exportUser()
     {
         $users = array();
-        $data = User::leftJoin('addresses', 'users.guid', 'addresses.owner')
+        $data = User::where('role', 'NORMAL')
+                    ->leftJoin('addresses', 'users.guid', 'addresses.owner')
                     ->select('users.*', 'addresses.cellPhone', 'addresses.country', 'addresses.address', 'addresses.city', 'addresses.postcode')->get();
 
         foreach ($data as $key => $value) {

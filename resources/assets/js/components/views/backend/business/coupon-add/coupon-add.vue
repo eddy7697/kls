@@ -200,7 +200,7 @@
             title="選擇商品"
             :visible.sync="dialogVisible"
             width="600px"
-            :before-close="handleUserClose">
+            :before-close="handleClose">
             <form v-on:submit.prevent="searchProduct">
                 <input class="form-control" v-model="keyword" placeholder="請輸入商品名稱" required/>
                 
@@ -314,14 +314,14 @@
                 deep: true
             },
             selectedProductItem(val) {
-                if (val) {
+                if (val.productGuid) {
                     this.couponContent.selectedProduct = val.productGuid
                 } else {
                     this.couponContent.selectedProduct = null
                 }
             },
             selectedUserItem(val) {
-                if (val) {
+                if (val.guid) {
                     this.couponContent.selectedUser = val.guid
                 } else {
                     this.couponContent.selectedUser = null
