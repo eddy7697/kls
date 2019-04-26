@@ -769,7 +769,6 @@
             
             $(document).ready(function() {
                 var $width = $(this).width();
-                console.log('123')
                 get_H();
                 scrollMenu();
                 wishListCount();

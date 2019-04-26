@@ -1296,25 +1296,7 @@ img.icon_yellow{
               padding-bottom: 50%;
               box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
               background-position: center;
-              background-size: cover;
-              // img{
-              //   @extend %force-center;
-              //   max-width: 100%;
-              // }
-              // &::before,&::after{
-              //   content: '';
-              //   @include size-setting(50px,100%);
-              //   position: absolute;
-              //   top: 0;
-              //   background-color: #fff;
-              //   z-index: 2;
-              // }
-              // &::before{
-              //   left: 0;
-              // }
-              // &::after{
-              //   right: 0;
-              // }
+              background-size: contain;
             }
             .feedback-Inner{
               padding: 10px 0;

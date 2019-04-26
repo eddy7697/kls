@@ -3,6 +3,8 @@
 @section('custom-script')
     <script>
         var $width = $(this).width();
+        var xxx = $('#test').text();
+        console.log(JSON.parse(xxx))
         function quickView(path) {
             window.location.href = '/product-deatil/' + path
         };   
@@ -376,6 +378,9 @@
                 <div class="col-md-12 feedback-Index">
                     <div class="swiper-wrapper">
                         @foreach (PostView::witness() as $item)
+                        <div id="test" style="display: none">
+                            {{$item}}
+                        </div>
                             <div class="swiper-slide">
                                 <div class="feedbackPost">
                                     <div class="feedbackPostInfo">
@@ -395,7 +400,7 @@
                                     </div>
                                     <div class="feedback-Inner">{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $item->content), 0, 150, "...")}}</div>
                                     <div class="choose_btn">
-                                        <a href="/witness">
+                                        <a href="/witness/{{$item->id}}">
                                             <button class="goBuy">
                                                 閱讀更多                  
                                             </button>
