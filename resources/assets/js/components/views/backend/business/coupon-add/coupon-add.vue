@@ -22,7 +22,7 @@
                             <div class="tab-content ch-tab-content">
                                 <div class="tab-pane active" id="panel-119853">
                                     <table class="table field-table">
-                                        <tr>
+                                        <tr v-if="false">
                                             <td width="130"><label>折扣種類</label></td>
                                             <td>
                                                 <select class="form-control" v-model="couponContent.discountType">

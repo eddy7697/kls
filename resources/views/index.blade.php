@@ -388,7 +388,7 @@
                                             <h4>
                                                 {{$item->locale}}
                                             </h4>
-                                            <p>旅遊地點:日本，購買商品:《異形鋁框箱》行李箱-27吋 霧面黑色，到店時間: 2019/04/14</p>
+                                            <p>{{$item->customField2}}</p>
                                         </div>
                                     </div>
                                     <div class="feedback-img" style="background-image: url('{{$item->customField4}}')">

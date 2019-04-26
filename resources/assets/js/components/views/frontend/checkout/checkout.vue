@@ -1154,29 +1154,29 @@
                     var couponAmount = result.data.couponAmount;
 
 
-                    if (!isPublish) {
-                        self.showMessage('warning', '此優惠券尚未發佈。');
-                        return;
-                    }
+                    // if (!isPublish) {
+                    //     self.showMessage('warning', '此優惠券尚未發佈。');
+                    //     return;
+                    // }
 
                     self.usedCouponContent = {
                         discountType: self.isCouponUse,
                         couponAmount: couponAmount
                     }
 
-                    if (maximumAmount || maximumAmount === "") {
-                        if (self.amount > maximumAmount) {
-                            self.showMessage('warning', '訂單金額已超出優惠券的限制金額。');
-                            return;
-                        }
-                    }
+                    // if (maximumAmount || maximumAmount === "") {
+                    //     if (self.amount > maximumAmount) {
+                    //         self.showMessage('warning', '訂單金額已超出優惠券的限制金額。');
+                    //         return;
+                    //     }
+                    // }
 
-                    if (minimumAmount || minimumAmount === "") {
-                        if (self.amount < minimumAmount) {
-                            self.showMessage('warning', '訂單金額小於優惠券的最低使用金額。');
-                            return;
-                        }
-                    }
+                    // if (minimumAmount || minimumAmount === "") {
+                    //     if (self.amount < minimumAmount) {
+                    //         self.showMessage('warning', '訂單金額小於優惠券的最低使用金額。');
+                    //         return;
+                    //     }
+                    // }
 
                     self.isCouponUse = true;
                     self.discountType = discountType;

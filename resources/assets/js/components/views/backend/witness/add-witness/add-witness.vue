@@ -20,9 +20,9 @@
                         女性
                     </el-radio>
                 </el-form-item> -->
-                <!-- <el-form-item label="年紀" prop="customField2">
+                <el-form-item label="評論摘要" prop="customField2">
                     <el-input v-model="ruleForm.customField2"></el-input>
-                </el-form-item> -->
+                </el-form-item>
                 <!-- <el-form-item label="職稱" prop="customField3">
                     <el-input v-model="ruleForm.customField3"></el-input>
                 </el-form-item> -->
