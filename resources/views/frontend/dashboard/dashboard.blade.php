@@ -17,8 +17,11 @@
             var topH = $('.sub-page-header').height(),
             bottomH = $('.sub-page-footer').height(),
             windowH = $(window).height()
-            $('.mg-dashboard').css( 'margin-top' , ( topH + 50));
-            $('.setHeight').css('min-height', windowH - bottomH);
+            $('.mg-dashboard').css({
+                'margin-top': topH + 50,
+                'margin-bottom': '50px'
+            });
+            $('.setHeight').css('min-height', windowH - (bottomH+200));
         });
     </script>
 @endsection

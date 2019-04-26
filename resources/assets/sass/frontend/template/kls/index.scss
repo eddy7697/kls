@@ -1409,7 +1409,7 @@ img.icon_yellow{
     white-space: nowrap;
     text-decoration: none;
     transition: 0.5s;
-    opacity: .3;
+    opacity: .6;
   }
 }
 .sub-page-header {
@@ -1776,9 +1776,9 @@ img.icon_yellow{
     color: $color-white;
     padding: 1px 10px;
     border-radius: 8px;
-
+    font-weight: 300;
     &.active {
-      font-weight: 700;
+      font-weight: 900;
     }
   }
   .productCount-left {
@@ -1800,7 +1800,7 @@ img.icon_yellow{
       cursor: pointer;
       font-weight: 300;
       &.active {
-        font-weight: 800;
+        font-weight: 900;
       }
     }
   }
