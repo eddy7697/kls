@@ -22,7 +22,6 @@
                 v-for="(item, index) in subProducts" 
                 :key="index"
                 @click="chossedSub = item.id"
-                :data-id = item.id
                 >
                 {{item.subTitle}}
             </div>
@@ -227,8 +226,8 @@
                 return h.number_format(n, c, d, t)
             },
             clickFirst(){
-                console.log($('.option-item').attr('data-id'))
-                $('.option-item[data-id="1"]').click()
+                $('.option-item:nth-child(1)').click()
+
             }
         }
     }

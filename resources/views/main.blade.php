@@ -797,6 +797,15 @@
                     $('.klsBurger-menu').toggleClass('openNow-menu');
                     $('.kls-page').toggleClass('openNow-filter');
                 });
+
+                function isIndex() {
+                    let isIndex = window.location.pathname;
+                    if(isIndex != '/'){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                },
                 
                 function megaMenuScroll () {
                     var megaMenu = $('.mega-menu-product');
