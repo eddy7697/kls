@@ -73,9 +73,10 @@ Route::get('/blog/{path}', function ($path)
  * WITNESS
  */
 
-Route::get('/witness', function ()
+Route::get('/witness/{id}', function ($id)
 {
     return view('frontend.blog.witness', [
+        'id' => $id,
         'isThumbShow' => false,
     ]);
 });

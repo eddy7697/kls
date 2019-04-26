@@ -395,7 +395,7 @@
                                     </div>
                                     <div class="feedback-Inner">{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $item->content), 0, 150, "...")}}</div>
                                     <div class="choose_btn">
-                                        <a href="/witness">
+                                        <a href="/witness/{{$item->id}}">
                                             <button class="goBuy">
                                                 閱讀更多                  
                                             </button>
