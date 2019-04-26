@@ -331,7 +331,6 @@
             </div>
             <div class="row newsPostRow">
                 @foreach (PostView::all(6) as $key => $value)
-                
                     <div class="col-md-6">
                         <div class="newsPost">
                             <div class="newsPostMask"></div>

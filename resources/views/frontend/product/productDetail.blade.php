@@ -28,6 +28,7 @@
         }
 
         $(function() {
+
             $('.rate-star').barrating({
                 theme: 'css-stars',
             });

@@ -472,15 +472,16 @@
                 } else {
                     isActive = $(target).hasClass('productHeart-active')
                 } 
-                if(isActive){
-                    deleteFavorite(guid, ()=>{ 
-                        $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active') 
-                    });
-                } else{
-                    addFavorite(guid);
-                    this.getFavorite(tagName,target);
-                }
-                
+                setTimeout(function(){
+                    if(isActive){
+                        deleteFavorite(guid, ()=>{ 
+                            $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active') 
+                        });
+                    } else{
+                        addFavorite(guid);
+                        self.getFavorite(tagName,target);
+                    }
+                },0)
             },
             getFavorite(tagName,target){
                 let self = this;
@@ -488,6 +489,7 @@
                     .then(function(res){
                         var wishCount = res.data.length;
                         self.isFavorited(res.data)
+                        console.log(res)
                         if(wishCount){
                             $('.wish-icon .count').text(wishCount)
                         } else {
