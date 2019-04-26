@@ -620,6 +620,8 @@
 
                 this.validateForm();
 
+                // return
+
                 // if (!Number.isInteger(parseInt(this.customerParametor.ReceiverCellPhone)) ||
                 //     (this.customerParametor.ReceiverCellPhone.length < 10) ||
                 //     (this.customerParametor.ReceiverCellPhone.length > 10)) {
@@ -710,6 +712,7 @@
                 var pointMag = parseInt(this.percentage) / 100;
                 var amountLessPoint = parseInt(this.amount) - parseInt(this.pointUsage);
 
+                localStorage.setItem('shipping_addr', this.customerParametor.ReceiverAddress)
 
                 form.id = "checkout-form";
 

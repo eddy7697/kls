@@ -364,7 +364,9 @@ class CheckoutController extends Controller
             // }
 
             // echo Ecpay::instance()->CheckOutString();
-
+            if ($data['ChoosePayment'] == 'cod') {
+                return redirect('/cod-success');
+            }
             return redirect('/remittance-information');
             
             if ($data['ChoosePayment'] == 'Remit') {

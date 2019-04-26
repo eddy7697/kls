@@ -127,6 +127,13 @@ Route::get('/check-order', function ()
         'thumb' => null
     ]);
 });
+Route::get('/cod-success', function ()
+{
+    return view('frontend.checkoutMethod.codSuccess', [
+        'isThumbShow' => false,
+        'thumb' => null
+    ]);
+});
 Route::get('/remittance-information', function ()
 {
     return view('frontend.checkoutMethod.checkoutSuccess', [
