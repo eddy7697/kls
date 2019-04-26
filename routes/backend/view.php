@@ -160,7 +160,7 @@ Route::get('/business/editCoupon/{guid}', function ($guid) {
     return view('backend.business.couponAdd', [
         'guid' => $guid,
         'mode' => 'edit',
-        'panelTitle' => '新增優惠券'
+        'panelTitle' => '編輯優惠券'
     ]);
 });
 

@@ -24,4 +24,4 @@ yarn-error.log
 /public/css/page-builder.css
 /public/fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.svg
 /public/fonts/vendor/slick-carousel/slick/slick.svg
-/public/js/product-filter.js
+public/js/product-filter.js

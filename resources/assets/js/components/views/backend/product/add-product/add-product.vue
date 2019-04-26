@@ -773,7 +773,9 @@
                     return
                 }
 
-
+                if (!this.checkPrice) {
+                    return
+                }
 
                 // if (!this.productContent.customPath) {
                 //     this.productContent.customPath = this.clearString(this.productContent.productTitle);
