@@ -39,6 +39,10 @@
         {{-- Custom stylesheet --}}
         @yield('custom-style')
 
+        <!-- Start of  Zendesk Widget script -->
+        <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3d1a2d61-02ab-4991-aa0f-04a7b2a8bb7d"> </script>
+        <!-- End of  Zendesk Widget script -->
+
     </head>
     <body>
         <div class="loading-bar">
