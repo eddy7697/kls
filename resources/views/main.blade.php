@@ -892,7 +892,6 @@
                         var itemID = $(item).attr('id');
                         itemID = new Swiper ('#' + itemID,{
                             direction : 'horizontal',
-                            loop      : true,
                             speed     : 1000,
                             slidesPerView: 4,
                             spaceBetween: 30,

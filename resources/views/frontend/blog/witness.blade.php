@@ -47,13 +47,12 @@ use App\CustomField;
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     
-    {{-- {{$post->featureImage}} --}}
     <style media="screen">
         .blog-featureImage {
             background-image: url('/img/store-984393_1920.jpg');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain;
         }
         .blog-content{
             position: relative;
@@ -66,6 +65,10 @@ use App\CustomField;
             max-width: 100%;
             position: relative !important;
         }
+        .blog-post-container .row .blog-post-title{
+            padding-bottom: .01rem;
+            margin-bottom: 5rem;
+        }
     </style>
 @endsection
 @section('content')
@@ -76,12 +79,10 @@ use App\CustomField;
             
             <div class="blog-post-title">
                 {{-- <h2>文章標題</h2> --}}
-                {{-- {{$post->postTitle}} --}}
-                <div class="blog-post-time" style="float: left;">
+                <div class="blog-post-time" style="float: left; margin-top: 6px;">
                     <img src="/img/icon/date-01.png" alt="">
                     <span class="dataTime" style="display: none">{{$witness->customField7}}</span>
                     <span class="time" ></span>
-                    {{-- {{$witness->created_at}} --}}
                 </div>
                 <div class="share">
                     <table style="width: 100%;">
@@ -98,7 +99,6 @@ use App\CustomField;
                 </div>
             </div>
             <div class="blog-featureImage">
-                {{-- <img src="/img/16x9.png" alt=""> --}}
                 <img src="{{$witness->customField4}}" alt="">
             </div>
             <hr>
@@ -123,24 +123,9 @@ use App\CustomField;
                 </div>
                 <div class="blog-content-inner col-md-8">
                         {!!$witness->content!!}
-                    {{-- {!!$witness->content!!} --}}
                 </div>
             </div>
         </div>
-        {{-- <div class="col-md-4 blog-container">
-            <div class="center-hr">
-                <span>
-                    其他文章
-                </span>
-            </div>
-            <ul class="blog-list">
-                @foreach (PostView::getNewestPosts() as $key => $value)
-                    <li>
-                        <a href="/blog/{{$value->guid}}">{{$value->title}}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </div> --}}
     </div>
 </div>
 @endsection

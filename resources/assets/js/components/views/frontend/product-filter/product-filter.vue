@@ -234,7 +234,7 @@
                                     <p v-if="item.productType == 'simple'" class="product-price">$ {{numberFormat(item.price, 0, '.', ',')}}</p>
                                     <p v-else>多規格商品</p>
                                 </div>
-                                <div class="productHeart" :data-id= item.productGuid @click="addFavorite(item.productGuid)">
+                                <div class="productHeart" :data-id= item.productGuid @click="addToFavorite(item.productGuid)">
                                     <img src="/img/productHeart.svg" alt="">
                                 </div>
                                 <button v-if="item.productType == 'simple'" class="buyIt" @click="addSigleProduct(item.productGuid)">
@@ -324,7 +324,8 @@
                 isLoaded: false,
                 tagGroup: tagGroup,
                 filterGroup: filterGroup,
-                pageData: {}
+                pageData: {},
+                wishCount: []
             }
         },
         watch: {
@@ -462,44 +463,26 @@
                         break;
                 }
             },
-            addFavorite(guid){
+            addToFavorite(guid){
                 let self = this;
-                let target = event.target;
-                let tagName = target.tagName;
-                let isActive = false;
-                if(tagName == 'IMG'){
-                    isActive = $(target).parent('.productHeart').hasClass('productHeart-active')
-                } else {
-                    isActive = $(target).hasClass('productHeart-active')
-                } 
-                setTimeout(function(){
-                    if(isActive){
-                        deleteFavorite(guid, ()=>{ 
-                            $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active') 
-                        });
-                    } else{
-                        addFavorite(guid);
-                        self.getFavorite(tagName,target);
-                    }
-                },0)
+                let isActive = $('.productHeart[data-id='+ guid +']').hasClass('productHeart-active')
+                if(isActive){
+                    deleteFavorite(guid, ()=>{ 
+                        $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active') 
+                    });
+                } else{
+                    addFavorite(guid);
+                    self.getFavorite(guid);
+                }
             },
-            getFavorite(tagName,target){
+            getFavorite(guid){
                 let self = this;
                 axios.get('/favorite/get')
                     .then(function(res){
-                        var wishCount = res.data.length;
-                        self.isFavorited(res.data)
-                        console.log(res)
-                        if(wishCount){
-                            $('.wish-icon .count').text(wishCount)
-                        } else {
-                            $('.wish-icon .count').text('')
-                        }
-                        if(tagName == 'IMG'){
-                            $(target).parent('.productHeart').addClass('productHeart-active')
-                        } else {
-                            $(target).addClass('productHeart-active')
-                        } 
+                        self.wishCount = [];
+                        self.wishCount = res.data;
+                        self.wishCount.length ? $('.wish-icon .count').text(self.wishCount.length) : $('.wish-icon .count').text('');
+                        self.isFavorited(res.data);
                     })
             },
             menuStyle(val) {

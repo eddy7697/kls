@@ -20,7 +20,6 @@
             function indexSwiper(val){
                 var feedbackswiper = new Swiper ('.feedback-Index',{
                     direction : 'horizontal',
-                    loop      : true,
                     speed     : 1000,
                     slidesPerView: val,
                     spaceBetween: 30,
@@ -220,16 +219,17 @@
                             <div class="swiper-wrapper">
                                 @foreach (ProductView::all() as $key => $item)
                                     <div class="swiper-slide">
-                                        <div class="product_img">
-                                            <img class="product_img_inside" src="{{$item->featureImage}}" alt="">
-                                            <a href="/detail/{{$item->productGuid}}">
+                                        <a href="/detail/{{$item->productGuid}}">
+                                            <div class="product_img">
+                                                <img class="product_img_inside" src="{{$item->featureImage}}" alt="">
                                                 <div class="product_quick_view">
                                                     <p class="product_quick_text">
                                                         READ MORE    
                                                     </p>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
+
                                         <h3 class="product_series">
                                             {{$item->productTitle}}
                                         </h3>

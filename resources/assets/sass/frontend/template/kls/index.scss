@@ -1282,6 +1282,7 @@ img.icon_yellow{
             position        : relative;
             overflow        : hidden;
             border-radius: 20px;
+            min-height: 400px;
             .feedbackPostInfo,.feedback-img,.feedback-Inner{
               @include size-setting(90%,auto);
               margin: 0 auto;

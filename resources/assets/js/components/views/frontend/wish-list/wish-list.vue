@@ -110,13 +110,15 @@
                 addSigleProduct(guid);
             },
             getList: function (){
+                let self = this;
                 $('.loading-bar').fadeIn('100');
                 axios.get('/favorite/get')
                     .then(res => {
-                        this.wish = res.data;
+                        self.wish = [];
+                        self.wish = res.data;
+                        self.lightOption();    
                         $('.loading-bar').fadeOut('100');
                     })
-                this.lightOption();    
             },
             deleteWish: function (guid) {
                 let check = confirm('確認要將此商品從願望清單移除?');
