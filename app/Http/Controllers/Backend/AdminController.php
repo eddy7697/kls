@@ -106,7 +106,7 @@ class AdminController extends Controller
             return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'role' => 'ADMIN',
+                'role' => 'NORMAL',
                 'level' => 'NORMAL',
                 'password' => bcrypt($data['password']),
                 'guid' => str_random(42)

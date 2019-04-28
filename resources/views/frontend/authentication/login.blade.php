@@ -40,16 +40,16 @@
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                     <div style="text-align: center" class="social-login-section">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <a class="btn btn-info" href="{{ url('auth/facebook') }}" style="background:#3B5998; border:#3B5998; font-size: 16px">
                                     <i class="fa fa-facebook"></i>&nbsp;&nbsp;Facebook 登入
                                 </a>
                             </div>
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <a class="btn btn-info" href="{{ url('auth/google') }}" style="background:#c9302c; border:#c9302c; font-size: 16px">
                                     <i class="fa fa-google"></i>&nbsp;&nbsp;Google 登入
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="center-hr xxl">

@@ -380,7 +380,7 @@
                 if (this.formValidation) {
                     $('.loading-bar').fadeIn('100');
                     $.ajax({
-                        url: "/admin/admin/add",
+                        url: "/admin/normal/add",
                         type: 'POST',
                         cache: false,
                         data: fieldContent,
@@ -393,6 +393,7 @@
                         fieldContent.email = '';
                         fieldContent.password = '';
                         fieldContent.confirmPassword = '';
+                        $('#createAdminModal').modal('hide')
                     }).fail(function(result) {
                         var errorData = JSON.parse(result.responseText);
                         if (errorData.email) {

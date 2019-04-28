@@ -113,68 +113,6 @@
                 default:
                     break;
             }
-            // if (this.tagtype = 'tag') {
-            //     return {
-            //         tagGroup: {
-            //             brand: [],
-            //             size: [],
-            //             trip: [],
-            //             price: [],
-            //             material: []
-            //         },
-            //         inputVisible: {
-            //             brand: false,
-            //             size: false,
-            //             trip: false,
-            //             price: false,
-            //             material: false
-            //         },
-            //         inputValue: {
-            //             brand: null,
-            //             size: null,
-            //             trip: null,
-            //             price: null,
-            //             material: null
-            //         },
-            //         fakeInput: null
-            //     }
-            // }
-
-            // if (this.tagtype = 'bag_tag') {
-            //     return {
-            //         tagGroup: {
-            //             brand: [],
-            //             type: [],
-            //             price: [],
-            //         },
-            //         inputVisible: {
-            //             brand: false,
-            //             type: false,
-            //             price: false,
-            //         },
-            //         inputValue: {
-            //             brand: null,
-            //             type: null,
-            //             price: null,
-            //         },
-            //         fakeInput: null
-            //     }
-            // }
-
-            // if (this.tagtype = 'fitting_tag') {
-            //     return {
-            //         tagGroup: {
-            //             categories: []
-            //         },
-            //         inputVisible: {
-            //             categories: false
-            //         },
-            //         inputValue: {
-            //             categories: null
-            //         },
-            //         fakeInput: null
-            //     }
-            // }
         },
         computed: {
             tagGroupKeys() {

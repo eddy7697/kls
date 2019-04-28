@@ -79,7 +79,7 @@ Route::post('/admin/admin/delete', 'Backend\AdminController@deleteAdmin');
  * User
  */
 Route::post('/admin/normal/list', 'Backend\AdminController@getNormalList');
-Route::get('/admin/normal/add', 'Backend\AdminController@createNormalUser');
+Route::post('/admin/normal/add', 'Backend\AdminController@createNormalUser');
 Route::post('/admin/normal/search/{keyword}', 'Backend\AdminController@searchUsers');
 Route::get('/admin/normal/get/{guid}', 'Backend\AdminController@getNormalUser');
 Route::post('/admin/normal/update/{guid}', 'Backend\AdminController@updateNormalUser');
