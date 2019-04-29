@@ -49,10 +49,15 @@ use App\CustomField;
     
     <style media="screen">
         .blog-featureImage {
-            background-image: url('/img/store-984393_1920.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 80%;
+        }
+        .blog-featureImage img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
         }
         .blog-content{
             position: relative;
