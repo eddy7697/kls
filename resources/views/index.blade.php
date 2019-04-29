@@ -388,7 +388,7 @@
                                             <h4>
                                                 {{$item->locale}}
                                             </h4>
-                                            <p>{{$item->customField2}}</p>
+                                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $item->customField2), 0, 20, "...")}}</p>
                                         </div>
                                     </div>
                                     <div class="feedback-img" style="background-image: url('{{$item->customField4}}')">

@@ -57,6 +57,9 @@ use App\CustomField;
         .blog-content{
             position: relative;
         }
+        .blog-content p{
+            font-size: 18px;
+        }
         .blog-content .blog-content-inner img{
             max-width: 100%;
             height: auto !important;

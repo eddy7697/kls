@@ -4,11 +4,10 @@
     <script type="text/javascript">
     $(document).ready(function(){
         var $width = $(this).width();
-        ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(3) )
+        ( ( $width < 991 ) ? indexSwiper(1) : indexSwiper(4) )
         function indexSwiper(val){
             var feedbackswiper = new Swiper ('.feedback-Index',{
                 direction : 'horizontal',
-                loop      : true,
                 speed     : 1000,
                 slidesPerView: val,
                 spaceBetween: 30,
@@ -93,9 +92,9 @@
         </div>
 
         <!------------------------feedback------------------------>
-        <div class="feedback">
+        <div class="feedback" style="overflow: hidden">
             
-            <div class="container">
+            <div class="container-fluid">
                 
                 <div class="row">
                     <div class="sw_mask mask_left">
@@ -120,7 +119,7 @@
                                                 <h4>
                                                     {{$item->locale}}
                                                 </h4>
-                                                <p>旅遊地點:日本，購買商品:《異形鋁框箱》行李箱-27吋 霧面黑色，到店時間: 2019/04/14</p>
+                                                <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $item->customField2), 0, 20, "...")}}</p>
                                             </div>
                                         </div>
                                         <div class="feedback-img" style="background-image: url('{{$item->customField4}}')">

@@ -1287,6 +1287,9 @@ img.icon_yellow{
               @include size-setting(90%,auto);
               margin: 0 auto;
             }
+            .feedback-Inner{
+              height: 150px;
+            }
             .feedbackPostInfo{
               @include flex-mix(center, space-around);
               margin: 20px auto;
@@ -1300,7 +1303,7 @@ img.icon_yellow{
               background-size: contain;
             }
             .feedback-Inner{
-              padding: 10px 0;
+              padding: 25px 0;
               p{
                 font-size: 15px;
               }
