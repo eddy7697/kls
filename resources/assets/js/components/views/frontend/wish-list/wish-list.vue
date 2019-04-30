@@ -125,7 +125,7 @@
                 let self = this;
                 if (check) {
                     deleteFavorite(guid, ()=>{
-                        self.getList()
+                        self.getList();
                     });
                 } else {
                     return;

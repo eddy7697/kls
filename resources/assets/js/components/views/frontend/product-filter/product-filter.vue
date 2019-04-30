@@ -325,7 +325,6 @@
                 tagGroup: tagGroup,
                 filterGroup: filterGroup,
                 pageData: {},
-                wishCount: []
             }
         },
         watch: {
@@ -467,22 +466,19 @@
                 let self = this;
                 let isActive = $('.productHeart[data-id='+ guid +']').hasClass('productHeart-active')
                 if(isActive){
-                    deleteFavorite(guid, ()=>{ 
-                        $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active') 
-                    });
+                    deleteFavorite(guid);
                 } else{
                     addFavorite(guid);
-                    self.getFavorite(guid);
                 }
             },
-            getFavorite(guid){
+            getFavorite(){
                 let self = this;
                 axios.get('/favorite/get')
                     .then(function(res){
-                        self.wishCount = [];
-                        self.wishCount = res.data;
-                        self.wishCount.length ? $('.wish-icon .count').text(self.wishCount.length) : $('.wish-icon .count').text('');
-                        self.isFavorited(res.data);
+                        (res.data.length > 0)? $('.wish-icon .count').text(res.data.length) : $('.wish-icon .count').text('');
+                        res.data.forEach(item=>{
+                            $('.productHeart[data-id="'+ item.productGuid +'"]').addClass('productHeart-active')
+                        })
                     })
             },
             menuStyle(val) {
@@ -510,11 +506,6 @@
             },
             numberFormat(n, c, d, t) {
                 return h.number_format(n, c, d, t)
-            },
-            isFavorited(data){
-                data.forEach((item,index) => {
-                    $('.productHeart[data-id="'+ item.productGuid +'"]').addClass('productHeart-active')
-                })
             },
         }
     }

@@ -120,6 +120,11 @@
                             查看購物車
                         </a>
                     </li>
+                    <li>
+                        <a href="/wish-list">
+                            願望清單
+                        </a>
+                    </li>
                     <li class="nav_final">
                         <a href="{{route('contact')}}">
                             諮詢專區

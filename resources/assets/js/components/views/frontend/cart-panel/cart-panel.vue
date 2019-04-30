@@ -221,11 +221,11 @@
                 let self = this;
                 axios.post(`/cart/add/single/${guid}`
                     ).then(res => {
-                        self.$message.success('成功加入購物車！');
-                        self.deleteFavorite(guid);
                         window.updateCount();
+                        self.deleteFavorite(guid);
                         $('.shopping-Cart-Icon').click();
                         $('li.' + guid).fadeOut(500);
+                        self.$message.success('成功加入購物車！');
                     }).catch(err => {
                         self.$message.error('加入購物車失敗...')
                     }).then(arg => {
@@ -254,6 +254,9 @@
                 let self = this;
                 axios.get(`/favorite/add/${guid}`)
                     .then(res => {
+                        let wishLength = Object.keys(res.data.favorite).length;
+                        wishLength ? $('.wish-icon .count').text(wishLength) : $('.wish-icon .count').text('');
+                        $('.productHeart[data-id='+ guid +']').addClass('productHeart-active');
                         self.$message.success('新增至願望清單成功')
                     })
             },
@@ -261,26 +264,13 @@
                 let self = this;
                 axios.get(`/favorite/delete/${guid}`)
                     .then(res => {
+                        let wishLength = Object.keys(res.data).length;
                         let hasClass = $('.productHeart[data-id='+ guid +']').hasClass('productHeart-active');
-                        (hasClass) ? self.$message.success('已從願望清單移除商品') : console.log('has been delete');
-                        self.resetIconSpan();
-                        self.removeHeartActive(guid);
+                        wishLength ? $('.wish-icon .count').text(wishLength) : $('.wish-icon .count').text('');
+                        hasClass ? self.$message.success('已從願望清單移除商品') : '';
+                        $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active');
                         callback();
                     })
-            },
-            resetIconSpan: function(){
-                 axios.get('/favorite/get')
-                    .then(function(res){
-                        var wishCount = res.data.length;
-                        if(wishCount){
-                            $('.wish-icon .count').text(wishCount);
-                        } else {
-                            $('.wish-icon .count').text('');
-                        }
-                    });
-            },
-            removeHeartActive: function(guid){
-                $('.productHeart[data-id='+ guid +']').removeClass('productHeart-active');
             },
             isIndex: function(){
                 let isIndex = window.location.pathname;
