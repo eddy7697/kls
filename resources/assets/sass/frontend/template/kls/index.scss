@@ -100,11 +100,10 @@ img.icon_yellow{
   
   .chevron:before,
   .chevron:after {
-    content: ' ';
+    content: '';
+    @include size-setting(51%,100%);
     position: absolute;
     top: 0;
-    height: 100%;
-    width: 51%;
     background: #fff;
   }
   
@@ -225,10 +224,9 @@ img.icon_yellow{
   right: 10px;
 }
 .sw_mask{
+  @include size-setting(60px,100%);
   position: absolute;
   top: 0;
-  width   : 60px;
-  height  : 100%;
   z-index : 2;
 }
 .mask_left{
@@ -350,8 +348,7 @@ img.icon_yellow{
         }
       }
       img{
-        width: 3rem;
-        height: auto;
+        @include size-setting(3rem,auto);
       }
     }
     .klsBurger-menu-logo{
@@ -478,11 +475,6 @@ img.icon_yellow{
         min-height: 100%;
         background-size: cover;
         background-position: center;
-      }
-    }
-    .mega-menu-text{
-      .dropdown-menu-inner-text{
-
       }
     }
   }
@@ -619,9 +611,6 @@ img.icon_yellow{
           .facebook{
             border-bottom: solid 1px $color-grey-font-color;
           }
-          .instagram{
-
-          }
         }
       }
     }
@@ -637,9 +626,8 @@ img.icon_yellow{
         top  : 70%;
       }
       .sw_mask{
+        @include size-setting(40px,100%);
         position: absolute;
-        width   : 40px;
-        height  : 100%;
         z-index : 9;
       }
       .mask_left{
@@ -837,9 +825,9 @@ img.icon_yellow{
     }
   }
   .footer_contact{
+    @extend %just-flex;
     font-size: $header-contact-font-size;
     width    : 25%;
-    display  : flex;
     .footer_addr{
       @extend %flex-center;
       position       : relative;
@@ -997,7 +985,6 @@ img.icon_yellow{
   }
   .swiper-slide{
     padding: 25px;
-    // max-width: 33%;
   }
   .container-fluid{
     overflow: hidden;
@@ -1105,9 +1092,6 @@ img.icon_yellow{
                     color: $color-white;
                   }
                 }
-                .product_price{
-
-                }
               }
               .buy_click{
                 outline: none;
@@ -1127,9 +1111,7 @@ img.icon_yellow{
               }
             }
             .product_series{
-              white-space: nowrap;
-              text-overflow: ellipsis;
-              overflow: hidden;
+              @extend %word-limit;
             }
             .product_series,
             .product_name,
@@ -1214,18 +1196,14 @@ img.icon_yellow{
           padding  : 10px;
 
           .newsTextTitle{
+            @extend %word-limit;
             color        : $color-black;
             font-size    : 25px;
             font-weight  : 700;
-            white-space  : nowrap;
-            text-overflow: ellipsis;
-            overflow     : hidden;
           }
           .newPostTextP{
             color        : $color-grey;
             line-height  : 30px;
-            text-overflow: ellipsis;
-            overflow     : hidden;
           }
           a{
             color          : $color-grey;
@@ -1680,12 +1658,10 @@ img.icon_yellow{
     padding: 15px 48px;
     padding-left: 15px;
     .product-title p {
+      @extend %word-limit;
       font-size: 25px;
       font-weight: 700;
       color: black;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
     }
     .product-style {
       font-size: $header-contact-font-size;
@@ -2493,18 +2469,6 @@ img.icon_yellow{
   #news{
     .container-fluid{
       margin: 0 30px;
-      .row{
-        .newsPost{ 
-          .newsPostMask{}
-          .newsPost-ReadMore{}
-          .newsImgBox{}
-          .newsText{
-            .newsTextTitle{}
-            .newPostTextP{}
-            a{}
-          }
-        } 
-      }
     }
   }
 }
@@ -2598,15 +2562,8 @@ img.icon_yellow{
           width: 100%;
         }
         .newsPost{ 
-          .newsPostMask{}
-          .newsPost-ReadMore{}
           .newsImgBox{
             padding-bottom: 30%;
-          }
-          .newsText{
-            .newsTextTitle{}
-            .newPostTextP{}
-            a{}
           }
         } 
       }
@@ -2633,10 +2590,6 @@ img.icon_yellow{
     display: block
   }
   #header{
-    .forwardNews{
-      a{
-      }
-    }
     .header_top_area{
       height: 100%;
       border-bottom: solid 1px #EDEDED;
@@ -2645,20 +2598,6 @@ img.icon_yellow{
         .logo_area{
           .logo{
             background-position: center center;
-            .mark{
-              .mark_text{
-              }
-              .mark_middle{
-              }
-              .mark_bottom{
-              }
-              img{
-              }
-            }
-            .mark_time{
-              img{
-              }
-            }
           }
         }
         .header_contact{
@@ -2735,7 +2674,6 @@ img.icon_yellow{
   }
 
   #footer{
-    
     .footer_logo{
       width: 70%;
       .logo_area{
@@ -2853,11 +2791,6 @@ img.icon_yellow{
     .blog-content-info{
       margin: 0 30px;
       margin-bottom: 20px;
-      .authoInfo{
-        p{
-          
-        }
-      }
     }
     .blog-content-inner{
       font-size: 16px;
@@ -2906,9 +2839,6 @@ img.icon_yellow{
     margin-bottom: 1rem;
   }
   .feedback{
-    .sw_mask{
-      
-    }
     .mask_right{
       border-left: none;
     }
@@ -2917,11 +2847,6 @@ img.icon_yellow{
     }
     .container{
       position: relative;
-      .row {
-        .feedback-Index{
-          
-        }
-      }
     }
   } 
   .into-bottom{
@@ -2992,11 +2917,9 @@ img.icon_yellow{
       }
     }
     .footer_copy{
-      background-image   : url('/img/footer_right.jpg');
-      background-position: center;
-      background-size    : cover;
-      width              : 37.5%;
-      position           : relative;
+      @include background-setting('/img/footer_right.jpg', center, cover);
+      width   : 37.5%;
+      position: relative;
       .footer_copy_textArea{
         position : absolute;
         top      : 50%;
@@ -3051,16 +2974,6 @@ img.icon_yellow{
           .choose_post{
             width: 500px;
             margin: 0 auto;
-            .img_div{}
-            .post_text{
-              h3{}
-              p{}
-              .choose_btn{
-                .goBuy{
-                  a{}
-                }
-              }
-            }
           }
         }
       }
@@ -3125,10 +3038,6 @@ img.icon_yellow{
                 margin-left: 40px;
               }
             }
-          }
-          .guanxin{}
-          .emailContact{
-            
           }
         }
         .information-inner-navBar{
@@ -3264,17 +3173,12 @@ img.icon_yellow{
         .newsPost{ 
           width: 500px;
           margin: 0 auto;
-          .newsPostMask{}
-          .newsPost-ReadMore{}
           .newsImgBox{
             width: 100%;
             padding-bottom: 60%;
           }
           .newsText{
             width: 100%;
-            .newsTextTitle{}
-            .newPostTextP{}
-            a{}
           }
         } 
       }
@@ -3326,16 +3230,6 @@ img.icon_yellow{
         .logo_area{
           height: 100%;
           .logo{
-            
-            .mark{
-              
-              .mark_text{
-                
-              }
-              img{
-               
-              }
-            }
             .mark_time{
               display: none;
             }
@@ -3428,9 +3322,6 @@ img.icon_yellow{
       .logo_area{
         .logo{
           a{
-            img{
-              
-            }
             .mark_text{
               display: none;
             }
@@ -3480,15 +3371,8 @@ img.icon_yellow{
         }
         .newsPost{ 
           width: 100%;
-          .newsPostMask{}
-          .newsPost-ReadMore{}
           .newsImgBox{
             padding-bottom: 80%;
-          }
-          .newsText{
-            .newsTextTitle{}
-            .newPostTextP{}
-            a{}
           }
         } 
       }
@@ -3505,15 +3389,6 @@ img.icon_yellow{
             width: 100%;
             .img_div{
               padding-bottom: 90%;
-            }
-            .post_text{
-              h3{}
-              p{}
-              .choose_btn{
-                .goBuy{
-                  a{}
-                }
-              }
             }
           }
         }
@@ -3561,9 +3436,6 @@ img.icon_yellow{
       .logo_area{
         .logo{
           a{
-            img{
-              
-            }
             .mark_text{
               display: none;
             }
@@ -3614,9 +3486,6 @@ img.icon_yellow{
             .information-inner-store-intro{
               font-size: 14px;
             }
-            .information-inner-store-reservation{
-
-            }
             .information-inner-store-number-title{
               font-size: 14px;
               font-weight: 900;
@@ -3646,10 +3515,6 @@ img.icon_yellow{
                 margin-left: 40px;
               }
             }
-          }
-          .guanxin{}
-          .emailContact{
-            
           }
         }
         .information-inner-navBar{

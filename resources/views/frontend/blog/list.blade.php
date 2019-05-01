@@ -6,21 +6,7 @@
 
 @section('custom-script')
     <script type="text/javascript">
-        $(document).ready(function(){
-            // $("#tree").fancytree({
-            //     icon: false,
-            //     click: function (event, data) {
-            //     },
-            //     activate: function (event, data) {
-            //         console.log(data.node.key)
-            //         window.location.href = '/blog/category/' + data.node.key
-            //     }
-            // });
-            // $('.blog-filter-inner a').on('click',function(){
-            //     $('.blog-filter-inner a').removeClass('active');
-            //     $(this).addClass('active');
-            // });
-        });  
+        
     </script>
 @endsection
 
