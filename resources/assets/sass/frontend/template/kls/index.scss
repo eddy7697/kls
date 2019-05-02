@@ -1328,8 +1328,19 @@ img.icon_yellow{
     .authoInfo{
       @include flex-mix(center,space-evenly);
       padding: 3rem 0;
-      p{
-        
+      .autho{
+        position: relative;
+        text-align: center;
+        &::after{
+          content: "";
+          @include size-setting(50px,2px);
+          position: absolute;
+          bottom: 0;
+          right: 50%;
+          -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+          background-color: #f8b62d;
+        }
       }
     }
   }

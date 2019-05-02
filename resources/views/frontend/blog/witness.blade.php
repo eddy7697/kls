@@ -51,7 +51,7 @@ use App\CustomField;
         .blog-featureImage {
             position: relative;
             overflow: hidden;
-            padding-bottom: 80%;
+            padding-bottom: 60%;
         }
         .blog-featureImage img{
             position: absolute;
@@ -106,11 +106,7 @@ use App\CustomField;
                     </table>
                 </div>
             </div>
-            <div class="blog-featureImage">
-                <img src="{{$witness->customField4}}" alt="">
-            </div>
-            <hr>
-            <div class="blog-content row">
+            <div class="blog-content row" style="padding-top: 50px">
                 <div class="blog-content-info col-md-4">
                     <div class="authoInfo">
                         @if ($witness->customField6 == "male")
@@ -118,21 +114,32 @@ use App\CustomField;
                         @else
                             <img class="feedback-Icon" src="/img/icon/female.png" alt="">
                         @endif
-                        <h3>
-                            {{$witness->locale}}
-                            @if ($witness->customField6 == "male")
-                                先生
-                            @else
-                                小姐
-                            @endif
-                            
-                        </h3>
+                        <div class="autho">
+                            <h3>
+                                {{$witness->locale}}
+                                @if ($witness->customField6 == "male")
+                                    先生
+                                @else
+                                    小姐
+                                @endif
+                                
+                            </h3>
+                            <p>
+                                {{$witness->customField2}}
+                            </p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="blog-content-inner col-md-8">
                         {!!$witness->content!!}
                 </div>
             </div>
+            <hr>
+            <div class="blog-featureImage">
+                <img src="{{$witness->customField4}}" alt="">
+            </div>
+            
         </div>
     </div>
 </div>

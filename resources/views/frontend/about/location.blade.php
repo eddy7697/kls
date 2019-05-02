@@ -52,7 +52,7 @@
                         預約挑箱 <span> Reservation </span>
                     </p>
                     <p class="information-inner-store-intro">
-                        若您在本店線上商店查看了我們的產品後，仍想親臨店鋪查看箱款實物，為了避免您白跑一趟，您可先透過以下管道預約挑箱，我們將為您準備好您希望體驗的箱款，並且告知您箱款所在店面，以便您有更好的挑箱體驗，透過網路預訂。
+                        若您在本店線上商店查看了我們的產品後，仍想親臨店鋪查看箱款實物，為了避免您白跑一趟，您可先透過以下管道預約挑箱，我們將為您準備好您希望體驗的箱款，並且告知您箱款所在店面，以便您有更好的挑箱體驗，透過預約挑箱。
                     </p>
                     <div class="information-inner-store-reservation margin-top-Md information-flex">
 
@@ -68,7 +68,7 @@
                                 </p>
                             </div>
                             <p>
-                                ※營業時間為 13:00 - 20:00，每周二公休。
+                                ※營業時間為 13:00 - 22:00，每周二公休。
                             </p>
                         </div>
 
@@ -79,7 +79,7 @@
                             <a href="/contact?target=location">
                                 <button class="information-btn online-contact" style="margin-top: 8px; width: 185px;">
                                     <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                    網路預訂
+                                    預約挑箱
                                 </button>
                             </a>
                         </div>
@@ -158,7 +158,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 20:00，每周二公休。
+                        ※營業時間為 13:00 - 22:00，每周二公休。
                     </p>
                 </div>
             </div>
@@ -231,7 +231,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 20:00，每周二公休。
+                        ※營業時間為 13:00 - 22:00，每周二公休。
                     </p>
                 </div>
             </div>
@@ -303,7 +303,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 20:00，每周二公休。
+                        ※營業時間為 13:00 - 22:00，每周二公休。
                     </p>
                 </div>
             </div>
