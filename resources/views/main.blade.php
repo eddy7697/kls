@@ -45,9 +45,9 @@
 
     </head>
     <body>
-        <div class="loading-bar">
+        <div class="loadingBar">
             <div class="loading-bar-inner">
-                <img src="/img/loaing-logo.png" alt="" style="width: 150px;">
+                <img src="/img/loadingText.svg" alt="" style="width: 150px;">
                 <div class="loader">
                     <h1></h1>
                     <span></span>
@@ -786,12 +786,14 @@
                 iconHover('.login');
                 iconHover('.wish-icon');
                 iconHover('.shopping-Cart-Icon');
-
-
                 $(window).resize(function() {
                     get_H();
                 });
-
+                $.when(get_H()).then(function() {
+                    setTimeout(function(){
+                        $('.loadingBar').fadeOut(500)
+                    },1000)
+                });
 
                 function get_H(){
                     var h      = $(window).height()
