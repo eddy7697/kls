@@ -341,11 +341,12 @@ class AdminController extends Controller
         $users = array();
         $data = User::where('role', 'NORMAL')
                     ->leftJoin('addresses', 'users.guid', 'addresses.owner')
-                    ->select('users.*', 'addresses.cellPhone', 'addresses.country', 'addresses.address', 'addresses.city', 'addresses.postcode')->get();
+                    ->select('users.*', 'addresses.cellPhone', 'addresses.country', 'addresses.address', 'addresses.city', 'addresses.postcode', 'addresses.birthday')->get();
 
         foreach ($data as $key => $value) {
             array_push($users, [
                 '姓名' => $value->name,
+                '生日' => $value->birthday,
                 '電子郵件' => $value->email,
                 '電話' => (string)$value->cellPhone.'　',
                 '郵遞區號' => $value->postcode,

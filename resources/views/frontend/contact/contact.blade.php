@@ -131,7 +131,7 @@
                                                 <option value="warrantyQ">保固問題</option>
                                                 <option value="transportQ">運送問題</option>
                                                 <option value="dealQ">經銷問題</option>
-                                                <option value="reservation">預約看箱</option>
+                                                <option value="reservation">預約挑箱</option>
                                                 <option value="other">其他</option>
                                             </select>
                                         </div>

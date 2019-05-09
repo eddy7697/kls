@@ -23,6 +23,7 @@ class CreateAddressesTable extends Migration
             $table->string('cellPhone')->nullable();
             $table->string('country')->nullable();
             $table->string('address')->nullable();
+            $table->string('birthday')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('postcode')->nullable();

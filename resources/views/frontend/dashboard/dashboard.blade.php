@@ -1,6 +1,7 @@
 @extends('main')
 
 @section('custom-style')
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
     <style media="screen">
         .sub-page-header .sub-page-header-inner .sub-nav-menu .sub-nav-menu-ul li:nth-child(5) a{
             opacity: 1;
@@ -12,6 +13,9 @@
 @endsection
 
 @section('custom-script')
+    <script src="/js/plugins/moment/moment.min.js"></script>
+    <script src="/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
     <script>
         $(document).ready(function(){
             var topH = $('.sub-page-header').height(),
@@ -22,6 +26,9 @@
                 'margin-bottom': '50px'
             });
             $('.setHeight').css('min-height', windowH - (bottomH+200));
+            $('#birthday').datetimepicker({
+                format: 'YYYY/MM/DD'
+            });
         });
     </script>
 @endsection

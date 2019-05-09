@@ -167,6 +167,7 @@ class HomeController extends Controller
 
     public function checkCoupon(Request $request, $coupon)
     {
+        // return $request->amount;
         if (!Coupon::where('serialNumber', $coupon)->exists()) {
             abort(454);
             return;
@@ -174,6 +175,12 @@ class HomeController extends Controller
         
         $couponItem = Coupon::where('serialNumber', $coupon)->first();
 
+        if ($couponItem->minimumAmount !== null) {
+            if ($request->amount < $couponItem->minimumAmount) {
+                abort(457);
+                return;
+            }
+        }
         if ($couponItem->selectedUser) {
             if ($couponItem->selectedUser !== Auth::user()->guid) {
                 abort(455);
@@ -181,16 +188,18 @@ class HomeController extends Controller
             }
         }
 
-        $cartArray = array();
+        if ($couponItem->selectedProduct !== null) {
+            $cartArray = array();
 
-        foreach(Cart::content() as $row) {
-            array_push($cartArray, json_decode($row->name)->guid);
-        }
+            foreach(Cart::content() as $row) {
+                array_push($cartArray, json_decode($row->name)->guid);
+            }
 
-        if (!in_array($couponItem->selectedProduct, $cartArray)) {
-            abort(456);
-            return;
-        }
+            if (!in_array($couponItem->selectedProduct, $cartArray)) {
+                abort(456);
+                return;
+            }
+        }        
 
         // return $cartArray;
 

@@ -184,11 +184,17 @@
                     })
             },
             onSubmit() {
-                console.log(JSON.stringify(this.tagGroup))
+                $('.loading-bar').show()
 
                 axios.post('/admin/tag/create', {
                     type: this.tagtype,
                     data: JSON.stringify(this.tagGroup)
+                }).then(res => {
+                    this.$message.success('儲存標籤成功')
+                }).catch(err => {
+                    this.$message.error('儲存標籤失敗')
+                }).then(() => {
+                    $('.loading-bar').hide()
                 })
             }
         }

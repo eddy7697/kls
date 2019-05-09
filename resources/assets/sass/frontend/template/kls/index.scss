@@ -1635,7 +1635,8 @@ img.icon_yellow{
   }
   .product-img {
     width: 35%;
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-position: center;
     position: relative;
     overflow: hidden;

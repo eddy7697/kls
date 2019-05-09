@@ -86,6 +86,17 @@
                                 </td>
                             </tr>
 
+                            <tr>
+                                <td class="cart_info_title">
+                                    配送縣市
+                                </td>
+                                <td>
+                                    <span role="tw-city-selector"></span>
+                                    <input class="tw-address" type="text" id="shipping-city" placeholder="" v-model="customerParametor.ReceiverCity" required>
+                                    <strong v-if="!formValidation.ReceiverCity" style="color: #600000">&nbsp;&nbsp;此欄位為必填 *</strong>
+                                </td>
+                            </tr>
+
                             <tr v-if="shippingMethod == 'delivery' && useUserInfo">
                                 <td class="cart_info_title">
                                     配送地址
@@ -640,28 +651,33 @@
                 //     return;
                 // }
 
+                // if (true) {
                 if (this.coupon) {
-                    axios.get(`/validate/coupon/${this.coupon}`)
-                        .then(res => {
-                            console.log(res)
-                            this.useCoupon()
-                        }).catch(err => {
-                            let result = err.response
+                    axios.post(`/validate/coupon/${this.coupon}`, {
+                        amount: this.finalAmount
+                    }).then(res => {
+                        // console.log(res)
+                        this.useCoupon()
+                    }).catch(err => {
+                        let result = err.response
 
-                            switch (result.status) {
-                                case 454:
-                                    alert('無效的優惠券代碼')
-                                    break;
-                                case 455:
-                                    alert('非指定會員')
-                                    break;
-                                case 456:
-                                    alert('優惠商品不在訂單內，優惠無法使用')
-                                    break;
-                                default:
-                                    break;
-                            }
-                        })
+                        switch (result.status) {
+                            case 454:
+                                alert('無效的優惠券代碼')
+                                break;
+                            case 455:
+                                alert('非指定會員')
+                                break;
+                            case 456:
+                                alert('優惠商品不在訂單內，優惠無法使用')
+                                break;
+                            case 457:
+                                alert('訂單金額小於優惠券金額。')
+                                break;
+                            default:
+                                break;
+                        }
+                    })
                 } else {
                     switch (method) {
                         case 'cvsCod':      // 超商取貨付款

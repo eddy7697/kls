@@ -73,6 +73,10 @@
                                             <td><label>每張優惠券的使用上限</label></td>
                                             <td><input placeholder="無使用限制" class="form-control" type="number" min="0" v-model="couponContent.usageLimit"></td>
                                         </tr>
+                                        <tr>
+                                            <td><label>最低消費</label></td>
+                                            <td><input placeholder="無最低消費" class="form-control" type="number" v-model="couponContent.minimumAmount"></td>
+                                        </tr>
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="panel-971686">

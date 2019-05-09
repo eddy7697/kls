@@ -18,6 +18,7 @@ class AddressController extends Controller
             'fullName' => $data['fullName'],
             'cellPhone' => $data['cellPhone'],
             'address' => $data['address'],
+            'birthday' => $data['birthday'],
             'city' => $data['city'],
             'postcode' => $data['postcode'],
         ]);
@@ -35,6 +36,7 @@ class AddressController extends Controller
             'fullName' => $data['fullName'],
             'cellPhone' => $data['cellPhone'],
             'address' => $data['address'],
+            'birthday' => $data['birthday'],
             'city' => $data['city'],
             'postcode' => $data['postcode'],
         ]);

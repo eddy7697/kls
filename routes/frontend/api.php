@@ -91,4 +91,4 @@ Route::group(['prefix' => 'favorite'], function ()
 });
 
 
-Route::get('/validate/coupon/{coupon}', 'HomeController@checkCoupon');
+Route::post('/validate/coupon/{coupon}', 'HomeController@checkCoupon');

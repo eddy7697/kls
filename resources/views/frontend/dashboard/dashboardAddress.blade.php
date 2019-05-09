@@ -43,6 +43,10 @@
                                         <input class="form-control" type="text" name="cellPhone" id="cellPhone" value="{{AddressInfo::get(Auth::user()->guid)->cellPhone}}" required>
                                     </div>
                                     <div class="form-group">
+                                        <label for="birthday">生日 *</label>
+                                        <input class="form-control" type="text" name="birthday" id="birthday" value="{{AddressInfo::get(Auth::user()->guid)->birthday}}" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="postcode">郵遞區號 *</label>
                                         <input class="form-control" type="text" name="postcode" id="postcode" value="{{AddressInfo::get(Auth::user()->guid)->postcode}}" required>
                                     </div>

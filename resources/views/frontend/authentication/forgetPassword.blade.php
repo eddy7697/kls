@@ -1,7 +1,16 @@
 @extends('main')
 
+@section('custom-script')
+    <script>
+        $(document).ready(function(){
+            var topBarH = $('.sub-page-header').height();
+            $('.login-container').css('margin-top', topBarH + 'px')
+        });
+    </script>
+@endsection
+
 @section('content')
-    <div class="container" style="margin-bottom: 30px">
+    <div class="container login-container" style="margin-bottom: 30px">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 member-auth-form-table">
                 <form class="form-horizontal" action="{{ route('sendResetPasswordMail') }}" method="post">

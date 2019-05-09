@@ -21,6 +21,7 @@ class Address extends Model
         'phone',
         'cellPhone',
         'country',
+        'birthday',
         'address',
         'city',
         'state',

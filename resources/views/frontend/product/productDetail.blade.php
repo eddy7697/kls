@@ -177,7 +177,7 @@
                         </div>
                         
                         <hr>
-                        需要協助嗎? <a href="#" data-toggle="modal" data-target="#myModal-01">聯絡我們</a>
+                        需要協助嗎? <a href="/contact?target=location" data-toggle="modal" data-target="#myModal-01">聯絡我們</a>
                     </div>
 
                     {{--商品敘述--}}

@@ -41,6 +41,7 @@
                         <td>{{item.shippingTarget.ReceiverName}}</td>
                         <td>
                             <span style="color: brown; font-weight: bold" v-if="item.paymentStatus === 'uncheck'">未對帳</span>
+                            <span style="color: blue; font-weight: bold" v-if="item.paymentStatus === 'cod'">貨到付款</span>
                             <span style="color: red; font-weight: bold" v-if="item.paymentStatus === 'unpaid'">未付款</span>
                             <span style="color: green; font-weight: bold" v-if="item.paymentStatus === 'paid'">已付款</span>
                         </td>
@@ -142,7 +143,7 @@
                                         </table>
                                     </td>
                                 </tr> -->
-                                <tr v-if="true">
+                                <tr v-if="false">
                                     <td>付款方式</td>
                                     <td>
                                         <!-- <span v-if="itemShowed.paymentMethod === 'ATM'">ATM轉帳</span>
@@ -153,22 +154,25 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        付款狀態
+                                        付款方式
                                     </td>
                                     <td>
                                         <div v-if="itemShowed.patmentStatusModify">
                                             <select v-model="itemShowed.paymentStatus">
-                                                <option value="uncheck" v-if="itemShowed.orderStatus == 'uncheck'" selected>未對帳</option>
-                                                <option value="uncheck" v-else>未對帳</option>
-                                                <option value="unpaid" v-if="itemShowed.orderStatus == 'unpaid'" selected>未付款</option>
+                                                <!-- <option value="uncheck" v-if="itemShowed.paymentStatus == 'uncheck'" selected>未對帳</option>
+                                                <option value="uncheck" v-else>未對帳</option> -->
+                                                <option value="cod" v-if="itemShowed.paymentStatus == 'cod'" selected>貨到付款</option>
+                                                <option value="cod" v-else>貨到付款</option>
+                                                <option value="unpaid" v-if="itemShowed.paymentStatus == 'unpaid'" selected>未付款</option>
                                                 <option value="unpaid" v-else>未付款</option>
-                                                <option value="paid" v-if="itemShowed.orderStatus == 'paid'" selected>已付款</option>
+                                                <option value="paid" v-if="itemShowed.paymentStatus == 'paid'" selected>已付款</option>
                                                 <option value="paid" v-else>已付款</option>
                                             </select>
                                             <button type="button" name="button" @click="modifyOrderStatus()"><i class="fa fa-check" aria-hidden="true"></i></button>
                                         </div>
                                         <div v-else>
-                                            <span style="color: brown; font-weight: bold" v-if="itemShowed.paymentStatus === 'uncheck'">未對帳</span>
+                                            <!-- <span style="color: brown; font-weight: bold" v-if="itemShowed.paymentStatus === 'uncheck'">未對帳</span> -->
+                                            <span style="color: blue; font-weight: bold" v-if="itemShowed.paymentStatus === 'cod'">貨到付款</span>
                                             <span style="color: red; font-weight: bold" v-if="itemShowed.paymentStatus === 'unpaid'">未付款</span>
                                             <span style="color: green; font-weight: bold" v-if="itemShowed.paymentStatus === 'paid'">已付款</span>
                                             <button class="btn btn-primary btn-sm" v-if="itemShowed.paymentMethod == 'Remit'" type="button" name="button" @click="togglePaymentStatusModify()">更改狀態</button>
