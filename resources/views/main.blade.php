@@ -102,7 +102,7 @@
                     </li>
                     <li>
                         <a href="{{route('productFittingBag')}}">
-                            品牌背包
+                            品牌包款
                         </a>
                     </li>
                     <li>
@@ -315,7 +315,7 @@
                                                         </li>
                                                         <li>
                                                             <a href="{{route('productFittingBag')}}">
-                                                                品牌背包
+                                                                品牌包款
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -481,7 +481,7 @@
                                                         </li>
                                                     <li>
                                                         <a href="{{route('productFittingBag')}}">
-                                                                品牌背包
+                                                                品牌包款
                                                             </a>
                                                         </li>
                                                     </ul>

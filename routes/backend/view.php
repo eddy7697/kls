@@ -121,7 +121,7 @@ Route::get('/tag/management', function () {
 });
 Route::get('/tag/management/bag', function () {
     return view('backend.product.tagManager', [
-        'panelTitle' => '品牌背包標籤管理',
+        'panelTitle' => '品牌包款標籤管理',
         'type' => 'bag_tag'
     ]);
 });
