@@ -66,7 +66,7 @@ class PageController extends Controller
             'type' => '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe',
             'productAll' => $productAll,
             'isThumbShow' => true,
-            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;品牌背包'
+            'thumb' => '<a href="/">首頁</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;品牌包款'
         ]);
     }
 

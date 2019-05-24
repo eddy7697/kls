@@ -115,7 +115,7 @@ INSERT INTO `categories` (`id`, `categoryGuid`, `categoryTitle`, `type`, `parent
 (3, 'yJAxok8p2iY4XAioyQtaXrlGEEu0cYqo8TtlgIqkPK', '挑箱教學', 'post', NULL, NULL, NULL, NULL, '2019-03-24 09:53:42', '2019-03-24 09:53:42'),
 (4, 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V', '品牌行李箱', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:22', '2019-03-24 16:03:22'),
 (5, 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd', '旅行配件', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:34', '2019-03-24 16:03:34'),
-(6, '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe', '品牌背包', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:47', '2019-03-24 16:03:47');
+(6, '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe', '品牌包款', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:47', '2019-03-24 16:03:47');
 
 -- --------------------------------------------------------
 

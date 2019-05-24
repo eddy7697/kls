@@ -351,7 +351,7 @@
                         return '旅行配件'
                         break;
                     case '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe':
-                        return '品牌背包'
+                        return '品牌包款'
                         break;
                     default: 
                         return ''

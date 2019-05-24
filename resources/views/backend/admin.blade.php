@@ -101,7 +101,7 @@
 												<li><a href="/cyberholic-system/product/list">商品列表</a></li>
 												{{-- <li><a href="/cyberholic-system/product/category">商品類別管理</a></li> --}}
 												<li><a href="/cyberholic-system/tag/management">行李箱標籤管理</a></li>
-												<li><a href="/cyberholic-system/tag/management/bag">品牌背包標籤管理</a></li>
+												<li><a href="/cyberholic-system/tag/management/bag">品牌包款標籤管理</a></li>
 												<li><a href="/cyberholic-system/tag/management/fitting">旅行配件標籤管理</a></li>
 											</ul>
 										</li>

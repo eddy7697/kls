@@ -122,7 +122,7 @@ INSERT INTO `categories` (`id`, `categoryGuid`, `categoryTitle`, `type`, `parent
 (3, 'yJAxok8p2iY4XAioyQtaXrlGEEu0cYqo8TtlgIqkPK', '挑箱教學', 'post', NULL, NULL, NULL, 3, '2019-03-24 09:53:42', '2019-04-13 16:33:10'),
 (4, 'R6CsjurBbInEEE2hYnnnCGcYZzW6mtTH1rzDdBZV5V', '品牌行李箱', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:22', '2019-03-24 16:03:22'),
 (5, 'yndH8656FRoJ6K0eNv3KBrDjodALbAHT1FDIGwrknd', '旅行配件', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:34', '2019-03-24 16:03:34'),
-(6, '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe', '品牌背包', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:47', '2019-03-24 16:03:47'),
+(6, '3LvgYt8izNACwDfJAOXskAdHLKoRZ0FN0FOEFdctqe', '品牌包款', 'product', NULL, NULL, NULL, NULL, '2019-03-24 16:03:47', '2019-03-24 16:03:47'),
 (8, 'wNZjj56ucfvwkMOwASAttVCWIjLgaQpNr8sd3MhCOB', 'Test', 'post', NULL, NULL, NULL, 2, '2019-04-04 08:33:27', '2019-04-13 16:33:10'),
 (9, 'DQX7jSMegKOhVXQRm5RBQmusMUW3WF7hvtZOvDaepv', 'Test2', 'post', NULL, NULL, NULL, 5, '2019-04-04 08:33:32', '2019-04-13 16:33:10');
 
@@ -558,7 +558,7 @@ CREATE TABLE `site_meta` (
 --
 
 INSERT INTO `site_meta` (`id`, `title`, `keyword`, `description`, `shortcut`, `pageTopContent`, `pageTopLink`, `pageTopButton`, `index_album`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[{\"title\":\"我在LA機場的人來人往\",\"content\":\"#長途旅行專用行李箱\\n#30吋/29吋熱賣中\\n#PC硬殼箱\\n#1 World Way, Los Angeles, CA 90045\",\"url\":\"/photos/1/KLS_banner-1.jpg\",\"link\":null},{\"title\":\"我在太平山俯瞰香港\",\"content\":\"#短程旅行登機箱\\n#17-20吋\\n#拉鍊箱\\n#香港中環山頂道128號(凌霄閣)\",\"url\":\"/photos/1/hong-kong-1804765_1920.jpg\",\"link\":null},{\"title\":\"我在大阪吃遍道頓崛\",\"content\":\"#輕旅行專用行李箱\\n#28吋/30吋最後限量\\n#異型箱\\n#10 Dotonbori, Chuo Ward, Osaka, 542-0071日本\",\"url\":\"/photos/1/japan-625773_1920.jpg\",\"link\":null},{\"title\":\"我在台灣的背包輕旅行\",\"content\":\"#熱門品牌背包\\n#通勤族/背包客專用\\n#空氣減壓多層次抽納\\n#1 World Way, Los Angeles, CA 90045\",\"url\":\"/photos/1/KLS_banner-4.jpg\",\"link\":null},{\"title\":\"標題\",\"content\":\"內容\",\"url\":\"/photos/1/aboutBanner.jpg\",\"link\":\"https://kls.egith.net/detail/HYupS2\"}]', '2019-04-03 15:31:35', '2019-04-04 07:44:58');
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[{\"title\":\"我在LA機場的人來人往\",\"content\":\"#長途旅行專用行李箱\\n#30吋/29吋熱賣中\\n#PC硬殼箱\\n#1 World Way, Los Angeles, CA 90045\",\"url\":\"/photos/1/KLS_banner-1.jpg\",\"link\":null},{\"title\":\"我在太平山俯瞰香港\",\"content\":\"#短程旅行登機箱\\n#17-20吋\\n#拉鍊箱\\n#香港中環山頂道128號(凌霄閣)\",\"url\":\"/photos/1/hong-kong-1804765_1920.jpg\",\"link\":null},{\"title\":\"我在大阪吃遍道頓崛\",\"content\":\"#輕旅行專用行李箱\\n#28吋/30吋最後限量\\n#異型箱\\n#10 Dotonbori, Chuo Ward, Osaka, 542-0071日本\",\"url\":\"/photos/1/japan-625773_1920.jpg\",\"link\":null},{\"title\":\"我在台灣的背包輕旅行\",\"content\":\"#熱門品牌包款\\n#通勤族/背包客專用\\n#空氣減壓多層次抽納\\n#1 World Way, Los Angeles, CA 90045\",\"url\":\"/photos/1/KLS_banner-4.jpg\",\"link\":null},{\"title\":\"標題\",\"content\":\"內容\",\"url\":\"/photos/1/aboutBanner.jpg\",\"link\":\"https://kls.egith.net/detail/HYupS2\"}]', '2019-04-03 15:31:35', '2019-04-04 07:44:58');
 
 -- --------------------------------------------------------
 
