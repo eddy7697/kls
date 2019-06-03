@@ -1,5 +1,11 @@
 @extends('main')
 
+@php
+    use App\SubProduct;
+
+    $SubProduct = SubProduct::where('productParent', $product->productGuid)->get();
+@endphp
+
 @section('custom-meta')
     <meta property="og:url" content="{{(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"}}"></meta>
     <meta property="og:title" content="{{$product->seoTitle}}" />
@@ -44,12 +50,12 @@
                 asNavFor: '.product-thumb'
            });
            $('.product-thumb').slick({
-               slidesToShow: 4,
-               slidesToScroll: 1,
-               asNavFor: '.product-img',
-               dots: true,
-               // centerMode: true,
-               focusOnSelect: true
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                asNavFor: '.product-img',
+                dots: true,
+                centerMode: true,
+                focusOnSelect: true
            });
         });
 
@@ -100,6 +106,11 @@
                                     <img src="{{$item->imageUrl}}" alt="">
                                 </div>
                             @endforeach
+                            @foreach ($SubProduct as $item)
+                                <div class="product-item">
+                                    <img src="{{$item->subFeatureImage}}" alt="">
+                                </div>
+                            @endforeach
                         </div>
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
@@ -108,12 +119,18 @@
                                         <div class="thumb-item">
                                             <img src="{{$product->featureImage}}" alt="">
                                         </div>
-                                        
                                     </li>
                                     @foreach ($album as $item)
                                         <li>
                                             <div class="thumb-item">
                                                 <img src="{{$item->imageUrl}}" alt="">
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                    @foreach ($SubProduct as $item)
+                                        <li id="thumb-{{$item->subProductGuid}}">
+                                            <div class="thumb-item">
+                                                <img src="{{$item->subFeatureImage}}" alt="">
                                             </div>
                                         </li>
                                     @endforeach

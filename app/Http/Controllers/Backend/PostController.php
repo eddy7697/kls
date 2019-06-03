@@ -107,7 +107,7 @@ class PostController extends Controller
             }
 
             $createPost = Post::create([
-                'postGuid' => str_random(42),
+                'postGuid' => str_random(6),
                 'author' => $creatorGuid,
                 'authorName' => $creator,
                 'postTitle' => $data['postTitle'],

@@ -24,7 +24,7 @@ class CommentController extends Controller
         ]);
 
         Comment::create([
-            'guid' => str_random(42),
+            'guid' => str_random(6),
             'source' => $guid,
             'commentFrom' => $data['comment-name'],
             'rate' => $data['comment-rate'],

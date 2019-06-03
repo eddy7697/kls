@@ -408,9 +408,9 @@
                                     v-bind:key="item.guid"
                                     v-for="(item, index) in productContent.album">
                                     <img v-bind:src="thumb(item.imageUrl)" width="100%">
-                                    <button class="btn btn-danger remove-pruduct-image" @click="productContent.album.splice(index, 1)">
+                                    <a class="btn btn-danger remove-pruduct-image" @click="productContent.album.splice(index, 1)">
                                         <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
+                                    </a>
                                 </div>
                                 <div class="col-md-12">
                                     <a @click="addImage()">新增商品圖庫圖片</a>

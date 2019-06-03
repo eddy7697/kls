@@ -20,7 +20,7 @@ class CouponController extends Controller
     {
         $data = $request->all();
         $create = Coupon::create([
-            'guid' => str_random(42),
+            'guid' => str_random(6),
             'serialNumber' => $data['serialNumber'],
             'content' => $data['content'],
             'isPublish' => $data['isPublish'],

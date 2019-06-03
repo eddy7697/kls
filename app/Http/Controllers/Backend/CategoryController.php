@@ -57,7 +57,7 @@ class CategoryController extends Controller
 
         try {
             $category = Category::create([
-                'categoryGuid' => str_random(42),
+                'categoryGuid' => str_random(6),
                 'categoryTitle' => $data['categoryTitle'],
                 'parentId' => $data['parentId'],
                 'type' => $data['type'],

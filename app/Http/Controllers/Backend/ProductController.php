@@ -315,7 +315,7 @@ class ProductController extends Controller
 
             try {
                 $createProduct = Product::create([
-                    'productGuid' => str_random(42),
+                    'productGuid' => str_random(6),
                     'productTitle' => $data['productTitle'],
                     'serialNumber' => $data['serialNumber'],
                     'quantity' => $data['quantity'],

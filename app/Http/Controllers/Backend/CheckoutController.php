@@ -307,7 +307,7 @@ class CheckoutController extends Controller
 
             try {
                 $createorder = Order::create([
-                    'guid'              => str_random(42),
+                    'guid'              => str_random(6),
                     'content'           => $data['cartInfo'],
                     'amount'            => $totalAmount,
                     'merchantID'        => $merchantIdCache['MerchantTradeNo'],
@@ -572,7 +572,7 @@ class CheckoutController extends Controller
 
                 try {
                     Order::create([
-                        'guid'              => str_random(42),
+                        'guid'              => str_random(6),
                         'content'           => $data['cartInfo'],
                         'amount'            => $totalAmount,
                         'merchantID'        => $merchantIdCache['MerchantTradeNo'],

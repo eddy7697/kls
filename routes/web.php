@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Log;
 use App\Product;
+use App\SubProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,20 @@ Route::get('/test_session/{id}', 'HomeController@testSession');
 // Route::get('/esun', 'Backend\OrderController@esun');
 Route::get('/esun', function ()
 {
+    // $products = Product::all();
+
+    // foreach ($products as $key => $value) {
+    //     $idCache = str_random(6);
+    //     $sub = SubProduct::where('productParent', $value->productGuid)->get();
+    //     foreach ($sub as $index => $item) {
+    //         SubProduct::where('id', $item->id)->update([
+    //             'productParent' => $idCache
+    //         ]);
+    //     }
+    //     Product::where('id', $value->id)->update([
+    //         'productGuid' => $idCache
+    //     ]);
+    // }
     // $ONO = (string)rand(5000000, 9000000);
     // $ONO = array('ONO' => (string)rand(5000000, 9000000));
     // $PostData = array(
@@ -86,8 +101,8 @@ Route::get('/esun', function ()
     // $headers = $response->headers;          
     // Log::info($headers);
     // return $response;
-    return view('payment.esun', [
-        'str' => rand(5000000, 9000000)
-    ]);
+    // return view('payment.esun', [
+    //     'str' => rand(5000000, 9000000)
+    // ]);
 });
 // Route::get('/esun_callback', 'HomeController@esunec');

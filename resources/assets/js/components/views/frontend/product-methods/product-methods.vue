@@ -92,6 +92,7 @@
         ],
         data () {
             return {
+                firstLoad: true,
                 isLoaded: false,
                 minQty: 1,
                 maxQty: 20,
@@ -219,6 +220,12 @@
                 let choosed = _.find(this.subProducts, elm => {
                     return elm.id == arg
                 })
+
+                if (this.firstLoad) {
+                    this.firstLoad = false    
+                } else {
+                    $(`#thumb-${choosed.subProductGuid}`).click()
+                }
 
                 this.choosedSubItem = choosed
             },

@@ -14,7 +14,7 @@ class PageController extends Controller
 
         try {
             Page::create([
-                'guid' => str_random(42),
+                'guid' => str_random(6),
                 'title' => $data['title'],
                 'content' => $data['content'],
                 'featureImage' => $data['featureImage']

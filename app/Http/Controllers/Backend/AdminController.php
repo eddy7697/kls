@@ -84,7 +84,7 @@ class AdminController extends Controller
                 'role' => 'ADMIN',
                 'level' => 'NORMAL',
                 'password' => bcrypt($data['password']),
-                'guid' => str_random(42)
+                'guid' => str_random(6)
             ]);
         } else {
             return response()->json([ 'status' => 401, 'message' => 'Permission denied, you are not the administrator.' ], 401);
@@ -109,7 +109,7 @@ class AdminController extends Controller
                 'role' => 'NORMAL',
                 'level' => 'NORMAL',
                 'password' => bcrypt($data['password']),
-                'guid' => str_random(42)
+                'guid' => str_random(6)
             ]);
         } else {
             return response()->json([ 'status' => 401, 'message' => 'Permission denied, you are not the administrator.' ], 401);
@@ -273,7 +273,7 @@ class AdminController extends Controller
                 'role' => 'NORMAL',
                 'level' => 'NORMAL',
                 'password' => bcrypt('111111'),
-                'guid' => str_random(42)
+                'guid' => str_random(6)
             ]);
         }
 
@@ -292,7 +292,7 @@ class AdminController extends Controller
                 'role' => 'ADMIN',
                 'level' => 'NORMAL',
                 'password' => bcrypt('111111'),
-                'guid' => str_random(42)
+                'guid' => str_random(6)
             ]);
         }
 
