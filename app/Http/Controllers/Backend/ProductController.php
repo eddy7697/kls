@@ -514,7 +514,7 @@ class ProductController extends Controller
 
         try {
             $data = Product::where('productGuid', $guid)->update([
-                'isPublish' => $body['isPublish'] == 1 ? true : false,
+                'isPublish' => $body['isPublish'] == 1 ? 1 : 0,
             ]);
 
             $status = 200;

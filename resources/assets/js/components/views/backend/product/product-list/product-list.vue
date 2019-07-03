@@ -77,8 +77,9 @@
                     width="120"
                     label="價格">
                     <template slot-scope="scope">
-                        <span v-if="scope.row.quantity < 1" style="color: red">缺貨中</span>
-                        <span v-else>{{scope.row.price}}</span>
+                        <!-- <span v-if="scope.row.quantity < 1" style="color: red">缺貨中1</span>
+                        <span v-else>{{scope.row.price}}</span> -->
+                        <span>{{scope.row.showedPrice}}</span>
                         <!-- <div v-if="scope.row.productType == 'simple'">
                             <span v-if="scope.row.quantity < 1" style="color: red">缺貨中</span>
                             <span v-else>{{scope.row.price}}</span>
@@ -578,6 +579,7 @@
                             locale: item.locale,
                             isPublish: Boolean(item.isPublish),
                             isSelect: false,
+                            showedPrice: self.averagePrice(item),
                             created_at: item.created_at
                         }
 
@@ -627,6 +629,27 @@
                 
                 this.subDialogVisible = true
                 this.subProductCache = JSON.parse(JSON.stringify(item))
+            },
+            averagePrice(row) {
+                if (row.productType == 'simple') {
+                    return row.price
+                }
+
+                if (row.subProduct.length == 0) {
+                    return '子商品無項目'
+                }
+
+                let average = _.meanBy(row.subProduct, (p) => p.subPrice);
+
+                row.subProduct.sort((a, b) => {
+                    return a.subPrice - b.subPrice
+                })
+
+                if (row.subProduct[0].subPrice != row.subProduct[row.subProduct.length - 1].subPrice) {
+                    return `${row.subProduct[0].subPrice} ~ ${row.subProduct[row.subProduct.length - 1].subPrice}`
+                }
+
+                return average
             },
             showMessage: function (type, string) {
                 toastr[type](string)
