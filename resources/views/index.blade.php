@@ -250,7 +250,12 @@
                                                     </li>
                                                 </ul>
                                                 <h1 class="product_price">
-                                                    NTD {{number_format($item->price)}}
+                                                    @if (strlen($item->discountedPrice) == 0)
+                                                        NTD {{number_format($item->price)}}    
+                                                    @else
+                                                        NTD {{number_format($item->discountedPrice)}}
+                                                    @endif
+                                                    
                                                 </h1>
                                             </div>
                                             <button class="buy_click" onclick="addSigleProduct('{{$item->productGuid}}')">
