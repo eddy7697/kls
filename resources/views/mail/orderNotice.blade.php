@@ -1,7 +1,7 @@
 <table border="0" width="550">
     <tr>
         <td style="text-align: center" colspan="4">
-            <img src="https://meansgood.egith.net/img/mail-logo.png" width="200">
+            <img src="https://kls-baggage.com.tw/img/loadingText.svg" width="200">
         </td>
     </tr>
     <tr>
@@ -39,7 +39,7 @@
           </td>
         </tr>
     @endforeach
-    <tr>
+    {{-- <tr>
       <td colspan="1" style="padding: 10px; border-top: #ccc thin solid">
         購物金折抵：
       </td>
@@ -65,8 +65,8 @@
       <td colspan="3" style="padding: 10px; border-top: #ccc thin solid">
         NT$ {{number_format($data['shippingCosts'])}}
       </td>
-    </tr>
-    <tr>
+    </tr> --}}
+    {{-- <tr>
         <td colspan="1" style="padding: 10px; border-top: #ccc thin solid">付款方式：</td>
         <td colspan="3" style="padding: 10px; border-top: #ccc thin solid">
             @php
@@ -83,7 +83,7 @@
                 }
             @endphp
         </td>
-    </tr>
+    </tr> --}}
     <td colspan="1" style="padding: 10px; border-top: #ccc 5px solid">
         總計：
       </td>

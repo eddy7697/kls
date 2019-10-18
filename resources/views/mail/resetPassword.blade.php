@@ -6,5 +6,5 @@
 
 <p><a href="{{ env('APP_URL') }}/reset-password/{{$token}}">點我重新設置您的密碼</a></p>
 
-<p>客服專線：03-5679463</p>
-<p>客服信箱：hi@meansgood.com.tw</p>
+{{-- <p>客服專線：03-5679463</p> --}}
+<p>客服信箱：alan333335@yahoo.com.tw</p>

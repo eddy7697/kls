@@ -11,7 +11,7 @@ use App\CustomField;
     <meta property="og:title" content="{{$witness->seoTitle}}" />
     <meta property="og:description" content="{{$witness->seoDescription}}" />
     <!--分享用圖片在這，一樣有保留-->
-    <meta property="og:image" content="https://www.meansgood.com.tw{{$witness->featureImage}}"/>
+    <meta property="og:image" content="{{env('APP_URL')}}{{$witness->featureImage}}"/>
     <meta property="fb:app_id" content="1758202757809745" />
     <!--**************************-->
     <meta property="og:type" content="website" />

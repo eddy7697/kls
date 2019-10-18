@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="{{SiteMetaView::keyword()}}">
         <meta name="description" content="{{SiteMetaView::description()}}">
-        <link rel="alternate" href="https://www.meansgood.com.tw/" hreflang="zh-TW" />
+        <link rel="alternate" href="{{env('APP_URL')}}/" hreflang="zh-TW" />
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 

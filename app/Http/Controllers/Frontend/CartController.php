@@ -54,6 +54,7 @@ class CartController extends Controller
 
         try {
             $product = Product::where('productGuid', $guid)->first();
+            $metatag = json_decode($product->command);
 
             if (intval($product->discountedPrice) > 0) {
                 $price = $product->discountedPrice;
@@ -68,6 +69,7 @@ class CartController extends Controller
                 'featureImage' => $product->featureImage,
                 'Temperature' => $product->Temperature,
                 'serialNumber' => $product->serialNumber,
+                'size' => $metatag->size,
             );
 
             $cart = Cart::add(json_encode($productMeta), json_encode($productMeta), $data['quantity'], $price);
@@ -96,6 +98,7 @@ class CartController extends Controller
 
         try {
             $product = Product::where('productGuid', $guid)->first();
+            $metatag = json_decode($product->command);
 
             if ((int)$data['subDiscountPrice'] > 0) {
                 $price = (int)$data['subDiscountPrice'];
@@ -111,6 +114,7 @@ class CartController extends Controller
                 'Temperature' => $product->Temperature,
                 'subProductId' => $data['id'],
                 'serialNumber' => $data['subSerialNumber'],
+                'size' => $metatag->size,
             );
 
             $cart = Cart::add(json_encode($productMeta), json_encode($productMeta), $data['qty'], $price);

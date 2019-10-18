@@ -24,7 +24,7 @@
                         <p>
                             優惠價
                         </p>
-                        <p class="hide"></p>
+                        <p class=""></p>
                     </li>
                     <li v-for="(item, index) in cart" v-bind:key="index">
                         <p>
@@ -35,10 +35,10 @@
                             <br>
                         </p>
                         <p>
-                            27吋
+                            {{item.id.size}}
                         </p>
                         <p>
-                            型號:<span>HD-515</span>
+                            型號:<span>{{item.id.serialNumber}}</span>
                         </p>
                         <p data-title="數量" class="count">
                             <el-input-number 

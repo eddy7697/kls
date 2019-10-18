@@ -11,7 +11,7 @@
     <meta property="og:title" content="{{$product->seoTitle}}" />
     <meta property="og:description" content="{{$product->seoDescription}}" />
     <!--分享用圖片在這，一樣有保留-->
-    <meta property="og:image" content="https://www.meansgood.com.tw{{$product->featureImage}}"/>
+    <meta property="og:image" content="{{env('APP_URL')}}{{$product->featureImage}}"/>
     <meta property="fb:app_id" content="1758202757809745" />
     <!--**************************-->
     <meta property="og:type" content="website" />

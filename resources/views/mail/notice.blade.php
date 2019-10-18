@@ -1,7 +1,7 @@
 <table border="0" width="550">
     <tr>
         <td style="text-align: center" colspan="4">
-            <img src="{{env('APP_URL')}}/img/mail-logo.png" width="200">
+            <img src="https://kls-baggage.com.tw/img/loadingText.svg" width="200">
         </td>
     </tr>
     <tr>
@@ -53,7 +53,7 @@
     @endforeach
 
 
-    <tr>
+    {{-- <tr>
       <td colspan="1" style="padding: 10px; border-top: #ccc thin solid">
         購物金折抵：
       </td>
@@ -97,7 +97,7 @@
                 }
             @endphp
         </td>
-    </tr>
+    </tr> --}}
     <tr>
         <td colspan="1" style="padding: 10px; border-top: #ccc 5px solid">
             總計：
@@ -106,7 +106,7 @@
             NT$ {{number_format((int)$data['TotalAmount'] - (int)$data['pointUsage'] + (int)$data['shippingCosts'])}}
         </td>
     </tr>
-    @if ($data['pointCount'])
+    {{-- @if ($data['pointCount'])
         <tr>
             <td colspan="1" style="padding: 10px; border-top: #ccc 5px solid">
                 可累積購物金：
@@ -115,6 +115,6 @@
                 {{$data['pointCount']}}元
             </td>
         </tr>
-    @endif
+    @endif --}}
 
 </table>

@@ -214,7 +214,7 @@
         <div class="container-fulid filter-product-out">
             <div class="row filter-product">
                 <div class="filter-product-row">
-                    <div class="col-md-6" v-for="(item, index) in pageData.data" :key="index">
+                    <div class="col-md-6" v-for="(item, index) in pageData.data" :key="index" :title="item.productTitle">
                         <div class="product-inner">
                             <div class="product-img" :style="`background-image: url('${item.featureImage}');`">
                                 <a :href="`/detail/${item.productGuid}`">

@@ -337,32 +337,32 @@ class CheckoutController extends Controller
             //Go to EcPay
             // echo "<h1 style='text-align: center; margin-top: 100px;'>交易資訊傳輸中，請勿重新整理或者關閉視窗，以免重複下訂。</h1>";
 
-            // if (env('APP_ENV') === 'prod') {
-            //     Mail::send('mail.orderNotice', [
-            //         'data' => $data,
-            //         'cartInfo' => $cartInfo,
-            //         'shippingTarget' => $shippingTarget,
-            //         'merchantIdCache' => $merchantIdCache
-            //     ], function($message) use ($sender, $shippingTarget) {
-            //         $message->to([
-            //             'hi@meansgood.com.tw',
-            //         ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
-            //         $message->from($sender, $name = "明谷生機 MeansGood");
-            //     });
+            if (env('APP_ENV') === 'prod') {
+                Mail::send('mail.orderNotice', [
+                    'data' => $data,
+                    'cartInfo' => $cartInfo,
+                    'shippingTarget' => $shippingTarget,
+                    'merchantIdCache' => $merchantIdCache
+                ], function($message) use ($sender, $shippingTarget) {
+                    $message->to([
+                        'alan333335@yahoo.com.tw',
+                    ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
+                    $message->from($sender, $name = "凱麗斯KLS旅行箱");
+                });
 
-            //     Mail::send('mail.notice', [
-            //         'data' => $data,
-            //         'cartInfo' => $cartInfo,
-            //         'shippingTarget' => $shippingTarget,
-            //         'merchantIdCache' => $merchantIdCache
-            //     ], function($message) use ($sender, $shippingTarget) {
-            //         $message->to([
-            //             $shippingTarget['ReceiverEmail'],
-            //             $sender,
-            //         ])->subject('訂單成立通知信');
-            //         $message->from($sender, $name = "明谷生機 MeansGood");
-            //     });
-            // }
+                Mail::send('mail.notice', [
+                    'data' => $data,
+                    'cartInfo' => $cartInfo,
+                    'shippingTarget' => $shippingTarget,
+                    'merchantIdCache' => $merchantIdCache
+                ], function($message) use ($sender, $shippingTarget) {
+                    $message->to([
+                        $shippingTarget['ReceiverEmail'],
+                        // $sender,
+                    ])->subject('訂單成立通知信');
+                    $message->from($sender, $name = "凱麗斯KLS旅行箱");
+                });
+            }
 
             // echo Ecpay::instance()->CheckOutString();
             if ($data['ChoosePayment'] == 'cod') {
@@ -655,7 +655,7 @@ class CheckoutController extends Controller
         // Ecpay::instance()->Send['MerchantTradeNo']   = "MG".time();
         // Ecpay::instance()->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');
         // Ecpay::instance()->Send['TotalAmount']       = (int)$orderParametor['amount'];
-        // Ecpay::instance()->Send['TradeDesc']         = "明谷生機 - 商品交易";
+        // Ecpay::instance()->Send['TradeDesc']         = " - 商品交易";
         // Ecpay::instance()->Send['EncryptType']       = '1';
         // Ecpay::instance()->Send['ChoosePayment']     = $orderParametor['paymentMethod'] ;
         // Ecpay::instance()->Send['PaymentType']       = 'aio';
