@@ -143,7 +143,7 @@
                         OPEN <span> 13:00 </span>
                     </p>
                     <p class="information-inner-store-time">
-                        CLOSE <span> 20:00 </span>
+                        CLOSE <span> 22:00 </span>
                     </p>
                     <p class="information-inner-store-intro">
                         新竹關新店是KLS目前最佳體驗旗艦店，也是KLS最新箱款展示店，坐落於新莊車站旁，由新竹火車站可直達新莊火車站僅需10分鐘，交通十分便利，而位於住宅重劃區的關新店，以及廣大的人行道，也是您體驗箱款的最佳地點。
@@ -213,10 +213,10 @@
                         新竹巨城店 <span> Hsinchu Big City </span>
                     </p>
                     <p class="information-inner-store-time time-open">
-                        OPEN <span> 13:00 </span>
+                        OPEN <span> 11:00 </span>
                     </p>
                     <p class="information-inner-store-time">
-                        CLOSE <span> 20:00 </span>
+                        CLOSE <span> 22:00 </span>
                     </p>
                     <p class="information-inner-store-intro">
                         新竹巨城店位於人潮眾多的巨城購物中心正對面，坐落於新竹市中心的交通樞紐，巨城店中各式箱款應有盡有，亦是新竹逛街購物必經路線，若您專程前往，相當建議您可以在新竹火車站搭乘接駁車前往巨城購物中心，步行過馬路僅需1分鐘。
@@ -231,7 +231,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 22:00，每周二公休。
+                        ※營業時間為 11:00 - 22:00，每周二公休。
                     </p>
                 </div>
             </div>
@@ -291,7 +291,7 @@
                         CLOSE <span> 22:00 </span>
                     </p>
                     <p class="information-inner-store-intro">
-                        新竹關新店是KLS目前最佳體驗旗艦店，也是KLS最新箱款展示店，坐落於新莊車站旁，由新竹火車站可直達新莊火車站僅需10分鐘，交通十分便利，而位於住宅重劃區的關新店，以及廣大的人行道，也是您體驗箱款的最佳地點。
+                        {{-- 新竹關新店是KLS目前最佳體驗旗艦店，也是KLS最新箱款展示店，坐落於新莊車站旁，由新竹火車站可直達新莊火車站僅需10分鐘，交通十分便利，而位於住宅重劃區的關新店，以及廣大的人行道，也是您體驗箱款的最佳地點。 --}}
                     </p>
                     <p class="information-inner-store-number-title">
                         連絡電話
@@ -303,7 +303,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 13:00 - 22:00，每周二公休。
+                        ※營業時間為 13:00 - 22:00，每週四公休。
                     </p>
                 </div>
             </div>
@@ -337,9 +337,9 @@
                             </button>
                         </a>
                     </div>
-                    <p>
+                    {{-- <p>
                         ※鄰近台鐵六家線往內灣方向新莊火車站，下車後步行約5分鐘。
-                    </p>
+                    </p> --}}
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <table border="0" width="550">
     <tr>
         <td style="text-align: center" colspan="4">
-            <img src="https://kls-baggage.com.tw/img/loadingText.svg" width="200">
+            <img src="https://kls-baggage.com.tw/img/loadingText.png" width="200">
         </td>
     </tr>
     <tr>

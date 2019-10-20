@@ -337,31 +337,36 @@ class CheckoutController extends Controller
             //Go to EcPay
             // echo "<h1 style='text-align: center; margin-top: 100px;'>交易資訊傳輸中，請勿重新整理或者關閉視窗，以免重複下訂。</h1>";
 
-            if (env('APP_ENV') === 'prod') {
-                Mail::send('mail.orderNotice', [
-                    'data' => $data,
-                    'cartInfo' => $cartInfo,
-                    'shippingTarget' => $shippingTarget,
-                    'merchantIdCache' => $merchantIdCache
-                ], function($message) use ($sender, $shippingTarget) {
-                    $message->to([
-                        'alan333335@yahoo.com.tw',
-                    ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
-                    $message->from($sender, $name = "凱麗斯KLS旅行箱");
-                });
-
-                Mail::send('mail.notice', [
-                    'data' => $data,
-                    'cartInfo' => $cartInfo,
-                    'shippingTarget' => $shippingTarget,
-                    'merchantIdCache' => $merchantIdCache
-                ], function($message) use ($sender, $shippingTarget) {
-                    $message->to([
-                        $shippingTarget['ReceiverEmail'],
-                        // $sender,
-                    ])->subject('訂單成立通知信');
-                    $message->from($sender, $name = "凱麗斯KLS旅行箱");
-                });
+            if (env('APP_ENV') === 'prod' || true) {
+                try {
+                    Mail::send('mail.orderNotice', [
+                        'data' => $data,
+                        'cartInfo' => $cartInfo,
+                        'shippingTarget' => $shippingTarget,
+                        'merchantIdCache' => $merchantIdCache
+                    ], function($message) use ($sender, $shippingTarget) {
+                        $message->to([
+                            'alan333335@yahoo.com.tw',
+                        ])->subject('訂單成立通知 - 來自 '.$shippingTarget['ReceiverName'].' 的訂購');
+                        $message->from($sender, $name = "凱麗斯KLS旅行箱");
+                    });
+    
+                    Mail::send('mail.notice', [
+                        'data' => $data,
+                        'cartInfo' => $cartInfo,
+                        'shippingTarget' => $shippingTarget,
+                        'merchantIdCache' => $merchantIdCache
+                    ], function($message) use ($sender, $shippingTarget) {
+                        $message->to([
+                            $shippingTarget['ReceiverEmail'],
+                            // $sender,
+                        ])->subject('訂單成立通知信');
+                        $message->from($sender, $name = "凱麗斯KLS旅行箱");
+                    });
+                } catch (\Throwable $th) {
+                    Log::error($th->getMessage());
+                }
+                
             }
 
             // echo Ecpay::instance()->CheckOutString();

@@ -85,6 +85,7 @@ table.field-table {
 }
 
 table.product-detail-table {
+    table-layout: fixed;
     tr {
         td, th {
             padding: 8px;

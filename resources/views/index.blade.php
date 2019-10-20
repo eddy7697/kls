@@ -1,5 +1,17 @@
 @extends('main')
 
+@php
+use Carbon\Carbon;
+@endphp
+
+@section('custom-style')
+    <style>
+        .choose-content {
+            margin-bottom: 22px;
+        }
+    </style>
+@endsection
+
 @section('custom-script')
     <script>
         var $width = $(this).width();
@@ -34,7 +46,35 @@
                 });
             };
         });
+        function lineShare(url, text) {
+            var link = "http://line.naver.jp/R/msg/text/?";
+            link += encodeURIComponent(text);
+            link += "%0D%0A";
+            link += encodeURIComponent(url);
+            window.open(link);
+            return false;
+        }
+        function facebookShare(url, text) {
+            var text;
 
+            text += encodeURIComponent(text);
+            text += "%0D%0A";
+            text += encodeURIComponent(url);
+
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + '&src=sdkpreparse');
+            return false;
+        }
+    </script>
+    <script>
+        var cards = $('.choose-content');
+        var finalHeight = 0;
+        
+        for (let i = 0; i < cards.length; i++) {
+            if ($(cards[i]).height() > finalHeight) {
+                finalHeight = $(cards[i]).height();
+            }
+        }
+        $('.choose-content').height(finalHeight);
     </script>
 @endsection
 
@@ -64,7 +104,10 @@
                             <h3>
                                 拉鍊式硬殼箱
                             </h3>
-                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeService()->content)), 0, 195, "...")}}</p>
+                            <div class="choose-content">
+                                <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeService()->content)), 0, 195, "...")}}</p>
+                            </div>
+                            
                             {{-- <p>{!!nl2br(SiteMetaView::noticeService()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
@@ -84,7 +127,10 @@
                             <h3>
                                 鋁框式硬殼箱
                             </h3>
-                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeShipping()->content)), 0, 195, "...")}}</p>
+                            <div class="choose-content">
+                                <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeShipping()->content)), 0, 195, "...")}}</p>
+                            </div>
+                            
                             {{-- <p>{!!nl2br(SiteMetaView::noticeShipping()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
@@ -104,7 +150,10 @@
                             <h3>
                                 軟殼布面箱
                             </h3>
-                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeReturn()->content)), 0, 195, "...")}}</p>
+                            <div class="choose-content">
+                                <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeReturn()->content)), 0, 195, "...")}}</p>
+                            </div>
+                            
                             {{-- <p>{!!nl2br(SiteMetaView::noticeReturn()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
@@ -124,7 +173,10 @@
                             <h3>
                                 品牌特殊箱
                             </h3>
-                            <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeAntiFraud()->content)), 0, 195, "...")}}</p>
+                            <div class="choose-content">
+                                <p>{{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', nl2br(SiteMetaView::noticeAntiFraud()->content)), 0, 195, "...")}}</p>
+                            </div>
+                            
                             {{-- <p>{!!nl2br(SiteMetaView::noticeAntiFraud()->content)!!}</p> --}}
                             {{-- {{FeatureView::get('feature_'.($i + 2))->productGuid}} --}}
                             <div class="choose_btn">
@@ -218,10 +270,10 @@
                         <div id="home" class="tab-pane fade in active">
                             <div class="swiper-wrapper">
                                 @foreach (ProductView::all() as $key => $item)
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide" title="{{$item->productTitle}}">
                                         <a href="/detail/{{$item->productGuid}}">
-                                            <div class="product_img">
-                                                <img class="product_img_inside" src="{{$item->featureImage}}" alt="">
+                                            <div class="product_img" style="background-image: url('{{$item->featureImage}}')">
+                                                {{-- <img class="product_img_inside" src="{{$item->featureImage}}" alt=""> --}}
                                                 <div class="product_quick_view">
                                                     <p class="product_quick_text">
                                                         READ MORE    
@@ -273,8 +325,8 @@
                                 <div class="swiper-wrapper">
                                     @foreach (ProductView::takeByTag($elm) as $item)
                                         <div class="swiper-slide">
-                                            <div class="product_img">
-                                                <img class="product_img_inside" src="{{$item->featureImage}}" alt="">
+                                            <div class="product_img" style="background-image: url('{{$item->featureImage}}')">
+                                                {{-- <img class="product_img_inside" src="{{$item->featureImage}}" alt=""> --}}
                                                 <a href="/detail/{{$item->productGuid}}">
                                                     <div class="product_quick_view">
                                                         <p class="product_quick_text">
@@ -334,7 +386,26 @@
                    </p>
                 </div>
             </div>
-            <div class="row newsPostRow">
+            <div class="owl-news jq-owl-news owl-carousel owl-theme">
+                @foreach (PostView::all(6) as $item)
+                <div class="item clear">
+                    <div class="img-container" style="background-image: url('{{$item->featureImage}}');"></div>
+                    <div class="info-group" data-aos="fade-up" data-aos-duration="500" data-aos-anchor-placement="bottom">
+                        <p class="date">{{Carbon::parse($item->created_at)->format('Y/m/d')}}</p>
+                        <p class="title">{{$item->postTitle}}</p>
+                        <p class="detail">{{preg_replace('#<[^>]+>#', ' ', $item->content)}}</p>
+                        <div class="action-group">
+                        <a class="btn-more animate-move" title="了解更多" href="/blog/{{$item->customPath}}">了解更多</a>
+                        </div>
+                        <div class="share-group">
+                        <a class="line" title="Line 分享" onclick="lineShare('{{env('APP_URL')}}/blog/{{$item->customPath}}', '{{$item->postTitle}}')" ></a>
+                        <a class="facebook" title="Facebook 分享" onclick="facebookShare('{{env('APP_URL')}}/blog/{{$item->customPath}}', '{{$item->postTitle}}')" ></a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            {{-- <div class="row newsPostRow">
                 @foreach (PostView::all(6) as $key => $value)
                     <div class="col-md-6">
                         <div class="newsPost">
@@ -357,7 +428,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
         </div>
     </section> 
     

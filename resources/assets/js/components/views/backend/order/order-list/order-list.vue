@@ -84,7 +84,7 @@
                         <div class="modal-body">
                             <table class="table product-detail-table">
                                 <tr>
-                                    <td>訂單編號</td>
+                                    <td style="width: 100px">訂單編號</td>
                                     <td>{{itemShowed.merchantID}}</td>
                                 </tr>
                                 <tr>
@@ -118,31 +118,33 @@
                                     <td>點數使用</td>
                                     <td>NT$ {{itemShowed.pointUsage}}</td>
                                 </tr> -->
-                                <!-- <tr v-if="itemShowed.usedCoupon">
+                                <tr v-if="itemShowed.usedCoupon">
                                     <td>優惠券使用</td>
                                     <td>
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>優惠券類型</th>
+                                                    <th>優惠券編號</th>
                                                     <th>折抵金額</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <span v-if="itemShowed.usedCoupon.discountType === 'percentage'">百分比折抵</span>
-                                                        <span v-if="itemShowed.usedCoupon.discountType === 'cartDiscount'">總額折抵</span>
+                                                        {{itemShowed.usedCoupon.coupon}}
+                                                        <!-- <span v-if="itemShowed.usedCoupon.discountType === 'percentage'">百分比折抵</span>
+                                                        <span v-if="itemShowed.usedCoupon.discountType === 'cartDiscount'">總額折抵</span> -->
                                                     </td>
                                                     <td>
-                                                        <span v-if="itemShowed.usedCoupon.discountType === 'percentage'">{{itemShowed.usedCoupon.couponAmount}} %</span>
-                                                        <span v-if="itemShowed.usedCoupon.discountType === 'cartDiscount'">NT$ {{itemShowed.usedCoupon.couponAmount}}</span>                                                        
+                                                        {{itemShowed.usedCoupon.couponAmount}}
+                                                        <!-- <span v-if="itemShowed.usedCoupon.discountType === 'percentage'">{{itemShowed.usedCoupon.couponAmount}} %</span>
+                                                        <span v-if="itemShowed.usedCoupon.discountType === 'cartDiscount'">NT$ {{itemShowed.usedCoupon.couponAmount}}</span>                                                         -->
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </td>
-                                </tr> -->
+                                </tr>
                                 <tr v-if="false">
                                     <td>付款方式</td>
                                     <td>
@@ -246,13 +248,20 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr v-if="false">
+                                <tr v-if="true">
+                                    <td>運送方式</td>
+                                    <td>
+                                        <span v-if="itemShowed.paymentMethod === 'Remit'">國內宅配</span>
+                                        <span v-if="itemShowed.paymentMethod === 'cod'">貨到付款</span>
+                                    </td>
+                                </tr>
+                                <!-- <tr v-if="false">
                                     <td>運送方式</td>
                                     <td>
                                         <span v-if="itemShowed.shippingMethod === 'delivery'">國內宅配</span>
                                         <span v-if="itemShowed.shippingMethod === 'cvs'">超商取貨</span>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td>客戶資訊</td>
                                     <td>
@@ -271,22 +280,28 @@
                                                 <td>電子郵件</td>
                                                 <td>{{itemShowed.shippingTarget.ReceiverEmail}}</td>
                                             </tr>
-                                            <tr v-if="itemShowed.paymentMethod == 'Remit'">
+                                            <!-- <tr v-if="itemShowed.paymentMethod == 'Remit'">
                                                 <td>帳號末五碼</td>
                                                 <td>{{itemShowed.shippingTarget.LastFiveChar}}</td>
+                                            </tr> -->
+                                            <tr>
+                                                <td>發票開立方式</td>
+                                                <td v-if="itemShowed.receipt == 'donation'">捐贈發票</td>
+                                                <td v-if="itemShowed.receipt == 'twoWay'">二聯式電子發票</td>
+                                                <td v-if="itemShowed.receipt == 'threeWay'">三聯式發票</td>
                                             </tr>
-                                            <tr v-if="itemShowed.receipt">
+                                            <tr v-if="itemShowed.receipt == 'threeWay'">
                                                 <td>發票抬頭</td>
-                                                <td>{{itemShowed.receipt}}</td>
+                                                <td>{{itemShowed.shippingTarget.invoiceTitle}}</td>
                                             </tr>
-                                            <tr v-if="itemShowed.taxId">
+                                            <tr v-if="itemShowed.receipt == 'threeWay'">
                                                 <td>統一編號</td>
                                                 <td>{{itemShowed.taxId}}</td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
-                                <tr v-if="false">
+                                <tr v-if="true">
                                     <td>運送標的</td>
                                     <td>
                                         <table class="table" v-if="itemShowed.shippingMethod === 'cvs'">
@@ -306,7 +321,7 @@
                                             <!-- <span style="font-size: 12px;">269宜蘭縣冬山鄉香城路15巷6號 (易耕事業有限公司 03-9590903)</span>
                                             <br> -->
                                             <span style="font-size: 16px;">
-                                                {{`${itemShowed.shippingTarget.ReceiverPort}  ${itemShowed.shippingTarget.ReceiverAddress}`}}
+                                                {{`${itemShowed.shippingTarget.ReceiverPort} ${itemShowed.shippingTarget.ReceiverCity} ${itemShowed.shippingTarget.ReceiverAddress}`}}
                                             </span>
                                             <br>
                                             <span style="font-size: 16px;">

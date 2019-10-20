@@ -7,6 +7,139 @@
                 </h3>
                 <hr>
                 <div class="table_col">
+                    <div class="table_col">
+                        <h4>訂單資訊</h4>
+                        <hr>
+                        <div class="payment-gateway">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>商品</th>
+                                        <th style="text-align: right; min-width:50px;">價格</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item, index) in cart" v-bind:key="index">
+                                        <td>{{item.id.title}} x {{item.qty}}</td>
+                                        <td style="text-align: right; min-width:50px;">NT$ {{item.total}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>小計</td>
+                                        <td style="text-align: right; min-width:50px;">NT$ {{amountString}}</td>
+                                    </tr>
+                                    <tr v-if="false">
+                                        <td>運送方式</td>
+                                        <td>
+                                            <ul class="shipping-method-list">
+                                                <li v-for="(item, index) in methodsTranslate" v-bind:key="index">
+                                                    <input style="width: initial" type="radio" name="shipping-method" v-bind:id="item.shippingType + item.shippingTemperature + item.id" v-bind:value="item.id" v-model="shippingTag">
+
+                                                    <label
+                                                        v-if="item.freeShipping && (amount >= item.freeShippingMininum)"
+                                                        v-bind:for="item.shippingType + item.shippingTemperature + item.id">{{item.shippingTitle}} 滿額免運</label>
+                                                    <label
+                                                        v-else
+                                                        v-bind:for="item.shippingType + item.shippingTemperature + item.id">{{item.shippingTitle}} NT$ {{item.shippingPrice}}</label>
+                                                    <div v-if="amount < item.freeShippingMininum && shippingTag === item.id">
+                                                        購物滿 {{item.freeShippingMininum}} 元即可享有免運費的優惠唷！
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <!-- <tr v-if="owner !== 'guest'">
+                                        <td>購物金使用：剩餘 {{point}}元</td>
+                                        <td align="right">
+                                            <div class="form-group" style="width:125px">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" @click="changePointUse('down')"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </span>
+                                                    <input type="number" id="point-input" class="form-control" style="text-align: center; padding: 0px 10px;"
+                                                        v-model="pointUsage"
+                                                        v-bind:class="{ 'has-error': (pointUsage > point) }"
+                                                        :blur="pointInputValid()"
+                                                        min="0">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" @click="changePointUse('up')"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                    <!-- <tr v-if="shippingMethod == 'cvs'">
+                                        <td colspan="2">
+                                            <div class="form-group">
+                                                <strong>配送門市選擇 *</strong>
+                                                <br>
+                                                <span class="cvs-btn mg-icon mg-icon-cvs-7-11" @click="chooseCvs('UNIMARTC2C')"></span>
+                                                <span class="cvs-btn mg-icon mg-icon-cvs-familymart" @click="chooseCvs('FAMIC2C')"></span>
+                                                <span class="cvs-btn mg-icon mg-icon-cvs-hilife" @click="chooseCvs('HILIFEC2C')"></span>
+                                                <span class="form-control">{{cvsParametor.CVSStoreName}}</span>
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td><strong>總計</strong></td>
+                                        <td style="text-align: right; min-width:50px;">NT$ {{(finalAmount - pointUsage) + parseInt(shippingCosts)}}</td>
+                                    </tr>
+                                    <!-- <tr v-if="owner == 'guest'">
+                                        <td colspan="2">
+                                            <br>
+                                            <strong><a href="/register">加入會員即可獲得購物金50元，並享有購物金額10%紅利累積回饋</a></strong>
+                                        </td>
+                                    </tr>
+                                    <tr v-else>
+                                        <td>
+                                            <strong>可累計購物金</strong>
+                                        </td>
+                                        <td style="text-align: right; min-width:50px;">
+                                            {{Math.ceil(((parseInt(finalAmount) - parseInt(pointUsage))) * (parseInt(percentage) / 100)) }} 元
+                                        </td>
+                                    </tr> -->
+                                    <tr v-if="!isCouponUse">
+                                        <td colspan="2">有優惠券嗎? <a @click="typeCoupon()" style="cursor: pointer">點我輸入優惠碼</a></td>
+                                    </tr>
+                                    <tr v-else>
+                                        <td>
+                                            優惠券編號
+                                        </td>
+                                        <td style="text-align: right">
+                                            {{coupon}}
+                                        </td>
+                                    </tr>
+                                    <tr v-if="isCouponUse">
+                                        <td>
+                                            優惠券折抵
+                                        </td>
+                                        <td style="text-align: right">
+                                            - NT$ {{couponAmount}}
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr v-if="isCouponFieldShow">
+                                        <td colspan="2">
+                                            <table>
+                                                <tr class="cart_info_text"  v-if="isCouponFieldShow">
+                                                    <td class="cart_info_title">
+                                                        優惠券代碼
+                                                    </td>
+                                                    <td >
+                                                        <input type="text" placeholder="請輸入優惠券代碼"  v-model="coupon">
+                                                        <a class="btn btn-primary" @click="useCoupon()">使用優惠券</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- <input style="margin-bottom: 10px;" type="text" class="form-control" id="coupon-field" v-model="couponNumber" placeholder="優惠券號碼">
+                                            <a class="btn btn-primary btn-block" @click="useCoupon()">使用優惠券</a> -->
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
                     <table>
                         <tbody>
                             <tr v-if="useUserInfo">
@@ -136,30 +269,30 @@
                                     發票開立方式
                                 </td>
                                 <td>
-                                    <input type="radio" name="invoice" v-model="customerParametorForShipping.receipt" value="donation" id="donation" required>
+                                    <input type="radio" name="invoice" v-model="customerParametor.receipt" value="donation" id="donation" required>
                                     <label for="donation">捐贈發票</label>
-                                    <input type="radio" name="invoice" v-model="customerParametorForShipping.receipt" value="twoWay" id="two-way" required>
+                                    <input type="radio" name="invoice" v-model="customerParametor.receipt" value="twoWay" id="two-way" required>
                                     <label for="two-way">二聯式電子發票</label>
-                                    <input type="radio" name="invoice" v-model="customerParametorForShipping.receipt" value="threeWay" id="three-way" required>
+                                    <input type="radio" name="invoice" v-model="customerParametor.receipt" value="threeWay" id="three-way" required>
                                     <label for="three-way">三聯式發票</label>
                                 </td>
                             </tr>
 
-                            <tr class="invoice-title-td" v-if="customerParametorForShipping.receipt == 'threeWay'">
+                            <tr class="invoice-title-td" v-if="customerParametor.receipt == 'threeWay'">
                                 <td class="cart_info_title">
                                     發票抬頭
                                 </td>
                                 <td>
-                                    <input class="invoice-title" type="text" id="invoice-title" placeholder="" v-model="customerParametorForShipping.invoiceTitle" required>
+                                    <input class="invoice-title" type="text" id="invoice-title" placeholder="" v-model="customerParametor.invoiceTitle" required>
                                 </td>
                             </tr>
                             
-                            <tr class="GUI-number-td" v-if="customerParametorForShipping.receipt == 'threeWay'">
+                            <tr class="GUI-number-td" v-if="customerParametor.receipt == 'threeWay'">
                                 <td class="cart_info_title">
                                     統一編號
                                 </td>
                                 <td>
-                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='[0-9]{8}' v-model="customerParametorForShipping.taxId" required>
+                                    <input class="GUI-number" type="text" id="GUI-number" placeholder="" pattern='[0-9]{8}' v-model="customerParametor.taxId" required>
                                 </td>
                             </tr>
 
@@ -168,20 +301,21 @@
                                     備註事項
                                 </td>
                                 <td >
-                                    <textarea cols="30" rows="10" v-model="customerParametorForShipping.remarks"></textarea>
+                                    <textarea cols="30" rows="10" v-model="customerParametor.remarks"></textarea>
                                 </td>
                             </tr>
-                            <tr class="cart_info_text">
+                            <!-- <tr class="cart_info_text">
                                 <td class="cart_info_title">
                                     優惠券代碼
                                 </td>
                                 <td >
                                     <input type="text" placeholder="請輸入優惠券代碼"  v-model="coupon">
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
+                
             </div>
             <div class="remind">
                 <p>
@@ -242,7 +376,8 @@
                     remarks: '',
                     newMemberPassword: '',
                     receipt: '',
-                    taxId: ''
+                    taxId: '',
+                    invoiceTitle: '',
                 },
                 customerParametorForShipping: {
                     ReceiverName: '',
@@ -275,6 +410,7 @@
                     CVSTelephone: null
                 },
                 usedCouponContent: {
+                    coupon: 0,
 					discountType: 'NONE',
 					couponAmount: 0
 				},
@@ -652,46 +788,60 @@
                 // }
 
                 // if (true) {
-                if (this.coupon) {
-                    axios.post(`/validate/coupon/${this.coupon}`, {
-                        amount: this.finalAmount
-                    }).then(res => {
-                        // console.log(res)
-                        this.useCoupon()
-                    }).catch(err => {
-                        let result = err.response
+                // if (this.coupon) {
+                //     axios.post(`/validate/coupon/${this.coupon}`, {
+                //         amount: this.finalAmount
+                //     }).then(res => {
+                //         // console.log(res)
+                //         this.useCoupon()
+                //     }).catch(err => {
+                //         let result = err.response
 
-                        switch (result.status) {
-                            case 454:
-                                alert('無效的優惠券代碼')
-                                break;
-                            case 455:
-                                alert('非指定會員')
-                                break;
-                            case 456:
-                                alert('優惠商品不在訂單內，優惠無法使用')
-                                break;
-                            case 457:
-                                alert('訂單金額小於優惠券金額。')
-                                break;
-                            default:
-                                break;
-                        }
-                    })
-                } else {
-                    switch (method) {
-                        case 'cvsCod':      // 超商取貨付款
-                            this.cvsCod();
-                            break;
-                        case 'cvs':         // 超商純取貨
-                            this.aoiMethod();
-                            break;
-                        case 'aoi':         //All in one
-                            this.aoiMethod();
-                            break;
-                        default:
+                //         switch (result.status) {
+                //             case 454:
+                //                 alert('無效的優惠券代碼')
+                //                 break;
+                //             case 455:
+                //                 alert('非指定會員')
+                //                 break;
+                //             case 456:
+                //                 alert('優惠商品不在訂單內，優惠無法使用')
+                //                 break;
+                //             case 457:
+                //                 alert('訂單金額小於優惠券金額。')
+                //                 break;
+                //             default:
+                //                 break;
+                //         }
+                //     })
+                // } else {
+                //     switch (method) {
+                //         case 'cvsCod':      // 超商取貨付款
+                //             this.cvsCod();
+                //             break;
+                //         case 'cvs':         // 超商純取貨
+                //             this.aoiMethod();
+                //             break;
+                //         case 'aoi':         //All in one
+                //             this.aoiMethod();
+                //             break;
+                //         default:
 
-                    }
+                //     }
+                // }
+
+                switch (method) {
+                    case 'cvsCod':      // 超商取貨付款
+                        this.cvsCod();
+                        break;
+                    case 'cvs':         // 超商純取貨
+                        this.aoiMethod();
+                        break;
+                    case 'aoi':         //All in one
+                        this.aoiMethod();
+                        break;
+                    default:
+
                 }
 
                 
@@ -851,6 +1001,7 @@
                             ReceiverGender: this.customerParametorForShipping.ReceiverGender,
                             remarks: this.customerParametorForShipping.remarks,
                             receipt: this.customerParametorForShipping.receipt,
+                            invoiceTitle: this.customerParametor.invoiceTitle
                         });
                         console.log(3)
                     } else {
@@ -864,6 +1015,7 @@
                             ReceiverGender: this.customerParametorForShipping.ReceiverGender,
                             remarks: this.customerParametorForShipping.remarks,
                             receipt: this.customerParametorForShipping.receipt,
+                            invoiceTitle: this.customerParametorForShipping.invoiceTitle
                         });
                         console.log(4)
                     }
@@ -1032,7 +1184,8 @@
                     CVSTelephone: this.cvsParametor.CVSTelephone,
                     ReceiverName: this.customerParametor.ReceiverName,
                     ReceiverCellPhone: this.customerParametor.ReceiverCellPhone,
-                    ReceiverEmail: this.customerParametor.ReceiverEmail
+                    ReceiverEmail: this.customerParametor.ReceiverEmail,
+                    invoiceTitle: this.customerParametor.invoiceTitle
                 });
                 shippingTarget.name = "shippingTarget";
                 form.appendChild(shippingTarget);
@@ -1153,67 +1306,97 @@
                 var self = this;
                 var token = this.token;
 
-
-                $.ajax({
-                    url: '/coupon/get/' + this.coupon,
-                    type: 'POST',
-                    dataType: 'json',
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                })
-                .done(function(result) {
-                    var isPublish = result.data.isPublish === 1 ? true : false;
-                    var maximumAmount = result.data.maximumAmount;
-                    var minimumAmount = result.data.minimumAmount;
-                    var discountType = result.data.discountType;
-                    var couponAmount = result.data.couponAmount;
-
-
-                    // if (!isPublish) {
-                    //     self.showMessage('warning', '此優惠券尚未發佈。');
-                    //     return;
-                    // }
-
-                    self.usedCouponContent = {
-                        discountType: self.isCouponUse,
-                        couponAmount: couponAmount
-                    }
-
-                    // if (maximumAmount || maximumAmount === "") {
-                    //     if (self.amount > maximumAmount) {
-                    //         self.showMessage('warning', '訂單金額已超出優惠券的限制金額。');
-                    //         return;
-                    //     }
-                    // }
-
-                    // if (minimumAmount || minimumAmount === "") {
-                    //     if (self.amount < minimumAmount) {
-                    //         self.showMessage('warning', '訂單金額小於優惠券的最低使用金額。');
-                    //         return;
-                    //     }
-                    // }
-
-                    self.isCouponUse = true;
-                    self.discountType = discountType;
-                    self.couponAmount = couponAmount;
-
-                    self.showMessage('success', '優惠券使用成功');
-
-                    self.$nextTick(() => {
-                        self.aoiMethod()
+                $('.loading-bar').show()
+                axios.post(`/validate/coupon/${this.coupon}`, {
+                    amount: this.finalAmount
+                }).then(res => {
+                    $.ajax({
+                        url: '/coupon/get/' + this.coupon,
+                        type: 'POST',
+                        dataType: 'json',
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
                     })
-                })
-                .fail(function(xhr) {
-                    console.log(xhr.status);
-                    if (xhr.status === 404) {
-                        self.showMessage('error', '此優惠券無效。');
+                    .done(function(result) {
+                        var isPublish = result.data.isPublish === 1 ? true : false;
+                        var maximumAmount = result.data.maximumAmount;
+                        var minimumAmount = result.data.minimumAmount;
+                        var discountType = result.data.discountType;
+                        var couponAmount = result.data.couponAmount;
+
+
+                        // if (!isPublish) {
+                        //     self.showMessage('warning', '此優惠券尚未發佈。');
+                        //     return;
+                        // }
+
+                        self.usedCouponContent = {
+                            coupon: self.coupon,
+                            discountType: self.isCouponUse,
+                            couponAmount: couponAmount
+                        }
+
+                        // if (maximumAmount || maximumAmount === "") {
+                        //     if (self.amount > maximumAmount) {
+                        //         self.showMessage('warning', '訂單金額已超出優惠券的限制金額。');
+                        //         return;
+                        //     }
+                        // }
+
+                        // if (minimumAmount || minimumAmount === "") {
+                        //     if (self.amount < minimumAmount) {
+                        //         self.showMessage('warning', '訂單金額小於優惠券的最低使用金額。');
+                        //         return;
+                        //     }
+                        // }
+
+                        self.isCouponUse = true;
+                        self.discountType = discountType;
+                        self.couponAmount = couponAmount;
+
+                        self.showMessage('success', '優惠券使用成功');
+                        self.isCouponFieldShow = false
+                        self.$nextTick(() => {
+                            // self.aoiMethod()
+                        })
+                    })
+                    .fail(function(xhr) {
+                        console.log(xhr.status);
+                        if (xhr.status === 404) {
+                            self.showMessage('error', '此優惠券無效。');
+                        }
+                        // console.log("error");
+                    })
+                    .always(function() {
+                        // console.log("complete");
+                        $('.loading-bar').hide()
+                    });
+                }).catch(err => {
+                    let result = err.response
+
+                    switch (result.status) {
+                        case 454:
+                            alert('無效的優惠券代碼')
+                            break;
+                        case 455:
+                            alert('非指定會員')
+                            break;
+                        case 456:
+                            alert('優惠商品不在訂單內，優惠無法使用')
+                            break;
+                        case 457:
+                            alert('訂單金額小於優惠券金額。')
+                            break;
+                        default:
+                            break;
                     }
-                    // console.log("error");
+
+                    $('.loading-bar').hide()
                 })
-                .always(function() {
-                    // console.log("complete");
-                });
+
+
+                
 
             },
             showMessage: function (type, string) {

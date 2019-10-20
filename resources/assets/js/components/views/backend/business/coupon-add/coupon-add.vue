@@ -203,11 +203,12 @@
         <el-dialog
             title="選擇商品"
             :visible.sync="dialogVisible"
+            :close-on-click-modal="false"
             width="600px"
             :before-close="handleClose">
-            <form v-on:submit.prevent="searchProduct">
-                <input class="form-control" v-model="keyword" placeholder="請輸入商品名稱" required/>
-                
+            <form v-on:submit.prevent="searchProduct" class="search-form">
+                <input class="form-control search-input" v-model="keyword" placeholder="請輸入商品名稱" required/>
+                <button type="submit" class="search-submit"><i class="el-icon-search"></i></button>
             </form>
             <div class="selected-product-list">
                 <label v-for="(item, index) in productData.data" :key="index">
@@ -222,11 +223,12 @@
         <el-dialog
             title="選擇會員"
             :visible.sync="dialogUserVisible"
+            :close-on-click-modal="false"
             width="600px"
             :before-close="handleUserClose">
-            <form v-on:submit.prevent="searchUser">
-                <input class="form-control" v-model="userkeyword" placeholder="請輸入關鍵字(姓名、電子郵件)" required/>
-                
+            <form v-on:submit.prevent="searchUser" class="search-form">
+                <input class="form-control search-input" v-model="userkeyword" placeholder="請輸入關鍵字(姓名、電子郵件)" required/>
+                <button type="submit" class="search-submit"><i class="el-icon-search"></i></button>
             </form>
             <div class="selected-product-list">
                 <label v-for="(item, index) in userData.data" :key="index">
@@ -485,10 +487,9 @@
 
             },
             searchProduct(e) {
-                console.log(e)
-
                 this.urlPath = `/admin/product/search/${this.keyword}`
 
+                $('.loading-bar').show()
                 axios.get(this.urlPath, {
                     params: {
                         flag: 'id',
@@ -498,11 +499,13 @@
                     var productData = result.data;
 
                     this.productData = productData
+                    this.$message.success('搜尋完成')
                     $('.loading-bar').fadeOut('100');
                 }).catch(err => {
-                    console.log(err)
+                    this.$message.error(err.message)
                 }).then(arg => {
                     self.listLoading = false
+                    $('.loading-bar').hide()
                 })
             },
             selectPtoduct() {
@@ -511,8 +514,6 @@
                 this.handleClose()
             },
             searchUser(e) {
-                console.log(e)
-
 
                 axios.post(`/admin/normal/search/${this.userkeyword}`, {
                     flag: 'id',
@@ -521,11 +522,13 @@
                     var userData = result.data;
 
                     this.userData = userData
+                    this.$message.success('搜尋完成')
                     $('.loading-bar').fadeOut('100');
                 }).catch(err => {
                     console.log(err)
                 }).then(arg => {
                     self.listLoading = false
+                    $('.loading-bar').hide()
                 })
             },
             selectUser() {
@@ -553,6 +556,23 @@
         margin: 8px 0;
         padding: 10px;
         border: #eee solid thin;
+    }
+}
+
+.search-form {
+    position: relative;
+
+    .search-submit {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        height: 100%;
+        width: 40px;
+        border: none;
+        background: transparent;
+    }
+    .search-input {
+        padding-right: 40px;
     }
 }
 </style>

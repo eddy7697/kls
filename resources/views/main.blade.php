@@ -23,9 +23,10 @@
         <!-- Fonts -->
         <link href="{{ asset('css/frontend.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> --}}
         <link rel="stylesheet" href="/js/plugins/AOS/aos.css">
-        <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet"> --}}
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans+TC&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/js/plugins/swipe/swiper.min.css">
         <link rel="stylesheet" href="/js/plugins/lightbox2/src/css/lightbox.css">
         <!-- Styles -->
@@ -200,22 +201,22 @@
                             <div class="header_contact">
                                 <div class="header_addr">
                                     <div class="shop_list">
-                                        <div class="shop zhubei">
+                                        <div class="shop guanxin">
                                             <img src="\img\thumbtack.svg" alt="">
                                             <div class="shop_contact">
-                                                <p>竹北店 (09:00 - 20:00)<br>03-6565528<br>新竹縣竹北市光明六路15號</p>
+                                                <p>關新店 (13:00 - 22:00)<br>03-5638999<br>新竹市關新路201號</p>
                                             </div>
                                         </div>
                                         <div class="shop bigcity">
                                             <img src="\img\thumbtack.svg" alt="">
                                             <div class="shop_contact">
-                                                <p>巨城店 (09:00 - 20:00)<br>03-5326191<br>新竹市民權路173號</p>
+                                                <p>巨城店 (11:00 - 22:00)<br>03-5326191<br>新竹市民權路173號</p>
                                             </div>             
                                         </div>
-                                        <div class="shop guanxin">
+                                        <div class="shop zhubei">
                                             <img src="\img\thumbtack.svg" alt="">
                                             <div class="shop_contact">
-                                                <p>關新店 (09:00 - 22:00)<br>03-5638999<br>新竹市關新路201號</p>
+                                                <p>竹北店 (13:00 - 22:00)<br>03-6565528<br>新竹縣竹北市光明六路15號</p>
                                             </div>
                                         </div>
                                     </div>
