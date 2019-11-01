@@ -402,7 +402,7 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <div class="row">
+                            <draggable class="row" v-model="productContent.album" draggable=".pruduct-image">
                                 <div
                                     class="col-md-6 pruduct-image"
                                     v-bind:key="item.guid"
@@ -415,7 +415,7 @@
                                 <div class="col-md-12">
                                     <a @click="addImage()">新增商品圖庫圖片</a>
                                 </div>
-                            </div>
+                            </draggable>
                         </div>
                     </div>
                 </div>
@@ -433,6 +433,7 @@
     import 'element-ui/lib/theme-chalk/index.css';
     import lang from 'element-ui/lib/locale/lang/zh-TW'
     import locale from 'element-ui/lib/locale'
+    import draggable from 'vuedraggable'
 
     var dateTimePick = require('../../../../common/dateTimePick.vue');
 
@@ -442,7 +443,8 @@
     export default {
         components: {
             Ckeditor,
-            dateTimePick
+            dateTimePick,
+            draggable
         },
         data() {
             return {
@@ -733,9 +735,10 @@
 
                 window.open('/laravel-filemanager' + '?type=Images', 'FileManager', 'width=900,height=600');
                 window.SetUrl = function (url, file_path) {
-                    self.productContent.album.push({
-                        imageUrl: file_path
-                    });
+                    qwdoqikndoqwnd = file_path
+                    // self.productContent.album.push({
+                    //     imageUrl: file_path
+                    // });
                 };
             },
             addSeoImage() {

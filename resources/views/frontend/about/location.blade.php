@@ -183,7 +183,7 @@
                     </p>
                     <div class="storeLocation-address">
                         <p>
-                            新竹縣新竹市東區關新路201號
+                            新竹市東區關新路201號
                         </p>
                         <a class="information-map-link" href="https://goo.gl/maps/AvLidq4Sea32"  target="_blank">
                             <button class="information-btn google-contact">
@@ -231,7 +231,7 @@
                         </p>
                     </div>
                     <p>
-                        ※營業時間為 11:00 - 22:00，每周二公休。
+                        ※營業時間為 11:00 - 22:00。
                     </p>
                 </div>
             </div>
@@ -256,7 +256,7 @@
                     </p>
                     <div class="storeLocation-address">
                         <p>
-                            新竹縣新竹市東區民權路173號
+                            新竹市東區民權路173號
                         </p>
                         <a class="information-map-link" href="https://goo.gl/maps/ZsqSNpedyyH2"  target="_blank">
                             <button class="information-btn google-contact">
@@ -328,7 +328,7 @@
                     </p>
                     <div class="storeLocation-address">
                         <p>
-                            新竹縣竹北市光明六路15號
+                            竹北市光明六路15號
                         </p>
                         <a class="information-map-link" href="https://goo.gl/maps/s2ycsjN3i412"  target="_blank">
                             <button class="information-btn google-contact">

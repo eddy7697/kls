@@ -74,9 +74,9 @@
                                             <h4 class="modal-title" id="myModalLabel">訂單資訊</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <table class="table">
+                                            <table class="table" style="table-layout: fixed">
                                                 <tr>
-                                                    <td>訂單編號</td>
+                                                    <td style="width: 100px;">訂單編號</td>
                                                     <td>{{$item->merchantID}}</td>
                                                 </tr>
                                                 <tr>
@@ -115,17 +115,21 @@
                                                 @if ($item->usedCoupon)
                                                     <td>優惠券使用</td>
                                                     <td>
-                                                        <table class="table">
+                                                        <table class="table" >
                                                             <thead>
                                                                 <tr>
-                                                                    <th>優惠券類型</th>
+                                                                    <th >優惠券編號</th>
                                                                     <th>折抵金額</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
+                                                                        {{isset(json_decode($item->usedCoupon)->coupon) ? json_decode($item->usedCoupon)->coupon : ''}}
                                                                         @php
+                                                                            
+                                                                        @endphp
+                                                                        {{-- @php
                                                                             switch (json_decode($item->usedCoupon)->discountType) {
                                                                                 case 'percentage':
                                                                                     echo '百分比折抵';
@@ -137,10 +141,11 @@
                                                                                     // code...
                                                                                     break;
                                                                             }
-                                                                        @endphp
+                                                                        @endphp --}}
                                                                     </td>
                                                                     <td>
-                                                                        @php
+                                                                        {{json_decode($item->usedCoupon)->couponAmount}}
+                                                                        {{-- @php
                                                                             switch (json_decode($item->usedCoupon)->discountType) {
                                                                                 case 'percentage':
                                                                                     echo json_decode($item->usedCoupon)->couponAmount.'%';
@@ -152,7 +157,7 @@
                                                                                     // code...
                                                                                     break;
                                                                             }
-                                                                        @endphp
+                                                                        @endphp --}}
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -180,7 +185,7 @@
                                                         @endphp
                                                     </td>
                                                 </tr>
-                                                @unless ($item->orderStatus =='canceled')
+                                                {{-- @unless ($item->orderStatus =='canceled')
                                                     @unless ($item->paymentMethod == 'cod')
                                                         <tr>
                                                             <td>付款資訊</td>
@@ -226,15 +231,20 @@
                                                             </td>
                                                         </tr>
                                                     @endunless
-                                                @endunless
+                                                @endunless --}}
                                                 <tr>
                                                     <td>運送方式</td>
                                                     <td>
-                                                        @if ($item->shippingMethod == 'cvs')
+                                                        @if ($item->paymentMethod == 'cod')
+                                                            貨到付款
+                                                        @elseif ($item->paymentMethod == 'Remit')
+                                                            國內宅配
+                                                        @endif
+                                                        {{-- @if ($item->shippingMethod == 'cvs')
                                                             超商取貨
                                                         @elseif ($item->shippingMethod == 'delivery')
                                                             國內宅配
-                                                        @endif
+                                                        @endif --}}
                                                     </td>
                                                 </tr>
                                                 <tr>
