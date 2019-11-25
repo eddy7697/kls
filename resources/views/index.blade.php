@@ -327,12 +327,10 @@ use Carbon\Carbon;
                                         <div class="swiper-slide">
                                             <div class="product_img" style="background-image: url('{{$item->featureImage}}')">
                                                 {{-- <img class="product_img_inside" src="{{$item->featureImage}}" alt=""> --}}
-                                                <a href="/detail/{{$item->productGuid}}">
-                                                    <div class="product_quick_view">
-                                                        <p class="product_quick_text">
-                                                            READ MORE    
-                                                        </p>
-                                                    </div>
+                                                <a class="product_quick_view" href="/detail/{{$item->productGuid}}">
+                                                    <p class="product_quick_text">
+                                                        READ MORE    
+                                                    </p>
                                                 </a>
                                             </div>
                                             <h3 class="product_series">

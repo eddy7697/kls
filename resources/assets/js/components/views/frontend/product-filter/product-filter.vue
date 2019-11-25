@@ -217,7 +217,7 @@
                     <div class="col-md-6" v-for="(item, index) in pageData.data" :key="index" :title="item.productTitle">
                         <div class="product-inner">
                             <div class="product-img" :style="`background-image: url('${item.featureImage}');`">
-                                <a :href="`/detail/${item.productGuid}`">
+                                <a :href="`/detail/${item.productGuid}`" class="product-check-a">
                                     <div class="product-img-mask"></div>
                                     <p>查看商品</p>
                                 </a>
