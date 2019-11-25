@@ -634,7 +634,9 @@ img.icon_yellow {
 
     .img-container {
       background-position: center;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: #fcfcfc;
 
       @media screen and (max-width: 767px) {
         position: relative !important;
@@ -2783,7 +2785,8 @@ img.icon_yellow {
 
       .blog-post-inner-img {
         background-position: center;
-        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
         padding-bottom: 80%;
       }
 

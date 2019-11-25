@@ -42,7 +42,7 @@
             background-image: url('{{$post->featureImage}}');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain;
         }
         .blog-content{
             position: relative;

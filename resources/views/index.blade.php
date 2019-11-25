@@ -390,7 +390,7 @@ use Carbon\Carbon;
                 @foreach (PostView::all(6) as $item)
                 <div class="item clear">
                     <div class="img-container" style="background-image: url('{{$item->featureImage}}');"></div>
-                    <div class="info-group" data-aos="fade-up" data-aos-duration="500" data-aos-anchor-placement="bottom">
+                    <div class="info-group">
                         <p class="date">{{Carbon::parse($item->created_at)->format('Y/m/d')}}</p>
                         <p class="title">{{$item->postTitle}}</p>
                         <p class="detail">{{preg_replace('#<[^>]+>#', ' ', $item->content)}}</p>
