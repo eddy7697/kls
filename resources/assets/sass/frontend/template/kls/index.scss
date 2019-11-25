@@ -513,7 +513,7 @@ img.icon_yellow {
   position: static !important;
 
   .mega-menu-product {
-    @include size-setting(70%, auto);
+    @include size-setting(100%, auto);
     right: 8% !important;
     left: auto;
     z-index: 99999;
@@ -584,7 +584,7 @@ img.icon_yellow {
     }
 
     .mega-menu-img {
-      @include size-setting(300px, 330px);
+      @include size-setting(30%, 330px);
       margin: 0 !important;
       padding: 20px 0px;
 
