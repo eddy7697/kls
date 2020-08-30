@@ -10,6 +10,8 @@
 /public/js/product-methods.js
 /public/css/page-builder.css
 /public/js/product-fitter.js
+/public/js/product-fitting.js
+/public/js/product-fitting-bag.js
 /public/js/wish-list.js
 /storage/*.key
 vendor
@@ -24,4 +26,4 @@ yarn-error.log
 /public/css/page-builder.css
 /public/fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.svg
 /public/fonts/vendor/slick-carousel/slick/slick.svg
-public/js/product-filter.js
+/public/js/product-filter.js
