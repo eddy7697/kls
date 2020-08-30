@@ -2575,6 +2575,10 @@ img.icon_yellow {
   .information-banner {
     @include background-setting('/img/contact-banner.jpg', center left, cover);
 
+    .contact-banner-inner {
+      width: 100%;
+    }
+
     .contact-banner-inner-text {
       position: absolute;
       top: 50%;
