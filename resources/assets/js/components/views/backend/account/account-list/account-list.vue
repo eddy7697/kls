@@ -16,7 +16,7 @@
               <span class="glyphicon glyphicon-plus"></span> 新增帳號
             </button>
             <el-table
-                :data="accounts"
+                :data="pageData.data"
                 style="width: 100%">
                 <el-table-column
                     prop="email"

@@ -46,6 +46,23 @@
 
     </head>
     <body>
+        <div class="floating-tool-bar">
+            @if (Auth::guest())
+            <a href="/login">
+                <div style="text-align: center">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i><br>
+                    會員登入
+                </div>
+            </a>
+            @else
+            <a href="/user">
+                <div style="text-align: center">
+                    <i class="fa fa-user-o" aria-hidden="true"></i><br>
+                    會員中心
+                </div>
+            </a>
+            @endif
+        </div>
         <div class="loadingBar">
             <div class="loading-bar-inner">
                 <img src="/img/loadingText.svg" alt="" style="width: 150px;">
@@ -126,6 +143,24 @@
                             願望清單
                         </a>
                     </li>
+                    @if (Auth::guest())
+                    <li>
+                        <a href="/login">
+                            會員登入
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/register">
+                            會員註冊
+                        </a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="/user">
+                            會員專區
+                        </a>
+                    </li> 
+                    @endif
                     <li class="nav_final">
                         <a href="{{route('contact')}}">
                             諮詢專區

@@ -735,10 +735,10 @@
 
                 window.open('/laravel-filemanager' + '?type=Images', 'FileManager', 'width=900,height=600');
                 window.SetUrl = function (url, file_path) {
-                    qwdoqikndoqwnd = file_path
-                    // self.productContent.album.push({
-                    //     imageUrl: file_path
-                    // });
+                    // qwdoqikndoqwnd = file_path
+                    self.productContent.album.push({
+                        imageUrl: file_path
+                    });
                 };
             },
             addSeoImage() {
